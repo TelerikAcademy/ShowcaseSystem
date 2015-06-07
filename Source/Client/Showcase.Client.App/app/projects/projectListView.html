@@ -1,0 +1,21 @@
+﻿<div class="panel panel-primary" ng-controller="ProjectListController as vm">
+    <div class="panel-heading">
+        Projects List
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="project in vm.projects">
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.author }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
