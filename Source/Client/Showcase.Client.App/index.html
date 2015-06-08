@@ -18,18 +18,21 @@
     </nav>
 
     <div class="container">
-        <div ng-include="'app/projects/projectListView.html'"></div>
+        <div ng-include="'app/homePage/homePageView.html'"></div>
     </div>
 
     <!-- Library Scripts -->
     <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-resource.js"></script>
 
     <!-- Application Script -->
     <script src="app/app.js"></script>
 
     <!-- Services -->
+    <script src="common/common.services.js"></script>
+    <script src="common/homePageResource.js"></script>
 
     <!-- Controllers -->
-    <script src="app/projects/projectListController.js"></script>
+    <script src="app/homePage/homePageController.js"></script>
 </body>
 </html>
