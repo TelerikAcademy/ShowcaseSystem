@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="Like.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
