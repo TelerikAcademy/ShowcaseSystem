@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('common.services')
+        .module('showcaseSystem.resources', ['ngResource'])
         .factory('homePageResource', ['$resource', 'appSettings', homePageResource]);
 
     function homePageResource($resource, appSettings) {
