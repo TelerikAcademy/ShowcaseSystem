@@ -1,11 +1,11 @@
 ﻿(function() {
-    "use strict";
+    'use strict';
 
     angular
-        .module("common.services")
-        .factory("homePageResource", ["$resource", "appSettings", homePageResource]);
+        .module('common.services')
+        .factory('homePageResource', ['$resource', 'appSettings', homePageResource]);
 
     function homePageResource($resource, appSettings) {
-        return $resource(appSettings.serverPath + "/api/HomePage/");
+        return $resource(appSettings.serverPath + '/api/HomePage/');
     }
 }());

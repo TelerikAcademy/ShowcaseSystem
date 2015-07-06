@@ -1,9 +1,9 @@
 ﻿(function() {
-    "use strict";
+    'use strict';
     angular
-        .module("showcaseSystem")
-        .controller("HomePageController",
-            ["homePageResource", homePageController]);
+        .module('showcaseSystem')
+        .controller('HomePageController',
+            ['homePageResource', homePageController]);
 
     function homePageController(homePageResource) {
         var vm = this;

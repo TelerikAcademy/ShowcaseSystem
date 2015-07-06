@@ -1,6 +1,6 @@
 ﻿(function () {
-    "use strict";
+    'use strict';
 
-    var app = angular.module("showcaseSystem",
-                            ["common.services"]);
+    var app = angular.module('showcaseSystem',
+                            ['common.services']);
 }());
