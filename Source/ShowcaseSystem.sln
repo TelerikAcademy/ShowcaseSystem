@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Data.Common", "Sho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Data", "Showcase.Data\Showcase.Data.csproj", "{080529DD-48D5-4DA7-BD07-38521AF97288}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Server.Common", "Showcase.Server.Common\Showcase.Server.Common.csproj", "{A76B5891-7EDB-4B8F-89B6-03A8924393A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{080529DD-48D5-4DA7-BD07-38521AF97288}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{080529DD-48D5-4DA7-BD07-38521AF97288}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{080529DD-48D5-4DA7-BD07-38521AF97288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A76B5891-7EDB-4B8F-89B6-03A8924393A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76B5891-7EDB-4B8F-89B6-03A8924393A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76B5891-7EDB-4B8F-89B6-03A8924393A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76B5891-7EDB-4B8F-89B6-03A8924393A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,5 +90,6 @@ Global
 		{163B402E-B743-422B-8476-0D73089E7C94} = {D3F49169-B5EF-43DD-BF4B-46AD06E40B9D}
 		{43D17737-5DA2-412B-9FF1-34BCBA58587B} = {D3F49169-B5EF-43DD-BF4B-46AD06E40B9D}
 		{080529DD-48D5-4DA7-BD07-38521AF97288} = {D3F49169-B5EF-43DD-BF4B-46AD06E40B9D}
+		{A76B5891-7EDB-4B8F-89B6-03A8924393A1} = {E920264B-5513-4374-90B8-56924F1BE390}
 	EndGlobalSection
 EndGlobal

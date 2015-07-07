@@ -4,10 +4,13 @@
     using System.Linq;
     using System.Web.Http;
 
-    using Showcase.Server.ViewModels.HomePage;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+
     using Showcase.Data;
     using Showcase.Data.Models;
     using Showcase.Data.Common.Repositories;
+    using Showcase.Server.ViewModels.HomePage;
 
     public class HomePageController : ApiController
     {
@@ -22,34 +25,14 @@
         {
             var projectsRepo = new EfGenericRepository<Project>(new ShowcaseDbContext());
 
-            var model = projectsRepo.All()
-                .Select(x => new HomePageProjectViewModel
-                {
-                    Name = x.Title,
-                    Author = "Telerik Academy"
-                })
+            var projects = projectsRepo.All();
+
+            var model = projects
+                .Project()
+                .To<HomePageProjectViewModel>()
                 .ToList();
 
             return model;
-            
-            //return new List<HomePageProjectViewModel>
-            //           {
-            //               new HomePageProjectViewModel
-            //                   {
-            //                       Name = "Telerik Academy Learning System",
-            //                       Author = "Telerik Academy"
-            //                   },
-            //               new HomePageProjectViewModel
-            //                   {
-            //                       Name = "Telerik Academy Test System",
-            //                       Author = "Telerik Academy"
-            //                   },
-            //               new HomePageProjectViewModel
-            //                   {
-            //                       Name = "Telerik Academy Showcase System",
-            //                       Author = "Telerik Academy"
-            //                   },
-            //           };
         }
     }
 }

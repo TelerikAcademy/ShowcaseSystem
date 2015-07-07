@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Server.Api
 {
     using System.Data.Entity;
+    using System.Reflection;
     using System.Web;
     using System.Web.Http;
     using System.Web.Mvc;
@@ -8,6 +9,7 @@
 
     using Showcase.Data;
     using Showcase.Data.Migrations;
+    using Showcase.Server.Common.Mapping;
 
     public class WebApiApplication : HttpApplication
     {
@@ -19,6 +21,9 @@
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            var autoMapperConfig = new AutoMapperConfig(Assembly.Load("Showcase.Server.ViewModels"));
+            autoMapperConfig.Execute();
         }
     }
 }
