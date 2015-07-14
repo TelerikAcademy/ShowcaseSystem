@@ -7,20 +7,8 @@
             <div class="divider half-margins onepage center"></div>
         </header>
         <h2 class="text-center">Latest Projects</h2>
-        <div id="portfolio" class="container">
-            <div class="row">
-                <ul class="sort-destination isotope" data-sort-id="isotope-list">
-                    <li project-preview  ng-repeat="project in vm.latestProjects" project="project" />
-                </ul>
-            </div>
-        </div>
+        <div project-container projects="vm.latestProjects" />
         <h2 class="text-center">Most Popular</h2>
-        <div id="portfolio2" class="container">
-            <div class="row">
-                <ul class="sort-destination isotope" data-sort-id="isotope-list">
-                    <li project-preview ng-repeat="project in vm.latestProjects" project="project" />
-                </ul>
-            </div>
-        </div>
+        <div project-container projects="vm.latestProjects" />
     </div>
 </section>
