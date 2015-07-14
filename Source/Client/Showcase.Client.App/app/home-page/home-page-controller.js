@@ -2,11 +2,10 @@
     'use strict';
 
     angular
-        .module('showcaseSystem.controllers', ['showcaseSystem.resources'])
-        .controller('HomePageController', ['homePageResource', homePageController]);
+        .module('showcaseSystem.controllers', [])
+        .controller('HomePageController', [homePageController]);
 
     function homePageController() {
         var vm = this;
-        vm.test = 'Hello';
     }
 }());
