@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var app = angular
+    angular
         .module('showcaseSystem', ['showcaseSystem.controllers'])
         .constant('appSettings', {
             serverPath: 'http://localhost:12913/'

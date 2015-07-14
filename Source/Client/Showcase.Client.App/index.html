@@ -1,25 +1,316 @@
 ﻿<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
     <title>Telerik Academy Showcase System</title>
+    <meta name="keywords" content="showcase system" />
+    <meta name="description" content="showcase system" />
+    <meta name="Author" content="Telerik Academy" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Style sheets -->
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Content/main.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <link rel="shortcut icon" href="/content/epona/images/demo/favicon.ico" />
+
+    <!-- WEB FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <!-- CORE CSS -->
+    <link href="/scripts/epona/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/sky-forms.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/scripts/epona/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+    <link href="/scripts/epona/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+    <!-- REVOLUTION SLIDER -->
+    <link href="/content/epona/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+    <!-- THEME CSS -->
+    <link href="/content/epona/css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/header-4.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/footer-default.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+
+    <link href="/content/main.css" rel="stylesheet" />
+
+    <!-- Morenizr -->
+    <script type="text/javascript" src="/scripts/epona/plugins/modernizr.min.js"></script>
+
+    <!--[if lte IE 8]>
+        <script src="/scripts/epona/plugins/respond.js"></script>
+    <![endif]-->
 </head>
-<body ng-app="showcaseSystem">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand">Telerik Academy Showcase System</div>
+
+<!--
+    Available body classes:
+        smoothscroll			= enable chrome browser smooth scroll
+        grey 					= grey content background
+        boxed 					= boxed style
+        pattern1 ... pattern11 	= background pattern
+
+    Background Image - add to body:
+        data-background="/content/epona/images/boxed_background/1.jpg"
+
+    Examples:
+        <body class="smoothscroll grey boxed pattern3">
+        <body class="smoothscroll boxed" data-background="/content/epona/images/boxed_background/1.jpg">
+-->
+<body class="smoothscroll" ng-app="showcaseSystem" ng-cloak>
+
+    <div id="wrapper">
+
+        <div id="header" showcase-header></div>
+
+        <!-- REVOLUTION SLIDER -->
+        <div class="slider fullwidthbanner-container roundedcorners">
+            <div class="fullwidthbanner">
+                <ul class="hide">
+
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
+                        <img src="/content/epona/images/1x1.png" data-lazyload="/content/epona/images/demo/wall2.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
+
+                        <div class="tp-caption lfr"
+                             data-x="left" data-hoffset="60"
+                             data-y="25"
+                             data-speed="1500"
+                             data-start="500"
+                             data-easing="easeOutExpo"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                             style="z-index: 2;">
+                            <img src="/content/epona/images/1x1.png" alt="" data-lazyload="/content/epona/images/demo/ipad.png">
+                        </div>
+
+                        <div class="tp-caption block_black sft"
+                             data-x="right" data-hoffset="-70"
+                             data-y="87"
+                             data-speed="750"
+                             data-start="1100"
+                             data-easing="easeOutExpo"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                             style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">
+                            Epona Template
+                        </div>
+
+                        <div class="tp-caption block_black sfb"
+                             data-x="right" data-hoffset="-70"
+                             data-y="126"
+                             data-speed="750"
+                             data-start="1400"
+                             data-easing="easeOutExpo"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                             style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
+                            100% Fully Responisve
+                        </div>
+
+                        <div class="tp-caption block_styleColor sft"
+                             data-x="right" data-hoffset="-70"
+                             data-y="189"
+                             data-speed="750"
+                             data-start="1700"
+                             data-easing="easeOutExpo"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                             style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;">
+                            With Incredible
+                        </div>
+
+                        <div class="tp-caption block_styleColor sfb"
+                             data-x="right" data-hoffset="-70"
+                             data-y="228"
+                             data-speed="750"
+                             data-start="2000"
+                             data-easing="easeOutExpo"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                             style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">
+                            Additions &amp; Optimizations
+                        </div>
+
+                        <div class="tp-caption block_black sft"
+                             data-x="right" data-hoffset="-70"
+                             data-y="290"
+                             data-speed="750"
+                             data-start="2300"
+                             data-easing="easeOutExpo"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             data-endspeed="300"
+                             style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">
+                            For Your Next Projects
+                        </div>
+                    </li>
+                </ul>
+                <div class="tp-bannertimer"></div>
             </div>
         </div>
-    </nav>
+        <!-- /REVOLUTION SLIDER -->
+        <!-- SECTION -->
+        <section>
+            <div class="container">
 
-    <div class="container">
-        <div ng-include="'app/home-page/home-page-view.html'"></div>
-    </div>
+
+                <header class="text-center">
+                    <h2>We Are Dedicated To Our Customers</h2>
+                    <p class="lead">We thrive on making Epona the most complete and trusted template on wrapbootstrap</p>
+                    <div class="divider half-margins onepage center"><!-- lines divider --></div>
+                </header>
+
+
+                <div id="portfolio" class="container">
+
+                    <div class="row">
+
+                        <ul class="sort-destination isotope" data-sort-id="isotope-list">
+
+                            <li class="isotope-item col-sm-6 col-md-3 development">
+                                <!-- item -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a class="item-hover" href="portfolio-single-basic.html">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>PROJECT</strong> DETAIL
+                                            </span>
+                                        </a>
+                                        <img class="img-responsive" src="/content/epona/images/demo/portfolio/a1.jpg" width="260" height="260" alt="">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>Epona Project</h4>
+                                        <small class="styleColor">29 June, 2014</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="isotope-item col-sm-6 col-md-3 photography">
+                                <!-- item 2 -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a class="item-hover lightbox" href="http://www.youtube.com/watch?v=W7Las-MJnJo" data-plugin-options='{"type":"iframe"}'>
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>VIEW</strong> VIDEO
+                                            </span>
+                                        </a>
+                                        <img class="img-responsive" src="/content/epona/images/demo/portfolio/a2.jpg" width="260" height="260" alt="">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>Video Project</h4>
+                                        <small class="styleColor">29 June, 2014</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="isotope-item col-sm-6 col-md-3 design">
+                                <!-- item 3 -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a class="item-hover" href="portfolio-single-basic.html">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>PROJECT</strong> DETAIL
+                                            </span>
+                                        </a>
+                                        <img class="img-responsive" src="/content/epona/images/demo/portfolio/a3.jpg" width="260" height="260" alt="">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>Epona Project</h4>
+                                        <small class="styleColor">29 June, 2014</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="isotope-item col-sm-6 col-md-3 photography">
+                                <!-- item 4 -->
+                                <div class="item-box">
+                                    <figure>
+                                        <a class="item-hover" href="portfolio-single-basic.html">
+                                            <span class="overlay color2"></span>
+                                            <span class="inner">
+                                                <span class="block fa fa-plus fsize20"></span>
+                                                <strong>PROJECT</strong> DETAIL
+                                            </span>
+                                        </a>
+                                        <img class="img-responsive" src="/content/epona/images/demo/portfolio/a4.jpg" width="260" height="260" alt="">
+                                    </figure>
+                                    <div class="item-box-desc">
+                                        <h4>Epona Project</h4>
+                                        <small class="styleColor">29 June, 2014</small>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div><!-- /.masonry-container -->
+
+                </div>
+
+
+            </div>
+        </section>
+        <!-- /SECTION -->
+        <!-- FOOTER -->
+        <footer id="footer">
+
+            <div class="copyright">
+                <div class="container text-center fsize12">
+                    Epona theme by <a href="http://www.stepofweb.com" target="_blank" title="bootstrap themes &amp; templates" class="copyright">stepofweb</a> &bull; All Right Reserved &copy; Your Company LLC. &nbsp;
+                    <a href="page-privacy.html" class="fsize11">Privacy Policy</a> &bull;
+                    <a href="page-terms.html" class="fsize11">Terms of Service</a>
+                </div>
+            </div>
+        </footer>
+        <!-- /FOOTER -->
+
+        <a href="#" id="toTop"></a>
+
+    </div><!-- /#wrapper -->
+    <!-- JAVASCRIPT FILES -->
+    <script type="text/javascript" src="/scripts/epona/plugins/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/jquery.isotope.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/masonry.js"></script>
+
+    <script type="text/javascript" src="/scripts/epona/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/knob/js/jquery.knob.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+    <!-- REVOLUTION SLIDER -->
+    <script type="text/javascript" src="/scripts/epona/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/js/revolution_slider.js"></script>
+    <script type="text/javascript" src="/scripts/epona/js/scripts.js"></script>
 
     <!-- Library Scripts -->
     <script src="scripts/angular.js"></script>
@@ -35,5 +326,8 @@
 
     <!-- Controllers -->
     <script src="app/home-page/home-page-controller.js"></script>
+
+    <!-- Directives -->
+    <script src="app/common/header-directive.js"></script>
 </body>
 </html>

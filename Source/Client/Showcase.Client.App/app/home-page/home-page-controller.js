@@ -5,11 +5,8 @@
         .module('showcaseSystem.controllers', ['showcaseSystem.resources'])
         .controller('HomePageController', ['homePageResource', homePageController]);
 
-    function homePageController(homePageResource) {
+    function homePageController() {
         var vm = this;
-
-        homePageResource.query(function(data) {
-            vm.projects = data;
-        });
+        vm.test = 'Hello';
     }
 }());
