@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('showcaseSystem')
+        .module('showcaseSystem.directives')
         .directive('showcaseFooter', footerDirective);
 
     function footerDirective() {

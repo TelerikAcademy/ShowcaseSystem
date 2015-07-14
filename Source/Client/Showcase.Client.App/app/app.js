@@ -1,8 +1,10 @@
 ﻿(function () {
     'use strict';
 
-    angular
-        .module('showcaseSystem', [ 'ngRoute', 'showcaseSystem.controllers'])
+    angular.module('showcaseSystem.controllers', []);
+    angular.module('showcaseSystem.directives', []);
+
+    angular.module('showcaseSystem', ['ngRoute', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
         .config(function ($routeProvider) {
             $routeProvider
                 .when('/', {

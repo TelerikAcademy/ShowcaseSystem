@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('showcaseSystem.controllers', [])
+        .module('showcaseSystem.controllers')
         .controller('HomePageController', [homePageController]);
 
     function homePageController() {
