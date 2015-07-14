@@ -12,6 +12,7 @@
         {
             config.MapHttpAttributeRoutes();
 
+            config.Formatters.Clear();
             config.Formatters.Add(new BrowserJsonFormatter());
 
             var cors = new EnableCorsAttribute("*", "*", "*");

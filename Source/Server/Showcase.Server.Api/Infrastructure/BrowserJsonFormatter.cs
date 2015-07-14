@@ -12,14 +12,15 @@
         public BrowserJsonFormatter()
         {
             this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            this.SerializerSettings.Formatting = Formatting.None;
-            this.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
         }
 
         public override void SetDefaultContentHeaders(Type type, HttpContentHeaders headers, MediaTypeHeaderValue mediaType)
         {
             base.SetDefaultContentHeaders(type, headers, mediaType);
             headers.ContentType = new MediaTypeHeaderValue("application/json");
+            this.SerializerSettings.Formatting = Formatting.None;
+            this.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
     }
 }

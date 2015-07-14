@@ -11,6 +11,7 @@
     using Showcase.Data.Models;
     using Showcase.Data.Common.Repositories;
     using Showcase.Server.ViewModels.HomePage;
+    using Showcase.Server.Common;
 
     public class HomePageController : ApiController
     {
@@ -23,11 +24,10 @@
 
         public IEnumerable<HomePageProjectViewModel> Get()
         {
-            var projectsRepo = new EfGenericRepository<Project>(new ShowcaseDbContext());
-
-            var projects = projectsRepo.All();
-
-            var model = projects
+            var model = this.projects
+                .All()
+                .OrderByDescending(pr => pr.CreatedOn)
+                .Take(Constants.HomePageLatestProjectsCount)
                 .Project()
                 .To<HomePageProjectViewModel>()
                 .ToList();
