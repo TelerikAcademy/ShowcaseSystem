@@ -11,7 +11,7 @@
 
     public class AutoMapperConfig
     {
-        public static void Execute(params Assembly[] assemblies)
+        public static void RegisterMappings(params Assembly[] assemblies)
         {
             Mapper.Configuration.ConstructServicesUsing(t => DependencyResolver.Current.GetService(t));
 
