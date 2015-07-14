@@ -7,7 +7,7 @@
     function projectPreview() {
         return {
             restrict: 'A',
-            templateUrl: '/app/home-page/project-preview-directive.html',
+            templateUrl: '/app/common/project-preview-directive.html',
             scope: {
                 project: '=project'
             },
