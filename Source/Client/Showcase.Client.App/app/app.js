@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
 
-
     angular.module('showcaseSystem.data', []);
-    angular.module('showcaseSystem.controllers', ['showcaseSystem.data']);
+    angular.module('showcaseSystem.services', []);
+    angular.module('showcaseSystem.controllers', ['showcaseSystem.data', 'showcaseSystem.services']);
     angular.module('showcaseSystem.directives', []);
 
     angular.module('showcaseSystem', ['ngRoute', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
@@ -14,6 +14,7 @@
                 });
         })
         .value('jQuery', jQuery)
+        .value('toastr', toastr)
         .constant('appSettings', {
             serverPath: 'http://localhost:12913/api/'
         });

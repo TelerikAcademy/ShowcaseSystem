@@ -93,3 +93,5 @@
 /// <reference path="../app/common/header-directive.js" />
 /// <reference path="../app/common/footer-directive.js" />
 /// <reference path="../app/home-page/home-page-data.js" />
+/// <reference path="toastr.min.js" />
+/// <reference path="toastr.js" />

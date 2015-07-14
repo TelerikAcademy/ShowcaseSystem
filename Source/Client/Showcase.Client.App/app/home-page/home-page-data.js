@@ -6,7 +6,7 @@
 
     function homePageData($http, $q, appSettings) {
         function getLatestProjects() {
-            var URL = appSettings.serverPath + '/homePage';
+            var URL = appSettings.serverPath + 'homePage';
             var deferred = $q.defer();
 
             $http.get(URL)
