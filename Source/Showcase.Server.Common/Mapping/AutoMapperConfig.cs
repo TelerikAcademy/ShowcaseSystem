@@ -11,18 +11,15 @@
 
     public class AutoMapperConfig
     {
-        private Assembly assembly;
-
-        public AutoMapperConfig(Assembly assembly)
-        {
-            this.assembly = assembly;
-        }
-
-        public void Execute()
+        public static void Execute(params Assembly[] assemblies)
         {
             Mapper.Configuration.ConstructServicesUsing(t => DependencyResolver.Current.GetService(t));
 
-            var types = this.assembly.GetExportedTypes();
+            var types = new List<Type>();
+            foreach (var assembly in assemblies)
+            {
+                types.AddRange(assembly.GetExportedTypes());
+            }
 
             LoadStandardMappings(types);
 
