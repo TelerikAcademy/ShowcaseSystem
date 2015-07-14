@@ -4,6 +4,7 @@
     using System.Web.Http.Cors;
 
     using Newtonsoft.Json.Serialization;
+    using Showcase.Server.Api.Infrastructure;
 
     public static class WebApiConfig
     {
@@ -11,8 +12,7 @@
         {
             config.MapHttpAttributeRoutes();
 
-            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
-                new CamelCasePropertyNamesContractResolver();
+            config.Formatters.Add(new BrowserJsonFormatter());
 
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
