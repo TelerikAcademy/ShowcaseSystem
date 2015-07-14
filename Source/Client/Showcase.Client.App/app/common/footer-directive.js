@@ -3,7 +3,7 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('showcaseFooter', footerDirective);
+        .directive('showcaseFooter', [footerDirective]);
 
     function footerDirective() {
         return {

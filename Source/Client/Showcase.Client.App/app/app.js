@@ -1,7 +1,9 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('showcaseSystem.controllers', []);
+
+    angular.module('showcaseSystem.data', []);
+    angular.module('showcaseSystem.controllers', ['showcaseSystem.data']);
     angular.module('showcaseSystem.directives', []);
 
     angular.module('showcaseSystem', ['ngRoute', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
@@ -12,6 +14,6 @@
                 });
         })
         .constant('appSettings', {
-            serverPath: 'http://localhost:12913/'
+            serverPath: 'http://localhost:12913/api/'
         });
 }());

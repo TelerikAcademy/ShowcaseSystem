@@ -3,7 +3,7 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('showcaseHeader', headerDirective);
+        .directive('showcaseHeader', [headerDirective]);
 
     function headerDirective() {
         return {

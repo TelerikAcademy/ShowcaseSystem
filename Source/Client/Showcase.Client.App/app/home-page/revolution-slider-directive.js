@@ -3,7 +3,7 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('revolutionSlider', revolutionSliderDirective);
+        .directive('revolutionSlider', [revolutionSliderDirective]);
 
     function revolutionSliderDirective() {
         return {

@@ -3,9 +3,14 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('HomePageController', [homePageController]);
+        .controller('HomePageController', ['homePageData', homePageController]);
 
-    function homePageController() {
+    function homePageController(homePageData) {
         var vm = this;
+
+        homePageData.getLatestProjects()
+            .then(function (projects) {
+                vm.latestProjects = projects;
+            });
     }
 }());
