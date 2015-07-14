@@ -28,16 +28,16 @@ jQuery(document).ready(function() {
 				+ '		<h4>STYLE SWITCHER</h4>'
 
 				+ '		<ul>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'red\'); return false;" title="red" class="color"><img src="assets/plugins/styleswitcher/color_schemes/2.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'orange\'); return false;" title="orange" class="color"><img src="assets/plugins/styleswitcher/color_schemes/1.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'pink\'); return false;" title="pink" class="color"><img src="assets/plugins/styleswitcher/color_schemes/3.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'yellow\'); return false;" title="yellow" class="color"><img src="assets/plugins/styleswitcher/color_schemes/4.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'darkgreen\'); return false;" title="darkgreen" class="color"><img src="assets/plugins/styleswitcher/color_schemes/5.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'green\'); return false;" title="green" class="color"><img src="assets/plugins/styleswitcher/color_schemes/6.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'darkblue\'); return false;" title="darkblue" class="color"><img src="assets/plugins/styleswitcher/color_schemes/7.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'blue\'); return false;" title="blue" class="color"><img src="assets/plugins/styleswitcher/color_schemes/8.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'brown\'); return false;" title="brown" class="color"><img src="assets/plugins/styleswitcher/color_schemes/9.png" alt="" width="30" height="30" /></a></li>'
-				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'lightgrey\'); return false;" title="lightgrey" class="color"><img src="assets/plugins/styleswitcher/color_schemes/10.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'red\'); return false;" title="red" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/2.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'orange\'); return false;" title="orange" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/1.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'pink\'); return false;" title="pink" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/3.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'yellow\'); return false;" title="yellow" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/4.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'darkgreen\'); return false;" title="darkgreen" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/5.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'green\'); return false;" title="green" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/6.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'darkblue\'); return false;" title="darkblue" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/7.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'blue\'); return false;" title="blue" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/8.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'brown\'); return false;" title="brown" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/9.png" alt="" width="30" height="30" /></a></li>'
+				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'lightgrey\'); return false;" title="lightgrey" class="color"><img src="/scripts/epona/plugins/styleswitcher/color_schemes/10.png" alt="" width="30" height="30" /></a></li>'
 				+ '		</ul>'
 
 				+ '		<div class="margin-top10">'
@@ -54,27 +54,27 @@ jQuery(document).ready(function() {
 
 				+ '		<p class="nomargin-bottom">Patterns for Boxed Version</p>'
 				+ '		<div>'
-				+ '			<button onclick="pattern_switch(\'none\');" class="pointer switcher_thumb"><img src="assets/images/patterns/none.jpg" width="27" height="27" alt="" /></button>'
-				+ '			<button onclick="pattern_switch(\'pattern2\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern2.png" width="27" height="27" alt="" /></button>'
-				+ '			<button onclick="pattern_switch(\'pattern3\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern3.png" width="27" height="27" alt="" /></button>'
-				+ '			<button onclick="pattern_switch(\'pattern4\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern4.png" width="27" height="27" alt="" /></button>'
-				+ '			<button onclick="pattern_switch(\'pattern5\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern5.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'none\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/none.jpg" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern2\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern2.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern3\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern3.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern4\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern4.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern5\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern5.png" width="27" height="27" alt="" /></button>'
 				+ '		</div>'
 
 				+ '		<div>'
-				+ '			<button onclick="pattern_switch(\'pattern6\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern6.png" width="27" height="27" alt="" /></button>'
-				+ '			<button onclick="pattern_switch(\'pattern7\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern7.png" width="27" height="27" alt="" /></button>'
-				+ '			<button onclick="pattern_switch(\'pattern8\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern8.png" width="27" height="27" alt="" /></button>'
-				+ '			<button onclick="pattern_switch(\'pattern9\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern9.png" width="27" height="27" alt="" /></button>'
-				+ '			<button onclick="pattern_switch(\'pattern10\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern10.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern6\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern6.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern7\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern7.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern8\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern8.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern9\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern9.png" width="27" height="27" alt="" /></button>'
+				+ '			<button onclick="pattern_switch(\'pattern10\');" class="pointer switcher_thumb"><img src="/content/epona/images/patterns/pattern10.png" width="27" height="27" alt="" /></button>'
 				+ '		</div>'
 
 				+ '		<p class="nomargin-bottom">Images for Boxed Version</p>'
-				+ '		<button onclick="background_switch(\'none\');" class="pointer switcher_thumb"><img src="assets/images/boxed_background/none.jpg" width="27" height="27" alt="" /></button>'
-				+ '		<button onclick="background_switch(\'assets/images/boxed_background/1.jpg\');" class="pointer switcher_thumb"><img src="assets/images/boxed_background/1_thumb.jpg" width="27" height="27" alt="" /></button>'
-				+ '		<button onclick="background_switch(\'assets/images/boxed_background/2.jpg\');" class="pointer switcher_thumb"><img src="assets/images/boxed_background/2_thumb.jpg" width="27" height="27" alt="" /></button>'
-				+ '		<button onclick="background_switch(\'assets/images/boxed_background/3.jpg\');" class="pointer switcher_thumb"><img src="assets/images/boxed_background/3_thumb.jpg" width="27" height="27" alt="" /></button>'
-				+ '		<button onclick="background_switch(\'assets/images/boxed_background/4.jpg\');" class="pointer switcher_thumb"><img src="assets/images/boxed_background/4_thumb.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'none\');" class="pointer switcher_thumb"><img src="/content/epona/images/boxed_background/none.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'/content/epona/images/boxed_background/1.jpg\');" class="pointer switcher_thumb"><img src="/content/epona/images/boxed_background/1_thumb.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'/content/epona/images/boxed_background/2.jpg\');" class="pointer switcher_thumb"><img src="/content/epona/images/boxed_background/2_thumb.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'/content/epona/images/boxed_background/3.jpg\');" class="pointer switcher_thumb"><img src="/content/epona/images/boxed_background/3_thumb.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'/content/epona/images/boxed_background/4.jpg\');" class="pointer switcher_thumb"><img src="/content/epona/images/boxed_background/4_thumb.jpg" width="27" height="27" alt="" /></button>'
 
 				+ '		<hr />'
 
@@ -90,7 +90,7 @@ jQuery(document).ready(function() {
 				+ '<!-- /STYLESWITCHER -->';
 
 	// ADD CLASS
-	jQuery("head").append('<link href="assets/plugins/styleswitcher/styleswitcher.css" rel="stylesheet" type="text/css" />');
+	jQuery("head").append('<link href="/scripts/epona/plugins/styleswitcher/styleswitcher.css" rel="stylesheet" type="text/css" />');
 	jQuery("body").append(_sw);
 	jQuery("#switcher, #showSwitcher").removeClass('hide');
 
@@ -127,11 +127,11 @@ jQuery(document).ready(function() {
 			jQuery("#css_dark_skin").remove();
 			jQuery("head").append('<link id="css_dark_skin" href="assets/css/layout-dark.css" rel="stylesheet" type="text/css" title="dark" />');
 			createCookie("color_skin", 'dark', 365);
-			jQuery("a.logo img").attr('src', 'assets/images/logo_dark.png');
+			jQuery("a.logo img").attr('src', '/content/epona/images/logo_dark.png');
 		} else {
 			jQuery("#css_dark_skin").remove();
 			createCookie("color_skin", '', -1);
-			jQuery("a.logo img").attr('src', 'assets/images/logo.png');
+			jQuery("a.logo img").attr('src', '/content/epona/images/logo.png');
 		}
 	});
 
@@ -176,9 +176,9 @@ jQuery(document).ready(function() {
 	/** ********************************************************************************************************** **/
 	function setActiveStyleSheet(title) {
 		if(title != 'null' && title != null) {
-			jQuery("#color_scheme").attr('href', 'assets/css/color_scheme/' + title + '.css');
+		    jQuery("#color_scheme").attr('href', '/content/epona/css/color_scheme/' + title + '.css');
 			if(jQuery("#css_dark_skin").length < 1) {
-				jQuery("a.logo img").attr('src', 'assets/images/demo/logo/' + title + '.png');
+				jQuery("a.logo img").attr('src', '/content/epona/images/demo/logo/' + title + '.png');
 			}
 			createCookie("style", title, 365);
 
@@ -190,7 +190,7 @@ jQuery(document).ready(function() {
 				jQuery("#css_dark_skin").remove();
 				jQuery("head").append('<link id="css_dark_skin" href="assets/css/layout-dark.css" rel="stylesheet" type="text/css" title="dark" />');
 				jQuery("#is_dark").trigger('click');
-				jQuery("a.logo img").attr('src', 'assets/images/logo_dark.png');
+				jQuery("a.logo img").attr('src', '/content/epona/images/logo_dark.png');
 			}
 			**/
 		}
@@ -348,7 +348,7 @@ jQuery(document).ready(function() {
 		jQuery("#css_dark_skin").remove();
 		jQuery('body').attr('data-background', '');
 		jQuery('.backstretch').remove();
-		jQuery("a.logo img").attr('src', 'assets/images/logo.png');
+		jQuery("a.logo img").attr('src', '/content/epona/images/logo.png');
 
 		jQuery("#is_light").trigger('click');
 		jQuery("#is_wide").trigger('click');
