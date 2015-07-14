@@ -13,6 +13,7 @@
                     templateUrl: '/app/home-page/home-page-view.html',
                 });
         })
+        .value('jQuery', jQuery)
         .constant('appSettings', {
             serverPath: 'http://localhost:12913/api/'
         });

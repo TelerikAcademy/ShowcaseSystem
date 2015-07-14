@@ -4,10 +4,18 @@
         <header class="text-center">
             <h2>We Are Dedicated To Our Customers</h2>
             <p class="lead">We thrive on making Epona the most complete and trusted template on wrapbootstrap</p>
-            <div class="divider half-margins onepage center"><!-- lines divider --></div>
+            <div class="divider half-margins onepage center"></div>
         </header>
         <h2 class="text-center">Latest Projects</h2>
         <div id="portfolio" class="container">
+            <div class="row">
+                <ul class="sort-destination isotope" data-sort-id="isotope-list">
+                    <li project-preview  ng-repeat="project in vm.latestProjects" project="project" />
+                </ul>
+            </div>
+        </div>
+        <h2 class="text-center">Most Popular</h2>
+        <div id="portfolio2" class="container">
             <div class="row">
                 <ul class="sort-destination isotope" data-sort-id="isotope-list">
                     <li project-preview ng-repeat="project in vm.latestProjects" project="project" />
