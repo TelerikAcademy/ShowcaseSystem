@@ -122,6 +122,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\common\data.js" />
+    <Content Include="app\common\http-response-interceptor.js" />
+    <Content Include="app\home-page\statistics-directive.html" />
+    <Content Include="app\home-page\statistics-directive.js" />
+    <Content Include="app\project-details\owl-carousel-directive.html" />
+    <Content Include="app\project-details\owl-carousel-directive.js" />
     <Content Include="app\project-details\project-details-view.html" />
     <Content Include="app\project-details\project-details-controller.js" />
     <Content Include="app\project-details\project-details-data.js" />
@@ -193,6 +198,9 @@
     <Content Include="scripts\epona\plugins\revolution-slider\font\revicons.woff" />
     <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\color_scheme.fla" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
+    <Content Include="scripts\epona\plugins\owl-carousel\owl.carousel.min.js.map">
+      <DependentUpon>owl.carousel.min.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
