@@ -17,8 +17,31 @@ namespace Showcase.Data.Migrations
 
         protected override void Seed(ShowcaseDbContext context)
         {
+            this.SeedTags(context);
             this.SeedUsers(context);
             this.SeedProjects(context);
+        }
+
+        private void SeedTags(ShowcaseDbContext context)
+        {
+            if (context.Tags.Any())
+            {
+                return;
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                var tag = new Tag
+                {
+                    Name = "Seeded Tag " + i,
+                    BackgroundColor = "lightgrey",
+                    ForegroundColor = "black"
+                };
+
+                context.Tags.Add(tag);
+            }
+
+            context.SaveChanges();
         }
 
         private void SeedUsers(ShowcaseDbContext context)
@@ -61,14 +84,19 @@ namespace Showcase.Data.Migrations
                 {
                     CreatedOn = DateTime.Now,
                     Title = "Seed Project " + i,
-                    Content = "Seed Project " + i + " Content"
+                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 };
 
                 for (int j = 1; j <= 5; j++)
                 {
                     project.Collaborators.Add(context.Users.FirstOrDefault(u => u.Id == j));
+                    project.Tags.Add(context.Tags.FirstOrDefault(u => u.Id == j));
                 }
 
+                project.Images.Add(image);
+                project.Images.Add(image);
+                project.Images.Add(image);
+                project.Images.Add(image);
                 project.Images.Add(image);
 
                 context.Projects.Add(project);
