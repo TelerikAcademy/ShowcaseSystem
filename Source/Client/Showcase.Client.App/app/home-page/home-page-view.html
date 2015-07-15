@@ -1,21 +1,14 @@
-﻿<div class="panel panel-primary" ng-controller="HomePageController as vm">
-    <div class="panel-heading">
-        Projects List
+﻿<div revolution-slider />
+<section ng-controller="HomePageController as vm">
+    <div class="container">
+        <header class="text-center">
+            <h2>We Are Dedicated To Our Customers</h2>
+            <p class="lead">We thrive on making Epona the most complete and trusted template on wrapbootstrap</p>
+            <div class="divider half-margins onepage center"></div>
+        </header>
+        <h2 class="text-center">Latest Projects</h2>
+        <div project-container projects="vm.latestProjects" />
+        <h2 class="text-center">Most Popular</h2>
+        <div project-container projects="vm.latestProjects" />
     </div>
-    <div class="panel-body">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Author</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="project in vm.projects">
-                    <td>{{ project.name }}</td>
-                    <td>{{ project.author }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+</section>

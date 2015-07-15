@@ -17,61 +17,39 @@ namespace Showcase.Data.Migrations
 
         protected override void Seed(ShowcaseDbContext context)
         {
-            if (context.Seasons.Any())
-            {
-                return;
-            }
+            this.SeedProjects(context);
+        }
 
-            context.Seasons.Add(new Season
+        private void SeedProjects(ShowcaseDbContext context)
+        {
+            if (context.Projects.Any()) return;
+
+            var image = new Image
+            {
+                OriginalFilename = "Sample image",
+                FileExtension = "jpg",
+                Url = "/content/epona/images/demo/portfolio/a1",
+            };
+
+            for (int i = 0; i < 10; i++)
+            {
+                var project = new Project
                 {
-                    Name = "Telerik Academy Season 2015/2016"
-                });
+                    CreatedOn = DateTime.Now,
+                    Title = "Seed Project " + i,
+                    Content = "Seed Project " + i + " Content",
+                };
 
-            context.SaveChanges();
+                project.Images.Add(image);
 
-            if (context.Categories.Any())
-            {
-                return;
+                context.Projects.Add(project);
+
+                context.SaveChanges();
+
+                project.MainImage = context.Images.First();
+
+                context.SaveChanges();
             }
-
-            context.Categories.Add(new Category
-                {
-                    Name = "First seeded Category"
-                });
-            
-            if (context.Projects.Any())
-            {
-                return;
-            }
-            
-            context.Projects.Add(new Project
-            {
-                CreatedOn = DateTime.Now,
-                Title = "Seed Project 1",
-                Content = "Seed Project 1 Content",
-                SeasonId = 1,
-                CategoryId = 1
-            });
-
-            context.Projects.Add(new Project
-            {
-                CreatedOn = DateTime.Now,
-                Title = "Seed Project 2",
-                Content = "Seed Project 2 Content",
-                SeasonId = 1,
-                CategoryId = 1
-            });
-
-            context.Projects.Add(new Project
-            {
-                CreatedOn = DateTime.Now,
-                Title = "Seed Project 3",
-                Content = "Seed Project 3 Content",
-                SeasonId = 1,
-                CategoryId = 1
-            });
-
-            context.SaveChanges();
         }
     }
 }

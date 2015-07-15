@@ -2,14 +2,16 @@
     'use strict';
 
     angular
-        .module('showcaseSystem.controllers', ['showcaseSystem.resources'])
-        .controller('HomePageController', ['homePageResource', homePageController]);
+        .module('showcaseSystem.controllers')
+        .controller('HomePageController', ['homePageData', 'notifier', homePageController]);
 
-    function homePageController(homePageResource) {
+    function homePageController(homePageData, notifier) {
         var vm = this;
 
-        homePageResource.query(function(data) {
-            vm.projects = data;
-        });
+        homePageData.getLatestProjects()
+            .then(function (projects) {
+                vm.latestProjects = projects;
+                notifier.success('Projects loaded!');
+            });
     }
 }());
