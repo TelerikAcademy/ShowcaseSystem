@@ -12,6 +12,7 @@
     using Showcase.Data.Common.Repositories;
     using Showcase.Server.ViewModels.HomePage;
     using Showcase.Server.Common;
+    using Showcase.Server.Api.Infrastructure;
 
     public class HomePageController : ApiController
     {
@@ -22,7 +23,7 @@
             this.projects = projects;
         }
 
-        public IEnumerable<HomePageProjectViewModel> Get()
+        public IHttpActionResult Get()
         {
             var model = this.projects
                 .All()
@@ -32,7 +33,7 @@
                 .To<HomePageProjectViewModel>()
                 .ToList();
 
-            return model;
+            return this.Data(model);
         }
     }
 }
