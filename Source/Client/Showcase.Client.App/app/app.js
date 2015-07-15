@@ -7,7 +7,7 @@
     angular.module('showcaseSystem.directives', []);
 
     angular.module('showcaseSystem', ['ngRoute', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
-        .config(function ($routeProvider, $locationProvider) {
+        .config(function ($routeProvider, $locationProvider, $httpProvider) {
             $locationProvider.html5Mode(true);
 
             $routeProvider
@@ -17,10 +17,19 @@
                 .when('/test', {
                     templateUrl: '/app/home-page/home-page-view.html'
                 });
+
+            $httpProvider.interceptors.push(['$q', 'notifier', function ($q, notifier) {
+                return {
+                    'responseError': function (rejection) {
+                        notifier.error('No connection to the server! Your Internet may be down!');
+                        return $q.reject(rejection);
+                    }
+                };
+            }]);
         })
         .value('jQuery', jQuery)
         .value('toastr', toastr)
         .constant('appSettings', {
-            serverPath: 'http://localhost:12913/api/'
+            serverPath: 'http://localhost:12345/api/'
         });
 }());
