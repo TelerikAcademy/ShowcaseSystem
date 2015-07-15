@@ -7,22 +7,22 @@ namespace Showcase.Server.Api
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
-    using Ninject.Web.Common;
     using Ninject.Extensions.Conventions;
+    using Ninject.Web.Common;
 
-    using Showcase.Data.Common.Repositories;
     using Showcase.Data;
+    using Showcase.Data.Common.Repositories;
 
-    using Showcase.Services.Data.Contracts;
-    using Showcase.Services.Data;
     using Showcase.Server.Common;
     using Showcase.Services.Common;
+    using Showcase.Services.Data;
+    using Showcase.Services.Data.Contracts;
 
     using ServerConstants = Showcase.Server.Common.Constants;
 
     public static class NinjectConfig 
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Creates the kernel that will manage your application.

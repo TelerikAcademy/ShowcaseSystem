@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="HomePage\HomePageProjectViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistics\StatisticsResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

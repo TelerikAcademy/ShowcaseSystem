@@ -1,11 +1,13 @@
 ﻿namespace Showcase.Server.DataTransferModels.HomePage
 {
     using System;
-    using Showcase.Data.Models;
-    using Showcase.Server.Common.Mapping;
 
     using AutoMapper;
+
     using Newtonsoft.Json;
+
+    using Showcase.Data.Models;
+    using Showcase.Server.Common.Mapping;
 
     public class HomePageProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
     {

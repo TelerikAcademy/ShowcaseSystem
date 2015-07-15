@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IHomePageService.cs" />
+    <Compile Include="Contracts\IStatisticsService.cs" />
     <Compile Include="HomePageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatisticsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Showcase.Data.Common\Showcase.Data.Common.csproj">

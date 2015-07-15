@@ -11,8 +11,8 @@ namespace Showcase.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ShowcaseDbContext context)
@@ -22,7 +22,10 @@ namespace Showcase.Data.Migrations
 
         private void SeedProjects(ShowcaseDbContext context)
         {
-            if (context.Projects.Any()) return;
+            if (context.Projects.Any())
+            {
+                return;
+            }
 
             var image = new Image
             {

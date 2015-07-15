@@ -1,10 +1,11 @@
 ﻿namespace Showcase.Server.Api.Infrastructure.Extensions
 {
-    using Newtonsoft.Json;
     using System.Net;
     using System.Text;
     using System.Web.Http;
     using System.Web.Http.Results;
+
+    using Newtonsoft.Json;
 
     public static class ApiControllerExtensions
     {

@@ -8,9 +8,9 @@
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Data.Common.Repositories;
-    using Showcase.Server.DataTransferModels.HomePage;
-    using Showcase.Server.Common;
     using Showcase.Server.Api.Infrastructure.Extensions;
+    using Showcase.Server.Common;
+    using Showcase.Server.DataTransferModels.HomePage;
     using Showcase.Services.Data.Contracts;
 
     public class HomePageController : ApiController

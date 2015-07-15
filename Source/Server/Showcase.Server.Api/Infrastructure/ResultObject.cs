@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Showcase.Server.Api.Infrastructure
+﻿namespace Showcase.Server.Api.Infrastructure
 {
     public class ResultObject<T> where T : class
     {

@@ -10,10 +10,10 @@
 
     using Owin;
 
-    using Showcase.Server.Common.Mapping;
-    using Showcase.Server.Common;
     using Showcase.Data;
     using Showcase.Data.Migrations;
+    using Showcase.Server.Common;
+    using Showcase.Server.Common.Mapping;
 
     public class WebApiStartup
     {

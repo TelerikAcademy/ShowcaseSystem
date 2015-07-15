@@ -1,11 +1,11 @@
 ﻿namespace Showcase.Services.Data
 {
+    using System.Linq;
+
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
     using Showcase.Services.Data.Contracts;
-
-    using System.Linq;
 
     public class HomePageService : IHomePageService
     {

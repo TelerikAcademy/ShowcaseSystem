@@ -204,6 +204,7 @@
     <Compile Include="Config\NinjectConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
     <Compile Include="Infrastructure\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\ResultObject.cs" />
