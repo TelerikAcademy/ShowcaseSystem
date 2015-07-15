@@ -39,8 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IHomePageService.cs" />
-    <Compile Include="HomePageService.cs" />
+    <Compile Include="Contracts\IProjectsService.cs" />
+    <Compile Include="ProjectsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
