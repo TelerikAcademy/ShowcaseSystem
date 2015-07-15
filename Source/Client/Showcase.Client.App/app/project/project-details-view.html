@@ -1,0 +1,20 @@
+﻿<section ng-controller="ProjectsController as vm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{vm.project.mainImageUrl}}" width="340" height="340" alt="{{vm.project.name}}"/>
+            </div>
+            <div class="col-md-8">
+                <h2 style="margin-bottom: 0">{{vm.project.name}}</h2>
+                <span class="glyphicon glyphicon-time" style="margin-right: 10px; "></span><span>{{vm.project.shortDate}}</span>
+                <a href="{{vm.project.repositoryUrl}}" style="margin-left: 10px; ">repository </a> | <a href="{{vm.project.liveDemoUrl}}"> live demo</a><br />
+                <p style="margin-top: 15px; ">
+                    {{vm.project.content}}
+                </p>
+                <span ng-repeat="collaborator in vm.collaborators">
+                    <a href="/users/{{collaborator}}" style="margin-left: 10px; ">{{collaborator}}</a>
+                </span>
+            </div>
+        </div>
+    </div>    
+</section>

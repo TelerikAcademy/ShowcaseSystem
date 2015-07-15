@@ -16,11 +16,14 @@
                 })
                 .when('/test', {
                     templateUrl: '/app/home-page/home-page-view.html'
+                })
+                .when('/project/:id', {
+                    templateUrl: '/app/project/project-details-view.html'
                 });
         })
         .value('jQuery', jQuery)
         .value('toastr', toastr)
         .constant('appSettings', {
-            serverPath: 'http://localhost:12913/api/'
+            serverPath: 'http://localhost:12345/api/'
         });
 }());

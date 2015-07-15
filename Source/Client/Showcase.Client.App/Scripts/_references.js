@@ -97,3 +97,4 @@
 /// <reference path="jquery-2.1.4.js" />
 /// <reference path="npm.js" />
 /// <reference path="toastr.js" />
+/// <reference path="../app/project/projects-controller.js" />
