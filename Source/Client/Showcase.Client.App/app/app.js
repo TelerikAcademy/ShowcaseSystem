@@ -7,10 +7,15 @@
     angular.module('showcaseSystem.directives', []);
 
     angular.module('showcaseSystem', ['ngRoute', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
-        .config(function ($routeProvider) {
+        .config(function ($routeProvider, $locationProvider) {
+            $locationProvider.html5Mode(true);
+
             $routeProvider
                 .when('/', {
-                    templateUrl: '/app/home-page/home-page-view.html',
+                    templateUrl: '/app/home-page/home-page-view.html'
+                })
+                .when('/test', {
+                    templateUrl: '/app/home-page/home-page-view.html'
                 });
         })
         .value('jQuery', jQuery)
