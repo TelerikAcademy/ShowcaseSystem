@@ -5,8 +5,10 @@
 
     using System.Linq;
 
-    public interface IHomePageService : IService
+    public interface IProjectsService : IService
     {
         IQueryable<Project> LatestProjects();
+
+        IQueryable<Project> GetProjectById(int id);
     }
 }
