@@ -1,7 +1,4 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Showcase.Server.Api.App_Start.NinjectConfig), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Showcase.Server.Api.App_Start.NinjectConfig), "Stop")]
-
-namespace Showcase.Server.Api.App_Start
+namespace Showcase.Server.Api
 {
     using System;
     using System.Data.Entity;
@@ -28,28 +25,10 @@ namespace Showcase.Server.Api.App_Start
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
-        /// Starts the application
-        /// </summary>
-        public static void Start() 
-        {
-            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
-            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
-        }
-        
-        /// <summary>
-        /// Stops the application.
-        /// </summary>
-        public static void Stop()
-        {
-            bootstrapper.ShutDown();
-        }
-        
-        /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
         /// <returns>The created kernel.</returns>
-        private static IKernel CreateKernel()
+        public static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
             try
@@ -74,7 +53,7 @@ namespace Showcase.Server.Api.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
-            kernel.Bind<DbContext>().To<ShowcaseDbContext>();
+            kernel.Bind<DbContext>().To<ShowcaseDbContext>().InRequestScope();
 
             kernel.Bind(k => k
                 .From(ServerConstants.DataServicesAssembly, ServerConstants.LogicServicesAssembly)

@@ -15,9 +15,6 @@
             config.Formatters.Clear();
             config.Formatters.Add(new BrowserJsonFormatter());
 
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

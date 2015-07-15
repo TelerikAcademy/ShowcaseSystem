@@ -1,0 +1,1314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8277023-2F04-4B68-9FA5-1810348B74AB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Showcase.Client.App</RootNamespace>
+    <AssemblyName>Showcase.Client.App</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.ContextPreservation">
+      <HintPath>..\..\packages\Ninject.Extensions.ContextPreservation.3.2.0.0\lib\net45-full\Ninject.Extensions.ContextPreservation.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.NamedScope, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.Extensions.NamedScope.3.2.0.0\lib\net45-full\Ninject.Extensions.NamedScope.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.OwinHost, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.Web.Common.OwinHost.3.2.3.0\lib\net45-full\Ninject.Web.Common.OwinHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi.OwinHost, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.Web.WebApi.OwinHost.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.OwinHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\bootstrap-theme.css.map" />
+    <Content Include="content\bootstrap.css.map" />
+    <Content Include="content\epona\fonts\fontawesome-webfont.eot" />
+    <Content Include="content\epona\fonts\fontawesome-webfont.ttf" />
+    <Content Include="content\epona\fonts\fontawesome-webfont.woff" />
+    <Content Include="content\epona\fonts\fontawesome-webfont.woff2" />
+    <Content Include="content\epona\fonts\FontAwesome.otf" />
+    <Content Include="content\epona\fonts\Simple-Line-Icons.eot" />
+    <Content Include="content\epona\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="content\epona\fonts\Simple-Line-Icons.woff" />
+    <Content Include="content\epona\fonts\weathericons-regular-webfont.eot" />
+    <Content Include="content\epona\fonts\weathericons-regular-webfont.ttf" />
+    <Content Include="content\epona\fonts\weathericons-regular-webfont.woff" />
+    <Content Include="content\epona\fonts\WeatherIcons-Regular.otf" />
+    <Content Include="content\epona\images\demo\desktop.fla" />
+    <Content Include="content\epona\images\demo\desktop_slider.fla" />
+    <Content Include="content\epona\images\demo\features.fla" />
+    <Content Include="content\epona\images\demo\logo\logo.fla" />
+    <Content Include="content\epona\images\demo\shop\slider\fs_1.fla" />
+    <Content Include="content\epona\images\demo\shop\slider\fs_2.fla" />
+    <Content Include="content\epona\images\demo\shop\slider\fs_3.fla" />
+    <Content Include="content\epona\images\fla.zip" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrows.psd" />
+    <Content Include="content\epona\images\revolution_slider\assets\bullets.psd" />
+    <Content Include="content\epona\images\revolution_slider\assets\small_arrows.psd" />
+    <Content Include="content\epona\images\revolution_slider\font\revicons.eot" />
+    <Content Include="content\epona\images\revolution_slider\font\revicons.ttf" />
+    <Content Include="content\epona\images\revolution_slider\font\revicons.woff" />
+    <Content Include="content\toastr.less" />
+    <Content Include="content\toastr.scss" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages.config" />
+    <Content Include="scripts\angular-route.min.js.map" />
+    <Content Include="scripts\angular.min.js.map" />
+    <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap.css.map" />
+    <Content Include="scripts\epona\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="scripts\epona\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="scripts\epona\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="scripts\epona\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="scripts\epona\plugins\flexslider\fonts\flexslider-icon.eot" />
+    <Content Include="scripts\epona\plugins\flexslider\fonts\flexslider-icon.ttf" />
+    <Content Include="scripts\epona\plugins\flexslider\fonts\flexslider-icon.woff" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\PSD\sprite-skin.psd" />
+    <Content Include="scripts\epona\plugins\jquery-2.1.3.min.map" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\fonts\footable.eot" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\fonts\footable.ttf" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\fonts\footable.woff" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\.jshintrc" />
+    <Content Include="scripts\epona\plugins\jquery-footable\less\footable.core.less" />
+    <Content Include="scripts\epona\plugins\jquery-footable\less\footable.metro.less" />
+    <Content Include="scripts\epona\plugins\jquery-footable\less\footable.standalone.less" />
+    <Content Include="scripts\epona\plugins\knob\bower.json" />
+    <Content Include="scripts\epona\plugins\knob\knob.jquery.json" />
+    <Content Include="scripts\epona\plugins\knob\LICENSE" />
+    <Content Include="scripts\epona\plugins\knob\README.md" />
+    <Content Include="scripts\epona\plugins\plugins.zip" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrows.psd" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\bullets.psd" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\small_arrows.psd" />
+    <Content Include="scripts\epona\plugins\revolution-slider\font\revicons.eot" />
+    <Content Include="scripts\epona\plugins\revolution-slider\font\revicons.ttf" />
+    <Content Include="scripts\epona\plugins\revolution-slider\font\revicons.woff" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\color_scheme.fla" />
+    <Content Include="scripts\jquery-2.1.4.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\common\animation-directive.js" />
+    <Content Include="app\common\footer-directive.html" />
+    <Content Include="app\common\footer-directive.js" />
+    <Content Include="app\common\header-directive.html" />
+    <Content Include="app\common\header-directive.js" />
+    <Content Include="app\common\notifier.js" />
+    <Content Include="app\common\project-container-directive.html" />
+    <Content Include="app\common\project-container-directive.js" />
+    <Content Include="app\home-page\home-page-controller.js" />
+    <Content Include="app\home-page\home-page-data.js" />
+    <Content Include="app\home-page\home-page-view.html" />
+    <Content Include="app\home-page\revolution-slider-directive.html" />
+    <Content Include="app\home-page\revolution-slider-directive.js" />
+    <Content Include="content\bootstrap-theme.css" />
+    <Content Include="content\bootstrap-theme.min.css" />
+    <Content Include="content\bootstrap.css" />
+    <Content Include="content\bootstrap.min.css" />
+    <Content Include="content\epona\css\animate.css" />
+    <Content Include="content\epona\css\bootstrap-colorpicker.css" />
+    <Content Include="content\epona\css\bootstrap-form-slider.css" />
+    <Content Include="content\epona\css\color_scheme\blue.css" />
+    <Content Include="content\epona\css\color_scheme\brown.css" />
+    <Content Include="content\epona\css\color_scheme\darkblue.css" />
+    <Content Include="content\epona\css\color_scheme\darkgreen.css" />
+    <Content Include="content\epona\css\color_scheme\green.css" />
+    <Content Include="content\epona\css\color_scheme\lightgrey.css" />
+    <Content Include="content\epona\css\color_scheme\orange.css" />
+    <Content Include="content\epona\css\color_scheme\pink.css" />
+    <Content Include="content\epona\css\color_scheme\red.css" />
+    <Content Include="content\epona\css\color_scheme\yellow.css" />
+    <Content Include="content\epona\css\daterangepicker-bs3.css" />
+    <Content Include="content\epona\css\essentials.css" />
+    <Content Include="content\epona\css\flexslider.css" />
+    <Content Include="content\epona\css\font-awesome.css" />
+    <Content Include="content\epona\css\footer-default.css" />
+    <Content Include="content\epona\css\header-2.css" />
+    <Content Include="content\epona\css\header-3.css" />
+    <Content Include="content\epona\css\header-4.css" />
+    <Content Include="content\epona\css\header-5.css" />
+    <Content Include="content\epona\css\header-below.css" />
+    <Content Include="content\epona\css\header-default.css" />
+    <Content Include="content\epona\css\header-side.css" />
+    <Content Include="content\epona\css\header-transparent.css" />
+    <Content Include="content\epona\css\layerslider.css" />
+    <Content Include="content\epona\css\layout-blog.css" />
+    <Content Include="content\epona\css\layout-dark.css" />
+    <Content Include="content\epona\css\layout-jqgrid.css" />
+    <Content Include="content\epona\css\layout-shop.css" />
+    <Content Include="content\epona\css\layout.css" />
+    <Content Include="content\epona\css\line-icons.css" />
+    <Content Include="content\epona\css\revolution-slider.css" />
+    <Content Include="content\epona\css\sky-forms.css" />
+    <Content Include="content\epona\css\weather-icons.min.css" />
+    <Content Include="content\epona\fonts\fontawesome-webfont.svg" />
+    <Content Include="content\epona\fonts\Simple-Line-Icons.svg" />
+    <Content Include="content\epona\fonts\weathericons-regular-webfont.svg" />
+    <Content Include="content\epona\images\1x1.png" />
+    <Content Include="content\epona\images\avatar.png" />
+    <Content Include="content\epona\images\big_banner.png" />
+    <Content Include="content\epona\images\big_banner_grey.png" />
+    <Content Include="content\epona\images\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="content\epona\images\bootstrap-colorpicker\alpha.png" />
+    <Content Include="content\epona\images\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="content\epona\images\bootstrap-colorpicker\hue.png" />
+    <Content Include="content\epona\images\bootstrap-colorpicker\saturation.png" />
+    <Content Include="content\epona\images\boxed_background\1.jpg" />
+    <Content Include="content\epona\images\boxed_background\1_thumb.jpg" />
+    <Content Include="content\epona\images\boxed_background\2.jpg" />
+    <Content Include="content\epona\images\boxed_background\2_thumb.jpg" />
+    <Content Include="content\epona\images\boxed_background\3.jpg" />
+    <Content Include="content\epona\images\boxed_background\3_thumb.jpg" />
+    <Content Include="content\epona\images\boxed_background\4.jpg" />
+    <Content Include="content\epona\images\boxed_background\4_thumb.jpg" />
+    <Content Include="content\epona\images\boxed_background\credits.txt" />
+    <Content Include="content\epona\images\boxed_background\none.jpg" />
+    <Content Include="content\epona\images\caption_bg.png" />
+    <Content Include="content\epona\images\cc\American-Express.png" />
+    <Content Include="content\epona\images\cc\Cash.png" />
+    <Content Include="content\epona\images\cc\Cirrus.png" />
+    <Content Include="content\epona\images\cc\credit.txt" />
+    <Content Include="content\epona\images\cc\Delta.png" />
+    <Content Include="content\epona\images\cc\Diners-Club.png" />
+    <Content Include="content\epona\images\cc\Discover-Network.png" />
+    <Content Include="content\epona\images\cc\Discover.png" />
+    <Content Include="content\epona\images\cc\Dollar.png" />
+    <Content Include="content\epona\images\cc\eCheck.png" />
+    <Content Include="content\epona\images\cc\Euro.png" />
+    <Content Include="content\epona\images\cc\Gift-Card.png" />
+    <Content Include="content\epona\images\cc\JCB.png" />
+    <Content Include="content\epona\images\cc\Maestro.png" />
+    <Content Include="content\epona\images\cc\Mastercard.png" />
+    <Content Include="content\epona\images\cc\PayPal.png" />
+    <Content Include="content\epona\images\cc\Pound.png" />
+    <Content Include="content\epona\images\cc\Solo.png" />
+    <Content Include="content\epona\images\cc\Switch.png" />
+    <Content Include="content\epona\images\cc\Visa.png" />
+    <Content Include="content\epona\images\cc\Wirecard.png" />
+    <Content Include="content\epona\images\demo\about_1.jpg" />
+    <Content Include="content\epona\images\demo\about_1_h.jpg" />
+    <Content Include="content\epona\images\demo\about_2.jpg" />
+    <Content Include="content\epona\images\demo\about_2_h.jpg" />
+    <Content Include="content\epona\images\demo\b2.png" />
+    <Content Include="content\epona\images\demo\blue.jpg" />
+    <Content Include="content\epona\images\demo\blur.jpg" />
+    <Content Include="content\epona\images\demo\boy.jpg" />
+    <Content Include="content\epona\images\demo\brands\1.jpg" />
+    <Content Include="content\epona\images\demo\brands\2.jpg" />
+    <Content Include="content\epona\images\demo\brands\3.jpg" />
+    <Content Include="content\epona\images\demo\brands\4.jpg" />
+    <Content Include="content\epona\images\demo\brands\5.jpg" />
+    <Content Include="content\epona\images\demo\brands\6.jpg" />
+    <Content Include="content\epona\images\demo\brands\7.jpg" />
+    <Content Include="content\epona\images\demo\brands\8.jpg" />
+    <Content Include="content\epona\images\demo\captcha.jpg" />
+    <Content Include="content\epona\images\demo\careers.jpg" />
+    <Content Include="content\epona\images\demo\color_scheme.png" />
+    <Content Include="content\epona\images\demo\color_scheme_hover.png" />
+    <Content Include="content\epona\images\demo\credits.txt" />
+    <Content Include="content\epona\images\demo\desk.jpg" />
+    <Content Include="content\epona\images\demo\desktop.png" />
+    <Content Include="content\epona\images\demo\desktop_empty.png" />
+    <Content Include="content\epona\images\demo\desktop_slider.png" />
+    <Content Include="content\epona\images\demo\email\e1.jpg" />
+    <Content Include="content\epona\images\demo\email\e10.jpg" />
+    <Content Include="content\epona\images\demo\email\e2.jpg" />
+    <Content Include="content\epona\images\demo\email\e3.jpg" />
+    <Content Include="content\epona\images\demo\email\e4.jpg" />
+    <Content Include="content\epona\images\demo\email\e5.jpg" />
+    <Content Include="content\epona\images\demo\email\e6.jpg" />
+    <Content Include="content\epona\images\demo\email\e7.jpg" />
+    <Content Include="content\epona\images\demo\email\e8.jpg" />
+    <Content Include="content\epona\images\demo\email\e9.jpg" />
+    <Content Include="content\epona\images\demo\fashion\1.jpg" />
+    <Content Include="content\epona\images\demo\fashion\2.jpg" />
+    <Content Include="content\epona\images\demo\fashion\3.jpg" />
+    <Content Include="content\epona\images\demo\fashion\4.jpg" />
+    <Content Include="content\epona\images\demo\fashion\5.jpg" />
+    <Content Include="content\epona\images\demo\fashion\6.jpg" />
+    <Content Include="content\epona\images\demo\fashion\7.jpg" />
+    <Content Include="content\epona\images\demo\fashion\8.jpg" />
+    <Content Include="content\epona\images\demo\fashion\9.jpg" />
+    <Content Include="content\epona\images\demo\fashion\credits.txt" />
+    <Content Include="content\epona\images\demo\fashion\thumb\1.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\2.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\3.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\3_t.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\4.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\5.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\6.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\6_t.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\7.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\7_t.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\8.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\8_t.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\9.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\small1.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\small2.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\small3.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\small4.jpg" />
+    <Content Include="content\epona\images\demo\fashion\thumb\small5.jpg" />
+    <Content Include="content\epona\images\demo\favicon.ico" />
+    <Content Include="content\epona\images\demo\favicon.png" />
+    <Content Include="content\epona\images\demo\features.jpg" />
+    <Content Include="content\epona\images\demo\flex_1.jpg" />
+    <Content Include="content\epona\images\demo\flex_2.jpg" />
+    <Content Include="content\epona\images\demo\flickr_13.jpg" />
+    <Content Include="content\epona\images\demo\flickr_14.jpg" />
+    <Content Include="content\epona\images\demo\flickr_15.jpg" />
+    <Content Include="content\epona\images\demo\flickr_16.jpg" />
+    <Content Include="content\epona\images\demo\flickr_37.jpg" />
+    <Content Include="content\epona\images\demo\flickr_9.jpg" />
+    <Content Include="content\epona\images\demo\flickr_eye.jpg" />
+    <Content Include="content\epona\images\demo\ipad.png" />
+    <Content Include="content\epona\images\demo\iphones.png" />
+    <Content Include="content\epona\images\demo\laptop.png" />
+    <Content Include="content\epona\images\demo\layerslider\abyss-bg.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\acorn.png" />
+    <Content Include="content\epona\images\demo\layerslider\baloon1.png" />
+    <Content Include="content\epona\images\demo\layerslider\baloon2.png" />
+    <Content Include="content\epona\images\demo\layerslider\baloon3.png" />
+    <Content Include="content\epona\images\demo\layerslider\bbb-bg.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\bg.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\bg21.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\bg4.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\bg5.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\bg6b.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\bi-colored-butterfly-source_ijc.gif" />
+    <Content Include="content\epona\images\demo\layerslider\big-cube.png" />
+    <Content Include="content\epona\images\demo\layerslider\bokeh.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\circle.png" />
+    <Content Include="content\epona\images\demo\layerslider\cubes-bg.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\cubes-blur.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\easy.png" />
+    <Content Include="content\epona\images\demo\layerslider\layerslider-on-cellphone.png" />
+    <Content Include="content\epona\images\demo\layerslider\layerslider-on-computer.png" />
+    <Content Include="content\epona\images\demo\layerslider\layerslider-on-tablet.png" />
+    <Content Include="content\epona\images\demo\layerslider\ls5box.png" />
+    <Content Include="content\epona\images\demo\layerslider\mid-cube-blur.png" />
+    <Content Include="content\epona\images\demo\layerslider\mouse.png" />
+    <Content Include="content\epona\images\demo\layerslider\sayhello.png" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-1.png" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-2.png" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-3.png" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-4.png" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-5.png" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-bg-blue.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-bg-red.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-bg-yellow.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\slide-b-bg.jpg" />
+    <Content Include="content\epona\images\demo\layerslider\small-cube-blur.png" />
+    <Content Include="content\epona\images\demo\layerslider\small-cube.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-1.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-2.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-3.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-4.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-5.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-6.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-7.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-8.png" />
+    <Content Include="content\epona\images\demo\layerslider\tile-9.png" />
+    <Content Include="content\epona\images\demo\layerslider\vfeatures.png" />
+    <Content Include="content\epona\images\demo\logo\blue.png" />
+    <Content Include="content\epona\images\demo\logo\brown.png" />
+    <Content Include="content\epona\images\demo\logo\darkblue.png" />
+    <Content Include="content\epona\images\demo\logo\darkgreen.png" />
+    <Content Include="content\epona\images\demo\logo\green.png" />
+    <Content Include="content\epona\images\demo\logo\lightgrey.png" />
+    <Content Include="content\epona\images\demo\logo\orange.png" />
+    <Content Include="content\epona\images\demo\logo\pink.png" />
+    <Content Include="content\epona\images\demo\logo\red.png" />
+    <Content Include="content\epona\images\demo\logo\yellow.png" />
+    <Content Include="content\epona\images\demo\other\credits.txt" />
+    <Content Include="content\epona\images\demo\other\o1.jpg" />
+    <Content Include="content\epona\images\demo\other\o2.jpg" />
+    <Content Include="content\epona\images\demo\other\o3.jpg" />
+    <Content Include="content\epona\images\demo\other\o4.jpg" />
+    <Content Include="content\epona\images\demo\other\thumb_o1.jpg" />
+    <Content Include="content\epona\images\demo\other\thumb_o2.jpg" />
+    <Content Include="content\epona\images\demo\other\thumb_o3.jpg" />
+    <Content Include="content\epona\images\demo\other\thumb_o4.jpg" />
+    <Content Include="content\epona\images\demo\owlslider\flickr_14.jpg" />
+    <Content Include="content\epona\images\demo\owlslider\flickr_15.jpg" />
+    <Content Include="content\epona\images\demo\owlslider\flickr_eye.jpg" />
+    <Content Include="content\epona\images\demo\people\1.jpg" />
+    <Content Include="content\epona\images\demo\people\10.jpg" />
+    <Content Include="content\epona\images\demo\people\11.jpg" />
+    <Content Include="content\epona\images\demo\people\12.jpg" />
+    <Content Include="content\epona\images\demo\people\13.jpg" />
+    <Content Include="content\epona\images\demo\people\14.jpg" />
+    <Content Include="content\epona\images\demo\people\15.jpg" />
+    <Content Include="content\epona\images\demo\people\16.jpg" />
+    <Content Include="content\epona\images\demo\people\17.jpg" />
+    <Content Include="content\epona\images\demo\people\2.jpg" />
+    <Content Include="content\epona\images\demo\people\3.jpg" />
+    <Content Include="content\epona\images\demo\people\4.jpg" />
+    <Content Include="content\epona\images\demo\people\5.jpg" />
+    <Content Include="content\epona\images\demo\people\6.jpg" />
+    <Content Include="content\epona\images\demo\people\7.jpg" />
+    <Content Include="content\epona\images\demo\people\8.jpg" />
+    <Content Include="content\epona\images\demo\people\9.jpg" />
+    <Content Include="content\epona\images\demo\people\9_full.jpg" />
+    <Content Include="content\epona\images\demo\people\9_sm.jpg" />
+    <Content Include="content\epona\images\demo\people\9_thumb.jpg" />
+    <Content Include="content\epona\images\demo\people\credits.txt" />
+    <Content Include="content\epona\images\demo\people\fixed-height\1.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\10.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\11.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\12.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\13.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\15.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\16.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\17.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\2.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\3.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\4.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\5.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\6.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\7.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\8.jpg" />
+    <Content Include="content\epona\images\demo\people\fixed-height\9.jpg" />
+    <Content Include="content\epona\images\demo\people\me_1.jpg" />
+    <Content Include="content\epona\images\demo\people\me_2.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\a1.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\a2.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\a3.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\a4.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\a5.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\a6.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\a7.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\a8.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\credits.txt" />
+    <Content Include="content\epona\images\demo\portfolio\full.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\thumb\a1.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\thumb\a2.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\thumb\a3.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\thumb\a4.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\thumb\a5.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\thumb\a6.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\thumb\a7.jpg" />
+    <Content Include="content\epona\images\demo\portfolio\thumb\a8.jpg" />
+    <Content Include="content\epona\images\demo\ps1.png" />
+    <Content Include="content\epona\images\demo\ps2.png" />
+    <Content Include="content\epona\images\demo\shop\1.jpg" />
+    <Content Include="content\epona\images\demo\shop\18.jpg" />
+    <Content Include="content\epona\images\demo\shop\19.jpg" />
+    <Content Include="content\epona\images\demo\shop\2.jpg" />
+    <Content Include="content\epona\images\demo\shop\20.jpg" />
+    <Content Include="content\epona\images\demo\shop\21.jpg" />
+    <Content Include="content\epona\images\demo\shop\3.jpg" />
+    <Content Include="content\epona\images\demo\shop\4.jpg" />
+    <Content Include="content\epona\images\demo\shop\5.jpg" />
+    <Content Include="content\epona\images\demo\shop\6.jpg" />
+    <Content Include="content\epona\images\demo\shop\7.jpg" />
+    <Content Include="content\epona\images\demo\shop\8.jpg" />
+    <Content Include="content\epona\images\demo\shop\9.jpg" />
+    <Content Include="content\epona\images\demo\shop\credits.txt" />
+    <Content Include="content\epona\images\demo\shop\product\1.jpg" />
+    <Content Include="content\epona\images\demo\shop\product\2.jpg" />
+    <Content Include="content\epona\images\demo\shop\product\3.jpg" />
+    <Content Include="content\epona\images\demo\shop\product\4.jpg" />
+    <Content Include="content\epona\images\demo\shop\product\thumb_1.jpg" />
+    <Content Include="content\epona\images\demo\shop\product\thumb_2.jpg" />
+    <Content Include="content\epona\images\demo\shop\product\thumb_3.jpg" />
+    <Content Include="content\epona\images\demo\shop\product\thumb_4.jpg" />
+    <Content Include="content\epona\images\demo\shop\slider\1.jpg" />
+    <Content Include="content\epona\images\demo\shop\slider\5.jpg" />
+    <Content Include="content\epona\images\demo\shop\slider\9.jpg" />
+    <Content Include="content\epona\images\demo\shop\slider\fs_1.png" />
+    <Content Include="content\epona\images\demo\shop\slider\fs_2.png" />
+    <Content Include="content\epona\images\demo\shop\slider\fs_3.png" />
+    <Content Include="content\epona\images\demo\shop\slider\fs_font.txt" />
+    <Content Include="content\epona\images\demo\shop\slider_2\4.jpg" />
+    <Content Include="content\epona\images\demo\shop\slider_2\7.jpg" />
+    <Content Include="content\epona\images\demo\shop\slider_2\9.jpg" />
+    <Content Include="content\epona\images\demo\shop\thumb\1.jpg" />
+    <Content Include="content\epona\images\demo\shop\thumb\18.jpg" />
+    <Content Include="content\epona\images\demo\shop\thumb\19.jpg" />
+    <Content Include="content\epona\images\demo\shop\thumb\2.jpg" />
+    <Content Include="content\epona\images\demo\shop\thumb\20.jpg" />
+    <Content Include="content\epona\images\demo\shop\thumb\21.jpg" />
+    <Content Include="content\epona\images\demo\shop\thumb\4.jpg" />
+    <Content Include="content\epona\images\demo\shop\view2.jpg" />
+    <Content Include="content\epona\images\demo\shop\view3.jpg" />
+    <Content Include="content\epona\images\demo\shop\women_cloths.jpg" />
+    <Content Include="content\epona\images\demo\slide_title_line.png" />
+    <Content Include="content\epona\images\demo\thumb_blue.jpg" />
+    <Content Include="content\epona\images\demo\thumb_blur.jpg" />
+    <Content Include="content\epona\images\demo\thumb_careers.jpg" />
+    <Content Include="content\epona\images\demo\thumb_desk.jpg" />
+    <Content Include="content\epona\images\demo\thumb_faq.jpg" />
+    <Content Include="content\epona\images\demo\thumb_flickr_13.jpg" />
+    <Content Include="content\epona\images\demo\thumb_flickr_14.jpg" />
+    <Content Include="content\epona\images\demo\thumb_flickr_16.jpg" />
+    <Content Include="content\epona\images\demo\wall.jpg" />
+    <Content Include="content\epona\images\demo\wall2.jpg" />
+    <Content Include="content\epona\images\email_template\readme.txt" />
+    <Content Include="content\epona\images\email_template\social_icon1.png" />
+    <Content Include="content\epona\images\email_template\social_icon1_default.png" />
+    <Content Include="content\epona\images\email_template\social_icon2.png" />
+    <Content Include="content\epona\images\email_template\social_icon2_default.png" />
+    <Content Include="content\epona\images\email_template\social_icon3.png" />
+    <Content Include="content\epona\images\email_template\social_icon3_default.png" />
+    <Content Include="content\epona\images\email_template\social_icon4.png" />
+    <Content Include="content\epona\images\email_template\social_icon4_default.png" />
+    <Content Include="content\epona\images\epona_movie.png" />
+    <Content Include="content\epona\images\female.png" />
+    <Content Include="content\epona\images\flags\ad.png" />
+    <Content Include="content\epona\images\flags\ae.png" />
+    <Content Include="content\epona\images\flags\af.png" />
+    <Content Include="content\epona\images\flags\ag.png" />
+    <Content Include="content\epona\images\flags\ai.png" />
+    <Content Include="content\epona\images\flags\al.png" />
+    <Content Include="content\epona\images\flags\am.png" />
+    <Content Include="content\epona\images\flags\an.png" />
+    <Content Include="content\epona\images\flags\ao.png" />
+    <Content Include="content\epona\images\flags\ar.png" />
+    <Content Include="content\epona\images\flags\as.png" />
+    <Content Include="content\epona\images\flags\at.png" />
+    <Content Include="content\epona\images\flags\au.png" />
+    <Content Include="content\epona\images\flags\aw.png" />
+    <Content Include="content\epona\images\flags\ax.png" />
+    <Content Include="content\epona\images\flags\az.png" />
+    <Content Include="content\epona\images\flags\ba.png" />
+    <Content Include="content\epona\images\flags\bb.png" />
+    <Content Include="content\epona\images\flags\bd.png" />
+    <Content Include="content\epona\images\flags\be.png" />
+    <Content Include="content\epona\images\flags\bf.png" />
+    <Content Include="content\epona\images\flags\bg.png" />
+    <Content Include="content\epona\images\flags\bh.png" />
+    <Content Include="content\epona\images\flags\bi.png" />
+    <Content Include="content\epona\images\flags\bj.png" />
+    <Content Include="content\epona\images\flags\bm.png" />
+    <Content Include="content\epona\images\flags\bn.png" />
+    <Content Include="content\epona\images\flags\bo.png" />
+    <Content Include="content\epona\images\flags\br.png" />
+    <Content Include="content\epona\images\flags\bs.png" />
+    <Content Include="content\epona\images\flags\bt.png" />
+    <Content Include="content\epona\images\flags\bv.png" />
+    <Content Include="content\epona\images\flags\bw.png" />
+    <Content Include="content\epona\images\flags\by.png" />
+    <Content Include="content\epona\images\flags\bz.png" />
+    <Content Include="content\epona\images\flags\ca.png" />
+    <Content Include="content\epona\images\flags\catalonia.png" />
+    <Content Include="content\epona\images\flags\cc.png" />
+    <Content Include="content\epona\images\flags\cd.png" />
+    <Content Include="content\epona\images\flags\cf.png" />
+    <Content Include="content\epona\images\flags\cg.png" />
+    <Content Include="content\epona\images\flags\ch.png" />
+    <Content Include="content\epona\images\flags\ci.png" />
+    <Content Include="content\epona\images\flags\ck.png" />
+    <Content Include="content\epona\images\flags\cl.png" />
+    <Content Include="content\epona\images\flags\cm.png" />
+    <Content Include="content\epona\images\flags\cn.png" />
+    <Content Include="content\epona\images\flags\co.png" />
+    <Content Include="content\epona\images\flags\cr.png" />
+    <Content Include="content\epona\images\flags\cs.png" />
+    <Content Include="content\epona\images\flags\cu.png" />
+    <Content Include="content\epona\images\flags\cv.png" />
+    <Content Include="content\epona\images\flags\cx.png" />
+    <Content Include="content\epona\images\flags\cy.png" />
+    <Content Include="content\epona\images\flags\cz.png" />
+    <Content Include="content\epona\images\flags\de.png" />
+    <Content Include="content\epona\images\flags\dj.png" />
+    <Content Include="content\epona\images\flags\dk.png" />
+    <Content Include="content\epona\images\flags\dm.png" />
+    <Content Include="content\epona\images\flags\do.png" />
+    <Content Include="content\epona\images\flags\dz.png" />
+    <Content Include="content\epona\images\flags\ec.png" />
+    <Content Include="content\epona\images\flags\ee.png" />
+    <Content Include="content\epona\images\flags\eg.png" />
+    <Content Include="content\epona\images\flags\eh.png" />
+    <Content Include="content\epona\images\flags\england.png" />
+    <Content Include="content\epona\images\flags\er.png" />
+    <Content Include="content\epona\images\flags\es.png" />
+    <Content Include="content\epona\images\flags\et.png" />
+    <Content Include="content\epona\images\flags\europeanunion.png" />
+    <Content Include="content\epona\images\flags\fam.png" />
+    <Content Include="content\epona\images\flags\fi.png" />
+    <Content Include="content\epona\images\flags\fj.png" />
+    <Content Include="content\epona\images\flags\fk.png" />
+    <Content Include="content\epona\images\flags\fm.png" />
+    <Content Include="content\epona\images\flags\fo.png" />
+    <Content Include="content\epona\images\flags\fr.png" />
+    <Content Include="content\epona\images\flags\ga.png" />
+    <Content Include="content\epona\images\flags\gb.png" />
+    <Content Include="content\epona\images\flags\gd.png" />
+    <Content Include="content\epona\images\flags\ge.png" />
+    <Content Include="content\epona\images\flags\gf.png" />
+    <Content Include="content\epona\images\flags\gh.png" />
+    <Content Include="content\epona\images\flags\gi.png" />
+    <Content Include="content\epona\images\flags\gl.png" />
+    <Content Include="content\epona\images\flags\gm.png" />
+    <Content Include="content\epona\images\flags\gn.png" />
+    <Content Include="content\epona\images\flags\gp.png" />
+    <Content Include="content\epona\images\flags\gq.png" />
+    <Content Include="content\epona\images\flags\gr.png" />
+    <Content Include="content\epona\images\flags\gs.png" />
+    <Content Include="content\epona\images\flags\gt.png" />
+    <Content Include="content\epona\images\flags\gu.png" />
+    <Content Include="content\epona\images\flags\gw.png" />
+    <Content Include="content\epona\images\flags\gy.png" />
+    <Content Include="content\epona\images\flags\hk.png" />
+    <Content Include="content\epona\images\flags\hm.png" />
+    <Content Include="content\epona\images\flags\hn.png" />
+    <Content Include="content\epona\images\flags\hr.png" />
+    <Content Include="content\epona\images\flags\ht.png" />
+    <Content Include="content\epona\images\flags\hu.png" />
+    <Content Include="content\epona\images\flags\id.png" />
+    <Content Include="content\epona\images\flags\ie.png" />
+    <Content Include="content\epona\images\flags\il.png" />
+    <Content Include="content\epona\images\flags\in.png" />
+    <Content Include="content\epona\images\flags\io.png" />
+    <Content Include="content\epona\images\flags\iq.png" />
+    <Content Include="content\epona\images\flags\ir.png" />
+    <Content Include="content\epona\images\flags\is.png" />
+    <Content Include="content\epona\images\flags\it.png" />
+    <Content Include="content\epona\images\flags\jm.png" />
+    <Content Include="content\epona\images\flags\jo.png" />
+    <Content Include="content\epona\images\flags\jp.png" />
+    <Content Include="content\epona\images\flags\ke.png" />
+    <Content Include="content\epona\images\flags\kg.png" />
+    <Content Include="content\epona\images\flags\kh.png" />
+    <Content Include="content\epona\images\flags\ki.png" />
+    <Content Include="content\epona\images\flags\km.png" />
+    <Content Include="content\epona\images\flags\kn.png" />
+    <Content Include="content\epona\images\flags\kp.png" />
+    <Content Include="content\epona\images\flags\kr.png" />
+    <Content Include="content\epona\images\flags\kw.png" />
+    <Content Include="content\epona\images\flags\ky.png" />
+    <Content Include="content\epona\images\flags\kz.png" />
+    <Content Include="content\epona\images\flags\la.png" />
+    <Content Include="content\epona\images\flags\lb.png" />
+    <Content Include="content\epona\images\flags\lc.png" />
+    <Content Include="content\epona\images\flags\li.png" />
+    <Content Include="content\epona\images\flags\lk.png" />
+    <Content Include="content\epona\images\flags\lr.png" />
+    <Content Include="content\epona\images\flags\ls.png" />
+    <Content Include="content\epona\images\flags\lt.png" />
+    <Content Include="content\epona\images\flags\lu.png" />
+    <Content Include="content\epona\images\flags\lv.png" />
+    <Content Include="content\epona\images\flags\ly.png" />
+    <Content Include="content\epona\images\flags\ma.png" />
+    <Content Include="content\epona\images\flags\mc.png" />
+    <Content Include="content\epona\images\flags\md.png" />
+    <Content Include="content\epona\images\flags\me.png" />
+    <Content Include="content\epona\images\flags\mg.png" />
+    <Content Include="content\epona\images\flags\mh.png" />
+    <Content Include="content\epona\images\flags\mk.png" />
+    <Content Include="content\epona\images\flags\ml.png" />
+    <Content Include="content\epona\images\flags\mm.png" />
+    <Content Include="content\epona\images\flags\mn.png" />
+    <Content Include="content\epona\images\flags\mo.png" />
+    <Content Include="content\epona\images\flags\mp.png" />
+    <Content Include="content\epona\images\flags\mq.png" />
+    <Content Include="content\epona\images\flags\mr.png" />
+    <Content Include="content\epona\images\flags\ms.png" />
+    <Content Include="content\epona\images\flags\mt.png" />
+    <Content Include="content\epona\images\flags\mu.png" />
+    <Content Include="content\epona\images\flags\mv.png" />
+    <Content Include="content\epona\images\flags\mw.png" />
+    <Content Include="content\epona\images\flags\mx.png" />
+    <Content Include="content\epona\images\flags\my.png" />
+    <Content Include="content\epona\images\flags\mz.png" />
+    <Content Include="content\epona\images\flags\na.png" />
+    <Content Include="content\epona\images\flags\nc.png" />
+    <Content Include="content\epona\images\flags\ne.png" />
+    <Content Include="content\epona\images\flags\nf.png" />
+    <Content Include="content\epona\images\flags\ng.png" />
+    <Content Include="content\epona\images\flags\ni.png" />
+    <Content Include="content\epona\images\flags\nl.png" />
+    <Content Include="content\epona\images\flags\no.png" />
+    <Content Include="content\epona\images\flags\np.png" />
+    <Content Include="content\epona\images\flags\nr.png" />
+    <Content Include="content\epona\images\flags\nu.png" />
+    <Content Include="content\epona\images\flags\nz.png" />
+    <Content Include="content\epona\images\flags\om.png" />
+    <Content Include="content\epona\images\flags\pa.png" />
+    <Content Include="content\epona\images\flags\pe.png" />
+    <Content Include="content\epona\images\flags\pf.png" />
+    <Content Include="content\epona\images\flags\pg.png" />
+    <Content Include="content\epona\images\flags\ph.png" />
+    <Content Include="content\epona\images\flags\pk.png" />
+    <Content Include="content\epona\images\flags\pl.png" />
+    <Content Include="content\epona\images\flags\pm.png" />
+    <Content Include="content\epona\images\flags\pn.png" />
+    <Content Include="content\epona\images\flags\pr.png" />
+    <Content Include="content\epona\images\flags\ps.png" />
+    <Content Include="content\epona\images\flags\pt.png" />
+    <Content Include="content\epona\images\flags\pw.png" />
+    <Content Include="content\epona\images\flags\py.png" />
+    <Content Include="content\epona\images\flags\qa.png" />
+    <Content Include="content\epona\images\flags\re.png" />
+    <Content Include="content\epona\images\flags\readme.txt" />
+    <Content Include="content\epona\images\flags\ro.png" />
+    <Content Include="content\epona\images\flags\rs.png" />
+    <Content Include="content\epona\images\flags\ru.png" />
+    <Content Include="content\epona\images\flags\rw.png" />
+    <Content Include="content\epona\images\flags\sa.png" />
+    <Content Include="content\epona\images\flags\sb.png" />
+    <Content Include="content\epona\images\flags\sc.png" />
+    <Content Include="content\epona\images\flags\scotland.png" />
+    <Content Include="content\epona\images\flags\sd.png" />
+    <Content Include="content\epona\images\flags\se.png" />
+    <Content Include="content\epona\images\flags\sg.png" />
+    <Content Include="content\epona\images\flags\sh.png" />
+    <Content Include="content\epona\images\flags\si.png" />
+    <Content Include="content\epona\images\flags\sj.png" />
+    <Content Include="content\epona\images\flags\sk.png" />
+    <Content Include="content\epona\images\flags\sl.png" />
+    <Content Include="content\epona\images\flags\sm.png" />
+    <Content Include="content\epona\images\flags\sn.png" />
+    <Content Include="content\epona\images\flags\so.png" />
+    <Content Include="content\epona\images\flags\sr.png" />
+    <Content Include="content\epona\images\flags\st.png" />
+    <Content Include="content\epona\images\flags\sv.png" />
+    <Content Include="content\epona\images\flags\sy.png" />
+    <Content Include="content\epona\images\flags\sz.png" />
+    <Content Include="content\epona\images\flags\tc.png" />
+    <Content Include="content\epona\images\flags\td.png" />
+    <Content Include="content\epona\images\flags\tf.png" />
+    <Content Include="content\epona\images\flags\tg.png" />
+    <Content Include="content\epona\images\flags\th.png" />
+    <Content Include="content\epona\images\flags\tj.png" />
+    <Content Include="content\epona\images\flags\tk.png" />
+    <Content Include="content\epona\images\flags\tl.png" />
+    <Content Include="content\epona\images\flags\tm.png" />
+    <Content Include="content\epona\images\flags\tn.png" />
+    <Content Include="content\epona\images\flags\to.png" />
+    <Content Include="content\epona\images\flags\tr.png" />
+    <Content Include="content\epona\images\flags\tt.png" />
+    <Content Include="content\epona\images\flags\tv.png" />
+    <Content Include="content\epona\images\flags\tw.png" />
+    <Content Include="content\epona\images\flags\tz.png" />
+    <Content Include="content\epona\images\flags\ua.png" />
+    <Content Include="content\epona\images\flags\ug.png" />
+    <Content Include="content\epona\images\flags\um.png" />
+    <Content Include="content\epona\images\flags\us.png" />
+    <Content Include="content\epona\images\flags\uy.png" />
+    <Content Include="content\epona\images\flags\uz.png" />
+    <Content Include="content\epona\images\flags\va.png" />
+    <Content Include="content\epona\images\flags\vc.png" />
+    <Content Include="content\epona\images\flags\ve.png" />
+    <Content Include="content\epona\images\flags\vg.png" />
+    <Content Include="content\epona\images\flags\vi.png" />
+    <Content Include="content\epona\images\flags\vn.png" />
+    <Content Include="content\epona\images\flags\vu.png" />
+    <Content Include="content\epona\images\flags\wales.png" />
+    <Content Include="content\epona\images\flags\wf.png" />
+    <Content Include="content\epona\images\flags\ws.png" />
+    <Content Include="content\epona\images\flags\ye.png" />
+    <Content Include="content\epona\images\flags\yt.png" />
+    <Content Include="content\epona\images\flags\za.png" />
+    <Content Include="content\epona\images\flags\zm.png" />
+    <Content Include="content\epona\images\flags\zw.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark3d\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark3d\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark3d\shadow.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark3d\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark3d\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark\shadow.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlessdark\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight3d\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight3d\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight3d\shadow.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight3d\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight3d\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight\shadow.png" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\borderlesslight\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\carousel\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\carousel\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\carousel\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\carousel\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\darkskin\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\darkskin\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\darkskin\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\darkskin\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\defaultskin\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\defaultskin\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\defaultskin\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\defaultskin\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\fullwidthdark\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\fullwidthdark\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\fullwidthdark\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\fullwidthdark\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\fullwidth\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\fullwidth\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\fullwidth\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\fullwidth\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\glass\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\glass\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\glass\shadow.png" />
+    <Content Include="content\epona\images\layer_slider\skins\glass\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\glass\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\lightskin\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\lightskin\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\lightskin\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\lightskin\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\minimal\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\minimal\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\minimal\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\minimal\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\noskin\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\noskin\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\noskin\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\noskin\skin.png" />
+    <Content Include="content\epona\images\layer_slider\skins\v5\loading.gif" />
+    <Content Include="content\epona\images\layer_slider\skins\v5\nothumb.png" />
+    <Content Include="content\epona\images\layer_slider\skins\v5\skin.css" />
+    <Content Include="content\epona\images\layer_slider\skins\v5\skin.png" />
+    <Content Include="content\epona\images\logo.png" />
+    <Content Include="content\epona\images\logo_alt.png" />
+    <Content Include="content\epona\images\logo_dark.png" />
+    <Content Include="content\epona\images\logo_footer.png" />
+    <Content Include="content\epona\images\logo_footer_alt.png" />
+    <Content Include="content\epona\images\male.png" />
+    <Content Include="content\epona\images\map\map.png" />
+    <Content Include="content\epona\images\map\pin-1.png" />
+    <Content Include="content\epona\images\map\pin-2.png" />
+    <Content Include="content\epona\images\map\pin-3.png" />
+    <Content Include="content\epona\images\map\pin-4.png" />
+    <Content Include="content\epona\images\map\pin-5.png" />
+    <Content Include="content\epona\images\noimg.png" />
+    <Content Include="content\epona\images\patterns\none.jpg" />
+    <Content Include="content\epona\images\patterns\parallax_overlay.png" />
+    <Content Include="content\epona\images\patterns\pattern1.png" />
+    <Content Include="content\epona\images\patterns\pattern10.png" />
+    <Content Include="content\epona\images\patterns\pattern11.png" />
+    <Content Include="content\epona\images\patterns\pattern2.png" />
+    <Content Include="content\epona\images\patterns\pattern3.png" />
+    <Content Include="content\epona\images\patterns\pattern4.png" />
+    <Content Include="content\epona\images\patterns\pattern5.png" />
+    <Content Include="content\epona\images\patterns\pattern6.png" />
+    <Content Include="content\epona\images\patterns\pattern7.png" />
+    <Content Include="content\epona\images\patterns\pattern8.png" />
+    <Content Include="content\epona\images\patterns\pattern9.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrowleft.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrowright.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrow_large_left.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrow_large_right.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrow_left.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrow_left2.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrow_right.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\arrow_right2.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\black50.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\boxed_bgtile.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\bullet.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\bullets.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\bullets2.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\bullet_boxed.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\coloredbg.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\grain.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\gridtile.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\gridtile_3x3.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\gridtile_3x3_white.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\gridtile_white.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\large_left.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\large_right.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\loader.gif" />
+    <Content Include="content\epona\images\revolution_slider\assets\loader2.gif" />
+    <Content Include="content\epona\images\revolution_slider\assets\navigdots.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\navigdots_bgtile.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\shadow1.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\shadow2.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\shadow3.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\small_left.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\small_left_boxed.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\small_right.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\small_right_boxed.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\timer.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\timerdot.png" />
+    <Content Include="content\epona\images\revolution_slider\assets\transparent.jpg" />
+    <Content Include="content\epona\images\revolution_slider\assets\white50.png" />
+    <Content Include="content\epona\images\revolution_slider\font\revicons.svg" />
+    <Content Include="content\epona\images\revolution_slider\images\decor_inside.png" />
+    <Content Include="content\epona\images\revolution_slider\images\decor_inside_white.png" />
+    <Content Include="content\epona\images\revolution_slider\images\decor_testimonial.png" />
+    <Content Include="content\epona\images\revolution_slider\images\gradient\g30.png" />
+    <Content Include="content\epona\images\revolution_slider\images\gradient\g40.png" />
+    <Content Include="content\epona\images\revolution_slider\README.txt" />
+    <Content Include="content\epona\images\shop_banner.png" />
+    <Content Include="content\main.css" />
+    <Content Include="content\toastr.css" />
+    <Content Include="content\toastr.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="index.html" />
+    <Content Include="scripts\angular-mocks.js" />
+    <Content Include="scripts\angular-route.js" />
+    <Content Include="scripts\angular-route.min.js" />
+    <Content Include="scripts\angular.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\epona\js\contact.js" />
+    <Content Include="scripts\epona\js\countdown.js" />
+    <Content Include="scripts\epona\js\revolution_slider.js" />
+    <Content Include="scripts\epona\js\scripts.js" />
+    <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap.css" />
+    <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="scripts\epona\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="scripts\epona\plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="scripts\epona\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="scripts\epona\plugins\bootstrap\js\npm.js" />
+    <Content Include="scripts\epona\plugins\flexslider\changelog.txt" />
+    <Content Include="scripts\epona\plugins\flexslider\flexslider.css" />
+    <Content Include="scripts\epona\plugins\flexslider\fonts\flexslider-icon.svg" />
+    <Content Include="scripts\epona\plugins\flexslider\images\bg_play_pause.png" />
+    <Content Include="scripts\epona\plugins\flexslider\jquery.flexslider-min.js" />
+    <Content Include="scripts\epona\plugins\flexslider\jquery.flexslider.js" />
+    <Content Include="scripts\epona\plugins\gmaps.js" />
+    <Content Include="scripts\epona\plugins\holder.js" />
+    <Content Include="scripts\epona\plugins\html_markdown\bootstrap-markdown.fr.js" />
+    <Content Include="scripts\epona\plugins\html_markdown\bootstrap-markdown.js" />
+    <Content Include="scripts\epona\plugins\html_markdown\bootstrap-markdown.kr.js" />
+    <Content Include="scripts\epona\plugins\html_markdown\bootstrap-markdown.min.js" />
+    <Content Include="scripts\epona\plugins\html_markdown\bootstrap-markdown.nl.js" />
+    <Content Include="scripts\epona\plugins\html_markdown\bootstrap-markdown.ru.js" />
+    <Content Include="scripts\epona\plugins\html_markdown\bootstrap-markdown.ua.js" />
+    <Content Include="scripts\epona\plugins\html_summernote\summernote.css" />
+    <Content Include="scripts\epona\plugins\html_summernote\summernote.js" />
+    <Content Include="scripts\epona\plugins\html_summernote\summernote.min.js" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\css\ion.rangeSlider.css" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\css\ion.rangeSlider.skinFlat.css" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\css\ion.rangeSlider.skinNice.css" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\css\ion.rangeSlider.skinSimple.css" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\css\normalize.min.css" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\img\sprite-skin-flat.png" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\img\sprite-skin-nice.png" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\img\sprite-skin-simple.png" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\js\ion.rangeSlider.js" />
+    <Content Include="scripts\epona\plugins\ion-range-slider\js\ion.rangeSlider.min.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\css\ui.jqgrid.css" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.base.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.celledit.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.common.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.custom.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.filter.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.formedit.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.grouping.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.import.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.inlinedit.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.jqueryui.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.pivot.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.subgrid.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.tbltogrid.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\grid.treegrid.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-ar.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-bg.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-bg1251.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-cat.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-cn.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-cs.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-da.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-de.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-dk.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-el.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-en.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-es.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-fa.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-fi.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-fr.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-gl.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-he.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-hr.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-hr1250.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-hu.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-id.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-is.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-it.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-ja.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-kr.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-lt.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-mne.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-nl.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-no.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-pl.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-pt-br.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-pt.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-ro.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-ru.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-sk.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-sr-latin.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-sr.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-sv.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-th.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-tr.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-tw.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-ua.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\i18n\grid.locale-vi.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\jqDnR.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\jqModal.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\jquery.fmatter.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\jquery.jqGrid.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\JsonXml.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\js\minified\jquery.jqGrid.min.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\grid.addons.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\grid.postext.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\grid.setcolumns.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\jquery.contextmenu.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\jquery.searchFilter.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\jquery.tablednd.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\searchFilter.css" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\ui.multiselect.css" />
+    <Content Include="scripts\epona\plugins\jqgrid\plugins\ui.multiselect.js" />
+    <Content Include="scripts\epona\plugins\jqgrid\update.txt" />
+    <Content Include="scripts\epona\plugins\jquery-2.1.3.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\fonts\footable.svg" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\footable.core.css" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\footable.core.min.css" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\footable.metro.css" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\footable.metro.min.css" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\footable.standalone.css" />
+    <Content Include="scripts\epona\plugins\jquery-footable\css\footable.standalone.min.css" />
+    <Content Include="scripts\epona\plugins\jquery-footable\dist\footable.all.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\dist\footable.bookmarkable.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\dist\footable.filter.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\dist\footable.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\dist\footable.paginate.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\dist\footable.sort.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\dist\footable.striping.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.bookmarkable.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.filter.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.grid.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.memory.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.paginate.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.plugin.template.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.sort.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\js\footable.striping.js" />
+    <Content Include="scripts\epona\plugins\jquery-footable\Update.txt" />
+    <Content Include="scripts\epona\plugins\jquery-vectormap\gdp-data.js" />
+    <Content Include="scripts\epona\plugins\jquery-vectormap\jquery-jvectormap-1.2.2.css" />
+    <Content Include="scripts\epona\plugins\jquery-vectormap\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="scripts\epona\plugins\jquery-vectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="scripts\epona\plugins\jquery.countdown.js" />
+    <Content Include="scripts\epona\plugins\jquery.isotope.js" />
+    <Content Include="scripts\epona\plugins\knob\excanvas.js" />
+    <Content Include="scripts\epona\plugins\knob\index.html" />
+    <Content Include="scripts\epona\plugins\knob\js\jquery.knob.js" />
+    <Content Include="scripts\epona\plugins\knob\secretplan.jpg" />
+    <Content Include="scripts\epona\plugins\layerslider\css\blank.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\css\layerslider.css" />
+    <Content Include="scripts\epona\plugins\layerslider\js\greensock.js" />
+    <Content Include="scripts\epona\plugins\layerslider\js\layerslider.kreaturamedia.jquery.js" />
+    <Content Include="scripts\epona\plugins\layerslider\js\layerslider.transitions.js" />
+    <Content Include="scripts\epona\plugins\layerslider\js\layerslider_pack.js" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark3d\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark3d\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark3d\shadow.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark3d\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark3d\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark\shadow.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlessdark\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight3d\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight3d\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight3d\shadow.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight3d\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight3d\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight\shadow.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\borderlesslight\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\carousel\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\carousel\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\carousel\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\carousel\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\darkskin\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\darkskin\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\darkskin\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\darkskin\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\defaultskin\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\defaultskin\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\defaultskin\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\defaultskin\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\fullwidthdark\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\fullwidthdark\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\fullwidthdark\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\fullwidthdark\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\fullwidth\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\fullwidth\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\fullwidth\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\fullwidth\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\glass\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\glass\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\glass\shadow.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\glass\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\glass\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\lightskin\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\lightskin\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\lightskin\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\lightskin\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\minimal\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\minimal\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\minimal\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\minimal\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\noskin\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\noskin\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\noskin\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\noskin\skin.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\v5\loading.gif" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\v5\nothumb.png" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\v5\skin.css" />
+    <Content Include="scripts\epona\plugins\layerslider\skins\v5\skin.png" />
+    <Content Include="scripts\epona\plugins\magnific-popup\jquery.magnific-popup.js" />
+    <Content Include="scripts\epona\plugins\magnific-popup\jquery.magnific-popup.min.js" />
+    <Content Include="scripts\epona\plugins\magnific-popup\magnific-popup.css" />
+    <Content Include="scripts\epona\plugins\masonry.js" />
+    <Content Include="scripts\epona\plugins\modernizr.min.js" />
+    <Content Include="scripts\epona\plugins\owl-carousel\AjaxLoader.gif" />
+    <Content Include="scripts\epona\plugins\owl-carousel\grabbing.png" />
+    <Content Include="scripts\epona\plugins\owl-carousel\owl.carousel.css" />
+    <Content Include="scripts\epona\plugins\owl-carousel\owl.carousel.js" />
+    <Content Include="scripts\epona\plugins\owl-carousel\owl.carousel.min.js" />
+    <Content Include="scripts\epona\plugins\owl-carousel\owl.pack.css" />
+    <Content Include="scripts\epona\plugins\owl-carousel\owl.theme.css" />
+    <Content Include="scripts\epona\plugins\owl-carousel\owl.transitions.css" />
+    <Content Include="scripts\epona\plugins\plugins.txt" />
+    <Content Include="scripts\epona\plugins\respond.js" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrowleft.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrowright.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrow_large_left.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrow_large_right.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrow_left.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrow_left2.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrow_right.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\arrow_right2.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\black50.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\boxed_bgtile.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\bullet.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\bullets.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\bullets2.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\bullet_boxed.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\coloredbg.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\grain.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\gridtile.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\gridtile_3x3.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\gridtile_3x3_white.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\gridtile_white.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\large_left.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\large_right.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\loader.gif" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\loader2.gif" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\navigdots.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\navigdots_bgtile.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\shadow1.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\shadow2.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\shadow3.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\small_left.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\small_left_boxed.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\small_right.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\small_right_boxed.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\timer.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\timerdot.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\transparent.jpg" />
+    <Content Include="scripts\epona\plugins\revolution-slider\assets\white50.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\css\settings-ie8.css" />
+    <Content Include="scripts\epona\plugins\revolution-slider\css\settings.css" />
+    <Content Include="scripts\epona\plugins\revolution-slider\font\revicons.svg" />
+    <Content Include="scripts\epona\plugins\revolution-slider\images\decor_inside.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\images\decor_inside_white.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\images\decor_testimonial.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\images\gradient\g30.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\images\gradient\g40.png" />
+    <Content Include="scripts\epona\plugins\revolution-slider\js\jquery.themepunch.enablelog.js" />
+    <Content Include="scripts\epona\plugins\revolution-slider\js\jquery.themepunch.revolution.js" />
+    <Content Include="scripts\epona\plugins\revolution-slider\js\jquery.themepunch.revolution.min.js" />
+    <Content Include="scripts\epona\plugins\revolution-slider\js\jquery.themepunch.tools.min.js" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\1.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\10.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\2.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\3.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\4.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\5.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\6.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\7.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\8.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\9.png" />
+    <Content Include="scripts\epona\plugins\styleswitcher\sample.html" />
+    <Content Include="scripts\epona\plugins\styleswitcher\styleswitcher.css" />
+    <Content Include="scripts\epona\plugins\styleswitcher\styleswitcher.js" />
+    <None Include="scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="scripts\jquery-2.1.4.js" />
+    <Content Include="scripts\jquery-2.1.4.min.js" />
+    <Content Include="scripts\npm.js" />
+    <Content Include="scripts\toastr.js" />
+    <Content Include="scripts\toastr.min.js" />
+    <None Include="scripts\_references.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Server\Showcase.Server.Api\Showcase.Server.Api.csproj">
+      <Project>{ae3f60fe-f877-43c3-be01-cc70f0edd8d5}</Project>
+      <Name>Showcase.Server.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62742</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:12345/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -70,6 +70,15 @@
       <HintPath>..\..\packages\Microsoft.OData.Edm.6.11.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.OData.Edm.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\..\packages\Microsoft.Owin.2.0.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener">
+      <HintPath>..\..\packages\Microsoft.Owin.Host.HttpListener.2.0.2\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting">
+      <HintPath>..\..\packages\Microsoft.Owin.Hosting.2.0.2\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Spatial, Version=6.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Spatial.6.11.0\lib\portable-net40+sl5+wp8+win8+wpa\Microsoft.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -82,20 +91,31 @@
       <HintPath>..\..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.ContextPreservation">
+      <HintPath>..\..\packages\Ninject.Extensions.ContextPreservation.3.2.0.0\lib\net45-full\Ninject.Extensions.ContextPreservation.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Extensions.Conventions">
       <HintPath>..\..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.NamedScope">
+      <HintPath>..\..\packages\Ninject.Extensions.NamedScope.3.2.0.0\lib\net45-full\Ninject.Extensions.NamedScope.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Web.Common.OwinHost">
+      <HintPath>..\..\packages\Ninject.Web.Common.OwinHost.3.2.0.0\lib\net45-full\Ninject.Web.Common.OwinHost.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Ninject.Web.WebApi.WebHost, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Ninject.Web.WebApi.WebHost.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.WebHost.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Ninject.Web.WebApi.OwinHost">
+      <HintPath>..\..\packages\Ninject.Web.WebApi.OwinHost.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.OwinHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -124,6 +144,9 @@
     <Reference Include="System.Web.Http.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -171,10 +194,6 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
@@ -184,19 +203,15 @@
   <ItemGroup>
     <Compile Include="Config\FilterConfig.cs" />
     <Compile Include="Config\NinjectConfig.cs" />
-    <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
     <Compile Include="Infrastructure\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\ResultObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
