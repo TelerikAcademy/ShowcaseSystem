@@ -14,11 +14,8 @@
                 .when('/', {
                     templateUrl: '/app/home-page/home-page-view.html'
                 })
-                .when('/test', {
-                    templateUrl: '/app/home-page/home-page-view.html'
-                })
-                .when('/project/:id', {
-                    templateUrl: '/app/project/project-details-view.html'
+                .when('/projects/:id/:title', {
+                    templateUrl: '/app/project-details/project-details-view.html'
                 });
 
             $httpProvider.interceptors.push('httpResponseInterceptor');

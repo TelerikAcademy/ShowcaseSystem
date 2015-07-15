@@ -2,9 +2,9 @@
     'use strict';
     
     angular.module('showcaseSystem.data')
-        .factory('projectsData', ['$http', '$q', 'appSettings', projectsData]);
+        .factory('homePageData', ['$http', '$q', 'appSettings', homePageData]);
 
-    function projectsData($http, $q, appSettings) {
+    function homePageData($http, $q, appSettings) {
         function getLatestProjects() {
             var URL = appSettings.serverPath + 'projects';
             var deferred = $q.defer();
@@ -22,18 +22,6 @@
             var deferred = $q.defer();
 
             $http.get(URL)
-                .success(function(data) {
-                    deferred.resolve(data);
-                });
-
-            return deferred.promise;
-        }
-
-        function getProject(id) {
-            var URL = appSettings.serverPath + 'projects/' + id;
-            var deferred = $q.defer();
-
-            $http.get(URL)
                 .success(function (data) {
                     deferred.resolve(data);
                 });
@@ -42,9 +30,8 @@
         }
 
         return {
-            getStatistics: getStatistics
+            getStatistics: getStatistics,
             getLatestProjects: getLatestProjects,
-            getProject: getProject
         }
     }
 }());
