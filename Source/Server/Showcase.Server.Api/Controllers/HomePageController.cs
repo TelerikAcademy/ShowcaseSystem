@@ -7,30 +7,27 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
-    using Showcase.Data;
-    using Showcase.Data.Models;
     using Showcase.Data.Common.Repositories;
-    using Showcase.Server.ViewModels.HomePage;
+    using Showcase.Server.DataTransferModels.HomePage;
     using Showcase.Server.Common;
-    using Showcase.Server.Api.Infrastructure;
+    using Showcase.Server.Api.Infrastructure.Extensions;
+    using Showcase.Services.Data.Contracts;
 
     public class HomePageController : ApiController
     {
-        private readonly IRepository<Project> projects;
+        private readonly IHomePageService homePageService;
 
-        public HomePageController(IRepository<Project> projects)
+        public HomePageController(IHomePageService homePageService)
         {
-            this.projects = projects;
+            this.homePageService = homePageService;
         }
 
         public IHttpActionResult Get()
         {
-            var model = this.projects
-                .All()
-                .OrderByDescending(pr => pr.CreatedOn)
-                .Take(Constants.HomePageLatestProjectsCount)
+            var model = this.homePageService
+                .LatestProjects()
                 .Project()
-                .To<HomePageProjectViewModel>()
+                .To<HomePageProjectResponseModel>()
                 .ToList();
 
             return this.Data(model);

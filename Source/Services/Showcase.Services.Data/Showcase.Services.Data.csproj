@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DC34D65F-FCDF-4566-94A2-454526364046}</ProjectGuid>
+    <ProjectGuid>{6E7FA01F-8644-48A9-AAB3-0E1A049CCD9A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ShowcaseSystem.Services.Common</RootNamespace>
-    <AssemblyName>ShowcaseSystem.Services.Common</AssemblyName>
+    <RootNamespace>Showcase.Services.Data</RootNamespace>
+    <AssemblyName>Showcase.Services.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,8 +39,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IService.cs" />
+    <Compile Include="Contracts\IHomePageService.cs" />
+    <Compile Include="HomePageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\Showcase.Data.Common\Showcase.Data.Common.csproj">
+      <Project>{43d17737-5da2-412b-9ff1-34bcba58587b}</Project>
+      <Name>Showcase.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Showcase.Data.Models\Showcase.Data.Models.csproj">
+      <Project>{163b402e-b743-422b-8476-0d73089e7c94}</Project>
+      <Name>Showcase.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Showcase.Data\Showcase.Data.csproj">
+      <Project>{080529dd-48d5-4da7-bd07-38521af97288}</Project>
+      <Name>Showcase.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Showcase.Services.Common\Showcase.Services.Common.csproj">
+      <Project>{dc34d65f-fcdf-4566-94a2-454526364046}</Project>
+      <Name>Showcase.Services.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

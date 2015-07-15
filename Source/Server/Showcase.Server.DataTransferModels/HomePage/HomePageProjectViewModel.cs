@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.ViewModels.HomePage
+﻿namespace Showcase.Server.DataTransferModels.HomePage
 {
     using System;
     using Showcase.Data.Models;
@@ -7,7 +7,7 @@
     using AutoMapper;
     using Newtonsoft.Json;
 
-    public class HomePageProjectViewModel : IMapFrom<Project>, IHaveCustomMappings
+    public class HomePageProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
     {
         public string Name { get; set; }
 
@@ -28,7 +28,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<Project, HomePageProjectViewModel>()
+            configuration.CreateMap<Project, HomePageProjectResponseModel>()
                 .ForMember(pr => pr.Name, opt => opt.MapFrom(pr => pr.Title))
                 .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.Url + "." + pr.MainImage.FileExtension))
                 .ForMember(pr => pr.Author, opt => opt.UseValue<string>("Telerik Academy"));

@@ -10,6 +10,7 @@
     using Showcase.Data;
     using Showcase.Data.Migrations;
     using Showcase.Server.Common.Mapping;
+    using Showcase.Server.Common;
 
     public class WebApiApplication : HttpApplication
     {
@@ -21,7 +22,7 @@
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            AutoMapperConfig.RegisterMappings(Assembly.Load("Showcase.Server.ViewModels"));
+            AutoMapperConfig.RegisterMappings(Assembly.Load(Constants.DataTransferModelsAssembly));
         }
     }
 }

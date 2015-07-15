@@ -1,4 +1,4 @@
-﻿namespace ShowcaseSystem.Services.Common
+﻿namespace Showcase.Services.Common
 {
     public interface IService
     {

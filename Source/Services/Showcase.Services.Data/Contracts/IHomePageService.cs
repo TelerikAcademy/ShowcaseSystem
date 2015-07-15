@@ -1,7 +1,7 @@
-﻿namespace ShowcaseSystem.Services.Data.Contracts
+﻿namespace Showcase.Services.Data.Contracts
 {
     using Showcase.Data.Models;
-    using ShowcaseSystem.Services.Common;
+    using Showcase.Services.Common;
 
     using System.Linq;
 

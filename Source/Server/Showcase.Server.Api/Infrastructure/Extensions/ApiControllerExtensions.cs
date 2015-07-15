@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure
+﻿namespace Showcase.Server.Api.Infrastructure.Extensions
 {
     using Newtonsoft.Json;
     using System.Net;

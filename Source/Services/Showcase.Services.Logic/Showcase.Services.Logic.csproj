@@ -7,8 +7,8 @@
     <ProjectGuid>{7C14F43E-1596-4944-A03E-9884CAE0FBD6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ShowcaseSystem.Services.Logic</RootNamespace>
-    <AssemblyName>ShowcaseSystem.Services.Logic</AssemblyName>
+    <RootNamespace>Showcase.Services.Logic</RootNamespace>
+    <AssemblyName>Showcase.Services.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

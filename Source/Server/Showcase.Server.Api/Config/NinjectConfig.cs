@@ -1,20 +1,25 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Showcase.Server.Api.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Showcase.Server.Api.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Showcase.Server.Api.App_Start.NinjectConfig), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Showcase.Server.Api.App_Start.NinjectConfig), "Stop")]
 
 namespace Showcase.Server.Api.App_Start
 {
     using System;
+    using System.Data.Entity;
     using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Extensions.Conventions;
+
     using Showcase.Data.Common.Repositories;
-    using System.Data.Entity;
     using Showcase.Data;
 
-    public static class NinjectWebCommon 
+    using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Data;
+
+    public static class NinjectConfig 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
@@ -66,6 +71,7 @@ namespace Showcase.Server.Api.App_Start
         {
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
             kernel.Bind<DbContext>().To<ShowcaseDbContext>();
+
         }        
     }
 }

@@ -183,14 +183,14 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Config\FilterConfig.cs" />
-    <Compile Include="Config\NinjecConfig.cs" />
+    <Compile Include="Config\NinjectConfig.cs" />
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructure\ApiControllerExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
     <Compile Include="Infrastructure\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\ResultObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -209,24 +209,32 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Showcase.Data.Common\Showcase.Data.Common.csproj">
+    <ProjectReference Include="..\..\Data\Showcase.Data.Common\Showcase.Data.Common.csproj">
       <Project>{43d17737-5da2-412b-9ff1-34bcba58587b}</Project>
       <Name>Showcase.Data.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Showcase.Data.Models\Showcase.Data.Models.csproj">
+    <ProjectReference Include="..\..\Data\Showcase.Data.Models\Showcase.Data.Models.csproj">
       <Project>{163b402e-b743-422b-8476-0d73089e7c94}</Project>
       <Name>Showcase.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Showcase.Data\Showcase.Data.csproj">
+    <ProjectReference Include="..\..\Data\Showcase.Data\Showcase.Data.csproj">
       <Project>{080529dd-48d5-4da7-bd07-38521af97288}</Project>
       <Name>Showcase.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Showcase.Services.Common\Showcase.Services.Common.csproj">
+      <Project>{dc34d65f-fcdf-4566-94a2-454526364046}</Project>
+      <Name>Showcase.Services.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Showcase.Services.Data\Showcase.Services.Data.csproj">
+      <Project>{6e7fa01f-8644-48a9-aab3-0e1a049ccd9a}</Project>
+      <Name>Showcase.Services.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Showcase.Server.Common\Showcase.Server.Common.csproj">
       <Project>{a76b5891-7edb-4b8f-89b6-03a8924393a1}</Project>
       <Name>Showcase.Server.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Showcase.Server.ViewModels\Showcase.Server.DataTransferModels.csproj">
-      <Project>{1BDC2D81-58B5-4107-B795-715B5C1BDB19}</Project>
+    <ProjectReference Include="..\Showcase.Server.DataTransferModels\Showcase.Server.DataTransferModels.csproj">
+      <Project>{1bdc2d81-58b5-4107-b795-715b5c1bdb19}</Project>
       <Name>Showcase.Server.DataTransferModels</Name>
     </ProjectReference>
   </ItemGroup>

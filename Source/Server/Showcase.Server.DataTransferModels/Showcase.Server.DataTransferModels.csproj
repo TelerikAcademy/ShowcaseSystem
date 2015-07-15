@@ -60,11 +60,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Showcase.Data.Common\Showcase.Data.Common.csproj">
+    <ProjectReference Include="..\..\Data\Showcase.Data.Common\Showcase.Data.Common.csproj">
       <Project>{43d17737-5da2-412b-9ff1-34bcba58587b}</Project>
       <Name>Showcase.Data.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Showcase.Data.Models\Showcase.Data.Models.csproj">
+    <ProjectReference Include="..\..\Data\Showcase.Data.Models\Showcase.Data.Models.csproj">
       <Project>{163b402e-b743-422b-8476-0d73089e7c94}</Project>
       <Name>Showcase.Data.Models</Name>
     </ProjectReference>

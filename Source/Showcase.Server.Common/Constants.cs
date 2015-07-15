@@ -2,6 +2,6 @@
 {
     public class Constants
     {
-        public const int HomePageLatestProjectsCount = 8;
+        public const string DataTransferModelsAssembly = "Showcase.Server.DataTransferModels";
     }
 }
