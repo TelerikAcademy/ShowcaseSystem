@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HomePage\HomePageProjectViewModel.cs" />
+    <Compile Include="ProjectsPage\ProjectsPageProjectResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
