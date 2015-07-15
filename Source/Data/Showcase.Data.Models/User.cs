@@ -14,5 +14,7 @@
         public string Username { get; set; }
 
         public ICollection<Project> Projects { get; set; }
+
+        public ICollection<Like> Likes { get; set; }
     }
 }
