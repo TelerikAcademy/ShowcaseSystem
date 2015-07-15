@@ -11,10 +11,10 @@
                 <p style="margin-top: 15px; ">
                     {{vm.project.content}}
                 </p>
-                <span ng-repeat="collaborator in vm.collaborators">
-                    <a href="/users/{{collaborator}}" style="margin-left: 10px; ">{{collaborator}}</a>
+                <span ng-repeat="collaborator in vm.project.collaborators">
+                    <a href="/users/{{collaborator}}" style="margin-bottom: 2px; ">{{collaborator}}</a><br />
                 </span>
             </div>
         </div>
-    </div>    
+    </div>
 </section>
