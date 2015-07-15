@@ -18,6 +18,10 @@ namespace Showcase.Server.Api.App_Start
 
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data;
+    using Showcase.Server.Common;
+    using Showcase.Services.Common;
+
+    using ServerConstants = Showcase.Server.Common.Constants;
 
     public static class NinjectConfig 
     {
@@ -72,6 +76,11 @@ namespace Showcase.Server.Api.App_Start
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
             kernel.Bind<DbContext>().To<ShowcaseDbContext>();
 
+            kernel.Bind(k => k
+                .From(ServerConstants.DataServicesAssembly, ServerConstants.LogicServicesAssembly)
+                .SelectAllClasses()
+                .InheritedFrom<IService>()
+                .BindDefaultInterface());
         }        
     }
 }
