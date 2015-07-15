@@ -17,8 +17,21 @@
             return deferred.promise;
         }
 
+        function getStatistics() {
+            var URL = appSettings.serverPath + 'statistics';
+            var deferred = $q.defer();
+
+            $http.get(URL)
+                .success(function(data) {
+                    deferred.resolve(data);
+                });
+
+            return deferred.promise;
+        }
+
         return {
-            getLatestProjects: getLatestProjects
+            getLatestProjects: getLatestProjects,
+            getStatistics: getStatistics
         }
     }
 }());

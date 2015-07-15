@@ -11,7 +11,11 @@
         homePageData.getLatestProjects()
             .then(function (projects) {
                 vm.latestProjects = projects;
-                notifier.success('Projects loaded!');
+            });
+
+        homePageData.getStatistics()
+            .then(function (statistics) {
+                vm.statistics = statistics;
             });
     }
 }());
