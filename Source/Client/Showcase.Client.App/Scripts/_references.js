@@ -99,3 +99,4 @@
 /// <reference path="../app/home-page/home-page-data.js" />
 /// <reference path="../app/project-details/project-details-controller.js" />
 /// <reference path="../app/project-details/project-details-data.js" />
+/// <reference path="../app/common/data.js" />

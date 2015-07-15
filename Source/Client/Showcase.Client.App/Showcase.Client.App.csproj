@@ -121,6 +121,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\common\data.js" />
     <Content Include="app\project-details\project-details-view.html" />
     <Content Include="app\project-details\project-details-controller.js" />
     <Content Include="app\project-details\project-details-data.js" />
