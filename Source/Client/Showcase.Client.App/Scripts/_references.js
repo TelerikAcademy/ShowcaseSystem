@@ -100,3 +100,6 @@
 /// <reference path="../app/project-details/project-details-controller.js" />
 /// <reference path="../app/project-details/project-details-data.js" />
 /// <reference path="../app/common/data.js" />
+/// <reference path="../app/common/http-response-interceptor.js" />
+/// <reference path="../app/home-page/statistics-directive.js" />
+/// <reference path="../app/project-details/owl-carousel-directive.js" />
