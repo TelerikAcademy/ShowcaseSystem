@@ -24,8 +24,6 @@
 
             var httpConfig = new HttpConfiguration();
 
-            AreaRegistration.RegisterAllAreas();
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             WebApiConfig.Register(httpConfig);
 
             app

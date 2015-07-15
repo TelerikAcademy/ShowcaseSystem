@@ -201,7 +201,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="Config\FilterConfig.cs" />
     <Compile Include="Config\NinjectConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
