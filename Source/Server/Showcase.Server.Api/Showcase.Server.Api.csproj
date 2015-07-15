@@ -82,6 +82,9 @@
       <HintPath>..\..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions">
+      <HintPath>..\..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
       <Private>True</Private>
@@ -180,7 +183,7 @@
   <ItemGroup />
   <ItemGroup>
     <Compile Include="Config\FilterConfig.cs" />
-    <Compile Include="Config\NinjectWebCommon.cs" />
+    <Compile Include="Config\NinjecConfig.cs" />
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
@@ -222,9 +225,9 @@
       <Project>{a76b5891-7edb-4b8f-89b6-03a8924393a1}</Project>
       <Name>Showcase.Server.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Showcase.Server.ViewModels\Showcase.Server.ViewModels.csproj">
+    <ProjectReference Include="..\Showcase.Server.ViewModels\Showcase.Server.DataTransferModels.csproj">
       <Project>{1BDC2D81-58B5-4107-B795-715B5C1BDB19}</Project>
-      <Name>Showcase.Server.ViewModels</Name>
+      <Name>Showcase.Server.DataTransferModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

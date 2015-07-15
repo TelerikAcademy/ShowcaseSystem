@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{006D8078
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Server.Api", "Server\Showcase.Server.Api\Showcase.Server.Api.csproj", "{AE3F60FE-F877-43C3-BE01-CC70F0EDD8D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Server.ViewModels", "Server\Showcase.Server.ViewModels\Showcase.Server.ViewModels.csproj", "{1BDC2D81-58B5-4107-B795-715B5C1BDB19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Server.DataTransferModels", "Server\Showcase.Server.ViewModels\Showcase.Server.DataTransferModels.csproj", "{1BDC2D81-58B5-4107-B795-715B5C1BDB19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Data.Models", "Showcase.Data.Models\Showcase.Data.Models.csproj", "{163B402E-B743-422B-8476-0D73089E7C94}"
 EndProject
@@ -51,6 +51,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A62970
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DA44EAA7-39CB-401D-A32F-11C7C27F9FDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowcaseSystem.Services.Data", "Services\ShowcaseSystem.Services.Data\ShowcaseSystem.Services.Data.csproj", "{6E7FA01F-8644-48A9-AAB3-0E1A049CCD9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowcaseSystem.Services.Logic", "Services\ShowcaseSystem.Services.Logic\ShowcaseSystem.Services.Logic.csproj", "{7C14F43E-1596-4944-A03E-9884CAE0FBD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowcaseSystem.Services.Common", "Services\ShowcaseSystem.Services.Common\ShowcaseSystem.Services.Common.csproj", "{DC34D65F-FCDF-4566-94A2-454526364046}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,6 +94,18 @@ Global
 		{A76B5891-7EDB-4B8F-89B6-03A8924393A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A76B5891-7EDB-4B8F-89B6-03A8924393A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A76B5891-7EDB-4B8F-89B6-03A8924393A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E7FA01F-8644-48A9-AAB3-0E1A049CCD9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E7FA01F-8644-48A9-AAB3-0E1A049CCD9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E7FA01F-8644-48A9-AAB3-0E1A049CCD9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E7FA01F-8644-48A9-AAB3-0E1A049CCD9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C14F43E-1596-4944-A03E-9884CAE0FBD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C14F43E-1596-4944-A03E-9884CAE0FBD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C14F43E-1596-4944-A03E-9884CAE0FBD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C14F43E-1596-4944-A03E-9884CAE0FBD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC34D65F-FCDF-4566-94A2-454526364046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC34D65F-FCDF-4566-94A2-454526364046}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC34D65F-FCDF-4566-94A2-454526364046}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC34D65F-FCDF-4566-94A2-454526364046}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +118,8 @@ Global
 		{43D17737-5DA2-412B-9FF1-34BCBA58587B} = {D3F49169-B5EF-43DD-BF4B-46AD06E40B9D}
 		{080529DD-48D5-4DA7-BD07-38521AF97288} = {D3F49169-B5EF-43DD-BF4B-46AD06E40B9D}
 		{A76B5891-7EDB-4B8F-89B6-03A8924393A1} = {E920264B-5513-4374-90B8-56924F1BE390}
+		{6E7FA01F-8644-48A9-AAB3-0E1A049CCD9A} = {DA44EAA7-39CB-401D-A32F-11C7C27F9FDF}
+		{7C14F43E-1596-4944-A03E-9884CAE0FBD6} = {DA44EAA7-39CB-401D-A32F-11C7C27F9FDF}
+		{DC34D65F-FCDF-4566-94A2-454526364046} = {DA44EAA7-39CB-401D-A32F-11C7C27F9FDF}
 	EndGlobalSection
 EndGlobal
