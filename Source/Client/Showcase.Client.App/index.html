@@ -1,39 +1,119 @@
 ﻿<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
     <title>Telerik Academy Showcase System</title>
+    <meta name="keywords" content="showcase system" />
+    <meta name="description" content="showcase system" />
+    <meta name="Author" content="Telerik Academy" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Style sheets -->
-    <link href="Content/bootstrap.css" rel="stylesheet" />
-    <link href="Content/main.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <link rel="shortcut icon" href="/content/epona/images/demo/favicon.ico" />
+
+    <!-- WEB FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <!-- CORE CSS -->
+    <link href="/scripts/epona/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/sky-forms.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/scripts/epona/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+    <link href="/scripts/epona/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/animate.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+    <!-- REVOLUTION SLIDER -->
+    <link href="/content/epona/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+    <!-- THEME CSS -->
+    <link href="/content/epona/css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/layout.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/header-4.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/footer-default.css" rel="stylesheet" type="text/css" />
+    <link href="/content/epona/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+
+    <link href="/content/toastr.css" rel="stylesheet" />
+    <link href="/content/main.css" rel="stylesheet" />
+
+    <!-- Morenizr -->
+    <script type="text/javascript" src="/scripts/epona/plugins/modernizr.min.js"></script>
+
+    <!--[if lte IE 8]>
+        <script src="/scripts/epona/plugins/respond.js"></script>
+    <![endif]-->
 </head>
-<body ng-app="showcaseSystem">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <div class="navbar-brand">Telerik Academy Showcase System</div>
-            </div>
-        </div>
-    </nav>
 
-    <div class="container">
-        <div ng-include="'app/home-page/home-page-view.html'"></div>
+<!--
+    Available body classes:
+        smoothscroll			= enable chrome browser smooth scroll
+        grey 					= grey content background
+        boxed 					= boxed style
+        pattern1 ... pattern11 	= background pattern
+
+    Background Image - add to body:
+        data-background="/content/epona/images/boxed_background/1.jpg"
+
+    Examples:
+        <body class="smoothscroll grey boxed pattern3">
+        <body class="smoothscroll boxed" data-background="/content/epona/images/boxed_background/1.jpg">
+-->
+<body class="smoothscroll" ng-app="showcaseSystem" ng-cloak>
+
+    <div id="wrapper">
+
+        <div id="header" showcase-header></div>
+
+        <div ng-view></div>
+
+        <footer id="footer" showcase-footer></footer>
+        <a href="#" id="toTop"></a>
+
     </div>
+    <script type="text/javascript" src="/scripts/epona/plugins/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/jquery.isotope.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/masonry.js"></script>
+
+    <script type="text/javascript" src="/scripts/epona/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/knob/js/jquery.knob.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+    <script type="text/javascript" src="/scripts/epona/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script type="text/javascript" src="/scripts/epona/js/revolution_slider.js"></script>
+    <script type="text/javascript" src="/scripts/epona/js/scripts.js"></script>
 
     <!-- Library Scripts -->
-    <script src="scripts/angular.js"></script>
-    <script src="scripts/angular-resource.js"></script>
+    <script src="/scripts/toastr.js"></script>
+    <script src="/scripts/angular.js"></script>
+    <script src="/scripts/angular-route.js"></script>
 
     <!-- Application Script -->
-    <script src="app/app.js"></script>
+    <script src="/app/app.js"></script>
 
-    <!-- Resources -->
-    <script src="app/home-page/home-page-resource.js"></script>
+    <!-- Data -->
+    <script src="/app/home-page/home-page-data.js"></script>
 
     <!-- Services -->
+    <script src="/app/common/notifier.js"></script>
 
     <!-- Controllers -->
-    <script src="app/home-page/home-page-controller.js"></script>
+    <script src="/app/home-page/home-page-controller.js"></script>
+
+    <!-- Directives -->
+    <script src="/app/common/header-directive.js"></script>
+    <script src="/app/common/footer-directive.js"></script>
+    <script src="/app/common/animation-directive.js"></script>
+    <script src="/app/common/project-container-directive.js"></script>
+    <script src="/app/home-page/revolution-slider-directive.js"></script>
 </body>
 </html>

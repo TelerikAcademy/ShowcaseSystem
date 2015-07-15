@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <ul class="sort-destination isotope" data-sort-id="isotope-list">
+            <li class="isotope-item col-sm-6 col-md-3 development" ng-repeat="project in projects">
+                <div class="item-box" animate="bounceIn">
+                    <figure>
+                        <a class="item-hover" href="portfolio-single-basic.html">
+                            <span class="overlay color2"></span>
+                            <span class="inner">
+                                <span class="block fa fa-plus fsize20"></span>
+                                <strong>PROJECT</strong> DETAILS
+                            </span>
+                        </a>
+                        <img class="img-responsive" ng-src="{{project.mainImageUrl}}" width="260" height="260" alt="">
+                    </figure>
+                    <div class="item-box-desc">
+                        <h4>{{project.name}}</h4>
+                        <small class="styleColor">{{project.shortDate}}</small>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

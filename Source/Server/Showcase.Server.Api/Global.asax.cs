@@ -21,9 +21,7 @@
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
-            var autoMapperConfig = new AutoMapperConfig(Assembly.Load("Showcase.Server.ViewModels"));
-            autoMapperConfig.Execute();
+            AutoMapperConfig.RegisterMappings(Assembly.Load("Showcase.Server.ViewModels"));
         }
     }
 }

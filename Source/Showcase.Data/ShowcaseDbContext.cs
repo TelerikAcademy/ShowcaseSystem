@@ -14,19 +14,17 @@
         {
         }
 
-        public virtual DbSet<Category> Categories { get; set; }
+        public virtual IDbSet<Comment> Comments { get; set; }
+                       
+        public virtual IDbSet<Like> Likes { get; set; }
+                       
+        public virtual IDbSet<Project> Projects { get; set; }
+                       
+        public virtual IDbSet<Tag> Tags { get; set; }
+                       
+        public virtual IDbSet<Visit> Visits { get; set; }
 
-        public virtual DbSet<Comment> Comments { get; set; }
-
-        public virtual DbSet<Like> Likes { get; set; }
-
-        public virtual DbSet<Project> Projects { get; set; }
-
-        public virtual DbSet<Season> Seasons { get; set; }
-
-        public virtual DbSet<Tag> Tags { get; set; }
-
-        public virtual DbSet<Visit> Visits { get; set; }
+        public virtual IDbSet<Image> Images { get; set; }
 
         public override int SaveChanges()
         {
