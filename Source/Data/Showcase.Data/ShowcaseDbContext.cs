@@ -26,6 +26,8 @@
 
         public virtual IDbSet<Image> Images { get; set; }
 
+        public virtual IDbSet<User> Users { get; set; }
+
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();

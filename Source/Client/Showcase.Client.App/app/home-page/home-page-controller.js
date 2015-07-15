@@ -3,12 +3,12 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('HomePageController', ['homePageData', 'notifier', homePageController]);
+        .controller('HomePageController', ['projectsData', 'notifier', homePageController]);
 
-    function homePageController(homePageData, notifier) {
+    function homePageController(projectsData, notifier) {
         var vm = this;
 
-        homePageData.getLatestProjects()
+        projectsData.getLatestProjects()
             .then(function (projects) {
                 vm.latestProjects = projects;
             });

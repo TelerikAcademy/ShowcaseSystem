@@ -121,6 +121,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\project\project-details-view.html" />
+    <Content Include="app\project\projects-controller.js" />
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="content\bootstrap.css.map" />
     <Content Include="content\epona\fonts\fontawesome-webfont.eot" />

@@ -6,12 +6,12 @@
     using Showcase.Data.Models;
     using Showcase.Services.Common;
     using Showcase.Services.Data.Contracts;
-
-    public class HomePageService : IHomePageService
+    
+    public class ProjectsService : IProjectsService
     {
         private IRepository<Project> projects;
 
-        public HomePageService(IRepository<Project> projects)
+        public ProjectsService(IRepository<Project> projects)
         {
             this.projects = projects;
         }
@@ -22,6 +22,13 @@
                 .All()
                 .OrderByDescending(pr => pr.CreatedOn)
                 .Take(Constants.HomePageLatestProjectsCount);
+        }
+
+        public IQueryable<Project> GetProjectById(int id)
+        {
+            return this.projects
+                .All()
+                .Where(p => p.Id == id);
         }
     }
 }

@@ -16,6 +16,9 @@
                 })
                 .when('/test', {
                     templateUrl: '/app/home-page/home-page-view.html'
+                })
+                .when('/project/:id', {
+                    templateUrl: '/app/project/project-details-view.html'
                 });
 
             $httpProvider.interceptors.push('httpResponseInterceptor');

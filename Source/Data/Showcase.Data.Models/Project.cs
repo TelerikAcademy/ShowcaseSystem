@@ -11,6 +11,7 @@
         private ICollection<Like> likes;
         private ICollection<Tag> tags;
         private ICollection<Image> images;
+        private ICollection<User> collaborators;
 
         public Project()
         {
@@ -19,6 +20,7 @@
             this.likes = new HashSet<Like>();
             this.tags = new HashSet<Tag>();
             this.images = new HashSet<Image>();
+            this.collaborators = new HashSet<User>();
         }
 
         public int Id { get; set; }
@@ -63,6 +65,12 @@
         {
             get { return this.images; }
             set { this.images = value; }
+        }
+
+        public virtual ICollection<User> Collaborators
+        {
+            get { return this.collaborators; }
+            set { this.collaborators = value; }
         }
     }
 }

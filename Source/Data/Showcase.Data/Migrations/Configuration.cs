@@ -17,7 +17,28 @@ namespace Showcase.Data.Migrations
 
         protected override void Seed(ShowcaseDbContext context)
         {
+            this.SeedUsers(context);
             this.SeedProjects(context);
+        }
+
+        private void SeedUsers(ShowcaseDbContext context)
+        {
+            if (context.Users.Any())
+            {
+                return;
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                var user = new User
+                {
+                    Username = "SeededUser" + i
+                };
+
+                context.Users.Add(user);
+            }
+
+            context.SaveChanges();
         }
 
         private void SeedProjects(ShowcaseDbContext context)
@@ -40,8 +61,13 @@ namespace Showcase.Data.Migrations
                 {
                     CreatedOn = DateTime.Now,
                     Title = "Seed Project " + i,
-                    Content = "Seed Project " + i + " Content",
+                    Content = "Seed Project " + i + " Content"
                 };
+
+                for (int j = 1; j <= 5; j++)
+                {
+                    project.Collaborators.Add(context.Users.FirstOrDefault(u => u.Id == j));
+                }
 
                 project.Images.Add(image);
 
