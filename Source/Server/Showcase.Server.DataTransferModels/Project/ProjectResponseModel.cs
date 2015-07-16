@@ -12,6 +12,8 @@
 
     public class ProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string MainImageUrl { get; set; }
@@ -38,6 +40,8 @@
         public IEnumerable<CommentResponseModel> Comments { get; set; }
 
         public int ImagesCount { get; set; }
+
+        public bool IsLiked { get; set; }
 
         public string TitleUrl
         {
