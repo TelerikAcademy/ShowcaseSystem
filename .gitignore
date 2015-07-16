@@ -197,3 +197,7 @@ FakesAssemblies/
 
 # WebStorm files
 .idea/
+
+# Client build files
+/app/build
+/Source/Client/Showcase.Client.App/index.html

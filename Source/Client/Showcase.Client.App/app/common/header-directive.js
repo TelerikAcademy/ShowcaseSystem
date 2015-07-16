@@ -1,14 +1,14 @@
 ﻿(function () {
     'use strict';
 
-    angular
-        .module('showcaseSystem.directives')
-        .directive('showcaseHeader', [headerDirective]);
-
-    function headerDirective() {
+    var headerDirective = function headerDirective() {
         return {
             restrict: 'A',
             templateUrl: '/app/common/header-directive.html'
-        }
-    }
+        };
+    };
+
+    angular
+        .module('showcaseSystem.directives')
+        .directive('showcaseHeader', [headerDirective]);
 }());

@@ -1,11 +1,7 @@
 ﻿(function() {
     'use strict';
 
-    angular
-        .module('showcaseSystem.controllers')
-        .controller('HomePageController', ['homePageData', 'notifier', homePageController]);
-
-    function homePageController(homePageData, notifier) {
+    var homePageController = function homePageController(homePageData, notifier) {
         var vm = this;
 
         homePageData.getLatestProjects()
@@ -17,5 +13,9 @@
             .then(function (statistics) {
                 vm.statistics = statistics;
             });
-    }
+    };
+
+    angular
+        .module('showcaseSystem.controllers')
+        .controller('HomePageController', ['homePageData', 'notifier', homePageController]);
 }());

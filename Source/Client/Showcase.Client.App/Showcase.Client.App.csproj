@@ -122,6 +122,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\common\data.js" />
+    <Content Include="app\common\http-response-interceptor.js" />
+    <Content Include="app\home-page\statistics-directive.html" />
+    <Content Include="app\home-page\statistics-directive.js" />
+    <Content Include="app\project-details\owl-carousel-directive.html" />
+    <Content Include="app\project-details\owl-carousel-directive.js" />
     <Content Include="app\project-details\project-details-view.html" />
     <Content Include="app\project-details\project-details-controller.js" />
     <Content Include="app\project-details\project-details-data.js" />
@@ -162,6 +167,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="gulpfile.js" />
     <Content Include="packages.config" />
     <Content Include="scripts\angular-route.min.js.map" />
     <Content Include="scripts\angular.min.js.map" />
@@ -196,6 +202,10 @@
     <Content Include="scripts\epona\plugins\revolution-slider\font\revicons.woff" />
     <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\color_scheme.fla" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
+    <Content Include="scripts\epona\plugins\owl-carousel\owl.carousel.min.js.map">
+      <DependentUpon>owl.carousel.min.js</DependentUpon>
+    </Content>
+    <Content Include="package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -205,7 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\common\animation-directive.js" />
+    <Content Include="app\common\animate-directive.js" />
     <Content Include="app\common\footer-directive.html" />
     <Content Include="app\common\footer-directive.js" />
     <Content Include="app\common\header-directive.html" />
@@ -955,7 +965,7 @@
     <Content Include="content\toastr.css" />
     <Content Include="content\toastr.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="index.html" />
+    <Content Include="index-template.html" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />
