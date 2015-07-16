@@ -100,3 +100,5 @@
 /// <reference path="../app/project-details/project-details-controller.js" />
 /// <reference path="../app/project-details/project-details-data.js" />
 /// <reference path="../app/common/data.js" />
+/// <reference path="../app/projects-page/projects-page-data.js" />
+/// <reference path="../app/projects-page/projects-page-controller.js" />

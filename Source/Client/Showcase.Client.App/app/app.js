@@ -14,6 +14,9 @@
                 .when('/', {
                     templateUrl: '/app/home-page/home-page-view.html'
                 })
+                .when('/projects/list/:pageIndex?', {
+                    templateUrl: '/app/projects-page/projects-page-view.html'
+                })
                 .when('/projects/:id/:title', {
                     templateUrl: '/app/project-details/project-details-view.html'
                 });

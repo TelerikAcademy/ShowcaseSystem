@@ -125,6 +125,9 @@
     <Content Include="app\project-details\project-details-view.html" />
     <Content Include="app\project-details\project-details-controller.js" />
     <Content Include="app\project-details\project-details-data.js" />
+    <Content Include="app\projects-page\projects-page-controller.js" />
+    <Content Include="app\projects-page\projects-page-data.js" />
+    <Content Include="app\projects-page\projects-page-view.html" />
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="content\bootstrap.css.map" />
     <Content Include="content\epona\fonts\fontawesome-webfont.eot" />
