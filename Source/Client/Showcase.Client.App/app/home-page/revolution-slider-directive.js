@@ -86,6 +86,6 @@
                     fullScreenOffsetContainer: ''
                 });
             }
-        }
-    };
+        };
+    }
 }());

@@ -122,6 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\common\data.js" />
+    <Content Include="app\common\http-response-interceptor.js" />
+    <Content Include="app\home-page\statistics-directive.html" />
+    <Content Include="app\home-page\statistics-directive.js" />
     <Content Include="app\project-details\project-details-view.html" />
     <Content Include="app\project-details\project-details-controller.js" />
     <Content Include="app\project-details\project-details-data.js" />
@@ -202,7 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\common\animation-directive.js" />
+    <Content Include="app\common\animate-directive.js" />
     <Content Include="app\common\footer-directive.html" />
     <Content Include="app\common\footer-directive.js" />
     <Content Include="app\common\header-directive.html" />
@@ -952,7 +955,7 @@
     <Content Include="content\toastr.css" />
     <Content Include="content\toastr.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="index.html" />
+    <Content Include="index-template.html" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />

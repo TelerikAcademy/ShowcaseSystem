@@ -9,6 +9,6 @@
         return {
             restrict: 'A',
             templateUrl: '/app/common/header-directive.html'
-        }
+        };
     }
 }());

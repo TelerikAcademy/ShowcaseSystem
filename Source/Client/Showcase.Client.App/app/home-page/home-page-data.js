@@ -16,6 +16,6 @@
         return {
             getStatistics: getStatistics,
             getLatestProjects: getLatestProjects,
-        }
+        };
     }
 }());

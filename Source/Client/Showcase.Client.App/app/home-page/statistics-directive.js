@@ -13,12 +13,12 @@
                 stats: '='
             },
             link: function(scope, element) {
-                element.find('[data-to]').each(function() {
+                element.find('[data-to]').each(function () {
                     var $counter = jQuery(this);
-                    $counter.appear(function() {
+                    $counter.appear(function () {
                         $counter.countTo();
-                    }, {accX:0, accY: -50});
-                })
+                    }, { accX: 0, accY: -50 });
+                });
             }
         };
     }

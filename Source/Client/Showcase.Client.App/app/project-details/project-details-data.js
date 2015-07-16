@@ -6,11 +6,11 @@
 
     function projectDetailsData(data) {
         function getProject(id) {
-            return data.get('projects/' + id)
+            return data.get('projects/' + id);
         }
 
         return {
             getProject: getProject
-        }
+        };
     }
 }());
