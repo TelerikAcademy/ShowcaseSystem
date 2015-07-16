@@ -2,8 +2,8 @@
 Showcase system for students projects in Telerik Academy
 
 ## How to run
-- Install [http://nodejs.org/](NodeJS)
-- Install [http://gulpjs.com/](Gulp) globally with
+- Install [NodeJS](http://nodejs.org/)
+- Install [Gulp](http://gulpjs.com/) globally with
 
 		npm install -g gulp
 		
@@ -19,4 +19,4 @@ Showcase system for students projects in Telerik Academy
 
 		gulp watch
 		
-- Or optionally use the [https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708](Task Runner Explorer) extension to Visual Studio 2013 which is already configured to run the Gulp watch task on every solution build
+- Or optionally use the [Task Runner Explorer](https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708) extension to Visual Studio 2013 which is already configured to run the Gulp watch task on every solution build
