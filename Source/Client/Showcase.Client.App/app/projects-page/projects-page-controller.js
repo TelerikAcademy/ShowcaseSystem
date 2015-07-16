@@ -1,11 +1,7 @@
 ﻿(function () {
     'use strict'
 
-    angular
-        .module('showcaseSystem.controllers')
-        .controller('projectsPageController', ['projectsPageData', '$routeParams', projectsPageController])
-
-    function projectsPageController(projectsPageData, $routeParams) {
+    var projectsPageController = function projectsPageController(projectsPageData, $routeParams) {
         var vm = this,
             pageIndex = $routeParams['pageIndex'] || 0;
 
@@ -13,5 +9,9 @@
             .then(function (projects) {
                 vm.projects = projects;
             });
-    }
+    };
+
+    angular
+        .module('showcaseSystem.controllers')
+        .controller('projectsPageController', ['projectsPageData', '$routeParams', projectsPageController]);
 }());
