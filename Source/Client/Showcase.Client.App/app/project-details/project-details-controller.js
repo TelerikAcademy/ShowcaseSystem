@@ -24,6 +24,13 @@
                     vm.likes--;
                 });
         };
+
+        vm.commentProject = function (id) {
+            projectDetailsData.commentProject(id, vm.commentText)
+                .then(function () {
+
+                });
+        }
     }
 
     angular

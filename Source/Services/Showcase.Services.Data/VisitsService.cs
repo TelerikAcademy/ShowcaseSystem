@@ -33,13 +33,6 @@
                 ProjectId = projectId
             };
 
-            var userId = this.users.GetUserId(username);
-
-            if (userId != 0)
-            {
-                visit.UserId = userId;
-            }
-
             this.visits.Add(visit);
             this.visits.SaveChanges();
         }

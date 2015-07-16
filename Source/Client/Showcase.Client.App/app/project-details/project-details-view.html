@@ -5,18 +5,18 @@
                 <img src="{{vm.project.mainImageUrl}}" width="250" height="250" alt="{{vm.project.name}}" />
                 <div class="text-center" style="padding-right: 10px;" animate="fadeIn" data-animation-delay="1500">
                     <br />
-                    <i class="fa fa-eye" style="margin-right: 5px;"></i><span style="margin-right: 20px;">{{vm.project.visits}}</span><button class="btn btn-xs btn-success" style="margin-left: 20px;"><i class="fa fa-thumbs-up"></i>Like ({{vm.project.likes}})</button>
+                    <i class="fa fa-eye" style="margin-right: 5px;"></i><span style="margin-right: 20px;">{{vm.project.visits}}</span><button class="btn btn-xs btn-success" style="margin-left: 20px;" ng-click="vm.likeProject(vm.project.id)"><i class="fa fa-thumbs-up"></i>Like ({{vm.likes}})</button>
                 </div>
             </div>
             <div class="col-md-7" animate="fadeInRight" data-animation-delay="200">
                 <h2 style="margin-bottom: 0">{{vm.project.name}}</h2>
 
                 <div animate="fadeIn" data-animation-delay="1000">
-                    <span class="glyphicon glyphicon-time" style="margin-right: 8px;"></span><span style="margin-right: 10px;">{{vm.project.shortDate}}</span> |
+                    <span class="fa fa-clock-o" style="margin-right: 8px;"></span><span style="margin-right: 10px; font-size: 0.85em;">{{vm.project.shortDate}}</span> |
                     <i class="fa fa-code" style="margin-right: 8px; margin-left: 10px;"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" style="margin-right: 10px">repository </a> | <i class="fa fa-external-link-square" style="margin-right: 5px; margin-left: 10px;"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank"> live demo</a><br />
                 </div>
 
-                <p style="margin-top: 15px;">
+                <p class="text-justify" style="margin-top: 15px;">
                     {{vm.project.content}}
                 </p>
                 <span ng-repeat="collaborator in vm.project.collaborators">
@@ -45,6 +45,11 @@
                         {{comment.content}}
                     </p>
                 </div>
+                <form>
+                    <textarea rows="5" cols="70" ng-model="commentText"></textarea>
+                    <br />
+                    <button class="btn btn-sm btn-success" ng-click="vm.commentProject(vm.project.id, commentText)">Comment</button>
+                </form>
             </div>
         </div>
     </div>

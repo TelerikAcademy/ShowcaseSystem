@@ -89,5 +89,14 @@
 
             return this.Ok();
         }
+
+        [HttpPost]
+        [Route("api/Projects/Comment/{id}")]
+        public IHttpActionResult Comment(int id)
+        {
+
+
+            return this.Ok();
+        }
     }
 }
