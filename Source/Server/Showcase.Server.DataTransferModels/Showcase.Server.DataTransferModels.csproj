@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\CommentResponseModel.cs" />
     <Compile Include="Project\ProjectResponseModel.cs" />
     <Compile Include="Project\TagResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -35,6 +35,8 @@
 
         public IEnumerable<TagResponseModel> Tags { get; set; }
 
+        public IEnumerable<CommentResponseModel> Comments { get; set; }
+
         public int ImagesCount { get; set; }
 
         public string TitleUrl

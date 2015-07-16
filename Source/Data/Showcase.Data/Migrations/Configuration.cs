@@ -78,6 +78,48 @@ namespace Showcase.Data.Migrations
                 Url = "/content/epona/images/demo/portfolio/a1",
             };
 
+            var image2 = new Image
+            {
+                OriginalFilename = "Sample image",
+                FileExtension = "jpg",
+                Url = "/content/epona/images/demo/portfolio/a1",
+            };
+
+            var image3 = new Image
+            {
+                OriginalFilename = "Sample image",
+                FileExtension = "jpg",
+                Url = "/content/epona/images/demo/portfolio/a1",
+            };
+
+            var image4 = new Image
+            {
+                OriginalFilename = "Sample image",
+                FileExtension = "jpg",
+                Url = "/content/epona/images/demo/portfolio/a1",
+            };
+
+            var comment = new Comment
+            {
+                Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                CreatedOn = DateTime.Now,
+                User = context.Users.FirstOrDefault()
+            };
+
+            var comment2 = new Comment
+            {
+                Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                CreatedOn = DateTime.Now,
+                User = context.Users.FirstOrDefault()
+            };
+
+            var comment3 = new Comment
+            {
+                Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                CreatedOn = DateTime.Now,
+                User = context.Users.FirstOrDefault()
+            };
+
             for (int i = 0; i < 10; i++)
             {
                 var project = new Project
@@ -93,14 +135,19 @@ namespace Showcase.Data.Migrations
                     project.Tags.Add(context.Tags.FirstOrDefault(u => u.Id == j));
                 }
 
-                project.Images.Add(image);
-                project.Images.Add(image);
-                project.Images.Add(image);
-                project.Images.Add(image);
-                project.Images.Add(image);
+                if (i == 0)
+                {
+                    project.Images.Add(image);
+                    project.Images.Add(image2);
+                    project.Images.Add(image3);
+                    project.Images.Add(image4);
+
+                    project.Comments.Add(comment);
+                    project.Comments.Add(comment2);
+                    project.Comments.Add(comment3);
+                }
 
                 context.Projects.Add(project);
-
                 context.SaveChanges();
 
                 project.MainImage = context.Images.First();
