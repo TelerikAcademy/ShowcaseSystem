@@ -7,9 +7,23 @@
 
         projectDetailsData.getProject(id)
             .then(function (project) {
-                console.log(project);
                 vm.project = project;
+                vm.likes = project.likes;
             });
+
+        vm.likeProject = function (id) {
+            projectDetailsData.likeProject(id)
+                .then(function () {
+                    vm.likes++;
+                });
+        };
+
+        vm.dislikeProject = function (id) {
+            projectDetailsData.dislikeProject(id)
+                .then(function () {
+                    vm.likes--;
+                });
+        };
     }
 
     angular
