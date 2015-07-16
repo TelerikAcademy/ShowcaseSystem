@@ -1,4 +1,4 @@
-# ShowcaseSystem
+# Showcase System
 Showcase system for students projects in Telerik Academy
 
 ## How to run
