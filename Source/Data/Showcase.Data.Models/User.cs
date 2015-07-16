@@ -4,8 +4,8 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public class User : IdentityUser
     {
@@ -13,10 +13,6 @@
         {
             this.Projects = new HashSet<Project>();
         }
-
-        public int Id { get; set; }
-
-        public string Username { get; set; }
 
         public ICollection<Project> Projects { get; set; }
 

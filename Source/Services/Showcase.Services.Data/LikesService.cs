@@ -30,7 +30,7 @@
         {
             var userId = this.users.GetUserId(username);
 
-            if (userId != 0)
+            if (!string.IsNullOrWhiteSpace(userId))
             {
                 var like = new Like
                 {
@@ -48,7 +48,7 @@
         {
             var userId = this.users.GetUserId(username);
 
-            if (userId != 0)
+            if (!string.IsNullOrWhiteSpace(userId))
             {
                 var like = this.likes
                     .All()

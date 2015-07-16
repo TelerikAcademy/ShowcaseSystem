@@ -63,7 +63,7 @@
         {
             var username = this.User.Identity.Name;
 
-            if (this.likesService.AllLikesForProject(id).Any(l => l.ProjectId == id && l.User.Username == username))
+            if (this.likesService.AllLikesForProject(id).Any(l => l.ProjectId == id && l.User.UserName == username))
             {
                 return this.Data(false, "You already have liked this project.");
             }
@@ -80,7 +80,7 @@
         {
             var username = this.User.Identity.Name;
 
-            if (!this.likesService.AllLikesForProject(id).Any(l => l.User.Username == username))
+            if (!this.likesService.AllLikesForProject(id).Any(l => l.User.UserName == username))
             {
                 return this.Data(false, "You have not yet liked this project.");
             }

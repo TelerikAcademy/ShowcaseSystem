@@ -4,6 +4,6 @@
 
     public interface IUsersService : IService
     {
-        int GetUserId(string username);
+        string GetUserId(string username);
     }
 }

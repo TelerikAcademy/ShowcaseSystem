@@ -18,7 +18,8 @@
             config.Routes.MapHttpRoute(
                 name: "ProjectsListApi",
                 routeTemplate: "api/{controller}/List",
-                defaults: new {
+                defaults: new 
+                {
                     controller = "ProjectsController",
                     pageIndex = RouteParameter.Optional 
                 });
