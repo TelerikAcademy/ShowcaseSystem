@@ -1,8 +1,13 @@
 ﻿namespace Showcase.Data.Models
 {
     using System.Collections.Generic;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
-    public class User
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.AspNet.Identity;
+
+    public class User : IdentityUser
     {
         public User()
         {
