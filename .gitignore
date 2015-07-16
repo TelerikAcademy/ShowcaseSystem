@@ -199,5 +199,5 @@ FakesAssemblies/
 .idea/
 
 # Client build files
-/index.html
 /app/build
+/Source/Client/Showcase.Client.App/index.html

@@ -67,6 +67,7 @@ gulp.task('scripts', function() {
 
 // Inject minified files into new HTML
 gulp.task('html', ['css', 'scripts'], function () {
+    del.sync(['index.html']);
 	var target = gulp.src(config.appIndexHtml);
 	var sources = gulp.src(['app/build/alljs*', 'app/build/allcss*']);
 	
@@ -78,8 +79,8 @@ gulp.task('html', ['css', 'scripts'], function () {
 
 // Watch for changes
 gulp.task('watch', ['lint', 'css', 'scripts', 'html'], function () {
-	gulp.watch(config.appCssSrc, ['css']);
-	gulp.watch(config.appJsSrc, ['lint', 'scripts']);
+	gulp.watch(config.appCssSrc, ['css', 'html']);
+	gulp.watch(config.appJsSrc, ['lint', 'scripts', 'html']);
 	gulp.watch(config.appIndexHtml, ['html']);
 });
  
