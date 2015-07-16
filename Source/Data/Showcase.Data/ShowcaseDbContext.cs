@@ -28,6 +28,11 @@
 
         public virtual IDbSet<User> Users { get; set; }
 
+        public static ShowcaseDbContext Create()
+        {
+            return new ShowcaseDbContext();
+        }
+
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
