@@ -16,11 +16,11 @@
             this.users = users;
         }
 
-        public int GetUserId(string username)
+        public string GetUserId(string username)
         {
             return this.users
                 .All()
-                .Where(u => u.Username == username)
+                .Where(u => u.UserName == username)
                 .Select(u => u.Id)
                 .FirstOrDefault();
         }

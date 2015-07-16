@@ -55,7 +55,7 @@ namespace Showcase.Data.Migrations
             {
                 var user = new User
                 {
-                    Username = "SeededUser" + i
+                    UserName = "SeededUser" + i
                 };
 
                 context.Users.Add(user);
@@ -145,7 +145,7 @@ namespace Showcase.Data.Migrations
 
                 for (int j = 1; j <= 5; j++)
                 {
-                    project.Collaborators.Add(context.Users.FirstOrDefault(u => u.Id == j));
+                    project.Collaborators.Add(context.Users.FirstOrDefault());
                     project.Tags.Add(context.Tags.FirstOrDefault(u => u.Id == j));
                 }
 
