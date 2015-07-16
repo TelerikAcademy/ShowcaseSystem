@@ -1,19 +1,55 @@
 ﻿<section ng-controller="ProjectDetailsController as vm">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <img src="{{vm.project.mainImageUrl}}" width="340" height="340" alt="{{vm.project.name}}" />
+            <div class="col-md-offset-1 col-md-3" animate="fadeInLeft" data-animation-delay="200">
+                <img src="{{vm.project.mainImageUrl}}" width="250" height="250" alt="{{vm.project.name}}" />
+                <div class="text-center" style="padding-right: 10px;" animate="fadeIn" data-animation-delay="1500">
+                    <br />
+                    <i class="fa fa-eye" style="margin-right: 5px;"></i><span style="margin-right: 20px;">{{vm.project.visits}}</span><button class="btn btn-xs btn-success" style="margin-left: 20px;" ng-click="vm.likeProject(vm.project.id)"><i class="fa fa-thumbs-up"></i>Like ({{vm.likes}})</button>
+                </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7" animate="fadeInRight" data-animation-delay="200">
                 <h2 style="margin-bottom: 0">{{vm.project.name}}</h2>
-                <span class="glyphicon glyphicon-time" style="margin-right: 10px; "></span><span>{{vm.project.shortDate}}</span>
-                <a href="{{vm.project.repositoryUrl}}" style="margin-left: 10px; ">repository </a> | <a href="{{vm.project.liveDemoUrl}}"> live demo</a><br />
-                <p style="margin-top: 15px; ">
+
+                <div animate="fadeIn" data-animation-delay="1000">
+                    <span class="fa fa-clock-o" style="margin-right: 8px;"></span><span style="margin-right: 10px; font-size: 0.85em;">{{vm.project.shortDate}}</span> |
+                    <i class="fa fa-code" style="margin-right: 8px; margin-left: 10px;"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" style="margin-right: 10px">repository </a> | <i class="fa fa-external-link-square" style="margin-right: 5px; margin-left: 10px;"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank"> live demo</a><br />
+                </div>
+
+                <p class="text-justify" style="margin-top: 15px;">
                     {{vm.project.content}}
                 </p>
                 <span ng-repeat="collaborator in vm.project.collaborators">
-                    <a href="/users/{{collaborator}}" style="margin-bottom: 2px; ">{{collaborator}}</a><br />
+                    <a href="/users/{{collaborator}}" style="margin-bottom: 2px; margin-right: 5px;">{{collaborator}}</a>
                 </span>
+                <div style="margin-top: 10px;">
+                    <a href="#" ng-repeat="tag in vm.project.tags">
+                        <span class="label label-default" style="background-color: {{tag.backgroundColor}}; color: {{tag.foregroundColor}}">{{tag.name}}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+                <div owl-carousel />
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-offset-1 col-md-10" animate="fadeInUp" data-animation-delay="200">
+                <h4 style="margin-bottom: 10px;">
+                    Comments
+                </h4>
+                <div ng-repeat="comment in vm.project.comments">
+                    <span><a href="#">{{comment.username}}</a> - <span style="font-size: 0.85em;">{{comment.shortDate}}</span></span>
+                    <p>
+                        {{comment.content}}
+                    </p>
+                </div>
+                <form>
+                    <textarea rows="5" cols="70" ng-model="commentText"></textarea>
+                    <br />
+                    <button class="btn btn-sm btn-success" ng-click="vm.commentProject(vm.project.id, commentText)">Comment</button>
+                </form>
             </div>
         </div>
     </div>

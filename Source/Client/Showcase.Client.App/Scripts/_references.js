@@ -103,3 +103,7 @@
 /// <reference path="../app/home-page/statistics-directive.js" />
 /// <reference path="../app/common/animate-directive.js" />
 /// <reference path="../gulpfile.js" />
+/// <reference path="../app/common/http-response-interceptor.js" />
+/// <reference path="../app/home-page/statistics-directive.js" />
+/// <reference path="../app/project-details/owl-carousel-directive.js" />
+/// <reference path="../app/common/animate-directive.js" />
