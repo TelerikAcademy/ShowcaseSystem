@@ -1,11 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular
-        .module('showcaseSystem.directives')
-        .directive('owlCarousel', [owlCarouselDirective]);
-
-    function owlCarouselDirective() {
+    var owlCarouselDirective = function owlCarouselDirective() {
         return {
             restrict: 'A',
             templateUrl: '/app/project-details/owl-carousel-directive.html',
@@ -71,6 +67,10 @@
                 //    afterLazyLoad: false
                 //});
             }
-        }
+        };
     };
+
+    angular
+        .module('showcaseSystem.directives')
+        .directive('owlCarousel', [owlCarouselDirective]);
 }());

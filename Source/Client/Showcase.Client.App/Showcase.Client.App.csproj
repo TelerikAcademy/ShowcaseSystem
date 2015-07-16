@@ -125,7 +125,6 @@
     <Content Include="app\common\http-response-interceptor.js" />
     <Content Include="app\home-page\statistics-directive.html" />
     <Content Include="app\home-page\statistics-directive.js" />
-    <Content Include="app\common\http-response-interceptor.js" />
     <Content Include="app\project-details\owl-carousel-directive.html" />
     <Content Include="app\project-details\owl-carousel-directive.js" />
     <Content Include="app\project-details\project-details-view.html" />
@@ -165,6 +164,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="gulpfile.js" />
     <Content Include="packages.config" />
     <Content Include="scripts\angular-route.min.js.map" />
     <Content Include="scripts\angular.min.js.map" />
@@ -202,6 +202,7 @@
     <Content Include="scripts\epona\plugins\owl-carousel\owl.carousel.min.js.map">
       <DependentUpon>owl.carousel.min.js</DependentUpon>
     </Content>
+    <Content Include="package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

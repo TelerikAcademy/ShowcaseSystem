@@ -1,10 +1,7 @@
 ﻿(function () {
     'use strict';
-    
-    angular.module('showcaseSystem.data')
-        .factory('homePageData', ['data', homePageData]);
 
-    function homePageData(data) {
+    var homePageData = function homePageData(data) {
         function getStatistics() {
             return data.get('statistics');
         }
@@ -17,5 +14,8 @@
             getStatistics: getStatistics,
             getLatestProjects: getLatestProjects,
         };
-    }
+    };
+
+    angular.module('showcaseSystem.data')
+        .factory('homePageData', ['data', homePageData]);
 }());

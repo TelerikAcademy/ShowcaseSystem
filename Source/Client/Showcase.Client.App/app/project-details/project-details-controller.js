@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function (projectDetailsData, $routeParams) {
+    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams) {
         var vm = this;
         var id = $routeParams.id;
 

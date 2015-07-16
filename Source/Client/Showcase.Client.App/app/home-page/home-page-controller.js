@@ -1,7 +1,7 @@
 ﻿(function() {
     'use strict';
 
-    var homePageController = function (homePageData, notifier) {
+    var homePageController = function homePageController(homePageData, notifier) {
         var vm = this;
 
         homePageData.getLatestProjects()

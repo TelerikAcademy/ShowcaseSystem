@@ -1,11 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular
-        .module('showcaseSystem.directives')
-        .directive('revolutionSlider', [revolutionSliderDirective]);
-
-    function revolutionSliderDirective() {
+    var revolutionSliderDirective = function revolutionSliderDirective() {
         return {
             restrict: 'A',
             templateUrl: '/app/home-page/revolution-slider-directive.html',
@@ -87,5 +83,10 @@
                 });
             }
         };
-    }
+    };
+
+    angular
+        .module('showcaseSystem.directives')
+        .directive('revolutionSlider', [revolutionSliderDirective]);
+
 }());

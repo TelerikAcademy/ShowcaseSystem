@@ -1,18 +1,14 @@
 (function() {
     'use strict';
 
-    angular
-        .module('showcaseSystem.directives')
-        .directive('statistics', ['jQuery', statisticsDirective]);
-
-    function statisticsDirective(jQuery) {
+    var statisticsDirective = function statisticsDirective(jQuery) {
         return {
             restrict: 'A',
             templateUrl: '/app/home-page/statistics-directive.html',
             scope: {
                 stats: '='
             },
-            link: function(scope, element) {
+            link: function (scope, element) {
                 element.find('[data-to]').each(function () {
                     var $counter = jQuery(this);
                     $counter.appear(function () {
@@ -21,5 +17,9 @@
                 });
             }
         };
-    }
+    };
+
+    angular
+        .module('showcaseSystem.directives')
+        .directive('statistics', ['jQuery', statisticsDirective]);
 }());

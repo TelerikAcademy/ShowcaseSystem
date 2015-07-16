@@ -3,7 +3,7 @@
 
     var projectDetailsData = function projectDetailsData($http, $q, data, appSettings) {
         function getProject(id) {
-            return data.get('projects/' + id)
+            return data.get('projects/' + id);
         }
 
         function likeProject(id) {
@@ -48,8 +48,8 @@
             getProject: getProject,
             likeProject: likeProject,
             commentProject: commentProject
-        }
-    }
+        };
+    };
     
     angular.module('showcaseSystem.data')
         .factory('projectDetailsData', ['$http', '$q', 'data', 'appSettings', projectDetailsData]);

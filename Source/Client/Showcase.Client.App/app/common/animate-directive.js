@@ -1,11 +1,7 @@
 (function () {
     'use strict';
 
-    angular
-        .module('showcaseSystem.directives')
-        .directive('animate', ['jQuery', '$window', animationDirective]);
-
-    function animationDirective(jQuery, $window) {
+    var animationDirective = function animationDirective(jQuery, $window) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -29,5 +25,9 @@
                 }
             }
         };
-    }
+    };
+
+    angular
+        .module('showcaseSystem.directives')
+        .directive('animate', ['jQuery', '$window', animationDirective]);
 }());
