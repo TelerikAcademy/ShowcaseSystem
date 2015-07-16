@@ -12,7 +12,7 @@
                 element.addClass('appear-animation');
 
                 if(jQuery($window).width() > 767) {
-                    element.appear(function() {
+                    element.appear(function () {
                         var delay = (element.attr("data-animation-delay") || 1);
                         if(delay > 1) {
                             element.css("animation-delay", delay + "ms");

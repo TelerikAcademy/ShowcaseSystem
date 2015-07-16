@@ -210,7 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\common\animation-directive.js" />
+    <Content Include="app\common\animate-directive.js" />
     <Content Include="app\common\footer-directive.html" />
     <Content Include="app\common\footer-directive.js" />
     <Content Include="app\common\header-directive.html" />
