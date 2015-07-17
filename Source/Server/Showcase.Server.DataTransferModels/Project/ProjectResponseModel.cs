@@ -11,6 +11,7 @@
     using Newtonsoft.Json;
 
     using Showcase.Data.Models;
+    using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
 
     public class ProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
@@ -40,10 +41,6 @@
 
         public IEnumerable<TagResponseModel> Tags { get; set; }
 
-        public IEnumerable<CommentResponseModel> Comments { get; set; }
-
-        public int ImagesCount { get; set; }
-
         public bool IsLiked { get; set; }
 
         public string TitleUrl
@@ -58,7 +55,7 @@
         {
             get
             {
-                return this.CreatedOn.ToShortDateString();
+                return this.CreatedOn.ToString(Constants.ShortDateFormat);
             }
         }
 
@@ -67,7 +64,6 @@
             configuration.CreateMap<Project, ProjectResponseModel>()
                 .ForMember(pr => pr.Name, opt => opt.MapFrom(pr => pr.Title))
                 .ForMember(pr => pr.Likes, opt => opt.MapFrom(pr => pr.Likes.Count))
-                .ForMember(pr => pr.ImagesCount, opt => opt.MapFrom(pr => pr.Images.Count))
                 .ForMember(pr => pr.Visits, opt => opt.MapFrom(pr => pr.Visits.Count))
                 .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.Url + "." + pr.MainImage.FileExtension))
                 .ForMember(pr => pr.ImageUrls, opt => opt.MapFrom(pr => pr.Images.Select(i => i.Url + "." + i.FileExtension)))
