@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
     using System.Linq;
+
     using Showcase.Data.Models;
     using Showcase.Services.Common;
 
@@ -10,6 +11,8 @@
 
         void LikeProject(int projectId, string username);
 
-        void DisLikeProject(int projectId, string username);
+        void DislikeProject(int projectId, string username);
+
+        bool ProjectIsLikedByUser(int projectId, string username);
     }
 }
