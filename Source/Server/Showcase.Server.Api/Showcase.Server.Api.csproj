@@ -203,6 +203,7 @@
   <ItemGroup>
     <Compile Include="Config\NinjectConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
