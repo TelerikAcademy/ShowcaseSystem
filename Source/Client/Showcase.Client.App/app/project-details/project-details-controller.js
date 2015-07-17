@@ -35,7 +35,8 @@
 
         projectDetailsData.getComments(id, vm.commentsPage)
             .then(function (data) {
-                vm.comments = data;
+                vm.comments = data.comments;
+                vm.isLastPage = data.isLastPage;
                 vm.commentsPage++;
             });
 
@@ -66,7 +67,8 @@
         vm.loadMoreComments = function (id) {
             projectDetailsData.getComments(id, vm.commentsPage)
                 .then(function (data) {
-                    vm.comments = vm.comments.concat(data);
+                    vm.comments = vm.comments.concat(data.comments);
+                    vm.isLastPage = data.isLastPage;
                     vm.commentsPage++;
                 });
         }
