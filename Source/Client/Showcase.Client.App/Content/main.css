@@ -5,3 +5,22 @@
 .statistics .boxed {
     margin: 40px 0;
 }
+
+#loading-bar .bar {
+    background: #8ab933;
+}
+
+#loading-bar .peg {
+  -moz-box-shadow: #8ab933 1px 0 6px 1px;
+  -ms-box-shadow: #8ab933 1px 0 6px 1px;
+  -webkit-box-shadow: #8ab933 1px 0 6px 1px;
+  box-shadow: #8ab933 1px 0 6px 1px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  width: 24px;
+  height: 24px;
+
+  border-top-color:  #8ab933;
+  border-left-color: #8ab933;
+}
