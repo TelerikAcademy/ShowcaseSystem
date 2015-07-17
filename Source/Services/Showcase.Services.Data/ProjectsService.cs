@@ -30,5 +30,14 @@
                 .All()
                 .Where(p => p.Id == id);
         }
+
+        public IQueryable<Project> GetProjectsPage(int page)
+        {
+            return this.projects
+                .All()
+                .OrderByDescending(pr => pr.CreatedOn)
+                .Skip(Constants.ProjectsPageProjectsCount * page)
+                .Take(Constants.ProjectsPageProjectsCount);
+        }
     }
 }

@@ -16,6 +16,14 @@
             config.Formatters.Add(new BrowserJsonFormatter());
 
             config.Routes.MapHttpRoute(
+                name: "ProjectsListApi",
+                routeTemplate: "api/{controller}/List",
+                defaults: new {
+                    controller = "ProjectsController",
+                    pageIndex = RouteParameter.Optional 
+                });
+            
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional });

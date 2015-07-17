@@ -100,6 +100,8 @@
 /// <reference path="../app/project-details/project-details-data.js" />
 /// <reference path="../app/common/data.js" />
 /// <reference path="../app/home-page/statistics-directive.js" />
+/// <reference path="../app/projects-page/projects-page-data.js" />
+/// <reference path="../app/projects-page/projects-page-controller.js" />/// <reference path="../app/home-page/statistics-directive.js" />
 /// <reference path="../app/common/animate-directive.js" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="../app/home-page/statistics-directive.js" />

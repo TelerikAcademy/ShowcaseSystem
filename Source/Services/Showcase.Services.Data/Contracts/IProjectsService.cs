@@ -10,5 +10,7 @@
         IQueryable<Project> LatestProjects();
 
         IQueryable<Project> GetProjectById(int id);
+
+        IQueryable<Project> GetProjectsPage(int page);
     }
 }
