@@ -42,13 +42,17 @@
         [Route("api/Comments/{id}/{page}")]
         public IHttpActionResult Get(int id, int page)
         {
-            var model = this.comments
-                .GetAllComments(id)
-                .Skip(page * PageSize)
-                .Take(PageSize)
-                .Project()
-                .To<CommentResponseModel>()
-                .ToList();
+            var model = new CommentsPageResponseModel
+            {
+                Comments = this.comments
+                    .GetAllComments(id)
+                    .Skip(page * PageSize)
+                    .Take(PageSize)
+                    .Project()
+                    .To<CommentResponseModel>()
+                    .ToList(),
+                IsLastPage = this.comments.GetAllComments(id).Count() <= (page + 1) * PageSize
+            };
 
             return this.Data(model);
         }

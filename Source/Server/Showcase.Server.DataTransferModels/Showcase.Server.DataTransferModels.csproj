@@ -60,6 +60,7 @@
     <Compile Include="Project\CommentRequestModel.cs" />
     <Compile Include="ODataResult.cs" />
     <Compile Include="Project\CommentResponseModel.cs" />
+    <Compile Include="Project\CommentsPageResponseModel.cs" />
     <Compile Include="Project\ProjectResponseModel.cs" />
     <Compile Include="Project\ProjectResponseSimpleModel.cs" />
     <Compile Include="Project\TagResponseModel.cs" />
