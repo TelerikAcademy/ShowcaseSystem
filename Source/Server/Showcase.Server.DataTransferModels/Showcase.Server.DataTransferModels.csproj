@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Project\CommentRequestModel.cs" />
     <Compile Include="Project\CommentResponseModel.cs" />
+    <Compile Include="Project\CommentsPageResponseModel.cs" />
     <Compile Include="Project\ProjectResponseModel.cs" />
     <Compile Include="Project\TagResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
