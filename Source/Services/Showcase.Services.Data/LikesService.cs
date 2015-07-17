@@ -44,7 +44,7 @@
             }
         }
 
-        public void DisLikeProject(int projectId, string username)
+        public void DislikeProject(int projectId, string username)
         {
             var userId = this.users.GetUserId(username);
 
@@ -58,6 +58,12 @@
                 this.likes.Delete(like);
                 this.likes.SaveChanges();
             }
+        }
+
+        public bool ProjectIsLikedByUser(int projectId, string username)
+        {
+            return this.AllLikesForProject(projectId)
+                .Any(l => l.User.Username == username);
         }
     }
 }
