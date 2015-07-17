@@ -14,22 +14,31 @@
                     </button>
                 </div>
             </div>
-            <div class="col-md-7" animate="fadeInRight" data-animation-delay="200">
+            <div class="col-md-7" animate="fadeInRight" data-animation-delay="200" style="margin-bottom: 10px;">
                 <h2 style="margin-bottom: 0">{{vm.project.name}}</h2>
-
                 <div animate="fadeIn" data-animation-delay="1000">
                     <i class="fa fa-clock-o" style="margin-right: 5px;"></i><span style="margin-right: 10px; font-size: 0.85em;">{{vm.project.shortDate}}</span> |
-                    <i class="fa fa-code" style="margin-right: 5px; margin-left: 10px;"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" style="margin-right: 10px">repository </a> |
-                    <i class="fa fa-external-link-square" style="margin-right: 3px; margin-left: 10px;"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank"> live demo</a><br />
+                    <i class="fa fa-code" style="margin-right: 5px; margin-left: 10px;"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" style="margin-right: 10px">repository</a> |
+                    <i class="fa fa-external-link-square" style="margin-right: 5px; margin-left: 10px;"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank">live demo</a>
+                    <div class="pull-right">
+                        <a href="#" class="btn btn-sm ico-only rounded btn-facebook">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="btn btn-sm ico-only rounded btn-twitter">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-sm ico-only rounded btn-google-plus">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
                 </div>
-
                 <p class="text-justify" style="margin-top: 15px;">
                     {{vm.project.content}}
                 </p>
                 <span ng-repeat="collaborator in vm.project.collaborators">
                     <a href="/users/{{collaborator}}" style="margin-bottom: 2px; margin-right: 5px;">{{collaborator}}</a>
                 </span>
-                <div style="margin-top: 10px;">
+                <div style="margin-top: 5px;">
                     <a href="#" ng-repeat="tag in vm.project.tags">
                         <span class="label label-default" style="background-color: {{tag.backgroundColor}}; color: {{tag.foregroundColor}}">{{tag.name}}</span>
                     </a>
@@ -53,7 +62,7 @@
                     </p>
                 </div>
                 <div class="text-center" style="margin-bottom: 20px; ">
-                    <a ng-click="vm.loadMoreComments(vm.project.id)">Load More....</a>
+                    <a ng-click="vm.loadMoreComments(vm.project.id)" ng-hide="vm.isLastPage">Load More....</a>
                 </div>
                 <form style="margin: 0; padding: 0">
                     <textarea rows="8" cols="70" ng-model="vm.commentText" style="padding-left: 10px; padding-right: 10px"></textarea>
