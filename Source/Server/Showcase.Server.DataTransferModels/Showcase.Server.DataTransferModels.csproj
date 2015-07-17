@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project\CommentRequestModel.cs" />
     <Compile Include="ODataResult.cs" />
     <Compile Include="Project\CommentResponseModel.cs" />
     <Compile Include="Project\ProjectResponseModel.cs" />
