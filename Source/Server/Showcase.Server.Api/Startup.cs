@@ -12,6 +12,7 @@
 
     using Showcase.Data;
     using Showcase.Data.Migrations;
+    using Showcase.Server.Api.Infrastructure;
     using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
 
@@ -23,7 +24,9 @@
             AutoMapperConfig.RegisterMappings(Assembly.Load(Constants.DataTransferModelsAssembly));
 
             var httpConfig = new HttpConfiguration();
+            httpConfig.MapHttpAttributeRoutes();
 
+            ODataConfig.Register(httpConfig);
             WebApiConfig.Register(httpConfig);
 
             app

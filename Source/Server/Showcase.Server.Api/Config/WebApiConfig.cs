@@ -4,25 +4,16 @@
     using System.Web.Http.Cors;
 
     using Newtonsoft.Json.Serialization;
+
     using Showcase.Server.Api.Infrastructure;
 
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
-            config.MapHttpAttributeRoutes();
-
             config.Formatters.Clear();
             config.Formatters.Add(new BrowserJsonFormatter());
 
-            config.Routes.MapHttpRoute(
-                name: "ProjectsListApi",
-                routeTemplate: "api/{controller}/List",
-                defaults: new {
-                    controller = "ProjectsController",
-                    pageIndex = RouteParameter.Optional 
-                });
-            
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
