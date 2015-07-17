@@ -123,6 +123,8 @@
   <ItemGroup>
     <Content Include="app\common\data.js" />
     <Content Include="app\common\http-response-interceptor.js" />
+    <Content Include="app\common\project-directive.html" />
+    <Content Include="app\common\project-directive.js" />
     <Content Include="app\home-page\statistics-directive.html" />
     <Content Include="app\home-page\statistics-directive.js" />
     <Content Include="app\project-details\owl-carousel-directive.html" />
