@@ -3,8 +3,8 @@
     using System;
     using System.Linq;
 
-    using Showcase.Data.Models;
     using Showcase.Data.Common.Repositories;
+    using Showcase.Data.Models;
     using Showcase.Services.Data.Contracts;
 
     public class LikesService : ILikesService

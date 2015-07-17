@@ -6,9 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    using Showcase.Services.Data.Contracts;
-    using Showcase.Data.Models;
     using Showcase.Data.Common.Repositories;
+    using Showcase.Data.Models;
+    using Showcase.Services.Data.Contracts;
 
     public class VisitsService : IVisitsService
     {

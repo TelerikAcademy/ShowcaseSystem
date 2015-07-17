@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
+    using System.Web.OData;
+    using System.Web.OData.Query;
 
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
@@ -13,17 +15,17 @@
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data.Contracts;
 
-    public class ProjectsController : ApiController
+    public class ProjectsController : BaseController
     {
-        private readonly IProjectsService homePageService;
+        private readonly IProjectsService projectsService;
 
         private readonly ILikesService likesService;
 
         private readonly IVisitsService visitsService;
 
-        public ProjectsController(IProjectsService homePageService, ILikesService likesService, IVisitsService visitsService)
+        public ProjectsController(IProjectsService projectsService, ILikesService likesService, IVisitsService visitsService)
         {
-            this.homePageService = homePageService;
+            this.projectsService = projectsService;
             this.likesService = likesService;
             this.visitsService = visitsService;
         }
@@ -31,7 +33,7 @@
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var model = this.homePageService
+            var model = this.projectsService
                 .LatestProjects()
                 .Project()
                 .To<ProjectResponseModel>()
@@ -47,7 +49,7 @@
 
             this.visitsService.VisitProject(id, username);
 
-            var model = this.homePageService
+            var model = this.projectsService
                 .GetProjectById(id)
                 .Project()
                 .To<ProjectResponseModel>()
@@ -94,9 +96,22 @@
         [Route("api/Projects/Comment/{id}")]
         public IHttpActionResult Comment(int id)
         {
-
-
             return this.Ok();
+        }
+
+        [HttpGet]
+        [Route("odata/Search")]
+        [EnableQuery(PageSize = 10,
+            AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy |
+            AllowedQueryOptions.Skip | AllowedQueryOptions.Top | AllowedQueryOptions.Select)]
+        public IQueryable<ProjectResponseSimpleModel> Search()
+        {
+            var model = this.projectsService
+                .GetProjectsList()
+                .Project()
+                .To<ProjectResponseSimpleModel>();
+
+            return model;
         }
     }
 }
