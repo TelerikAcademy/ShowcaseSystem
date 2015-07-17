@@ -82,21 +82,35 @@ namespace Showcase.Data.Migrations
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a1",
+                Url = "/content/epona/images/demo/portfolio/a2",
             };
 
             var image3 = new Image
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a1",
+                Url = "/content/epona/images/demo/portfolio/a3",
             };
 
             var image4 = new Image
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a1",
+                Url = "/content/epona/images/demo/portfolio/a4",
+            };
+
+            var image5 = new Image
+            {
+                OriginalFilename = "Sample image",
+                FileExtension = "jpg",
+                Url = "/content/epona/images/demo/portfolio/a5",
+            };
+
+            var image6 = new Image
+            {
+                OriginalFilename = "Sample image",
+                FileExtension = "jpg",
+                Url = "/content/epona/images/demo/portfolio/a6",
             };
 
             var comment = new Comment
@@ -141,6 +155,8 @@ namespace Showcase.Data.Migrations
                     project.Images.Add(image2);
                     project.Images.Add(image3);
                     project.Images.Add(image4);
+                    project.Images.Add(image5);
+                    project.Images.Add(image6);
 
                     project.Comments.Add(comment);
                     project.Comments.Add(comment2);
