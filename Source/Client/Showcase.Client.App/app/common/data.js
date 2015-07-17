@@ -2,7 +2,11 @@
     'use strict';
 
     var data = function data($http, $q, appSettings) {
-        function get(url) {
+        var headers = {
+            'Content-Type': 'application/json'
+        };
+
+        function get(url, isVisited) {
             var URL = appSettings.serverPath + url;
             var deferred = $q.defer();
 
@@ -14,8 +18,21 @@
             return deferred.promise;
         }
 
+        function post(url, data) {
+            var URL = appSettings.serverPath + url;
+            var deferred = $q.defer();
+
+            $http.post(URL, data, headers)
+                .success(function (data) {
+                    deferred.resolve(data);
+                });
+
+            return deferred.promise;
+        }
+
         return {
-            get: get
+            get: get,
+            post: post
         };
     };
 
