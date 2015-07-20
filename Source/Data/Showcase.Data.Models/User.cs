@@ -27,8 +27,6 @@
         [Required]
         public string AvatarUrl { get; set; }
 
-        public string AvatarUrl { get; set; }
-
         public ICollection<Project> Projects { get; set; }
 
         public ICollection<Like> Likes { get; set; }
