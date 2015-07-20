@@ -9,9 +9,9 @@
 
     public class CommentsService : ICommentsService
     {
-        private IRepository<Comment> comments;
+        private readonly IRepository<Comment> comments;
 
-        private IUsersService users;
+        private readonly IUsersService users;
 
         public CommentsService(IRepository<Comment> comments, IUsersService users)
         {
@@ -42,6 +42,14 @@
             return this.comments
                 .All()
                 .Where(c => c.ProjectId == id)
+                .OrderByDescending(c => c.CreatedOn);
+        }
+
+        public IQueryable<Comment> GetUserComments(string username)
+        {
+            return this.comments
+                .All()
+                .Where(c => c.User.Username == username)
                 .OrderByDescending(c => c.CreatedOn);
         }
     }
