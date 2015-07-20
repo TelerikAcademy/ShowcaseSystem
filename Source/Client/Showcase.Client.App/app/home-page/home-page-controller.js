@@ -1,7 +1,7 @@
 ﻿(function() {
     'use strict';
 
-    var homePageController = function homePageController(homePageData, notifier) {
+    var homePageController = function homePageController(homePageData) {
         var vm = this;
 
         homePageData.getLatestProjects()
@@ -17,5 +17,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('HomePageController', ['homePageData', 'notifier', homePageController]);
+        .controller('HomePageController', ['homePageData', homePageController]);
 }());

@@ -115,3 +115,4 @@
 /// <reference path="../app/common/notifier-service.js" />
 /// <reference path="../app/common/base-data.js" />
 /// <reference path="angular-cookies.min.js" />
+/// <reference path="../app/common/main-controller.js" />
