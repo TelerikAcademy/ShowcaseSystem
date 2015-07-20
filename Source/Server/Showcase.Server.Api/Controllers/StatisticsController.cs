@@ -5,7 +5,7 @@
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Services.Data.Contracts;
 
-    public class StatisticsController : BaseController
+    public class StatisticsController : ApiController
     {
         private IStatisticsService statisticsService;
 
