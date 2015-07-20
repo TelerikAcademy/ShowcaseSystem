@@ -1,30 +1,32 @@
 ﻿namespace Showcase.Data.Models
 {
+    using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-
-    public class User : IdentityUser
+    public class User
     {
+        public string Id { get; set; }
+
         public User()
         {
+            this.Id = Guid.NewGuid().ToString(); // TODO: change to int
             this.Projects = new HashSet<Project>();
             this.Comments = new HashSet<Comment>();
             this.Likes = new HashSet<Like>();
         }
 
-<<<<<<< HEAD
-        public int Id { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Index(IsUnique = true)]
+        public string UserName { get; set; }
 
-        public string Username { get; set; }
-
+        [Required]
         public string AvatarUrl { get; set; }
 
-=======
->>>>>>> c334b30... User model changed to match the Identity needs
         public ICollection<Project> Projects { get; set; }
 
         public ICollection<Like> Likes { get; set; }

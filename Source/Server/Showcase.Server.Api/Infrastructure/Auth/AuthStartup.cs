@@ -14,8 +14,6 @@
     {
         public static void ConfigureAuth(IAppBuilder app)
         {
-            app.CreatePerOwinContext(ShowcaseDbContext.Create);
-
             // Configure the web api token endpoint
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {
