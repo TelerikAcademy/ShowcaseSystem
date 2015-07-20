@@ -14,9 +14,7 @@
     {
         public static void ConfigureAuth(IAppBuilder app)
         {
-            // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(ShowcaseDbContext.Create);
-            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             // Configure the web api token endpoint
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions

@@ -12,12 +12,20 @@
     using Microsoft.Owin.Security.OAuth;
 
     using Showcase.Data.Models;
+    using Showcase.Services.Logic;
+    using Showcase.Services.Logic.Contracts;
 
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string publicClientId;
+        private readonly IAccountProvider accountProvider;
 
         public ApplicationOAuthProvider(string publicClientId)
+            :this(publicClientId, new AccountProvider()) // TODO: remove this, if possible
+        {
+        }
+
+        public ApplicationOAuthProvider(string publicClientId, IAccountProvider accountProvider)
         {
             if (publicClientId == null)
             {
@@ -25,6 +33,7 @@
             }
 
             this.publicClientId = publicClientId;
+            this.accountProvider = accountProvider;
         }
 
         public static AuthenticationProperties CreateProperties()
@@ -111,12 +120,38 @@
                 context.SetError("invalid_grant", string.Format("Information is not valid"));
                 isValid = false;
             }
+            else if (string.IsNullOrEmpty(context.Password) || string.IsNullOrWhiteSpace(context.Password))
+            {
+                context.SetError("invalid_grant", string.Format("Information is not valid"));
+                isValid = false;
+            }
 
             return isValid;
         }
 
         private async Task<User> LoginUser(OAuthGrantResourceOwnerCredentialsContext context, ApplicationUserManager userManager)
         {
+            var user = await userManager.FindByNameAsync(context.UserName);
+            user = await userManager.FindAsync(context.UserName, context.Password);
+            if (user == null)
+            {
+                user = this.accountProvider.GetAccount(context.UserName, context.Password);
+                if (user == null)
+                {
+                    context.SetError("invalid_grant", string.Format("Information is not valid"));
+                    return null;
+                }
+
+                var result = await userManager.CreateAsync(user, context.Password);
+                this.ValidateIdentityResult(result, context);
+                if (context.HasError)
+                {
+                    return null;
+                }
+            }
+
+            return user;
+
             //var userEmail = User.GetUserEmail(context.UserName);
             //var user = await userManager.FindAsync(userEmail, context.Password);
 
@@ -132,8 +167,6 @@
             //}
 
             //return user;
-
-            return new User();
         }
 
         private void ValidateContext(OAuthGrantResourceOwnerCredentialsContext context)
@@ -146,25 +179,17 @@
 
         private void ValidateIdentityResult(IdentityResult result, OAuthGrantResourceOwnerCredentialsContext context)
         {
-            //if (!result.Succeeded)
-            //{
-            //    if (result.Errors != null)
-            //    {
-            //        var error = result.Errors.FirstOrDefault();
-            //        if (error != null)
-            //        {
-            //            var userEmailIndex = error.IndexOf(User.EmailSuffix);
-
-            //            if (userEmailIndex >= 0)
-            //            {
-            //                // Hides the email suffix
-            //                error = error.Substring(0, userEmailIndex) + error.Substring(userEmailIndex + User.EmailSuffix.Length);
-            //            }
-
-            //            context.SetError("error", error);
-            //        }
-            //    }
-            //}
+            if (!result.Succeeded)
+            {
+                if (result.Errors != null)
+                {
+                    var error = result.Errors.FirstOrDefault();
+                    if (error != null)
+                    {
+                        context.SetError("error", error);
+                    }
+                }
+            }
         }
     }
 }
