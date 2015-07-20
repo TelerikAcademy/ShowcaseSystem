@@ -100,8 +100,8 @@
         }
 
         [HttpGet]
-        [Route("odata/Search")]
-        [EnableQuery(PageSize = 10,
+        [Route("api/odata/Search")]
+        [EnableQuery(PageSize = 64,
             AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy |
             AllowedQueryOptions.Skip | AllowedQueryOptions.Top | AllowedQueryOptions.Select)]
         public IQueryable<ProjectResponseSimpleModel> Search()
