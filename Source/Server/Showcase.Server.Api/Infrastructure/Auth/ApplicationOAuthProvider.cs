@@ -5,27 +5,25 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OAuth;
 
     using Showcase.Data.Models;
-    using Showcase.Services.Logic;
-    using Showcase.Services.Logic.Contracts;
+    using Showcase.Services.Data;
+    using Showcase.Services.Data.Contracts;
 
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         private readonly string publicClientId;
-        private readonly IAccountProvider accountProvider;
+        private readonly IUsersService usersService;
 
         public ApplicationOAuthProvider(string publicClientId)
-            :this(publicClientId, new AccountProvider()) // TODO: remove this, if possible
+            :this(publicClientId, new UsersService()) // TODO: remove this, if possible
         {
         }
 
-        public ApplicationOAuthProvider(string publicClientId, IAccountProvider accountProvider)
+        public ApplicationOAuthProvider(string publicClientId, IUsersService usersService)
         {
             if (publicClientId == null)
             {
@@ -33,7 +31,7 @@
             }
 
             this.publicClientId = publicClientId;
-            this.accountProvider = accountProvider;
+            this.usersService = usersService;
         }
 
         public static AuthenticationProperties CreateProperties()
@@ -43,14 +41,11 @@
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
-
-            var user = await this.GetUserFromContext(context, userManager);
-
+            var user = await this.GetUserFromContext(context);
             if (user != null)
             {
-                var oAuthIdentity = await user.GenerateUserIdentityAsync(userManager, OAuthDefaults.AuthenticationType);
-                var cookiesIdentity = await user.GenerateUserIdentityAsync(userManager, CookieAuthenticationDefaults.AuthenticationType);
+                var oAuthIdentity = ClaimsIdentityFactory.Create(user, OAuthDefaults.AuthenticationType);
+                var cookiesIdentity = ClaimsIdentityFactory.Create(user, CookieAuthenticationDefaults.AuthenticationType);
 
                 AuthenticationProperties properties = CreateProperties();
                 AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
@@ -95,13 +90,13 @@
             return Task.FromResult<object>(null);
         }
 
-        private async Task<User> GetUserFromContext(OAuthGrantResourceOwnerCredentialsContext context, ApplicationUserManager userManager)
+        private async Task<User> GetUserFromContext(OAuthGrantResourceOwnerCredentialsContext context)
         {
             User user = null;
 
             if (this.IsValidContext(context))
             {
-                user = await this.LoginUser(context, userManager);
+                user = await this.LoginUser(context);
             }
 
             return user;
@@ -129,67 +124,18 @@
             return isValid;
         }
 
-        private async Task<User> LoginUser(OAuthGrantResourceOwnerCredentialsContext context, ApplicationUserManager userManager)
+        private async Task<User> LoginUser(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var user = await userManager.FindByNameAsync(context.UserName);
-            user = await userManager.FindAsync(context.UserName, context.Password);
+            var user = await this.usersService.GetAccountAsync(context.UserName, context.Password);
+
+            // Check if remote login credentials are correct
             if (user == null)
             {
-                user = this.accountProvider.GetAccount(context.UserName, context.Password);
-                if (user == null)
-                {
-                    context.SetError("invalid_grant", string.Format("Information is not valid"));
-                    return null;
-                }
-
-                var result = await userManager.CreateAsync(user, context.Password);
-                this.ValidateIdentityResult(result, context);
-                if (context.HasError)
-                {
-                    return null;
-                }
+                context.SetError("invalid_grant", string.Format("Information is not valid"));
+                return null;
             }
 
             return user;
-
-            //var userEmail = User.GetUserEmail(context.UserName);
-            //var user = await userManager.FindAsync(userEmail, context.Password);
-
-            //if (user != null && !string.IsNullOrEmpty(user.Authentication.SecondPassword))
-            //{
-            //    var formData = await context.Request.ReadFormAsync();
-            //    var secondPassword = formData["SecondPassword"];
-            //    if (!DataValidator.SecondPasswordIsCorrect(user, secondPassword))
-            //    {
-            //        context.SetError("invalid_grant", "Invalid second password");
-            //        user = null;
-            //    }
-            //}
-
-            //return user;
-        }
-
-        private void ValidateContext(OAuthGrantResourceOwnerCredentialsContext context)
-        {
-            if (context == null || string.IsNullOrEmpty(context.UserName) || string.IsNullOrWhiteSpace(context.UserName))
-            {
-                context.SetError("invalid_grant", "The username is invalid");
-            }
-        }
-
-        private void ValidateIdentityResult(IdentityResult result, OAuthGrantResourceOwnerCredentialsContext context)
-        {
-            if (!result.Succeeded)
-            {
-                if (result.Errors != null)
-                {
-                    var error = result.Errors.FirstOrDefault();
-                    if (error != null)
-                    {
-                        context.SetError("error", error);
-                    }
-                }
-            }
         }
     }
 }

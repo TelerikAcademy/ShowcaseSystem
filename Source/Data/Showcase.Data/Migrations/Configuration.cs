@@ -55,7 +55,8 @@ namespace Showcase.Data.Migrations
             {
                 var user = new User
                 {
-                    UserName = "SeededUser" + i
+                    UserName = "SeededUser" + i,
+                    AvatarUrl = "SampleAvatar"
                 };
 
                 context.Users.Add(user);

@@ -4,12 +4,10 @@
     using System.Data.Entity;
     using System.Linq;
 
-    using Microsoft.AspNet.Identity.EntityFramework;
-
     using Showcase.Data.Common.Models;
     using Showcase.Data.Models;
 
-    public class ShowcaseDbContext : IdentityDbContext<User>
+    public class ShowcaseDbContext : DbContext
     {
         public ShowcaseDbContext()
             : base("name=ShowcaseSystem")
@@ -27,6 +25,8 @@
         public virtual IDbSet<Visit> Visits { get; set; }
 
         public virtual IDbSet<Image> Images { get; set; }
+
+        public virtual IDbSet<User> Users { get; set; }
 
         public static ShowcaseDbContext Create()
         {

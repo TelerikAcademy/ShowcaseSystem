@@ -8,17 +8,17 @@
 
     public class StatisticsService : IStatisticsService
     {
-        private IRepository<Project> projectsRepo;
+        private IRepository<Project> projects;
 
-        public StatisticsService(IRepository<Project> projectsRepo)
+        public StatisticsService(IRepository<Project> projects)
         {
-            this.projectsRepo = projectsRepo;
+            this.projects = projects;
         }
 
         public object Current()
         {
             // TODO: count only approved
-            return this.projectsRepo
+            return this.projects
                 .All()
                 .GroupBy(pr => 0)
                 .Select(gr => new

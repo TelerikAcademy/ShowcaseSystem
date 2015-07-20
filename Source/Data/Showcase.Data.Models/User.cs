@@ -1,27 +1,32 @@
 ﻿namespace Showcase.Data.Models
 {
+    using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-
-    public class User : IdentityUser
+    public class User
     {
+        public string Id { get; set; }
+
         public User()
         {
+            this.Id = Guid.NewGuid().ToString(); // TODO: change to int
             this.Projects = new HashSet<Project>();
         }
+
+        [Required]
+        [StringLength(50)]
+        [Index(IsUnique = true)]
+        public string UserName { get; set; }
+
+        [Required]
+        public string AvatarUrl { get; set; }
 
         public ICollection<Project> Projects { get; set; }
 
         public ICollection<Like> Likes { get; set; }
-
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
-        {
-            var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
-            return userIdentity;
-        }
     }
 }
