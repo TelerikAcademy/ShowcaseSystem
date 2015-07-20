@@ -10,5 +10,7 @@
         Comment PostComment(int id, string commentText, string username);
 
         IQueryable<Comment> GetAllComments(int id);
+
+        IQueryable<Comment> GetUserComments(string username);
     }
 }
