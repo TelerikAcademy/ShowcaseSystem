@@ -55,6 +55,11 @@ a.social.fa-youtube-play:hover {
     color: #fff!important;
 }
 
+a.social.fa-github:hover {
+    background: gray!important;
+    color: #fff!important;
+}
+
 ::-webkit-scrollbar
 {
   width: 8px;  /* for vertical scrollbars */
