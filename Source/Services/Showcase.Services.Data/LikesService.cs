@@ -9,9 +9,9 @@
 
     public class LikesService : ILikesService
     {
-        private IUsersService users;
+        private readonly IUsersService users;
 
-        private IRepository<Like> likes;
+        private readonly IRepository<Like> likes;
 
         public LikesService(IRepository<Like> likes, IUsersService users)
         {
