@@ -88,7 +88,7 @@
       <Project>{163b402e-b743-422b-8476-0d73089e7c94}</Project>
       <Name>Showcase.Data.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Showcase.Server.Common\Showcase.Server.Common.csproj">
+    <ProjectReference Include="..\Showcase.Server.Common\Showcase.Server.Common.csproj">
       <Project>{a76b5891-7edb-4b8f-89b6-03a8924393a1}</Project>
       <Name>Showcase.Server.Common</Name>
     </ProjectReference>

@@ -272,7 +272,7 @@
       <Project>{7c14f43e-1596-4944-a03e-9884cae0fbd6}</Project>
       <Name>Showcase.Services.Logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Showcase.Server.Common\Showcase.Server.Common.csproj">
+    <ProjectReference Include="..\Showcase.Server.Common\Showcase.Server.Common.csproj">
       <Project>{a76b5891-7edb-4b8f-89b6-03a8924393a1}</Project>
       <Name>Showcase.Server.Common</Name>
     </ProjectReference>
