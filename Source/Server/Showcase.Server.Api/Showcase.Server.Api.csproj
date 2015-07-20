@@ -216,12 +216,14 @@
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BaseODataController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Infrastructure\Auth\ApplicationOAuthBearerAuthenticationProvider.cs" />
     <Compile Include="Infrastructure\Auth\ApplicationOAuthProvider.cs" />
     <Compile Include="Infrastructure\Auth\AuthStartup.cs" />
     <Compile Include="Infrastructure\Auth\ClaimsIdentityFactory.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
     <Compile Include="Infrastructure\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\ObjectFactory.cs" />

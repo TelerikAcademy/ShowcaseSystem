@@ -65,5 +65,12 @@
                 .All()
                 .FirstOrDefaultAsync(u => u.UserName == username);
         }
+
+        public IQueryable<User> GetByUsername(string username)
+        {
+            return this.users
+                .All()
+                .Where(u => u.Username == username);
+        }
     }
 }

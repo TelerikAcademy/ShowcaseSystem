@@ -2,11 +2,12 @@
 {
     using System;
 
+    using AutoMapper;
     using Newtonsoft.Json;
 
     using Showcase.Data.Models;
+    using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
-    using AutoMapper;
 
     public class CommentResponseModel : IMapFrom<Comment>, IHaveCustomMappings
     {
@@ -21,7 +22,7 @@
         {
             get
             {
-                return this.CreatedOn.ToShortDateString();
+                return this.CreatedOn.ToString(Constants.ShortDateFormat);
             }
         }
 

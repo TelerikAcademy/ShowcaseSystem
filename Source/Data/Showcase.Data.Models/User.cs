@@ -15,6 +15,8 @@
         {
             this.Id = Guid.NewGuid().ToString(); // TODO: change to int
             this.Projects = new HashSet<Project>();
+            this.Comments = new HashSet<Comment>();
+            this.Likes = new HashSet<Like>();
         }
 
         [Required]
@@ -25,8 +27,12 @@
         [Required]
         public string AvatarUrl { get; set; }
 
+        public string AvatarUrl { get; set; }
+
         public ICollection<Project> Projects { get; set; }
 
         public ICollection<Like> Likes { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
 }

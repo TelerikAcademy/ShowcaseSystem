@@ -5,72 +5,89 @@
         return {
             restrict: 'A',
             templateUrl: '/app/project-details/owl-carousel-directive.html',
+            scope: {
+                images: '='
+            },
             link: function (scope, element) {
+                scope.$watch('images', function (images) {
+                    if (images && images.length && images.length > 0) {
+                        var slider = element.children(":first");
 
-                // Init Owl Carousel
-                //element.owlCarousel({
-                //    itemsCustom: false,
-                //    itemsDesktop: [1199, 4],
-                //    itemsDesktopSmall: [979, 3],
-                //    itemsTablet: [768, 2],
-                //    itemsTabletSmall: false,
-                //    itemsMobile: [479, 1],
-                //    singleItem: false,
-                //    itemsScaleUp: false,
+                        var options = slider.attr('data-plugin-options');
 
-                //    slideSpeed: 200,
-                //    paginationSpeed: 800,
-                //    rewindSpeed: 1000,
+                        var defaults = {
+                            items: 5,
+                            itemsCustom: false,
+                            itemsDesktop: [1199, 4],
+                            itemsDesktopSmall: [980, 3],
+                            itemsTablet: [768, 2],
+                            itemsTabletSmall: false,
+                            itemsMobile: [479, 1],
+                            singleItem: true,
+                            itemsScaleUp: false,
 
-                //    autoPlay: false,
-                //    stopOnHover: false,
+                            slideSpeed: 200,
+                            paginationSpeed: 800,
+                            rewindSpeed: 1000,
 
-                //    navigation: false,
-                //    navigationText: ["prev", "next"],
-                //    rewindNav: true,
-                //    scrollPerPage: false,
+                            autoPlay: false,
+                            stopOnHover: false,
 
-                //    pagination: true,
-                //    paginationNumbers: false,
+                            navigation: false,
+                            navigationText: [
+                                                '<i class="fa fa-chevron-left"></i>',
+                                                '<i class="fa fa-chevron-right"></i>'
+                            ],
+                            rewindNav: true,
+                            scrollPerPage: false,
 
-                //    responsive: true,
-                //    responsiveRefreshRate: 200,
-                //    responsiveBaseWidth: window,
+                            pagination: true,
+                            paginationNumbers: false,
 
-                //    baseClass: "owl-carousel",
-                //    theme: "owl-theme",
+                            responsive: true,
+                            responsiveRefreshRate: 200,
+                            responsiveBaseWidth: window,
 
-                //    lazyLoad: false,
-                //    lazyFollow: true,
-                //    lazyEffect: "fade",
+                            baseClass: "owl-carousel",
+                            theme: "owl-theme",
 
-                //    autoHeight: false,
+                            lazyLoad: false,
+                            lazyFollow: true,
+                            lazyEffect: "fade",
 
-                //    jsonPath: false,
-                //    jsonSuccess: false,
+                            autoHeight: false,
 
-                //    dragBeforeAnimFinish: true,
-                //    mouseDrag: true,
-                //    touchDrag: true,
+                            jsonPath: false,
+                            jsonSuccess: false,
 
-                //    addClassActive: false,
-                //    transitionStyle: false,
+                            dragBeforeAnimFinish: true,
+                            mouseDrag: true,
+                            touchDrag: true,
 
-                //    beforeUpdate: false,
-                //    afterUpdate: false,
-                //    beforeInit: false,
-                //    afterInit: false,
-                //    beforeMove: false,
-                //    afterMove: false,
-                //    afterAction: false,
-                //    startDragging: false,
-                //    afterLazyLoad: false
-                //});
+                            transitionStyle: false,
+
+                            addClassActive: false,
+
+                            beforeUpdate: false,
+                            afterUpdate: false,
+                            beforeInit: false,
+                            afterInit: false,
+                            beforeMove: false,
+                            afterMove: false,
+                            afterAction: false,
+                            startDragging: false,
+                            afterLazyLoad: false
+                        }
+
+                        var config = jQuery.extend({}, defaults, options, slider.data("plugin-options"));
+                        slider.owlCarousel(config).addClass("owl-carousel-init");
+                    }
+                });
             }
         };
     };
 
     angular
         .module('showcaseSystem.directives')
-        .directive('owlCarousel', [owlCarouselDirective]);
+        .directive('owlCarousel', ['jQuery', owlCarouselDirective]);
 }());

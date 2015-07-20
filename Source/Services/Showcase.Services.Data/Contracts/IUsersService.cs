@@ -1,5 +1,7 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
+    using System.Linq;
+
     using Showcase.Data.Models;
     using Showcase.Services.Common;
     using System.Threading.Tasks;
@@ -9,5 +11,7 @@
         string GetUserId(string username);
 
         Task<User> GetAccountAsync(string username, string password);
+
+        IQueryable<User> GetByUsername(string username);
     }
 }

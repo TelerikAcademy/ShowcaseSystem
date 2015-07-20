@@ -99,6 +99,7 @@
 /// <reference path="../app/project-details/project-details-controller.js" />
 /// <reference path="../app/project-details/project-details-data.js" />
 /// <reference path="../app/common/data.js" />
+/// <reference path="../app/home-page/statistics-directive.js" />
 /// <reference path="../app/projects-page/projects-page-data.js" />
 /// <reference path="../app/projects-page/projects-page-controller.js" />/// <reference path="../app/home-page/statistics-directive.js" />
 /// <reference path="../app/common/animate-directive.js" />
@@ -109,3 +110,5 @@
 /// <reference path="../app/common/http-response-interceptor.js" />
 /// <reference path="loading-bar.min.js" />
 /// <reference path="angular-animate.min.js" />
+/// <reference path="../app/user-profile/user-profile-controller.js" />
+/// <reference path="../app/user-profile/user-profile-data.js" />

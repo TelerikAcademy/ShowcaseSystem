@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentsService.cs" />
+    <Compile Include="Contracts\ICommentsService.cs" />
     <Compile Include="Contracts\ILikesService.cs" />
     <Compile Include="Contracts\IProjectsService.cs" />
     <Compile Include="Contracts\IRemoteDataService.cs" />
@@ -74,6 +76,10 @@
     <ProjectReference Include="..\..\Data\Showcase.Data\Showcase.Data.csproj">
       <Project>{080529dd-48d5-4da7-bd07-38521af97288}</Project>
       <Name>Showcase.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Server\Showcase.Server.DataTransferModels\Showcase.Server.DataTransferModels.csproj">
+      <Project>{1bdc2d81-58b5-4107-b795-715b5c1bdb19}</Project>
+      <Name>Showcase.Server.DataTransferModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\Showcase.Services.Common\Showcase.Services.Common.csproj">
       <Project>{dc34d65f-fcdf-4566-94a2-454526364046}</Project>

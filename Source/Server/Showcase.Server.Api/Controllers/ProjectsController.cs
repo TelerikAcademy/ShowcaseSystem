@@ -13,6 +13,7 @@
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data.Contracts;
 
+    [RoutePrefix("api/Projects")]
     public class ProjectsController : ApiController
     {
         private readonly IProjectsService homePageService;
@@ -44,26 +45,37 @@
         public IHttpActionResult Get(int id)
         {
             var username = this.User.Identity.Name;
-
-            this.visitsService.VisitProject(id, username);
-
+            
             var model = this.homePageService
                 .GetProjectById(id)
                 .Project()
                 .To<ProjectResponseModel>()
                 .FirstOrDefault();
 
+            model.IsLiked = this.likesService.ProjectIsLikedByUser(id, username);
+
             return this.Data(model);
+        }
+
+        [HttpPost]
+        [Route("Visit/{id}")]
+        public IHttpActionResult Visit(int id)
+        {
+            var username = this.User.Identity.Name;
+
+            this.visitsService.VisitProject(id, username);            
+
+            return this.Ok();
         }
 
         // [Authorize]
         [HttpPost]
-        [Route("api/Projects/Like/{id}")]
+        [Route("Like/{id}")]
         public IHttpActionResult Like(int id)
         {
             var username = this.User.Identity.Name;
 
-            if (this.likesService.AllLikesForProject(id).Any(l => l.ProjectId == id && l.User.UserName == username))
+            if (this.likesService.ProjectIsLikedByUser(id, username))
             {
                 return this.Data(false, "You already have liked this project.");
             }
@@ -75,26 +87,17 @@
 
         // [Authorize]
         [HttpPost]
-        [Route("api/Projects/DisLike/{id}")]
+        [Route("DisLike/{id}")]
         public IHttpActionResult DisLike(int id)
         {
             var username = this.User.Identity.Name;
 
-            if (!this.likesService.AllLikesForProject(id).Any(l => l.User.UserName == username))
+            if (!this.likesService.ProjectIsLikedByUser(id, username))
             {
-                return this.Data(false, "You have not yet liked this project.");
+         // return this.Data(false, "You have not yet liked this project.");
             }
 
-            this.likesService.DisLikeProject(id, username);
-
-            return this.Ok();
-        }
-
-        [HttpPost]
-        [Route("api/Projects/Comment/{id}")]
-        public IHttpActionResult Comment(int id)
-        {
-
+            this.likesService.DislikeProject(id, username);
 
             return this.Ok();
         }

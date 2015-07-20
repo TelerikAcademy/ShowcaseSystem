@@ -1,9 +1,9 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
+    using System.Linq;
+
     using Showcase.Data.Models;
     using Showcase.Services.Common;
-
-    using System.Linq;
 
     public interface IProjectsService : IService
     {

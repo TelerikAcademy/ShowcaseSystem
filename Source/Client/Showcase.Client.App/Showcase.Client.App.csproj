@@ -133,6 +133,9 @@
     <Content Include="app\projects-page\projects-page-controller.js" />
     <Content Include="app\projects-page\projects-page-data.js" />
     <Content Include="app\projects-page\projects-page-view.html" />
+    <Content Include="app\user-profile\user-profile-controller.js" />
+    <Content Include="app\user-profile\user-profile-data.js" />
+    <Content Include="app\user-profile\user-profile-view.html" />
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="content\bootstrap.css.map" />
     <Content Include="content\epona\fonts\fontawesome-webfont.eot" />

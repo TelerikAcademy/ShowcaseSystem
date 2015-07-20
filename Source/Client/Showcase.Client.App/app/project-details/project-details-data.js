@@ -1,56 +1,43 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsData = function projectDetailsData($http, $q, data, appSettings) {
+    var projectDetailsData = function projectDetailsData(data, $window) {
         function getProject(id) {
             return data.get('projects/' + id);
         }
 
+        function visitProject(id) {
+            return data.post('projects/visit/' + id);
+        }
+
+        function getComments(id, page) {
+            return data.get('comments/' + id + '/' + page);
+        }
+
         function likeProject(id) {
-            var URL = appSettings.serverPath + 'projects/like/' + id;
-            var deferred = $q.defer();
-
-            $http.post(URL, {})
-                .success(function (data) {
-                    deferred.resolve(data);
-                });
-
-            return deferred.promise;
+            return data.post('projects/like/' + id, {});
         }
 
         function dislikeProject(id) {
-            var URL = appSettings.serverPath + 'projects/dislike/' + id;
-            var deferred = $q.defer();
-
-            $http.post(URL, {})
-                .success(function (data) {
-                    deferred.resolve(data);
-                });
-
-            return deferred.promise;
+            return data.post('projects/dislike/' + id, {});
         }
 
         function commentProject(id, text) {
-            var URL = appSettings.serverPath + 'projects/comment/' + id;
-            var deferred = $q.defer();
-
-            $http.post(URL, {
-                text: text
-            })
-                .success(function (data) {
-                    deferred.resolve(data);
-                });
-
-            return deferred.promise;
+            return data.post('comments/' + id, {
+                commentText: text
+            });
         }
-
+        
         return {
             getProject: getProject,
+            getComments: getComments,
             likeProject: likeProject,
-            commentProject: commentProject
+            dislikeProject: dislikeProject,
+            commentProject: commentProject,
+            visitProject: visitProject
         };
     };
     
     angular.module('showcaseSystem.data')
-        .factory('projectDetailsData', ['$http', '$q', 'data', 'appSettings', projectDetailsData]);
+        .factory('projectDetailsData', ['data', '$window', projectDetailsData]);
 }());
