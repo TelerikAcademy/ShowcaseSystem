@@ -224,10 +224,6 @@
     <Compile Include="Infrastructure\Auth\ApplicationOAuthProvider.cs" />
     <Compile Include="Infrastructure\Auth\AuthStartup.cs" />
     <Compile Include="Infrastructure\Auth\ClaimsIdentityFactory.cs" />
-    <Compile Include="Infrastructure\Auth\ApplicationOAuthBearerAuthenticationProvider.cs" />
-    <Compile Include="Infrastructure\Auth\ApplicationOAuthProvider.cs" />
-    <Compile Include="Infrastructure\Auth\AuthStartup.cs" />
-    <Compile Include="Infrastructure\Auth\ClaimsIdentityFactory.cs" />
     <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
     <Compile Include="Infrastructure\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\ObjectFactory.cs" />
