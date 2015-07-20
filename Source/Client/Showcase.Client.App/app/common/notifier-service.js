@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var notifier = function notifier(toastr) {
+    var notifierService = function notifierService(toastr) {
         toastr.options.positionClass = 'toast-top-center';
         toastr.options.preventDuplicates = true;
 
@@ -17,5 +17,5 @@
 
     angular
         .module('showcaseSystem.services')
-        .factory('notifier', ['toastr', notifier]);
+        .factory('notifier', ['toastr', notifierService]);
 }());

@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    var projectContainer = function projectContainer() {
+    var projectContainerDirective = function projectContainerDirective() {
         return {
             restrict: 'A',
             templateUrl: '/app/common/project-container-directive.html',
@@ -12,5 +12,5 @@
     };
 
     angular.module('showcaseSystem.directives')
-        .directive('projectContainer', [projectContainer]);
+        .directive('projectContainer', [projectContainerDirective]);
 }());

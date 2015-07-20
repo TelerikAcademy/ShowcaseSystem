@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var data = function data($http, $q, appSettings) {
+    var baseData = function baseData($http, $q, appSettings) {
         var headers = {
             'Content-Type': 'application/json'
         };
@@ -38,5 +38,5 @@
 
     angular
         .module('showcaseSystem.data')
-        .factory('data', ['$http', '$q', 'appSettings', data]);
+        .factory('data', ['$http', '$q', 'appSettings', baseData]);
 }());
