@@ -15,11 +15,6 @@
         private readonly IRepository<User> users;
         private readonly IRemoteDataService remoteData;
 
-        public UsersService()
-            :this (new EfGenericRepository<User>(new ShowcaseDbContext()), new RemoteDataService()) // TODO: remove poor man's IoC
-        {
-        }
-
         public UsersService(IRepository<User> users, IRemoteDataService remoteData)
         {
             this.users = users;
