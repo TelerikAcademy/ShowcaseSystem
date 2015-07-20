@@ -8,7 +8,7 @@
             arrowUpCss = 'fa fa-long-arrow-up';
 
         vm.orderBy = '-createdOn';
-        vm.commentsPage = 0;
+        vm.commentsPage = 1;
 
         userProfileData.getUser(username)
             .then(function (user) {
@@ -20,12 +20,11 @@
                 vm.comments = data.comments;
                 vm.isLastPage = data.isLastPage;
                 vm.commentsPage++;
-                console.log(data.comments);
             });
 
         vm.sortByDate = function (element, $event) {
             var $target = $($event.currentTarget);
-            console.log(vm.orderBy);
+
             if (vm.orderBy == '-createdOn') {
                 vm.orderBy = 'createdOn';
                 removeArrowClass($target);

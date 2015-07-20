@@ -1,10 +1,10 @@
 ﻿<section ng-controller="userProfileController as vm">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-3">
+            <div class="col-md-offset-1 col-md-3" animate="fadeInLeft" data-animation-delay="200">
                 <img src="vm.user.avatarUrl" width="220" height="220" alt="{{vm.user.username}}" />
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7" animate="fadeInRight" data-animation-delay="200" style="margin-bottom: 10px;">
                 <h3 style="margin-bottom: 20px;">{{vm.user.username}}</h3>
                 <div style="font-size: 1.1em;">
                     <i class="fa fa-file-code-o" style="margin-right: 10px; margin-bottom: 5px;"></i><span>{{vm.user.projectsCount}} projects</span><br />
@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="row" style="margin-top: 40px;">
-            <div class="col-md-offset-1 col-md-10">
+            <div class="col-md-offset-1 col-md-10" animate="fadeInUp" data-animation-delay="200">
                 <div class="tabs nomargin-top">
                     <ul class="nav nav-tabs">
                         <li class="active">
@@ -26,7 +26,6 @@
                     </ul>
                     <div class="tab-content">
                         <div id="projects-tab" class="tab-pane active">
-                            <!--<h3 style="display: inline-block; margin-right: 20px;"></h3>-->
                             <span class="pull-right">
                                 <span style="margin-right: 15px;">Sort By:</span>
                                 <button ng-click="vm.sortByDate(undefined, $event)" class="btn btn-default" style="margin-right: 5px;"><i class="fa fa-long-arrow-down" style="margin-right: 5px;"></i>Date</button>
@@ -68,13 +67,17 @@
                         <div id="comments-tab" class="tab-pane" style="padding-top: 30px;">
                             <div class="row" style="margin-bottom: 20px;" ng-repeat="comment in vm.comments">
                                 <div class="col-md-2 text-center">
-                                    <i class="fa fa-clock-o" style="font-size: 4em;"></i><br />
+                                    <i class="fa fa-clock-o" style="font-size: 3em;"></i><br />
                                     <span>{{comment.shortDate}}</span>
                                 </div>
                                 <div class="col-md-10">
                                     <p>{{comment.content}}</p>
                                 </div>
                             </div>
+
+                            <ul class="pagination">
+                                <li ng-repeat=""></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
