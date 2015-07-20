@@ -49,3 +49,8 @@
 .modal-body .col-md-6:last-child {
     padding-right: 0;
 }
+
+a.social.fa-youtube-play:hover {
+    background: red!important;
+    color: #fff!important;
+}
