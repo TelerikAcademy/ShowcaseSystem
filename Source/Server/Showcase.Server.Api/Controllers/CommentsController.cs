@@ -44,16 +44,19 @@
         [Route("api/Comments/{id}/{page}")]
         public IHttpActionResult Get(int id, int page)
         {
+            var projectCommentsCount = this.comments.ProjectCommentsCount(id);
+            var lastPage = this.GetLastPage(projectCommentsCount, page);
+
             var model = new CommentsPageResponseModel
             {
                 Comments = this.comments
-                    .GetAllComments(id)
-                    .Skip(page * PageSize)
+                    .GetProjectComments(id)
+                    .Skip((page - 1) * PageSize)
                     .Take(PageSize)
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),
-                IsLastPage = this.IsLastPage(this.comments.GetAllComments(id), page)
+                IsLastPage = page == lastPage
             };
 
             return this.Data(model);
@@ -63,24 +66,29 @@
         [Route("api/Comments/User/{username}/{page}")]
         public IHttpActionResult CommentsByUser(string username, int page)
         {
+            var userCommentsCount = this.comments.UserCommentsCount(username);
+            var lastPage = this.GetLastPage(userCommentsCount, page);
+
             var model = new CommentsPageResponseModel
             {
                 Comments = this.comments
                     .GetUserComments(username)
-                    .Skip(page * PageSize)
+                    .Skip((page - 1) * PageSize)
                     .Take(PageSize)
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),
-                IsLastPage = this.IsLastPage(this.comments.GetUserComments(username), page)
+                IsLastPage = page == lastPage,
+                CurrentPage = page,
+                LastPage = lastPage
             };
 
             return this.Data(model);
         }
 
-        private bool IsLastPage(IQueryable<Comment> comments, int page)
+        private int GetLastPage(int count, int page)
         {
-            return comments.Count() <= (page + 1) * PageSize;
+            return count % CommentsController.PageSize == 0 ? count / CommentsController.PageSize : (count / CommentsController.PageSize) + 1;
         }
     }
 }
