@@ -6,10 +6,11 @@
                 <div class="text-center" style="padding-right: 10px;" animate="fadeIn" data-animation-delay="1500">
                     <br />
                     <i class="fa fa-eye" style="margin-right: 5px;"></i><span style="margin-right: 20px;">{{vm.project.visits}}</span>
-                    <button class="btn btn-xs btn-success" style="margin-left: 20px;" ng-show="!vm.isLiked" ng-click="vm.likeProject(vm.project.id)">
+                    <i class="fa fa-comments" style="margin-right: 5px;"></i><span style="margin-right: 20px;">{{vm.project.comments}}</span>
+                    <button class="btn btn-xs btn-success" style="margin-left: 10px;" ng-show="!vm.isLiked" ng-click="vm.likeProject(vm.project.id)">
                         <i class="fa fa-thumbs-up"></i>Like ({{vm.likes}})
                     </button>
-                    <button class="btn btn-xs btn-warning" style="margin-left: 20px;" ng-show="vm.isLiked" ng-click="vm.dislikeProject(vm.project.id)">
+                    <button class="btn btn-xs btn-warning" style="margin-left: 10px;" ng-show="vm.isLiked" ng-click="vm.dislikeProject(vm.project.id)">
                         <i class="fa fa-thumbs-down"></i>Remove Like ({{vm.likes}})
                     </button>
                 </div>
@@ -55,11 +56,16 @@
                 <h4 style="margin-bottom: 10px;">
                     Comments
                 </h4>
-                <div ng-repeat="comment in vm.comments">
-                    <span><a href="#">{{comment.username}}</a> - <span style="font-size: 0.85em;">{{comment.shortDate}}</span></span>
-                    <p style="margin-bottom: 10px; margin-top: 0">
-                        {{comment.content}}
-                    </p>
+                <div class="row" ng-repeat="comment in vm.comments" style="margin-bottom: 20px;">
+                    <div class="col-md-2">
+                        <a href="#">{{comment.username}}</a><br />
+                        <i class="fa fa-clock-o" style="margin-right: 5px;"></i><span style="font-size: 0.75em;">{{comment.shortDate}}</span>
+                    </div>
+                    <div class="col-md-10">
+                        <p style="margin-bottom: 10px; margin-top: 0">
+                            {{comment.content}}
+                        </p>
+                    </div>
                 </div>
                 <div class="text-center" style="margin-bottom: 20px; ">
                     <a ng-click="vm.loadMoreComments(vm.project.id)" ng-hide="vm.isLastPage">Load More....</a>
