@@ -23,7 +23,7 @@
     angular.module('showcaseSystem.controllers', ['showcaseSystem.data', 'showcaseSystem.services']);
     angular.module('showcaseSystem.directives', []);
 
-    angular.module('showcaseSystem', ['ngRoute', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
+    angular.module('showcaseSystem', ['ngRoute', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
         .config(['$routeProvider', '$locationProvider', '$httpProvider', config])
         .value('jQuery', jQuery)
         .value('toastr', toastr)

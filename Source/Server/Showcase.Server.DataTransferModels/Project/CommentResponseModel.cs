@@ -29,7 +29,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Comment, CommentResponseModel>()
-                .ForMember(c => c.Username, opt => opt.MapFrom(c => c.User.Username));
+                .ForMember(c => c.Username, opt => opt.MapFrom(c => c.User.UserName));
         }
     }
 }

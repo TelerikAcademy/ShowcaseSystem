@@ -30,7 +30,7 @@
         {
             var userId = this.users.GetUserId(username);
 
-            if (userId != 0)
+            if (!string.IsNullOrWhiteSpace(userId))
             {
                 var like = new Like
                 {
@@ -48,7 +48,7 @@
         {
             var userId = this.users.GetUserId(username);
 
-            if (userId != 0)
+            if (!string.IsNullOrWhiteSpace(userId))
             {
                 var like = this.likes
                     .All()
@@ -63,7 +63,7 @@
         public bool ProjectIsLikedByUser(int projectId, string username)
         {
             return this.AllLikesForProject(projectId)
-                .Any(l => l.User.Username == username);
+                .Any(l => l.User.UserName == username);
         }
     }
 }

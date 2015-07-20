@@ -13,7 +13,9 @@ namespace Showcase.Server.Api
     using Showcase.Data;
     using Showcase.Data.Common.Repositories;
 
+    using Showcase.Server.Api.Infrastructure;
     using Showcase.Server.Common;
+
     using Showcase.Services.Common;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
@@ -37,6 +39,7 @@ namespace Showcase.Server.Api
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                ObjectFactory.InitializeKernel(kernel);
                 return kernel;
             }
             catch
