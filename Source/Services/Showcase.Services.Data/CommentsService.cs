@@ -57,7 +57,7 @@
         {
             return this.comments
                 .All()
-                .Where(c => c.User.Username == username)
+                .Where(c => c.User.UserName == username)
                 .Count();
         }
         

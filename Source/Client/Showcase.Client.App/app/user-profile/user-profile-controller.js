@@ -1,9 +1,9 @@
 ﻿(function () {
-    'use strict'
+    'use strict';
 
     var userProfileController = function userProfileController(userProfileData, $routeParams) {
         var vm = this,
-            username = $routeParams['username'],
+            username = $routeParams.username,
             arrowDownCss = 'fa fa-long-arrow-down',
             arrowUpCss = 'fa fa-long-arrow-up';
 
