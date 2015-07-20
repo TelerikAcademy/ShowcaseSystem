@@ -108,3 +108,5 @@
 /// <reference path="../app/project-details/owl-carousel-directive.js" />
 /// <reference path="../app/common/animate-directive.js" />
 /// <reference path="../app/common/http-response-interceptor.js" />
+/// <reference path="../app/user-profile/user-profile-controller.js" />
+/// <reference path="../app/user-profile/user-profile-data.js" />
