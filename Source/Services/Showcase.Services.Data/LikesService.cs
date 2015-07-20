@@ -63,7 +63,7 @@
         public bool ProjectIsLikedByUser(int projectId, string username)
         {
             return this.AllLikesForProject(projectId)
-                .Any(l => l.User.Username == username);
+                .Any(l => l.User.UserName == username);
         }
     }
 }

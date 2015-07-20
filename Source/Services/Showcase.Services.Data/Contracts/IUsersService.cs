@@ -3,7 +3,6 @@
     using Showcase.Data.Models;
     using System.Linq;
 
-    using Showcase.Data.Models;
     using Showcase.Services.Common;
 
     public interface IUsersService : IService
