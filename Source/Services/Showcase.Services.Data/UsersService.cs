@@ -45,7 +45,7 @@
                 return null;
             }
 
-            var localUser = await this.GetLocalAccount(username);
+            var localUser = await this.GetLocalAccountAsync(username);
             if (localUser == null)
             {
                 localUser = new User
@@ -66,7 +66,7 @@
             return localUser;
         }
 
-        private async Task<User> GetLocalAccount(string username)
+        private async Task<User> GetLocalAccountAsync(string username)
         {
             return await this.users
                 .All()
