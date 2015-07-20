@@ -28,7 +28,7 @@
                 CreatedOn = DateTime.Now,
                 Content = commentText,
                 ProjectId = id,
-                UserId = "1"
+                UserId = 1
             };
 
             this.comments.Add(comment);

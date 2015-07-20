@@ -21,7 +21,7 @@
             this.remoteData = remoteData;
         }
 
-        public string GetUserId(string username)
+        public int GetUserId(string username)
         {
             return this.users
                 .All()

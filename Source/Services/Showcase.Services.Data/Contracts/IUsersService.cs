@@ -8,7 +8,7 @@
 
     public interface IUsersService : IService
     {
-        string GetUserId(string username);
+        int GetUserId(string username);
 
         Task<User> GetAccountAsync(string username, string password);
 

@@ -11,13 +11,12 @@
     {
         public User()
         {
-            this.Id = Guid.NewGuid().ToString(); // TODO: change to int
             this.Projects = new HashSet<Project>();
             this.Comments = new HashSet<Comment>();
             this.Likes = new HashSet<Like>();
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(50)]
