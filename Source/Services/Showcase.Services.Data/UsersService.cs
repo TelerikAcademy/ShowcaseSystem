@@ -34,7 +34,7 @@
         {
             return this.users
                 .All()
-                .Where(u => u.Username == username);
+                .Where(u => u.UserName == username);
         }
 
         public async Task<User> GetAccountAsync(string username, string password)
