@@ -64,7 +64,7 @@
                     vm.comments.unshift(data);
                     vm.commentText = '';
                 });
-        }
+        };
 
         vm.loadMoreComments = function (id) {
             projectDetailsData.getComments(id, vm.commentsPage)
@@ -75,7 +75,7 @@
                         vm.commentsPage++;
                     }
                 });
-        }
+        };
 
         function daydiff(first, second) {
             return (second - first) / (1000 * 60 * 60 * 24);

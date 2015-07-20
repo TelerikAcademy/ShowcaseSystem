@@ -77,7 +77,7 @@
                             afterAction: false,
                             startDragging: false,
                             afterLazyLoad: false
-                        }
+                        };
 
                         var config = jQuery.extend({}, defaults, options, slider.data("plugin-options"));
                         slider.owlCarousel(config).addClass("owl-carousel-init");
