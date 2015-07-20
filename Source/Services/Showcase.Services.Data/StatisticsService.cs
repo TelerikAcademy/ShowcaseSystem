@@ -8,7 +8,7 @@
 
     public class StatisticsService : IStatisticsService
     {
-        private IRepository<Project> projectsRepo;
+        private readonly IRepository<Project> projectsRepo;
 
         public StatisticsService(IRepository<Project> projectsRepo)
         {

@@ -9,7 +9,7 @@
     
     public class ProjectsService : IProjectsService
     {
-        private IRepository<Project> projects;
+        private readonly IRepository<Project> projects;
 
         public ProjectsService(IRepository<Project> projects)
         {
