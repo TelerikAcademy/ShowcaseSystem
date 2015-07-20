@@ -123,8 +123,9 @@
   <ItemGroup>
     <Content Include="app\common\data.js" />
     <Content Include="app\common\http-response-interceptor.js" />
-    <Content Include="app\common\project-directive.html" />
-    <Content Include="app\common\project-directive.js" />
+    <Content Include="app\common\odata-interceptor.js" />
+    <Content Include="app\common\project-tile-directive.html" />
+    <Content Include="app\common\project-tile-directive.js" />
     <Content Include="app\home-page\statistics-directive.html" />
     <Content Include="app\home-page\statistics-directive.js" />
     <Content Include="app\project-details\owl-carousel-directive.html" />
@@ -132,9 +133,11 @@
     <Content Include="app\project-details\project-details-view.html" />
     <Content Include="app\project-details\project-details-controller.js" />
     <Content Include="app\project-details\project-details-data.js" />
-    <Content Include="app\projects-page\projects-page-controller.js" />
-    <Content Include="app\projects-page\projects-page-data.js" />
-    <Content Include="app\projects-page\projects-page-view.html" />
+    <Content Include="app\search-page\filters-directive.html" />
+    <Content Include="app\search-page\filters-directive.js" />
+    <Content Include="app\search-page\search-page-controller.js" />
+    <Content Include="app\search-page\search-page-data.js" />
+    <Content Include="app\search-page\search-page-view.html" />
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="content\bootstrap.css.map" />
     <Content Include="content\epona\fonts\fontawesome-webfont.eot" />

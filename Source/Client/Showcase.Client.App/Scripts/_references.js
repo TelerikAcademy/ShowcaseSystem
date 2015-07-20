@@ -99,12 +99,14 @@
 /// <reference path="../app/project-details/project-details-controller.js" />
 /// <reference path="../app/project-details/project-details-data.js" />
 /// <reference path="../app/common/data.js" />
-/// <reference path="../app/projects-page/projects-page-data.js" />
-/// <reference path="../app/projects-page/projects-page-controller.js" />/// <reference path="../app/home-page/statistics-directive.js" />
 /// <reference path="../app/common/animate-directive.js" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="../app/home-page/statistics-directive.js" />
 /// <reference path="../app/project-details/owl-carousel-directive.js" />
 /// <reference path="../app/common/animate-directive.js" />
 /// <reference path="../app/common/http-response-interceptor.js" />
-/// <reference path="../app/common/project-directive.js" />
+/// <reference path="../app/search-page/search-page-controller.js" />
+/// <reference path="../app/search-page/search-page-data.js" />
+/// <reference path="../app/common/odata-interceptor.js" />
+/// <reference path="../app/search-page/filters-directive.js" />
+/// <reference path="../app/common/project-tile-directive.js" />
