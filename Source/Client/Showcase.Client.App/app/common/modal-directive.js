@@ -12,6 +12,10 @@
                     $clone.remove();
                     $(this).find('.modal-content').css("margin-top", top);
                 });
+
+                scope.closeModal = function () {
+                    element.modal('hide');
+                }
             }
         };
     };
