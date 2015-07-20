@@ -35,10 +35,12 @@
             var postedComment = this.comments.PostComment(id, comment.CommentText, username);
 
             var model = Mapper.Map<Comment, CommentResponseModel>(postedComment);
+            model.Username = username;
 
             return this.Data(model);
         }
 
+        [HttpGet]
         [Route("api/Comments/{id}/{page}")]
         public IHttpActionResult Get(int id, int page)
         {
@@ -51,10 +53,34 @@
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),
-                IsLastPage = this.comments.GetAllComments(id).Count() <= (page + 1) * PageSize
+                IsLastPage = this.IsLastPage(this.comments.GetAllComments(id), page)
             };
 
             return this.Data(model);
+        }
+
+        [HttpGet]
+        [Route("api/Comments/User/{username}/{page}")]
+        public IHttpActionResult CommentsByUser(string username, int page)
+        {
+            var model = new CommentsPageResponseModel
+            {
+                Comments = this.comments
+                    .GetUserComments(username)
+                    .Skip(page * PageSize)
+                    .Take(PageSize)
+                    .Project()
+                    .To<CommentResponseModel>()
+                    .ToList(),
+                IsLastPage = this.IsLastPage(this.comments.GetUserComments(username), page)
+            };
+
+            return this.Data(model);
+        }
+
+        private bool IsLastPage(IQueryable<Comment> comments, int page)
+        {
+            return comments.Count() <= (page + 1) * PageSize;
         }
     }
 }
