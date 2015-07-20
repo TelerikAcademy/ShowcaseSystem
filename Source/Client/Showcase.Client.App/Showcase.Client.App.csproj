@@ -121,8 +121,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\common\data.js" />
+    <Content Include="app\common\auth-service.js" />
+    <Content Include="app\common\base-data.js" />
     <Content Include="app\common\http-response-interceptor.js" />
+    <Content Include="app\common\identity-service.js" />
     <Content Include="app\home-page\statistics-directive.html" />
     <Content Include="app\home-page\statistics-directive.js" />
     <Content Include="app\project-details\owl-carousel-directive.html" />
@@ -228,7 +230,7 @@
     <Content Include="app\common\footer-directive.js" />
     <Content Include="app\common\header-directive.html" />
     <Content Include="app\common\header-directive.js" />
-    <Content Include="app\common\notifier.js" />
+    <Content Include="app\common\notifier-service.js" />
     <Content Include="app\common\project-container-directive.html" />
     <Content Include="app\common\project-container-directive.js" />
     <Content Include="app\home-page\home-page-controller.js" />
