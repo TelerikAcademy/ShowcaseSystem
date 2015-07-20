@@ -164,6 +164,8 @@
     <Content Include="content\epona\images\revolution_slider\font\revicons.eot" />
     <Content Include="content\epona\images\revolution_slider\font\revicons.ttf" />
     <Content Include="content\epona\images\revolution_slider\font\revicons.woff" />
+    <Content Include="content\loading-bar.css" />
+    <Content Include="content\loading-bar.min.css" />
     <Content Include="content\toastr.less" />
     <Content Include="content\toastr.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -172,6 +174,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="gulpfile.js" />
     <Content Include="packages.config" />
+    <Content Include="scripts\angular-animate.js" />
+    <Content Include="scripts\angular-animate.min.js" />
     <Content Include="scripts\angular-route.min.js.map" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap-theme.css.map" />
@@ -209,6 +213,7 @@
       <DependentUpon>owl.carousel.min.js</DependentUpon>
     </Content>
     <Content Include="package.json" />
+    <Content Include="scripts\angular-animate.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1272,6 +1277,8 @@
     <None Include="scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="scripts\jquery-2.1.4.js" />
     <Content Include="scripts\jquery-2.1.4.min.js" />
+    <Content Include="scripts\loading-bar.js" />
+    <Content Include="scripts\loading-bar.min.js" />
     <Content Include="scripts\npm.js" />
     <Content Include="scripts\toastr.js" />
     <Content Include="scripts\toastr.min.js" />
