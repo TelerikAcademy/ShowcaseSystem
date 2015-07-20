@@ -2,7 +2,8 @@
     'use strict';
 
     var notifier = function notifier(toastr) {
-        toastr.options.positionClass = "toast-top-full-width";
+        toastr.options.positionClass = 'toast-top-center';
+        toastr.options.preventDuplicates = true;
 
         return {
             success: function (msg) {
