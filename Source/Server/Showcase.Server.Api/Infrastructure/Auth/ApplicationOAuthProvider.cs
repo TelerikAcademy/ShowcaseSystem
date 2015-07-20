@@ -19,11 +19,6 @@
         private readonly IUsersService usersService;
 
         public ApplicationOAuthProvider(string publicClientId)
-            :this(publicClientId, new UsersService()) // TODO: remove this, if possible
-        {
-        }
-
-        public ApplicationOAuthProvider(string publicClientId, IUsersService usersService)
         {
             if (publicClientId == null)
             {
@@ -31,7 +26,16 @@
             }
 
             this.publicClientId = publicClientId;
+        }
+
+        public ApplicationOAuthProvider(string publicClientId, IUsersService usersService)
+        {
             this.usersService = usersService;
+        }
+
+        protected IUsersService UsersService
+        {
+            get { return this.usersService ?? ObjectFactory.GetInstance<IUsersService>(); }
         }
 
         public static AuthenticationProperties CreateProperties()
@@ -126,7 +130,7 @@
 
         private async Task<User> LoginUser(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var user = await this.usersService.GetAccountAsync(context.UserName, context.Password);
+            var user = await this.UsersService.GetAccountAsync(context.UserName, context.Password);
 
             // Check if remote login credentials are correct
             if (user == null)

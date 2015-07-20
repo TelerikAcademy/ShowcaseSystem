@@ -19,6 +19,7 @@ namespace Showcase.Server.Api
     using Showcase.Services.Data.Contracts;
 
     using ServerConstants = Showcase.Server.Common.Constants;
+    using Showcase.Server.Api.Infrastructure;
 
     public static class NinjectConfig 
     {
@@ -37,6 +38,7 @@ namespace Showcase.Server.Api
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                ObjectFactory.InitializeKernel(kernel);
                 return kernel;
             }
             catch
