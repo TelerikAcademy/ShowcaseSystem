@@ -28,7 +28,7 @@
                 CreatedOn = DateTime.Now,
                 Content = commentText,
                 ProjectId = id,
-                UserId = "1"
+                UserId = 1
             };
 
             this.comments.Add(comment);
@@ -49,7 +49,7 @@
         {
             return this.comments
                 .All()
-                .Where(c => c.User.UserName == username)
+                .Where(c => c.User.Username == username)
                 .OrderByDescending(c => c.CreatedOn);
         }
     }
