@@ -11,16 +11,28 @@
 }
 
 #loading-bar .peg {
-  -moz-box-shadow: #8ab933 1px 0 6px 1px;
-  -ms-box-shadow: #8ab933 1px 0 6px 1px;
-  -webkit-box-shadow: #8ab933 1px 0 6px 1px;
-  box-shadow: #8ab933 1px 0 6px 1px;
+    -moz-box-shadow: #8ab933 1px 0 6px 1px;
+    -ms-box-shadow: #8ab933 1px 0 6px 1px;
+    -webkit-box-shadow: #8ab933 1px 0 6px 1px;
+    box-shadow: #8ab933 1px 0 6px 1px;
 }
 
 #loading-bar-spinner .spinner-icon {
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
+    border-top-color: #8ab933;
+    border-left-color: #8ab933;
+}
 
-  border-top-color:  #8ab933;
-  border-left-color: #8ab933;
+.modal-title a {
+    color: white;
+}
+
+.modal-footer button {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.modal-footer button:hover {
+    margin: 0;
 }
