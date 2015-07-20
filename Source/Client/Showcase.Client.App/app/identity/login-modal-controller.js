@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var loginController = function loginController($scope, auth) {
+    var loginModalController = function loginModalController($scope, auth) {
         var vm = this;
 
         vm.login = function (user) {
@@ -13,5 +13,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('LoginController', ['$scope', 'auth', loginController]);
+        .controller('LoginModalController', ['$scope', 'auth', loginModalController]);
 }());
