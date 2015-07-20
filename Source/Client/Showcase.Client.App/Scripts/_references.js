@@ -107,6 +107,5 @@
 /// <reference path="../app/common/http-response-interceptor.js" />
 /// <reference path="../app/search-page/search-page-controller.js" />
 /// <reference path="../app/search-page/search-page-data.js" />
-/// <reference path="../app/common/odata-interceptor.js" />
 /// <reference path="../app/search-page/filters-directive.js" />
 /// <reference path="../app/common/project-tile-directive.js" />
