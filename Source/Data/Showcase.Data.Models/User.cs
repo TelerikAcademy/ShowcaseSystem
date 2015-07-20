@@ -9,8 +9,6 @@
 
     public class User
     {
-        public string Id { get; set; }
-
         public User()
         {
             this.Id = Guid.NewGuid().ToString(); // TODO: change to int
@@ -18,6 +16,8 @@
             this.Comments = new HashSet<Comment>();
             this.Likes = new HashSet<Like>();
         }
+
+        public string Id { get; set; }
 
         [Required]
         [StringLength(50)]

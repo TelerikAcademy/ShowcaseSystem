@@ -13,13 +13,14 @@ namespace Showcase.Server.Api
     using Showcase.Data;
     using Showcase.Data.Common.Repositories;
 
+    using Showcase.Server.Api.Infrastructure;
     using Showcase.Server.Common;
+
     using Showcase.Services.Common;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
 
     using ServerConstants = Showcase.Server.Common.Constants;
-    using Showcase.Server.Api.Infrastructure;
 
     public static class NinjectConfig 
     {

@@ -48,11 +48,11 @@
             var user = await this.GetUserFromContext(context);
             if (user != null)
             {
-                var oAuthIdentity = ClaimsIdentityFactory.Create(user, OAuthDefaults.AuthenticationType);
+                var oauthIdentity = ClaimsIdentityFactory.Create(user, OAuthDefaults.AuthenticationType);
                 var cookiesIdentity = ClaimsIdentityFactory.Create(user, CookieAuthenticationDefaults.AuthenticationType);
 
                 AuthenticationProperties properties = CreateProperties();
-                AuthenticationTicket ticket = new AuthenticationTicket(oAuthIdentity, properties);
+                AuthenticationTicket ticket = new AuthenticationTicket(oauthIdentity, properties);
                 context.Validated(ticket);
                 context.Request.Context.Authentication.SignIn(cookiesIdentity);
             }

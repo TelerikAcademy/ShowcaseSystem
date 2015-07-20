@@ -3,12 +3,12 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Data.Contracts;
-    using System.Threading.Tasks;
 
     public class UsersService : IUsersService
     {
@@ -39,7 +39,7 @@
 
         public async Task<User> GetAccountAsync(string username, string password)
         {
-            var remoteUser = remoteData.RemoteLogin(username, password);
+            var remoteUser = this.remoteData.RemoteLogin(username, password);
             if (remoteUser == null)
             {
                 return null;

@@ -1,10 +1,10 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
-    using System.Threading.Tasks;
 
     public interface IUsersService : IService
     {

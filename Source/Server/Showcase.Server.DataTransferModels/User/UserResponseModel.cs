@@ -4,8 +4,9 @@
 
     using AutoMapper;
 
-    using Showcase.Server.Common.Mapping;
     using Showcase.Data.Models;
+
+    using Showcase.Server.Common.Mapping;
     using Showcase.Server.DataTransferModels.Project;
 
     public class UserResponseModel : IMapFrom<User>, IHaveCustomMappings
