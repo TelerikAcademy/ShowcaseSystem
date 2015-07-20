@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var identity = function identity() {
+    var identityService = function identityService() {
         var currentUser = {};
 
         return {
@@ -22,5 +22,5 @@
 
     angular
         .module('showcaseSystem.services')
-        .factory('identity', [identity]);
+        .factory('identity', [identityService]);
 }());

@@ -121,12 +121,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\common\main-menu-directive.html" />
+    <Content Include="app\common\main-menu-directive.js" />
     <Content Include="app\identity\auth-service.js" />
     <Content Include="app\common\base-data.js" />
     <Content Include="app\common\http-response-interceptor.js" />
     <Content Include="app\identity\identity-service.js" />
     <Content Include="app\identity\login-modal-controller.js" />
-    <Content Include="app\identity\login-modal.html" />
+    <Content Include="app\identity\login-modal-template.html" />
     <Content Include="app\common\main-controller.js" />
     <Content Include="app\common\modal-directive.js" />
     <Content Include="app\home-page\statistics-directive.html" />

@@ -30,50 +30,8 @@
             <input type="text" class="form-control" name="s" value="" placeholder="Search">
             <button class="fa fa-search"></button>
         </form>
-        <div>
-            <div class="navbar-collapse nav-main-collapse collapse">
-                <nav class="nav-main">
-                    <ul id="topMain" class="nav nav-pills nav-main">
-                        <li class="mega-menu active">
-                            <a href="/">
-                                HOME <span>welcome</span>
-                            </a>
-                        </li>
-                        <li class="mega-menu">
-                            <a href="/projects/add">
-                                ADD <span>project</span>
-                            </a>
-                        </li>
-                        <li class="mega-menu">
-                            <a href="/projects">
-                                DISCOVER <span>top projects</span>
-                            </a>
-                        </li>
-                        <li class="mega-menu">
-                            <a href="/projects">
-                                STATISTICS <span>our numbers</span>
-                            </a>
-                        </li>
-                        <li class="mega-menu">
-                            <a href="http://academy.telerik.com" target="_blank">
-                                INFO <span>our courses</span>
-                            </a>
-                        </li>
-                        <li class="mega-menu">
-                            <a href="http://telerikacademy.com" target="_blank">
-                                STUDENT SYSTEM <span>telerik academy</span>
-                            </a>
-                        </li>
-                        <li class="mega-menu">
-                            <a href="http://telerikacademy.com/Forums" target="_blank">
-                                FORUMS <span>socialize</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <div main-menu></div>
     </div>
 </header>
 
-<div ng-include="'/app/identity/login-modal.html'"></div>
+<div ng-include="'/app/identity/login-modal-template.html'"></div>

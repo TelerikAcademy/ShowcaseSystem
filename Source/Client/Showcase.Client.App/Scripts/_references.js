@@ -118,3 +118,4 @@
 /// <reference path="../app/identity/auth-service.js" />
 /// <reference path="../app/identity/identity-service.js" />
 /// <reference path="../app/identity/login-modal-controller.js" />
+/// <reference path="../app/common/main-menu-directive.js" />

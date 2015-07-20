@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var modal = function modal() {
+    var modalDirective = function modalDirective() {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -22,5 +22,5 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('modal', [modal]);
+        .directive('modal', [modalDirective]);
 }());

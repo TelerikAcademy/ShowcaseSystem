@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var auth = function auth($http, $q, $cookies, identity) {
+    var authService = function authService($http, $q, $cookies, identity) {
         var TOKEN_KEY = 'authentication';
 
         var login = function login(user) {
@@ -43,5 +43,5 @@
 
     angular
         .module('showcaseSystem.services')
-        .factory('auth', ['$http', '$q', '$cookies', 'identity', auth]);
+        .factory('auth', ['$http', '$q', '$cookies', 'identity', authService]);
 }());
