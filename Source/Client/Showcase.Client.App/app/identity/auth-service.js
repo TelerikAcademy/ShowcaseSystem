@@ -2,10 +2,12 @@
     'use strict';
 
     var auth = function auth($http, $q, $cookies, identity) {
+        var TOKEN_KEY = 'authentication';
+
         var login = function login(user) {
             var deferred = $q.defer();
 
-            var data = "grant_type=password&username=" + user.username + '&password=' + user.password;
+            var data = "grant_type=password&username=" + (user.username || '') + '&password=' + (user.password || '');
 
             $http.post('/api/account/login', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .success(function (response) {

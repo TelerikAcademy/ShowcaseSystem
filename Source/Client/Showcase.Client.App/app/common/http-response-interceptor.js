@@ -16,7 +16,13 @@
                 return response;
             },
             'responseError': function (rejection) {
-                notifier.error('No connection to the server! Your Internet may be down!');
+                if (rejection.data && rejection.data['error_description']) {
+                    notifier.error(rejection.data['error_description']);
+                }
+                else {
+                    notifier.error('No connection to the server! Your Internet may be down!');
+                }
+
                 return $q.reject(rejection);
             }
         };

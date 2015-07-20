@@ -1,5 +1,6 @@
-﻿.toast-top-full-width {
+﻿.toast-top-center {
     margin-top: 50px;
+    text-align: center;
 }
 
 .statistics .boxed {
@@ -35,4 +36,16 @@
 
 .modal-footer button:hover {
     margin: 0;
+}
+
+.modal-body input {
+    margin-top: 10px;
+}
+
+.modal-body .col-md-6:first-child {
+    padding-left: 0;
+}
+
+.modal-body .col-md-6:last-child {
+    padding-right: 0;
 }
