@@ -2,7 +2,7 @@
     'use strict';
 
     var config = function config($routeProvider, $locationProvider, $httpProvider) {
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true); // TODO: check the hash prefix !
 
         var routeResolveChecks = {
             authenticated: {
