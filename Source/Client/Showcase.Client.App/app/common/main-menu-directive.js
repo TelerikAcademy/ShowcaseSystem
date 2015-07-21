@@ -21,9 +21,9 @@
                 });
 
                 function updateMenu(route) {
+                    $('#topMain .active').removeClass('active');
                     var el = angular.element('#topMain a[href="' + route + '"]');
                     if (el.length > 0) {
-                        $('#topMain .active').removeClass('active');
                         el.parent().addClass('active');
                     }
                 }
