@@ -9,10 +9,10 @@
                 templateUrl: '/app/home-page/home-page-view.html'
             })
             .when('/projects/:id/:title', {
-                templateUrl: '/app/project-details/project-details-view.html'
+                templateUrl: '/app/project-details-page/project-details-view.html'
             })
             .when('/users/:username', {
-                templateUrl: '/app/user-profile/user-profile-view.html'
+                templateUrl: '/app/user-profile-page/user-profile-view.html'
             });
 
         $httpProvider.interceptors.push('httpResponseInterceptor');
