@@ -7,11 +7,8 @@
                     <br />
                     <i class="fa fa-eye" style="margin-right: 5px;"></i><span style="margin-right: 20px;">{{vm.project.visits}}</span>
                     <i class="fa fa-comments" style="margin-right: 5px;"></i><span style="margin-right: 20px;">{{vm.project.comments}}</span>
-                    <button class="btn btn-xs btn-success" style="margin-left: 10px;" ng-show="!vm.isLiked" ng-click="vm.likeProject(vm.project.id)">
-                        <i class="fa fa-thumbs-up"></i>Like ({{vm.likes}})
-                    </button>
-                    <button class="btn btn-xs btn-warning" style="margin-left: 10px;" ng-show="vm.isLiked" ng-click="vm.dislikeProject(vm.project.id)">
-                        <i class="fa fa-thumbs-down"></i>Remove Like ({{vm.likes}})
+                    <button class="btn btn-xs btn-success" style="margin-left: 10px;" ng-click="vm.isLiked ? vm.dislikeProject(vm.project.id) : vm.likeProject(vm.project.id)">
+                        <i ng-class="vm.isLiked ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'"></i>{{vm.isLiked ? 'Remove Like' : 'Like'}} ({{vm.likes}})
                     </button>
                 </div>
             </div>
