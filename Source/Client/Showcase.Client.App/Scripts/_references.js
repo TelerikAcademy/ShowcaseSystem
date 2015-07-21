@@ -105,8 +105,8 @@
 /// <reference path="../app/common/http-response-interceptor.js" />
 /// <reference path="loading-bar.min.js" />
 /// <reference path="angular-animate.min.js" />
-/// <reference path="../app/user-profile/user-profile-data.js" />
-/// <reference path="../app/user-profile/user-profile-controller.js" />
+
+
 /// <reference path="../app/user-profile/user-profile-data.js" />
 /// <reference path="../app/common/notifier-service.js" />
 /// <reference path="../app/common/base-data.js" />
@@ -122,3 +122,8 @@
 /// <reference path="../app/project-details-page/owl-carousel-directive.js" />
 /// <reference path="../app/project-details-page/project-details-controller.js" />
 /// <reference path="../app/project-details-page/project-details-data.js" />
+
+
+/// <reference path="../app/project-details-page/owl-carousel-directive.js" />
+
+/// <reference path="../app/add-project-page/add-project-controller.js" />
