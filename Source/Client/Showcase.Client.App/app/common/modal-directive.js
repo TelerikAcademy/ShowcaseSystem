@@ -15,7 +15,6 @@
 
                 var buttons = element.find('.modal-footer button');
                 $(buttons[0]).on('click', function () {
-                    debugger;
                     moveToRoute('previous-route');
                 });
 
