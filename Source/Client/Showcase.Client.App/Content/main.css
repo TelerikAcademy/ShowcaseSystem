@@ -176,12 +176,25 @@ a.social.fa-github:hover {
     font-size: 1.3em;
 }
 
+.font-size-14em {
+    font-size: 1.4em;
+}
+
 .font-size-2em {
     font-size: 2em;
 }
 
 .font-size-3em {
     font-size: 3em;
+}
+
+.logo-text-container {
+    display: inline-block;
+    color:#828282;
+}
+
+.logo-image {
+    vertical-align: top;
 }
 
 .no-pointer-events {
