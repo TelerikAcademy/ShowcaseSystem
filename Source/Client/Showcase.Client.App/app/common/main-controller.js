@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var mainController = function mainController(auth, identity) {
+    var mainController = function mainController($location, auth, identity) {
         var vm = this;
 
         waitForLogin();
@@ -10,6 +10,7 @@
             auth.logout();
             vm.currentUser = undefined;
             waitForLogin();
+            $location.path('/');
         };
 
         function waitForLogin() {
@@ -21,5 +22,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('MainController', ['auth', 'identity', mainController]);
+        .controller('MainController', ['$location', 'auth', 'identity', mainController]);
 }());

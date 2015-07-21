@@ -38,7 +38,15 @@
     var run = function run($rootScope, $location, auth, notifier) {
         $rootScope.$on('$routeChangeError', function (ev, current, previous, rejection) {
             if (rejection === 'not authorized') {
-                angular.element('#open-login-btn').trigger('click');
+                notifier.warning('Please log into your account first!');
+                $location.path('/');
+                angular
+                    .element('#open-login-btn')
+                    .trigger('click');
+
+                angular.element('#login-modal')
+                    .attr('data-previous-route', previous.$$route.originalPath)
+                    .attr('data-current-route', current.$$route.originalPath);
             }
         });
 
