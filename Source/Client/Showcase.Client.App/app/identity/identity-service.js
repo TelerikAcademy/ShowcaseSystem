@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var identityService = function identityService() {
+    var identityService = function identityService($q) {
         var currentUser = {};
         var deferred = $q.defer();
 
@@ -28,5 +28,5 @@
 
     angular
         .module('showcaseSystem.services')
-        .factory('identity', [identityService]);
+        .factory('identity', ['$q', identityService]);
 }());
