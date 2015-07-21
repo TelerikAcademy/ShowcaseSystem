@@ -13,6 +13,7 @@
     using Showcase.Server.DataTransferModels.User;
     using Showcase.Services.Data.Contracts;
 
+    [RoutePrefix("api/Users")]
     public class UsersController : BaseController
     {
         private readonly IUsersService users;
@@ -23,7 +24,7 @@
         }
 
         [HttpGet]
-        [Route("api/users/{username}")]
+        [Route("Profile/{username}")]
         public IHttpActionResult Get(string username)
         {
             var model = this.users
@@ -40,6 +41,20 @@
             {
                 return this.Data(false, "The requested user was not found.");
             }
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("Identity")]
+        public IHttpActionResult Identity()
+        {
+            var model = this.users
+                .GetByUsername(this.User.Identity.Name)
+                .Project()
+                .To<IdentityResponseModel>()
+                .FirstOrDefault();
+
+            return this.Data(model);
         }
     }
 }
