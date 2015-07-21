@@ -4,15 +4,25 @@
     var config = function config($routeProvider, $locationProvider, $httpProvider) {
         $locationProvider.html5Mode(true);
 
+        var routeResolveChecks = {
+            authenticated: function () {
+
+            }
+        };
+
         $routeProvider
             .when('/', {
                 templateUrl: '/app/home-page/home-page-view.html'
             })
+            .when('/projects/add', {
+                templateUrl: '/app/add-project-page/add-project-view.html',
+                routeResolveChecks: routeResolves.authenticated
+            })
             .when('/projects/:id/:title', {
-                templateUrl: '/app/project-details/project-details-view.html'
+                templateUrl: '/app/project-details-page/project-details-view.html'
             })
             .when('/users/:username', {
-                templateUrl: '/app/user-profile/user-profile-view.html'
+                templateUrl: '/app/user-profile-page/user-profile-view.html'
             });
 
         $httpProvider.interceptors.push('httpResponseInterceptor');
