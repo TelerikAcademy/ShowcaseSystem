@@ -1,7 +1,7 @@
-﻿<div class="owl-carousel featured" data-plugin-options='{"singleItem": false, "stopOnHover":false, "autoPlay":true, "autoHeight": false, "navigation": true, "pagination": false}'>
+﻿<div class="owl-carousel featured" data-plugin-options='{"singleItem": false, "stopOnHover":false, "autoPlay":true, "autoHeight": false, "navigation": true, "pagination": false, "delegate": "a", "gallery": {"enabled": true}}'>
     <div ng-repeat="item in images">
         <div class="owl-featured-item">
-            <a class="figure" href="#">
+            <a class="figure" href="{{item}}" data-plugin-options="{'type' : 'image'}">
                 <span><i class="fa fa-plus"></i></span>
                 <img alt="" src="{{item}}" width="230" />
             </a>
