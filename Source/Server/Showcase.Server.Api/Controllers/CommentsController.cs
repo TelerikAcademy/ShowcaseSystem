@@ -11,6 +11,7 @@
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data.Contracts;
 
+    [RoutePrefix("api/Comments")]
     public class CommentsController : ApiController
     {
         private const int PageSize = 5;
@@ -41,7 +42,7 @@
         }
 
         [HttpGet]
-        [Route("api/Comments/{id}/{page}")]
+        [Route("{id}/{page}")]
         public IHttpActionResult Get(int id, int page)
         {
             var projectCommentsCount = this.comments.ProjectCommentsCount(id);
@@ -63,11 +64,16 @@
         }
 
         [HttpGet]
-        [Route("api/Comments/User/{username}/{page}")]
+        [Route("User/{username}/{page}")]
         public IHttpActionResult CommentsByUser(string username, int page)
         {
             var userCommentsCount = this.comments.UserCommentsCount(username);
             var lastPage = this.GetLastPage(userCommentsCount, page);
+
+            if (page < 1 || page > lastPage)
+            {
+                return this.Data(false, "There are no more comments to load.");
+            }
 
             var model = new CommentsPageResponseModel
             {
