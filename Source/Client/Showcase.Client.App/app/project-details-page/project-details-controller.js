@@ -6,7 +6,7 @@
         var id = $routeParams.id;
 
         vm.commentText = '';
-        vm.commentsPage = 0;
+        vm.commentsPage = 1;
         
         projectDetailsData.getProject(id)
             .then(function (project) {
@@ -37,7 +37,9 @@
             .then(function (data) {
                 vm.comments = data.comments;
                 vm.isLastPage = data.isLastPage;
-                vm.commentsPage++;
+                if (!data.isLastPage) {
+                    vm.commentsPage++;
+                }
             });
 
         vm.likeProject = function (id) {
@@ -62,16 +64,18 @@
                     vm.comments.unshift(data);
                     vm.commentText = '';
                 });
-        }
+        };
 
         vm.loadMoreComments = function (id) {
             projectDetailsData.getComments(id, vm.commentsPage)
                 .then(function (data) {
                     vm.comments = vm.comments.concat(data.comments);
                     vm.isLastPage = data.isLastPage;
-                    vm.commentsPage++;
+                    if (!data.isLastPage) {
+                        vm.commentsPage++;
+                    }
                 });
-        }
+        };
 
         function daydiff(first, second) {
             return (second - first) / (1000 * 60 * 60 * 24);

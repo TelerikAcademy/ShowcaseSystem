@@ -3,6 +3,7 @@
     using System;
 
     using AutoMapper;
+    using MissingFeatures;
     using Newtonsoft.Json;
 
     using Showcase.Data.Models;
@@ -11,9 +12,21 @@
 
     public class CommentResponseModel : IMapFrom<Comment>, IHaveCustomMappings
     {
+        public int ProjectId { get; set; }
+
+        public string ProjectTitle { get; set; }
+
         public string Content { get; set; }
 
         public string Username { get; set; }
+
+        public string ProjectTitleUrl
+        {
+            get
+            {
+                return this.ProjectTitle.ToUrl();
+            }
+        }
 
         [JsonIgnore]
         public DateTime CreatedOn { get; set; }

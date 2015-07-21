@@ -4,7 +4,7 @@
     var owlCarouselDirective = function owlCarouselDirective() {
         return {
             restrict: 'A',
-            templateUrl: '/app/project-details/owl-carousel-directive.html',
+            templateUrl: '/app/project-details-page/owl-carousel-directive.html',
             scope: {
                 images: '='
             },
@@ -77,7 +77,7 @@
                             afterAction: false,
                             startDragging: false,
                             afterLazyLoad: false
-                        }
+                        };
 
                         var config = jQuery.extend({}, defaults, options, slider.data("plugin-options"));
                         slider.owlCarousel(config).addClass("owl-carousel-init");

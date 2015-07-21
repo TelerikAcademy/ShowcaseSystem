@@ -37,7 +37,7 @@
             return comment;
         }
 
-        public IQueryable<Comment> GetAllComments(int id)
+        public IQueryable<Comment> GetProjectComments(int id)
         {
             return this.comments
                 .All()
@@ -51,6 +51,22 @@
                 .All()
                 .Where(c => c.User.UserName == username)
                 .OrderByDescending(c => c.CreatedOn);
+        }
+
+        public int UserCommentsCount(string username)
+        {
+            return this.comments
+                .All()
+                .Where(c => c.User.UserName == username)
+                .Count();
+        }
+        
+        public int ProjectCommentsCount(int id)
+        {
+            return this.comments
+                .All()
+                .Where(c => c.ProjectId == id)
+                .Count();
         }
     }
 }

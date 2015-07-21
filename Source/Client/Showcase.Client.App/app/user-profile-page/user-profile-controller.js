@@ -1,14 +1,15 @@
 ﻿(function () {
-    'use strict'
+    'use strict';
 
     var userProfileController = function userProfileController(userProfileData, $routeParams) {
         var vm = this,
-            username = $routeParams['username'],
+            username = $routeParams.username,
             arrowDownCss = 'fa fa-long-arrow-down',
             arrowUpCss = 'fa fa-long-arrow-up';
 
         vm.orderBy = '-createdOn';
-        vm.commentsPage = 0;
+        vm.commentsPage = 1;
+        vm.lastPage = 1;
 
         userProfileData.getUser(username)
             .then(function (user) {
@@ -19,13 +20,51 @@
             .then(function (data) {
                 vm.comments = data.comments;
                 vm.isLastPage = data.isLastPage;
-                vm.commentsPage++;
-                console.log(data.comments);
+                vm.lastPage = data.lastPage;
             });
+
+        vm.loadCommentsPage = function (page) {
+            userProfileData.getComments(username, page)
+                .then(function (data) {
+                    vm.commentsPage = page;
+                    vm.comments = data.comments;
+                    vm.isLastPage = data.isLastPage;
+                    vm.commentsPage = page;
+                    vm.lastPage = data.lastPage;
+                });
+        };
+
+        vm.loadNextPageComments = function () {
+            if (vm.isLastPage) {
+                return;
+            }
+
+            userProfileData.getComments(username, vm.commentsPage + 1)
+                .then(function (data) {
+                    vm.comments = data.comments;
+                    vm.isLastPage = data.isLastPage;
+                    vm.commentsPage++;
+                    vm.lastPage = data.lastPage;
+                });
+        };
+
+        vm.loadPreviousPageComments = function () {
+            if (vm.commentsPage == 1) {
+                return;
+            }
+
+            userProfileData.getComments(username, vm.commentsPage - 1)
+                .then(function (data) {
+                    vm.comments = data.comments;
+                    vm.isLastPage = data.isLastPage;
+                    vm.commentsPage--;
+                    vm.lastPage = data.lastPage;
+                });
+        };
 
         vm.sortByDate = function (element, $event) {
             var $target = $($event.currentTarget);
-            console.log(vm.orderBy);
+
             if (vm.orderBy == '-createdOn') {
                 vm.orderBy = 'createdOn';
                 removeArrowClass($target);
@@ -63,15 +102,6 @@
                 removeArrowClass($target);
                 $target.find('i').addClass(arrowDownCss);
             }
-        };
-
-        vm.loadMoreComments = function (id) {
-            userProfileData.getComments(id, vm.commentsPage)
-                .then(function (data) {
-                    vm.comments = data.comments;
-                    vm.isLastPage = data.isLastPage;
-                    vm.commentsPage++;
-                });
         };
         
         var removeArrowClass = function (element) {

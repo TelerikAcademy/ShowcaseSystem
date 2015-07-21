@@ -1,5 +1,5 @@
 ﻿(function () {
-    'use strict'
+    'use strict';
 
     var userProfileData = function userProfileData(data) {
         function getUser(username) {
@@ -13,7 +13,7 @@
         return {
             getUser: getUser,
             getComments: getComments
-        }
+        };
     };
 
     angular

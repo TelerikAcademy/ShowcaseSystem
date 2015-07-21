@@ -14,7 +14,7 @@
 
     public class ProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
     {
-        public const int ShortDescriptionLength = 200;
+        public const int ShortDescriptionLength = 300;
 
         public int Id { get; set; }
 
