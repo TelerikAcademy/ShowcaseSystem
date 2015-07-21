@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+.toast .toast-close-button {
+    top: auto;
+}
+
 .statistics .boxed {
     margin: 40px 0;
 }
