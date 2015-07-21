@@ -11,7 +11,7 @@
 
             $http.post('/api/users/login', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .success(function (response) {
-                    var tokenValue = response['access_token'];
+                    var tokenValue = response.access_token;
 
                     var theBigDay = new Date();
                     theBigDay.setHours(theBigDay.getHours() + 72);
@@ -41,7 +41,7 @@
                 });
 
             return deferred.promise;
-        }
+        };
 
         return {
             login: login,
@@ -54,7 +54,7 @@
                 $http.defaults.headers.common.Authorization = null;
                 identity.removeUser();
             },
-        }
+        };
     };
 
     angular
