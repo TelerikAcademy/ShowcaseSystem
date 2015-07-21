@@ -11,7 +11,8 @@
             return new User
             {
                 UserName = username,
-                AvatarUrl = "some url"
+                AvatarUrl = "some url",
+                IsAdmin = true
             };
         }
     }
