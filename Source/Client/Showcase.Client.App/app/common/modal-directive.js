@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var modalDirective = function modalDirective() {
+    var modalDirective = function modalDirective($location) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -13,14 +13,31 @@
                     $(this).find('.modal-content').css("margin-top", top);
                 });
 
+                var buttons = element.find('.modal-footer button');
+                $(buttons[0]).on('click', function () {
+                    debugger;
+                    moveToRoute('previous-route');
+                });
+
+                $(buttons[buttons.length - 1]).on('click', function () {
+                    moveToRoute('current-route');
+                });
+
                 scope.closeModal = function () {
                     element.modal('hide');
                 };
+
+                function moveToRoute(attr) {
+                    var route = element.data(attr);
+                    if (route) {
+                        $location.path(route);
+                    }
+                }
             }
         };
     };
 
     angular
         .module('showcaseSystem.directives')
-        .directive('modal', [modalDirective]);
+        .directive('modal', ['$location', modalDirective]);
 }());
