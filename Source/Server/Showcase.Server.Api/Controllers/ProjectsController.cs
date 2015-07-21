@@ -42,6 +42,19 @@
         }
 
         [HttpGet]
+        [Route("Popular")]
+        public IHttpActionResult Popular()
+        {
+            var model = this.homePageService
+                .MostPopular()
+                .Project()
+                .To<ProjectResponseModel>()
+                .ToList();
+
+            return this.Data(model);
+        }
+
+        [HttpGet]
         public IHttpActionResult Get(int id)
         {
             var username = this.User.Identity.Name;
