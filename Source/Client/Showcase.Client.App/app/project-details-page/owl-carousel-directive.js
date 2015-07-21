@@ -81,6 +81,56 @@
 
                         var config = jQuery.extend({}, defaults, options, slider.data("plugin-options"));
                         slider.owlCarousel(config).addClass("owl-carousel-init");
+                        
+                        jQuery.extend(true, jQuery.magnificPopup.defaults, {
+                            tClose: 'Close',
+                            tLoading: 'Loading...',
+                            gallery: {
+                                tPrev: 'Previous',
+                                tNext: 'Next',
+                                tCounter: '%curr% / %total%'
+                            },
+                            image: {
+                                tError: 'Image not loaded!'
+                            },
+                            ajax: {
+                                tError: 'Content not loaded!'
+                            }
+                        });
+
+                        var _t = slider,
+			                options = _t.attr('data-plugin-options'),
+			                config = {},
+			                defaultSettings = {
+			                    type: 'image',
+			                    fixedContentPos: false,
+			                    fixedBgPos: false,
+			                    mainClass: 'mfp-no-margins mfp-with-zoom',
+			                    image: {
+			                        verticalFit: true
+			                    },
+
+			                    zoom: {
+			                        enabled: false,
+			                        duration: 300
+			                    },
+
+			                    gallery: {
+			                        enabled: false,
+			                        navigateByImgClick: true,
+			                        preload: [0, 1],
+			                        arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>',
+			                        tPrev: 'Previou',
+			                        tNext: 'Next',
+			                        tCounter: '<span class="mfp-counter">%curr% / %total%</span>'
+			                    },
+			                };
+
+                        if (_t.data("plugin-options")) {
+                            config = jQuery.extend({}, defaultSettings, options, _t.data("plugin-options"));
+                        }
+
+                        jQuery(element).magnificPopup(config);
                     }
                 });
             }
