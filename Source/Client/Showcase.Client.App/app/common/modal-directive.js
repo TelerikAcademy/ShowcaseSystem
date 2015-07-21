@@ -15,7 +15,7 @@
 
                 scope.closeModal = function () {
                     element.modal('hide');
-                }
+                };
             }
         };
     };
