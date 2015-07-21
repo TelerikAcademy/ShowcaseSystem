@@ -16,7 +16,7 @@
             })
             .when('/projects/add', {
                 templateUrl: '/app/add-project-page/add-project-view.html',
-                routeResolveChecks: routeResolves.authenticated
+                resolve: routeResolveChecks.authenticated
             })
             .when('/projects/:id/:title', {
                 templateUrl: '/app/project-details/project-details-view.html'

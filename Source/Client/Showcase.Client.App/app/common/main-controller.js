@@ -6,11 +6,11 @@
 
         waitForLogin();
 
-        vm.logout = function () {
+        vm.logout = function logout() {
             auth.logout();
             vm.currentUser = undefined;
             waitForLogin();
-        }
+        };
 
         function waitForLogin() {
             identity.getUser().then(function (user) {
