@@ -187,3 +187,7 @@ a.social.fa-github:hover {
 .font-size-3em {
     font-size: 3em;
 }
+
+.no-pointer-events {
+    pointer-events: none;
+}

@@ -81,8 +81,8 @@
                             </div>
 
                             <ul class="pagination">
-                                <li ng-show="vm.commentsPage != 1" ng-click="vm.loadCommentsPage(1)"><a><<</a></li>
-                                <li ng-show="vm.commentsPage != 1" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a><</a></li>
+                                <li><a ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(1)"><<</a></li>
+                                <li><a ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><</a></li>
                                 <li ng-show="vm.commentsPage - 3 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 3)"><a>{{vm.commentsPage - 3}}</a></li>
                                 <li ng-show="vm.commentsPage - 2 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 2)"><a>{{vm.commentsPage - 2}}</a></li>
                                 <li ng-show="vm.commentsPage - 1 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a>{{vm.commentsPage - 1}}</a></li>
@@ -90,8 +90,8 @@
                                 <li ng-show="vm.commentsPage + 1 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>{{vm.commentsPage + 1}}</a></li>
                                 <li ng-show="vm.commentsPage + 2 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 2)"><a>{{vm.commentsPage + 2}}</a></li>
                                 <li ng-show="vm.commentsPage + 3 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 3)"><a>{{vm.commentsPage + 3}}</a></li>
-                                <li ng-show="!vm.isLastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>></a></li>
-                                <li ng-show="!vm.isLastPage" ng-click="vm.loadCommentsPage(vm.lastPage)"><a>>></a></li>
+                                <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>></a></li>
+                                <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.lastPage)"><a>>></a></li>
                             </ul>
                         </div>
                     </div>

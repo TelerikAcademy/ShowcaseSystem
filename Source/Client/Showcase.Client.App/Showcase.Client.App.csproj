@@ -188,8 +188,10 @@
     <Content Include="scripts\angular-animate.min.js" />
     <Content Include="scripts\angular-cookies.js" />
     <Content Include="scripts\angular-cookies.min.js" />
+    <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-route.min.js.map" />
-    <Content Include="scripts\angular.min.js.map" />
+    <Content Include="scripts\angular.js" />
+    <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap.css.map" />
     <Content Include="scripts\epona\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -227,6 +229,7 @@
     <Content Include="package.json" />
     <Content Include="scripts\angular-animate.min.js.map" />
     <Content Include="scripts\angular-cookies.min.js.map" />
+    <Content Include="scripts\angular.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -987,11 +990,8 @@
     <Content Include="content\toastr.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index-template.html" />
-    <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />
-    <Content Include="scripts\angular.js" />
-    <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\epona\js\contact.js" />
