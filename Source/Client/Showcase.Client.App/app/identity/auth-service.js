@@ -20,11 +20,9 @@
 
                     $http.defaults.headers.common.Authorization = 'Bearer ' + tokenValue;
 
-                    $http.get('/api/users/identity')
-                        .success(function (identityResponse) {
-                            identity.setUser(identityResponse);
-                            deferred.resolve(response);
-                        });
+                    getIdentity().then(function () {
+                        deferred.resolve(response);
+                    });
                 })
                 .error(function (err) {
                     deferred.reject(err);
@@ -33,8 +31,21 @@
             return deferred.promise;
         };
 
+        var getIdentity = function () {
+            var deferred = $q.defer();
+
+            $http.get('/api/users/identity')
+                .success(function (identityResponse) {
+                    identity.setUser(identityResponse);
+                    deferred.resolve(identityResponse);
+                });
+
+            return deferred.promise;
+        }
+
         return {
             login: login,
+            getIdentity: getIdentity,
             isAuthenticated: function () {
                 return !!$cookies.get(TOKEN_KEY);
             },
