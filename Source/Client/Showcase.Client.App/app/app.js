@@ -18,6 +18,14 @@
         $httpProvider.interceptors.push('httpResponseInterceptor');
     };
 
+    var run = function run(auth, notifier) {
+        if (auth.isAuthenticated()) {
+            auth.getIdentity().then(function (identity) {
+                notifier.success('Welcome back, ' + identity.userName + '!');
+            });
+        }
+    };
+
     angular.module('showcaseSystem.data', []);
     angular.module('showcaseSystem.services', []);
     angular.module('showcaseSystem.controllers', ['showcaseSystem.data', 'showcaseSystem.services']);
@@ -25,6 +33,7 @@
 
     angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
         .config(['$routeProvider', '$locationProvider', '$httpProvider', config])
+        .run(['auth', 'notifier', run])
         .value('jQuery', jQuery)
         .value('toastr', toastr)
         .constant('appSettings', {
