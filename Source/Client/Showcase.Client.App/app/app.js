@@ -5,8 +5,12 @@
         $locationProvider.html5Mode(true);
 
         var routeResolveChecks = {
-            authenticated: function () {
-
+            authenticated: {
+                authenticate: ['$q', 'auth', function ($q, auth) {
+                    if (!auth.isAuthenticated()) {
+                        return $q.reject('not authorized');
+                    }
+                }]
             }
         };
 
@@ -31,7 +35,13 @@
         $httpProvider.interceptors.push('httpResponseInterceptor');
     };
 
-    var run = function run(auth, notifier) {
+    var run = function run($rootScope, $location, auth, notifier) {
+        $rootScope.$on('$routeChangeError', function (ev, current, previous, rejection) {
+            if (rejection === 'not authorized') {
+                angular.element('#open-login-btn').trigger('click');
+            }
+        });
+
         if (auth.isAuthenticated()) {
             auth.getIdentity().then(function (identity) {
                 notifier.success('Welcome back, ' + identity.userName + '!');
@@ -46,7 +56,7 @@
 
     angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
         .config(['$routeProvider', '$locationProvider', '$httpProvider', config])
-        .run(['auth', 'notifier', run])
+        .run(['$rootScope', '$location', 'auth', 'notifier', run])
         .value('jQuery', jQuery)
         .value('toastr', toastr)
         .constant('appSettings', {
