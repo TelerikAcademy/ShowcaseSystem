@@ -1,61 +1,80 @@
 ﻿<section ng-controller="userProfileController as vm">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-3" animate="fadeInLeft" data-animation-delay="200">
+            <div class="col-md-offset-1 col-md-3">
                 <img src="vm.user.avatarUrl" width="220" height="220" alt="{{vm.user.username}}" />
             </div>
-            <div class="col-md-7 margin-bottom-10" animate="fadeInRight" data-animation-delay="200">
-                <h3 class="margin-bottom-20">{{vm.user.username}}</h3>
-                <div>
-                    <i class="fa fa-file-code-o margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.projectsCount}} projects</span><br />
-                    <i class="fa fa-thumbs-up margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.likesCount}} likes</span><br />
-                    <i class="fa fa-comments margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.commentsCount}} comments</span>
+            <div class="col-md-7">
+                <h3 style="margin-bottom: 20px;">{{vm.user.username}}</h3>
+                <div style="font-size: 1.1em;">
+                    <i class="fa fa-file-code-o" style="margin-right: 10px; margin-bottom: 5px;"></i><span>{{vm.user.projectsCount}} projects</span><br />
+                    <i class="fa fa-thumbs-up" style="margin-right: 10px; margin-bottom: 5px;"></i><span>{{vm.user.likesCount}} likes</span><br />
+                    <i class="fa fa-comments" style="margin-right: 10px; margin-bottom: 5px;"></i><span>{{vm.user.commentsCount}} comments</span>
                 </div>
             </div>
         </div>
-        <div class="row margin-top-40">
-            <div class="col-md-offset-1 col-md-10" animate="fadeInUp" data-animation-delay="200">
+        <div class="row" style="margin-top: 40px;">
+            <div class="col-md-offset-1 col-md-10">
                 <div class="tabs nomargin-top">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <h4><a class="tab-button" href="#projects-tab" data-toggle="tab"><i class="fa fa-file-code-o"></i>Projects</a></h4>
+                            <h4><a href="#projects-tab" data-toggle="tab"><i class="fa fa-file-code-o"></i>Projects</a></h4>
                         </li>
                         <li>
-                            <h4><a class="tab-button" href="#comments-tab" data-toggle="tab"><i class="fa fa-comments"></i>Comments</a></h4>
-                        </li>
-                        <li ng-show="vm.likedProjects.length > 0">
-                            <h4><a class="tab-button" href="#liked-projects-tab" data-toggle="tab"><i class="fa fa-thumbs-up"></i>Liked Projects</a></h4>
+                            <h4><a href="#comments-tab" data-toggle="tab"><i class="fa fa-comments"></i>Comments</a></h4>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div id="projects-tab" class="tab-pane active">
-                            <div user-profile-projects projects="vm.user.projects" />                            
+                            <!--<h3 style="display: inline-block; margin-right: 20px;"></h3>-->
+                            <span class="pull-right">
+                                <span style="margin-right: 15px;">Sort By:</span>
+                                <button ng-click="vm.sortByDate(undefined, $event)" class="btn btn-default" style="margin-right: 5px;"><i class="fa fa-long-arrow-down" style="margin-right: 5px;"></i>Date</button>
+                                <button ng-click="vm.sortByVisits(undefined, $event)" class="btn btn-default" style="margin-right: 5px;"><i style="margin-right: 5px;"></i>Visits</button>
+                                <button ng-click="vm.sortByComments(undefined, $event)" class="btn btn-default" style="margin-right: 5px;"><i style="margin-right: 5px;"></i>Comments</button>
+                            </span>
+                            <div class="clearfix"></div>
+                            <div class="row" style="margin-bottom: 30px; margin-top: 30px;" ng-repeat="project in vm.user.projects | orderBy : vm.orderBy">
+                                <div class="col-md-3 text-center">
+                                    <img src="{{project.mainImageUrl}}" width="170" height="170" alt="{{project.name}}" /><br />
+                                    <div style="margin-top: 5px;">
+                                        <i class="fa fa-eye" style="margin-right: 5px;"></i><span style="margin-right: 10px;">{{project.visits}}</span>
+                                        <i class="fa fa-thumbs-up" style="margin-right: 5px;"></i><span style="margin-right: 10px;">{{project.likes}}</span>
+                                        <i class="fa fa-comments" style="margin-right: 5px;"></i><span style="margin-right: 10px;">{{project.comments}}</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 style="margin-bottom: 0;"><a href="/projects/{{project.id}}/{{project.titleUrl}}">{{project.name}}</a></h4>
+                                    <span style="font-size: 0.85em;">
+                                        <i class="fa fa-clock-o" style="margin-right: 5px;"></i><span style="margin-right: 10px; font-size: 0.85em;">{{project.shortDate}}</span> |
+                                        <i class="fa fa-code" style="margin-right: 5px; margin-left: 10px;"></i><a href="{{project.repositoryUrl}}" target="_blank" style="margin-right: 10px">repository</a> |
+                                        <i class="fa fa-external-link-square" style="margin-right: 5px; margin-left: 10px;"></i><a href="{{project.liveDemoUrl}}" target="_blank">live demo</a>
+                                    </span>
+                                    <br />
+                                    <p style="margin-bottom: 20px;">
+                                        {{project.shortDescription}}
+                                    </p>
+                                    <span ng-repeat="collaborator in project.collaborators" style="font-size: 0.9em;">
+                                        <a href="/users/{{collaborator}}" style="margin-bottom: 2px; margin-right: 5px;">{{collaborator}}</a>
+                                    </span>
+                                    <div style="margin-top: 0; font-size: 0.9em;">
+                                        <a href="#" ng-repeat="tag in project.tags">
+                                            <span class="label label-default" style="background-color: {{tag.backgroundColor}}; color: {{tag.foregroundColor}}">{{tag.name}}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div id="comments-tab" class="tab-pane padding-top-30">
-                            <div class="row margin-bottom-20" ng-repeat="comment in vm.comments">
+                        <div id="comments-tab" class="tab-pane" style="padding-top: 30px;">
+                            <div class="row" style="margin-bottom: 20px;" ng-repeat="comment in vm.comments">
                                 <div class="col-md-2 text-center">
-                                    <i class="fa fa-clock-o font-size-3em"></i><br />
+                                    <i class="fa fa-clock-o" style="font-size: 4em;"></i><br />
                                     <span>{{comment.shortDate}}</span>
                                 </div>
                                 <div class="col-md-10">
-                                    <h6 class="margin-bottom-5">
-                                        <a href="/projects/{{comment.projectId}}/{{comment.projectTitleUrl}}">{{comment.projectTitle}}</a>
-                                    </h6>
                                     <p>{{comment.content}}</p>
                                 </div>
                             </div>
-                            <ul class="pagination">
-                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(1)"><a><<</a></ling-class="vm.commentsPage>
-                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a><</a></li>
-                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a>{{vm.commentsPage - 1}}</a></li>
-                                <li class="active"><a>{{vm.commentsPage}}</a></li>
-                                <li ng-show="vm.commentsPage + 1 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>{{vm.commentsPage + 1}}</a></li>
-                                <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>></a></li>
-                                <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.lastPage)"><a>>></a></li>
-                            </ul>
-                        </div>
-                        <div ng-show="vm.likedProjects.length > 0" id="liked-projects-tab" class="tab-pane">
-                            <div user-profile-projects projects="vm.likedProjects" />
                         </div>
                     </div>
                 </div>
