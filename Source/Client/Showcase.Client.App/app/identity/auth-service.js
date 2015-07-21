@@ -20,7 +20,11 @@
 
                     $http.defaults.headers.common.Authorization = 'Bearer ' + tokenValue;
 
-                    deferred.resolve(response);
+                    $http.get('/api/account/identity')
+                        .success(function (identityResponse) {
+                            identity.setUser(identityResponse);
+                            deferred.resolve(response);
+                        });
                 })
                 .error(function (err) {
                     deferred.reject(err);
@@ -37,6 +41,7 @@
             logout: function () {
                 $cookies.remove(TOKEN_KEY);
                 $http.defaults.headers.common.Authorization = null;
+                identity.removeUser();
             },
         }
     };
