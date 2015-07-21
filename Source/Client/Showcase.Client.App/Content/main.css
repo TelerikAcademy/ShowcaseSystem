@@ -191,3 +191,7 @@ a.social.fa-github:hover {
 .logo:hover, #topBar a, #topNav a {
     text-decoration: none;
 }
+
+.btn-success {
+    background-color: #8ab933 !important;
+}
