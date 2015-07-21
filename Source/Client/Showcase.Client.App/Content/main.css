@@ -75,3 +75,79 @@ a.social.fa-github:hover {
 {
   background: rgba(0, 0, 0, 0.5);
 }
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.margin-right-5 {
+    margin-right: 5px;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+.margin-right-15 {
+    margin-right: 15px;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 2px;
+}
+
+.margin-bottom-5 {
+    margin-bottom: 5px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.margin-top-0 {
+    margin-top: 0;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.padding-top-30 {
+    padding-top: 30px;
+}
+
+.font-size-085em {
+    font-size: 0.85em;
+}
+
+.font-size-09em {
+    font-size: 0.9em;
+}
+
+.font-size-13em {
+    font-size: 1.3em;
+}
+
+.font-size-2em {
+    font-size: 2em;
+}
+
+.font-size-3em {
+    font-size: 3em;
+}
