@@ -1,15 +1,25 @@
 ﻿(function () {
     'use strict';
 
-    var mainController = function mainController(identity) {
+    var mainController = function mainController(auth, identity) {
         var vm = this;
 
-        identity.getUser().then(function (user) {
-            vm.currentUser = user;
-        });
+        waitForLogin();
+
+        vm.logout = function () {
+            auth.logout();
+            vm.currentUser = undefined;
+            waitForLogin();
+        }
+
+        function waitForLogin() {
+            identity.getUser().then(function (user) {
+                vm.currentUser = user;
+            });
+        }
     };
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('MainController', ['identity', mainController]);
+        .controller('MainController', ['auth', 'identity', mainController]);
 }());
