@@ -187,3 +187,7 @@ a.social.fa-github:hover {
 .no-pointer-events {
     pointer-events: none;
 }
+
+.logo:hover, #topBar a, #topNav a {
+    text-decoration: none;
+}

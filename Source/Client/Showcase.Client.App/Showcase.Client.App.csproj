@@ -184,6 +184,7 @@
     <Content Include="content\epona\images\revolution_slider\font\revicons.eot" />
     <Content Include="content\epona\images\revolution_slider\font\revicons.ttf" />
     <Content Include="content\epona\images\revolution_slider\font\revicons.woff" />
+    <Content Include="content\images\telerik-logo.png" />
     <Content Include="content\loading-bar.css" />
     <Content Include="content\loading-bar.min.css" />
     <Content Include="content\toastr.less" />
