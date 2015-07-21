@@ -8,7 +8,7 @@
             auth.login(user).then(function () {
                 $scope.closeModal();
             });
-        }
+        };
     };
 
     angular
