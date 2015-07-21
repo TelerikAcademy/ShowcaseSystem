@@ -4,6 +4,7 @@
     var notifierService = function notifierService(toastr) {
         toastr.options.positionClass = 'toast-top-center';
         toastr.options.preventDuplicates = true;
+        toastr.options.closeButton = true;
 
         return {
             success: function (msg) {
