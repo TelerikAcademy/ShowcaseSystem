@@ -51,7 +51,8 @@
                 localUser = new User
                 {
                     UserName = remoteUser.UserName,
-                    AvatarUrl = remoteUser.AvatarUrl
+                    AvatarUrl = remoteUser.AvatarUrl,
+                    IsAdmin = remoteUser.IsAdmin
                 };
 
                 this.users.Add(localUser);
