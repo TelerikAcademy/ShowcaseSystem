@@ -6,10 +6,10 @@
             </div>
             <div class="col-md-7" animate="fadeInRight" data-animation-delay="200" style="margin-bottom: 10px;">
                 <h3 style="margin-bottom: 20px;">{{vm.user.username}}</h3>
-                <div style="font-size: 1.1em;">
-                    <i class="fa fa-file-code-o" style="margin-right: 10px; margin-bottom: 5px;"></i><span>{{vm.user.projectsCount}} projects</span><br />
-                    <i class="fa fa-thumbs-up" style="margin-right: 10px; margin-bottom: 5px;"></i><span>{{vm.user.likesCount}} likes</span><br />
-                    <i class="fa fa-comments" style="margin-right: 10px; margin-bottom: 5px;"></i><span>{{vm.user.commentsCount}} comments</span>
+                <div>
+                    <i class="fa fa-file-code-o" style="margin-right: 10px; margin-bottom: 5px; font-size: 2em;"></i><span style="font-size: 1.3em">{{vm.user.projectsCount}} projects</span><br />
+                    <i class="fa fa-thumbs-up" style="margin-right: 10px; margin-bottom: 5px; font-size: 2em;"></i><span style="font-size: 1.3em">{{vm.user.likesCount}} likes</span><br />
+                    <i class="fa fa-comments" style="margin-right: 10px; margin-bottom: 5px; font-size: 2em;"></i><span style="font-size: 1.3em">{{vm.user.commentsCount}} comments</span>
                 </div>
             </div>
         </div>
@@ -35,7 +35,9 @@
                             <div class="clearfix"></div>
                             <div class="row" style="margin-bottom: 30px; margin-top: 30px;" ng-repeat="project in vm.user.projects | orderBy : vm.orderBy">
                                 <div class="col-md-3 text-center">
-                                    <img src="{{project.mainImageUrl}}" width="170" height="170" alt="{{project.name}}" /><br />
+                                    <a href="/projects/{{project.id}}/{{project.titleUrl}}">
+                                        <img src="{{project.mainImageUrl}}" width="190" height="190" alt="{{project.name}}" />
+                                    </a><br />
                                     <div style="margin-top: 5px;">
                                         <i class="fa fa-eye" style="margin-right: 5px;"></i><span style="margin-right: 10px;">{{project.visits}}</span>
                                         <i class="fa fa-thumbs-up" style="margin-right: 5px;"></i><span style="margin-right: 10px;">{{project.likes}}</span>
@@ -71,12 +73,25 @@
                                     <span>{{comment.shortDate}}</span>
                                 </div>
                                 <div class="col-md-10">
+                                    <h6 style="margin-bottom: 5px;">
+                                        <a href="/projects/{{comment.projectId}}/{{comment.projectTitleUrl}}">{{comment.projectTitle}}</a>
+                                    </h6>
                                     <p>{{comment.content}}</p>
                                 </div>
                             </div>
 
                             <ul class="pagination">
-                                <li ng-repeat=""></li>
+                                <li ng-show="vm.commentsPage != 1" ng-click="vm.loadCommentsPage(1)"><a><<</a></li>
+                                <li ng-show="vm.commentsPage != 1" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a><</a></li>
+                                <li ng-show="vm.commentsPage - 3 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 3)"><a>{{vm.commentsPage - 3}}</a></li>
+                                <li ng-show="vm.commentsPage - 2 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 2)"><a>{{vm.commentsPage - 2}}</a></li>
+                                <li ng-show="vm.commentsPage - 1 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a>{{vm.commentsPage - 1}}</a></li>
+                                <li class="active"><a>{{vm.commentsPage}}</a></li>
+                                <li ng-show="vm.commentsPage + 1 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>{{vm.commentsPage + 1}}</a></li>
+                                <li ng-show="vm.commentsPage + 2 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 2)"><a>{{vm.commentsPage + 2}}</a></li>
+                                <li ng-show="vm.commentsPage + 3 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 3)"><a>{{vm.commentsPage + 3}}</a></li>
+                                <li ng-show="!vm.isLastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>></a></li>
+                                <li ng-show="!vm.isLastPage" ng-click="vm.loadCommentsPage(vm.lastPage)"><a>>></a></li>
                             </ul>
                         </div>
                     </div>
