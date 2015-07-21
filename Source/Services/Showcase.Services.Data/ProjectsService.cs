@@ -24,6 +24,15 @@
                 .Take(Constants.HomePageLatestProjectsCount);
         }
 
+        public IQueryable<Project> MostPopular()
+        {
+            return this.projects
+                .All()
+                .OrderByDescending(pr => pr.Likes.Count)
+                .ThenByDescending(pr => pr.CreatedOn)
+                .Take(Constants.HomePageLatestProjectsCount);
+        }
+
         public IQueryable<Project> GetProjectById(int id)
         {
             return this.projects

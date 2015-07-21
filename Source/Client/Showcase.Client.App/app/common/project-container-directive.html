@@ -1,7 +1,29 @@
 <div class="container">
     <div class="row">
-        <ul class="sort-destination isotope" data-sort-id="isotope-list" ng-repeat="project in projects">
-            <li project-tile project="project" />
+        <ul class="sort-destination isotope" data-sort-id="isotope-list">
+            <li class="isotope-item col-sm-6 col-md-3 development" ng-repeat="project in projects">
+                <div class="item-box" animate="bounceIn">
+                    <figure>
+                        <a class="item-hover" href="/projects/{{project.id}}/{{project.titleUrl}}">
+                            <span class="overlay color2"></span>
+                            <span class="inner">
+                                <span class="block fa fa-plus fsize20"></span>
+                                <strong>PROJECT</strong> DETAILS
+                            </span>
+                        </a>
+                        <img class="img-responsive" ng-src="{{project.mainImageUrl}}" width="260" height="260" alt="">
+                    </figure>
+                    <div class="item-box-desc">
+                        <h4 class="nomargin-bottom">{{project.name}}</h4>
+                        <small class="styleColor">{{project.shortDate}}</small><br />
+                        <div>
+                            <i class="fa fa-eye margin-right-5"></i><span class="margin-right-10">{{project.visits}}</span>
+                            <i class="fa fa-thumbs-up margin-right-5"></i><span class="margin-right-10">{{project.likes}}</span>
+                            <i class="fa fa-comments margin-right-5"></i><span class="margin-right-10">{{project.comments}}</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </div>
