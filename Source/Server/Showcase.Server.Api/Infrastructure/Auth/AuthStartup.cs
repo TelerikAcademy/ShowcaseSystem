@@ -17,7 +17,7 @@
             // Configure the web api token endpoint
             app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions
             {
-                TokenEndpointPath = new PathString("/api/Account/Login"),
+                TokenEndpointPath = new PathString("/api/Users/Login"),
 
                 // Configure the application for OAuth based flow
                 Provider = new ApplicationOAuthProvider("self"),

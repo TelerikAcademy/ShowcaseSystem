@@ -13,7 +13,9 @@
         <div id="barMain">
             <nav class="nav-second">
                 <ul class="nav nav-pills nav-second">
-                    <li><a data-toggle="modal" data-target="#login-modal"><i class="fa fa-angle-right"></i> Login</a></li>
+                    <li ng-if="!vm.currentUser"><a data-toggle="modal" data-target="#login-modal"><i class="fa fa-angle-right"></i> Login</a></li>
+                    <li ng-if="vm.currentUser"><a href="#"><i class="fa fa-angle-right"></i> {{vm.currentUser.userName}}</a></li>
+                    <li ng-if="vm.currentUser"><a href="#"><i class="fa fa-angle-right"></i> Logout</a></li>
                 </ul>
             </nav>
         </div>

@@ -9,7 +9,7 @@
 
             var data = "grant_type=password&username=" + (user.username || '') + '&password=' + (user.password || '');
 
-            $http.post('/api/account/login', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+            $http.post('/api/users/login', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .success(function (response) {
                     var tokenValue = response['access_token'];
 
@@ -20,7 +20,7 @@
 
                     $http.defaults.headers.common.Authorization = 'Bearer ' + tokenValue;
 
-                    $http.get('/api/account/identity')
+                    $http.get('/api/users/identity')
                         .success(function (identityResponse) {
                             identity.setUser(identityResponse);
                             deferred.resolve(response);
