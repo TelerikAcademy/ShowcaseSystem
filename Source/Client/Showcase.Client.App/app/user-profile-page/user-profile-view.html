@@ -18,53 +18,18 @@
                 <div class="tabs nomargin-top">
                     <ul class="nav nav-tabs">
                         <li class="active">
-                            <h4><a href="#projects-tab" data-toggle="tab"><i class="fa fa-file-code-o"></i>Projects</a></h4>
+                            <h4><a class="tab-button" href="#projects-tab" data-toggle="tab"><i class="fa fa-file-code-o"></i>Projects</a></h4>
                         </li>
                         <li>
-                            <h4><a href="#comments-tab" data-toggle="tab"><i class="fa fa-comments"></i>Comments</a></h4>
+                            <h4><a class="tab-button" href="#comments-tab" data-toggle="tab"><i class="fa fa-comments"></i>Comments</a></h4>
+                        </li>
+                        <li ng-show="vm.likedProjects.length > 0">
+                            <h4><a class="tab-button" href="#liked-projects-tab" data-toggle="tab"><i class="fa fa-thumbs-up"></i>Liked Projects</a></h4>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div id="projects-tab" class="tab-pane active">
-                            <span class="pull-right">
-                                <span class="margin-right-15">Sort By:</span>
-                                <button ng-click="vm.sortByDate(undefined, $event)" class="btn btn-default margin-right-5"><i class="fa fa-long-arrow-down margin-right-5"></i>Date</button>
-                                <button ng-click="vm.sortByVisits(undefined, $event)" class="btn btn-default margin-right-5"><i class="margin-right-5"></i>Visits</button>
-                                <button ng-click="vm.sortByComments(undefined, $event)" class="btn btn-default margin-right-5"><i class="margin-right-5"></i>Comments</button>
-                            </span>
-                            <div class="clearfix"></div>
-                            <div class="row margin-bottom-30 margin-top-30" ng-repeat="project in vm.user.projects | orderBy : vm.orderBy">
-                                <div class="col-md-3 text-center">
-                                    <a href="/projects/{{project.id}}/{{project.titleUrl}}">
-                                        <img src="{{project.mainImageUrl}}" width="190" height="190" alt="{{project.name}}" />
-                                    </a><br />
-                                    <div class="margin-top-5">
-                                        <i class="fa fa-eye margin-right-5"></i><span class="margin-right-10">{{project.visits}}</span>
-                                        <i class="fa fa-thumbs-up margin-right-5"></i><span class="margin-right-10">{{project.likes}}</span>
-                                        <i class="fa fa-comments margin-right-5"></i><span class="margin-right-10">{{project.comments}}</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <h4 class="margin-bottom-0"><a href="/projects/{{project.id}}/{{project.titleUrl}}">{{project.name}}</a></h4>
-                                    <span class="font-size-085em">
-                                        <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{project.shortDate}}</span> |
-                                        <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a> |
-                                        <i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{project.liveDemoUrl}}" target="_blank">live demo</a>
-                                    </span>
-                                    <br />
-                                    <p class="margin-bottom-20">
-                                        {{project.shortDescription}}
-                                    </p>
-                                    <span ng-repeat="collaborator in project.collaborators" class="font-size-09em">
-                                        <a href="/users/{{collaborator}}" class="margin-bottom-2 margin-right-5">{{collaborator}}</a>
-                                    </span>
-                                    <div class="margin-top-0 font-size-09em">
-                                        <a href="#" ng-repeat="tag in project.tags">
-                                            <span class="label label-default" style="background-color: {{tag.backgroundColor}}; color: {{tag.foregroundColor}}">{{tag.name}}</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            <div user-profile-projects projects="vm.user.projects" />
                         </div>
                         <div id="comments-tab" class="tab-pane padding-top-30">
                             <div class="row margin-bottom-20" ng-repeat="comment in vm.comments">
@@ -79,20 +44,18 @@
                                     <p>{{comment.content}}</p>
                                 </div>
                             </div>
-
                             <ul class="pagination">
-                                <li><a ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(1)"><<</a></li>
-                                <li><a ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><</a></li>
-                                <li ng-show="vm.commentsPage - 3 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 3)"><a>{{vm.commentsPage - 3}}</a></li>
-                                <li ng-show="vm.commentsPage - 2 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 2)"><a>{{vm.commentsPage - 2}}</a></li>
-                                <li ng-show="vm.commentsPage - 1 > 0" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a>{{vm.commentsPage - 1}}</a></li>
+                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(1)"><a><<</a></ling-class="vm.commentsPage>
+                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a><</a></li>
+                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a>{{vm.commentsPage - 1}}</a></li>
                                 <li class="active"><a>{{vm.commentsPage}}</a></li>
                                 <li ng-show="vm.commentsPage + 1 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>{{vm.commentsPage + 1}}</a></li>
-                                <li ng-show="vm.commentsPage + 2 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 2)"><a>{{vm.commentsPage + 2}}</a></li>
-                                <li ng-show="vm.commentsPage + 3 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 3)"><a>{{vm.commentsPage + 3}}</a></li>
                                 <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>></a></li>
                                 <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.lastPage)"><a>>></a></li>
                             </ul>
+                        </div>
+                        <div ng-show="vm.likedProjects.length > 0" id="liked-projects-tab" class="tab-pane">
+                            <div user-profile-projects projects="vm.likedProjects" />
                         </div>
                     </div>
                 </div>
