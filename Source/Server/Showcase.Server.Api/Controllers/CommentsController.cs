@@ -9,13 +9,12 @@
     using Showcase.Data.Models;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
 
     [RoutePrefix("api/Comments")]
     public class CommentsController : ApiController
     {
-        private const int PageSize = 5;
-
         private readonly ICommentsService comments;
 
         public CommentsController(ICommentsService comments)
@@ -35,8 +34,7 @@
 
             var postedComment = this.comments.PostComment(id, comment.CommentText, username);
 
-            var model = Mapper.Map<Comment, CommentResponseModel>(postedComment);
-            model.Username = username;
+            var model = Mapper.Map<Comment, CommentResponseModel>(postedComment); // TODO: remove Mapper
 
             return this.Data(model);
         }
@@ -51,9 +49,7 @@
             var model = new CommentsPageResponseModel
             {
                 Comments = this.comments
-                    .GetProjectComments(id)
-                    .Skip((page - 1) * PageSize)
-                    .Take(PageSize)
+                    .GetProjectComments(id, page)
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),
@@ -78,9 +74,7 @@
             var model = new CommentsPageResponseModel
             {
                 Comments = this.comments
-                    .GetUserComments(username)
-                    .Skip((page - 1) * PageSize)
-                    .Take(PageSize)
+                    .GetUserComments(username, page)
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),
@@ -94,7 +88,7 @@
 
         private int GetLastPage(int count, int page)
         {
-            var lastPage = count % CommentsController.PageSize == 0 ? count / CommentsController.PageSize : (count / CommentsController.PageSize) + 1;
+            var lastPage = count % CommentsService.PageSize == 0 ? count / CommentsService.PageSize : (count / CommentsService.PageSize) + 1;
             return lastPage == 0 ? 1 : lastPage;
         }
     }
