@@ -1,0 +1,15 @@
+﻿<div class="text-center margin-top20">
+    <ul class="pagination">
+        <li ng-class="{disabled: !hasPreviousPage}">
+            <a href="#" ng-click="changed(selectedPage - 1)">Previous</a>
+        </li>
+
+        <li ng-class="{active: page.isCurrent}" ng-repeat="page in pages">
+            <a href="" ng-click="changed(page.pageNumber)">{{page.pageNumber+1}}</a>
+        </li>
+
+        <li ng-class="{disabled: !hasNextPage}">
+            <a href="#" ng-click="changed(selectedPage + 1)">Next</a>
+        </li>
+    </ul>
+</div>  
