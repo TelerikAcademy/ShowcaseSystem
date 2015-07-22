@@ -29,6 +29,8 @@
             return this.projects
                 .All()
                 .OrderByDescending(pr => pr.Likes.Count)
+                .ThenByDescending(pr => pr.Comments.Count)
+                .ThenByDescending(pr => pr.Visits.Count)
                 .ThenByDescending(pr => pr.CreatedOn)
                 .Take(Constants.HomePageLatestProjectsCount);
         }
@@ -43,6 +45,13 @@
         public IQueryable<Project> GetProjectsList()
         {
             return this.projects.All();
+        }
+
+        public IQueryable<Project> GetLikedByUser(int userId)
+        {
+            return this.projects
+                .All()
+                .Where(pr => pr.Likes.Any(l => l.UserId == userId));
         }
     }
 }
