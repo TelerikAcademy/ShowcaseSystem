@@ -6,8 +6,13 @@
             restrict: 'A',
             templateUrl: '/app/search-page/filters-directive.html',
             scope: {
-                filteroptions: '=',
+                options: '=',
                 search: '&'
+            },
+            link: function (scope) {
+                scope.scrollChecked = function () {
+                    localStorage.scrolling = scope.options.scrolling;
+                }
             }
         };
     };

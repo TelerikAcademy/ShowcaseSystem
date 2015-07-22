@@ -109,3 +109,5 @@
 /// <reference path="../app/search-page/search-page-data.js" />
 /// <reference path="../app/search-page/filters-directive.js" />
 /// <reference path="../app/common/project-tile-directive.js" />
+/// <reference path="../app/common/pager-directive.js" />
+/// <reference path="../app/search-page/search-bar-directive.js" />

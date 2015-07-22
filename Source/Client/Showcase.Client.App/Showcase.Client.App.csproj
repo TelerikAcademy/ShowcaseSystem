@@ -123,7 +123,8 @@
   <ItemGroup>
     <Content Include="app\common\data.js" />
     <Content Include="app\common\http-response-interceptor.js" />
-    <Content Include="app\common\odata-interceptor.js" />
+    <Content Include="app\common\pager-directive.html" />
+    <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
     <Content Include="app\home-page\statistics-directive.html" />
@@ -135,6 +136,8 @@
     <Content Include="app\project-details\project-details-data.js" />
     <Content Include="app\search-page\filters-directive.html" />
     <Content Include="app\search-page\filters-directive.js" />
+    <Content Include="app\search-page\search-bar-directive.js" />
+    <Content Include="app\search-page\search-bar-directive.html" />
     <Content Include="app\search-page\search-page-controller.js" />
     <Content Include="app\search-page\search-page-data.js" />
     <Content Include="app\search-page\search-page-view.html" />
