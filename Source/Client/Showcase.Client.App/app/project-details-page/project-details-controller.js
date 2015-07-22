@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window) {
+    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location) {
         var vm = this;
         var id = $routeParams.id;
 
@@ -77,6 +77,21 @@
                 });
         };
 
+        vm.popup = function (url, title, w, h, text, hashTags) {
+            var url = url + $location.absUrl();
+            if (text !== undefined) {
+                url += '&text=' + text + ' - ' + vm.project.name;
+            }
+
+            if (hashTags != undefined) {
+                url += '&hashtags=' + hashTags;
+            }
+
+            var left = (screen.width / 2) - (w / 2);
+            var top = (screen.height / 2) - (h / 2);
+            $window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+        };
+
         function daydiff(first, second) {
             return (second - first) / (1000 * 60 * 60 * 24);
         }
@@ -84,5 +99,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', projectDetailsController]);
+        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', projectDetailsController]);
 }());

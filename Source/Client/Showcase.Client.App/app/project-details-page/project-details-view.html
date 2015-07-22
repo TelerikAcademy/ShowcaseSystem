@@ -7,7 +7,7 @@
                     <br />
                     <i class="fa fa-eye margin-right-5"></i><span class="margin-right-20">{{vm.project.visits}}</span>
                     <i class="fa fa-comments margin-right-5"></i><span class="margin-right-20">{{vm.project.comments}}</span>
-                    <button class="btn btn-xs btn-success margin-left-10" ng-click="vm.isLiked ? vm.dislikeProject(vm.project.id) : vm.likeProject(vm.project.id)">
+                    <button class="btn btn-xs margin-left-10" ng-class="vm.isLiked ? 'btn-warning' : 'btn-success'" ng-click="vm.isLiked ? vm.dislikeProject(vm.project.id) : vm.likeProject(vm.project.id)">
                         <i ng-class="vm.isLiked ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'"></i>{{vm.isLiked ? 'Remove Like' : 'Like'}} ({{vm.likes}})
                     </button>
                 </div>
@@ -19,13 +19,13 @@
                     <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a> |
                     <i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank">live demo</a>
                     <div class="pull-right">
-                        <a href="#" class="btn btn-sm ico-only rounded btn-facebook">
+                        <a href="#" class="btn btn-sm ico-only rounded btn-facebook" ng-click="vm.popup('http://www.facebook.com/sharer.php?u=', 'Facebook Share', 600, 500)">
                             <i class="fa fa-facebook"></i>
                         </a>
-                        <a href="#" class="btn btn-sm ico-only rounded btn-twitter">
+                        <a href="#" class="btn btn-sm ico-only rounded btn-twitter" ng-click="vm.popup('http://twitter.com/share?url=', 'Twitter Share', 600, 500, 'Check out my project ', 'telerikacademy')">
                             <i class="fa fa-twitter"></i>
                         </a>
-                        <a href="#" class="btn btn-sm ico-only rounded btn-google-plus">
+                        <a href="#" class="btn btn-sm ico-only rounded btn-google-plus" ng-click="vm.popup('https://plus.google.com/share?url=', 'Google+ Share', 600, 500)">
                             <i class="fa fa-google-plus"></i>
                         </a>
                     </div>
@@ -76,6 +76,9 @@
                     <button class="btn btn-sm btn-success" ng-click="vm.commentProject(vm.project.id)">Comment</button>
                 </form>
             </div>
+        </div>
+        <div class="row">
+
         </div>
     </div>
 </section>
