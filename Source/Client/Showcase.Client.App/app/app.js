@@ -23,10 +23,10 @@
                 resolve: routeResolveChecks.authenticated
             })
             .when('/projects/:id/:title', {
-                templateUrl: '/app/project-details/project-details-view.html'
+                templateUrl: '/app/project-details-page/project-details-view.html'
             })
             .when('/users/:username', {
-                templateUrl: '/app/user-profile/user-profile-view.html'
+                templateUrl: '/app/user-profile-page/user-profile-view.html'
             })
             .when('/search', {
                 templateUrl: '/app/search-page/search-page-view.html'
