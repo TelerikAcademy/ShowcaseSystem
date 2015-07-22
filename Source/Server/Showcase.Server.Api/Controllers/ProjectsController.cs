@@ -12,6 +12,7 @@
     using Showcase.Data.Common.Repositories;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.Common;
+    using Showcase.Server.DataTransferModels;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data.Contracts;
 
@@ -101,17 +102,32 @@
 
         [HttpGet]
         [Route("api/odata/Search")]
-        [EnableQuery(PageSize = 64,
-            AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy |
-            AllowedQueryOptions.Skip | AllowedQueryOptions.Top | AllowedQueryOptions.Select)]
-        public IQueryable<ProjectResponseSimpleModel> Search()
+        public ODataResult<ProjectResponseSimpleModel> Search(ODataQueryOptions<ProjectResponseSimpleModel> options)
         {
-            var model = this.projectsService
+            options.Validate(new ODataValidationSettings()
+            {
+                MaxTop = 64,
+                AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy | 
+                    AllowedQueryOptions.Skip | AllowedQueryOptions.Top |
+                    AllowedQueryOptions.Select | AllowedQueryOptions.Count
+            });
+
+            var projects = this.projectsService
                 .GetProjectsList()
                 .Project()
                 .To<ProjectResponseSimpleModel>();
 
-            return model;
+            long? count = null;
+            if (options.Count != null && options.Count.Value)
+            {
+                count = projects.Count();
+            }
+
+            ODataQuerySettings settings = new ODataQuerySettings() { PageSize = options.Top.Value };
+            projects = options.ApplyTo(projects, settings) as IQueryable<ProjectResponseSimpleModel>;
+
+            return new ODataResult<ProjectResponseSimpleModel>(
+                 projects as IEnumerable<ProjectResponseSimpleModel>, count);
         }
     }
 }
