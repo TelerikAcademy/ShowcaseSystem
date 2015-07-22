@@ -2,14 +2,38 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-3" animate="fadeInLeft" data-animation-delay="200">
-                <img src="vm.user.avatarUrl" width="220" height="220" alt="{{vm.user.username}}" />
+                <img src="{{vm.user.avatarUrl}}" width="220" height="220" alt="{{vm.user.username}}" />
             </div>
-            <div class="col-md-7 margin-bottom-10" animate="fadeInRight" data-animation-delay="200">
-                <h3 class="margin-bottom-20">{{vm.user.username}}</h3>
-                <div>
-                    <i class="fa fa-file-code-o margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.projectsCount}} projects</span><br />
-                    <i class="fa fa-thumbs-up margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.likesCount}} likes</span><br />
-                    <i class="fa fa-comments margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.commentsCount}} comments</span>
+            <div class="col-md-7 margin-bottom-10 margin-top-10" animate="fadeInRight" data-animation-delay="200">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="margin-bottom-20">{{vm.user.username}}</h3>
+                        <div>
+                            <span class="margin-bottom-5" style="display: inline-block;">
+                                <i class="fa fa-file-code-o margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.projectsCount}} projects</span>
+                            </span>
+                            <br />
+                            <span class="margin-bottom-5" style="display: inline-block;">
+                                <i class="fa fa-comments margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.commentsCount}} comments</span>
+                            </span>
+                            <br />
+                            <span class="margin-bottom-5" style="display: inline-block;">
+                                <i class="fa fa-thumbs-up margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.likesCount}} likes</span>
+                            </span>
+                            <br />
+                            <span class="margin-bottom-5" style="display: inline-block;">
+                                <i class="fa fa-users margin-right-10 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.teammates.length}} teammates</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Past Teammates</h5>
+                        <div ng-repeat="mate in vm.user.teammates">
+                            <a href="/users/{{mate.username}}">
+                                <img src="{{mate.avatarUrl}}" class="margin-right-10" width="22" height="22" /><span>{{mate.username}}</span>
+                            </a><br />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,30 +53,10 @@
                     </ul>
                     <div class="tab-content">
                         <div id="projects-tab" class="tab-pane active">
-                            <div user-profile-projects projects="vm.user.projects"/>
+                            <div user-profile-projects projects="vm.user.projects" />
                         </div>
                         <div id="comments-tab" class="tab-pane padding-top-30">
-                            <div class="row margin-bottom-20" ng-repeat="comment in vm.comments">
-                                <div class="col-md-2 text-center">
-                                    <i class="fa fa-clock-o font-size-3em"></i><br />
-                                    <span>{{comment.shortDate}}</span>
-                                </div>
-                                <div class="col-md-10">
-                                    <h6 class="margin-bottom-5">
-                                        <a href="/projects/{{comment.projectId}}/{{comment.projectTitleUrl}}">{{comment.projectTitle}}</a>
-                                    </h6>
-                                    <p>{{comment.content}}</p>
-                                </div>
-                            </div>
-                            <ul class="pagination">
-                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(1)"><a><<</a></ling-class="vm.commentsPage>
-                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a><</a></li>
-                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a>{{vm.commentsPage - 1}}</a></li>
-                                <li class="active"><a>{{vm.commentsPage}}</a></li>
-                                <li ng-show="vm.commentsPage + 1 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>{{vm.commentsPage + 1}}</a></li>
-                                <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>></a></li>
-                                <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.lastPage)"><a>>></a></li>
-                            </ul>
+                            <div user-profile-comments comments="vm.comments" />
                         </div>
                         <div ng-show="vm.likedProjects.length > 0" id="liked-projects-tab" class="tab-pane">
                             <div user-profile-projects projects="vm.likedProjects" />
