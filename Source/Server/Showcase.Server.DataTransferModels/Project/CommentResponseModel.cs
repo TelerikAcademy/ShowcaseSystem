@@ -20,6 +20,8 @@
 
         public string Username { get; set; }
 
+        public string UserAvatarUrl { get; set; }
+
         public string ProjectTitleUrl
         {
             get
