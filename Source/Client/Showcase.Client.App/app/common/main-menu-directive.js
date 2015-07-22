@@ -7,6 +7,22 @@
             templateUrl: '/app/common/main-menu-directive.html',
             link: function (scope, element) {
                 updateMenu($location.path());
+                var $addIcon = $('#add-icon');
+
+                $('#add-button')
+                    .hover(function () {
+                        $addIcon.css('color', '#8ab933');
+                    }, function () {
+                        $addIcon.css('color', '#999999');
+                    });
+
+                $('.mega-menu')
+                    .hover(function (e) {
+                        console.log(e.currentTarget);
+                        $(e.currentTarget).find('span').css('color', '#888');
+                    }, function (e) {
+                        $(e.currentTarget).find('span').css('color', '#dedede');
+                    });
 
                 element.on('click', 'li', function () {
                     var $this = $(this);
