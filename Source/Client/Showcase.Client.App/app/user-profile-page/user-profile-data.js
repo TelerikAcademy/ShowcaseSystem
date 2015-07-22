@@ -10,9 +10,14 @@
             return data.get('comments/user/' + username + '/' + page);
         }
 
+        function getLikedProjects(username) {
+            return data.get('projects/likedprojects')
+        }
+
         return {
             getUser: getUser,
-            getComments: getComments
+            getComments: getComments,
+            getLikedProjects: getLikedProjects
         };
     };
 
