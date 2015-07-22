@@ -119,3 +119,4 @@
 /// <reference path="../app/project-details-page/project-details-data.js" />
 /// <reference path="angular-mocks.js" />
 /// <reference path="angular.min.js" />
+/// <reference path="../app/user-profile-page/user-profile-projects-directive.js" />
