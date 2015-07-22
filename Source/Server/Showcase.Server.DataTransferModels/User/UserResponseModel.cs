@@ -1,11 +1,13 @@
 ﻿namespace Showcase.Server.DataTransferModels.User
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using AutoMapper;
-
+    
     using Showcase.Data.Models;
 
+    using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
     using Showcase.Server.DataTransferModels.Project;
 
@@ -21,18 +23,24 @@
 
         public int LikesCount { get; set; }
 
-        public ICollection<LikeResponseModel> Likes { get; set; }
+        public IEnumerable<TeammateResponseModel> Teammates { get; set; }
 
-        public ICollection<ProjectResponseModel> Projects { get; set; }
+        public IEnumerable<LikeResponseModel> Likes { get; set; }
 
-        public ICollection<CommentResponseModel> Comments { get; set; }
+        public IEnumerable<ProjectResponseModel> Projects { get; set; }
+
+        public IEnumerable<CommentResponseModel> Comments { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<User, UserResponseModel>()
                 .ForMember(u => u.ProjectsCount, opt => opt.MapFrom(u => u.Projects.Count))
                 .ForMember(u => u.CommentsCount, opt => opt.MapFrom(u => u.Comments.Count))
-                .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Likes.Count));
+                .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Likes.Count))
+                .ForMember(u => u.Teammates, 
+                    opt => opt.MapFrom(u => 
+                        u.Projects.SelectMany(
+                                p => p.Collaborators).Distinct()));
         }
     }
 }
