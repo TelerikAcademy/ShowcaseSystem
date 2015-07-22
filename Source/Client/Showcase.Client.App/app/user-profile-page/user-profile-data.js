@@ -3,7 +3,7 @@
 
     var userProfileData = function userProfileData(data) {
         function getUser(username) {
-            return data.get('users/' + username);
+            return data.get('users/profile/' + username);
         }
 
         function getComments(username, page) {
