@@ -10,9 +10,14 @@
             return data.get('projects');
         }
 
+        function getMostPopularProjects() {
+            return data.get('projects/popular');
+        }
+
         return {
             getStatistics: getStatistics,
             getLatestProjects: getLatestProjects,
+            getMostPopularProjects: getMostPopularProjects
         };
     };
 

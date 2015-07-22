@@ -22,11 +22,22 @@
 
         private readonly IVisitsService visitsService;
 
-        public ProjectsController(IProjectsService homePageService, ILikesService likesService, IVisitsService visitsService)
+        private readonly IProjectsService projectsService;
+
+        private readonly IUsersService usersService;
+
+        public ProjectsController(
+            IProjectsService homePageService, 
+            ILikesService likesService, 
+            IVisitsService visitsService, 
+            IProjectsService projectsService,
+            IUsersService usersService)
         {
             this.homePageService = homePageService;
             this.likesService = likesService;
             this.visitsService = visitsService;
+            this.projectsService = projectsService;
+            this.usersService = usersService;
         }
 
         [HttpGet]
@@ -34,6 +45,19 @@
         {
             var model = this.homePageService
                 .LatestProjects()
+                .Project()
+                .To<ProjectResponseModel>()
+                .ToList();
+
+            return this.Data(model);
+        }
+
+        [HttpGet]
+        [Route("Popular")]
+        public IHttpActionResult Popular()
+        {
+            var model = this.homePageService
+                .MostPopular()
                 .Project()
                 .To<ProjectResponseModel>()
                 .ToList();
@@ -57,6 +81,27 @@
             return this.Data(model);
         }
 
+        [HttpGet]
+        [Route("LikedProjects")]
+        public IHttpActionResult LikedProjects(string username)
+        {
+            var currentLoggedInUsername = this.User.Identity.Name;
+            if (username != currentLoggedInUsername.ToLower())
+            {
+                return this.Data(false, "You are not authorized to view this user's liked projects.");
+            }
+
+            var userId = this.usersService.GetUserId(username);
+
+            var model = this.projectsService
+                .GetLikedByUser(userId)
+                .Project()
+                .To<ProjectResponseModel>()
+                .ToList();
+
+            return this.Data(model);
+        }
+
         [HttpPost]
         [Route("Visit/{id}")]
         public IHttpActionResult Visit(int id)
@@ -68,7 +113,7 @@
             return this.Ok();
         }
 
-        // [Authorize]
+        //[Authorize]
         [HttpPost]
         [Route("Like/{id}")]
         public IHttpActionResult Like(int id)
@@ -85,7 +130,7 @@
             return this.Ok();
         }
 
-        // [Authorize]
+        //[Authorize]
         [HttpPost]
         [Route("DisLike/{id}")]
         public IHttpActionResult DisLike(int id)
@@ -94,7 +139,7 @@
 
             if (!this.likesService.ProjectIsLikedByUser(id, username))
             {
-         // return this.Data(false, "You have not yet liked this project.");
+                return this.Data(false, "You have not yet liked this project.");
             }
 
             this.likesService.DislikeProject(id, username);
