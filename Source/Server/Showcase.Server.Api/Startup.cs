@@ -26,7 +26,7 @@
             var httpConfig = new HttpConfiguration();
             httpConfig.MapHttpAttributeRoutes();
 
-            ODataConfig.Register(httpConfig);
+            //ODataConfig.Register(httpConfig);
             WebApiConfig.Register(httpConfig);
 
             app
