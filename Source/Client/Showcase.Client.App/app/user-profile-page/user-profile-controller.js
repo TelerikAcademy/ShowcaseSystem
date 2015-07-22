@@ -1,15 +1,19 @@
 ﻿(function () {
     'use strict';
 
-    var userProfileController = function userProfileController(userProfileData, $routeParams) {
+    var userProfileController = function userProfileController(userProfileData, $routeParams, identity) {
         var vm = this,
-            username = $routeParams.username,
+            username = $routeParams.username.toLowerCase(),
             arrowDownCss = 'fa fa-long-arrow-down',
             arrowUpCss = 'fa fa-long-arrow-up';
 
         vm.orderBy = '-createdOn';
         vm.commentsPage = 1;
         vm.lastPage = 1;
+
+        $('.tab-button').click(function (e) {
+            e.preventDefault();
+        });
 
         userProfileData.getUser(username)
             .then(function (user) {
@@ -22,6 +26,14 @@
                 vm.isLastPage = data.isLastPage;
                 vm.lastPage = data.lastPage;
             });
+
+        //if (identity.isAuthenticated() && identity.currentUser.username.toLowerCase() === username) {
+        //    userProfileData.getLikedProjects()
+        //        .then(function (data) {
+        //            vm.likedProjects = data;
+        //            console.log(data);
+        //        });
+        //}
 
         vm.loadCommentsPage = function (page) {
             userProfileData.getComments(username, page)
@@ -115,5 +127,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('userProfileController', ['userProfileData', '$routeParams', userProfileController]);
+        .controller('userProfileController', ['userProfileData', '$routeParams', 'identity', userProfileController]);
 }());

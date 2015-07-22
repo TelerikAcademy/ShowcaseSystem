@@ -23,6 +23,9 @@
                         <li>
                             <h4><a class="tab-button" href="#comments-tab" data-toggle="tab"><i class="fa fa-comments"></i>Comments</a></h4>
                         </li>
+                        <li ng-show="vm.likedProjects.length > 0">
+                            <h4><a class="tab-button" href="#liked-projects-tab" data-toggle="tab"><i class="fa fa-thumbs-up"></i>Liked Projects</a></h4>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div id="projects-tab" class="tab-pane active">
@@ -41,16 +44,18 @@
                                     <p>{{comment.content}}</p>
                                 </div>
                             </div>
-
                             <ul class="pagination">
                                 <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(1)"><a><<</a></ling-class="vm.commentsPage>
-                                <!--<li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a><</a></li>-->
+                                <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a><</a></li>
                                 <li ng-class="vm.commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage - 1)"><a>{{vm.commentsPage - 1}}</a></li>
                                 <li class="active"><a>{{vm.commentsPage}}</a></li>
                                 <li ng-show="vm.commentsPage + 1 <= vm.lastPage" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>{{vm.commentsPage + 1}}</a></li>
-                                <!--<li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>></a></li>-->
+                                <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.commentsPage + 1)"><a>></a></li>
                                 <li ng-class="vm.isLastPage ? 'no-pointer-events' : ''" ng-click="vm.loadCommentsPage(vm.lastPage)"><a>>></a></li>
                             </ul>
+                        </div>
+                        <div ng-show="vm.likedProjects.length > 0" id="liked-projects-tab" class="tab-pane">
+                            <div user-profile-projects projects="vm.likedProjects" />
                         </div>
                     </div>
                 </div>

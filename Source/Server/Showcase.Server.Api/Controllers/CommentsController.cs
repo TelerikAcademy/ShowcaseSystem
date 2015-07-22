@@ -94,7 +94,8 @@
 
         private int GetLastPage(int count, int page)
         {
-            return count % CommentsController.PageSize == 0 ? count / CommentsController.PageSize : (count / CommentsController.PageSize) + 1;
+            var lastPage = count % CommentsController.PageSize == 0 ? count / CommentsController.PageSize : (count / CommentsController.PageSize) + 1;
+            return lastPage == 0 ? 1 : lastPage;
         }
     }
 }
