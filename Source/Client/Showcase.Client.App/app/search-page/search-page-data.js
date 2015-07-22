@@ -13,7 +13,7 @@
 
         function searchProjects(oData) {
             oData = oData || '/search';
-            return data.get('odata' + oData);
+            return data.get('projects' + oData);
         }
 
         function getSearchTerms() {
