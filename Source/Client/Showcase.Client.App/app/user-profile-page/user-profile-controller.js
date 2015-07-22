@@ -11,6 +11,7 @@
         vm.commentsPage = 1;
         vm.lastPage = 1;
 
+
         $('.tab-button').click(function (e) {
             e.preventDefault();
         });
@@ -29,12 +30,10 @@
 
         identity.getUser()
             .then(function (user) {
-                console.log(user);
                 if (user.userName.toLowerCase() === username || user.isAdmin) {
                     userProfileData.getLikedProjects(username)
                         .then(function (data) {
                             vm.likedProjects = data;
-                            console.log(data);
                         });
                 }
             });

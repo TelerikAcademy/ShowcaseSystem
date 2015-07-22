@@ -1,0 +1,21 @@
+﻿<div class="row margin-bottom-20" ng-repeat="comment in comments">
+    <div class="col-md-2 text-center">
+        <i class="fa fa-clock-o font-size-3em"></i><br />
+        <span>{{comment.shortDate}}</span>
+    </div>
+    <div class="col-md-10">
+        <h6 class="margin-bottom-5">
+            <a href="/projects/{{comment.projectId}}/{{comment.projectTitleUrl}}">{{comment.projectTitle}}</a>
+        </h6>
+        <p>{{comment.content}}</p>
+    </div>
+</div>
+<ul class="pagination">
+    <li ng-class="commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(1)"><a><<</a></li>
+    <li ng-class="commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(commentsPage - 1)"><a><</a></li>
+    <li ng-class="commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(commentsPage - 1)"><a>{{commentsPage - 1}}</a></li>
+    <li class="active"><a>{{commentsPage}}</a></li>
+    <li ng-show="commentsPage + 1 <= lastPage" ng-click="loadCommentsPage(commentsPage + 1)"><a>{{commentsPage + 1}}</a></li>
+    <li ng-class="isLastPage ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(commentsPage + 1)"><a>></a></li>
+    <li ng-class="isLastPage ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(lastPage)"><a>>></a></li>
+</ul>

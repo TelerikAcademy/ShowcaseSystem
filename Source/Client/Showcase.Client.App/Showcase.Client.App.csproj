@@ -148,6 +148,8 @@
     <Content Include="app\projects-page\projects-page-controller.js" />
     <Content Include="app\projects-page\projects-page-data.js" />
     <Content Include="app\projects-page\projects-page-view.html" />
+    <Content Include="app\user-profile-page\user-profile-comments-directive.html" />
+    <Content Include="app\user-profile-page\user-profile-comments-directive.js" />
     <Content Include="app\user-profile-page\user-profile-controller.js" />
     <Content Include="app\user-profile-page\user-profile-data.js" />
     <Content Include="app\user-profile-page\user-profile-projects-directive.html" />
