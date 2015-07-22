@@ -51,7 +51,7 @@ namespace Showcase.Data.Migrations
                 return;
             }
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 var user = new User
                 {
@@ -146,7 +146,7 @@ namespace Showcase.Data.Migrations
 
                 for (int j = 1; j <= 5; j++)
                 {
-                    project.Collaborators.Add(context.Users.FirstOrDefault());
+                    project.Collaborators.Add(context.Users.FirstOrDefault(u => u.Id == j));
                     project.Tags.Add(context.Tags.FirstOrDefault(u => u.Id == j));
                 }
 
