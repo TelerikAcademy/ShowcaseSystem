@@ -32,11 +32,7 @@
                 .Project()
                 .To<UserResponseModel>()
                 .FirstOrDefault();
-<<<<<<< HEAD
-
-=======
             
->>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593
             if (model != null)
             {
                 return this.Data(model);

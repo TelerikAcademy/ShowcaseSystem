@@ -65,14 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Project\CommentRequestModel.cs" />
-<<<<<<< HEAD
-    <Compile Include="ODataResult.cs" />
-=======
->>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593
     <Compile Include="Project\CommentResponseModel.cs" />
     <Compile Include="Project\CommentsPageResponseModel.cs" />
     <Compile Include="Project\ProjectResponseModel.cs" />
-    <Compile Include="Project\ProjectResponseSimpleModel.cs" />
     <Compile Include="Project\TagResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User\IdentityResponseModel.cs" />

@@ -60,5 +60,12 @@
                 .All()
                 .Where(pr => pr.Likes.Any(l => l.UserId == userId));
         }
+
+        public IQueryable<Project> GetLikedByUser(int userId)
+        {
+            return this.projects
+                .All()
+                .Where(pr => pr.Likes.Any(l => l.UserId == userId));
+        }
     }
 }

@@ -37,18 +37,11 @@
                 .ForMember(u => u.ProjectsCount, opt => opt.MapFrom(u => u.Projects.Count))
                 .ForMember(u => u.CommentsCount, opt => opt.MapFrom(u => u.Comments.Count))
                 .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Likes.Count))
-<<<<<<< HEAD
-                .ForMember(u => u.Teammates, 
-                    opt => opt.MapFrom(u => 
-                        u.Projects.SelectMany(
-                                p => p.Collaborators).Distinct()));
-=======
                 .ForMember(
                     u => u.Teammates, 
                         opt => opt.MapFrom(u => 
                             u.Projects.SelectMany(
                                     p => p.Collaborators).Distinct()));
->>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593
         }
     }
 }

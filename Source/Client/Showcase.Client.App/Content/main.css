@@ -1,0 +1,246 @@
+﻿.toast-top-center {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.toast .toast-close-button {
+    top: auto;
+}
+
+.statistics .boxed {
+    margin: 40px 0;
+}
+
+#loading-bar .bar {
+    background: #8ab933;
+}
+
+#loading-bar .peg {
+    -moz-box-shadow: #8ab933 1px 0 6px 1px;
+    -ms-box-shadow: #8ab933 1px 0 6px 1px;
+    -webkit-box-shadow: #8ab933 1px 0 6px 1px;
+    box-shadow: #8ab933 1px 0 6px 1px;
+}
+
+#loading-bar-spinner .spinner-icon {
+    width: 24px;
+    height: 24px;
+    border-top-color: #8ab933;
+    border-left-color: #8ab933;
+}
+
+.modal-title a {
+    color: white;
+}
+
+.modal-footer button {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.modal-footer button:hover {
+    margin: 0;
+}
+
+.modal-body input {
+    margin-top: 10px;
+}
+
+.modal-body .col-md-6:first-child {
+    padding-left: 0;
+}
+
+.modal-body .col-md-6:last-child {
+    padding-right: 0;
+}
+
+a.social.fa-youtube-play:hover {
+    background: red!important;
+    color: #fff!important;
+}
+
+a.social.fa-github:hover {
+    background: gray!important;
+    color: #fff!important;
+}
+
+::-webkit-scrollbar
+{
+  width: 8px;  /* for vertical scrollbars */
+  height: 8px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.margin-right-5 {
+    margin-right: 5px;
+}
+
+.margin-right-10 {
+    margin-right: 10px;
+}
+
+.margin-right-15 {
+    margin-right: 15px;
+}
+
+.margin-right-20 {
+    margin-right: 20px;
+}
+
+.margin-right-30 {
+    margin-right: 30px;
+}
+
+.margin-right-40 {
+    margin-right: 40px;
+}
+
+.margin-right-50 {
+    margin-right: 50px;
+}
+
+.margin-right-60 {
+    margin-right: 60px;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 2px;
+}
+
+.margin-bottom-5 {
+    margin-bottom: 5px;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.margin-bottom-50 {
+    margin-bottom: 50px;
+}
+
+.margin-top-0 {
+    margin-top: 0;
+}
+
+.margin-top-2 {
+    margin-top: 2px;
+}
+
+.margin-top-5 {
+    margin-top: 5px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.margin-top-50 {
+    margin-top: 50px;
+}
+
+.margin-top-100 {
+    margin-top: 100px;
+}
+
+.padding-left-10 {
+    padding-left: 10px;
+}
+
+.padding-right-10 {
+    padding-right: 10px;
+}
+
+.padding-top-30 {
+    padding-top: 30px;
+}
+
+.font-size-075em {
+    font-size: 0.75em;
+}
+
+.font-size-085em {
+    font-size: 0.85em;
+}
+
+.font-size-09em {
+    font-size: 0.9em;
+}
+
+.font-size-13em {
+    font-size: 1.3em;
+}
+
+.font-size-14em {
+    font-size: 1.4em;
+}
+
+.font-size-2em {
+    font-size: 2em;
+}
+
+.font-size-3em {
+    font-size: 3em;
+}
+
+.logo-text-container {
+    display: inline-block;
+    color:#828282;
+}
+
+.logo-image {
+    vertical-align: top;
+}
+
+.no-pointer-events {
+    pointer-events: none;
+}
+
+.logo:hover, #topBar a, #topNav a {
+    text-decoration: none;
+}
+
+.btn-success {
+    background-color: #8ab933 !important;
+}
