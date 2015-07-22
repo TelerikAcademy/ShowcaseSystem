@@ -1,11 +1,11 @@
 ﻿<span class="pull-right">
     <span class="margin-right-15">Sort By:</span>
-    <button ng-click="vm.sortByDate(undefined, $event)" class="btn btn-default margin-right-5"><i class="fa fa-long-arrow-down margin-right-5"></i>Date</button>
-    <button ng-click="vm.sortByVisits(undefined, $event)" class="btn btn-default margin-right-5"><i class="margin-right-5"></i>Visits</button>
-    <button ng-click="vm.sortByComments(undefined, $event)" class="btn btn-default margin-right-5"><i class="margin-right-5"></i>Comments</button>
+    <button ng-click="sortByDate(undefined, $event)" class="btn btn-default margin-right-5"><i class="fa fa-long-arrow-down margin-right-5"></i>Date</button>
+    <button ng-click="sortByVisits(undefined, $event)" class="btn btn-default margin-right-5"><i class="margin-right-5"></i>Visits</button>
+    <button ng-click="sortByComments(undefined, $event)" class="btn btn-default margin-right-5"><i class="margin-right-5"></i>Comments</button>
 </span>
 <div class="clearfix"></div>
-<div class="row margin-bottom-30 margin-top-30" ng-repeat="project in projects | orderBy : vm.orderBy">
+<div class="row margin-bottom-30 margin-top-30" ng-repeat="project in projects | orderBy : orderBy">
     <div class="col-md-3 text-center">
         <a href="/projects/{{project.id}}/{{project.titleUrl}}">
             <img src="{{project.mainImageUrl}}" width="190" height="190" alt="{{project.name}}" />

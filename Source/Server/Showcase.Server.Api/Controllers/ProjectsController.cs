@@ -82,7 +82,7 @@
         }
 
         [HttpGet]
-        [Route("LikedProjects")]
+        [Route("LikedProjects/{username}")]
         public IHttpActionResult LikedProjects(string username)
         {
             var currentLoggedInUsername = this.User.Identity.Name;

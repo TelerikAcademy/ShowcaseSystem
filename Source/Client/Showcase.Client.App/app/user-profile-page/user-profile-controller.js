@@ -27,14 +27,18 @@
                 vm.lastPage = data.lastPage;
             });
 
-        //if (identity.isAuthenticated() && identity.currentUser.username.toLowerCase() === username) {
-        //    userProfileData.getLikedProjects()
-        //        .then(function (data) {
-        //            vm.likedProjects = data;
-        //            console.log(data);
-        //        });
-        //}
-
+        identity.getUser()
+            .then(function (user) {
+                console.log(user);
+                if (user.userName.toLowerCase() === username || user.isAdmin) {
+                    userProfileData.getLikedProjects(username)
+                        .then(function (data) {
+                            vm.likedProjects = data;
+                            console.log(data);
+                        });
+                }
+            });
+        
         vm.loadCommentsPage = function (page) {
             userProfileData.getComments(username, page)
                 .then(function (data) {
@@ -72,56 +76,6 @@
                     vm.commentsPage--;
                     vm.lastPage = data.lastPage;
                 });
-        };
-
-        vm.sortByDate = function (element, $event) {
-            var $target = $($event.currentTarget);
-
-            if (vm.orderBy == '-createdOn') {
-                vm.orderBy = 'createdOn';
-                removeArrowClass($target);
-                $target.find('i').addClass(arrowUpCss);
-            } else {
-                vm.orderBy = '-createdOn';
-                removeArrowClass($target);
-                $target.find('i').addClass(arrowDownCss);
-            }
-        };
-
-        vm.sortByVisits = function (element, $event) {
-            var $target = $($event.currentTarget);
-
-            if (vm.orderBy == '-visits') {
-                vm.orderBy = 'visits';
-                removeArrowClass($target);
-                $target.find('i').addClass(arrowUpCss);
-            } else {
-                vm.orderBy = '-visits';
-                removeArrowClass($target);
-                $target.find('i').addClass(arrowDownCss);
-            }
-        };
-
-        vm.sortByComments = function (element, $event) {
-            var $target = $($event.currentTarget);
-
-            if (vm.orderBy == '-comments') {
-                vm.orderBy = 'comments';
-                removeArrowClass($target);
-                $target.find('i').addClass(arrowUpCss);
-            } else {
-                vm.orderBy = '-comments';
-                removeArrowClass($target);
-                $target.find('i').addClass(arrowDownCss);
-            }
-        };
-        
-        var removeArrowClass = function (element) {
-            element
-                .parent()
-                .find('i')
-                .removeClass(arrowUpCss)
-                .removeClass(arrowDownCss);
         };
     };
 

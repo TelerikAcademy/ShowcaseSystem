@@ -11,7 +11,7 @@
         }
 
         function getLikedProjects(username) {
-            return data.get('projects/likedprojects')
+            return data.get('projects/likedprojects/' + username)
         }
 
         return {
