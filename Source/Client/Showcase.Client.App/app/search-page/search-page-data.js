@@ -28,18 +28,7 @@
         }
 
         function getFilterOptions() {
-            var options = {
-                orderOptions: [
-                    { value: 'CreatedOn', name: 'Date' },
-                    { value: 'Visits', name: 'Views' },
-                    { value: 'Likes', name: 'Likes' },
-                    { value: 'Comments', name: 'Comments' },
-                    { value: 'Name', name: 'Name' }
-                ],
-                pageSizes: [4, 8, 16, 32, 64]
-            };
-
-            function findOrderOption(value) {
+            var findOrderOption = function findOrderOption(value) {
                 return options.orderOptions.filter(function (option) {
                     if (options.desc) {
                         return option.value + ' ' + CONSTS.DESC === value;
@@ -47,8 +36,18 @@
                         return option.value === value;
                     }
                 })[0];
-            }
+            };
 
+            var options = {};
+            options.orderOptions = [
+                    { value: 'CreatedOn', name: 'Date' },
+                    { value: 'Visits', name: 'Views' },
+                    { value: 'Likes', name: 'Likes' },
+                    { value: 'Comments', name: 'Comments' },
+                    { value: 'Name', name: 'Name' }
+            ];
+            options.pageSizes = [4, 8, 16, 32, 64];
+            options.scrolling = localStorage.scrolling === 'true';
             options.pageSize = +$routeParams.$top || CONSTS.DEFAULT_QUERY.$top;
             options.desc = !!$routeParams.$orderby && $routeParams.$orderby.indexOf(CONSTS.DESC) > 0;
             options.orderOption = findOrderOption($routeParams.$orderby) || findOrderOption(CONSTS.DEFAULT_QUERY.$orderby);

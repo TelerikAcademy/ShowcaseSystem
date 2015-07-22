@@ -10,9 +10,6 @@
 
         vm.filterOptions = searchPageData.getFilterOptions();
         vm.searchTerms = searchPageData.getSearchTerms();
-        vm.query = $routeParams;
-
-        vm.filterOptions.scrolling = localStorage.scrolling === 'true';
 
         vm.filter = function (query) {
             $routeParams = {
@@ -33,17 +30,6 @@
                 .forEach(function (key) {
                     $location.search(key, $routeParams[key]);
                 });
-
-            /*
-            if (query && (!!query.pageNum || query.pageNum === 0)) {
-                $location.search('$skip', query.pageNum * vm.filterOptions.pageSize);
-            }
-
-            //localStorage.infiniteScrolling = vm.filterOptions.infiniteScrolling; // TODO: change
-            if (!vm.filterOptions.infiniteScrolling) {
-                $location.search('$count', 'true');
-            }
-            */
         };
 
         // not working if attached to vm
@@ -54,6 +40,10 @@
 
         vm.search = function () {
 
+        };
+
+        vm.getNextProjects = function () {
+            console.log(vm.filterOptions);
         };
 
         oDataQuery = searchPageData.getQuery($routeParams);

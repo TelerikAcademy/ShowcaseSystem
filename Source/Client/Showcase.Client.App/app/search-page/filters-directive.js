@@ -12,7 +12,7 @@
             link: function (scope) {
                 scope.scrollChecked = function () {
                     localStorage.scrolling = scope.options.scrolling;
-                }
+                };
             }
         };
     };
