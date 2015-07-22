@@ -149,6 +149,8 @@
     <Content Include="app\user-profile-page\user-profile-data.js" />
     <Content Include="app\user-profile-page\user-profile-projects-directive.html" />
     <Content Include="app\user-profile-page\user-profile-projects-directive.js" />
+    <Content Include="app\user-profile-page\user-profile-teammates-directive.html" />
+    <Content Include="app\user-profile-page\user-profile-teammates-directive.js" />
     <Content Include="app\user-profile-page\user-profile-view.html" />
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="content\bootstrap.css.map" />

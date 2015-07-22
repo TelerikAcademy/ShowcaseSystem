@@ -32,7 +32,7 @@
                 .Project()
                 .To<UserResponseModel>()
                 .FirstOrDefault();
-
+            
             if (model != null)
             {
                 return this.Data(model);

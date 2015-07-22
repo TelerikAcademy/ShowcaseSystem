@@ -122,3 +122,4 @@
 /// <reference path="../app/user-profile-page/user-profile-projects-directive.js" />
 /// <reference path="../app/add-project-page/add-project-controller.js" />
 /// <reference path="../app/user-profile-page/user-profile-comments-directive.js" />
+/// <reference path="../app/user-profile-page/user-profile-teammates-directive.js" />
