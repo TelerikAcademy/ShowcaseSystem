@@ -13,7 +13,11 @@
 
         IQueryable<Project> GetProjectById(int id);
 
+<<<<<<< HEAD
         IQueryable<Project> GetProjectsList();
+=======
+        IQueryable<Project> GetProjectsPage(int page);
+>>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593
 
         IQueryable<Project> GetLikedByUser(int userId);
     }

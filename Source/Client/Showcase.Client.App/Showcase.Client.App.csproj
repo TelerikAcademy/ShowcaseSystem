@@ -133,11 +133,14 @@
     <Content Include="app\identity\login-modal-template.html" />
     <Content Include="app\common\main-controller.js" />
     <Content Include="app\common\modal-directive.js" />
+<<<<<<< HEAD
     <Content Include="app\common\infinite-scroll-directive.js" />
     <Content Include="app\common\pager-directive.html" />
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
+=======
+>>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593
     <Content Include="app\home-page\statistics-directive.html" />
     <Content Include="app\home-page\statistics-directive.js" />
     <Content Include="app\project-details-page\owl-carousel-directive.html" />
@@ -154,6 +157,7 @@
     <Content Include="app\user-profile-page\user-profile-data.js" />
     <Content Include="app\user-profile-page\user-profile-projects-directive.html" />
     <Content Include="app\user-profile-page\user-profile-projects-directive.js" />
+<<<<<<< HEAD
     <Content Include="app\user-profile-page\user-profile-view.html" />
     <Content Include="app\search-page\filters-directive.html" />
     <Content Include="app\search-page\filters-directive.js" />
@@ -162,6 +166,11 @@
     <Content Include="app\search-page\search-page-controller.js" />
     <Content Include="app\search-page\search-page-data.js" />
     <Content Include="app\search-page\search-page-view.html" />
+=======
+    <Content Include="app\user-profile-page\user-profile-teammates-directive.html" />
+    <Content Include="app\user-profile-page\user-profile-teammates-directive.js" />
+    <Content Include="app\user-profile-page\user-profile-view.html" />
+>>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="content\bootstrap.css.map" />
     <Content Include="content\epona\fonts\fontawesome-webfont.eot" />

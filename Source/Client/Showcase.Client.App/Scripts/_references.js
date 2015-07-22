@@ -4,11 +4,8 @@
 /// <reference path="../app/home-page/revolution-slider-directive.js" />
 /// <reference path="../app/common/header-directive.js" />
 /// <reference path="../app/common/footer-directive.js" />
-/// <reference path="../app/common/notifier.js" />
 /// <reference path="../app/common/project-container-directive.js" />
-/// <reference path="angular-mocks.js" />
 /// <reference path="angular-route.js" />
-/// <reference path="angular.js" />
 /// <reference path="bootstrap.js" />
 /// <reference path="epona/js/contact.js" />
 /// <reference path="epona/js/countdown.js" />
@@ -96,15 +93,21 @@
 /// <reference path="npm.js" />
 /// <reference path="toastr.js" />
 /// <reference path="../app/home-page/home-page-data.js" />
+<<<<<<< HEAD
 /// <reference path="../app/project-details/project-details-controller.js" />
 /// <reference path="../app/project-details/project-details-data.js" />
 /// <reference path="../app/common/data.js" />
+=======
+/// <reference path="../app/home-page/statistics-directive.js" />
+/// <reference path="../app/projects-page/projects-page-data.js" />
+/// <reference path="../app/projects-page/projects-page-controller.js" />/// <reference path="../app/home-page/statistics-directive.js" />
+>>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593
 /// <reference path="../app/common/animate-directive.js" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="../app/home-page/statistics-directive.js" />
-/// <reference path="../app/project-details/owl-carousel-directive.js" />
 /// <reference path="../app/common/animate-directive.js" />
 /// <reference path="../app/common/http-response-interceptor.js" />
+<<<<<<< HEAD
 /// <reference path="../app/search-page/search-page-controller.js" />
 /// <reference path="../app/search-page/search-page-data.js" />
 /// <reference path="../app/search-page/filters-directive.js" />
@@ -112,3 +115,27 @@
 /// <reference path="../app/common/pager-directive.js" />
 /// <reference path="../app/search-page/search-bar-directive.js" />
 /// <reference path="../app/common/infinite-scroll-directive.js" />
+=======
+/// <reference path="loading-bar.min.js" />
+/// <reference path="angular-animate.min.js" />
+/// <reference path="../app/common/notifier-service.js" />
+/// <reference path="../app/common/base-data.js" />
+/// <reference path="angular-cookies.min.js" />
+/// <reference path="../app/common/main-controller.js" />
+/// <reference path="../app/common/modal-directive.js" />
+/// <reference path="../app/identity/auth-service.js" />
+/// <reference path="../app/identity/identity-service.js" />
+/// <reference path="../app/identity/login-modal-controller.js" />
+/// <reference path="../app/common/main-menu-directive.js" />
+/// <reference path="../app/user-profile-page/user-profile-controller.js" />
+/// <reference path="../app/user-profile-page/user-profile-data.js" />
+/// <reference path="../app/project-details-page/owl-carousel-directive.js" />
+/// <reference path="../app/project-details-page/project-details-controller.js" />
+/// <reference path="../app/project-details-page/project-details-data.js" />
+/// <reference path="angular-mocks.js" />
+/// <reference path="angular.min.js" />
+/// <reference path="../app/user-profile-page/user-profile-projects-directive.js" />
+/// <reference path="../app/add-project-page/add-project-controller.js" />
+/// <reference path="../app/user-profile-page/user-profile-comments-directive.js" />
+/// <reference path="../app/user-profile-page/user-profile-teammates-directive.js" />
+>>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593

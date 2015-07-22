@@ -27,9 +27,12 @@
             })
             .when('/users/:username', {
                 templateUrl: '/app/user-profile-page/user-profile-view.html'
+<<<<<<< HEAD
             })
             .when('/search', {
                 templateUrl: '/app/search-page/search-page-view.html'
+=======
+>>>>>>> 85152f399c6bfcf7aae10aee29f6a7ba909f2593
             });
         
         $httpProvider.interceptors.push('httpResponseInterceptor');

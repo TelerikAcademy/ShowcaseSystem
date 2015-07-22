@@ -1,0 +1,70 @@
+﻿<section ng-controller="userProfileController as vm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-1 col-md-3" animate="fadeInLeft" data-animation-delay="200">
+                <img src="{{vm.user.avatarUrl}}" width="220" height="220" alt="{{vm.user.username}}" />
+            </div>
+            <div class="col-md-7 margin-bottom-10 margin-top-10" animate="fadeInRight" data-animation-delay="200">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="margin-bottom-20">{{vm.user.username}}</h3>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="margin-top-50">
+                            <span class="margin-bottom-5" style="display: inline-block;">
+                                <i class="fa fa-file-code-o margin-right-20 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.projectsCount}} projects</span>
+                            </span>
+                            <br />
+                            <span class="margin-bottom-5" style="display: inline-block;">
+                                <i class="fa fa-comments margin-right-20 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.commentsCount}} comments</span>
+                            </span>
+                            <br />
+                            <span class="margin-bottom-5" style="display: inline-block;">
+                                <i class="fa fa-thumbs-up margin-right-20 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.likesCount}} likes</span>
+                            </span>
+                            <br />
+                            <span class="margin-bottom-5" style="display: inline-block;">
+                                <i class="fa fa-users margin-right-20 margin-bottom-5 font-size-2em"></i><span class="font-size-13em">{{vm.user.teammates.length}} teammates</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top-100">
+            <div class="col-md-offset-1 col-md-10" animate="fadeInUp" data-animation-delay="200">
+                <div class="tabs nomargin-top">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <h4><a class="tab-button" href="#projects-tab" data-toggle="tab"><i class="fa fa-file-code-o"></i>Projects</a></h4>
+                        </li>
+                        <li>
+                            <h4><a class="tab-button" href="#comments-tab" data-toggle="tab"><i class="fa fa-comments"></i>Comments</a></h4>
+                        </li>
+                        <li>
+                            <h4><a class="tab-button" href="#teammates-tab" data-toggle="tab"><i class="fa fa-users"></i>Teammates</a></h4>
+                        </li>
+                        <li ng-show="vm.likedProjects.length > 0">
+                            <h4><a class="tab-button" href="#liked-projects-tab" data-toggle="tab"><i class="fa fa-thumbs-up"></i>Liked Projects</a></h4>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="projects-tab" class="tab-pane active">
+                            <div user-profile-projects projects="vm.user.projects" />
+                        </div>
+                        <div id="comments-tab" class="tab-pane padding-top-30">
+                            <div user-profile-comments comments="vm.comments" />
+                        </div>
+                        <div id="teammates-tab" class="tab-pane padding-top-30">
+                            <div user-profile-teammates teammates="vm.user.teammates" />
+                        </div>
+                        <div ng-show="vm.likedProjects.length > 0" id="liked-projects-tab" class="tab-pane">
+                            <div user-profile-projects projects="vm.likedProjects" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
