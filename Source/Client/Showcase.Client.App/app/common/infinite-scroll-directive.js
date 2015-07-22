@@ -59,6 +59,6 @@
     };
 
     angular
-        .module('showcaseSyste.directives')
+        .module('showcaseSystem.directives')
         .directive('infiniteScroll', ['$rootScope', '$window', '$timeout', infiniteScroll]);
 }());
