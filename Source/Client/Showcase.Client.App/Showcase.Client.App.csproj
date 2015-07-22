@@ -123,6 +123,7 @@
   <ItemGroup>
     <Content Include="app\common\data.js" />
     <Content Include="app\common\http-response-interceptor.js" />
+    <Content Include="app\common\infinite-scroll-directive.js" />
     <Content Include="app\common\pager-directive.html" />
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />

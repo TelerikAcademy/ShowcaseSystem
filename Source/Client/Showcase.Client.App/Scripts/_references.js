@@ -111,3 +111,4 @@
 /// <reference path="../app/common/project-tile-directive.js" />
 /// <reference path="../app/common/pager-directive.js" />
 /// <reference path="../app/search-page/search-bar-directive.js" />
+/// <reference path="../app/common/infinite-scroll-directive.js" />
