@@ -3,7 +3,12 @@
 
     var searchPageData = function searchPageData(data, $routeParams) {
         var CONSTS = {
-            DESC: 'desc'
+            DESC: 'desc',
+            DEFAULT_QUERY: {
+                $orderby: 'CreatedOn',
+                $top: 4,
+                $count: 'true'
+            }
         };
 
         function searchProjects(oData) {
@@ -11,41 +16,65 @@
             return data.get('odata' + oData);
         }
 
-        function getFilterOptions() {
-            var filterOptions = {
+        function getSearchTerms() {
+            return {
                 options: [
+                    { value: 'Title and Content', name: 'Title and Content' },
+                    { value: 'Collaborator', name: 'Collaborator' },
+                    { value: 'Comment', name: 'Comment' },
+                    { value: 'Tag', name: 'Tag' }
+                ]
+            };
+        }
+
+        function getFilterOptions() {
+            var options = {
+                orderOptions: [
                     { value: 'CreatedOn', name: 'Date' },
                     { value: 'Visits', name: 'Views' },
                     { value: 'Likes', name: 'Likes' },
                     { value: 'Comments', name: 'Comments' },
                     { value: 'Name', name: 'Name' }
                 ],
-                pageSizes: [4, 8, 16, 32, 64],
-                page: $routeParams.$page || 0,
+                pageSizes: [4, 8, 16, 32, 64]
             };
 
-            filterOptions.pageSize = $routeParams.$top || filterOptions.pageSizes[1];
-            filterOptions.desc = (function getDesc() {
-                var desc = $routeParams.$orderby && $routeParams.$orderby.indexOf(CONSTS.DESC) > 0;
-                return desc || false;
-            })();
-            filterOptions.orderby = (function getOrderBy() {
-                var orderBy = (filterOptions.options.filter(function (item) {
-                    if (filterOptions.desc) {
-                        return item.value + ' ' + CONSTS.DESC === $routeParams.$orderby;
+            function findOrderOption(value) {
+                return options.orderOptions.filter(function (option) {
+                    if (options.desc) {
+                        return option.value + ' ' + CONSTS.DESC === value;
                     } else {
-                        return item.value === $routeParams.$orderby;
+                        return option.value === value;
                     }
-                })[0]);
-                return orderBy || filterOptions.options[0];
-            })();
+                })[0];
+            }
 
-            return filterOptions;
+            options.pageSize = +$routeParams.$top || CONSTS.DEFAULT_QUERY.$top;
+            options.desc = !!$routeParams.$orderby && $routeParams.$orderby.indexOf(CONSTS.DESC) > 0;
+            options.orderOption = findOrderOption($routeParams.$orderby) || findOrderOption(CONSTS.DEFAULT_QUERY.$orderby);
+
+            return options;
+        }
+
+        function getQuery(query) {
+            if (!!query && !Object.keys(query).length) {
+                query = CONSTS.DEFAULT_QUERY;
+            }
+
+            var result = '/search?' + Object.keys(query)
+                .map(function (key) {
+                    return key + '=' + query[key];
+                })
+                .join('&');
+
+            return result;
         }
 
         return {
             searchProjects: searchProjects,
-            getFilterOptions: getFilterOptions
+            getFilterOptions: getFilterOptions,
+            getSearchTerms: getSearchTerms,
+            getQuery: getQuery
         };
     };
 
