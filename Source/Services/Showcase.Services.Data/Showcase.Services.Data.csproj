@@ -57,6 +57,7 @@
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IVisitsService.cs" />
     <Compile Include="LikesService.cs" />
+    <Compile Include="Models\RemoteUserProfile.cs" />
     <Compile Include="ProjectsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteDataService.cs" />

@@ -1,16 +1,17 @@
 ﻿namespace Showcase.Services.Data
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using Showcase.Data.Models;
     using Showcase.Services.Data.Contracts;
-using Showcase.Services.Data.Models;
+    using Showcase.Services.Data.Models;
 
     public class RemoteDataService : IRemoteDataService
     {
         public User RemoteLogin(string username, string password)
         {
-            // TODO: implement and get from telerikacademy.com, data and two avatars
+            // TODO: implement and get from telerikacademy.com
             return new User
             {
                 UserName = username,
@@ -21,7 +22,7 @@ using Showcase.Services.Data.Models;
 
         public IEnumerable<string> SearchByUsername(string username)
         {
-            // TODO: get from telerikacademy.com all usernames which contain the search
+            // TODO: get from telerikacademy.com all usernames which contain the search - return maximum 10 entries
             return new List<string>
             {
                 "ivaylo.kenov",
@@ -32,7 +33,7 @@ using Showcase.Services.Data.Models;
                 "nikolay.kostov",
                 "kolio",
                 "kolio.TLa"
-            };
+            }.Where(u => u.ToLower().Contains(username.ToLower())); // for testing purpose, do not filter here
         }
 
         public RemoteUserProfile ProfileInfo(string username)
