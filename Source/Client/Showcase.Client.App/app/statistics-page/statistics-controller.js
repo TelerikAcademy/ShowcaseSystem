@@ -4,7 +4,11 @@
     var statisticsController = function statisticsController(statisticsData) {
         var vm = this;
        
-
+        statisticsData.getMainStatistics()
+            .then(function (statistics) {
+                vm.mainStatistics = statistics;
+                console.log(statistics);
+            });
     };
 
     angular

@@ -2,8 +2,15 @@
     'use strict';
 
     var statisticsData = function statisticsData(data) {
-        return {
+        function getMainStatistics() {
+            return data.get('statistics');
+        }
 
+
+
+
+        return {
+            getMainStatistics: getMainStatistics
         };
     };
 
