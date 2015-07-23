@@ -123,6 +123,9 @@
   <ItemGroup>
     <Content Include="app\add-project-page\add-project-controller.js" />
     <Content Include="app\add-project-page\add-project-view.html" />
+    <Content Include="app\common\dropdown-directive.html" />
+    <Content Include="app\common\dropdown-directive.js" />
+    <Content Include="app\common\infinite-scroll-directive.js" />
     <Content Include="app\common\main-menu-directive.html" />
     <Content Include="app\common\main-menu-directive.js" />
     <Content Include="app\identity\auth-service.js" />
