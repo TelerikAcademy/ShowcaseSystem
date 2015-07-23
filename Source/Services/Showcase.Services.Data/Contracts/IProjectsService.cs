@@ -14,5 +14,7 @@
         IQueryable<Project> GetProjectById(int id);
 
         IQueryable<Project> GetLikedByUser(int userId);
+
+        IQueryable<Project> GetProjectsList();
     }
 }

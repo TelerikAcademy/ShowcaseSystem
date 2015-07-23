@@ -1,15 +1,13 @@
-﻿<div class="sky-form">
-    <div class="col-sm-2">
+﻿<div>
+    <div class="col-sm-1 col-md-2">
         <label class="toggle">
             <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.scrolling" ng-change="scrollChecked()">
             <i></i>Infinite scrolling
         </label>
     </div>
     <div class="col-sm-1 col-md-2">
-        <label class="toggle">
-            <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.desc">
-            <i></i>Descending
-        </label>
+        <input type="checkbox" id="descending" ng-model="options.desc" />
+        <label for="descending">Descending</label>
     </div>
     <div class="col-sm-3 col-md-3">
         <select class="form-control pointer fsize13 pull-right" name="orderby"
@@ -23,5 +21,7 @@
                     ng-model="options.pageSize" ng-options="pageSize for pageSize in options.pageSizes"></select>
         </div>
     </div>
-        <!--<a href="#" ng-click="search()" class="btn btn-primary btn-lg">Search</a>-->
+    <div class="col-sm-1 col-md-1">
+        <a href="#" ng-click="search()" class="btn btn-primary btn-lg">Search</a>
+    </div>
 </div>

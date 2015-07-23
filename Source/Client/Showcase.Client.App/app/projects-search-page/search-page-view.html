@@ -1,8 +1,0 @@
-﻿<section ng-controller="searchPageController as vm">
-    <div class="container">
-        <div filters options="vm.filterOptions" search="vm.filter()" />
-        <div search-bar search-terms="vm.searchTerms" total-count="vm.totalResultsCount" time="vm.timeElapsed" />
-        <div project-container projects="vm.projects" />
-        <div ng-pager total-pages="{{totalPages}}" current-page="{{currentPage}}" page-changed="changePage(pageNum)" ng-hide="vm.filterOptions.scrolling" />
-    </div>
-</section>

@@ -3,25 +3,39 @@
         <ul class="hide">
 
             <!-- SLIDE  -->
-            <li data-transition="fade" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                <img src="/content/epona/images/1x1.png" data-lazyload="/content/epona/images/demo/wall2.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
+            <li ng-repeat="project in projects" 
+                data-transition="fade" 
+                data-slotamount="7" 
+                data-masterspeed="300" 
+                data-saveperformance="off"
+                data-title="{{project.name}}">
+
+                <img src="{{project.mainImageUrl}}" 
+                     data-lazyload="{{project.mainImageUrl}}" 
+                     alt="{{project.name}}" 
+                     data-bgfit="cover" 
+                     data-bgposition="left top" 
+                     data-bgrepeat="no-repeat" 
+                     style="z-index: 2; width: 100%"/>
 
                 <div class="tp-caption lfr"
-                     data-x="left" data-hoffset="60"
-                     data-y="25"
+                     data-x="left" data-hoffset="-251"
+                     data-y="top"
                      data-speed="1500"
                      data-start="500"
                      data-easing="easeOutExpo"
                      data-elementdelay="0.1"
                      data-endelementdelay="0.1"
                      data-endspeed="300"
-                     style="z-index: 2;">
-                    <img src="/content/epona/images/1x1.png" alt="" data-lazyload="/content/epona/images/demo/ipad.png">
+                     style="z-index: 2; width: 100%; ">
+                    <a href="/projects/{{project.id}}/{{project.titleUrl}}" style="display: inline-block; width: 100%">
+                        <img src="/content/epona/images/1x1.png" alt="" data-lazyload="{{project.mainImageUrl}}" style="width: 100%;">
+                    </a>
                 </div>
 
                 <div class="tp-caption block_black sft"
-                     data-x="right" data-hoffset="-70"
-                     data-y="87"
+                     data-x="200" data-hoffset="-70"
+                     data-y="350"
                      data-speed="750"
                      data-start="1100"
                      data-easing="easeOutExpo"
@@ -30,13 +44,14 @@
                      data-elementdelay="0.1"
                      data-endelementdelay="0.1"
                      data-endspeed="300"
-                     style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">
-                    Epona Template
+                     style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap; line-height: 1.5em;">
+                    <a href="/projects/{{project.id}}/{{project.titleUrl}}" style="color: white;">{{project.name}}</a>
                 </div>
 
-                <div class="tp-caption block_black sfb"
-                     data-x="right" data-hoffset="-70"
-                     data-y="126"
+                <div ng-repeat="collaborator in project.collaborators"
+                     class="tp-caption block_black sfb"
+                     data-x="right" data-hoffset="20"
+                     data-y="{{30 + $index * 40}}"
                      data-speed="750"
                      data-start="1400"
                      data-easing="easeOutExpo"
@@ -45,11 +60,17 @@
                      data-elementdelay="0.1"
                      data-endelementdelay="0.1"
                      data-endspeed="300"
-                     style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">
-                    100% Fully Responisve
+                     style="z-index: 4;
+                         max-width: auto; 
+                         max-height: auto; 
+                         white-space: nowrap; 
+                         font-size: 1em; 
+                         line-height: 1em;
+                         padding: 10px 20px">
+                    <a href="/users/{{collaborator}}" style="color: white;">{{collaborator}}</a>
                 </div>
 
-                <div class="tp-caption block_styleColor sft"
+                <!--<div class="tp-caption block_styleColor sft"
                      data-x="right" data-hoffset="-70"
                      data-y="189"
                      data-speed="750"
@@ -92,7 +113,7 @@
                      data-endspeed="300"
                      style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">
                     For Your Next Projects
-                </div>
+                </div>-->
             </li>
         </ul>
         <div class="tp-bannertimer"></div>

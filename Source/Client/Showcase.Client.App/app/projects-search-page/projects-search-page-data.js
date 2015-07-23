@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var searchPageData = function searchPageData(data, $routeParams) {
+    var projectsSearchPageData = function projectsSearchPageData(data, $routeParams) {
         var CONSTS = {
             DESC: 'desc',
             DEFAULT_QUERY: {
@@ -13,7 +13,7 @@
 
         function searchProjects(oData) {
             oData = oData || '/search';
-            return data.get('odata' + oData);
+            return data.get('projects' + oData);
         }
 
         function getSearchTerms() {
@@ -79,5 +79,5 @@
 
     angular
         .module('showcaseSystem.data')
-        .factory('searchPageData', ['data', '$routeParams', searchPageData]);
+        .factory('projectsSearchPageData', ['data', '$routeParams', projectsSearchPageData]);
 }());

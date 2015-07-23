@@ -123,9 +123,8 @@
 /// <reference path="../app/user-profile-page/user-profile-teammates-directive.js" />
 /// <reference path="../app/common/pager-directive.js" />
 /// <reference path="../app/common/infinite-scroll-directive.js" />
+/// <reference path="../app/common/dropdown-directive.js" />
 /// <reference path="../app/common/project-tile-directive.js" />
 /// <reference path="../app/projects-search-page/filters-directive.js" />
 /// <reference path="../app/projects-search-page/search-bar-directive.js" />
-/// <reference path="../app/projects-search-page/projects-search-page-controller.js" />
-/// <reference path="../app/projects-search-page/projects-search-page-data.js" />
 

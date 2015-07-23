@@ -123,8 +123,6 @@
   <ItemGroup>
     <Content Include="app\add-project-page\add-project-controller.js" />
     <Content Include="app\add-project-page\add-project-view.html" />
-    <Content Include="app\common\dropdown-directive.html" />
-    <Content Include="app\common\dropdown-directive.js" />
     <Content Include="app\common\infinite-scroll-directive.js" />
     <Content Include="app\common\main-menu-directive.html" />
     <Content Include="app\common\main-menu-directive.js" />
@@ -149,11 +147,11 @@
     <Content Include="app\project-details-page\project-details-data.js" />
     <Content Include="app\projects-search-page\filters-directive.html" />
     <Content Include="app\projects-search-page\filters-directive.js" />
+    <Content Include="app\projects-search-page\search-bar-directive.html" />
+    <Content Include="app\projects-search-page\search-bar-directive.js" />
     <Content Include="app\projects-search-page\projects-search-page-controller.js" />
     <Content Include="app\projects-search-page\projects-search-page-data.js" />
     <Content Include="app\projects-search-page\projects-search-page-view.html" />
-    <Content Include="app\projects-search-page\search-bar-directive.html" />
-    <Content Include="app\projects-search-page\search-bar-directive.js" />
     <Content Include="app\user-profile-page\user-profile-comments-directive.html" />
     <Content Include="app\user-profile-page\user-profile-comments-directive.js" />
     <Content Include="app\user-profile-page\user-profile-controller.js" />
@@ -201,6 +199,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="gulpfile.js" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="scripts\angular-animate.js" />
     <Content Include="scripts\angular-animate.min.js" />

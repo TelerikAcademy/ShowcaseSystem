@@ -12,6 +12,8 @@
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Server.DataTransferModels;
+    using System.Web.OData.Query;
 
     [RoutePrefix("api/Projects")]
     public class ProjectsController : ApiController
@@ -27,9 +29,9 @@
         private readonly IUsersService usersService;
 
         public ProjectsController(
-            IProjectsService homePageService, 
-            ILikesService likesService, 
-            IVisitsService visitsService, 
+            IProjectsService homePageService,
+            ILikesService likesService,
+            IVisitsService visitsService,
             IProjectsService projectsService,
             IUsersService usersService)
         {
@@ -69,7 +71,7 @@
         public IHttpActionResult Get(int id)
         {
             var username = this.User.Identity.Name;
-            
+
             var model = this.homePageService
                 .GetProjectById(id)
                 .Project()
@@ -108,7 +110,7 @@
         {
             var username = this.User.Identity.Name;
 
-            this.visitsService.VisitProject(id, username);            
+            this.visitsService.VisitProject(id, username);
 
             return this.Ok();
         }
@@ -145,6 +147,36 @@
             this.likesService.DislikeProject(id, username);
 
             return this.Ok();
+        }
+
+        [HttpGet]
+        [Route("Search")]
+        public ODataResult<ProjectResponseSimpleModel> Search(ODataQueryOptions<ProjectResponseSimpleModel> options)
+        {
+            options.Validate(new ODataValidationSettings()
+            {
+                MaxTop = 64,
+                AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy |
+                    AllowedQueryOptions.Skip | AllowedQueryOptions.Top |
+                    AllowedQueryOptions.Select | AllowedQueryOptions.Count
+            });
+
+            var projects = this.projectsService
+                .GetProjectsList()
+                .Project()
+                .To<ProjectResponseSimpleModel>();
+
+            long? count = null;
+            if (options.Count != null && options.Count.Value)
+            {
+                count = projects.Count();
+            }
+
+            ODataQuerySettings settings = new ODataQuerySettings() { PageSize = options.Top != null ? options.Top.Value : 8 };
+            projects = options.ApplyTo(projects, settings) as IQueryable<ProjectResponseSimpleModel>;
+
+            return new ODataResult<ProjectResponseSimpleModel>(
+                 projects as IEnumerable<ProjectResponseSimpleModel>, count);
         }
     }
 }

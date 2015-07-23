@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var searchPageController = function searchPageController($scope, searchPageData, $routeParams, $location) {
+    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, searchPageData) {
         var vm = this,
             oDataQuery,
             CONSTS = {
@@ -26,7 +26,6 @@
                     });
             }
 
-            // TODO: optimize to not reload page
             Object.keys($routeParams)
                 .forEach(function (key) {
                     $location.search(key, $routeParams[key]);
@@ -64,5 +63,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('searchPageController', ['$scope', 'searchPageData', '$routeParams', '$location', searchPageController]);
+        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', 'projectsSearchPageData', projectsSearchPageController]);
 }());

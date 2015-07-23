@@ -4,7 +4,7 @@
     var searchBar = function searchBar() {
         return {
             restrict: 'A',
-            templateUrl: '/app/search-page/search-bar-directive.html',
+            templateUrl: '/app/projects-search-page/search-bar-directive.html',
             scope: {
                 searchTerms: '=',
             }

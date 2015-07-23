@@ -18,6 +18,9 @@
             .when('/', {
                 templateUrl: '/app/home-page/home-page-view.html'
             })
+            .when('/projects/search', {
+                templateUrl: '/app/projects-search-page/projects-search-page-view.html'
+            })
             .when('/projects/add', {
                 templateUrl: '/app/add-project-page/add-project-view.html',
                 resolve: routeResolveChecks.authenticated
