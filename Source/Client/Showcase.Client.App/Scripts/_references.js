@@ -128,3 +128,4 @@
 /// <reference path="../app/search-page/search-page-data.js" />
 /// <reference path="../app/common/project-tile-directive.js" />
 /// <reference path="../app/common/infinite-scroll-directive.js" />
+/// <reference path="jquery.tokeninput.js" />

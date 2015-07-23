@@ -194,6 +194,7 @@
     <Content Include="content\loading-bar.min.css" />
     <Content Include="content\toastr.less" />
     <Content Include="content\toastr.scss" />
+    <Content Include="content\token-input-showcase.css" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1307,6 +1308,7 @@
     <None Include="scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="scripts\jquery-2.1.4.js" />
     <Content Include="scripts\jquery-2.1.4.min.js" />
+    <Content Include="scripts\jquery.tokeninput.js" />
     <Content Include="scripts\loading-bar.js" />
     <Content Include="scripts\loading-bar.min.js" />
     <Content Include="scripts\npm.js" />
