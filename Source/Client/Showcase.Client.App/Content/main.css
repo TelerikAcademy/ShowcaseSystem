@@ -244,3 +244,11 @@ a.social.fa-github:hover {
 .btn-success {
     background-color: #8ab933 !important;
 }
+
+.sky-form footer {
+    margin: 0;
+}
+
+.sky-form footer .button {
+    margin-left: 0;
+}

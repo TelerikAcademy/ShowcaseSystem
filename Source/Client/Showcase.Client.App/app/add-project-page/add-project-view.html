@@ -1,5 +1,77 @@
-﻿<div>
-    <form>
+﻿<section ng-controller="searchPageController as vm">
+    <div class="container">
+        <h2 class="text-center"><i class="fa fa-plus" id="add-icon"></i> Add your project</h2>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form action="" class="sky-form">
+                    <fieldset>
+                        <section>
+                            <label class="label">Title</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text">
+                                <b class="tooltip tooltip-top-right">Name of your project</b>
+                            </label>
+                        </section>
 
-    </form>
-</div>
+                        <section>
+                            <label class="label">Description</label>
+                            <label class="textarea">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <textarea rows="5"></textarea>
+                                <b class="tooltip tooltip-top-right">Brief narrative of your project</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Collaborators</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text">
+                                <b class="tooltip tooltip-top-right">Select collaborators in your projects</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Tags</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text">
+                                <b class="tooltip tooltip-top-right">Tag your project - technologies, programming languages, type of project, etc.</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Repository URL</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text">
+                                <b class="tooltip tooltip-top-right">Source control repository where your project is commited</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Live Demo URL</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text">
+                                <b class="tooltip tooltip-top-right">Optional live demo of your deployed project</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Images</label>
+                            <label for="file" class="input input-file">
+                                <div class="button"><input type="file" id="file" onchange="this.parentNode.nextSibling.value = this.files.length + ' selected images'" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
+                            </label>
+                        </section>
+
+                    <footer>
+                        <button type="submit" class="button">Submit</button>
+                        <button type="button" class="button button-secondary pull-left" onclick="window.history.back();">Back</button>
+                    </footer>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
