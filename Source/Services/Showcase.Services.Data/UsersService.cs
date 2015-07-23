@@ -45,7 +45,7 @@
                 return null;
             }
 
-            var localUser = await this.GetLocalAccountAsync(username);
+            var localUser = await this.GetLocalAccountAsync(username); // TODO: update user every time
             if (localUser == null)
             {
                 localUser = new User
