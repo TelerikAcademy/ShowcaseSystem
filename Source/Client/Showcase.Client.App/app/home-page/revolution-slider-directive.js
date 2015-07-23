@@ -5,81 +5,91 @@
         return {
             restrict: 'A',
             templateUrl: '/app/home-page/revolution-slider-directive.html',
-            link: function (scope, element) {
-                element.find('.fullwidthbanner ul , .fullscreenbanner ul').removeClass('hide');
+            scope: {
+                projects: '='
+            },
+            link: function(scope, element) {
+                scope.$watch('projects', function (projects) {
+                    if (projects && projects.length && projects.length > 0) {
+                        console.log(scope.projects);
 
-                var sliderElement = element.find('.fullwidthbanner');
-                var listInSlider = sliderElement.find('ul li');
 
-                var thumbWidth = 100,
-                    thumbHeight = 50,
-                    hideThumbs = 200,
-                    navigationType = 'bullet',
-                    navigationArrows = 'solo',
-                    navigationVOffset = 10;
+                        element.find('.fullwidthbanner ul , .fullscreenbanner ul').removeClass('hide');
 
-                // Init Revolution Slider
-                var revapi = sliderElement.revolution({
-                    dottedOverlay: 'none',
-                    delay: 9000,
-                    startwidth: 1170,
-                    startheight: sliderElement.attr('data-height') || 500,
-                    hideThumbs: hideThumbs,
+                        var sliderElement = element.find('.fullwidthbanner');
+                        var listInSlider = sliderElement.find('ul li');
 
-                    thumbWidth: thumbWidth,
-                    thumbHeight: thumbHeight,
-                    thumbAmount: parseInt(listInSlider.length) || 2,
+                        var thumbWidth = 100,
+                            thumbHeight = 50,
+                            hideThumbs = 200,
+                            navigationType = 'bullet',
+                            navigationArrows = 'solo',
+                            navigationVOffset = 10;
 
-                    navigationType: navigationType,
-                    navigationArrows: navigationArrows,
-                    navigationStyle: sliderElement.attr('data-navigationStyle') || 'round',
+                        // Init Revolution Slider
+                        var revapi = sliderElement.revolution({
+                            dottedOverlay: 'none',
+                            delay: 9000,
+                            startwidth: 1170,
+                            startheight: sliderElement.attr('data-height') || 500,
+                            hideThumbs: hideThumbs,
 
-                    touchenabled: 'on',
-                    onHoverStop: 'on',
+                            thumbWidth: thumbWidth,
+                            thumbHeight: thumbHeight,
+                            thumbAmount: parseInt(listInSlider.length) || 2,
 
-                    navigationHAlign: 'center',
-                    navigationVAlign: 'bottom',
-                    navigationHOffset: 0,
-                    navigationVOffset: navigationVOffset,
+                            navigationType: navigationType,
+                            navigationArrows: navigationArrows,
+                            navigationStyle: sliderElement.attr('data-navigationStyle') || 'round',
 
-                    soloArrowLeftHalign: 'left',
-                    soloArrowLeftValign: 'center',
-                    soloArrowLeftHOffset: 20,
-                    soloArrowLeftVOffset: 0,
+                            touchenabled: 'on',
+                            onHoverStop: 'on',
 
-                    soloArrowRightHalign: 'right',
-                    soloArrowRightValign: 'center',
-                    soloArrowRightHOffset: 20,
-                    soloArrowRightVOffset: 0,
+                            navigationHAlign: 'center',
+                            navigationVAlign: 'bottom',
+                            navigationHOffset: 0,
+                            navigationVOffset: navigationVOffset,
 
-                    parallax: 'mouse',
-                    parallaxBgFreeze: 'on',
-                    parallaxLevels: [7, 4, 3, 2, 5, 4, 3, 2, 1, 0],
+                            soloArrowLeftHalign: 'left',
+                            soloArrowLeftValign: 'center',
+                            soloArrowLeftHOffset: 20,
+                            soloArrowLeftVOffset: 0,
 
-                    shadow: 0,
-                    fullWidth: 'on',
-                    fullScreen: 'off',
+                            soloArrowRightHalign: 'right',
+                            soloArrowRightValign: 'center',
+                            soloArrowRightHOffset: 20,
+                            soloArrowRightVOffset: 0,
 
-                    stopLoop: 'off',
-                    stopAfterLoops: -1,
-                    stopAtSlide: -1,
+                            parallax: 'mouse',
+                            parallaxBgFreeze: 'on',
+                            parallaxLevels: [7, 4, 3, 2, 5, 4, 3, 2, 1, 0],
 
-                    spinner: 'spinner0',
-                    shuffle: 'off',
+                            shadow: 0,
+                            fullWidth: 'on',
+                            fullScreen: 'off',
 
-                    autoHeight: 'off',
-                    forceFullWidth: 'off',
+                            stopLoop: 'off',
+                            stopAfterLoops: -1,
+                            stopAtSlide: -1,
 
-                    hideThumbsOnMobile: 'off',
-                    hideBulletsOnMobile: 'on',
-                    hideArrowsOnMobile: 'on',
-                    hideThumbsUnderResolution: 0,
+                            spinner: 'spinner0',
+                            shuffle: 'off',
 
-                    hideSliderAtLimit: 0,
-                    hideCaptionAtLimit: 768,
-                    hideAllCaptionAtLilmit: 0,
-                    startWithSlide: 0,
-                    fullScreenOffsetContainer: ''
+                            autoHeight: 'off',
+                            forceFullWidth: 'off',
+
+                            hideThumbsOnMobile: 'off',
+                            hideBulletsOnMobile: 'on',
+                            hideArrowsOnMobile: 'on',
+                            hideThumbsUnderResolution: 0,
+
+                            hideSliderAtLimit: 0,
+                            hideCaptionAtLimit: 768,
+                            hideAllCaptionAtLilmit: 0,
+                            startWithSlide: 0,
+                            fullScreenOffsetContainer: ''
+                        });
+                    }
                 });
             }
         };
