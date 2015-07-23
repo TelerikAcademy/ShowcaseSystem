@@ -130,6 +130,8 @@
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
+    <Content Include="app\statistics-page\line-chart-directive.html" />
+    <Content Include="app\statistics-page\line-chart-directive.js" />
     <Content Include="app\identity\auth-service.js" />
     <Content Include="app\common\base-data.js" />
     <Content Include="app\common\http-response-interceptor.js" />
