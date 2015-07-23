@@ -36,6 +36,14 @@
 
         public int Comments { get; set; }
 
+        public string TitleUrl
+        {
+            get
+            {
+                return this.Name.ToUrl();
+            }
+        }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Project, ProjectResponseSimpleModel>()
