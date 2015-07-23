@@ -372,13 +372,14 @@ div.slider a.btn-default {
 .tp-caption.block_styleColor,
 .tp-caption.block_black {
 	white-space: nowrap;
-	line-height: 34px;
+	line-height: 54px;
 	border-width: 0px;
 	margin: 0px;
-	padding: 1px 10px;
+	padding: 7px 30px;
 	letter-spacing: 0px;
-	font-size: 22px;
+	font-size: 3em;
 	color:#fff;
+    border-radius: 10px;
 }
 .tp-caption.block_huge {
 	font-size:130px;
