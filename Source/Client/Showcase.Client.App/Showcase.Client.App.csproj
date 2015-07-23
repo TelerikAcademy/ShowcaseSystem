@@ -128,6 +128,10 @@
     <Content Include="app\common\infinite-scroll-directive.js" />
     <Content Include="app\common\main-menu-directive.html" />
     <Content Include="app\common\main-menu-directive.js" />
+    <Content Include="app\common\pager-directive.html" />
+    <Content Include="app\common\pager-directive.js" />
+    <Content Include="app\common\project-tile-directive.html" />
+    <Content Include="app\common\project-tile-directive.js" />
     <Content Include="app\identity\auth-service.js" />
     <Content Include="app\common\base-data.js" />
     <Content Include="app\common\http-response-interceptor.js" />
@@ -143,9 +147,13 @@
     <Content Include="app\project-details-page\project-details-view.html" />
     <Content Include="app\project-details-page\project-details-controller.js" />
     <Content Include="app\project-details-page\project-details-data.js" />
-    <Content Include="app\projects-page\projects-page-controller.js" />
-    <Content Include="app\projects-page\projects-page-data.js" />
-    <Content Include="app\projects-page\projects-page-view.html" />
+    <Content Include="app\projects-search-page\filters-directive.html" />
+    <Content Include="app\projects-search-page\filters-directive.js" />
+    <Content Include="app\projects-search-page\projects-search-page-controller.js" />
+    <Content Include="app\projects-search-page\projects-search-page-data.js" />
+    <Content Include="app\projects-search-page\projects-search-page-view.html" />
+    <Content Include="app\projects-search-page\search-bar-directive.html" />
+    <Content Include="app\projects-search-page\search-bar-directive.js" />
     <Content Include="app\user-profile-page\user-profile-comments-directive.html" />
     <Content Include="app\user-profile-page\user-profile-comments-directive.js" />
     <Content Include="app\user-profile-page\user-profile-controller.js" />

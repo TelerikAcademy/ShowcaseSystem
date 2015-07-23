@@ -26,6 +26,7 @@
                     });
             }
 
+            // TODO: optimize to not reload page
             Object.keys($routeParams)
                 .forEach(function (key) {
                     $location.search(key, $routeParams[key]);

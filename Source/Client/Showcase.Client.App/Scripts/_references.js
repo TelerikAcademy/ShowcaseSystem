@@ -94,8 +94,6 @@
 /// <reference path="toastr.js" />
 /// <reference path="../app/home-page/home-page-data.js" />
 /// <reference path="../app/home-page/statistics-directive.js" />
-/// <reference path="../app/projects-page/projects-page-data.js" />
-/// <reference path="../app/projects-page/projects-page-controller.js" />/// <reference path="../app/home-page/statistics-directive.js" />
 /// <reference path="../app/common/animate-directive.js" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="../app/home-page/statistics-directive.js" />
@@ -124,10 +122,10 @@
 /// <reference path="../app/user-profile-page/user-profile-comments-directive.js" />
 /// <reference path="../app/user-profile-page/user-profile-teammates-directive.js" />
 /// <reference path="../app/common/pager-directive.js" />
-/// <reference path="../app/common/project-tile-directive.js" />
 /// <reference path="../app/common/infinite-scroll-directive.js" />
+/// <reference path="../app/common/project-tile-directive.js" />
 /// <reference path="../app/projects-search-page/filters-directive.js" />
 /// <reference path="../app/projects-search-page/search-bar-directive.js" />
 /// <reference path="../app/projects-search-page/projects-search-page-controller.js" />
 /// <reference path="../app/projects-search-page/projects-search-page-data.js" />
-/// <reference path="../app/common/dropdown-directive.js" />
+
