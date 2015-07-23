@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
@@ -35,6 +36,11 @@
             return this.users
                 .All()
                 .Where(u => u.UserName == username);
+        }
+
+        public IEnumerable<string> SearchByUsername(string username)
+        {
+            return this.remoteData.SearchByUsername(username);
         }
 
         public async Task<User> GetAccountAsync(string username, string password)
