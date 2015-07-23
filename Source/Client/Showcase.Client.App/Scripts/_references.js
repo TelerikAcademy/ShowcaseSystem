@@ -130,3 +130,4 @@
 /// <reference path="../app/common/infinite-scroll-directive.js" />
 /// <reference path="../app/statistics-page/statistics-controller.js" />
 /// <reference path="../app/statistics-page/statistics-data.js" />
+/// <reference path="chart.min.js" />

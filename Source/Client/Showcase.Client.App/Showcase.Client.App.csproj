@@ -152,6 +152,9 @@
     <Content Include="app\search-page\search-page-controller.js" />
     <Content Include="app\search-page\search-page-data.js" />
     <Content Include="app\search-page\search-page-view.html" />
+    <Content Include="app\statistics-page\statistics-controller.js" />
+    <Content Include="app\statistics-page\statistics-data.js" />
+    <Content Include="app\statistics-page\statistics-view.html" />
     <Content Include="app\user-profile-page\user-profile-comments-directive.html" />
     <Content Include="app\user-profile-page\user-profile-comments-directive.js" />
     <Content Include="app\user-profile-page\user-profile-controller.js" />
@@ -209,6 +212,8 @@
     <Content Include="scripts\angular-route.min.js.map" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\Chart.js" />
+    <Content Include="scripts\Chart.min.js" />
     <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap.css.map" />
     <Content Include="scripts\epona\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
