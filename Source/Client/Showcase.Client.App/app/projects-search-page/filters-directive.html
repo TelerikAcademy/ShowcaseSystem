@@ -1,13 +1,15 @@
 ﻿<div>
     <div class="col-sm-1 col-md-2">
-        <input type="checkbox" id="scrolling" ng-model="options.scrolling" ng-change="scrollChecked()" />
-        <label for="scrolling">Infinite scrolling</label>
+        <label class="toggle">
+            <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.scrolling" ng-change="scrollChecked()">
+            <i></i>Infinite scrolling
+        </label>
     </div>
     <div class="col-sm-1 col-md-2">
         <input type="checkbox" id="descending" ng-model="options.desc" />
         <label for="descending">Descending</label>
     </div>
-    <div class="col-sm-2 col-md-2">
+    <div class="col-sm-3 col-md-3">
         <select class="form-control pointer fsize13 pull-right" name="orderby"
                 ng-model="options.orderOption"
                 ng-options="'Order by ' + option.name for option in options.orderOptions"></select>

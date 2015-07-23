@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var searchPageController = function searchPageController($scope, searchPageData, $routeParams, $location) {
+    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, searchPageData) {
         var vm = this,
             oDataQuery,
             CONSTS = {
@@ -63,5 +63,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('searchPageController', ['$scope', 'searchPageData', '$routeParams', '$location', searchPageController]);
+        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', 'projectsSearchPageData', projectsSearchPageController]);
 }());
