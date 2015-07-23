@@ -7,7 +7,7 @@
     {
         public User RemoteLogin(string username, string password)
         {
-            // TODO: implement and get from telerikacademy.com
+            // TODO: implement and get from telerikacademy.com, data and two avatars
             return new User
             {
                 UserName = username,
