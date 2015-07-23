@@ -75,6 +75,7 @@
     <Compile Include="User\IdentityResponseModel.cs" />
     <Compile Include="User\LikeResponseModel.cs" />
     <Compile Include="User\TeammateResponseModel.cs" />
+    <Compile Include="User\UserAutocompleteResponseModel.cs" />
     <Compile Include="User\UserResponseModel.cs" />
   </ItemGroup>
   <ItemGroup>
