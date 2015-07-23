@@ -132,3 +132,4 @@
 /// <reference path="../app/statistics-page/statistics-data.js" />
 /// <reference path="chart.min.js" />
 /// <reference path="../app/statistics-page/line-chart-directive.js" />
+/// <reference path="../app/statistics-page/pie-chart-directive.js" />
