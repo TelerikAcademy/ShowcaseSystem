@@ -11,5 +11,7 @@
         object Current();
 
         IQueryable<CountByDateModel> ProjectsLastSixMonths();
+
+        IQueryable<CountByTagModel> ProjectsCountByTag();
     }
 }

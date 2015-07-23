@@ -15,9 +15,12 @@
 
         private IRepository<Project> projects;
 
-        public StatisticsService(IRepository<Project> projects)
+        private IRepository<Tag> tags;
+
+        public StatisticsService(IRepository<Project> projects, IRepository<Tag> tags)
         {
             this.projects = projects;
+            this.tags = tags;
         }
 
         public object Current()
@@ -49,6 +52,20 @@
                 {
                     Date = gr.FirstOrDefault().CreatedOn,
                     Count = gr.Count()
+                });
+        }
+
+
+        public IQueryable<CountByTagModel> ProjectsCountByTag()
+        {
+            return this.tags
+                .All()
+                .OrderByDescending(t => t.Projects.Count)
+                .Take(6)
+                .Select(t => new CountByTagModel
+                {
+                    Count = t.Projects.Count,
+                    Tag = t.Name
                 });
         }
     }

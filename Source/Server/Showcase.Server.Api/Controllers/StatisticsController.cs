@@ -9,6 +9,7 @@
     using Showcase.Server.DataTransferModels.Statistics;
     using System.Collections.Generic;
 
+    [RoutePrefix("api/Statistics")]
     public class StatisticsController : ApiController
     {
         private IStatisticsService statisticsService;
@@ -25,7 +26,7 @@
         }
 
         [HttpGet]
-        [Route("api/Statistics/ProjectsLastSixMonths")]
+        [Route("ProjectsLastSixMonths")]
         public IHttpActionResult ProjectsLastSixMonths()
         {
             var total = 0;
@@ -45,6 +46,17 @@
                     result.Labels.Add(this.IntegerToMonthName(r.Date.Month));
                 });
             
+            return this.Data(result);
+        }
+
+        [HttpGet]
+        [Route("ProjectsCountByTag")]
+        public IHttpActionResult ProjectsCountByTag()
+        {
+            var result = this.statisticsService
+                .ProjectsCountByTag()
+                .ToList();
+
             return this.Data(result);
         }
 

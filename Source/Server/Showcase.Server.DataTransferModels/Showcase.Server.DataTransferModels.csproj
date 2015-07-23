@@ -73,6 +73,7 @@
     <Compile Include="Project\TagResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statistics\CountByDateModel.cs" />
+    <Compile Include="Statistics\CountByTagModel.cs" />
     <Compile Include="Statistics\LineChartResponseModel.cs" />
     <Compile Include="User\IdentityResponseModel.cs" />
     <Compile Include="User\LikeResponseModel.cs" />
