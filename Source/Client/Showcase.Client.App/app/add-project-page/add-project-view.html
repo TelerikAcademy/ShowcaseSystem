@@ -27,7 +27,7 @@
                             <label class="label">Collaborators</label>
                             <label class="input">
                                 <i class="icon-append fa fa-question-circle"></i>
-                                <input type="text">
+                                <input type="text" id="collaboratos">
                                 <b class="tooltip tooltip-top-right">Select collaborators in your projects</b>
                             </label>
                         </section>
@@ -75,3 +75,15 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(function () {
+        $('#collaboratos').tokenInput('/api/Users/Search', {
+            preventDuplicates: true,
+            theme: 'showcase',
+            queryParam: 'username',
+            minChars: 3,
+            hintText: 'Start typing username and select'
+        });
+    });
+</script>
