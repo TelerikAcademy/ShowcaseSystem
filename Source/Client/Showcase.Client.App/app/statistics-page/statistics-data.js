@@ -9,11 +9,15 @@
         function getProjectsForLastSixMonths() {
             return data.get('statistics/projectslastsixmonths');
         }
-
+        
+        function getProjectsCountTag() {
+            return data.get('statistics/projectscountbytag')
+        }
 
         return {
             getMainStatistics: getMainStatistics,
-            getProjectsForLastSixMonths: getProjectsForLastSixMonths
+            getProjectsForLastSixMonths: getProjectsForLastSixMonths,
+            getProjectsCountTag: getProjectsCountTag
         };
     };
 

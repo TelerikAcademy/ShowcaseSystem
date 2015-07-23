@@ -13,6 +13,11 @@
             .then(function (projects) {
                 vm.projectsByMonth = projects;
             });
+
+        statisticsData.getProjectsCountTag()
+            .then(function (projectsByTag) {
+                vm.projectsByTag = projectsByTag;
+            });
     };
 
     angular
