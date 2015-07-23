@@ -7,6 +7,7 @@
             templateUrl: '/app/projects-search-page/search-bar-directive.html',
             scope: {
                 searchTerms: '=',
+                search: '&'
             }
         };
     };

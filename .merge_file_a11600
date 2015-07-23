@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, searchPageData) {
+    var searchPageController = function searchPageController($scope, searchPageData, $routeParams, $location) {
         var vm = this,
             oDataQuery,
             CONSTS = {
@@ -11,7 +11,7 @@
         vm.filterOptions = searchPageData.getFilterOptions();
         vm.searchTerms = searchPageData.getSearchTerms();
 
-        vm.search = function (query) {
+        vm.filter = function (query) {
             $routeParams = {
                 $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),
                 $top: vm.filterOptions.pageSize,
@@ -35,7 +35,11 @@
         // not working if attached to vm
         $scope.changePage = function (newPage) {
             $scope.currentPage = newPage;
-            vm.search({ $skip: newPage * vm.filterOptions.pageSize });
+            vm.filter({ $skip: newPage * vm.filterOptions.pageSize });
+        };
+
+        vm.search = function () {
+
         };
 
         vm.getNextProjects = function () {
@@ -59,5 +63,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', 'projectsSearchPageData', projectsSearchPageController]);
+        .controller('searchPageController', ['$scope', 'searchPageData', '$routeParams', '$location', searchPageController]);
 }());

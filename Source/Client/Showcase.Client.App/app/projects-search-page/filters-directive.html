@@ -1,27 +1,32 @@
-﻿<div>
-    <div class="col-sm-1 col-md-2">
+﻿<div class="sky-form col-md-4">
+    <div class="col-sm-3 pull-right">
         <label class="toggle">
             <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.scrolling" ng-change="scrollChecked()">
-            <i></i>Infinite scrolling
+            <i></i><br />
+            Scrolling
         </label>
     </div>
-    <div class="col-sm-1 col-md-2">
-        <input type="checkbox" id="descending" ng-model="options.desc" />
-        <label for="descending">Descending</label>
+    <div class="col-sm-3 pull-right">
+        <label class="toggle">
+            <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.desc">
+            <i></i><br />
+            Descending
+        </label>
     </div>
-    <div class="col-sm-3 col-md-3">
+    <div class="col-sm-6 pull-right">
+        <label>
+            <select class="form-control pointer fsize13 pull-right" name="pagesize"
+                    ng-model="options.pageSize" ng-options="pageSize for pageSize in options.pageSizes"></select>
+            <i></i><br />
+            Page size
+        </label>
+    </div>
+    <div class="col-sm-12 pull-right">
         <select class="form-control pointer fsize13 pull-right" name="orderby"
                 ng-model="options.orderOption"
                 ng-options="'Order by ' + option.name for option in options.orderOptions"></select>
     </div>
-    <div class="col-sm-2 col-md-2">
-        <label class="col-sm-4 col-md-4">Page size</label>
-        <div class="col-sm-8 col-md-8">
-            <select class="form-control pointer fsize13 pull-right" name="pagesize"
-                    ng-model="options.pageSize" ng-options="pageSize for pageSize in options.pageSizes"></select>
-        </div>
-    </div>
-    <div class="col-sm-1 col-md-1">
+    <!--<div class="col-sm-1 col-md-1">
         <a href="#" ng-click="search()" class="btn btn-primary btn-lg">Search</a>
-    </div>
+    </div>-->
 </div>

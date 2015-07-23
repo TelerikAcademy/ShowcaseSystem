@@ -5,11 +5,20 @@
                 <h2><strong>Projects</strong> by {{vm.filterOptions.orderOption.name}}</h2>
             </div>
         </div>
-        <div class="row clearfix well well-sm">
-            <div class="row" filters options="vm.filterOptions" search="vm.filter()" />
-            <div search-bar search-terms="vm.searchTerms" total-count="vm.totalResultsCount" time="vm.timeElapsed" />
+        <div class="row well well-sm">
+            <div filters options="vm.filterOptions" />
+            <div search-bar />
+
+            <div class="col-sm-6">
+                About {{vm.searchTerms.totalResultsCount}} results <small class="text-success">({{vm.searchTerms.timeElapsed}} seconds) </small>
+            </div>
+            <div class="col-sm-2 pull-right">
+                <button class="btn btn-default input-lg" ng-click="vm.search()">
+                    <i class="fa fa-fw fa-search fa-lg"></i>Search
+                </button>
+            </div>
         </div>
-        <div project-container projects="vm.projects" infinite-scrolling="vm.getNextProjects" />
+        <div project-container projects="vm.projects" infinite-scrolling="vm.getNextProjects" search="vm.search()" />
         <div ng-pager total-pages="{{totalPages}}" current-page="{{currentPage}}" page-changed="changePage(pageNum)" ng-hide="vm.filterOptions.scrolling" />
     </div>
 </section>
