@@ -11,9 +11,6 @@
             link: function(scope, element) {
                 scope.$watch('projects', function (projects) {
                     if (projects && projects.length && projects.length > 0) {
-                        console.log(scope.projects);
-
-
                         element.find('.fullwidthbanner ul , .fullscreenbanner ul').removeClass('hide');
 
                         var sliderElement = element.find('.fullwidthbanner');
