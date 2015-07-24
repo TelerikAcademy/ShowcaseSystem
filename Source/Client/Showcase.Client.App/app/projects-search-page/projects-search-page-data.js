@@ -5,7 +5,7 @@
         var CONSTS = {
             DESC: 'desc',
             DEFAULT_QUERY: {
-                $orderby: 'CreatedOn',
+                $orderby: 'createdOn',
                 $top: 4,
                 $count: 'true'
             }
@@ -38,11 +38,11 @@
 
             var options = {};
             options.orderOptions = [
-                    { value: 'CreatedOn', name: 'Date' },
-                    { value: 'Visits', name: 'Views' },
-                    { value: 'Likes', name: 'Likes' },
-                    { value: 'Comments', name: 'Comments' },
-                    { value: 'Name', name: 'Name' }
+                    { value: 'createdOn', name: 'Date' },
+                    { value: 'visits', name: 'Views' },
+                    { value: 'likes', name: 'Likes' },
+                    { value: 'comments', name: 'Comments' },
+                    { value: 'name', name: 'Name' }
             ];
             options.pageSizes = [4, 8, 16, 32, 64];
             options.scrolling = localStorage.scrolling === 'true';

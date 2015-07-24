@@ -26,7 +26,7 @@
                         args[index] = vm.searchParams.name
                             .split(',')
                             .map(function (name) {
-                                return "contains(Name,'" + name.trim() + "')";
+                                return "contains(name,'" + name.trim() + "')";
                             })
                             .join(' or ');
                         index += 1;
@@ -35,7 +35,7 @@
                         args[index] = vm.searchParams.tags
                             .split(',')
                             .map(function (tag) {
-                                return "Tags/any(t:contains(t/Name,'" + tag.trim() + "'))";
+                                return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
                             }).join(' or ');
                         index += 1;
                     }
@@ -43,7 +43,7 @@
                         args[index] = vm.searchParams.collaborators
                             .split(',')
                             .map(function (collaborator) {
-                                return "Collaborators/any(c:contains(c, '" + collaborator + "'))";
+                                return "collaborators/any(c:contains(c, '" + collaborator + "'))";
                             }).join(' or ');
                         index += 1;
                     }
