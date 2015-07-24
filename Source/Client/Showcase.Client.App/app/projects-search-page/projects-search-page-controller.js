@@ -83,12 +83,12 @@
         searchPageData.searchProjects(oDataQuery)
             .then(function (odata) {
                 // results data
-                vm.projects = odata.results;
+                vm.projects = odata.value;
                 // searchbar data
-                vm.totalResultsCount = odata.count;
+                vm.totalResultsCount = odata['@odata.count'];
                 vm.timeElapsed = (new Date().getTime() - stertTime) / 1000;
                 // pager data
-                $scope.totalPages = Math.ceil(odata.count / vm.filterOptions.pageSize);
+                $scope.totalPages = Math.ceil(odata['@odata.count'] / vm.filterOptions.pageSize);
                 $scope.currentPage = !!$routeParams.$skip ? $routeParams.$skip / $routeParams.$top : 0;
             });
     };

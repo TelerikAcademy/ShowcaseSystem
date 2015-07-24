@@ -11,9 +11,9 @@
             }
         };
 
-        function searchProjects(oData) {
-            oData = oData || '/search';
-            return data.get('projects' + oData);
+        function searchProjects(oDataQuery) {
+            oDataQuery = oDataQuery || 'Search';
+            return data.getOData(oDataQuery);
         }
 
         function getSearchParams() {
@@ -58,7 +58,7 @@
                 query = CONSTS.DEFAULT_QUERY;
             }
 
-            var result = '/search?' + Object.keys(query)
+            var result = 'Search?' + Object.keys(query)
                 .map(function (key) {
                     return key + '=' + query[key];
                 })
