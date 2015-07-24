@@ -1,4 +1,4 @@
-﻿<section ng-controller="searchPageController as vm">
+﻿<section ng-controller="AddProjectController as vm">
     <div class="container">
         <h2 class="text-center"><i class="fa fa-plus" id="add-icon"></i> Add your project</h2>
         <div class="row">
@@ -60,16 +60,16 @@
                         <section>
                             <label class="label">Images</label>
                             <label for="file" class="input input-file">
-                                <div class="button"><input type="file" id="file" onchange="this.parentNode.nextSibling.value = this.files.length + ' selected images'" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
+                                <div class="button"><input type="file" id="file" file-upload ng-model="project.images" data-validation-regex="^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
                                 <b class="tooltip tooltip-top-right">Add images to your project</b>
                             </label>
                         </section>
 
                         <footer>
-                            <button type="submit" class="button">Submit</button>
+                            <button class="button" ng-click="vm.submitProject(project)">Submit</button>
                             <button type="button" class="button button-secondary pull-left" onclick="window.history.back();">Back</button>
                         </footer>
-                        </fieldset>
+                    </fieldset>
 
                 </form>
             </div>

@@ -130,3 +130,4 @@
 /// <reference path="../app/common/infinite-scroll-directive.js" />
 /// <reference path="jquery.tokeninput.js" />
 /// <reference path="../app/add-project-page/token-input-directive.js" />
+/// <reference path="../app/add-project-page/file-upload-directive.js" />
