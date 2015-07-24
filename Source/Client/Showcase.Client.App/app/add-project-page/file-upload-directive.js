@@ -11,20 +11,32 @@
             link: function (scope, element, attrs, ngModel) {
                 if (!ngModel) return;
                 if (attrs.validationRegex) {
-                    validationRegex = new RegExp(attrs.validationRegex, 'g');
+                    validationRegex = new RegExp(attrs.validationRegex);
                 }
+                
+                var maxFiles = attrs.maxFiles || 10;
 
                 ngModel.$render = function () { };
 
                 element.bind('change', function (e) {
-                    if (validationRegex && !validationRegex.test(jQuery(this).val().toLowerCase())) {
-                        notifier.error('Please, select valid files')
+                    var element = e.target;
+                    if (!element.files || element.files.length == 0) {
                         return;
+                    }
+                    else if (element.files && element.files.length > maxFiles) {
+                        notifier.error('You must select maximum ' + maxFiles + ' files');
+                        return;
+                    }
+                    else if (element.files && element.files.length > 0 && validationRegex) {
+                        for (var i = 0; i < element.files.length; i++) {
+                            if (!validationRegex.test(element.files[i].name.toLowerCase())) {
+                                notifier.error('You must select valid files')
+                                return;
+                            }
+                        }
                     }
 
                     var self = this;
-                    var element = e.target;
-
                     $q.all(slice.call(element.files, 0).map(readFile))
                         .then(function (values) {
                             self.parentNode.nextSibling.value = self.files.length + ' selected files: ' + values.map(function (el) { return el.originalName }).join(', ');
