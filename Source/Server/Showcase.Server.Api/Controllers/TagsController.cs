@@ -9,6 +9,7 @@
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Tag;
 
+    [RoutePrefix("api/Tags")]
     public class TagsController : BaseController
     {
         private const int MinimumCharactersForNameSearch = 2;
