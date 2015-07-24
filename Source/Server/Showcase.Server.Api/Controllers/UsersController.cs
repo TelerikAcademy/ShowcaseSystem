@@ -66,7 +66,7 @@
         {
             if (string.IsNullOrEmpty(username) || username.Length < MinimumCharactersForUsernameSearch)
             {
-                return this.Data(false, string.Format("Username should be at least {0} symbols long", username));
+                return this.Data(false, string.Format("Username should be at least {0} symbols long", MinimumCharactersForUsernameSearch));
             }
 
             var model = this.users
