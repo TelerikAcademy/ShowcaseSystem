@@ -218,6 +218,7 @@
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Infrastructure\Auth\ApplicationOAuthBearerAuthenticationProvider.cs" />
     <Compile Include="Infrastructure\Auth\ApplicationOAuthProvider.cs" />
