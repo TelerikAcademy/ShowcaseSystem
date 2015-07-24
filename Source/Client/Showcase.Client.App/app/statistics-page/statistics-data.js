@@ -11,13 +11,18 @@
         }
         
         function getProjectsCountTag() {
-            return data.get('statistics/projectscountbytag')
+            return data.get('statistics/projectscountbytag');
+        }
+
+        function getMostLikedProjects() {
+            return data.get('statistics/mostliked');
         }
 
         return {
             getMainStatistics: getMainStatistics,
             getProjectsForLastSixMonths: getProjectsForLastSixMonths,
-            getProjectsCountTag: getProjectsCountTag
+            getProjectsCountTag: getProjectsCountTag,
+            getMostLikedProjects: getMostLikedProjects
         };
     };
 

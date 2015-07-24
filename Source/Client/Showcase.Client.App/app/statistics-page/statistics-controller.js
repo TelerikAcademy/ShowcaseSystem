@@ -18,6 +18,12 @@
             .then(function (projectsByTag) {
                 vm.projectsByTag = projectsByTag;
             });
+
+        statisticsData.getMostLikedProjects()
+            .then(function(mostLiked) {
+                vm.mostLiked = mostLiked;
+                console.log(mostLiked);
+        });
     };
 
     angular
