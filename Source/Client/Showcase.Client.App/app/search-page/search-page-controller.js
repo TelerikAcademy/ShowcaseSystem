@@ -63,5 +63,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('searchPageController', ['$scope', 'searchPageData', '$routeParams', '$location', searchPageController]);
+        .controller('SearchPageController', ['$scope', 'searchPageData', '$routeParams', '$location', searchPageController]);
 }());
