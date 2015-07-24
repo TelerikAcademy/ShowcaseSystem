@@ -268,7 +268,7 @@ ul.token-input-list-showcase {
         border-color: #c6c6c6 !important;
     }
 
-    ul.token-input-list-showcase #token-input-collaborators {
+    ul.token-input-list-showcase [id^="token-input"] {
         border: none !important;
     }
 
