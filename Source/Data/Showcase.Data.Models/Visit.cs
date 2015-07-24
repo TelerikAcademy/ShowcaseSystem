@@ -8,8 +8,6 @@
 
         public int ProjectId { get; set; }
 
-        public string IP { get; set; }
-
         public virtual Project Project { get; set; }
     }
 }
