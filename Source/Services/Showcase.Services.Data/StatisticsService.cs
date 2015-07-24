@@ -11,8 +11,6 @@
 
     public class StatisticsService : IStatisticsService
     {
-        private readonly DateTime ShowcaseLaunchDate = new DateTime(2015, 7, 23);
-
         private IRepository<Project> projects;
 
         private IRepository<Tag> tags;
@@ -36,7 +34,7 @@
                     TotalComments = gr.Sum(pr => pr.Comments.Count()),
                     TotalLikes = gr.Sum(pr => pr.Likes.Count())
                 })
-                .FirstOrDefault();
+                .FirstOrDefault(); 
         }
 
         public IQueryable<CountByDateModel> ProjectsLastSixMonths()
@@ -67,6 +65,15 @@
                     Count = t.Projects.Count,
                     Tag = t.Name
                 });
+        }
+
+
+        public IQueryable<Project> MostLikedProjects()
+        {
+            return this.projects
+                .All()
+                .OrderByDescending(pr => pr.Likes.Count)
+                .Take(50);
         }
     }
 }

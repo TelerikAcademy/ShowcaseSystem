@@ -13,5 +13,7 @@
         IQueryable<CountByDateModel> ProjectsLastSixMonths();
 
         IQueryable<CountByTagModel> ProjectsCountByTag();
+
+        IQueryable<Project> MostLikedProjects();
     }
 }
