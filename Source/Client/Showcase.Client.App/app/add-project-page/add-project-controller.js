@@ -5,8 +5,8 @@
         var vm = this;
 
         vm.submitProject = function (project) {
-            
-        }
+
+        };
     };
 
     angular

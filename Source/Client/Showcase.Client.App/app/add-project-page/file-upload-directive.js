@@ -20,7 +20,7 @@
 
                 element.bind('change', function (e) {
                     var element = e.target;
-                    if (!element.files || element.files.length == 0) {
+                    if (!element.files || element.files.length === 0) {
                         return;
                     }
                     else if (element.files && element.files.length > maxFiles) {
@@ -30,7 +30,7 @@
                     else if (element.files && element.files.length > 0 && validationRegex) {
                         for (var i = 0; i < element.files.length; i++) {
                             if (!validationRegex.test(element.files[i].name.toLowerCase())) {
-                                notifier.error('You must select valid files')
+                                notifier.error('You must select valid files');
                                 return;
                             }
                         }
@@ -39,7 +39,7 @@
                     var self = this;
                     $q.all(slice.call(element.files, 0).map(readFile))
                         .then(function (values) {
-                            self.parentNode.nextSibling.value = self.files.length + ' selected files: ' + values.map(function (el) { return el.originalName }).join(', ');
+                            self.parentNode.nextSibling.value = self.files.length + ' selected files: ' + values.map(function (el) { return el.originalName; }).join(', ');
 
                             if (element.multiple) ngModel.$setViewValue(values);
                             else ngModel.$setViewValue(values.length ? values[0] : null);
