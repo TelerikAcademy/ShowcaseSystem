@@ -1,17 +1,23 @@
 ﻿<div class="row margin-bottom-10" ng-repeat="project in projects">
-    <div class="col-md-1">
+    <div class="col-md-1 nopadding">
         <img src="{{project.mainImageUrl}}"  width="32" height="32"/>
     </div>
-    <div class="col-md-2">
-        <i class="fa fa-thumbs-up margin-right-5"></i><span>{{project.likes}}</span>
+    <div class="col-md-1 nopadding" style="padding-left: 5px !important;">
+        <span class="font-size-085em">
+            <i class="fa fa-thumbs-up margin-right-5"></i><span>{{project.likes}}</span>
+        </span>
     </div>
-    <div class="col-md-5" style="vertical-align: central">
+    <div class="col-md-7" nopadding style="vertical-align: central">
         <a href="/projects/{{projectid}}/{{project.titleUrl}}">{{project.name}}</a>
     </div>
-    <div class="col-md-2">
-        <i class="fa fa-eye margin-right-5"></i><span>{{project.visits}}</span>
+    <div class="col-md-2 nopadding">
+        <span class="font-size-085em">
+            <i class="fa fa-eye margin-right-5"></i><span>{{project.visits}}</span>
+        </span>
     </div>
-    <div class="col-md-2">
-        <i class="fa fa-comments margin-right-5"></i><span>{{project.comments}}</span>
+    <div class="col-md-1 nopadding">
+        <span class="font-size-085em">
+            <i class="fa fa-comments margin-right-5"></i><span>{{project.comments}}</span>
+        </span>
     </div>
 </div>
