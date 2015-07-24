@@ -160,6 +160,8 @@
     <Content Include="app\statistics-page\statistics-data.js" />
     <Content Include="app\statistics-page\statistics-projects-directive.html" />
     <Content Include="app\statistics-page\statistics-projects-directive.js" />
+    <Content Include="app\statistics-page\statistics-users-directive.html" />
+    <Content Include="app\statistics-page\statistics-users-directive.js" />
     <Content Include="app\statistics-page\statistics-view.html" />
     <Content Include="app\user-profile-page\user-profile-comments-directive.html" />
     <Content Include="app\user-profile-page\user-profile-comments-directive.js" />

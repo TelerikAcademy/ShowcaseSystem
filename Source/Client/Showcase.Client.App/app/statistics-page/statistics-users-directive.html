@@ -1,0 +1,19 @@
+﻿<div class="row margin-bottom-10" ng-repeat="user in users">
+    <div class="col-md-1 nopadding">
+        <img class="img-thumbnail" src="{{user.avatarUrl}}" width="35" height="35" />
+    </div>
+    <div class="col-md-1 nopadding" style="padding-left: 5px !important;">
+        <span class="font-size-085em">
+            <i class="fa fa-thumbs-up margin-right-5"></i><span>{{user.likesCount}}</span>
+        </span>
+    </div>
+    <div class="col-md-6" nopadding style="vertical-align: central">
+        <a href="/users/{{user.username}}">{{user.username}}</a>
+    </div>
+    <div class="col-md-3">
+        <span class="font-size-085em">
+            <i class="fa fa-file-code-o margin-right-5"></i>
+            {{user.projectsCount}}
+        </span>
+    </div>
+</div>
