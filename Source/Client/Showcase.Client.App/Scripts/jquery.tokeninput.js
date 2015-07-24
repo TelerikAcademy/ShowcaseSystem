@@ -192,12 +192,14 @@
             })
             .attr("id", settings.idPrefix + input.id)
             .focus(function () {
+                $(this).parent().parent().addClass('focused');
                 if (settings.tokenLimit === null || settings.tokenLimit !== token_count) {
                     show_dropdown_hint();
                 }
             })
             .blur(function () {
                 hide_dropdown();
+                $(this).parent().parent().removeClass('focused');
                 $(this).val("");
             })
             .bind("keyup keydown blur update", resize_input)

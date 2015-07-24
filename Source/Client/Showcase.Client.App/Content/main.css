@@ -38,9 +38,9 @@
     margin-right: 10px;
 }
 
-.modal-footer button:hover {
-    margin: 0;
-}
+    .modal-footer button:hover {
+        margin: 0;
+    }
 
 .modal-body input {
     margin-top: 10px;
@@ -55,29 +55,26 @@
 }
 
 a.social.fa-youtube-play:hover {
-    background: red!important;
-    color: #fff!important;
+    background: red !important;
+    color: #fff !important;
 }
 
 a.social.fa-github:hover {
-    background: gray!important;
-    color: #fff!important;
+    background: gray !important;
+    color: #fff !important;
 }
 
-::-webkit-scrollbar
-{
-  width: 8px;  /* for vertical scrollbars */
-  height: 8px; /* for horizontal scrollbars */
+::-webkit-scrollbar {
+    width: 8px; /* for vertical scrollbars */
+    height: 8px; /* for horizontal scrollbars */
 }
 
-::-webkit-scrollbar-track
-{
-  background: rgba(0, 0, 0, 0.1);
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
 }
 
-::-webkit-scrollbar-thumb
-{
-  background: rgba(0, 0, 0, 0.5);
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .margin-left-10 {
@@ -226,7 +223,7 @@ a.social.fa-github:hover {
 
 .logo-text-container {
     display: inline-block;
-    color:#828282;
+    color: #828282;
 }
 
 .logo-image {
@@ -249,6 +246,24 @@ a.social.fa-github:hover {
     margin: 0;
 }
 
-.sky-form footer .button {
-    margin-left: 0;
+    .sky-form footer .button {
+        margin-left: 0;
+    }
+
+ul.token-input-list-showcase {
+    width: 100%;
+    border-width: 2px;
+    border-color: #e5e5e5;
 }
+
+    ul.token-input-list-showcase:hover {
+        border-color: #c6c6c6 !important;
+    }
+
+    ul.token-input-list-showcase.focused {
+        border-color: #c6c6c6 !important;
+    }
+
+    ul.token-input-list-showcase #token-input-collaboratos {
+        border: none !important;
+    }
