@@ -196,6 +196,7 @@
     <Content Include="content\toastr.less" />
     <Content Include="content\toastr.scss" />
     <Content Include="content\token-input-showcase.css" />
+    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
