@@ -11,9 +11,9 @@
     using Showcase.Data.Common.Repositories;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.Common;
+    using Showcase.Server.DataTransferModels;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data.Contracts;
-    using Showcase.Server.DataTransferModels;
 
     [RoutePrefix("api/Projects")]
     public class ProjectsController : ApiController
@@ -122,7 +122,7 @@
             return this.Ok();
         }
 
-        //[Authorize]
+        // [Authorize]
         [HttpPost]
         [Route("Like/{id}")]
         public IHttpActionResult Like(int id)
@@ -139,7 +139,7 @@
             return this.Ok();
         }
 
-        //[Authorize]
+        // [Authorize]
         [HttpPost]
         [Route("DisLike/{id}")]
         public IHttpActionResult DisLike(int id)

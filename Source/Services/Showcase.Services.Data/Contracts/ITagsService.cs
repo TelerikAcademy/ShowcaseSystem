@@ -2,8 +2,8 @@
 {
     using System.Linq;
 
-    using Showcase.Services.Common;
     using Showcase.Data.Models;
+    using Showcase.Services.Common;
 
     public interface ITagsService : IService
     {
