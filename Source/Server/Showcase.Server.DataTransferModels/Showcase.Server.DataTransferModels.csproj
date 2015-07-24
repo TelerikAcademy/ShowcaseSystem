@@ -75,6 +75,8 @@
     <Compile Include="Statistics\CountByDateModel.cs" />
     <Compile Include="Statistics\CountByTagModel.cs" />
     <Compile Include="Statistics\LineChartResponseModel.cs" />
+    <Compile Include="Statistics\TopProjectResponseModel.cs" />
+    <Compile Include="Statistics\TopUserResponseModel.cs" />
     <Compile Include="User\IdentityResponseModel.cs" />
     <Compile Include="User\LikeResponseModel.cs" />
     <Compile Include="User\TeammateResponseModel.cs" />

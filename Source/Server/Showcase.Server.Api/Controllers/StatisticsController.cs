@@ -66,13 +66,13 @@ namespace Showcase.Server.Api.Controllers
         }
 
         [HttpGet]
-        [Route("MostLiked")]
-        public IHttpActionResult MostLikedProjects()
+        [Route("TopProjects")]
+        public IHttpActionResult TopProjects()
         {
             var model = this.statisticsService
-                .MostLikedProjects()
+                .TopProjects()
                 .Project()
-                .To<ProjectResponseModel>()
+                .To<TopProjectResponseModel>()
                 .ToList();
 
             return this.Data(model);
@@ -85,7 +85,8 @@ namespace Showcase.Server.Api.Controllers
             var model = this.statisticsService
                 .TopUsers()
                 .Project()
-                .To<UserResponseModel>()
+                .To<TopUserResponseModel>()
+                .OrderByDescending(u => u.LikesCount)
                 .ToList();
 
             return this.Data(model);

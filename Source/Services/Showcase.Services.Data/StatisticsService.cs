@@ -1,4 +1,6 @@
-﻿namespace Showcase.Services.Data
+﻿using Showcase.Services.Common;
+
+namespace Showcase.Services.Data
 {
     using System.Linq;
 
@@ -61,7 +63,7 @@
             return this.tags
                 .All()
                 .OrderByDescending(t => t.Projects.Count)
-                .Take(6)
+                .Take(Constants.StatisticsTopTagsCount)
                 .Select(t => new CountByTagModel
                 {
                     Count = t.Projects.Count,
@@ -69,20 +71,21 @@
                 });
         }
         
-        public IQueryable<Project> MostLikedProjects()
+        public IQueryable<Project> TopProjects()
         {
             return this.projects
                 .All()
                 .OrderByDescending(pr => pr.Likes.Count)
-                .Take(50);
+                .ThenByDescending(pr => pr.Visits.Count)
+                .ThenByDescending(pr => pr.Comments.Count)
+                .Take(Constants.StatisticsTopProjectsCount);
         }
         
         public IQueryable<User> TopUsers()
         {
             return this.users
                 .All()
-                .OrderByDescending(u => u.Projects.Sum(p => p.Likes.Count))
-                .Take(50);
+                .Take(Constants.StatisticsTopUsersCount);
         }
     }
 }

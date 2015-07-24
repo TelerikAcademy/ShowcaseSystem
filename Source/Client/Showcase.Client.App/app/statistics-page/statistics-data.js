@@ -15,7 +15,7 @@
         }
 
         function getMostLikedProjects() {
-            return data.get('statistics/mostliked');
+            return data.get('statistics/topprojects');
         }
 
         function getTopUsers() {

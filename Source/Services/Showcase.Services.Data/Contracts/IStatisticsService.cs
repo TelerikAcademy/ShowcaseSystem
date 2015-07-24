@@ -14,7 +14,7 @@
 
         IQueryable<CountByTagModel> ProjectsCountByTag();
 
-        IQueryable<Project> MostLikedProjects();
+        IQueryable<Project> TopProjects();
 
         IQueryable<User> TopUsers();
     }
