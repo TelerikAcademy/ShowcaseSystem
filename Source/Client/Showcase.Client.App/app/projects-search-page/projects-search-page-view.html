@@ -7,10 +7,10 @@
         </div>
         <div class="row well well-sm">
             <div filters options="vm.filterOptions" />
-            <div search-bar />
+            <div search-bar params="vm.searchParams" />
 
             <div class="col-sm-6">
-                About {{vm.searchTerms.totalResultsCount}} results <small class="text-success">({{vm.searchTerms.timeElapsed}} seconds) </small>
+                About {{vm.totalResultsCount}} results <small class="text-success">({{vm.timeElapsed}} seconds) </small>
             </div>
             <div class="col-sm-2 pull-right">
                 <button class="btn btn-default input-lg" ng-click="vm.search()">

@@ -16,14 +16,12 @@
             return data.get('projects' + oData);
         }
 
-        function getSearchTerms() {
+        function getSearchParams() {
             return {
-                options: [
-                    { value: 'Title and Content', name: 'Title and Content' },
-                    { value: 'Collaborator', name: 'Collaborator' },
-                    { value: 'Comment', name: 'Comment' },
-                    { value: 'Tag', name: 'Tag' }
-                ]
+                name: '',
+                tags: '',
+                collaborators: '',
+                period: ''
             };
         }
 
@@ -72,7 +70,7 @@
         return {
             searchProjects: searchProjects,
             getFilterOptions: getFilterOptions,
-            getSearchTerms: getSearchTerms,
+            getSearchParams: getSearchParams,
             getQuery: getQuery
         };
     };

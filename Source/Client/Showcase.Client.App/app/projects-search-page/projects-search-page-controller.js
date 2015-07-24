@@ -9,7 +9,7 @@
             };
 
         vm.filterOptions = searchPageData.getFilterOptions();
-        vm.searchTerms = searchPageData.getSearchTerms();
+        vm.searchParams = searchPageData.getSearchParams();
 
         vm.search = function (query) {
             $routeParams = {
@@ -18,6 +18,42 @@
                 $skip: $scope.currentpage || 0,
                 $count: 'true'
             };
+
+            if (vm.searchParams.name || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
+                $routeParams.$filter = (function getSeachParams() {
+                    var args = [], index = 0;
+                    if (vm.searchParams.name) {
+                        args[index] = vm.searchParams.name
+                            .split(',')
+                            .map(function (name) {
+                                return "contains(Name,'" + name.trim() + "')";
+                            })
+                            .join(' or ');
+                        index += 1;
+                    }
+                    if (vm.searchParams.tags) {
+                        args[index] = vm.searchParams.tags
+                            .split(',')
+                            .map(function (tag) {
+                                return "Tags/any(t:contains(t/Name,'" + tag.trim() + "'))";
+                            }).join(' or ');
+                        index += 1;
+                    }
+                    if (vm.searchParams.collaborators) {
+                        args[index] = vm.searchParams.collaborators
+                            .split(',')
+                            .map(function (collaborator) {
+                                return "Collaborators/any(c:contains(c, '" + collaborator + "'))";
+                            }).join(' or ');
+                        index += 1;
+                    }
+                    if (vm.searchParams.period) {
+                        args[index] = '';// TODO:
+                    }
+
+                    return args.join(' and ');
+                })();
+            }
 
             if (query) {
                 Object.keys(query)
@@ -49,8 +85,8 @@
                 // results data
                 vm.projects = odata.results;
                 // searchbar data
-                vm.searchTerms.totalResultsCount = odata.count;
-                vm.searchTerms.timeElapsed = (new Date().getTime() - stertTime) / 1000;
+                vm.totalResultsCount = odata.count;
+                vm.timeElapsed = (new Date().getTime() - stertTime) / 1000;
                 // pager data
                 $scope.totalPages = Math.ceil(odata.count / vm.filterOptions.pageSize);
                 $scope.currentPage = !!$routeParams.$skip ? $routeParams.$skip / $routeParams.$top : 0;
