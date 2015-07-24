@@ -26,11 +26,10 @@
         private static IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
-            builder.Namespace = "Showcase.Server.DataTransferModels.Project";
-            builder.ContainerName = "DefaultContainer";
-
             builder.EntitySet<ProjectResponseSimpleModel, SearchController>();
 
+            builder.Namespace = typeof(ProjectResponseSimpleModel).Namespace;
+            builder.EnableLowerCamelCase();
             return builder.GetEdmModel();
         }
     }
