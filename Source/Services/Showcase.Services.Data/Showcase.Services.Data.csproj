@@ -54,6 +54,7 @@
     <Compile Include="Contracts\IProjectsService.cs" />
     <Compile Include="Contracts\IRemoteDataService.cs" />
     <Compile Include="Contracts\IStatisticsService.cs" />
+    <Compile Include="Contracts\ITagsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IVisitsService.cs" />
     <Compile Include="LikesService.cs" />
