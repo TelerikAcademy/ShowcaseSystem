@@ -1,6 +1,6 @@
 ﻿namespace Showcase.Server.DataTransferModels.Statistics
 {
-    using System;
+    using System.Linq;
 
     using AutoMapper;
     using MissingFeatures;
@@ -9,7 +9,7 @@
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
 
-    public class TopProjectResponseModel : IMapFrom<Project>
+    public class TopProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
