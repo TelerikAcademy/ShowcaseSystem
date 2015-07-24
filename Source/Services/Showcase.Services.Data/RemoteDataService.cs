@@ -50,5 +50,11 @@
                 Sex = "Male"
             };
         }
+
+        public bool UsersExist(IEnumerable<string> usernames)
+        {
+            // TODO: return whether all usernames are valid users
+            return true;
+        }
     }
 }
