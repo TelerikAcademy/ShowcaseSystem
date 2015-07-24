@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+.toast-success {
+  background-color: #8ab933;
+}
+
 .toast .toast-close-button {
     top: auto;
 }
@@ -267,3 +271,26 @@ ul.token-input-list-showcase {
     ul.token-input-list-showcase #token-input-collaboratos {
         border: none !important;
     }
+
+div.token-input-dropdown-showcase ul li.token-input-selected-dropdown-item-showcase {
+    background-color: #8ab933;
+}
+
+li.token-input-token-showcase {
+    background-color: #b5e124;
+    border: 1px solid #a7d01d;
+}
+
+li.token-input-selected-token-showcase {
+    background-color: #8ab933;
+    border: 1px solid #8ab933;
+    color: #fff;
+}
+
+li.token-input-token-showcase span {
+    color: black;
+}
+
+li.token-input-selected-token-showcase span {
+    color: white;
+}
