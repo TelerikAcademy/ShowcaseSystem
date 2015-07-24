@@ -1,13 +1,16 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
 
+    using AutoMapper.QueryableExtensions;
+
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.DataTransferModels.Statistics;
-    using System.Collections.Generic;
 
     [RoutePrefix("api/Statistics")]
     public class StatisticsController : ApiController
@@ -58,6 +61,19 @@
                 .ToList();
 
             return this.Data(result);
+        }
+
+        [HttpGet]
+        [Route("MostLiked")]
+        public IHttpActionResult MostLikedProjects()
+        {
+            var model = this.statisticsService
+                .MostLikedProjects()
+                .Project()
+                .To<ProjectResponseModel>()
+                .ToList();
+
+            return this.Data(model);
         }
 
         private string IntegerToMonthName(int monthIndex)
