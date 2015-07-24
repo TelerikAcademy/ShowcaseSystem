@@ -94,6 +94,8 @@
         COMMA: 188
     };
 
+    var originalSelector;
+
     // Additional public (exposed) methods
     var methods = {
         init: function (url_or_data_or_function, options) {
@@ -122,6 +124,7 @@
 
     // Expose the .tokenInput function to jQuery as a plugin
     $.fn.tokenInput = function (method) {
+        originalSelector = this.selector;
         // Method calling and initialization logic
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
@@ -192,7 +195,15 @@
             })
             .attr("id", settings.idPrefix + input.id)
             .focus(function () {
-                $(this).parent().parent().addClass('focused');
+                var $this = $(this);
+                $this.parent().parent().addClass('focused');
+                $(originalSelector).parent().children('.tooltip').css({
+                    'opacity': 1,
+                    'right': 0,
+                    'left': 'auto',
+                    'margin-bottom': '5px'
+                });
+
                 if (settings.tokenLimit === null || settings.tokenLimit !== token_count) {
                     show_dropdown_hint();
                 }
@@ -201,6 +212,9 @@
                 hide_dropdown();
                 $(this).parent().parent().removeClass('focused');
                 $(this).val("");
+                $(originalSelector).parent().children('.tooltip').css({
+                    'opacity': 0,
+                });
             })
             .bind("keyup keydown blur update", resize_input)
             .keydown(function (event) {

@@ -26,14 +26,14 @@
                         <section>
                             <label class="label">Collaborators</label>
                             <label class="input">
-                                <input type="text" id="collaboratos">
+                                <input type="text" id="collaborators">
+                                <b class="tooltip tooltip-top-right">Select all collaborators in your project</b>
                             </label>
                         </section>
 
                         <section>
                             <label class="label">Tags</label>
                             <label class="input">
-                                <i class="icon-append fa fa-question-circle"></i>
                                 <input type="text">
                                 <b class="tooltip tooltip-top-right">Tag your project - technologies, programming languages, type of project, etc.</b>
                             </label>
@@ -63,12 +63,13 @@
                                 <div class="button"><input type="file" id="file" onchange="this.parentNode.nextSibling.value = this.files.length + ' selected images'" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
                             </label>
                         </section>
-                    </fieldset>
 
-                    <footer>
-                        <button type="submit" class="button">Submit</button>
-                        <button type="button" class="button button-secondary pull-left" onclick="window.history.back();">Back</button>
-                    </footer>
+                        <footer>
+                            <button type="submit" class="button">Submit</button>
+                            <button type="button" class="button button-secondary pull-left" onclick="window.history.back();">Back</button>
+                        </footer>
+                        </fieldset>
+
                 </form>
             </div>
         </div>
@@ -77,12 +78,12 @@
 
 <script>
     $(function () {
-        $('#collaboratos').tokenInput('/api/Users/Search', {
+        $('#collaborators').tokenInput('/api/Users/Search', {
             preventDuplicates: true,
             theme: 'showcase',
             queryParam: 'username',
             minChars: 3,
-            hintText: 'Start typing username and select from existing'
+            hintText: 'Start typing username and select'
         });
     });
 </script>
