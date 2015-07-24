@@ -24,10 +24,10 @@
             AutoMapperConfig.RegisterMappings(Assembly.Load(Constants.DataTransferModelsAssembly));
 
             var httpConfig = new HttpConfiguration();
-            httpConfig.MapHttpAttributeRoutes();
-
             ODataConfig.Register(httpConfig);
             WebApiConfig.Register(httpConfig);
+
+            httpConfig.EnsureInitialized();
 
             app
                 .UseNinjectMiddleware(NinjectConfig.CreateKernel)

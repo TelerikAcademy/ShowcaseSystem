@@ -6,5 +6,6 @@
         public const string DataServicesAssembly = "Showcase.Services.Data";
         public const string LogicServicesAssembly = "Showcase.Services.Logic";
         public const string ShortDateFormat = "dd MMM yyyy";
+        public const int MaxProjectsPageSize = 64;
     }
 }
