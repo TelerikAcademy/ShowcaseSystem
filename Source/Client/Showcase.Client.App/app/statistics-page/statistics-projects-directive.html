@@ -1,0 +1,17 @@
+﻿<div class="row margin-bottom-10" ng-repeat="project in projects">
+    <div class="col-md-1">
+        <img src="{{project.mainImageUrl}}"  width="32" height="32"/>
+    </div>
+    <div class="col-md-2">
+        <i class="fa fa-thumbs-up margin-right-5"></i><span>{{project.likes}}</span>
+    </div>
+    <div class="col-md-5" style="vertical-align: central">
+        <a href="/projects/{{projectid}}/{{project.titleUrl}}">{{project.name}}</a>
+    </div>
+    <div class="col-md-2">
+        <i class="fa fa-eye margin-right-5"></i><span>{{project.visits}}</span>
+    </div>
+    <div class="col-md-2">
+        <i class="fa fa-comments margin-right-5"></i><span>{{project.comments}}</span>
+    </div>
+</div>
