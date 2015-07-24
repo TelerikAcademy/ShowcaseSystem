@@ -20,10 +20,14 @@
             });
 
         statisticsData.getMostLikedProjects()
-            .then(function(mostLiked) {
+            .then(function (mostLiked) {
                 vm.mostLiked = mostLiked;
-                console.log(mostLiked);
-        });
+            });
+
+        statisticsData.getTopUsers()
+            .then(function(topUsers) {
+                vm.topUsers = topUsers;
+            });
     };
 
     angular

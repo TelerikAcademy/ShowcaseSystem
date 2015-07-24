@@ -18,11 +18,16 @@
             return data.get('statistics/mostliked');
         }
 
+        function getTopUsers() {
+            return data.get('statistics/topusers');
+        }
+
         return {
             getMainStatistics: getMainStatistics,
             getProjectsForLastSixMonths: getProjectsForLastSixMonths,
             getProjectsCountTag: getProjectsCountTag,
-            getMostLikedProjects: getMostLikedProjects
+            getMostLikedProjects: getMostLikedProjects,
+            getTopUsers: getTopUsers
         };
     };
 
