@@ -78,9 +78,9 @@
 
                             multiTooltipTemplate: "<%= value %>",
 
-                            onAnimationProgress: function () { },
-                            onAnimationComplete: function () { }
-                        }                        
+                            onAnimationProgress: function() {},
+                            onAnimationComplete: function() {}
+                        };
 
                         var ctx = chartContainer.get(0).getContext("2d");
                         var chart = new Chart(ctx).Line(data);
