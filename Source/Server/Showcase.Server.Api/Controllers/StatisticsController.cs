@@ -1,4 +1,6 @@
-﻿namespace Showcase.Server.Api.Controllers
+﻿using Showcase.Server.DataTransferModels.User;
+
+namespace Showcase.Server.Api.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -71,6 +73,19 @@
                 .MostLikedProjects()
                 .Project()
                 .To<ProjectResponseModel>()
+                .ToList();
+
+            return this.Data(model);
+        }
+
+        [HttpGet]
+        [Route("TopUsers")]
+        public IHttpActionResult TopUsers()
+        {
+            var model = this.statisticsService
+                .TopUsers()
+                .Project()
+                .To<UserResponseModel>()
                 .ToList();
 
             return this.Data(model);

@@ -15,10 +15,13 @@
 
         private IRepository<Tag> tags;
 
-        public StatisticsService(IRepository<Project> projects, IRepository<Tag> tags)
+        private IRepository<User> users;
+
+        public StatisticsService(IRepository<Project> projects, IRepository<Tag> tags, IRepository<User> users)
         {
             this.projects = projects;
             this.tags = tags;
+            this.users = users;
         }
 
         public object Current()
@@ -52,8 +55,7 @@
                     Count = gr.Count()
                 });
         }
-
-
+        
         public IQueryable<CountByTagModel> ProjectsCountByTag()
         {
             return this.tags
@@ -66,13 +68,20 @@
                     Tag = t.Name
                 });
         }
-
-
+        
         public IQueryable<Project> MostLikedProjects()
         {
             return this.projects
                 .All()
                 .OrderByDescending(pr => pr.Likes.Count)
+                .Take(50);
+        }
+        
+        public IQueryable<User> TopUsers()
+        {
+            return this.users
+                .All()
+                .OrderByDescending(u => u.Projects.Sum(p => p.Likes.Count))
                 .Take(50);
         }
     }
