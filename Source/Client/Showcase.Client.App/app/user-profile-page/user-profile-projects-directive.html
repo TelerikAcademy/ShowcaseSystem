@@ -6,9 +6,9 @@
 </span>
 <div class="clearfix"></div>
 <div class="row margin-bottom-30 margin-top-30" ng-repeat="project in projects | orderBy : orderBy">
-    <div class="col-md-3 text-center">
+    <div class="col-md-3 text-center" style="padding-left: 5px !important; padding-right: 5px !important;">
         <a href="/projects/{{project.id}}/{{project.titleUrl}}">
-            <img src="{{project.mainImageUrl}}" width="190" height="190" alt="{{project.name}}" />
+            <img src="{{project.mainImageUrl}}" width="180" height="180" alt="{{project.name}}" />
         </a><br />
         <div class="margin-top-5">
             <i class="fa fa-eye margin-right-5"></i><span class="margin-right-10">{{project.visits}}</span>
@@ -16,7 +16,7 @@
             <i class="fa fa-comments margin-right-5"></i><span class="margin-right-10">{{project.comments}}</span>
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9" style="padding-left: 5px !important;">
         <h4 class="margin-bottom-0"><a href="/projects/{{project.id}}/{{project.titleUrl}}">{{project.name}}</a></h4>
         <span class="font-size-085em">
             <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{project.shortDate}}</span> |
@@ -24,7 +24,7 @@
             <i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{project.liveDemoUrl}}" target="_blank">live demo</a>
         </span>
         <br />
-        <p class="margin-bottom-20">
+        <p class="margin-bottom-15">
             {{project.shortDescription}}
         </p>
         <span ng-repeat="collaborator in project.collaborators" class="font-size-09em">
