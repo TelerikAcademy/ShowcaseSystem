@@ -129,3 +129,4 @@
 /// <reference path="../app/common/project-tile-directive.js" />
 /// <reference path="../app/common/infinite-scroll-directive.js" />
 /// <reference path="jquery.tokeninput.js" />
+/// <reference path="../app/add-project-page/token-input-directive.js" />

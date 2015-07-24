@@ -26,7 +26,7 @@
                         <section>
                             <label class="label">Collaborators</label>
                             <label class="input">
-                                <input type="text" id="collaborators">
+                                <input type="text" id="collaborators" token-input data-url="/api/Users/Search" data-query-param="username" data-hint-text="Start typing username and select">
                                 <b class="tooltip tooltip-top-right">Select all collaborators in your project</b>
                             </label>
                         </section>
@@ -75,15 +75,3 @@
         </div>
     </div>
 </section>
-
-<script>
-    $(function () {
-        $('#collaborators').tokenInput('/api/Users/Search', {
-            preventDuplicates: true,
-            theme: 'showcase',
-            queryParam: 'username',
-            minChars: 3,
-            hintText: 'Start typing username and select'
-        });
-    });
-</script>

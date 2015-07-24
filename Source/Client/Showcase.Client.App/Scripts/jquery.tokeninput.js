@@ -94,7 +94,7 @@
         COMMA: 188
     };
 
-    var originalSelector;
+    var originalId;
 
     // Additional public (exposed) methods
     var methods = {
@@ -124,7 +124,7 @@
 
     // Expose the .tokenInput function to jQuery as a plugin
     $.fn.tokenInput = function (method) {
-        originalSelector = this.selector;
+        originalId = this[0].id;
         // Method calling and initialization logic
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
@@ -197,7 +197,7 @@
             .focus(function () {
                 var $this = $(this);
                 $this.parent().parent().addClass('focused');
-                $(originalSelector).parent().children('.tooltip').css({
+                $('#' + originalId).next().css({
                     'opacity': 1,
                     'right': 0,
                     'left': 'auto',
@@ -212,7 +212,7 @@
                 hide_dropdown();
                 $(this).parent().parent().removeClass('focused');
                 $(this).val("");
-                $(originalSelector).parent().children('.tooltip').css({
+                $('#' + originalId).next().css({
                     'opacity': 0,
                 });
             })
