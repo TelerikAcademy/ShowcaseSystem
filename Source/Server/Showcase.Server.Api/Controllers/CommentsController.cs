@@ -31,11 +31,14 @@
             }
 
             var username = this.User.Identity.Name;
-
             var postedComment = this.comments.PostComment(id, comment.CommentText, username);
 
-            var model = Mapper.Map<Comment, CommentResponseModel>(postedComment); // TODO: remove Mapper
-
+            var model = this.comments
+                .GetComment(postedComment.Id)
+                .Project()
+                .To<CommentResponseModel>(new {  })
+                .FirstOrDefault();
+            
             return this.Data(model);
         }
 
