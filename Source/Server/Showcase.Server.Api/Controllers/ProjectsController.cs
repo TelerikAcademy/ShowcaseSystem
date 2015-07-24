@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
+    using System.Web.OData.Query;
 
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
@@ -13,7 +14,6 @@
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data.Contracts;
     using Showcase.Server.DataTransferModels;
-    using System.Web.OData.Query;
 
     [RoutePrefix("api/Projects")]
     public class ProjectsController : ApiController
@@ -52,6 +52,13 @@
                 .ToList();
 
             return this.Data(model);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IHttpActionResult Post(ProjectRequestModel project)
+        {
+            return this.Ok();
         }
 
         [HttpGet]

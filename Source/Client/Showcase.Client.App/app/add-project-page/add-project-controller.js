@@ -5,12 +5,11 @@
         var vm = this;
 
         vm.submitProject = function (project) {
-            debugger;
-            console.log(project);
+            
         }
     };
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('AddProjectController', [addProjectController]);
+        .controller('AddProjectController', ['$http', addProjectController]);
 }());
