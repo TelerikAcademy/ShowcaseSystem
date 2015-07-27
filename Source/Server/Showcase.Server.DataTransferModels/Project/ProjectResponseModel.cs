@@ -24,7 +24,7 @@
 
         public string MainImageUrl { get; set; }
 
-        public string Content { get; set; }
+        public string Description { get; set; }
 
         public string RepositoryUrl { get; set; }
 
@@ -66,13 +66,13 @@
         {
             get
             {
-                if (this.Content.Length <= ProjectResponseModel.ShortDescriptionLength)
+                if (this.Description.Length <= ProjectResponseModel.ShortDescriptionLength)
                 {
-                    return this.Content;
+                    return this.Description;
                 }
                 else
                 {
-                    return this.Content.Substring(0, ProjectResponseModel.ShortDescriptionLength) + "...";
+                    return this.Description.Substring(0, ProjectResponseModel.ShortDescriptionLength) + "...";
                 }
             }
         }
