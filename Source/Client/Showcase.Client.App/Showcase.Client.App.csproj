@@ -125,7 +125,8 @@
     <Content Include="app\add-project-page\add-project-view.html" />
     <Content Include="app\add-project-page\file-upload-directive.js" />
     <Content Include="app\add-project-page\token-input-directive.js" />
-    <Content Include="app\add-project-page\uploaded-images-container.js" />
+    <Content Include="app\add-project-page\uploaded-images-container-directive.html" />
+    <Content Include="app\add-project-page\uploaded-images-container-directive.js" />
     <Content Include="app\common\infinite-scroll-directive.js" />
     <Content Include="app\common\main-menu-directive.html" />
     <Content Include="app\common\main-menu-directive.js" />
