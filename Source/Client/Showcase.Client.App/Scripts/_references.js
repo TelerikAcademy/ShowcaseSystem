@@ -131,3 +131,4 @@
 /// <reference path="jquery.tokeninput.js" />
 /// <reference path="../app/add-project-page/token-input-directive.js" />
 /// <reference path="../app/add-project-page/file-upload-directive.js" />
+/// <reference path="../app/add-project-page/uploaded-images-container.js" />

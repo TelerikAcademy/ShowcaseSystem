@@ -53,7 +53,7 @@
                             var convertedFile = e.target.result;
                             var result = {
                                 originalName: file.name.substr(0, file.name.lastIndexOf('.')),
-                                fileExtension: file.name.substr(file.name.lastIndexOf('.') + 1),
+                                fileExtension: file.name.substr(file.name.lastIndexOf('.') + 1).toLowerCase(),
                                 base64Content:  convertedFile.substr(convertedFile.indexOf(',') + 1)
                             };
 
