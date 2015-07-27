@@ -34,5 +34,7 @@
         public const string UrlErrorMessage = "The {0} field is not a valid URL";
         public const string CollaboratorsErrorMessage = "The {0} field contains invalid usernames";
         public const string CommaSeparatedCollectionLengthErrorMessage = "The {0} field must have between {1} and {2} entries";
+        public const string MainImageErrorMessage = "You must select main image for your project";
+        public const string MainImageDoesNotExistErrorMessage = "Main image does not exists in your uploaded images";
     }
 }

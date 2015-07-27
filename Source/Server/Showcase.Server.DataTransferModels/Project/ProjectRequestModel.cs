@@ -2,11 +2,12 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
     using Showcase.Data.Common;
     using Showcase.Server.Common.Validation;
 
-    public class ProjectRequestModel
+    public class ProjectRequestModel : IValidatableObject
     {
         [Required]
         [MinLength(ValidationConstants.MinProjectTitleLength, ErrorMessage = ValidationConstants.MinLengthErrorMessage)]
@@ -40,6 +41,17 @@
         [Url(ErrorMessage = ValidationConstants.UrlErrorMessage)]
         public string LiveDemoUrl { get; set; }
 
+        [Required(ErrorMessage = ValidationConstants.MainImageErrorMessage)]
+        public string MainImage { get; set; }
+
         public IEnumerable<FileRequestModel> Images { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (!this.Images.Any(i => i.OriginalName == this.MainImage))
+            {
+                yield return new ValidationResult(ValidationConstants.MainImageDoesNotExistErrorMessage);
+            }
+        }
     }
 }
