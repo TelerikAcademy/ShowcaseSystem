@@ -34,7 +34,7 @@
                 .Project()
                 .To<ProjectSimpleResponseModel>();
 
-            return Ok(projects);
+            return this.Ok(projects);
         }
     }
 }

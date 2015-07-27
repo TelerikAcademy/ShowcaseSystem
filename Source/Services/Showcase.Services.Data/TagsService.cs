@@ -23,7 +23,6 @@
                 .Where(t => t.Name.ToLower().Contains(name.ToLower()));
         }
 
-
         public IEnumerable<Tag> GetTags(string tags)
         {
             throw new System.NotImplementedException();

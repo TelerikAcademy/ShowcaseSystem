@@ -36,7 +36,7 @@
             var model = this.comments
                 .GetComment(postedComment.Id)
                 .Project()
-                .To<CommentResponseModel>(new {  })
+                .To<CommentResponseModel>(new { }) // TODO: <- ???
                 .FirstOrDefault();
             
             return this.Data(model);
