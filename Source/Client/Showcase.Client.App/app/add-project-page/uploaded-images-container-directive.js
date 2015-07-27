@@ -15,7 +15,9 @@
                     $this.parent().parent().find('.image-selected').removeClass('image-selected');
                     $this.addClass('image-selected');
                     var imageName = $this.data('image-name');
-                    scope.mainImage = imageName;
+                    scope.$apply(function () {
+                        scope.mainImage = imageName;
+                    });
                 });
             }
         };

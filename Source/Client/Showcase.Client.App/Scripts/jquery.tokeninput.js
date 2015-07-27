@@ -194,7 +194,6 @@
             .focus(function () {
                 var $this = $(this);
                 $this.parent().parent().addClass('focused');
-                debugger;
                 $('#' + input.id).next().css({
                     'opacity': 1,
                     'right': 0,
