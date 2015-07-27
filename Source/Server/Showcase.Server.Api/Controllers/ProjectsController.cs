@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.OData.Query;
 
@@ -19,34 +20,30 @@
     [RoutePrefix("api/Projects")]
     public class ProjectsController : ApiController
     {
-        private readonly IProjectsService homePageService;
-
         private readonly ILikesService likesService;
-
         private readonly IVisitsService visitsService;
-
         private readonly IProjectsService projectsService;
-
+        private readonly ITagsService tagsService;
         private readonly IUsersService usersService;
 
         public ProjectsController(
-            IProjectsService homePageService,
             ILikesService likesService,
             IVisitsService visitsService,
             IProjectsService projectsService,
+            ITagsService tagsService,
             IUsersService usersService)
         {
-            this.homePageService = homePageService;
             this.likesService = likesService;
             this.visitsService = visitsService;
             this.projectsService = projectsService;
+            this.tagsService = tagsService;
             this.usersService = usersService;
         }
 
         [HttpGet]
         public IHttpActionResult Get()
         {
-            var model = this.homePageService
+            var model = this.projectsService
                 .LatestProjects()
                 .Project()
                 .To<ProjectResponseModel>()
@@ -60,6 +57,9 @@
         [ValidateModel]
         public IHttpActionResult Post(ProjectRequestModel project)
         {
+            var collaborators = this.usersService.GetCollaborators(project.Collaborators);
+            var tags = this.tagsService.GetTags(project.Tags);
+
             return this.Ok();
         }
 
@@ -67,7 +67,7 @@
         [Route("Popular")]
         public IHttpActionResult Popular()
         {
-            var model = this.homePageService
+            var model = this.projectsService
                 .MostPopular()
                 .Project()
                 .To<ProjectResponseModel>()
@@ -81,7 +81,7 @@
         {
             var username = this.User.Identity.Name;
 
-            var model = this.homePageService
+            var model = this.projectsService
                 .GetProjectById(id)
                 .Project()
                 .To<ProjectResponseModel>()

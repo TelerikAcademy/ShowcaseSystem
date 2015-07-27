@@ -1,11 +1,11 @@
 ﻿(function () {
     'use strict';
 
-    var addProjectController = function addProjectController() {
+    var addProjectController = function addProjectController($http) {
         var vm = this;
 
         vm.submitProject = function (project) {
-            console.log(project);
+            $http.post('/api/projects', project);
         };
     };
 

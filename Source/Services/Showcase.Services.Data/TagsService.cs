@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Services.Data
 {
+    using System.Collections.Generic;
     using System.Linq;
 
     using Showcase.Data.Common.Repositories;
@@ -20,6 +21,12 @@
             return this.tags
                 .All()
                 .Where(t => t.Name.ToLower().Contains(name.ToLower()));
+        }
+
+
+        public IEnumerable<Tag> GetTags(string tags)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
