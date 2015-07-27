@@ -25,6 +25,9 @@
                 templateUrl: '/app/add-project-page/add-project-view.html',
                 resolve: routeResolveChecks.authenticated
             })
+            .when('/statistics', {
+                templateUrl: '/app/statistics-page/statistics-view.html'
+            })
             .when('/projects/:id/:title', {
                 templateUrl: '/app/project-details-page/project-details-view.html'
             })

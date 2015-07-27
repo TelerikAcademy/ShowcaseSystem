@@ -9,6 +9,8 @@
     {
         Comment PostComment(int id, string commentText, string username);
 
+        IQueryable<Comment> GetComment(int id);
+
         IQueryable<Comment> GetProjectComments(int id, int page);
 
         int ProjectCommentsCount(int id);

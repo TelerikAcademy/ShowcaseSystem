@@ -39,6 +39,11 @@
             return comment;
         }
 
+        public IQueryable<Comment> GetComment(int id)
+        {
+            return this.comments.All().Where(c => c.Id == id);
+        }
+
         public IQueryable<Comment> GetProjectComments(int id, int page)
         {
             return this.comments
