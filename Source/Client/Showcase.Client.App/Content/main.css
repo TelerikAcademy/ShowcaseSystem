@@ -268,3 +268,7 @@ a.social.fa-github:hover {
 .color999 {
     color: #999;
 }
+
+.text-success {
+    color: #8ab933 !important;
+}

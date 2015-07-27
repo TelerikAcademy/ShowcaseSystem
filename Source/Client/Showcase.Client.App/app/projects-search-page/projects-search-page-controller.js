@@ -31,6 +31,7 @@
                             .join(' or ');
                         index += 1;
                     }
+
                     if (vm.searchParams.tags) {
                         args[index] = vm.searchParams.tags
                             .split(',')
@@ -39,6 +40,7 @@
                             }).join(' or ');
                         index += 1;
                     }
+
                     if (vm.searchParams.collaborators) {
                         args[index] = vm.searchParams.collaborators
                             .split(',')
@@ -47,6 +49,7 @@
                             }).join(' or ');
                         index += 1;
                     }
+
                     if (vm.searchParams.period) {
                         args[index] = '';// TODO:
                     }

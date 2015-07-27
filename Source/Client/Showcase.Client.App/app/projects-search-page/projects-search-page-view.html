@@ -5,19 +5,27 @@
                 <h2><strong>Projects</strong> by {{vm.filterOptions.orderOption.name}}</h2>
             </div>
         </div>
-        <div class="row well well-sm">
-            <div filters options="vm.filterOptions" />
-            <div search-bar params="vm.searchParams" />
-
-            <div class="col-sm-6">
-                About {{vm.totalResultsCount}} results <small class="text-success">({{vm.timeElapsed}} seconds) </small>
+        <div class="row well well-sm padding-top20">
+            <div class="col-sm-4">
+                <div filters options="vm.filterOptions" />
             </div>
-            <div class="col-sm-2 pull-right">
-                <button class="btn btn-default input-lg" ng-click="vm.search()">
+            <div class="col-sm-8">
+                <div search-bar params="vm.searchParams" />
+            </div>
+
+            <div class="col-sm-12 text-center margin-bottom-10 margin-top-10">
+                <button class="btn btn-success input-lg" ng-click="vm.search()">
                     <i class="fa fa-fw fa-search fa-lg"></i>Search
                 </button>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                About {{vm.totalResultsCount}} results <small class="text-success">({{vm.timeElapsed}} seconds) </small>
+            </div>
+        </div>
+
         <div project-container projects="vm.projects" infinite-scrolling="vm.getNextProjects" search="vm.search()" />
         <div ng-pager total-pages="{{totalPages}}" current-page="{{currentPage}}" page-changed="changePage(pageNum)" ng-hide="vm.filterOptions.scrolling" />
     </div>

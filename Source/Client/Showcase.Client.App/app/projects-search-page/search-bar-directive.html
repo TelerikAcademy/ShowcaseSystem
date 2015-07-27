@@ -1,16 +1,18 @@
-﻿<div class="col-sm-4">
-    <div>
-        <input name="k" class="form-control input-lg" type="text" placeholder="Search by Title and in Content..." ng-model="params.name">
+﻿<div class="row">
+    <div class="col-sm-6">
+        <div>
+            <input name="k" class="form-control input-lg" type="text" placeholder="By Title or Content" ng-model="params.name">
+        </div>
+        <div>
+            <input name="k" class="form-control input-lg" type="text" placeholder="By Tag" ng-model="params.tags">
+        </div>
     </div>
-    <div>
-        <input name="k" class="form-control input-lg" type="text" placeholder="Search by Tag..." ng-model="params.tags">
-    </div>
-</div>
-<div class="col-sm-4">
-    <div>
-        <input name="k" class="form-control input-lg" type="text" placeholder="Search by Collaborator..." ng-model="params.collaborators">
-    </div>
-    <div>
-        <input name="k" class="form-control input-lg" type="text" placeholder="Search by Period..." ng-model="params.period">
+    <div class="col-sm-6">
+        <div>
+            <input name="k" class="form-control input-lg" type="text" placeholder="By Collaborator" ng-model="params.collaborators">
+        </div>
+        <div>
+            <input name="k" class="form-control input-lg" type="text" placeholder="By Period" ng-model="params.period">
+        </div>
     </div>
 </div>
