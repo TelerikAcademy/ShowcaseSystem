@@ -42,6 +42,7 @@
         public string LiveDemoUrl { get; set; }
 
         [CollectionLength(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
+        [NestedObjects]
         public ICollection<FileRequestModel> Images { get; set; }
 
         [Required(ErrorMessage = ValidationConstants.MainImageErrorMessage)]

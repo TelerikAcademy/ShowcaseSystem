@@ -89,6 +89,7 @@
     <Compile Include="Validation\CollaboratorsAttribute.cs" />
     <Compile Include="Validation\CommaSeparatedCollectionLengthAttribute.cs" />
     <Compile Include="Validation\CollectionLengthAttribute.cs" />
+    <Compile Include="Validation\NestedObjectsAttribute.cs" />
     <Compile Include="Validation\OnlyEnglishAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
