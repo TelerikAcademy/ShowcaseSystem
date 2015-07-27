@@ -158,7 +158,7 @@
 
         [HttpGet]
         [Route("Search")]
-        public ODataResult<ProjectResponseSimpleModel> Search(ODataQueryOptions<ProjectResponseSimpleModel> options)
+        public ODataResult<ProjectSimpleResponseModel> Search(ODataQueryOptions<ProjectSimpleResponseModel> options)
         {
             options.Validate(new ODataValidationSettings()
             {
@@ -171,7 +171,7 @@
             var projects = this.projectsService
                 .GetProjectsList()
                 .Project()
-                .To<ProjectResponseSimpleModel>();
+                .To<ProjectSimpleResponseModel>();
 
             long? count = null;
             if (options.Count != null && options.Count.Value)
@@ -180,10 +180,10 @@
             }
 
             ODataQuerySettings settings = new ODataQuerySettings() { PageSize = options.Top != null ? options.Top.Value : 8 };
-            projects = options.ApplyTo(projects, settings) as IQueryable<ProjectResponseSimpleModel>;
+            projects = options.ApplyTo(projects, settings) as IQueryable<ProjectSimpleResponseModel>;
 
-            return new ODataResult<ProjectResponseSimpleModel>(
-                 projects as IEnumerable<ProjectResponseSimpleModel>, count);
+            return new ODataResult<ProjectSimpleResponseModel>(
+                 projects as IEnumerable<ProjectSimpleResponseModel>, count);
         }
     }
 }

@@ -23,7 +23,7 @@
         private static IEdmModel GetEdmModel()
         {
             var modelBuilder = new ODataConventionModelBuilder();
-            modelBuilder.EntitySet<ProjectResponseSimpleModel, ProjectsController>();
+            modelBuilder.EntitySet<ProjectSimpleResponseModel, ProjectsController>();
             return modelBuilder.GetEdmModel();
         }
     }
