@@ -43,6 +43,11 @@ namespace Showcase.Server.Api.Controllers
 
             this.statisticsService
                 .ProjectsLastSixMonths()
+                .Select(gr => new CountByDateModel
+                {
+                    Date = gr.FirstOrDefault().CreatedOn,
+                    Count = gr.Count()
+                })
                 .ToList()
                 .ForEach(r =>
                 {
@@ -60,6 +65,11 @@ namespace Showcase.Server.Api.Controllers
         {
             var result = this.statisticsService
                 .ProjectsCountByTag()
+                .Select(t => new CountByTagModel
+                {
+                    Count = t.Projects.Count,
+                    Tag = t.Name
+                })
                 .ToList();
 
             return this.Data(result);

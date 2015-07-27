@@ -9,7 +9,6 @@
     using Showcase.Server.Api.Controllers;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
-    using Showcase.Data.Models;
 
     public static class ODataConfig
     {
@@ -26,9 +25,9 @@
         private static IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();
-            builder.EntitySet<ProjectResponseSimpleModel, SearchController>();
+            builder.EntitySet<ProjectSimpleResponseModel, SearchController>();
 
-            builder.Namespace = typeof(ProjectResponseSimpleModel).Namespace;
+            builder.Namespace = typeof(ProjectSimpleResponseModel).Namespace;
             builder.EnableLowerCamelCase();
             return builder.GetEdmModel();
         }

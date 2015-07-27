@@ -32,7 +32,7 @@
             var projects = this.projectsService
                 .GetProjectsList()
                 .Project()
-                .To<ProjectResponseSimpleModel>();
+                .To<ProjectSimpleResponseModel>();
 
             return Ok(projects);
         }
