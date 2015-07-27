@@ -25,8 +25,10 @@
 
         private static IEdmModel GetEdmModel()
         {
-            var builder = new ODataConventionModelBuilder();
+            var builder = new ODataConventionModelBuilder();            
             builder.EntitySet<ProjectResponseSimpleModel, SearchController>();
+            builder.EntityType<ProjectResponseSimpleModel>().Property(x => x.ShortDate);
+            builder.EntityType<ProjectResponseSimpleModel>().Property(x => x.TitleUrl);
 
             builder.Namespace = typeof(ProjectResponseSimpleModel).Namespace;
             builder.EnableLowerCamelCase();
