@@ -127,4 +127,17 @@
 /// <reference path="../app/common/project-tile-directive.js" />
 /// <reference path="../app/projects-search-page/filters-directive.js" />
 /// <reference path="../app/projects-search-page/search-bar-directive.js" />
+/// <reference path="../app/add-project-page/file-upload-directive.js" />
+/// <reference path="../app/add-project-page/token-input-directive.js" />
+/// <reference path="../app/add-project-page/uploaded-images-container-directive.js" />
+/// <reference path="../app/projects-search-page/projects-search-page-controller.js" />
+/// <reference path="../app/projects-search-page/projects-search-page-data.js" />
+/// <reference path="../app/statistics-page/line-chart-directive.js" />
+/// <reference path="../app/statistics-page/pie-chart-directive.js" />
+/// <reference path="../app/statistics-page/statistics-controller.js" />
+/// <reference path="../app/statistics-page/statistics-data.js" />
+/// <reference path="../app/statistics-page/statistics-projects-directive.js" />
+/// <reference path="../app/statistics-page/statistics-users-directive.js" />
+/// <reference path="Chart.js" />
+/// <reference path="jquery.tokeninput.js" />
 
