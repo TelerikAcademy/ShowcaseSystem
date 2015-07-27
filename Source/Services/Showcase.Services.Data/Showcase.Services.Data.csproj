@@ -41,7 +41,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CommentsService.cs" />
     <Compile Include="Contracts\ICommentsService.cs" />
+    <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\ILikesService.cs" />
     <Compile Include="Contracts\IProjectsService.cs" />
     <Compile Include="Contracts\IRemoteDataService.cs" />
@@ -58,7 +58,9 @@
     <Compile Include="Contracts\ITagsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IVisitsService.cs" />
+    <Compile Include="ImagesService.cs" />
     <Compile Include="LikesService.cs" />
+    <Compile Include="Models\RawImage.cs" />
     <Compile Include="Models\RemoteUserProfile.cs" />
     <Compile Include="ProjectsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +86,10 @@
     <ProjectReference Include="..\Showcase.Services.Common\Showcase.Services.Common.csproj">
       <Project>{dc34d65f-fcdf-4566-94a2-454526364046}</Project>
       <Name>Showcase.Services.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Showcase.Services.Logic\Showcase.Services.Logic.csproj">
+      <Project>{7c14f43e-1596-4944-a03e-9884cae0fbd6}</Project>
+      <Name>Showcase.Services.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

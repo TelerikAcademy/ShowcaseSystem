@@ -2,11 +2,26 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq.Expressions;
 
     using Showcase.Data.Common;
+    using Showcase.Services.Data.Models;
 
     public class FileRequestModel
     {
+        public static Func<FileRequestModel, RawImage> ToRawImage
+        {
+            get
+            {
+                return file => new RawImage
+                {
+                    OriginalFileName = file.OriginalFileName,
+                    FileExtension = file.FileExtension,
+                    Content = file.ByteArrayContent
+                };
+            }
+        }
+
         [Required]
         [MaxLength(ValidationConstants.MaxOriginalFileNameLength)]
         public string OriginalFileName { get; set; }

@@ -25,19 +25,22 @@
         private readonly IProjectsService projectsService;
         private readonly ITagsService tagsService;
         private readonly IUsersService usersService;
+        private readonly IImagesService imagesService;
 
         public ProjectsController(
             ILikesService likesService,
             IVisitsService visitsService,
             IProjectsService projectsService,
             ITagsService tagsService,
-            IUsersService usersService)
+            IUsersService usersService,
+            IImagesService imagesService)
         {
             this.likesService = likesService;
             this.visitsService = visitsService;
             this.projectsService = projectsService;
             this.tagsService = tagsService;
             this.usersService = usersService;
+            this.imagesService = imagesService;
         }
 
         [HttpGet]
@@ -59,6 +62,7 @@
         {
             var collaborators = this.usersService.GetCollaboratorsFromCommanSeparatedValues(project.Collaborators);
             var tags = this.tagsService.GetTagsFromCommaSeparatedValues(project.Tags);
+            var images = this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
 
             return this.Ok();
         }
