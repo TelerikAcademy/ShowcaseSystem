@@ -1,8 +1,9 @@
 ﻿namespace Showcase.Server.DataTransferModels.Project
 {
-    using Showcase.Data.Common;
     using System;
     using System.ComponentModel.DataAnnotations;
+
+    using Showcase.Data.Common;
 
     public class FileRequestModel
     {

@@ -1,8 +1,9 @@
 ﻿namespace Showcase.Data.Models
 {
-    using Showcase.Data.Common;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
+    using Showcase.Data.Common;
 
     public class Tag
     {

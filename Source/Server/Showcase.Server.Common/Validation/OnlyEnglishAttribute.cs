@@ -8,7 +8,7 @@
     {
         public OnlyEnglishAttribute()
         {
-            base.ErrorMessage = ValidationConstants.OnlyEnglishErrorMessage;
+            this.ErrorMessage = ValidationConstants.OnlyEnglishErrorMessage;
         }
 
         public override bool IsValid(object value)

@@ -22,7 +22,7 @@
             if (valueAsString != null)
             {
                 var collection = valueAsString.Split(',');
-                if (collection.Length < minimumLength || maximumLength < collection.Length)
+                if (collection.Length < this.minimumLength || this.maximumLength < collection.Length)
                 {
                     return false;
                 }
