@@ -74,42 +74,42 @@ namespace Showcase.Data.Migrations
 
             var image = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
                 UrlPath = "/content/epona/images/demo/portfolio/a1",
             };
 
             var image2 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
                 UrlPath = "/content/epona/images/demo/portfolio/a2",
             };
 
             var image3 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
                 UrlPath = "/content/epona/images/demo/portfolio/a3",
             };
 
             var image4 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
                 UrlPath = "/content/epona/images/demo/portfolio/a4",
             };
 
             var image5 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
                 UrlPath = "/content/epona/images/demo/portfolio/a5",
             };
 
             var image6 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
                 UrlPath = "/content/epona/images/demo/portfolio/a6",
             };
