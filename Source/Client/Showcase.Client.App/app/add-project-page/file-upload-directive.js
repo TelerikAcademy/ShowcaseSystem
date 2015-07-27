@@ -57,6 +57,8 @@
                         loadingBarElement.show();
                     }
 
+                    ngModel.$setViewValue(undefined);
+
                     var self = this;
                     $q.all(slice.call(element.files, 0).map(readFile))
                         .then(function (values) {
