@@ -29,8 +29,9 @@
                                 .Resize(new ResizeLayer(new Size(width, 0), resizeMode: ResizeMode.Max));
                         }
 
-                        createdImage = createdImage.Format(new JpegFormat { Quality = Constants.ImageQuality });
-                        createdImage.Save(resultImage);
+                        createdImage
+                            .Format(new JpegFormat { Quality = Constants.ImageQuality })
+                            .Save(resultImage);
                     }
 
                     return resultImage.GetBuffer();
