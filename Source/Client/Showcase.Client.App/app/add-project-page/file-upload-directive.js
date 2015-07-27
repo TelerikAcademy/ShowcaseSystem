@@ -13,8 +13,14 @@
                 if (attrs.validationRegex) {
                     validationRegex = new RegExp(attrs.validationRegex);
                 }
-                
-                var maxFiles = attrs.maxFiles || 10;
+
+                var maxFiles = attrs.maxFiles;
+                var minFileSize = attrs.minFileSize;
+                var maxFileSize = attrs.maxFileSize;
+                var loadingBar = attrs.loadingBar;
+                if (loadingBar) {
+                    var loadingBarElement = angular.element('#' + loadingBar);
+                }
 
                 ngModel.$render = function () { };
 
@@ -23,17 +29,32 @@
                     if (!element.files || element.files.length === 0) {
                         return;
                     }
-                    else if (element.files && element.files.length > maxFiles) {
+                    else if (element.files && maxFiles && element.files.length > maxFiles) {
                         notifier.error('You must select maximum ' + maxFiles + ' files');
                         return;
                     }
-                    else if (element.files && element.files.length > 0 && validationRegex) {
+                    else if (element.files && element.files.length > 0) {
                         for (var i = 0; i < element.files.length; i++) {
-                            if (!validationRegex.test(element.files[i].name.toLowerCase())) {
+                            var currentFile = element.files[i];
+                            if (validationRegex && !validationRegex.test(currentFile.name.toLowerCase())) {
                                 notifier.error('You must select valid files');
                                 return;
                             }
+
+                            if (minFileSize && currentFile.size < minFileSize) {
+                                notifier.error('You must select images with size bigger than ' + minFileSize / 1024 / 1024 + 'MB');
+                                return;
+                            }
+
+                            if (maxFileSize && currentFile.size > maxFileSize) {
+                                notifier.error('You must select images with size smaller than ' + maxFileSize / 1024 / 1024 + 'MB');
+                                return;
+                            }
                         }
+                    }
+
+                    if (loadingBar) {
+                        loadingBarElement.show();
                     }
 
                     var self = this;
@@ -43,6 +64,10 @@
 
                             if (element.multiple) ngModel.$setViewValue(values);
                             else ngModel.$setViewValue(values.length ? values[0] : null);
+
+                            if (loadingBar) {
+                                loadingBarElement.hide();
+                            }
                         });
 
                     function readFile(file) {
@@ -54,7 +79,7 @@
                             var result = {
                                 originalName: file.name.substr(0, file.name.lastIndexOf('.')),
                                 fileExtension: file.name.substr(file.name.lastIndexOf('.') + 1).toLowerCase(),
-                                base64Content:  convertedFile.substr(convertedFile.indexOf(',') + 1)
+                                base64Content: convertedFile.substr(convertedFile.indexOf(',') + 1)
                             };
 
                             deferred.resolve(result);
