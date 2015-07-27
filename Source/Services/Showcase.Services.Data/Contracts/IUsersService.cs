@@ -16,5 +16,7 @@
         IQueryable<User> GetByUsername(string username);
 
         IEnumerable<string> SearchByUsername(string username);
+
+        ICollection<User> GetCollaborators(string collaborators);
     }
 }

@@ -45,7 +45,7 @@
 
         public async Task<User> GetAccountAsync(string username, string password)
         {
-            var remoteUser = this.remoteData.RemoteLogin(username, password);
+            var remoteUser = this.remoteData.Login(username, password);
             if (remoteUser == null)
             {
                 return null;
@@ -74,11 +74,38 @@
             return localUser;
         }
 
+        public ICollection<User> GetCollaborators(string collaborators)
+        {
+            var usernames = collaborators.Split(',');
+            var localUsers = this.users
+                .All()
+                .Where(u => usernames.Contains(u.UserName))
+                .ToList();
+
+            var nonExistingLocalUsernames = usernames.Where(username => localUsers.All(u => u.UserName != username));
+            var nonExistingLocalUsersRemoteInfo = this.remoteData.UsersInfo(nonExistingLocalUsernames);
+
+            var newlyAddedUsers = this.AddNonExistingUsers(nonExistingLocalUsersRemoteInfo);
+            localUsers.AddRange(newlyAddedUsers);
+            return localUsers;
+        }
+
         private async Task<User> GetLocalAccountAsync(string username)
         {
             return await this.users
                 .All()
                 .FirstOrDefaultAsync(u => u.UserName == username);
+        }
+
+        private IEnumerable<User> AddNonExistingUsers(IEnumerable<User> usersToAdd)
+        {
+            foreach (var user in usersToAdd)
+            {
+                this.users.Add(user);
+            }
+
+            this.users.SaveChanges();
+            return usersToAdd;
         }
     }
 }
