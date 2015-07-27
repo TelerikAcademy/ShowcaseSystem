@@ -296,3 +296,7 @@ li.token-input-token-showcase span {
 li.token-input-selected-token-showcase span {
     color: white;
 }
+
+.input-file .button:hover {
+    cursor: pointer;
+}
