@@ -17,5 +17,9 @@
         public const int MinTagNameLength = 2;
         public const int MaxTagNameLength = 20;
         public const int TagColorLength = 6;
+
+        // Error messages
+        public const string MinLengthErrorMessage = "The {0} field must be at least {1} characters long";
+        public const string MaxLengthErrorMessage = "The {0} field cannot be more than {1} characters long";
     }
 }

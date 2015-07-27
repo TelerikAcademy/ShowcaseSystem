@@ -230,6 +230,7 @@
     <Compile Include="Infrastructure\ObjectFactory.cs" />
     <Compile Include="Infrastructure\ODataConfig.cs" />
     <Compile Include="Infrastructure\ResultObject.cs" />
+    <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

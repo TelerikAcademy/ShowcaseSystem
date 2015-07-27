@@ -10,6 +10,7 @@
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Server.Api.Infrastructure.Extensions;
+    using Showcase.Server.Api.Infrastructure.Validation;
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels;
     using Showcase.Server.DataTransferModels.Project;
@@ -56,6 +57,7 @@
 
         [Authorize]
         [HttpPost]
+        [ValidateModel]
         public IHttpActionResult Post(ProjectRequestModel project)
         {
             return this.Ok();
