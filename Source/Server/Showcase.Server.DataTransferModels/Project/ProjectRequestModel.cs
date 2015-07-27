@@ -26,13 +26,15 @@
         [Required]
         public string Tags { get; set; }
 
+        [Display(Name = "Repository URL")]
         [Required]
         [MaxLength(ValidationConstants.MaxProjectUrlLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
-        [DataType(DataType.Url)]
+        [Url(ErrorMessage = ValidationConstants.UrlErrorMessage)]
         public string RepositoryUrl { get; set; }
 
+        [Display(Name = "Live Demo URL")]
         [MaxLength(ValidationConstants.MaxProjectUrlLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
-        [DataType(DataType.Url)]
+        [Url(ErrorMessage = ValidationConstants.UrlErrorMessage)]
         public string LiveDemoUrl { get; set; }
 
         public IEnumerable<FileRequestModel> Images { get; set; }

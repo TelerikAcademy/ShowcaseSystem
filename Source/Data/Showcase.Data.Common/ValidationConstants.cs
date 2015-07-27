@@ -29,5 +29,6 @@
         public const string MinLengthErrorMessage = "The {0} field must be at least {1} characters long";
         public const string MaxLengthErrorMessage = "The {0} field cannot be more than {1} characters long";
         public const string OnlyEnglishErrorMessage = "The {0} field must contain only English letters";
+        public const string UrlErrorMessage = "The {0} field is not a valid URL";
     }
 }
