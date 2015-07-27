@@ -301,9 +301,12 @@ li.token-input-selected-token-showcase span {
     cursor: pointer;
 }
 
-#image-preview-container h3 {
-    margin-top: 10px;
+#image-preview-container {
     margin-bottom: 25px;
+}
+
+#image-preview-container .label {
+    text-align: center !important;
 }
 
 #image-preview-container .image-holder {
