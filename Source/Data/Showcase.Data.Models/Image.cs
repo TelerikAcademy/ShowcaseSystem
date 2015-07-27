@@ -11,14 +11,14 @@
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(ValidationConstants.MaxImageOriginalFileNameLength)]
+        [MaxLength(ValidationConstants.MaxOriginalFileNameLength)]
         public string OriginalFileName { get; set; }
 
         [Required]
         public string UrlPath { get; set; }
 
         [Required]
-        [MaxLength(ValidationConstants.MaxImageFileExtensionLength)]
+        [MaxLength(ValidationConstants.MaxFileExtensionLength)]
         public string FileExtension { get; set; }
 
         public int? ProjectId { get; set; }

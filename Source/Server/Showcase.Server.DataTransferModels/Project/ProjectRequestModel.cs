@@ -41,10 +41,11 @@
         [Url(ErrorMessage = ValidationConstants.UrlErrorMessage)]
         public string LiveDemoUrl { get; set; }
 
+        [CollectionLength(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
+        public ICollection<FileRequestModel> Images { get; set; }
+
         [Required(ErrorMessage = ValidationConstants.MainImageErrorMessage)]
         public string MainImage { get; set; }
-
-        public IEnumerable<FileRequestModel> Images { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

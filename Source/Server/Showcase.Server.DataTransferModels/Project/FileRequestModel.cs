@@ -7,11 +7,11 @@
     public class FileRequestModel
     {
         [Required]
-        [MaxLength(ValidationConstants.MaxImageOriginalFileNameLength)]
+        [MaxLength(ValidationConstants.MaxOriginalFileNameLength)]
         public string OriginalFileName { get; set; }
 
         [Required]
-        [MaxLength(ValidationConstants.MaxImageFileExtensionLength)]
+        [MaxLength(ValidationConstants.MaxFileExtensionLength)]
         public string FileExtension { get; set; }
 
         [Required]

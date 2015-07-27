@@ -13,6 +13,8 @@
         public const int MaxProjectUrlLength = 200;
         public const int MinProjectCollaboratorsAndTagsLength = 2;
         public const int MaxProjectCollaboratorsAndTagsLength = 20;
+        public const int MinProjectImages = 1;
+        public const int MaxProjectImages = 10;
 
         // Comment
         public const int MinCommentContentLength = 10;
@@ -23,9 +25,9 @@
         public const int MaxTagNameLength = 20;
         public const int TagColorLength = 6;
 
-        // Image
-        public const int MaxImageOriginalFileNameLength = 255;
-        public const int MaxImageFileExtensionLength = 4;
+        // File
+        public const int MaxOriginalFileNameLength = 255;
+        public const int MaxFileExtensionLength = 4;
 
         // Error messages
         public const string MinLengthErrorMessage = "The {0} field must be at least {1} characters long";
@@ -36,5 +38,6 @@
         public const string CommaSeparatedCollectionLengthErrorMessage = "The {0} field must have between {1} and {2} entries";
         public const string MainImageErrorMessage = "You must select main image for your project";
         public const string MainImageDoesNotExistErrorMessage = "Main image does not exists in your uploaded images";
+        public const string ProjectImagesCountErrorMessage = "You must select between {0} and {1} images";
     }
 }
