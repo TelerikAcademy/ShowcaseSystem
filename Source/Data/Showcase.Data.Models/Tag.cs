@@ -12,6 +12,8 @@
         public Tag()
         {
             this.projects = new HashSet<Project>();
+            this.ForegroundColor = "111111"; // TODO: change to correct and move to constant
+            this.BackgroundColor = "555555"; // TODO: change to correct and move to constant
         }
 
         [Key]

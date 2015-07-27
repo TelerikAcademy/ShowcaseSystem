@@ -23,9 +23,34 @@
                 .Where(t => t.Name.ToLower().Contains(name.ToLower()));
         }
 
-        public IEnumerable<Tag> GetTags(string tags)
+        public IEnumerable<Tag> GetTagsFromCommaSeparatedValues(string tags)
         {
-            throw new System.NotImplementedException();
+            var existingTagIds = new List<int>();
+            var newTagNames = new List<string>();
+
+            tags.Split(',')
+                .ToList()
+                .ForEach(tag => 
+                {
+                    int tagId;
+                    if (int.TryParse(tag, out tagId))
+                    {
+                        existingTagIds.Add(tagId);
+                    }
+                    else
+                    {
+                        newTagNames.Add(tag);
+                    }
+                });
+
+            var resultTags = this.tags
+                .All()
+                .Where(t => existingTagIds.Contains(t.Id))
+                .ToList();
+
+            newTagNames.ForEach(tagName => resultTags.Add(new Tag { Name = tagName }));
+
+            return resultTags;
         }
     }
 }

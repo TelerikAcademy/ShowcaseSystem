@@ -57,8 +57,8 @@
         [ValidateModel]
         public IHttpActionResult Post(ProjectRequestModel project)
         {
-            var collaborators = this.usersService.GetCollaborators(project.Collaborators);
-            var tags = this.tagsService.GetTags(project.Tags);
+            var collaborators = this.usersService.GetCollaboratorsFromCommanSeparatedValues(project.Collaborators);
+            var tags = this.tagsService.GetTagsFromCommaSeparatedValues(project.Tags);
 
             return this.Ok();
         }
@@ -171,7 +171,7 @@
             });
 
             var projects = this.projectsService
-                .GetProjectsList()
+                .GetProjectsList() // TODO: it is not list, it is IQueryable, remove the Hungarian notation
                 .Project()
                 .To<ProjectSimpleResponseModel>();
 
@@ -182,10 +182,10 @@
             }
 
             ODataQuerySettings settings = new ODataQuerySettings() { PageSize = options.Top != null ? options.Top.Value : 8 };
-            projects = options.ApplyTo(projects, settings) as IQueryable<ProjectSimpleResponseModel>;
+            projects = options.ApplyTo(projects, settings) as IQueryable<ProjectSimpleResponseModel>; // TODO: move to extension method of IQueryable
 
             return new ODataResult<ProjectSimpleResponseModel>(
-                 projects as IEnumerable<ProjectSimpleResponseModel>, count);
+                 projects as IEnumerable<ProjectSimpleResponseModel>, count); // TODO: move to extension method like this.Data
         }
     }
 }

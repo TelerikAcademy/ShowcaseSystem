@@ -22,11 +22,12 @@
             this.projectsService = projectsService;
         }
 
+        // TODO: the same action is in ProjectsController - which one is correct?
         [HttpGet]
         [EnableQuery(MaxTop = Constants.MaxProjectsPageSize,
             AllowedQueryOptions = AllowedQueryOptions.Top | AllowedQueryOptions.Skip |
             AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy | AllowedQueryOptions.Count,
-            AllowedFunctions = AllowedFunctions.Any | AllowedFunctions.SubstringOf)]
+            AllowedFunctions = AllowedFunctions.Any | AllowedFunctions.SubstringOf)] // TODO: move this to custom attribute inheriting from EnableQuery
         public IHttpActionResult Get()
         {
             var projects = this.projectsService
