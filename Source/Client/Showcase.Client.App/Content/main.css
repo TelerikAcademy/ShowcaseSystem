@@ -1,4 +1,8 @@
-﻿.toast-top-center {
+﻿html {
+    overflow-y: scroll; 
+}
+
+.toast-top-center {
     margin-top: 150px;
     text-align: center;
 }

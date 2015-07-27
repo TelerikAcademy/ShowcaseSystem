@@ -37,7 +37,7 @@
                     <a href="/users/{{collaborator}}" class="margin-right-5 margin-bottom-2">{{collaborator}}</a>
                 </span>
                 <div class="margin-top-5">
-                    <a href="#" ng-repeat="tag in vm.project.tags">
+                    <a href="projects/search?$orderby=createdOn&$top=4&$skip=0&$count=true&$filter=tags%2Fany(t:contains(t%2Fname,%27{{tag.name}}%27))" ng-repeat="tag in vm.project.tags">
                         <span class="label label-default" style="background-color: {{tag.backgroundColor}}; color: {{tag.foregroundColor}}">{{tag.name}}</span>
                     </a>
                 </div>
