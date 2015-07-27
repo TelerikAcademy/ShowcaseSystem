@@ -48,7 +48,7 @@
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (!this.Images.Any(i => i.OriginalName == this.MainImage))
+            if (!this.Images.Any(i => i.OriginalFileName == this.MainImage))
             {
                 yield return new ValidationResult(ValidationConstants.MainImageDoesNotExistErrorMessage);
             }

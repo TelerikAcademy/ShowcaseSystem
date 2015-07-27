@@ -62,7 +62,7 @@
                     var self = this;
                     $q.all(slice.call(element.files, 0).map(readFile))
                         .then(function (values) {
-                            self.parentNode.nextSibling.value = self.files.length + ' selected files: ' + values.map(function (el) { return el.originalName; }).join(', ');
+                            self.parentNode.nextSibling.value = self.files.length + ' selected files: ' + values.map(function (el) { return el.originalFileName; }).join(', ');
 
                             if (element.multiple) ngModel.$setViewValue(values);
                             else ngModel.$setViewValue(values.length ? values[0] : null);
@@ -79,7 +79,7 @@
                         reader.onload = function (e) {
                             var convertedFile = e.target.result;
                             var result = {
-                                originalName: file.name.substr(0, file.name.lastIndexOf('.')),
+                                originalFileName: file.name.substr(0, file.name.lastIndexOf('.')),
                                 fileExtension: file.name.substr(file.name.lastIndexOf('.') + 1).toLowerCase(),
                                 base64Content: convertedFile.substr(convertedFile.indexOf(',') + 1)
                             };
