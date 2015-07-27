@@ -21,6 +21,7 @@
         public string Description { get; set; }
 
         [Required]
+        [Collaborators]
         public string Collaborators { get; set; }
 
         [Required]

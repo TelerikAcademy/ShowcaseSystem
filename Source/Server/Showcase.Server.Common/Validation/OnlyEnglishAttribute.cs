@@ -30,10 +30,5 @@
 
             return true;
         }
-
-        public override string FormatErrorMessage(string name)
-        {
-            return string.Format(base.ErrorMessage, name);
-        }
     }
 }
