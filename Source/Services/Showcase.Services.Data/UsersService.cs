@@ -51,7 +51,7 @@
                 return null;
             }
 
-            var localUser = await this.GetLocalAccountAsync(username); // TODO: update user every time
+            var localUser = await this.GetLocalAccountAsync(username);
             if (localUser == null)
             {
                 localUser = new User
@@ -64,8 +64,9 @@
                 this.users.Add(localUser);
                 this.users.SaveChanges();
             }
-            else if (localUser.AvatarUrl != remoteUser.AvatarUrl)
+            else if (localUser.AvatarUrl != remoteUser.AvatarUrl || localUser.IsAdmin != remoteUser.IsAdmin)
             {
+                localUser.IsAdmin = remoteUser.IsAdmin;
                 localUser.AvatarUrl = remoteUser.AvatarUrl;
                 this.users.SaveChanges();
             }
