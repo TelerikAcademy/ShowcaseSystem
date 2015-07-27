@@ -19,8 +19,14 @@
 
         public override bool IsValid(object value)
         {
-            var collaborators = (value as string).Split(',');
-            return this.RemoteData.UsersExist(collaborators);
+            var valueAsString = value as string;
+            if (valueAsString != null)
+            {
+                var collaborators = valueAsString.Split(',');
+                return this.RemoteData.UsersExist(collaborators);
+            }
+
+            return true;
         }
     }
 }

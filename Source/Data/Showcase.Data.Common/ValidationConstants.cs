@@ -11,6 +11,8 @@
         public const int MinProjectDescriptionLength = 100;
         public const int MaxProjectDescriptionLength = 500;
         public const int MaxProjectUrlLength = 200;
+        public const int MinProjectCollaboratorsAndTagsLength = 2;
+        public const int MaxProjectCollaboratorsAndTagsLength = 20;
 
         // Comment
         public const int MinCommentContentLength = 10;
@@ -31,5 +33,6 @@
         public const string OnlyEnglishErrorMessage = "The {0} field must contain only English letters";
         public const string UrlErrorMessage = "The {0} field is not a valid URL";
         public const string CollaboratorsErrorMessage = "The {0} field contains invalid usernames";
+        public const string CommaSeparatedCollectionLengthErrorMessage = "The {0} field must have between {1} and {2} entries";
     }
 }
