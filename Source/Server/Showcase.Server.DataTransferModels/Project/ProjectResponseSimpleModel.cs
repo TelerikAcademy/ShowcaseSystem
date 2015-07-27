@@ -9,6 +9,7 @@
     using Newtonsoft.Json;
 
     using Showcase.Data.Models;
+    using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
 
     public class ProjectResponseSimpleModel : IMapFrom<Project>, IHaveCustomMappings
@@ -26,7 +27,7 @@
         {
             get
             {
-                return this.CreatedOn.ToShortDateString();
+                return this.CreatedOn.ToString(Constants.ShortDateFormat);
             }
         }
 
