@@ -84,8 +84,8 @@
                 .ForMember(pr => pr.Likes, opt => opt.MapFrom(pr => pr.Likes.Count))
                 .ForMember(pr => pr.Visits, opt => opt.MapFrom(pr => pr.Visits.Count))
                 .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
-                .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.Url + "." + pr.MainImage.FileExtension))
-                .ForMember(pr => pr.ImageUrls, opt => opt.MapFrom(pr => pr.Images.Select(i => i.Url + "." + i.FileExtension)))
+                .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath + "." + pr.MainImage.FileExtension))
+                .ForMember(pr => pr.ImageUrls, opt => opt.MapFrom(pr => pr.Images.Select(i => i.UrlPath + "." + i.FileExtension)))
                 .ForMember(pr => pr.Collaborators, opt => opt.MapFrom(pr => pr.Collaborators.Select(c => c.UserName).OrderBy(c => c)));
         }
     }

@@ -34,8 +34,8 @@ namespace Showcase.Data.Migrations
                 var tag = new Tag
                 {
                     Name = "Seeded Tag " + i,
-                    BackgroundColor = "lightgrey",
-                    ForegroundColor = "black"
+                    BackgroundColor = "111111",
+                    ForegroundColor = "666666"
                 };
 
                 context.Tags.Add(tag);
@@ -76,42 +76,42 @@ namespace Showcase.Data.Migrations
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a1",
+                UrlPath = "/content/epona/images/demo/portfolio/a1",
             };
 
             var image2 = new Image
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a2",
+                UrlPath = "/content/epona/images/demo/portfolio/a2",
             };
 
             var image3 = new Image
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a3",
+                UrlPath = "/content/epona/images/demo/portfolio/a3",
             };
 
             var image4 = new Image
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a4",
+                UrlPath = "/content/epona/images/demo/portfolio/a4",
             };
 
             var image5 = new Image
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a5",
+                UrlPath = "/content/epona/images/demo/portfolio/a5",
             };
 
             var image6 = new Image
             {
                 OriginalFilename = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a6",
+                UrlPath = "/content/epona/images/demo/portfolio/a6",
             };
 
             var comment = new Comment

@@ -16,6 +16,7 @@
             this.Likes = new HashSet<Like>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
