@@ -1,0 +1,24 @@
+﻿<section ng-controller="projectsSearchPageController as vm">
+    <div class="container">
+        <div class="row shop-top-options">
+            <div class="col-sm-6 col-md-6">
+                <h2><strong>Projects</strong> by {{vm.filterOptions.orderOption.name}}</h2>
+            </div>
+        </div>
+        <div class="row well well-sm">
+            <div filters options="vm.filterOptions" />
+            <div search-bar params="vm.searchParams" />
+
+            <div class="col-sm-6">
+                About {{vm.totalResultsCount}} results <small class="text-success">({{vm.timeElapsed}} seconds) </small>
+            </div>
+            <div class="col-sm-2 pull-right">
+                <button class="btn btn-default input-lg" ng-click="vm.search()">
+                    <i class="fa fa-fw fa-search fa-lg"></i>Search
+                </button>
+            </div>
+        </div>
+        <div project-container projects="vm.projects" infinite-scrolling="vm.getNextProjects" search="vm.search()" />
+        <div ng-pager total-pages="{{totalPages}}" current-page="{{currentPage}}" page-changed="changePage(pageNum)" ng-hide="vm.filterOptions.scrolling" />
+    </div>
+</section>

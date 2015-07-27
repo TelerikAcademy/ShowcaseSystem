@@ -18,8 +18,8 @@
             .when('/', {
                 templateUrl: '/app/home-page/home-page-view.html'
             })
-            .when('/projects', {
-                templateUrl: '/app/search-page/search-page-view.html'
+            .when('/projects/search', {
+                templateUrl: '/app/projects-search-page/projects-search-page-view.html'
             })
             .when('/projects/add', {
                 templateUrl: '/app/add-project-page/add-project-view.html',
@@ -71,6 +71,7 @@
         .value('jQuery', jQuery)
         .value('toastr', toastr)
         .constant('appSettings', {
-            serverPath: 'http://localhost:12345/api/'
+            serverPath: 'http://localhost:12345/api/',
+            odataServerPath: 'http://localhost:12345/odata/'
         });
 }());
