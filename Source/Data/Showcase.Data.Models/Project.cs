@@ -25,6 +25,7 @@
             this.collaborators = new HashSet<User>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
