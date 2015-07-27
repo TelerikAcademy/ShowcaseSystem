@@ -9,22 +9,28 @@
     using Showcase.Server.Api.Controllers;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Data.Models;
 
     public static class ODataConfig
     {
         public static void Register(HttpConfiguration config)
         {
+            config.MapHttpAttributeRoutes();
+
             config.MapODataServiceRoute(
-                routeName: "OData",
+                routeName: "ODataRoute",
                 routePrefix: "odata",
                 model: GetEdmModel());
         }
 
         private static IEdmModel GetEdmModel()
         {
-            var modelBuilder = new ODataConventionModelBuilder();
-            modelBuilder.EntitySet<ProjectSimpleResponseModel, ProjectsController>();
-            return modelBuilder.GetEdmModel();
+            var builder = new ODataConventionModelBuilder();
+            builder.EntitySet<ProjectResponseSimpleModel, SearchController>();
+
+            builder.Namespace = typeof(ProjectResponseSimpleModel).Namespace;
+            builder.EnableLowerCamelCase();
+            return builder.GetEdmModel();
         }
     }
 }

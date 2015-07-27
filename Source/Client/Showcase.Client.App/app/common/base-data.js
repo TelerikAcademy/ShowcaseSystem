@@ -18,6 +18,18 @@
             return deferred.promise;
         }
 
+        function getOData(url, isVisited) {
+            var URL = appSettings.odataServerPath + url;
+            var deferred = $q.defer();
+
+            $http.get(URL)
+                .success(function (data) {
+                    deferred.resolve(data);
+                });
+
+            return deferred.promise;
+        }
+
         function post(url, data) {
             var URL = appSettings.serverPath + url;
             var deferred = $q.defer();
@@ -32,6 +44,7 @@
 
         return {
             get: get,
+            getOData: getOData,
             post: post
         };
     };

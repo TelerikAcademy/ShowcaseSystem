@@ -85,6 +85,10 @@ a.social.fa-github:hover {
     margin-left: 10px;
 }
 
+.margin-right-2 {
+    margin-right: 2px;
+}
+
 .margin-right-5 {
     margin-right: 5px;
 }
@@ -133,6 +137,10 @@ a.social.fa-github:hover {
     margin-bottom: 10px;
 }
 
+.margin-bottom-15 {
+    margin-bottom: 15px;
+}
+
 .margin-bottom-20 {
     margin-bottom: 20px;
 }
@@ -143,6 +151,10 @@ a.social.fa-github:hover {
 
 .margin-bottom-50 {
     margin-bottom: 50px;
+}
+
+.margin-bottom-100 {
+    margin-bottom: 100px;
 }
 
 .margin-top-0 {
@@ -179,6 +191,10 @@ a.social.fa-github:hover {
 
 .margin-top-50 {
     margin-top: 50px;
+}
+
+.margin-top-70 {
+    margin-top: 70px;
 }
 
 .margin-top-100 {
@@ -244,6 +260,10 @@ a.social.fa-github:hover {
 
 .btn-success {
     background-color: #8ab933 !important;
+}
+
+.color999 {
+    color: #999;
 }
 
 .sky-form footer {

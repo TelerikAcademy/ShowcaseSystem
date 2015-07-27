@@ -1,0 +1,20 @@
+﻿<div class="input-group-btn">
+    <button type="button" class="btn btn-default input-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        {{selected.name}}<span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" ng-options="option.name for option in options"></ul>
+
+    <ul class="dropdown-menu">
+        <li class="active">
+            <a href="#">
+                <i class="fa fa-check"></i>
+                {{selected.name}}
+            </a>
+        </li>
+        <!--<li class="divider"></li>-->
+
+        <li class="ng-pristine ng-untouched ng-valid ng-scope" ng-repeat="option in options">
+            <a href="#" ng-class="active: option.isCurrent" class="ng-binding">{{option.name}}</a>
+        </li>
+    </ul>
+</div>

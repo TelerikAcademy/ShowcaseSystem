@@ -1,29 +1,27 @@
 ﻿(function () {
     'use strict';
 
-    var searchPageData = function searchPageData(data, $routeParams) {
+    var projectsSearchPageData = function projectsSearchPageData(data, $routeParams) {
         var CONSTS = {
             DESC: 'desc',
             DEFAULT_QUERY: {
-                $orderby: 'CreatedOn',
+                $orderby: 'createdOn',
                 $top: 4,
                 $count: 'true'
             }
         };
 
-        function searchProjects(oData) {
-            oData = oData || '/search';
-            return data.get('projects' + oData);
+        function searchProjects(oDataQuery) {
+            oDataQuery = oDataQuery || 'Search';
+            return data.getOData(oDataQuery);
         }
 
-        function getSearchTerms() {
+        function getSearchParams() {
             return {
-                options: [
-                    { value: 'Title and Content', name: 'Title and Content' },
-                    { value: 'Collaborator', name: 'Collaborator' },
-                    { value: 'Comment', name: 'Comment' },
-                    { value: 'Tag', name: 'Tag' }
-                ]
+                name: '',
+                tags: '',
+                collaborators: '',
+                period: ''
             };
         }
 
@@ -40,11 +38,11 @@
 
             var options = {};
             options.orderOptions = [
-                    { value: 'CreatedOn', name: 'Date' },
-                    { value: 'Visits', name: 'Views' },
-                    { value: 'Likes', name: 'Likes' },
-                    { value: 'Comments', name: 'Comments' },
-                    { value: 'Name', name: 'Name' }
+                    { value: 'createdOn', name: 'Date' },
+                    { value: 'visits', name: 'Views' },
+                    { value: 'likes', name: 'Likes' },
+                    { value: 'comments', name: 'Comments' },
+                    { value: 'name', name: 'Name' }
             ];
             options.pageSizes = [4, 8, 16, 32, 64];
             options.scrolling = localStorage.scrolling === 'true';
@@ -60,7 +58,7 @@
                 query = CONSTS.DEFAULT_QUERY;
             }
 
-            var result = '/search?' + Object.keys(query)
+            var result = 'Search?' + Object.keys(query)
                 .map(function (key) {
                     return key + '=' + query[key];
                 })
@@ -72,12 +70,12 @@
         return {
             searchProjects: searchProjects,
             getFilterOptions: getFilterOptions,
-            getSearchTerms: getSearchTerms,
+            getSearchParams: getSearchParams,
             getQuery: getQuery
         };
     };
 
     angular
         .module('showcaseSystem.data')
-        .factory('searchPageData', ['data', '$routeParams', searchPageData]);
+        .factory('projectsSearchPageData', ['data', '$routeParams', projectsSearchPageData]);
 }());

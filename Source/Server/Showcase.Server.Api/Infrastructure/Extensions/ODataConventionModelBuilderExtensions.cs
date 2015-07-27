@@ -1,6 +1,6 @@
 ﻿namespace Showcase.Server.Api.Infrastructure.Extensions
 {
-    using System.Web.Http;
+    using System.Web.OData;
     using System.Web.OData.Builder;
 
     public static class ODataConventionModelBuilderExtensions
@@ -9,7 +9,7 @@
 
         public static void EntitySet<TResponse, TController>(this ODataConventionModelBuilder modelBuilder)
             where TResponse : class
-            where TController : ApiController
+            where TController : ODataController
         {
             var controllerName = typeof(TController).Name.Replace(Controller, string.Empty);
             modelBuilder.EntitySet<TResponse>(controllerName);

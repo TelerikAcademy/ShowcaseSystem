@@ -1,0 +1,32 @@
+﻿<div class="sky-form col-md-4">
+    <div class="col-sm-3 pull-right">
+        <label class="toggle">
+            <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.scrolling" ng-change="scrollChecked()">
+            <i></i><br />
+            Scrolling
+        </label>
+    </div>
+    <div class="col-sm-3 pull-right">
+        <label class="toggle">
+            <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.desc">
+            <i></i><br />
+            Descending
+        </label>
+    </div>
+    <div class="col-sm-6 pull-right">
+        <label>
+            <select class="form-control pointer fsize13 pull-right" name="pagesize"
+                    ng-model="options.pageSize" ng-options="pageSize for pageSize in options.pageSizes"></select>
+            <i></i><br />
+            Page size
+        </label>
+    </div>
+    <div class="col-sm-12 pull-right">
+        <select class="form-control pointer fsize13 pull-right" name="orderby"
+                ng-model="options.orderOption"
+                ng-options="'Order by ' + option.name for option in options.orderOptions"></select>
+    </div>
+    <!--<div class="col-sm-1 col-md-1">
+        <a href="#" ng-click="search()" class="btn btn-primary btn-lg">Search</a>
+    </div>-->
+</div>
