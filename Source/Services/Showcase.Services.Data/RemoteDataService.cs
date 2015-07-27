@@ -9,7 +9,7 @@
 
     public class RemoteDataService : IRemoteDataService
     {
-        public User RemoteLogin(string username, string password)
+        public User Login(string username, string password)
         {
             // TODO: implement and get from telerikacademy.com
             return new User
@@ -17,6 +17,26 @@
                 UserName = username,
                 AvatarUrl = "some url", // return small avatar URL here 
                 IsAdmin = true
+            };
+        }
+
+        public IEnumerable<User> UsersInfo(IEnumerable<string> usernames)
+        {
+            // TODO: return user information from telerikacademy.com
+            return new List<User>
+            {
+                new User
+                {
+                    UserName = "some user",
+                    AvatarUrl = "some url", // return small avatar URL here 
+                    IsAdmin = false
+                },
+                new User
+                {
+                    UserName = "another user",
+                    AvatarUrl = "another url", // return small avatar URL here 
+                    IsAdmin = false
+                }
             };
         }
 
@@ -53,7 +73,7 @@
 
         public bool UsersExist(IEnumerable<string> usernames)
         {
-            // TODO: return whether all usernames are valid users
+            // TODO: return whether all usernames are valid users from telerikacademy.com
             return true;
         }
     }

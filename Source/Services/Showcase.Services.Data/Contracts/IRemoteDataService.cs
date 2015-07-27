@@ -8,7 +8,9 @@
 
     public interface IRemoteDataService : IService
     {
-        User RemoteLogin(string username, string password);
+        User Login(string username, string password);
+
+        IEnumerable<User> UsersInfo(IEnumerable<string> usernames);
 
         IEnumerable<string> SearchByUsername(string username);
 
