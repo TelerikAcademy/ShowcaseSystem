@@ -4,10 +4,14 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
+    using AutoMapper;
+
     using Showcase.Data.Common;
+    using Showcase.Data.Models;
+    using Showcase.Server.Common.Mapping;
     using Showcase.Server.Common.Validation;
 
-    public class ProjectRequestModel : IValidatableObject
+    public class ProjectRequestModel : IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
     {
         [Required]
         [MinLength(ValidationConstants.MinProjectTitleLength, ErrorMessage = ValidationConstants.MinLengthErrorMessage)]
@@ -54,6 +58,15 @@
             {
                 yield return new ValidationResult(ValidationConstants.MainImageDoesNotExistErrorMessage);
             }
+        }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            configuration.CreateMap<ProjectRequestModel, Project>()
+                .ForMember(m => m.Collaborators, opt => opt.Ignore())
+                .ForMember(m => m.Tags, opt => opt.Ignore())
+                .ForMember(m => m.Images, opt => opt.Ignore())
+                .ForMember(m => m.MainImage, opt => opt.Ignore());
         }
     }
 }
