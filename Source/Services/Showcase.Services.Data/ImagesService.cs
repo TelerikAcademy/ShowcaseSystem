@@ -24,7 +24,7 @@
         {
             var result = new List<ProcessedImage>();
 
-            foreach (var rawImage in rawImages) // TODO: parallel each
+            rawImages.ForEach(rawImage =>
             {
                 var image = new Image { OriginalFileName = rawImage.OriginalFileName, FileExtension = rawImage.FileExtension };
 
@@ -38,7 +38,7 @@
                 var highContent = this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);
 
                 result.Add(ProcessedImage.FromImage(image, thumbnailContent, highContent));
-            }
+            });
 
             return result;
         }

@@ -9,6 +9,7 @@
     using Showcase.Data;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
+    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
 
     public class UsersService : IUsersService
@@ -99,11 +100,7 @@
 
         private IEnumerable<User> AddNonExistingUsers(IEnumerable<User> usersToAdd)
         {
-            foreach (var user in usersToAdd)
-            {
-                this.users.Add(user);
-            }
-
+            usersToAdd.ForEach(user => this.users.Add(user));
             this.users.SaveChanges();
             return usersToAdd;
         }
