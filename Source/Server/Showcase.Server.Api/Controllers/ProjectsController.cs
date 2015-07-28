@@ -11,12 +11,15 @@
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
+    using Showcase.Server.Api.Infrastructure.FileSystem;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.Api.Infrastructure.Validation;
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels;
     using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Data.Models;
 
     [RoutePrefix("api/Projects")]
     public class ProjectsController : ApiController
@@ -27,6 +30,7 @@
         private readonly ITagsService tagsService;
         private readonly IUsersService usersService;
         private readonly IImagesService imagesService;
+        private readonly IFileSystemService fileSystemService;
 
         public ProjectsController(
             ILikesService likesService,
@@ -34,7 +38,8 @@
             IProjectsService projectsService,
             ITagsService tagsService,
             IUsersService usersService,
-            IImagesService imagesService)
+            IImagesService imagesService,
+            IFileSystemService fileSystemService)
         {
             this.likesService = likesService;
             this.visitsService = visitsService;
@@ -42,6 +47,7 @@
             this.tagsService = tagsService;
             this.usersService = usersService;
             this.imagesService = imagesService;
+            this.fileSystemService = fileSystemService;
         }
 
         [HttpGet]
@@ -64,7 +70,12 @@
             var collaborators = this.usersService.GetCollaboratorsFromCommaSeparatedValues(project.Collaborators);
             var tags = this.tagsService.GetTagsFromCommaSeparatedValues(project.Tags);
             var processedImages = this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
-            // TODO: Save images to hard disk
+            processedImages.ForEach(pi => 
+            {
+                this.fileSystemService.SaveImageToFile(pi.ThumbnailContent, pi.UrlPath, ProcessedImage.ThumbnailImage);
+                this.fileSystemService.SaveImageToFile(pi.HighResolutionContent, pi.UrlPath, ProcessedImage.HighResolutionImage);
+            });
+
             var addedProject = this.projectsService.Add(
                 Mapper.Map<Project>(project),
                 collaborators, 

@@ -7,7 +7,10 @@
     public class ProcessedImage : Image
     {
         public const int ThumbnailImageWidth = 260;
+        public const string ThumbnailImage = "tmbl";
+        
         public const int HighResolutionWidth = 1360;
+        public const string HighResolutionImage = "high";
 
         public static Func<ProcessedImage, Image> ToImage
         {
