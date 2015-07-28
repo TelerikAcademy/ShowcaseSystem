@@ -60,6 +60,7 @@
     <Compile Include="Contracts\IVisitsService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="LikesService.cs" />
+    <Compile Include="Models\ProcessedImage.cs" />
     <Compile Include="Models\RawImage.cs" />
     <Compile Include="Models\RemoteUserProfile.cs" />
     <Compile Include="ProjectsService.cs" />
