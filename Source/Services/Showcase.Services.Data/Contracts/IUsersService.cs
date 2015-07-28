@@ -17,6 +17,6 @@
 
         IEnumerable<string> SearchByUsername(string username);
 
-        ICollection<User> GetCollaboratorsFromCommanSeparatedValues(string collaborators);
+        ICollection<User> GetCollaboratorsFromCommaSeparatedValues(string collaborators);
     }
 }

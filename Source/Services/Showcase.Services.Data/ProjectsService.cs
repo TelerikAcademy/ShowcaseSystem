@@ -1,11 +1,13 @@
 ﻿namespace Showcase.Services.Data
 {
+    using System.Collections.Generic;
     using System.Linq;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Data.Models;
     
     public class ProjectsService : IProjectsService
     {
@@ -52,6 +54,12 @@
             return this.projects
                 .All()
                 .Where(pr => pr.Likes.Any(l => l.UserId == userId));
+        }
+
+
+        public Project Add(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

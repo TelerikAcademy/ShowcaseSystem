@@ -9,7 +9,7 @@
 
         public static ProcessedImage FromImage(Image image, byte[] thumbnailContent, byte[] highResolutionContent)
         {
-            return new ProcessedImage
+            return new ProcessedImage // TODO: move to AutoMapper
             {
                 Id = image.Id,
                 OriginalFileName = image.OriginalFileName,

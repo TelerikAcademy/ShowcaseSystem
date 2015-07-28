@@ -10,6 +10,7 @@
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Data.Common.Repositories;
+    using Showcase.Data.Models;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.Api.Infrastructure.Validation;
     using Showcase.Server.Common;
@@ -60,9 +61,15 @@
         [ValidateModel]
         public IHttpActionResult Post(ProjectRequestModel project)
         {
-            var collaborators = this.usersService.GetCollaboratorsFromCommanSeparatedValues(project.Collaborators);
+            var collaborators = this.usersService.GetCollaboratorsFromCommaSeparatedValues(project.Collaborators);
             var tags = this.tagsService.GetTagsFromCommaSeparatedValues(project.Tags);
-            var images = this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
+            var processedImages = this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
+            var addedProject = this.projectsService.Add(
+                Mapper.Map<Project>(project),
+                collaborators, 
+                tags, 
+                processedImages,
+                project.MainImage);
 
             return this.Ok();
         }
