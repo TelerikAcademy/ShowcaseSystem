@@ -86,8 +86,9 @@
             var nonExistingLocalUsernames = usernames.Where(username => localUsers.All(u => u.UserName != username));
             var nonExistingLocalUsersRemoteInfo = this.remoteData.UsersInfo(nonExistingLocalUsernames);
 
-            var newlyAddedUsers = this.AddNonExistingUsers(nonExistingLocalUsersRemoteInfo);
-            localUsers.AddRange(newlyAddedUsers);
+            // TODO: uncomment when RemoteDataService is implemented
+            // var newlyAddedUsers = this.AddNonExistingUsers(nonExistingLocalUsersRemoteInfo);
+            // localUsers.AddRange(newlyAddedUsers);
             return localUsers;
         }
 

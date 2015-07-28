@@ -64,6 +64,7 @@
             var collaborators = this.usersService.GetCollaboratorsFromCommaSeparatedValues(project.Collaborators);
             var tags = this.tagsService.GetTagsFromCommaSeparatedValues(project.Tags);
             var processedImages = this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
+            // TODO: Save images to hard disk
             var addedProject = this.projectsService.Add(
                 Mapper.Map<Project>(project),
                 collaborators, 

@@ -1,11 +1,27 @@
 ﻿namespace Showcase.Services.Data.Models
 {
+    using System;
+
     using Showcase.Data.Models;
 
     public class ProcessedImage : Image
     {
         public const int ThumbnailImageWidth = 260;
         public const int HighResolutionWidth = 1360;
+
+        public static Func<ProcessedImage, Image> ToImage
+        {
+            get
+            {
+                return pi => new Image
+                {
+                    Id = pi.Id,
+                    OriginalFileName = pi.OriginalFileName,
+                    FileExtension = pi.FileExtension,
+                    UrlPath = pi.UrlPath
+                };
+            }
+        }
 
         public static ProcessedImage FromImage(Image image, byte[] thumbnailContent, byte[] highResolutionContent)
         {

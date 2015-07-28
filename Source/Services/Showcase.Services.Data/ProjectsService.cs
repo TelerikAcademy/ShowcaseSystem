@@ -62,11 +62,27 @@
         {
             collaborators.ForEach(c => project.Collaborators.Add(c));
             tags.ForEach(t => project.Tags.Add(t));
-            processedImages.ForEach(pi => project.Images.Add(pi));
-            project.MainImage = processedImages.FirstOrDefault(pi => pi.OriginalFileName == mainImage) ?? processedImages.FirstOrDefault();
+            processedImages.Select(ProcessedImage.ToImage).ForEach(pi => project.Images.Add(pi));
+            project.MainImageId = this.GetMainImageId(project, mainImage);
             this.projects.Add(project);
             this.projects.SaveChanges();
             return project;
+        }
+
+        private int GetMainImageId(Project project, string mainImage)
+        {
+            var id = project
+                .Images
+                .Where(pi => pi.OriginalFileName == mainImage)
+                .Select(i => i.Id)
+                .FirstOrDefault();
+
+            if (id == 0)
+            {
+                id = project.Images.Select(i => i.Id).First();
+            }
+
+            return id;
         }
     }
 }

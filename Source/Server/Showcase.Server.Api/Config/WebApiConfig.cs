@@ -6,6 +6,7 @@
     using Newtonsoft.Json.Serialization;
 
     using Showcase.Server.Api.Infrastructure;
+    using Showcase.Server.Api.Infrastructure.Formatters;
 
     public static class WebApiConfig
     {
