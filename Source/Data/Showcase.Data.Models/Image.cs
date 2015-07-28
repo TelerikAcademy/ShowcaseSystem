@@ -14,7 +14,6 @@
         [MaxLength(ValidationConstants.MaxOriginalFileNameLength)]
         public string OriginalFileName { get; set; }
 
-        [Required]
         public string UrlPath { get; set; }
 
         [Required]
