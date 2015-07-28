@@ -71,7 +71,7 @@
                 processedImages,
                 project.MainImage);
 
-            return this.Ok();
+            return this.Ok(new { addedProject.Id, addedProject.Title }); // TODO: extract response model
         }
 
         [HttpGet]

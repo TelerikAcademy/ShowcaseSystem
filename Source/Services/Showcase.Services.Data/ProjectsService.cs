@@ -6,6 +6,7 @@
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
+    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data.Models;
     
@@ -59,7 +60,13 @@
 
         public Project Add(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage)
         {
-            throw new System.NotImplementedException();
+            collaborators.ForEach(c => project.Collaborators.Add(c));
+            tags.ForEach(t => project.Tags.Add(t));
+            processedImages.ForEach(pi => project.Images.Add(pi));
+            project.MainImage = processedImages.FirstOrDefault(pi => pi.OriginalFileName == mainImage) ?? processedImages.FirstOrDefault();
+            this.projects.Add(project);
+            this.projects.SaveChanges();
+            return project;
         }
     }
 }
