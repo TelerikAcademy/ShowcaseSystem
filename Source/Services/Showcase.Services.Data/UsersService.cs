@@ -74,7 +74,7 @@
             return localUser;
         }
 
-        public ICollection<User> GetCollaboratorsFromCommanSeparatedValues(string collaborators)
+        public ICollection<User> GetCollaboratorsFromCommaSeparatedValues(string collaborators)
         {
             var usernames = collaborators.Split(',');
             var localUsers = this.users
