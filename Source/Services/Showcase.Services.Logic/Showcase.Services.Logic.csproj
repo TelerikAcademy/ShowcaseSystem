@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IImageProcessor.cs" />
+    <Compile Include="Contracts\IImageProcessorService.cs" />
     <Compile Include="ImageProcessorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,6 +8,6 @@
 
     public interface IImagesService : IService
     {
-        IEnumerable<Image> ProcessImages(IEnumerable<RawImage> rawImages);
+        IEnumerable<ProcessedImage> ProcessImages(IEnumerable<RawImage> rawImages);
     }
 }
