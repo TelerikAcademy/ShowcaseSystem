@@ -227,6 +227,8 @@
     <Compile Include="Infrastructure\Auth\AuthStartup.cs" />
     <Compile Include="Infrastructure\Auth\ClaimsIdentityFactory.cs" />
     <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
+    <Compile Include="Infrastructure\FileSystem\FileSystemService.cs" />
+    <Compile Include="Infrastructure\FileSystem\IFileSystemService.cs" />
     <Compile Include="Infrastructure\Formatters\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\Extensions\ODataConventionModelBuilderExtensions.cs" />
     <Compile Include="Infrastructure\ObjectFactory.cs" />

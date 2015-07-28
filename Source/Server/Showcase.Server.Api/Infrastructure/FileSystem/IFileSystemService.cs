@@ -2,6 +2,6 @@
 {
     public interface IFileSystemService
     {
-        public void SaveImageToFile(byte[] imageContent, string path, string resolution);
+        void SaveImageToFile(byte[] imageContent, string path, string resolution);
     }
 }
