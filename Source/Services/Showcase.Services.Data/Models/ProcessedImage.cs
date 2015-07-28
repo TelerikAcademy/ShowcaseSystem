@@ -26,6 +26,10 @@
             }
         }
 
+        public byte[] ThumbnailContent { get; set; }
+
+        public byte[] HighResolutionContent { get; set; }
+
         public static ProcessedImage FromImage(Image image, byte[] thumbnailContent, byte[] highResolutionContent)
         {
             return new ProcessedImage // TODO: move to AutoMapper
@@ -38,9 +42,5 @@
                 HighResolutionContent = highResolutionContent
             };
         }
-
-        public byte[] ThumbnailContent { get; set; }
-
-        public byte[] HighResolutionContent { get; set; }
     }
 }

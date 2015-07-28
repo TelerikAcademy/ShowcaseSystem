@@ -57,7 +57,6 @@
                 .Where(pr => pr.Likes.Any(l => l.UserId == userId));
         }
 
-
         public Project Add(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage)
         {
             collaborators.ForEach(c => project.Collaborators.Add(c));

@@ -45,7 +45,7 @@
 
         private string GenerateImageUrlPath(int imageId)
         {
-            return string.Format("{0}/{1}", imageId % 1000, imageId.ToMd5Hash());
+            return string.Format("{0}/{1}", imageId % 1000, string.Format("{0}{1}", imageId.ToMd5Hash().Substring(0, 5), imageId));
         }
     }
 }

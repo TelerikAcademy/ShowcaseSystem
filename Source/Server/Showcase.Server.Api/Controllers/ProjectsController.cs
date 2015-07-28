@@ -11,8 +11,8 @@
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
-    using Showcase.Server.Api.Infrastructure.FileSystem;
     using Showcase.Server.Api.Infrastructure.Extensions;
+    using Showcase.Server.Api.Infrastructure.FileSystem;
     using Showcase.Server.Api.Infrastructure.Validation;
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels;
