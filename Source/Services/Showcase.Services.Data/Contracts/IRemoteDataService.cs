@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -10,7 +11,7 @@
     {
         User Login(string username, string password);
 
-        IEnumerable<User> UsersInfo(IEnumerable<string> usernames);
+        Task<IEnumerable<User>> UsersInfo(IEnumerable<string> usernames);
 
         IEnumerable<string> SearchByUsername(string username);
 

@@ -11,11 +11,11 @@
     {
         IQueryable<User> ByUsername(string username);
 
-        Task<User> AccountAsync(string username, string password);
+        Task<User> Account(string username, string password);
 
         IEnumerable<string> SearchByUsername(string username);
 
-        ICollection<User> CollaboratorsFromCommaSeparatedValues(string collaborators);
+        Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators);
 
         int UserIdByUsername(string username);
     }

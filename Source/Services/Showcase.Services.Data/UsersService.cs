@@ -44,7 +44,7 @@
             return this.remoteData.SearchByUsername(username);
         }
 
-        public async Task<User> AccountAsync(string username, string password)
+        public async Task<User> Account(string username, string password)
         {
             var remoteUser = this.remoteData.Login(username, password);
             if (remoteUser == null)
@@ -52,7 +52,7 @@
                 return null;
             }
 
-            var localUser = await this.GetLocalAccountAsync(username);
+            var localUser = await this.GetLocalAccount(username);
             if (localUser == null)
             {
                 localUser = new User
@@ -75,34 +75,34 @@
             return localUser;
         }
 
-        public ICollection<User> CollaboratorsFromCommaSeparatedValues(string collaborators)
+        public async Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators)
         {
             var usernames = collaborators.Split(',');
-            var localUsers = this.users
+            var localUsers = await this.users
                 .All()
                 .Where(u => usernames.Contains(u.UserName))
-                .ToList();
+                .ToListAsync();
 
             var nonExistingLocalUsernames = usernames.Where(username => localUsers.All(u => u.UserName != username));
-            var nonExistingLocalUsersRemoteInfo = this.remoteData.UsersInfo(nonExistingLocalUsernames);
+            var nonExistingLocalUsersRemoteInfo = await this.remoteData.UsersInfo(nonExistingLocalUsernames);
 
             // TODO: uncomment when RemoteDataService is implemented
-            // var newlyAddedUsers = this.AddNonExistingUsers(nonExistingLocalUsersRemoteInfo);
+            // var newlyAddedUsers = await this.AddNonExistingUsers(nonExistingLocalUsersRemoteInfo);
             // localUsers.AddRange(newlyAddedUsers);
             return localUsers;
         }
 
-        private async Task<User> GetLocalAccountAsync(string username)
+        private async Task<User> GetLocalAccount(string username)
         {
             return await this.users
                 .All()
                 .FirstOrDefaultAsync(u => u.UserName == username);
         }
 
-        private IEnumerable<User> AddNonExistingUsers(IEnumerable<User> usersToAdd)
+        private async Task<IEnumerable<User>> AddNonExistingUsers(IEnumerable<User> usersToAdd)
         {
             usersToAdd.ForEach(user => this.users.Add(user));
-            this.users.SaveChanges();
+            await this.users.SaveChangesAsync();
             return usersToAdd;
         }
     }
