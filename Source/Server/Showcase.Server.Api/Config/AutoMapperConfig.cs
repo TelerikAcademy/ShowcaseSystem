@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Common.Mapping
+﻿namespace Showcase.Server.Api
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,9 @@
 
     using AutoMapper;
 
-    public class AutoMapperConfig // TODO: move to config section
+    using Showcase.Server.Common.Mapping;
+
+    public class AutoMapperConfig
     {
         public static void RegisterMappings(params Assembly[] assemblies)
         {
