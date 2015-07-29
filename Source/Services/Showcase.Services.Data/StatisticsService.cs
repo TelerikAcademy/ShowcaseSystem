@@ -26,7 +26,6 @@
 
         public object Current()
         {
-            // TODO: count only approved, add model
             return this.projects
                 .All()
                 .GroupBy(pr => 0)
