@@ -13,11 +13,11 @@
 
         IQueryable<Project> MostPopular();
 
-        IQueryable<Project> GetProjectById(int id);
+        IQueryable<Project> ProjectById(int id);
 
-        IQueryable<Project> GetLikedByUser(int userId);
+        IQueryable<Project> LikedByUser(int userId);
 
-        IQueryable<Project> GetProjectsList();
+        IQueryable<Project> QueriedProjects();
 
         Project Add(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage);
     }

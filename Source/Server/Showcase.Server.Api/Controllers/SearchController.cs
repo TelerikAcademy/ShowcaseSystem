@@ -31,7 +31,7 @@
         public IHttpActionResult Get()
         {
             var projects = this.projectsService
-                .GetProjectsList()
+                .QueriedProjects()
                 .Project()
                 .To<ProjectSimpleResponseModel>();
 

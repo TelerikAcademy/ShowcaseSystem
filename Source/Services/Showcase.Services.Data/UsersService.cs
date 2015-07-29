@@ -23,7 +23,7 @@
             this.remoteData = remoteData;
         }
 
-        public int GetUserId(string username)
+        public int UserIdByUsername(string username)
         {
             return this.users
                 .All()
@@ -32,7 +32,7 @@
                 .FirstOrDefault();
         }
 
-        public IQueryable<User> GetByUsername(string username)
+        public IQueryable<User> ByUsername(string username)
         {
             return this.users
                 .All()
@@ -44,7 +44,7 @@
             return this.remoteData.SearchByUsername(username);
         }
 
-        public async Task<User> GetAccountAsync(string username, string password)
+        public async Task<User> AccountAsync(string username, string password)
         {
             var remoteUser = this.remoteData.Login(username, password);
             if (remoteUser == null)
@@ -75,7 +75,7 @@
             return localUser;
         }
 
-        public ICollection<User> GetCollaboratorsFromCommaSeparatedValues(string collaborators)
+        public ICollection<User> CollaboratorsFromCommaSeparatedValues(string collaborators)
         {
             var usernames = collaborators.Split(',');
             var localUsers = this.users

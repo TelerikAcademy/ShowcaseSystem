@@ -10,6 +10,6 @@
     {
         IQueryable<Tag> SearchByName(string name);
 
-        IEnumerable<Tag> GetTagsFromCommaSeparatedValues(string tags);
+        IEnumerable<Tag> TagsFromCommaSeparatedValues(string tags);
     }
 }

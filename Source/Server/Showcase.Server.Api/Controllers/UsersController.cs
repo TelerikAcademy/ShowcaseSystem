@@ -30,7 +30,7 @@
         public IHttpActionResult Get(string username)
         {
             var model = this.users
-                .GetByUsername(username)
+                .ByUsername(username)
                 .Project()
                 .To<UserResponseModel>()
                 .FirstOrDefault();
@@ -51,7 +51,7 @@
         public IHttpActionResult Identity()
         {
             var model = this.users
-                .GetByUsername(this.User.Identity.Name)
+                .ByUsername(this.User.Identity.Name)
                 .Project()
                 .To<IdentityResponseModel>()
                 .FirstOrDefault();

@@ -23,7 +23,7 @@
                 .Where(t => t.Name.ToLower().Contains(name.ToLower()));
         }
 
-        public IEnumerable<Tag> GetTagsFromCommaSeparatedValues(string tags)
+        public IEnumerable<Tag> TagsFromCommaSeparatedValues(string tags)
         {
             var existingTagIds = new List<int>();
             var newTagNames = new List<string>();

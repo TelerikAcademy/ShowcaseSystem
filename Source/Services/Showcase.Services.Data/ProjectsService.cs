@@ -38,19 +38,19 @@
                 .Take(Constants.HomePageLatestProjectsCount);
         }
 
-        public IQueryable<Project> GetProjectById(int id)
+        public IQueryable<Project> ProjectById(int id)
         {
             return this.projects
                 .All()
                 .Where(p => p.Id == id);
         }
 
-        public IQueryable<Project> GetProjectsList()
+        public IQueryable<Project> QueriedProjects()
         {
             return this.projects.All();
         }
 
-        public IQueryable<Project> GetLikedByUser(int userId)
+        public IQueryable<Project> LikedByUser(int userId)
         {
             return this.projects
                 .All()

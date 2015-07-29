@@ -129,7 +129,7 @@
 
         private async Task<User> LoginUser(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var user = await this.UsersService.GetAccountAsync(context.UserName, context.Password);
+            var user = await this.UsersService.AccountAsync(context.UserName, context.Password);
 
             // Check if remote login credentials are correct
             if (user == null)

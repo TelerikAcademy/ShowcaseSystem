@@ -70,8 +70,8 @@
         [ValidateModel]
         public IHttpActionResult Post(ProjectRequestModel project)
         {
-            var collaborators = this.usersService.GetCollaboratorsFromCommaSeparatedValues(project.Collaborators);
-            var tags = this.tagsService.GetTagsFromCommaSeparatedValues(project.Tags);
+            var collaborators = this.usersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators);
+            var tags = this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
             var processedImages = this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
             processedImages.ForEach(pi => 
             {
@@ -108,7 +108,7 @@
             var username = this.User.Identity.Name;
 
             var model = this.projectsService
-                .GetProjectById(id)
+                .ProjectById(id)
                 .Project()
                 .To<ProjectResponseModel>()
                 .FirstOrDefault();
@@ -128,10 +128,10 @@
                 return this.Data(false, "You are not authorized to view this user's liked projects.");
             }
 
-            var userId = this.usersService.GetUserId(username);
+            var userId = this.usersService.UserIdByUsername(username);
 
             var model = this.projectsService
-                .GetLikedByUser(userId)
+                .LikedByUser(userId)
                 .Project()
                 .To<ProjectResponseModel>()
                 .ToList();
@@ -197,7 +197,7 @@
             });
 
             var projects = this.projectsService
-                .GetProjectsList() // TODO: it is not list, it is IQueryable, remove the Hungarian notation
+                .QueriedProjects()
                 .Project()
                 .To<ProjectSimpleResponseModel>();
 

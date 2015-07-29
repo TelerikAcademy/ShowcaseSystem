@@ -9,13 +9,13 @@
     {
         Comment PostComment(int id, string commentText, string username);
 
-        IQueryable<Comment> GetComment(int id);
+        IQueryable<Comment> CommentById(int id);
 
-        IQueryable<Comment> GetProjectComments(int id, int page);
+        IQueryable<Comment> ProjectComments(int id, int page);
 
         int ProjectCommentsCount(int id);
 
-        IQueryable<Comment> GetUserComments(string username, int page);
+        IQueryable<Comment> UserComments(string username, int page);
 
         int UserCommentsCount(string username);
     }

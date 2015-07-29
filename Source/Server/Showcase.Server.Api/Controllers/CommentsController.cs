@@ -33,7 +33,7 @@
             var postedComment = this.comments.PostComment(id, comment.CommentText, username);
 
             var model = this.comments
-                .GetComment(postedComment.Id)
+                .CommentById(postedComment.Id)
                 .Project()
                 .To<CommentResponseModel>()
                 .FirstOrDefault();
@@ -51,7 +51,7 @@
             var model = new CommentsPageResponseModel
             {
                 Comments = this.comments
-                    .GetProjectComments(id, page)
+                    .ProjectComments(id, page)
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),
@@ -76,7 +76,7 @@
             var model = new CommentsPageResponseModel
             {
                 Comments = this.comments
-                    .GetUserComments(username, page)
+                    .UserComments(username, page)
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),
