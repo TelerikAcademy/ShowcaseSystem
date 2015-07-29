@@ -20,19 +20,16 @@
 
         $scope.currentPage = 0;
 
-        //vm.search = function (query) {
-        //    projectsSearchService.prepareSearchParams(query, vm, $scope, $routeParams)
-
-        //    initialProjectsLoaded = false;
-        //    getProjects();
-        //};
-
         vm.search = function (query) {
             $routeParams = {
                 $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),
                 $top: vm.filterOptions.pageSize,
                 $skip: $scope.currentpage || 0,
-                $count: 'true'
+                $count: 'true',
+                $filter: "createdOn gt " +
+                    projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
+                    " and createdOn lt " +
+                    projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
             if (vm.searchParams.name || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
@@ -65,6 +62,15 @@
                             }).join(' or ');
                         index += 1;
                     }
+
+                    //if (vm.searchParams.fromDate) {
+                    //    args[index] = vm.searchParams.collaborators
+                    //        .split(',')
+                    //        .map(function (collaborator) {
+                    //            return "collaborators/any(c:contains(c, '" + collaborator + "'))";
+                    //        }).join(' or ');
+                    //    index += 1;
+                    //}
 
                     if (vm.searchParams.period) {
                         args[index] = '';// TODO:

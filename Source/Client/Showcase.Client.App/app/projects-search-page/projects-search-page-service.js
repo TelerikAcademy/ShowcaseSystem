@@ -11,68 +11,6 @@
     };
 
     var projectsSearchService = function projectsSearchService($routeParams, $location) {
-        function prepareSearchParams(query, vm, $scope, $routeParams) {
-            $routeParams = {
-                $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),
-                $top: vm.filterOptions.pageSize,
-                $skip: $scope.currentpage || 0,
-                $count: 'true'
-            };
-
-            if (vm.searchParams.name || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
-                $routeParams.$filter = (function getSeachParams() {
-                    var args = [], index = 0;
-                    if (vm.searchParams.name) {
-                        args[index] = vm.searchParams.name
-                            .split(',')
-                            .map(function (name) {
-                                return "contains(name,'" + name.trim() + "')";
-                            })
-                            .join(' or ');
-                        index += 1;
-                    }
-
-                    if (vm.searchParams.tags) {
-                        args[index] = vm.searchParams.tags
-                            .split(',')
-                            .map(function (tag) {
-                                return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
-                            }).join(' or ');
-                        index += 1;
-                    }
-
-                    if (vm.searchParams.collaborators) {
-                        args[index] = vm.searchParams.collaborators
-                            .split(',')
-                            .map(function (collaborator) {
-                                return "collaborators/any(c:contains(c, '" + collaborator + "'))";
-                            }).join(' or ');
-                        index += 1;
-                    }
-
-                    if (vm.searchParams.period) {
-                        args[index] = '';// TODO:
-                    }
-
-                    return args.join(' and ');
-                })();
-            }
-
-            if (query) {
-                Object.keys(query)
-                    .forEach(function (key) {
-                        $routeParams[key] = query[key];
-                    });
-            }
-
-            Object.keys($routeParams)
-                .forEach(function (key) {
-                    $location.search(key, $routeParams[key]);
-                });
-
-            $scope.currentPage = 0;
-        }
-
         function getFilterOptions() {
             var findOrderOption = function findOrderOption(value) {
                 return options.orderOptions.filter(function (option) {
@@ -107,8 +45,46 @@
                 name: '',
                 tags: '',
                 collaborators: '',
-                period: ''
+                fromDate: new Date(2015, 4, 1),
+                toDate: new Date()
             };
+        }
+
+        function getODataUTCDateFilter(date) {
+            var monthString;
+            var rawMonth = (date.getUTCMonth() + 1).toString();
+            if (rawMonth.length == 1) {
+                monthString = "0" + rawMonth;
+            }
+            else { monthString = rawMonth; }
+
+            var dateString;
+            var rawDate = date.getUTCDate().toString();
+            if (rawDate.length == 1) {
+                dateString = "0" + rawDate;
+            }
+            else { dateString = rawDate; }
+
+            var hourString = date.getUTCHours().toString();
+            if (hourString.length == 1)
+                hourString = "0" + hourString;
+
+            var minuteString = date.getUTCMinutes().toString();
+            if (minuteString.length == 1)
+                minuteString = "0" + minuteString;
+
+            var secondString = date.getUTCSeconds().toString();
+            if (secondString.length == 1)
+                secondString = "0" + secondString;
+
+            var DateFilter = "";
+            DateFilter += date.getUTCFullYear() + "-";
+            DateFilter += monthString + "-";
+            DateFilter += dateString;
+            DateFilter += "T" + hourString + ":";
+            DateFilter += minuteString + ":";
+            DateFilter += secondString + "Z";
+            return DateFilter;
         }
 
         function getQuery(params) {
@@ -129,7 +105,7 @@
             getFilterOptions: getFilterOptions,
             getSearchParams: getSearchParams,
             getQuery: getQuery,
-            prepareSearchParams: prepareSearchParams
+            getODataUTCDateFilter: getODataUTCDateFilter
         };
     };
 

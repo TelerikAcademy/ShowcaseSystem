@@ -20,7 +20,6 @@
 
         public string MainImageUrl { get; set; }
 
-        [JsonIgnore]
         public DateTime CreatedOn { get; set; }
 
         public string ShortDate
