@@ -68,9 +68,17 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <p class="margin-bottom-10 nomargin-top">
+                        <div ng-show="comment.username == vm.currentLoggedInUsername" class="pull-right">
+                            <input type="button" class="btn btn-xs btn-default" style="margin-left: 10px; " ng-hide="vm.edittingComments[comment.id]" value="edit" ng-click="vm.editComment(comment.id)" />
+                        </div>
+                        <p class="margin-bottom-10 nomargin-top" ng-hide="vm.edittingComments[comment.id]" style="word-break: break-all">
                             {{comment.content}}
                         </p>
+                        <div ng-show="vm.edittingComments[comment.id]">
+                            <textarea class="nomargin-bottom" ng-model="comment.content" cols="80" rows="5"></textarea><br />
+                            <input type="button" class="btn btn-xs btn-success" ng-click="vm.saveComment(comment.id, comment.content)" value="Save" />
+                            <input type="button" class="btn btn-xs btn-warning" ng-click="vm.cancelEdit(comment.id)" value="Cancel" />
+                        </div>
                     </div>
                 </div>
                 <div ng-hide="vm.comments.length > 0" class="row">

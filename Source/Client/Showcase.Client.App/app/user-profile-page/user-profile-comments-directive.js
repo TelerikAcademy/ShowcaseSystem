@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var userProfileCommentsDirective = function userProfileCommentsDirective(userProfileData, $routeParams, identity) {
+    var userProfileCommentsDirective = function userProfileCommentsDirective(userProfileData, $routeParams, identity, commentsData) {
         return {
             restrict: 'A',
             templateUrl: '/app/user-profile-page/user-profile-comments-directive.html',
@@ -14,7 +14,6 @@
                 scope.commentsPage = 0;
                 scope.lastPage = 0;
                 scope.edittingComments = [];
-                scope.commentsTexts = [];
                 
                 identity.getUser()
                     .then(function (user) {
@@ -47,7 +46,7 @@
                 };
 
                 scope.saveComment = function (id, text) {
-                    userProfileData.editComment(id, text)
+                    commentsData.editComment(id, text)
                         .then(function (data) {
                             scope.edittingComments[id] = false;
                         });
@@ -58,5 +57,5 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('userProfileComments', ['userProfileData', '$routeParams', 'identity', userProfileCommentsDirective]);
+        .directive('userProfileComments', ['userProfileData', '$routeParams', 'identity', 'commentsData', userProfileCommentsDirective]);
 }());

@@ -1,12 +1,34 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location, commentsData) {
+    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location, commentsData, identity) {
         var vm = this;
         var id = $routeParams.id;
 
         vm.commentText = '';
         vm.commentsPage = 1;
+        vm.edittingComments = [];
+
+        identity.getUser()
+            .then(function (user) {
+                vm.currentLoggedInUsername = user.userName;
+                console.log(vm.currentLoggedInUsername);
+            });
+
+        vm.editComment = function (id) {
+            vm.edittingComments[id] = true;
+        };
+
+        vm.cancelEdit = function (id) {
+            vm.edittingComments[id] = false;
+        };
+
+        vm.saveComment = function (id, text) {
+            commentsData.editComment(id, text)
+                .then(function (data) {
+                    vm.edittingComments[id] = false;
+                });
+        };
         
         projectDetailsData.getProject(id)
             .then(function (project) {
@@ -114,5 +136,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', 'commentsData', projectDetailsController]);
+        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', 'commentsData', 'identity', projectDetailsController]);
 }());
