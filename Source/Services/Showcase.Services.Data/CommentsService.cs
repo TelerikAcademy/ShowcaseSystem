@@ -21,7 +21,7 @@
             this.users = users;
         }
         
-        public Comment PostComment(int id, string commentText, string username)
+        public Comment AddNew(int id, string commentText, string username)
         {
             var userId = this.users.UserIdByUsername(username);
 

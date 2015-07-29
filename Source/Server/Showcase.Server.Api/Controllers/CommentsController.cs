@@ -30,7 +30,7 @@
             }
 
             var username = this.User.Identity.Name;
-            var postedComment = this.comments.PostComment(id, comment.CommentText, username);
+            var postedComment = this.comments.AddNew(id, comment.CommentText, username);
 
             var model = this.comments
                 .CommentById(postedComment.Id)

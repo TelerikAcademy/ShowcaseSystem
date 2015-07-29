@@ -79,7 +79,7 @@
                 this.fileSystemService.SaveImageToFile(pi.HighResolutionContent, pi.UrlPath, ProcessedImage.HighResolutionImage);
             });
 
-            var addedProject = this.projectsService.Add(
+            var addedProject = this.projectsService.AddNew(
                 this.mappingService.Map<Project>(project),
                 collaborators, 
                 tags, 

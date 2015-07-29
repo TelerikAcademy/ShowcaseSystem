@@ -9,14 +9,14 @@
 
     public interface IUsersService : IService
     {
-        int UserIdByUsername(string username);
+        IQueryable<User> ByUsername(string username);
 
         Task<User> AccountAsync(string username, string password);
-
-        IQueryable<User> ByUsername(string username);
 
         IEnumerable<string> SearchByUsername(string username);
 
         ICollection<User> CollaboratorsFromCommaSeparatedValues(string collaborators);
+
+        int UserIdByUsername(string username);
     }
 }
