@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location) {
+    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location, commentsData) {
         var vm = this;
         var id = $routeParams.id;
 
@@ -34,7 +34,7 @@
                 vm.images = project.imageUrls;
             });
 
-        projectDetailsData.getComments(id, vm.commentsPage)
+        commentsData.getProjectComments(id, vm.commentsPage)
             .then(function (data) {
                 vm.comments = data.comments;
                 vm.isLastPage = data.isLastPage;
@@ -74,7 +74,7 @@
         };
 
         vm.commentProject = function (id) {
-            projectDetailsData.commentProject(id, vm.commentText)
+            commentsData.commentProject(id, vm.commentText)
                 .then(function (data) {
                     vm.comments.unshift(data);
                     vm.commentText = '';
@@ -82,7 +82,7 @@
         };
 
         vm.loadMoreComments = function (id) {
-            projectDetailsData.getComments(id, vm.commentsPage)
+            commentsData.getProjectComments(id, vm.commentsPage)
                 .then(function (data) {
                     vm.comments = vm.comments.concat(data.comments);
                     vm.isLastPage = data.isLastPage;
@@ -114,5 +114,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', projectDetailsController]);
+        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', 'commentsData', projectDetailsController]);
 }());

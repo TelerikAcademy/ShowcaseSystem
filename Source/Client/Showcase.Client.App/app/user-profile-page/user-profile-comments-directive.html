@@ -2,12 +2,18 @@
     <div class="col-md-2 text-center">
         <i class="fa fa-clock-o font-size-3em"></i><br />
         <span>{{comment.shortDate}}</span>
+        <input type="button" class="btn btn-xs btn-default" ng-hide="edittingComments[comment.id]" ng-show="comment.username == currentLoggedInUsername" value="edit" ng-click="editComment(comment.id)" />
     </div>
     <div class="col-md-10">
         <h6 class="margin-bottom-5">
             <a href="/projects/{{comment.projectId}}/{{comment.projectTitleUrl}}">{{comment.projectTitle}}</a>
         </h6>
-        <p>{{comment.content}}</p>
+        <p ng-hide="edittingComments[comment.id]" ng-bind="comment.content"></p>
+        <div ng-show="edittingComments[comment.id]">
+            <textarea class="nomargin-bottom" ng-model="comment.content"></textarea><br />
+            <input type="button" class="btn btn-xs btn-success" ng-click="saveComment(comment.id, comment.content)" value="Save" />
+            <input type="button" class="btn btn-xs btn-warning" ng-click="cancelEdit(comment.id)" value="Cancel"/>
+        </div>
     </div>
 </div>
 

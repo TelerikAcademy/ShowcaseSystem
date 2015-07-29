@@ -79,5 +79,26 @@
                 .Where(c => c.ProjectId == id)
                 .Count();
         }
+
+
+        public Comment EditComment(int id, string commentText, string username)
+        {
+            var userId = this.users.GetUserId(username);
+
+            var commentToEdit = this.comments
+                .All()
+                .Where(c => c.Id == id && c.UserId == userId)
+                .FirstOrDefault();
+
+            if (commentToEdit == null)
+            {
+                // TODO: Handle error.
+            }
+
+            commentToEdit.Content = commentText;
+            this.comments.SaveChanges();
+
+            return commentToEdit;
+        }
     }
 }

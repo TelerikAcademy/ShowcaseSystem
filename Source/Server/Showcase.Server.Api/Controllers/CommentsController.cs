@@ -17,9 +17,12 @@
     {
         private readonly ICommentsService comments;
 
-        public CommentsController(ICommentsService comments)
+        private readonly IUsersService users;
+
+        public CommentsController(ICommentsService comments, IUsersService users)
         {
             this.comments = comments;
+            this.users = users;
         }
 
         [HttpPost]
@@ -31,14 +34,38 @@
             }
 
             var username = this.User.Identity.Name;
+
             var postedComment = this.comments.PostComment(id, comment.CommentText, username);
 
             var model = this.comments
                 .GetComment(postedComment.Id)
                 .Project()
-                .To<CommentResponseModel>(new {  })
+                .To<CommentResponseModel>()
                 .FirstOrDefault();
             
+            return this.Data(model);
+        }
+
+        [HttpPost]
+        [Route("Edit/{id}")]
+        public IHttpActionResult Edit(int id, CommentRequestModel comment)
+        {
+            if (comment == null || !this.ModelState.IsValid)
+            {
+                return this.Data(false, "Invalid data.");
+            }
+
+            var username = this.User.Identity.Name;
+
+            var edittedComment = this.comments.EditComment(id, comment.CommentText, username);
+
+            if (edittedComment == null)
+            {
+                return this.Data(false, "");
+            }
+
+            var model = Mapper.Map<Comment, CommentResponseModel>(edittedComment);
+
             return this.Data(model);
         }
 

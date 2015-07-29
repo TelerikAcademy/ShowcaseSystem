@@ -10,7 +10,7 @@
                     <button class="btn btn-xs margin-left-5" ng-class="vm.isLiked ? 'btn-warning' : 'btn-success'" ng-click="vm.isLiked ? vm.dislikeProject(vm.project.id) : vm.likeProject(vm.project.id)">
                         <i ng-class="vm.isLiked ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'"></i>{{vm.isLiked ? 'Dislike' : 'Like'}} ({{vm.likes}})
                     </button>
-                    <button class="btn btn-xs margin-left-10" data-toggle="tooltip" data-placement="right" title="Flag projects with unappropriate content. Projects flagged by enough users will be hidden." ng-class="vm.isFlagged ? 'btn-danger' : 'btn-success'" ng-click="vm.isFlagged ? vm.unflagProject(vm.project.id) : vm.flagProject(vm.project.id)">
+                    <button class="btn btn-xs margin-left-10" data-toggle="tooltip" data-placement="right" title="Flag projects with unappropriate content. Projects flagged by enough users will be hidden." ng-class="vm.isFlagged ? 'btn-success' : 'btn-danger'" ng-click="vm.isFlagged ? vm.unflagProject(vm.project.id) : vm.flagProject(vm.project.id)">
                         <i ng-class="vm.isFlagged ? 'fa fa-flag-o' : 'fa fa-flag'"></i>{{vm.isFlagged ? 'Unflag' : 'Flag'}}
                     </button>
                 </div>

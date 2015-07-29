@@ -18,5 +18,7 @@
         IQueryable<Comment> GetUserComments(string username, int page);
 
         int UserCommentsCount(string username);
+
+        Comment EditComment(int id, string commentText, string username);
     }
 }

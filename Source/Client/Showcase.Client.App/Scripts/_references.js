@@ -138,4 +138,5 @@
 /// <reference path="../app/projects-search-page/projects-search-page-service.js" />
 /// <reference path="angular-ui/ui-bootstrap-tpls.min.js" />
 /// <reference path="angular-ui/ui-bootstrap.js" />
+/// <reference path="../app/common/comments-data.js" />
 
