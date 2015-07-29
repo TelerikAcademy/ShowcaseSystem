@@ -9,8 +9,6 @@
 
         vm.orderBy = '-createdOn';
         vm.commentsPage = 1;
-        vm.lastPage = 1;
-
 
         $('.tab-button').click(function (e) {
             e.preventDefault();
@@ -39,6 +37,8 @@
             });
         
         vm.loadCommentsPage = function (page) {
+            console.log(page);
+
             userProfileData.getComments(username, page)
                 .then(function (data) {
                     vm.commentsPage = page;

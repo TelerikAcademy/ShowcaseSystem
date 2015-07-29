@@ -123,13 +123,13 @@
   <ItemGroup>
     <Content Include="app\add-project-page\add-project-controller.js" />
     <Content Include="app\add-project-page\add-project-view.html" />
-    <Content Include="app\common\infinite-scroll-directive.js" />
     <Content Include="app\common\main-menu-directive.html" />
     <Content Include="app\common\main-menu-directive.js" />
     <Content Include="app\common\pager-directive.html" />
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
+    <Content Include="app\projects-search-page\projects-search-page-service.js" />
     <Content Include="app\statistics-page\line-chart-directive.html" />
     <Content Include="app\statistics-page\line-chart-directive.js" />
     <Content Include="app\identity\auth-service.js" />
@@ -260,6 +260,9 @@
     <Content Include="scripts\angular-animate.min.js.map" />
     <Content Include="scripts\angular-cookies.min.js.map" />
     <Content Include="scripts\angular.min.js.map" />
+    <Content Include="scripts\ng-infinite-scroll.min.js.map">
+      <DependentUpon>ng-infinite-scroll.min.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1322,6 +1325,8 @@
     <Content Include="scripts\jquery-2.1.4.min.js" />
     <Content Include="scripts\loading-bar.js" />
     <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="scripts\ng-infinite-scroll.js" />
+    <Content Include="scripts\ng-infinite-scroll.min.js" />
     <Content Include="scripts\npm.js" />
     <Content Include="scripts\toastr.js" />
     <Content Include="scripts\toastr.min.js" />
