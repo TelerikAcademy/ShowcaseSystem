@@ -27,6 +27,14 @@
                 commentText: text
             });
         }
+
+        function flagProject(id) {
+            return data.post('projects/flag/' + id);
+        }
+
+        function unflagProject(id) {
+            return data.post('projects/unflag/' + id);
+        }
         
         return {
             getProject: getProject,
@@ -34,7 +42,9 @@
             likeProject: likeProject,
             dislikeProject: dislikeProject,
             commentProject: commentProject,
-            visitProject: visitProject
+            visitProject: visitProject,
+            flagProject: flagProject,
+            unflagProject: unflagProject
         };
     };
     
