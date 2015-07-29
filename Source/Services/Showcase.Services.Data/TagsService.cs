@@ -1,7 +1,9 @@
 ﻿namespace Showcase.Services.Data
 {
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
@@ -23,7 +25,7 @@
                 .Where(t => t.Name.ToLower().Contains(name.ToLower()));
         }
 
-        public IEnumerable<Tag> TagsFromCommaSeparatedValues(string tags)
+        public async Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tags)
         {
             var existingTagIds = new List<int>();
             var newTagNames = new List<string>();
@@ -43,10 +45,10 @@
                     }
                 });
 
-            var resultTags = this.tags
+            var resultTags = await this.tags
                 .All()
                 .Where(t => existingTagIds.Contains(t.Id))
-                .ToList();
+                .ToListAsync();
 
             newTagNames.ForEach(tagName => resultTags.Add(new Tag { Name = tagName }));
 

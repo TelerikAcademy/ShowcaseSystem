@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -10,6 +11,6 @@
     {
         IQueryable<Tag> SearchByName(string name);
 
-        IEnumerable<Tag> TagsFromCommaSeparatedValues(string tags);
+        Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tags);
     }
 }
