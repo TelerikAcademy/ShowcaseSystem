@@ -1,4 +1,4 @@
-namespace Showcase.Server.Api
+namespace Showcase.Server.Api.Config
 {
     using System;
     using System.Data.Entity;

@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api
+﻿namespace Showcase.Server.Api.Config
 {
     using System;
     using System.Collections.Generic;
@@ -23,7 +23,6 @@
             }
 
             LoadStandardMappings(types);
-
             LoadCustomMappings(types);
         }
 

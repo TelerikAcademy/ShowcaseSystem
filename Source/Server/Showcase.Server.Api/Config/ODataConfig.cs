@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure
+﻿namespace Showcase.Server.Api.Config
 {
     using System.Web.Http;
     using System.Web.OData.Builder;
@@ -10,7 +10,6 @@
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
 
-    // TODO: move this class to config section of the project
     public static class ODataConfig
     {
         public static void Register(HttpConfiguration config)
