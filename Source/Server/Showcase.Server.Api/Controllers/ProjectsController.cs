@@ -27,18 +27,22 @@
 
         private readonly IUsersService usersService;
 
+        private readonly IFlagsService flagsService;
+
         public ProjectsController(
             IProjectsService homePageService,
             ILikesService likesService,
             IVisitsService visitsService,
             IProjectsService projectsService,
-            IUsersService usersService)
+            IUsersService usersService,
+            IFlagsService flagsService)
         {
             this.homePageService = homePageService;
             this.likesService = likesService;
             this.visitsService = visitsService;
             this.projectsService = projectsService;
             this.usersService = usersService;
+            this.flagsService = flagsService;
         }
 
         [HttpGet]
@@ -144,6 +148,24 @@
             }
 
             this.likesService.DislikeProject(id, username);
+
+            return this.Ok();
+        }
+
+        public IHttpActionResult Flag(int id)
+        {
+            var username = this.User.Identity.Name;
+
+            this.flagsService.FlagProject(id, username);
+
+            return this.Ok();
+        }
+
+        public IHttpActionResult RemoveFlag(int id)
+        {
+            var username = this.User.Identity.Name;
+
+            this.flagsService.UnFlagProject(id, username);
 
             return this.Ok();
         }
