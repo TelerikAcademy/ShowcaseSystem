@@ -63,19 +63,6 @@
                         index += 1;
                     }
 
-                    //if (vm.searchParams.fromDate) {
-                    //    args[index] = vm.searchParams.collaborators
-                    //        .split(',')
-                    //        .map(function (collaborator) {
-                    //            return "collaborators/any(c:contains(c, '" + collaborator + "'))";
-                    //        }).join(' or ');
-                    //    index += 1;
-                    //}
-
-                    if (vm.searchParams.period) {
-                        args[index] = '';// TODO:
-                    }
-
                     return args.join(' and ');
                 })();
             }
@@ -132,6 +119,22 @@
         });
 
         $scope.$watch('vm.filterOptions.pageSize', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
+        $scope.$watch('vm.searchParams.fromDate', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
+        $scope.$watch('vm.searchParams.toDate', function (newValue, oldValue) {
             if (newValue === oldValue) {
                 return;
             }

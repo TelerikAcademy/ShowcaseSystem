@@ -47,7 +47,7 @@
             var model = this.homePageService
                 .LatestProjects()
                 .Project()
-                .To<ProjectResponseModel>()
+                .To<ProjectResponseSimpleModel>()
                 .ToList();
 
             return this.Data(model);
@@ -60,7 +60,7 @@
             var model = this.homePageService
                 .MostPopular()
                 .Project()
-                .To<ProjectResponseModel>()
+                .To<ProjectResponseSimpleModel>()
                 .ToList();
 
             return this.Data(model);
