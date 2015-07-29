@@ -1,11 +1,12 @@
 ﻿namespace Showcase.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
+
+    using Showcase.Data.Common;
 
     public class User
     {
@@ -16,10 +17,11 @@
             this.Likes = new HashSet<Like>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(ValidationConstants.MaxUserUserNameLength)]
         [Index(IsUnique = true)]
         public string UserName { get; set; }
 

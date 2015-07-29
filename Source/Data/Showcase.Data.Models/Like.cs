@@ -1,9 +1,12 @@
 ﻿namespace Showcase.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     using Showcase.Data.Common.Models;
     
     public class Like : AuditInfo
     {
+        [Key]
         public int Id { get; set; }
 
         public int UserId { get; set; }

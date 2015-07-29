@@ -201,3 +201,4 @@ FakesAssemblies/
 # Client build files
 /app/build
 /Source/Client/Showcase.Client.App/index.html
+/Source/Client/Showcase.Client.App/Images

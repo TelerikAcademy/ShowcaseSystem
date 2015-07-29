@@ -1,7 +1,9 @@
 ﻿namespace Showcase.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
+    using Showcase.Data.Common;
     using Showcase.Data.Common.Models;
 
     public class Project : AuditInfo
@@ -23,14 +25,24 @@
             this.collaborators = new HashSet<User>();
         }
 
+        [Key]
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(ValidationConstants.MinProjectTitleLength)]
+        [MaxLength(ValidationConstants.MaxProjectTitleLength)]
         public string Title { get; set; }
 
-        public string Content { get; set; }
+        [Required]
+        [MinLength(ValidationConstants.MinProjectDescriptionLength)]
+        [MaxLength(ValidationConstants.MaxProjectDescriptionLength)]
+        public string Description { get; set; }
 
+        [Required]
+        [MaxLength(ValidationConstants.MaxProjectUrlLength)]
         public string RepositoryUrl { get; set; }
 
+        [MaxLength(ValidationConstants.MaxProjectUrlLength)]
         public string LiveDemoUrl { get; set; }
 
         public int? MainImageId { get; set; }

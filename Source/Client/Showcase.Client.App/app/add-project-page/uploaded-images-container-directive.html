@@ -1,0 +1,8 @@
+﻿<div ng-if="images">
+    <label class="label text-center">Select main image of your project</label>
+    <div>
+        <div class="image-holder" ng-repeat="image in images">
+            <img class="animated fadeIn preview-image" data-image-name="{{image.originalFileName}}" ng-src="data:image/{{image.fileExtension}};base64,{{image.base64Content}}">
+        </div>
+    </div>
+</div>

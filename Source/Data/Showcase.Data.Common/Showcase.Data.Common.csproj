@@ -58,6 +58,7 @@
     <Compile Include="Repositories\EfGenericRepository.cs" />
     <Compile Include="Repositories\IDeletableRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="ValidationConstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

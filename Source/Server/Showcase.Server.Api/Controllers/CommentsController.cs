@@ -3,7 +3,6 @@
     using System.Linq;
     using System.Web.Http;
 
-    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Data.Models;
@@ -36,7 +35,7 @@
             var model = this.comments
                 .GetComment(postedComment.Id)
                 .Project()
-                .To<CommentResponseModel>(new {  })
+                .To<CommentResponseModel>(new { }) // TODO: <- ???
                 .FirstOrDefault();
             
             return this.Data(model);

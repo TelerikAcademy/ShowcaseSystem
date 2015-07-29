@@ -1,6 +1,4 @@
-﻿using Showcase.Server.DataTransferModels.User;
-
-namespace Showcase.Server.Api.Controllers
+﻿namespace Showcase.Server.Api.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -10,9 +8,10 @@ namespace Showcase.Server.Api.Controllers
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Server.Api.Infrastructure.Extensions;
-    using Showcase.Services.Data.Contracts;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.DataTransferModels.Statistics;
+    using Showcase.Server.DataTransferModels.User;
+    using Showcase.Services.Data.Contracts;
 
     [RoutePrefix("api/Statistics")]
     public class StatisticsController : ApiController
@@ -43,6 +42,11 @@ namespace Showcase.Server.Api.Controllers
 
             this.statisticsService
                 .ProjectsLastSixMonths()
+                .Select(gr => new CountByDateModel
+                {
+                    Date = gr.FirstOrDefault().CreatedOn,
+                    Count = gr.Count() // TODO: Move to static expression
+                })
                 .ToList()
                 .ForEach(r =>
                 {
@@ -60,6 +64,11 @@ namespace Showcase.Server.Api.Controllers
         {
             var result = this.statisticsService
                 .ProjectsCountByTag()
+                .Select(t => new CountByTagModel // TODO: move to static expression
+                {
+                    Count = t.Projects.Count,
+                    Tag = t.Name
+                })
                 .ToList();
 
             return this.Data(result);
@@ -92,6 +101,7 @@ namespace Showcase.Server.Api.Controllers
             return this.Data(model);
         }
 
+        // TODO: move to extension method
         private string IntegerToMonthName(int monthIndex)
         {
             switch (monthIndex)
