@@ -231,8 +231,6 @@
     <Compile Include="Infrastructure\FileSystem\IFileSystemService.cs" />
     <Compile Include="Infrastructure\Formatters\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\Extensions\ODataConventionModelBuilderExtensions.cs" />
-    <Compile Include="Infrastructure\Mapping\IMappingService.cs" />
-    <Compile Include="Infrastructure\Mapping\MappingService.cs" />
     <Compile Include="Infrastructure\ObjectFactory.cs" />
     <Compile Include="Infrastructure\ODataConfig.cs" />
     <Compile Include="Infrastructure\ResultObject.cs" />

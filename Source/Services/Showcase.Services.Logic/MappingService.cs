@@ -1,6 +1,8 @@
-﻿namespace Showcase.Server.Api.Infrastructure.Mapping
+﻿namespace Showcase.Services.Logic
 {
     using AutoMapper;
+
+    using Showcase.Services.Logic.Contracts;
 
     public class MappingService : IMappingService
     {

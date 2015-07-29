@@ -15,7 +15,6 @@ namespace Showcase.Server.Api
 
     using Showcase.Server.Api.Infrastructure;
     using Showcase.Server.Api.Infrastructure.FileSystem;
-    using Showcase.Server.Api.Infrastructure.Mapping;
     using Showcase.Server.Common;
 
     using Showcase.Services.Common;
@@ -61,7 +60,6 @@ namespace Showcase.Server.Api
             kernel.Bind<DbContext>().To<ShowcaseDbContext>().InRequestScope();
 
             kernel.Bind<IFileSystemService>().To<FileSystemService>();
-            kernel.Bind<IMappingService>().To<MappingService>();
 
             kernel.Bind(k => k
                 .From(ServerConstants.DataServicesAssembly, ServerConstants.LogicServicesAssembly)

@@ -12,7 +12,6 @@
     using Showcase.Data.Models;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.Api.Infrastructure.FileSystem;
-    using Showcase.Server.Api.Infrastructure.Mapping;
     using Showcase.Server.Api.Infrastructure.Validation;
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels;
@@ -20,6 +19,7 @@
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data.Models;
+    using Showcase.Services.Logic.Contracts;
 
     [RoutePrefix("api/Projects")]
     public class ProjectsController : ApiController
