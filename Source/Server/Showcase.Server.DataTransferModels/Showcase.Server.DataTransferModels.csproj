@@ -69,6 +69,7 @@
     <Compile Include="Project\CommentResponseModel.cs" />
     <Compile Include="Project\CommentsPageResponseModel.cs" />
     <Compile Include="Project\FileRequestModel.cs" />
+    <Compile Include="Project\PostProjectResponseModel.cs" />
     <Compile Include="Project\ProjectRequestModel.cs" />
     <Compile Include="Project\ProjectResponseModel.cs" />
     <Compile Include="Project\ProjectSimpleResponseModel.cs" />

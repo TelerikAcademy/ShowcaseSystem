@@ -8,7 +8,7 @@
 
     using AutoMapper;
 
-    public class AutoMapperConfig
+    public class AutoMapperConfig // TODO: move to config section
     {
         public static void RegisterMappings(params Assembly[] assemblies)
         {

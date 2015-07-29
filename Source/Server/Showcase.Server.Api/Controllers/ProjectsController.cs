@@ -6,13 +6,13 @@
     using System.Web.Http;
     using System.Web.OData.Query;
 
-    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.Api.Infrastructure.FileSystem;
+    using Showcase.Server.Api.Infrastructure.Mapping;
     using Showcase.Server.Api.Infrastructure.Validation;
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels;
@@ -29,6 +29,7 @@
         private readonly IProjectsService projectsService;
         private readonly ITagsService tagsService;
         private readonly IUsersService usersService;
+        private readonly IMappingService mappingService;
         private readonly IImagesService imagesService;
         private readonly IFileSystemService fileSystemService;
 
@@ -38,6 +39,7 @@
             IProjectsService projectsService,
             ITagsService tagsService,
             IUsersService usersService,
+            IMappingService mappingService,
             IImagesService imagesService,
             IFileSystemService fileSystemService)
         {
@@ -46,6 +48,7 @@
             this.projectsService = projectsService;
             this.tagsService = tagsService;
             this.usersService = usersService;
+            this.mappingService = mappingService;
             this.imagesService = imagesService;
             this.fileSystemService = fileSystemService;
         }
@@ -77,13 +80,13 @@
             });
 
             var addedProject = this.projectsService.Add(
-                Mapper.Map<Project>(project),
+                this.mappingService.Map<Project>(project),
                 collaborators, 
                 tags, 
                 processedImages,
                 project.MainImage);
 
-            return this.Ok(new { addedProject.Id, addedProject.Title }); // TODO: extract response model
+            return this.Ok(this.mappingService.Map<PostProjectResponseModel>(addedProject));
         }
 
         [HttpGet]
