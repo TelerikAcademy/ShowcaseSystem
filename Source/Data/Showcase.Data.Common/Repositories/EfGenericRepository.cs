@@ -4,6 +4,7 @@
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {
@@ -89,6 +90,11 @@
         public int SaveChanges()
         {
             return this.Context.SaveChanges();
+        }
+
+        public Task<int> SaveChangesAsync()
+        {
+            return this.Context.SaveChangesAsync();
         }
 
         public void Dispose()
