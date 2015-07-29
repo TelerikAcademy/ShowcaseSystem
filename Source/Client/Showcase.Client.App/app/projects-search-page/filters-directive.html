@@ -1,13 +1,13 @@
 ﻿<div class="sky-form nomargin-bottom">
     <div class="row">
         <div class="col-sm-6">
-            <select class="form-control pointer fsize13 pull-right" name="orderby"
+            <select class="form-control pointer fsize13  " name="orderby"
                     ng-model="options.orderOption"
-                    ng-options="'Order by ' + option.name for option in options.orderOptions"></select>
+                    ng-options="'Order by ' + option.name for option in options.orderOptions" ng-change="search()"></select>
         </div>
-        <div class="col-sm-6" style="padding-top: 4px;">
-            <label class="toggle">
-                <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.desc">
+        <div class="col-sm-6" style="padding-left: 10px;">
+            <label class="toggle" >
+                <input type="checkbox" name="checkbox-toggle" checked ng-model="options.desc">
                 <i></i>
                 <span ng-class="options.desc ? 'bold' : ''">Descending</span>
             </label>
@@ -15,14 +15,14 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <select class="form-control pointer fsize13 pull-right" name="pagesize"
+            <select class="form-control pointer fsize13  " name="pagesize" ng-change="search()"
                     ng-model="options.pageSize" ng-options="pageSize + ' items per page' for pageSize in options.pageSizes"></select>
         </div>
-        <div class="col-sm-6" style="padding-top: 4px;">
+        <div class="col-sm-6" style="padding-left: 10px;">
             <label class="toggle">
-                <input type="checkbox" name="checkbox-toggle" checked="" ng-model="options.scrolling" ng-change="scrollChecked()">
+                <input type="checkbox" ng-click="search()" name="checkbox-toggle" checked="" ng-model="options.scrolling" ng-change="scrollChecked()">
                 <i></i>
-                <span ng-class="options.scrolling ? 'bold' : ''">Scrolling</span>
+                <span ng-class="options.scrolling ? 'bold' : ''" style="display: inline-block; margin-top: 2px;">Infinite Scroll</span>
             </label>
         </div>
     </div>
