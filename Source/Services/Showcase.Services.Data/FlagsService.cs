@@ -54,5 +54,13 @@
                 this.flags.SaveChanges();
             }
         }
+
+
+        public bool ProjectIsFlaggedByUser(int projectId, string username)
+        {
+            return this.users
+                .GetByUsername(username)
+                .Any(u => u.Flags.Any(f => f.ProjectId == projectId));
+        }
     }
 }
