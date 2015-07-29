@@ -25,7 +25,6 @@
 
         public IHttpActionResult Get()
         {
-            // TODO: cache statistics
             return this.Data(this.statisticsService.Current());
         }
 
@@ -42,11 +41,7 @@
 
             this.statisticsService
                 .ProjectsLastSixMonths()
-                .Select(gr => new CountByDateModel
-                {
-                    Date = gr.FirstOrDefault().CreatedOn,
-                    Count = gr.Count() // TODO: Move to static expression
-                })
+                .Select(CountByDateModel.FromProjectGrouping)
                 .ToList()
                 .ForEach(r =>
                 {
@@ -54,7 +49,7 @@
                     result.Values.Add(total);
                     result.Labels.Add(this.IntegerToMonthName(r.Date.Month));
                 });
-            
+
             return this.Data(result);
         }
 
@@ -64,11 +59,8 @@
         {
             var result = this.statisticsService
                 .ProjectsCountByTag()
-                .Select(t => new CountByTagModel // TODO: move to static expression
-                {
-                    Count = t.Projects.Count,
-                    Tag = t.Name
-                })
+                .Project()
+                .To<CountByTagModel>()
                 .ToList();
 
             return this.Data(result);

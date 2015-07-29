@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     using Showcase.Data.Common;
@@ -27,6 +28,9 @@
 
         [Key]
         public int Id { get; set; }
+
+        [DefaultValue(true)]
+        public bool IsPublic { get; set; }
 
         [Required]
         [MinLength(ValidationConstants.MinProjectTitleLength)]
