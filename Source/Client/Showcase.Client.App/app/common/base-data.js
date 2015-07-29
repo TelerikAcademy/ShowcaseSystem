@@ -6,7 +6,7 @@
             'Content-Type': 'application/json'
         };
 
-        function get(url, isVisited) {
+        function get(url) {
             var URL = appSettings.serverPath + url;
             var deferred = $q.defer();
 
@@ -18,7 +18,7 @@
             return deferred.promise;
         }
 
-        function getOData(url, isVisited) {
+        function getOData(url) {
             var URL = appSettings.odataServerPath + url;
             var deferred = $q.defer();
 

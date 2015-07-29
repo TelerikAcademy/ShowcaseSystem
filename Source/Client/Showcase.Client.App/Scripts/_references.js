@@ -140,4 +140,5 @@
 /// <reference path="../app/statistics-page/statistics-users-directive.js" />
 /// <reference path="Chart.js" />
 /// <reference path="jquery.tokeninput.js" />
+/// <reference path="../app/add-project-page/add-project-data.js" />
 

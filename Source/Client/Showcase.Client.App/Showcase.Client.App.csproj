@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\add-project-page\add-project-controller.js" />
+    <Content Include="app\add-project-page\add-project-data.js" />
     <Content Include="app\add-project-page\add-project-view.html" />
     <Content Include="app\add-project-page\file-upload-directive.js" />
     <Content Include="app\add-project-page\token-input-directive.js" />

@@ -1,15 +1,18 @@
 ﻿(function () {
     'use strict';
 
-    var addProjectController = function addProjectController($http) {
+    var addProjectController = function addProjectController($location, addProjectData) {
         var vm = this;
 
         vm.submitProject = function (project) {
-            $http.post('/api/projects', project);
+            addProjectData.addProject(project)
+                .then(function (projectInfo) {
+                    $location.path('/projects/' + projectInfo.id + '/' + projectInfo.title);
+                });
         };
     };
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('AddProjectController', ['$http', addProjectController]);
+        .controller('AddProjectController', ['$location', 'addProjectData', addProjectController]);
 }());
