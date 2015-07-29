@@ -10,12 +10,5 @@
         <p>{{comment.content}}</p>
     </div>
 </div>
-<ul class="pagination">
-    <li ng-class="commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(1)"><a><<</a></li>
-    <li ng-class="commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(commentsPage - 1)"><a><</a></li>
-    <li ng-class="commentsPage == 1 ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(commentsPage - 1)"><a>{{commentsPage - 1}}</a></li>
-    <li class="active"><a>{{commentsPage}}</a></li>
-    <li ng-show="commentsPage + 1 <= lastPage" ng-click="loadCommentsPage(commentsPage + 1)"><a>{{commentsPage + 1}}</a></li>
-    <li ng-class="isLastPage ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(commentsPage + 1)"><a>></a></li>
-    <li ng-class="isLastPage ? 'no-pointer-events' : ''" ng-click="loadCommentsPage(lastPage)"><a>>></a></li>
-</ul>
+
+<div ng-pager total-pages="{{lastPage}}" current-page="{{commentsPage}}" page-changed="loadCommentsPage(pageNum)" />

@@ -69,7 +69,7 @@
             var userCommentsCount = this.comments.UserCommentsCount(username);
             var lastPage = this.GetLastPage(userCommentsCount, page);
 
-            if (page < 1 || page > lastPage)
+            if (page < 0 || page > lastPage)
             {
                 return this.Data(false, "There are no more comments to load.");
             }

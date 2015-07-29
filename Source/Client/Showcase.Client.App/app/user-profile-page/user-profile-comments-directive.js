@@ -12,8 +12,8 @@
             link: function (scope, element) {
                 var username = $routeParams.username.toLowerCase();
 
-                scope.commentsPage = 1;
-                scope.lastPage = 1;
+                scope.commentsPage = 0;
+                scope.lastPage = 0;
 
                 userProfileData.getComments(username, scope.commentsPage)
                     .then(function (data) {
