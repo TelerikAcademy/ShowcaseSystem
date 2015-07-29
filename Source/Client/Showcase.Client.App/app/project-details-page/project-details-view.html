@@ -5,10 +5,13 @@
                 <img src="{{vm.project.mainImageUrl}}" width="250" height="250" alt="{{vm.project.name}}" />
                 <div class="text-center padding-right-10" animate="fadeIn" data-animation-delay="1500">
                     <br />
-                    <i class="fa fa-eye margin-right-5"></i><span class="margin-right-20">{{vm.project.visits}}</span>
-                    <i class="fa fa-comments margin-right-5"></i><span class="margin-right-20">{{vm.project.comments}}</span>
-                    <button class="btn btn-xs margin-left-10" ng-class="vm.isLiked ? 'btn-warning' : 'btn-success'" ng-click="vm.isLiked ? vm.dislikeProject(vm.project.id) : vm.likeProject(vm.project.id)">
-                        <i ng-class="vm.isLiked ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'"></i>{{vm.isLiked ? 'Remove Like' : 'Like'}} ({{vm.likes}})
+                    <i class="fa fa-eye margin-right-5"></i><span class="margin-right-5">{{vm.project.visits}}</span>
+                    <i class="fa fa-comments margin-right-5"></i><span class="margin-right-5">{{vm.project.comments}}</span>
+                    <button class="btn btn-xs margin-left-5" ng-class="vm.isLiked ? 'btn-warning' : 'btn-success'" ng-click="vm.isLiked ? vm.dislikeProject(vm.project.id) : vm.likeProject(vm.project.id)">
+                        <i ng-class="vm.isLiked ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'"></i>{{vm.isLiked ? 'Dislike' : 'Like'}} ({{vm.likes}})
+                    </button>
+                    <button class="btn btn-xs margin-left-10" data-toggle="tooltip" data-placement="right" title="Flag projects with unappropriate content. Projects flagged by enough users will be hidden." ng-class="vm.isFlagged ? 'btn-danger' : 'btn-success'" ng-click="vm.isFlagged ? vm.unflagProject(vm.project.id) : vm.flagProject(vm.project.id)">
+                        <i ng-class="vm.isFlagged ? 'fa fa-flag-o' : 'fa fa-flag'"></i>{{vm.isFlagged ? 'Unflag' : 'Flag'}}
                     </button>
                 </div>
             </div>

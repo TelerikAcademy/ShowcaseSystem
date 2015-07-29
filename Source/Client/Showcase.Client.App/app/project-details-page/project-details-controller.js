@@ -30,6 +30,7 @@
                 vm.project = project;
                 vm.likes = project.likes;
                 vm.isLiked = project.isLiked;
+                vm.isFlagged = project.isFlagged;
                 vm.images = project.imageUrls;
             });
 
@@ -55,6 +56,20 @@
                 .then(function () {
                     vm.likes--;
                     vm.isLiked = false;
+                });
+        };
+
+        vm.flagProject = function (id) {
+            projectDetailsData.flagProject(id)
+                .then(function () {
+                    vm.isFlagged = true;
+                });
+        };
+
+        vm.unflagProject = function (id) {
+            projectDetailsData.unflagProject(id)
+                .then(function () {
+                    vm.isFlagged = false;
                 });
         };
 
