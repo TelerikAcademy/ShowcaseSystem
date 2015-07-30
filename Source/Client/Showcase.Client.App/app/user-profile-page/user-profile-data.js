@@ -14,10 +14,17 @@
             return data.get('projects/likedprojects/' + username)
         }
 
+        function editComment(id, text) {
+            return data.post('comments/edit/' + id, {
+                commentText: text
+            });
+        }
+
         return {
             getUser: getUser,
             getComments: getComments,
-            getLikedProjects: getLikedProjects
+            getLikedProjects: getLikedProjects,
+            editComment: editComment
         };
     };
 

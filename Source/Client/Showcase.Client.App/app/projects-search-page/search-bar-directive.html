@@ -1,16 +1,33 @@
-﻿<div class="col-sm-4">
-    <div>
-        <input name="k" class="form-control input-lg" type="text" placeholder="Search by Title and in Content..." ng-model="params.name">
+﻿<div class="row">
+    <div class="col-sm-6">
+        <div>
+            <input name="k" class="form-control input-lg" type="text" placeholder="By Title or Content" ng-model="params.name">
+        </div>
+        <div>
+            <input name="k" class="form-control input-lg" type="text" placeholder="By Tag" ng-model="params.tags">
+        </div>
     </div>
-    <div>
-        <input name="k" class="form-control input-lg" type="text" placeholder="Search by Tag..." ng-model="params.tags">
-    </div>
-</div>
-<div class="col-sm-4">
-    <div>
-        <input name="k" class="form-control input-lg" type="text" placeholder="Search by Collaborator..." ng-model="params.collaborators">
-    </div>
-    <div>
-        <input name="k" class="form-control input-lg" type="text" placeholder="Search by Period..." ng-model="params.period">
+    <div class="col-sm-6">
+        <div>
+            <input name="k" class="form-control input-lg" type="text" placeholder="By Collaborator" ng-model="params.collaborators">
+        </div>
+        <div class="row">
+            <div class="col-sm-6 ">
+                <p class="input-group">
+                    <input type="text" placeholder="From" class="form-control" datepicker-popup="dd-MMM-yyyy" ng-model="params.fromDate" is-open="fromDateIsOpen" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" style="border: #e6e6e6 2px solid; padding: 7px 12px" ng-click="openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-sm-6 ">
+                <p class="input-group">
+                    <input type="text" placeholder="To" class="form-control" datepicker-popup="dd-MMM-yyyy" ng-model="params.toDate" is-open="toDateIsOpen" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" style="border: #e6e6e6 2px solid; padding: 7px 12px" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+        </div>
     </div>
 </div>

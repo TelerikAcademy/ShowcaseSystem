@@ -6,7 +6,8 @@
             restrict: 'A',
             templateUrl: '/app/projects-search-page/filters-directive.html',
             scope: {
-                options: '='
+                options: '=',
+                search: '&'
             },
             link: function (scope) {
                 scope.scrollChecked = function () {

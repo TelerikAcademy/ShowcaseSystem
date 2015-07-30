@@ -1,12 +1,33 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location) {
+    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location, commentsData, identity) {
         var vm = this;
         var id = $routeParams.id;
 
         vm.commentText = '';
         vm.commentsPage = 1;
+        vm.edittingComments = [];
+
+        identity.getUser()
+            .then(function (user) {
+                vm.currentLoggedInUsername = user.userName;
+            });
+
+        vm.editComment = function (id) {
+            vm.edittingComments[id] = true;
+        };
+
+        vm.cancelEdit = function (id) {
+            vm.edittingComments[id] = false;
+        };
+
+        vm.saveComment = function (id, text) {
+            commentsData.editComment(id, text)
+                .then(function (data) {
+                    vm.edittingComments[id] = false;
+                });
+        };
         
         projectDetailsData.getProject(id)
             .then(function (project) {
@@ -30,10 +51,11 @@
                 vm.project = project;
                 vm.likes = project.likes;
                 vm.isLiked = project.isLiked;
+                vm.isFlagged = project.isFlagged;
                 vm.images = project.imageUrls;
             });
 
-        projectDetailsData.getComments(id, vm.commentsPage)
+        commentsData.getProjectComments(id, vm.commentsPage)
             .then(function (data) {
                 vm.comments = data.comments;
                 vm.isLastPage = data.isLastPage;
@@ -58,8 +80,22 @@
                 });
         };
 
+        vm.flagProject = function (id) {
+            projectDetailsData.flagProject(id)
+                .then(function () {
+                    vm.isFlagged = true;
+                });
+        };
+
+        vm.unflagProject = function (id) {
+            projectDetailsData.unflagProject(id)
+                .then(function () {
+                    vm.isFlagged = false;
+                });
+        };
+
         vm.commentProject = function (id) {
-            projectDetailsData.commentProject(id, vm.commentText)
+            commentsData.commentProject(id, vm.commentText)
                 .then(function (data) {
                     vm.comments.unshift(data);
                     vm.commentText = '';
@@ -67,7 +103,7 @@
         };
 
         vm.loadMoreComments = function (id) {
-            projectDetailsData.getComments(id, vm.commentsPage)
+            commentsData.getProjectComments(id, vm.commentsPage)
                 .then(function (data) {
                     vm.comments = vm.comments.concat(data.comments);
                     vm.isLastPage = data.isLastPage;
@@ -99,5 +135,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', projectDetailsController]);
+        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', 'commentsData', 'identity', projectDetailsController]);
 }());

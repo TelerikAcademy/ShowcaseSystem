@@ -9,6 +9,7 @@
     using Newtonsoft.Json;
 
     using Showcase.Data.Models;
+    using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
 
     public class ProjectSimpleResponseModel : IMapFrom<Project>, IHaveCustomMappings
@@ -19,14 +20,13 @@
 
         public string MainImageUrl { get; set; }
 
-        [JsonIgnore]
         public DateTime CreatedOn { get; set; }
 
         public string ShortDate
         {
             get
             {
-                return this.CreatedOn.ToShortDateString();
+                return this.CreatedOn.ToString(Constants.ShortDateFormat);
             }
         }
 

@@ -7,6 +7,7 @@
         public const int StatisticsTopUsersCount = 50;
         public const int StatisticsTopProjectsCount = 50;
         public const int StatisticsTopTagsCount = 6;
+        public const int FlagsNeededToHideProject = 5;
 
         public const int ImageQuality = 70;
     }

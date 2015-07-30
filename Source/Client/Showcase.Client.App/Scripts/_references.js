@@ -141,4 +141,9 @@
 /// <reference path="Chart.js" />
 /// <reference path="jquery.tokeninput.js" />
 /// <reference path="../app/add-project-page/add-project-data.js" />
+/// <reference path="../app/common/comments-data.js" />
+/// <reference path="../app/projects-search-page/projects-search-page-service.js" />
+/// <reference path="ng-infinite-scroll.js" />
+/// <reference path="angular-ui/ui-bootstrap-tpls.js" />
+/// <reference path="angular-ui/ui-bootstrap.js" />
 

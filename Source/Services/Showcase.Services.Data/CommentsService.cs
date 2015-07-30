@@ -50,7 +50,7 @@
                 .All()
                 .Where(c => c.ProjectId == id)
                 .OrderByDescending(c => c.CreatedOn)
-                .Skip((page - 1) * CommentsService.PageSize)
+                .Skip(page * CommentsService.PageSize)
                 .Take(PageSize);
         }
 
@@ -60,7 +60,7 @@
                 .All()
                 .Where(c => c.User.UserName == username)
                 .OrderByDescending(c => c.CreatedOn)
-                .Skip((page - 1) * CommentsService.PageSize)
+                .Skip(page * CommentsService.PageSize)
                 .Take(PageSize);
         }
 
@@ -78,6 +78,27 @@
                 .All()
                 .Where(c => c.ProjectId == id)
                 .Count();
+        }
+
+
+        public Comment EditComment(int id, string commentText, string username)
+        {
+            var userId = this.users.UserIdByUsername(username);
+
+            var commentToEdit = this.comments
+                .All()
+                .Where(c => c.Id == id && c.UserId == userId)
+                .FirstOrDefault();
+
+            if (commentToEdit == null)
+            {
+                // TODO: Handle error.
+            }
+
+            commentToEdit.Content = commentText;
+            this.comments.SaveChanges();
+
+            return commentToEdit;
         }
     }
 }

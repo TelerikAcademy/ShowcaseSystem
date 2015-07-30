@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CommentsService.cs" />
     <Compile Include="Contracts\ICommentsService.cs" />
+    <Compile Include="Contracts\IFlagsService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\ILikesService.cs" />
     <Compile Include="Contracts\IProjectsService.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IVisitsService.cs" />
     <Compile Include="ImagesService.cs" />
+    <Compile Include="FlagsService.cs" />
     <Compile Include="LikesService.cs" />
     <Compile Include="Models\ProcessedImage.cs" />
     <Compile Include="Models\RawImage.cs" />

@@ -30,6 +30,8 @@
 
         public virtual IDbSet<User> Users { get; set; }
 
+        public virtual IDbSet<Flag> Flags { get; set; }
+
         public static ShowcaseDbContext Create()
         {
             return new ShowcaseDbContext();

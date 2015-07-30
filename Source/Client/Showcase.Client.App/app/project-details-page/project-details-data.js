@@ -9,11 +9,7 @@
         function visitProject(id) {
             return data.post('projects/visit/' + id);
         }
-
-        function getComments(id, page) {
-            return data.get('comments/' + id + '/' + page);
-        }
-
+        
         function likeProject(id) {
             return data.post('projects/like/' + id, {});
         }
@@ -21,20 +17,22 @@
         function dislikeProject(id) {
             return data.post('projects/dislike/' + id, {});
         }
+        
+        function flagProject(id) {
+            return data.post('projects/flag/' + id);
+        }
 
-        function commentProject(id, text) {
-            return data.post('comments/' + id, {
-                commentText: text
-            });
+        function unflagProject(id) {
+            return data.post('projects/unflag/' + id);
         }
         
         return {
             getProject: getProject,
-            getComments: getComments,
             likeProject: likeProject,
             dislikeProject: dislikeProject,
-            commentProject: commentProject,
-            visitProject: visitProject
+            visitProject: visitProject,
+            flagProject: flagProject,
+            unflagProject: unflagProject
         };
     };
     

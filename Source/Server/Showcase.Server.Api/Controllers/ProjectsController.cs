@@ -33,12 +33,15 @@
         private readonly IImagesService imagesService;
         private readonly IFileSystemService fileSystemService;
 
+        private readonly IFlagsService flagsService;
+
         public ProjectsController(
             ILikesService likesService,
             IVisitsService visitsService,
             IProjectsService projectsService,
-            ITagsService tagsService,
             IUsersService usersService,
+            IFlagsService flagsService,
+            ITagsService tagsService,
             IMappingService mappingService,
             IImagesService imagesService,
             IFileSystemService fileSystemService)
@@ -48,6 +51,7 @@
             this.projectsService = projectsService;
             this.tagsService = tagsService;
             this.usersService = usersService;
+            this.flagsService = flagsService;
             this.mappingService = mappingService;
             this.imagesService = imagesService;
             this.fileSystemService = fileSystemService;
@@ -59,7 +63,7 @@
             var model = this.projectsService
                 .LatestProjects()
                 .Project()
-                .To<ProjectResponseModel>()
+                .To<ProjectSimpleResponseModel>()
                 .ToList();
 
             return this.Data(model);
@@ -92,7 +96,7 @@
             var model = this.projectsService
                 .MostPopular()
                 .Project()
-                .To<ProjectResponseModel>()
+                .To<ProjectSimpleResponseModel>()
                 .ToList();
 
             return this.Data(model);
@@ -110,6 +114,7 @@
                 .FirstOrDefault();
 
             model.IsLiked = this.likesService.ProjectIsLikedByUser(id, username);
+            model.IsFlagged = this.flagsService.ProjectIsFlaggedByUser(id, username);
 
             return this.Data(model);
         }
@@ -165,8 +170,8 @@
 
         // [Authorize]
         [HttpPost]
-        [Route("DisLike/{id}")]
-        public IHttpActionResult DisLike(int id)
+        [Route("Dislike/{id}")]
+        public IHttpActionResult Dislike(int id)
         {
             var username = this.User.Identity.Name;
 
@@ -176,6 +181,38 @@
             }
 
             this.likesService.DislikeProject(id, username);
+
+            return this.Ok();
+        }
+
+        [HttpPost]
+        [Route("Flag/{id}")]
+        public IHttpActionResult Flag(int id)
+        {
+            var username = this.User.Identity.Name;
+
+            if (this.flagsService.ProjectIsFlaggedByUser(id, username))
+            {
+                return this.Data(false, "You can't flagg the same project more than once.");
+            }
+
+            this.flagsService.FlagProject(id, username);
+
+            return this.Ok();
+        }
+
+        [HttpPost]
+        [Route("Unflag/{id}")]
+        public IHttpActionResult Unflag(int id)
+        {
+            var username = this.User.Identity.Name;
+
+            if (!this.flagsService.ProjectIsFlaggedByUser(id, username))
+            {
+                return this.Data(false, "You have not yet flagged this project.");
+            }
+
+            this.flagsService.UnFlagProject(id, username);
 
             return this.Ok();
         }

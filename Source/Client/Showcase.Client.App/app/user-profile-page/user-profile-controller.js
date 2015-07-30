@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var userProfileController = function userProfileController(userProfileData, $routeParams, identity) {
+    var userProfileController = function userProfileController(userProfileData, $routeParams, identity, commentsData) {
         var vm = this,
             username = $routeParams.username.toLowerCase(),
             arrowDownCss = 'fa fa-long-arrow-down',
@@ -9,8 +9,6 @@
 
         vm.orderBy = '-createdOn';
         vm.commentsPage = 1;
-        vm.lastPage = 1;
-
 
         $('.tab-button').click(function (e) {
             e.preventDefault();
@@ -21,7 +19,7 @@
                 vm.user = user;
             });
 
-        userProfileData.getComments(username, vm.commentsPage)
+        commentsData.getUserComments(username, vm.commentsPage)
             .then(function (data) {
                 vm.comments = data.comments;
                 vm.isLastPage = data.isLastPage;
@@ -39,7 +37,7 @@
             });
         
         vm.loadCommentsPage = function (page) {
-            userProfileData.getComments(username, page)
+            commentsData.getUserComments(username, page)
                 .then(function (data) {
                     vm.commentsPage = page;
                     vm.comments = data.comments;
@@ -54,7 +52,7 @@
                 return;
             }
 
-            userProfileData.getComments(username, vm.commentsPage + 1)
+            commentsData.getUserComments(username, vm.commentsPage + 1)
                 .then(function (data) {
                     vm.comments = data.comments;
                     vm.isLastPage = data.isLastPage;
@@ -68,7 +66,7 @@
                 return;
             }
 
-            userProfileData.getComments(username, vm.commentsPage - 1)
+            commentsData.getUserComments(username, vm.commentsPage - 1)
                 .then(function (data) {
                     vm.comments = data.comments;
                     vm.isLastPage = data.isLastPage;
@@ -80,5 +78,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('userProfileController', ['userProfileData', '$routeParams', 'identity', userProfileController]);
+        .controller('userProfileController', ['userProfileData', '$routeParams', 'identity', 'commentsData', userProfileController]);
 }());
