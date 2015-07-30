@@ -18,6 +18,8 @@
 
         void Delete(object id);
 
+        T Attach(T entity);
+
         void Detach(T entity);
 
         int SaveChanges();
