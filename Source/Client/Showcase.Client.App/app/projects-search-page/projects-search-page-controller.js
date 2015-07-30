@@ -26,9 +26,9 @@
                 $top: vm.filterOptions.pageSize,
                 $skip: $scope.currentpage || 0,
                 $count: 'true',
-                $filter: "createdOn gt " +
+                $filter: "createdOn ge " +
                     projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
-                    " and createdOn lt " +
+                    " and createdOn le " +
                     projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
