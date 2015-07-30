@@ -12,9 +12,9 @@
     using Ninject;
 
     using Showcase.Data.Models;
-    using Showcase.Services.Common.Bindings;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Logic;
 
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

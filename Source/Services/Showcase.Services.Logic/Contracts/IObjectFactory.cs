@@ -1,4 +1,4 @@
-﻿namespace Showcase.Services.Common.Bindings
+﻿namespace Showcase.Services.Logic.Contracts
 {
     using System;
 

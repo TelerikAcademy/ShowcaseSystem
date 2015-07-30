@@ -1,8 +1,10 @@
-﻿namespace Showcase.Services.Common.Bindings
+﻿namespace Showcase.Services.Logic
 {
     using System;
 
     using Ninject;
+
+    using Showcase.Services.Logic.Contracts;
 
     public class ObjectFactory : IObjectFactory
     {

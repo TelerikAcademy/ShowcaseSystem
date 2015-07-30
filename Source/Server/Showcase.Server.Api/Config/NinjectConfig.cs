@@ -18,18 +18,14 @@ namespace Showcase.Server.Api.Config
     using Showcase.Server.Common;
 
     using Showcase.Services.Common;
-    using Showcase.Services.Common.Bindings;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Logic;
 
     using ServerConstants = Showcase.Server.Common.Constants;
 
     public static class NinjectConfig 
     {
-        /// <summary>
-        /// Creates the kernel that will manage your application.
-        /// </summary>
-        /// <returns>The created kernel.</returns>
         public static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
@@ -49,10 +45,6 @@ namespace Showcase.Server.Api.Config
             }
         }
 
-        /// <summary>
-        /// Load your modules or register your services here!
-        /// </summary>
-        /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
