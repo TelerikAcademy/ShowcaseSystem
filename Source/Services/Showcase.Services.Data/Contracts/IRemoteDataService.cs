@@ -9,14 +9,14 @@
 
     public interface IRemoteDataService : IService
     {
-        User Login(string username, string password);
+        Task<User> Login(string username, string password);
 
         Task<IEnumerable<User>> UsersInfo(IEnumerable<string> usernames);
 
-        IEnumerable<string> SearchByUsername(string username);
+        Task<IEnumerable<string>> SearchByUsername(string username);
 
         Task<RemoteUserProfile> ProfileInfo(string username);
 
-        bool UsersExist(IEnumerable<string> usernames);
+        Task<bool> UsersExist(IEnumerable<string> usernames);
     }
 }

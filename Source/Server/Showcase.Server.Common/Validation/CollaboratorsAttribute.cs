@@ -23,7 +23,7 @@
             if (valueAsString != null)
             {
                 var collaborators = valueAsString.Split(',');
-                return this.RemoteData.UsersExist(collaborators);
+                return this.RemoteData.UsersExist(collaborators).Result;
             }
 
             return true;

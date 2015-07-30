@@ -40,14 +40,14 @@
                 .Where(u => u.UserName == username);
         }
 
-        public IEnumerable<string> SearchByUsername(string username)
+        public async Task<IEnumerable<string>> SearchByUsername(string username)
         {
-            return this.remoteData.SearchByUsername(username);
+            return await this.remoteData.SearchByUsername(username);
         }
 
         public async Task<User> Account(string username, string password)
         {
-            var remoteUser = this.remoteData.Login(username, password);
+            var remoteUser = await this.remoteData.Login(username, password);
             if (remoteUser == null)
             {
                 return null;

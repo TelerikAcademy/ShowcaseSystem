@@ -5,7 +5,7 @@
 
     public class UserAutocompleteResponseModel
     {
-        public static Expression<Func<string, UserAutocompleteResponseModel>> FromUserName
+        public static Func<string, UserAutocompleteResponseModel> FromUserName
         {
             get
             {
