@@ -147,4 +147,5 @@
 /// <reference path="angular-ui/ui-bootstrap.js" />
 /// <reference path="../app/project-details-page/social-icons-directive.js" />
 /// <reference path="../app/project-details-page/project-comments-directive.js" />
+/// <reference path="../app/user-profile-page/user-profile-statistics-directive.js" />
 
