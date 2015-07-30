@@ -68,18 +68,14 @@
         [Authorize]
         [HttpPost]
         [ValidateModel]
-        public IHttpActionResult Post(ProjectRequestModel project)
+        public async Task<IHttpActionResult> Post(ProjectRequestModel project)
         {
-            var collaborators = this.usersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators);
-            var tags = this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
-            var processedImages = this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
-            processedImages.ForEach(pi => 
-            {
-                this.fileSystemService.SaveImageToFile(pi.ThumbnailContent, pi.UrlPath, ProcessedImage.ThumbnailImage);
-                this.fileSystemService.SaveImageToFile(pi.HighResolutionContent, pi.UrlPath, ProcessedImage.HighResolutionImage);
-            });
+            var collaborators = await this.usersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators);
+            var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
+            var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
+            await this.fileSystemService.SaveImagesToFiles(processedImages);
 
-            var addedProject = this.projectsService.AddNew(
+            var addedProject = await this.projectsService.AddNew(
                 this.mappingService.Map<Project>(project),
                 collaborators, 
                 tags, 
