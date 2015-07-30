@@ -28,15 +28,21 @@
 
         public async Task<IHttpActionResult> Get()
         {
-            return this.Data(await this.statisticsService.Current());
+            var model = await this.statisticsService
+                .Current()
+                .Project()
+                .To<CurrentStatisticsResponseModel>()
+                .FirstOrDefaultAsync();
+
+            return this.Data(model);
         }
 
         [HttpGet]
         [Route("ProjectsLastSixMonths")]
         public async Task<IHttpActionResult> ProjectsLastSixMonths()
         {
-            var total = 0;
-            var result = new LineChartResponseModel();
+            var totalProjectsPerMonth = 0;
+            var model = new LineChartResponseModel();
 
             (await this.statisticsService
                 .ProjectsLastSixMonths()
@@ -44,25 +50,25 @@
                 .ToListAsync())
                 .ForEach(r =>
                 {
-                    total += r.Count;
-                    result.Values.Add(total);
-                    result.Labels.Add(r.Date.Month.ToMonthName());
+                    totalProjectsPerMonth += r.Count;
+                    model.Values.Add(totalProjectsPerMonth);
+                    model.Labels.Add(r.Date.Month.ToMonthName());
                 });
 
-            return this.Data(result);
+            return this.Data(model);
         }
 
         [HttpGet]
         [Route("ProjectsCountByTag")]
         public async Task<IHttpActionResult> ProjectsCountByTag()
         {
-            var result = await this.statisticsService
+            var model = await this.statisticsService
                 .ProjectsCountByTag()
                 .Project()
                 .To<CountByTagModel>()
                 .ToListAsync();
 
-            return this.Data(result);
+            return this.Data(model);
         }
 
         [HttpGet]
