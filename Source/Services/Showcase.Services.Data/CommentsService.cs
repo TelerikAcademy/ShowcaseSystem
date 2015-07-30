@@ -52,7 +52,7 @@
                 .All()
                 .Where(c => c.ProjectId == id)
                 .OrderByDescending(c => c.CreatedOn)
-                .Skip(page * CommentsService.PageSize)
+                .Skip((page - 1) * CommentsService.PageSize)
                 .Take(PageSize);
         }
 
@@ -62,7 +62,7 @@
                 .All()
                 .Where(c => c.User.UserName == username)
                 .OrderByDescending(c => c.CreatedOn)
-                .Skip(page * CommentsService.PageSize)
+                .Skip((page - 1) * CommentsService.PageSize)
                 .Take(PageSize);
         }
 

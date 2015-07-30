@@ -18,13 +18,13 @@
         vm.filterOptions.desc = $routeParams.desc === undefined ? true : $routeParams.desc;
         vm.searchParams = projectsSearchService.getSearchParams();
 
-        $scope.currentPage = 0;
+        $scope.currentPage = 1;
 
         vm.search = function (query) {
             $routeParams = {
                 $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),
                 $top: vm.filterOptions.pageSize,
-                $skip: $scope.currentpage || 0,
+                $skip: 0,
                 $count: 'true',
                 $filter: "createdOn ge " +
                     projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
@@ -79,7 +79,6 @@
                     $location.search(key, $routeParams[key]);
                 });
 
-            $scope.currentPage = 0;
             initialProjectsLoaded = false;
             getProjects();
         };
@@ -89,7 +88,7 @@
         // not working if attached to vm
         $scope.changePage = function (newPage) {
             $scope.currentPage = newPage;
-            vm.search({ $skip: newPage * vm.filterOptions.pageSize });
+            vm.search({ $skip: (newPage - 1) * vm.filterOptions.pageSize });
         };
 
         vm.getNextProjects = function () {
@@ -98,7 +97,7 @@
             }
 
             canGetNext = false;
-            $routeParams.$skip = $scope.currentPage * vm.filterOptions.pageSize;
+            $routeParams.$skip = ($scope.currentPage - 1) * vm.filterOptions.pageSize;
             getProjects();
         };
 
@@ -150,7 +149,7 @@
             if (newValue == true) {
                 initialProjectsLoaded = false;
                 canGetNext = false;
-                $scope.currentPage = 0;
+                $scope.currentPage = 1;
                 vm.search();
             } else {
                 $scope.currentPage--;
@@ -170,7 +169,7 @@
             searchPageData.searchProjects(oDataQuery)
                 .then(function (odata) {
                     // results data
-                    vm.isLastPage = odata['@odata.count'] <= ($scope.currentPage + 1) * vm.filterOptions.pageSize;
+                    vm.isLastPage = odata['@odata.count'] <= ($scope.currentPage) * vm.filterOptions.pageSize;
 
                     // searchbar data
                     vm.totalResultsCount = odata['@odata.count'];
@@ -192,7 +191,7 @@
                         $scope.currentPage++;
                     }
                     else {
-                        $scope.currentPage = !!$routeParams.$skip ? $routeParams.$skip / $routeParams.$top : 0;
+                        $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
                     }
 
                     canGetNext = true;

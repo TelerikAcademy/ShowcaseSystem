@@ -12,16 +12,13 @@
             link: function (scope, element) {
                 scope.edittingComments = [];
                 scope.commentText = '';
-                scope.commentsPage = 0;
+                scope.commentsPage = 1;
                 scope.projectId = $routeParams.id;
                 
                 commentsData.getProjectComments(scope.projectId, scope.commentsPage)
                     .then(function (data) {
                         scope.comments = data.comments;
                         scope.isLastPage = data.isLastPage;
-                        if (!data.isLastPage) {
-                            scope.commentsPage++;
-                        }
                     });
 
                 scope.editComment = function (id) {

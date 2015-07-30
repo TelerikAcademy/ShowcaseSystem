@@ -24,13 +24,6 @@
                 vm.profile = profile;
             });
 
-        commentsData.getUserComments(username, vm.commentsPage)
-            .then(function (data) {
-                vm.comments = data.comments;
-                vm.isLastPage = data.isLastPage;
-                vm.lastPage = data.lastPage;
-            });
-
         identity.getUser()
             .then(function (user) {
                 if (user.userName.toLowerCase() === username || user.isAdmin) {
@@ -39,46 +32,7 @@
                             vm.likedProjects = data;
                         });
                 }
-            });
-        
-        vm.loadCommentsPage = function (page) {
-            commentsData.getUserComments(username, page)
-                .then(function (data) {
-                    vm.commentsPage = page;
-                    vm.comments = data.comments;
-                    vm.isLastPage = data.isLastPage;
-                    vm.commentsPage = page;
-                    vm.lastPage = data.lastPage;
-                });
-        };
-
-        vm.loadNextPageComments = function () {
-            if (vm.isLastPage) {
-                return;
-            }
-
-            commentsData.getUserComments(username, vm.commentsPage + 1)
-                .then(function (data) {
-                    vm.comments = data.comments;
-                    vm.isLastPage = data.isLastPage;
-                    vm.commentsPage++;
-                    vm.lastPage = data.lastPage;
-                });
-        };
-
-        vm.loadPreviousPageComments = function () {
-            if (vm.commentsPage == 1) {
-                return;
-            }
-
-            commentsData.getUserComments(username, vm.commentsPage - 1)
-                .then(function (data) {
-                    vm.comments = data.comments;
-                    vm.isLastPage = data.isLastPage;
-                    vm.commentsPage--;
-                    vm.lastPage = data.lastPage;
-                });
-        };
+            });  
     };
 
     angular
