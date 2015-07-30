@@ -1,7 +1,12 @@
 ﻿namespace Showcase.Server.Api.Infrastructure.FileSystem
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Showcase.Services.Data.Models;
+
     public interface IFileSystemService
     {
-        void SaveImageToFile(byte[] imageContent, string path, string resolution);
+        Task SaveImagesToFiles(IEnumerable<ProcessedImage> images);
     }
 }
