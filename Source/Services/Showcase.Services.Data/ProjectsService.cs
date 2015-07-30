@@ -52,9 +52,17 @@
                 .Where(p => p.Id == id && !p.IsHidden);
         }
 
-        public IQueryable<Project> QueriedProjects()
+        // TODO: Also check if the user is admin
+        public IQueryable<Project> QueriedProjects(bool includeHidden = false)
         {
-            return this.projects.All().Where(p => !p.IsHidden);
+            var query = this.projects.All();
+
+            if (!includeHidden)
+            {
+                query = query.Where(p => !p.IsHidden);
+            }
+
+            return query;
         }
 
         public IQueryable<Project> LikedByUser(int userId)

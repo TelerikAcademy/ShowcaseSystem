@@ -13,7 +13,16 @@
                 <div search-bar params="vm.searchParams"  />
             </div>
 
-            <div class="col-sm-12 text-center margin-bottom-10 margin-top-10">
+            <div class="col-sm-4 text-center margin-bottom-10 margin-top-10">
+                <div class="sky-form pull-left" ng-show="vm.isAdmin">
+                    <label class="toggle">
+                        <input type="checkbox" name="checkbox-toggle" ng-model="vm.filterOptions.includeHidden">
+                        <i></i>
+                        <span ng-class="vm.filterOptions.includeHidden ? 'bold' : ''" style="display: inline-block; margin-top: 2px;">Include Hidden</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-8">
                 <button class="btn btn-success " style="padding-top: 8px; padding-bottom: 8px;" ng-click="vm.search()">
                     <i class="fa fa-fw fa-search fa-lg"></i>Search
                 </button>

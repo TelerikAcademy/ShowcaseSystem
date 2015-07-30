@@ -28,10 +28,10 @@
             AllowedQueryOptions = AllowedQueryOptions.Top | AllowedQueryOptions.Skip |
             AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy | AllowedQueryOptions.Count,
             AllowedFunctions = AllowedFunctions.Any | AllowedFunctions.SubstringOf)] // TODO: move this to custom attribute inheriting from EnableQuery
-        public IHttpActionResult Get()
+        public IHttpActionResult Get([FromUri]bool includeHidden = false)
         {
             var projects = this.projectsService
-                .QueriedProjects()
+                .QueriedProjects(includeHidden)
                 .Project()
                 .To<ProjectSimpleResponseModel>();
 

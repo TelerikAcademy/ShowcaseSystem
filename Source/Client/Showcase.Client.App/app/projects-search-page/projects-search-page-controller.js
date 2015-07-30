@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, $window, searchPageData, projectsSearchService) {
+    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, $window, searchPageData, projectsSearchService, identity) {
         var vm = this,
             oDataQuery,
             canGetNext = true,
@@ -19,6 +19,19 @@
         vm.searchParams = projectsSearchService.getSearchParams();
 
         $scope.currentPage = 1;
+
+        identity.getUser()
+            .then(function (user) {
+                vm.isAdmin = user.isAdmin;
+                vm.isAdmin = true;
+
+                if (vm.isAdmin) {
+                    vm.filterOptions.orderOptions.push({
+                        value: 'flags',
+                        name: 'Flags'
+                    });
+                }
+            });
 
         vm.search = function (query) {
             $routeParams = {
@@ -125,6 +138,14 @@
             vm.search();
         });
 
+        $scope.$watch('vm.filterOptions.includeHidden', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
         $scope.$watch('vm.searchParams.fromDate', function (newValue, oldValue) {
             if (newValue === oldValue) {
                 return;
@@ -158,7 +179,7 @@
         });
 
         function getProjects() {
-            oDataQuery = projectsSearchService.getQuery($routeParams);
+            oDataQuery = projectsSearchService.getQuery($routeParams, vm.filterOptions.includeHidden);
             var startTime = new Date().getTime();
             $routeParams.$count = true;
 
@@ -202,5 +223,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', projectsSearchPageController]);
+        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', 'identity', projectsSearchPageController]);
 }());

@@ -11,7 +11,7 @@
     };
 
     var projectsSearchService = function projectsSearchService($routeParams, $location) {
-        function getFilterOptions() {
+        function getFilterOptions(isAdmin) {
             var findOrderOption = function findOrderOption(value) {
                 return options.orderOptions.filter(function (option) {
                     if (options.desc) {
@@ -30,7 +30,7 @@
                 { value: 'comments', name: 'Comments' },
                 { value: 'name', name: 'Name' }
             ];
-
+            
             options.pageSizes = [8, 16, 32, 64];
             options.scrolling = localStorage.scrolling === 'true';
             options.pageSize = +$routeParams.$top || CONSTS.DEFAULT_QUERY.$top;
@@ -91,12 +91,17 @@
             return DateFilter;
         }
 
-        function getQuery(params) {
+        function getQuery(params, includeHidden) {
             if (!!params && !Object.keys(params).length) {
                 params = CONSTS.DEFAULT_QUERY;
             }
 
-            var result = 'Search?' + Object.keys(params)
+            var result = 'Search?';
+            if (includeHidden) {
+                result += 'includeHidden=true&';
+            }
+
+            result += Object.keys(params)
                 .map(function (key) {
                     return key + '=' + params[key];
                 })
