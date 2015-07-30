@@ -24,13 +24,13 @@
             this.remoteData = remoteData;
         }
 
-        public int UserIdByUsername(string username)
+        public async Task<int> UserIdByUsername(string username)
         {
-            return this.users
+            return await this.users
                 .All()
                 .Where(u => u.UserName == username)
                 .Select(u => u.Id)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
         }
 
         public IQueryable<User> ByUsername(string username)

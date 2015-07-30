@@ -50,7 +50,7 @@
 
         [HttpPost]
         [Route("Edit/{id}")]
-        public IHttpActionResult Edit(int id, CommentRequestModel comment)
+        public async Task<IHttpActionResult> Edit(int id, CommentRequestModel comment)
         {
             if (comment == null || !this.ModelState.IsValid)
             {
@@ -58,8 +58,7 @@
             }
 
             var username = this.User.Identity.Name;
-
-            var edittedComment = this.commentsService.EditComment(id, comment.CommentText, username);
+            var edittedComment = await this.commentsService.EditComment(id, comment.CommentText, username);
 
             if (edittedComment == null)
             {

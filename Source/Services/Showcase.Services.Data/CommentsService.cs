@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -82,14 +83,14 @@
         }
 
 
-        public Comment EditComment(int id, string commentText, string username)
+        public async Task<Comment> EditComment(int id, string commentText, string username)
         {
-            var userId = this.users.UserIdByUsername(username);
+            var userId = await this.users.UserIdByUsername(username);
 
-            var commentToEdit = this.comments
+            var commentToEdit = await this.comments
                 .All()
                 .Where(c => c.Id == id && c.UserId == userId)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
             if (commentToEdit == null)
             {
@@ -97,7 +98,7 @@
             }
 
             commentToEdit.Content = commentText;
-            this.comments.SaveChanges();
+            await this.comments.SaveChangesAsync();
 
             return commentToEdit;
         }
