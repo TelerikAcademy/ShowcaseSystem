@@ -20,11 +20,16 @@
             });
         }
 
+        function getProfile(username) {
+            return data.get('users/RemoteProfile/' + username);
+        }
+
         return {
             getUser: getUser,
             getComments: getComments,
             getLikedProjects: getLikedProjects,
-            editComment: editComment
+            editComment: editComment,
+            getProfile: getProfile
         };
     };
 

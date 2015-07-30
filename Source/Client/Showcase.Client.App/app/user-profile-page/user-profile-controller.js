@@ -19,6 +19,11 @@
                 vm.user = user;
             });
 
+        userProfileData.getProfile(username)
+            .then(function (profile) {
+                vm.profile = profile;
+            });
+
         commentsData.getUserComments(username, vm.commentsPage)
             .then(function (data) {
                 vm.comments = data.comments;
