@@ -1,9 +1,8 @@
 ﻿namespace Showcase.Data.Models
 {
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
+using System.ComponentModel.DataAnnotations;
     using Showcase.Data.Common;
     using Showcase.Data.Common.Models;
 
@@ -15,6 +14,7 @@
         private ICollection<Tag> tags;
         private ICollection<Image> images;
         private ICollection<User> collaborators;
+        private ICollection<Flag> flags;
 
         public Project()
         {
@@ -24,13 +24,11 @@
             this.tags = new HashSet<Tag>();
             this.images = new HashSet<Image>();
             this.collaborators = new HashSet<User>();
+            this.flags = new HashSet<Flag>();
         }
 
         [Key]
         public int Id { get; set; }
-
-        [DefaultValue(true)]
-        public bool IsPublic { get; set; }
 
         [Required]
         [MinLength(ValidationConstants.MinProjectTitleLength)]
@@ -48,6 +46,7 @@
 
         [MaxLength(ValidationConstants.MaxProjectUrlLength)]
         public string LiveDemoUrl { get; set; }
+        public bool IsHidden { get; set; }
 
         public int? MainImageId { get; set; }
 
@@ -87,6 +86,12 @@
         {
             get { return this.collaborators; }
             set { this.collaborators = value; }
+        }
+
+        public virtual ICollection<Flag> Flags
+        {
+            get { return this.flags; }
+            set { this.flags = value; }
         }
     }
 }

@@ -5,10 +5,13 @@
                 <img src="{{vm.project.mainImageUrl}}" width="250" height="250" alt="{{vm.project.name}}" />
                 <div class="text-center padding-right-10" animate="fadeIn" data-animation-delay="1500">
                     <br />
-                    <i class="fa fa-eye margin-right-5"></i><span class="margin-right-20">{{vm.project.visits}}</span>
-                    <i class="fa fa-comments margin-right-5"></i><span class="margin-right-20">{{vm.project.comments}}</span>
-                    <button class="btn btn-xs margin-left-10" ng-class="vm.isLiked ? 'btn-warning' : 'btn-success'" ng-click="vm.isLiked ? vm.dislikeProject(vm.project.id) : vm.likeProject(vm.project.id)">
-                        <i ng-class="vm.isLiked ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'"></i>{{vm.isLiked ? 'Remove Like' : 'Like'}} ({{vm.likes}})
+                    <i class="fa fa-eye margin-right-5"></i><span class="margin-right-5">{{vm.project.visits}}</span>
+                    <i class="fa fa-comments margin-right-5"></i><span class="margin-right-5">{{vm.project.comments}}</span>
+                    <button class="btn btn-xs margin-left-5" ng-class="vm.isLiked ? 'btn-warning' : 'btn-success'" ng-click="vm.isLiked ? vm.dislikeProject(vm.project.id) : vm.likeProject(vm.project.id)">
+                        <i ng-class="vm.isLiked ? 'fa fa-thumbs-down' : 'fa fa-thumbs-up'"></i>{{vm.isLiked ? 'Dislike' : 'Like'}} ({{vm.likes}})
+                    </button>
+                    <button class="btn btn-xs margin-left-10" data-toggle="tooltip" data-placement="right" title="Flag projects with unappropriate content. Projects flagged by enough users will be hidden." ng-class="vm.isFlagged ? 'btn-success' : 'btn-danger'" ng-click="vm.isFlagged ? vm.unflagProject(vm.project.id) : vm.flagProject(vm.project.id)">
+                        <i ng-class="vm.isFlagged ? 'fa fa-flag-o' : 'fa fa-flag'"></i>{{vm.isFlagged ? 'Unflag' : 'Flag'}}
                     </button>
                 </div>
             </div>
@@ -37,7 +40,7 @@
                     <a href="/users/{{collaborator}}" class="margin-right-5 margin-bottom-2">{{collaborator}}</a>
                 </span>
                 <div class="margin-top-5">
-                    <a href="#" ng-repeat="tag in vm.project.tags">
+                    <a href="projects/search?$orderby=createdOn&$top=4&$skip=0&$count=true&$filter=tags%2Fany(t:contains(t%2Fname,%27{{tag.name}}%27))" ng-repeat="tag in vm.project.tags">
                         <span class="label label-default" style="background-color: {{tag.backgroundColor}}; color: {{tag.foregroundColor}}">{{tag.name}}</span>
                     </a>
                 </div>
@@ -50,7 +53,7 @@
             </div>
         </div>
         
-        <hr style="width: 80%; margin: 0 auto; opacity: 0.4"  animate="fadeInUp" data-animation-delay="200"/>
+        <!--<hr style="width: 80%; margin: 0 auto; opacity: 0.4"  animate="fadeInUp" data-animation-delay="200"/>-->
 
         <div class="row margin-top-30">
             <div class="col-md-offset-1 col-md-10" animate="fadeInUp" data-animation-delay="200">
@@ -65,9 +68,17 @@
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <p class="margin-bottom-10 nomargin-top">
+                        <div ng-show="comment.username == vm.currentLoggedInUsername" class="pull-right">
+                            <input type="button" class="btn btn-xs btn-default" style="margin-left: 10px; " ng-hide="vm.edittingComments[comment.id]" value="edit" ng-click="vm.editComment(comment.id)" />
+                        </div>
+                        <p class="margin-bottom-10 nomargin-top" ng-hide="vm.edittingComments[comment.id]" style="word-break: break-all">
                             {{comment.content}}
                         </p>
+                        <div ng-show="vm.edittingComments[comment.id]">
+                            <textarea class="nomargin-bottom form-control padding-left-10 padding-right-10" ng-model="comment.content" cols="80" rows="5"></textarea><br />
+                            <input type="button" class="btn btn-xs btn-success" ng-click="vm.saveComment(comment.id, comment.content)" value="Save" />
+                            <input type="button" class="btn btn-xs btn-warning" ng-click="vm.cancelEdit(comment.id)" value="Cancel" />
+                        </div>
                     </div>
                 </div>
                 <div ng-hide="vm.comments.length > 0" class="row">
@@ -81,7 +92,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         <form class="nomargin nopadding">
-                            <textarea rows="8" cols="70" ng-model="vm.commentText" class="padding-left-10 padding-right-10"></textarea>
+                            <textarea rows="8" cols="70" ng-model="vm.commentText" class="padding-left-10 padding-right-10 form-control"></textarea>
                             <br />
                             <button class="btn btn-sm btn-success" ng-click="vm.commentProject(vm.project.id)">Comment</button>
                         </form>

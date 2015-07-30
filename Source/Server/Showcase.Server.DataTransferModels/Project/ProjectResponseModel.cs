@@ -46,6 +46,8 @@
 
         public bool IsLiked { get; set; }
 
+        public bool IsFlagged { get; set; }
+
         public string TitleUrl
         {
             get

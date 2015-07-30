@@ -1,22 +1,35 @@
 ﻿(function () {
     'use strict';
 
-    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, searchPageData) {
+    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, $window, searchPageData, projectsSearchService) {
         var vm = this,
             oDataQuery,
+            canGetNext = true,
+            initialProjectsLoaded = false,
             CONSTS = {
                 DESC: 'desc'
             };
 
-        vm.filterOptions = searchPageData.getFilterOptions();
-        vm.searchParams = searchPageData.getSearchParams();
+        vm.projects = [];
+        vm.isLastPage = false;
+        vm.loading = false;
+
+        vm.filterOptions = projectsSearchService.getFilterOptions();
+        vm.filterOptions.desc = $routeParams.desc === undefined ? true : $routeParams.desc;
+        vm.searchParams = projectsSearchService.getSearchParams();
+
+        $scope.currentPage = 0;
 
         vm.search = function (query) {
             $routeParams = {
                 $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),
                 $top: vm.filterOptions.pageSize,
                 $skip: $scope.currentpage || 0,
-                $count: 'true'
+                $count: 'true',
+                $filter: "createdOn gt " +
+                    projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
+                    " and createdOn lt " +
+                    projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
             if (vm.searchParams.name || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
@@ -31,6 +44,7 @@
                             .join(' or ');
                         index += 1;
                     }
+
                     if (vm.searchParams.tags) {
                         args[index] = vm.searchParams.tags
                             .split(',')
@@ -39,6 +53,7 @@
                             }).join(' or ');
                         index += 1;
                     }
+
                     if (vm.searchParams.collaborators) {
                         args[index] = vm.searchParams.collaborators
                             .split(',')
@@ -47,14 +62,11 @@
                             }).join(' or ');
                         index += 1;
                     }
-                    if (vm.searchParams.period) {
-                        args[index] = '';// TODO:
-                    }
 
                     return args.join(' and ');
                 })();
             }
-
+            
             if (query) {
                 Object.keys(query)
                     .forEach(function (key) {
@@ -66,7 +78,13 @@
                 .forEach(function (key) {
                     $location.search(key, $routeParams[key]);
                 });
+
+            $scope.currentPage = 0;
+            initialProjectsLoaded = false;
+            getProjects();
         };
+
+        vm.search();
 
         // not working if attached to vm
         $scope.changePage = function (newPage) {
@@ -75,25 +93,115 @@
         };
 
         vm.getNextProjects = function () {
-            console.log(vm.filterOptions);
+            if (vm.isLastPage || !canGetNext) {
+                return;
+            }
+
+            canGetNext = false;
+            $routeParams.$skip = $scope.currentPage * vm.filterOptions.pageSize;
+            getProjects();
         };
 
-        oDataQuery = searchPageData.getQuery($routeParams);
-        var stertTime = new Date().getTime();
-        searchPageData.searchProjects(oDataQuery)
-            .then(function (odata) {
-                // results data
-                vm.projects = odata.value;
-                // searchbar data
-                vm.totalResultsCount = odata['@odata.count'];
-                vm.timeElapsed = (new Date().getTime() - stertTime) / 1000;
-                // pager data
-                $scope.totalPages = Math.ceil(odata['@odata.count'] / vm.filterOptions.pageSize);
-                $scope.currentPage = !!$routeParams.$skip ? $routeParams.$skip / $routeParams.$top : 0;
-            });
+        $scope.$watch('vm.filterOptions.desc', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
+        $scope.$watch('vm.filterOptions.orderOption', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
+        $scope.$watch('vm.filterOptions.pageSize', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
+        $scope.$watch('vm.searchParams.fromDate', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
+        $scope.$watch('vm.searchParams.toDate', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
+        $scope.$watch('vm.filterOptions.scrolling', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            if (newValue == true) {
+                initialProjectsLoaded = false;
+                canGetNext = false;
+                $scope.currentPage = 0;
+                vm.search();
+            } else {
+                $scope.currentPage--;
+                $scope.changePage($scope.currentPage);
+            }
+        });
+
+        function getProjects() {
+            oDataQuery = projectsSearchService.getQuery($routeParams);
+            var startTime = new Date().getTime();
+            $routeParams.$count = true;
+
+            if (!initialProjectsLoaded) {                
+                vm.loading = true;
+            }
+
+            searchPageData.searchProjects(oDataQuery)
+                .then(function (odata) {
+                    // results data
+                    vm.isLastPage = odata['@odata.count'] <= ($scope.currentPage + 1) * vm.filterOptions.pageSize;
+
+                    // searchbar data
+                    vm.totalResultsCount = odata['@odata.count'];
+                    vm.timeElapsed = (new Date().getTime() - startTime) / 1000;
+
+                    // pager data
+                    $scope.totalPages = Math.ceil(odata['@odata.count'] / vm.filterOptions.pageSize);
+
+                    if (localStorage.scrolling == 'true' && initialProjectsLoaded) {
+                        vm.projects = vm.projects.concat(odata.value);
+                    }
+                    else {
+                        vm.projects = odata.value;
+                    }
+
+                    vm.loading = false;
+                    
+                    if (localStorage.scrolling == 'true') {
+                        $scope.currentPage++;
+                    }
+                    else {
+                        $scope.currentPage = !!$routeParams.$skip ? $routeParams.$skip / $routeParams.$top : 0;
+                    }
+
+                    canGetNext = true;
+                    initialProjectsLoaded = true;
+                });
+        }
     };
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', 'projectsSearchPageData', projectsSearchPageController]);
+        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', projectsSearchPageController]);
 }());

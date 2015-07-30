@@ -37,6 +37,7 @@
                     for (var i = 0; i < scope.totalPages; i += 1) {
                         pages.push({ pageNumber: i, isCurrent: i == currentPage });
                     }
+
                     scope.pages = pages;
                     scope.selectedPage = +currentPage;
                     scope.hasPreviousPage = currentPage > 0;

@@ -124,6 +124,7 @@
     <Content Include="app\add-project-page\add-project-controller.js" />
     <Content Include="app\add-project-page\add-project-data.js" />
     <Content Include="app\add-project-page\add-project-view.html" />
+    <Content Include="app\common\comments-data.js" />
     <Content Include="app\add-project-page\file-upload-directive.js" />
     <Content Include="app\add-project-page\token-input-directive.js" />
     <Content Include="app\add-project-page\uploaded-images-container-directive.html" />
@@ -137,6 +138,7 @@
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
+    <Content Include="app\projects-search-page\projects-search-page-service.js" />
     <Content Include="app\statistics-page\line-chart-directive.html" />
     <Content Include="app\statistics-page\line-chart-directive.js" />
     <Content Include="app\identity\auth-service.js" />
@@ -212,6 +214,7 @@
     <Content Include="content\loading-bar.min.css" />
     <Content Include="content\toastr.less" />
     <Content Include="content\toastr.scss" />
+    <Content Include="content\ui-bootstrap-csp.css" />
     <Content Include="content\token-input-showcase.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -227,6 +230,10 @@
     <Content Include="scripts\angular-cookies.min.js" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-route.min.js.map" />
+    <Content Include="scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\Chart.js" />
@@ -269,6 +276,9 @@
     <Content Include="scripts\angular-animate.min.js.map" />
     <Content Include="scripts\angular-cookies.min.js.map" />
     <Content Include="scripts\angular.min.js.map" />
+    <Content Include="scripts\ng-infinite-scroll.min.js.map">
+      <DependentUpon>ng-infinite-scroll.min.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1332,6 +1342,8 @@
     <Content Include="scripts\jquery.tokeninput.js" />
     <Content Include="scripts\loading-bar.js" />
     <Content Include="scripts\loading-bar.min.js" />
+    <Content Include="scripts\ng-infinite-scroll.js" />
+    <Content Include="scripts\ng-infinite-scroll.min.js" />
     <Content Include="scripts\npm.js" />
     <Content Include="scripts\toastr.js" />
     <Content Include="scripts\toastr.min.js" />

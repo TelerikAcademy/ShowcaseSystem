@@ -73,7 +73,6 @@
         <body class="smoothscroll boxed" data-background="/content/epona/images/boxed_background/1.jpg">
 -->
 <body class="smoothscroll" ng-app="showcaseSystem" ng-cloak>
-
     <div id="wrapper" ng-controller="MainController as vm">
         <div id="header" showcase-header animate="fadeIn"></div>
 
@@ -84,6 +83,7 @@
 
         <div ng-include="'/app/identity/login-modal-template.html'"></div>
     </div>
+
     <script type="text/javascript" src="/scripts/epona/plugins/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="/scripts/epona/plugins/jquery.isotope.js"></script>
     <script type="text/javascript" src="/scripts/epona/plugins/masonry.js"></script>
@@ -108,6 +108,8 @@
     <script src="/scripts/loading-bar.js"></script>
     <script src="/scripts/jquery.tokeninput.js"></script>
     <script src="/scripts/Chart.js"></script>
+    <script src="/scripts/ng-infinite-scroll.min.js"></script>
+    <script src="/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
 
     <!-- inject:js -->
     <!-- endinject -->

@@ -5,7 +5,7 @@
         </li>
 
         <li ng-class="{active: page.isCurrent}" ng-repeat="page in pages">
-            <a href="" ng-click="changed(page.pageNumber)">{{page.pageNumber+1}}</a>
+            <a href="" ng-click="changed(page.pageNumber)">{{page.pageNumber}}</a>
         </li>
 
         <li ng-class="{disabled: !hasNextPage}">

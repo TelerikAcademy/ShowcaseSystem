@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Server.DataTransferModels.Project
 {
     using System;
+    using System.Linq;
 
     using AutoMapper;
     using MissingFeatures;
@@ -12,6 +13,8 @@
 
     public class CommentResponseModel : IMapFrom<Comment>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public int ProjectId { get; set; }
 
         public string ProjectTitle { get; set; }

@@ -18,5 +18,7 @@
         int UserCommentsCount(string username);
 
         Comment AddNew(int id, string commentText, string username);
+
+        Comment EditComment(int id, string commentText, string username);
     }
 }

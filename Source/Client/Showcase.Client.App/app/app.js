@@ -19,7 +19,8 @@
                 templateUrl: '/app/home-page/home-page-view.html'
             })
             .when('/projects/search', {
-                templateUrl: '/app/projects-search-page/projects-search-page-view.html'
+                templateUrl: '/app/projects-search-page/projects-search-page-view.html',
+                reloadOnSearch: false
             })
             .when('/projects/add', {
                 templateUrl: '/app/add-project-page/add-project-view.html',
@@ -65,7 +66,7 @@
     angular.module('showcaseSystem.controllers', ['showcaseSystem.data', 'showcaseSystem.services']);
     angular.module('showcaseSystem.directives', []);
 
-    angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives'])
+    angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives', 'infinite-scroll', 'ui.bootstrap'])
         .config(['$routeProvider', '$locationProvider', '$httpProvider', config])
         .run(['$rootScope', '$location', 'auth', 'notifier', run])
         .value('jQuery', jQuery)

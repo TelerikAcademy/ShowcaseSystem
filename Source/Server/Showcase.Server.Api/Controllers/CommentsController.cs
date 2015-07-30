@@ -16,9 +16,12 @@
     {
         private readonly ICommentsService comments;
 
-        public CommentsController(ICommentsService comments)
+        private readonly IUsersService users;
+
+        public CommentsController(ICommentsService comments, IUsersService users)
         {
             this.comments = comments;
+            this.users = users;
         }
 
         [HttpPost]
@@ -38,6 +41,29 @@
                 .To<CommentResponseModel>()
                 .FirstOrDefault();
             
+            return this.Data(model);
+        }
+
+        [HttpPost]
+        [Route("Edit/{id}")]
+        public IHttpActionResult Edit(int id, CommentRequestModel comment)
+        {
+            if (comment == null || !this.ModelState.IsValid)
+            {
+                return this.Data(false, "Invalid data.");
+            }
+
+            var username = this.User.Identity.Name;
+
+            var edittedComment = this.comments.EditComment(id, comment.CommentText, username);
+
+            if (edittedComment == null)
+            {
+                return this.Data(false, "");
+            }
+
+            var model = Mapper.Map<Comment, CommentResponseModel>(edittedComment);
+
             return this.Data(model);
         }
 
@@ -68,7 +94,7 @@
             var userCommentsCount = this.comments.UserCommentsCount(username);
             var lastPage = this.GetLastPage(userCommentsCount, page);
 
-            if (page < 1 || page > lastPage)
+            if (page < 0 || page > lastPage)
             {
                 return this.Data(false, "There are no more comments to load.");
             }
