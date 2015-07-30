@@ -6,7 +6,7 @@
         var id = $routeParams.id;
 
         vm.commentText = '';
-        vm.commentsPage = 1;
+        vm.commentsPage = 0;
         vm.edittingComments = [];
 
         identity.getUser()
@@ -23,6 +23,11 @@
         };
 
         vm.saveComment = function (id, text) {
+            if (vm.commentText.length < 10 || vm.commentText > 500) {
+                notifier.error('The comment length should be between 10 and 500 symbols.');
+                return;
+            }
+
             commentsData.editComment(id, text)
                 .then(function (data) {
                     vm.edittingComments[id] = false;
@@ -96,7 +101,7 @@
 
         vm.commentProject = function (id) {
             if (vm.commentText.length < 10 || vm.commentText > 500) {
-                notifier.error('The comment length should be between 10 and 1000 symbols.');
+                notifier.error('The comment length should be between 10 and 500 symbols.');
                 return;
             }
 
@@ -116,21 +121,6 @@
                         vm.commentsPage++;
                     }
                 });
-        };
-
-        vm.popup = function (url, title, w, h, text, hashTags) {
-            var url = url + $location.absUrl();
-            if (text !== undefined) {
-                url += '&text=' + text + ' - ' + vm.project.name;
-            }
-
-            if (hashTags != undefined) {
-                url += '&hashtags=' + hashTags;
-            }
-
-            var left = (screen.width / 2) - (w / 2);
-            var top = (screen.height / 2) - (h / 2);
-            $window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
         };
 
         function daydiff(first, second) {

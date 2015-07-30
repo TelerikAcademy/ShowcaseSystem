@@ -8,7 +8,7 @@
             arrowUpCss = 'fa fa-long-arrow-up';
 
         vm.orderBy = '-createdOn';
-        vm.commentsPage = 1;
+        vm.commentsPage = 0;
 
         $('.tab-button').click(function (e) {
             e.preventDefault();

@@ -122,7 +122,6 @@
 /// <reference path="../app/user-profile-page/user-profile-comments-directive.js" />
 /// <reference path="../app/user-profile-page/user-profile-teammates-directive.js" />
 /// <reference path="../app/common/pager-directive.js" />
-/// <reference path="../app/common/infinite-scroll-directive.js" />
 /// <reference path="../app/common/dropdown-directive.js" />
 /// <reference path="../app/common/project-tile-directive.js" />
 /// <reference path="../app/projects-search-page/filters-directive.js" />
@@ -146,4 +145,5 @@
 /// <reference path="ng-infinite-scroll.js" />
 /// <reference path="angular-ui/ui-bootstrap-tpls.js" />
 /// <reference path="angular-ui/ui-bootstrap.js" />
+/// <reference path="../app/project-details-page/social-icons-directive.js" />
 

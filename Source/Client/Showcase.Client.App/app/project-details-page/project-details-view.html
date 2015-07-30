@@ -21,17 +21,8 @@
                     <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{vm.project.shortDate}}</span> |
                     <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a>
                     <span ng-show="vm.project.liveDemoUrl.length > 0"> |<i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank">live demo</a></span>
-                    <div class="pull-right">
-                        <a href="#" class="btn btn-sm ico-only rounded btn-facebook" ng-click="vm.popup('http://www.facebook.com/sharer.php?u=', 'Facebook Share', 600, 500)">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm ico-only rounded btn-twitter" ng-click="vm.popup('http://twitter.com/share?url=', 'Twitter Share', 600, 500, 'Check out my project ', 'telerikacademy')">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a href="#" class="btn btn-sm ico-only rounded btn-google-plus" ng-click="vm.popup('https://plus.google.com/share?url=', 'Google+ Share', 600, 500)">
-                            <i class="fa fa-google-plus"></i>
-                        </a>
-                    </div>
+
+                    <div class="pull-right" social-icons popup="vm.popup" name="vm.project.name" />
                 </div>
                 <p class="text-justify margin-top-15">
                     {{vm.project.description}}
@@ -52,7 +43,7 @@
                 <div owl-carousel images="vm.images" />
             </div>
         </div>
-        
+
         <!--<hr style="width: 80%; margin: 0 auto; opacity: 0.4"  animate="fadeInUp" data-animation-delay="200"/>-->
 
         <div class="row margin-top-30">
