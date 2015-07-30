@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
@@ -21,7 +22,7 @@
             this.users = users;
         }
         
-        public Comment AddNew(int id, string commentText, string username)
+        public async Task<Comment> AddNew(int id, string commentText, string username)
         {
             var userId = this.users.UserIdByUsername(username);
 
@@ -34,7 +35,7 @@
             };
 
             this.comments.Add(comment);
-            this.comments.SaveChanges();
+            await this.comments.SaveChangesAsync();
 
             return comment;
         }

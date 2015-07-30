@@ -1,6 +1,8 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
+    using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Http;
 
     using AutoMapper.QueryableExtensions;
@@ -27,7 +29,7 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Post(int id, CommentRequestModel comment)
+        public async Task<IHttpActionResult> Post(int id, CommentRequestModel comment)
         {
             if (comment == null || !this.ModelState.IsValid)
             {
@@ -35,13 +37,13 @@
             }
 
             var username = this.User.Identity.Name;
-            var postedComment = this.commentsService.AddNew(id, comment.CommentText, username);
+            var postedComment = await this.commentsService.AddNew(id, comment.CommentText, username);
 
-            var model = this.commentsService
+            var model = await this.commentsService
                 .CommentById(postedComment.Id)
                 .Project()
                 .To<CommentResponseModel>()
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
             
             return this.Data(model);
         }
