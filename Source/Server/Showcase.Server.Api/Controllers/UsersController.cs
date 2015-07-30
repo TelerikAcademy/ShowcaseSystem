@@ -35,7 +35,23 @@
                 .To<UserResponseModel>()
                 .FirstOrDefault();
             
-            if (model != null)
+            if (model != null) // TODO: move the checking for null to this.Data 
+            {
+                return this.Data(model);
+            }
+            else
+            {
+                return this.Data(false, "The requested user was not found.");
+            }
+        }
+
+        [HttpGet]
+        [Route("RemoteProfile/{username}")]
+        public async Task<IHttpActionResult> RemoteProfile(string username)
+        {
+            var model = await this.users.ProfileInfo(username);
+
+            if (model != null) // TODO: move the checking for null to this.Data 
             {
                 return this.Data(model);
             }

@@ -57,10 +57,10 @@
             }.Where(u => u.ToLower().Contains(username.ToLower())); // for testing purpose, do not filter here
         }
 
-        public RemoteUserProfile ProfileInfo(string username)
+        public Task<RemoteUserProfile> ProfileInfo(string username)
         {
-            // TODO: get from telerikacademy.com
-            return new RemoteUserProfile
+            // TODO: get from telerikacademy.com and return null if user does not exist
+            return Task.Run(() => new RemoteUserProfile
             {
                 FirstName = "User",
                 LastName = "Userov",
@@ -69,7 +69,7 @@
                 LargeAvatarUrl = "some.jpg",
                 Occupation = "Director",
                 Sex = "Male"
-            };
+            });
         }
 
         public bool UsersExist(IEnumerable<string> usernames)

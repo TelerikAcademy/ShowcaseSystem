@@ -6,6 +6,7 @@
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
+using Showcase.Services.Data.Models;
 
     public interface IUsersService : IService
     {
@@ -16,6 +17,8 @@
         IEnumerable<string> SearchByUsername(string username);
 
         Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators);
+
+        Task<RemoteUserProfile> ProfileInfo(string username);
 
         int UserIdByUsername(string username);
     }

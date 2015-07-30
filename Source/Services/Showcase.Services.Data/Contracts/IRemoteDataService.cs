@@ -15,7 +15,7 @@
 
         IEnumerable<string> SearchByUsername(string username);
 
-        RemoteUserProfile ProfileInfo(string username);
+        Task<RemoteUserProfile> ProfileInfo(string username);
 
         bool UsersExist(IEnumerable<string> usernames);
     }

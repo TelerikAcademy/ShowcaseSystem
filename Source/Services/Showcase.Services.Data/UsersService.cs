@@ -11,6 +11,7 @@
     using Showcase.Data.Models;
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Data.Models;
 
     public class UsersService : IUsersService
     {
@@ -90,6 +91,11 @@
             // var newlyAddedUsers = await this.AddNonExistingUsers(nonExistingLocalUsersRemoteInfo);
             // localUsers.AddRange(newlyAddedUsers);
             return localUsers;
+        }
+
+        public async Task<RemoteUserProfile> ProfileInfo(string username)
+        {
+            return await this.remoteData.ProfileInfo(username);
         }
 
         private async Task<User> GetLocalAccount(string username)
