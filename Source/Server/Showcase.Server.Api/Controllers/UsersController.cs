@@ -1,9 +1,8 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
     using System;
-    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
     using System.Web.Http;
 
@@ -27,13 +26,13 @@
 
         [HttpGet]
         [Route("Profile/{username}")]
-        public IHttpActionResult Get(string username)
+        public async Task<IHttpActionResult> Get(string username)
         {
-            var model = this.users
+            var model = await this.users
                 .ByUsername(username)
                 .Project()
                 .To<UserResponseModel>()
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
             
             if (model != null) // TODO: move the checking for null to this.Data 
             {
@@ -64,13 +63,13 @@
         [Authorize]
         [HttpGet]
         [Route("Identity")]
-        public IHttpActionResult Identity()
+        public async Task<IHttpActionResult> Identity()
         {
-            var model = this.users
+            var model = await this.users
                 .ByUsername(this.User.Identity.Name)
                 .Project()
                 .To<IdentityResponseModel>()
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
             return this.Data(model);
         }
@@ -85,9 +84,10 @@
                 return this.Data(false, string.Format("Username should be at least {0} symbols long", MinimumCharactersForUsernameSearch));
             }
 
-            var model = await this.users.SearchByUsername(username);
+            var model = (await this.users.SearchByUsername(username))
+                .Select(UserAutocompleteResponseModel.FromUserName);
 
-            return this.Ok(model.Select(UserAutocompleteResponseModel.FromUserName));
+            return this.Ok(model);
         }
     }
 }
