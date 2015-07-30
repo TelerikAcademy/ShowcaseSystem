@@ -1,6 +1,8 @@
 ﻿namespace Showcase.Services.Data
 {
     using System;
+    using System.Data.Entity;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
@@ -21,7 +23,7 @@
             this.projects = projects;
         }
 
-        public void VisitProject(int projectId, string username)
+        public async Task VisitProject(int projectId, string username)
         {
             var visit = new Visit
             {
@@ -30,7 +32,7 @@
             };
 
             this.visits.Add(visit);
-            this.visits.SaveChanges();
+            await this.visits.SaveChangesAsync();
         }
     }
 }

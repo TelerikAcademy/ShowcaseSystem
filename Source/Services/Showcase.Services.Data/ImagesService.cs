@@ -35,8 +35,8 @@
                 image.UrlPath = this.GenerateImageUrlPath(image.Id);
                 await imagesContext.SaveChangesAsync();
 
-                var thumbnailContent = this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
-                var highContent = this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);
+                var thumbnailContent = await this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
+                var highContent = await this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);
 
                 return ProcessedImage.FromImage(image, thumbnailContent, highContent);
             });

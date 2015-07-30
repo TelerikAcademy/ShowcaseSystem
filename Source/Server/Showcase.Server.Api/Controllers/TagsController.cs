@@ -1,7 +1,9 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
+    using System.Data.Entity;
     using System.Linq;
     using System.Web.Http;
+    using System.Threading.Tasks;
 
     using AutoMapper.QueryableExtensions;
 
@@ -24,18 +26,18 @@
         [Authorize]
         [HttpGet]
         [Route("Search")]
-        public IHttpActionResult Search(string name)
+        public async Task<IHttpActionResult> Search(string name)
         {
             if (string.IsNullOrEmpty(name) || name.Length < MinimumCharactersForNameSearch)
             {
                 return this.Data(false, string.Format("Name should be at least {0} symbols long", MinimumCharactersForNameSearch));
             }
 
-            var model = this.tagsService
+            var model = await this.tagsService
                 .SearchByName(name)
                 .Project()
                 .To<TagAutocompleteResponseModel>()
-                .ToList();
+                .ToListAsync();
 
             return this.Ok(model);
         }

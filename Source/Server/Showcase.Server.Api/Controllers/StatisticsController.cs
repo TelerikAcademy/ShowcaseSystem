@@ -2,7 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Http;
 
     using AutoMapper.QueryableExtensions;
@@ -23,26 +25,22 @@
             this.statisticsService = statisticsService;
         }
 
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get()
         {
-            return this.Data(this.statisticsService.Current());
+            return this.Data(await this.statisticsService.Current());
         }
 
         [HttpGet]
         [Route("ProjectsLastSixMonths")]
-        public IHttpActionResult ProjectsLastSixMonths()
+        public async Task<IHttpActionResult> ProjectsLastSixMonths()
         {
             var total = 0;
-            var result = new LineChartResponseModel
-            {
-                Labels = new List<string>(),
-                Values = new List<int>()
-            };
+            var result = new LineChartResponseModel();
 
-            this.statisticsService
+            (await this.statisticsService
                 .ProjectsLastSixMonths()
                 .Select(CountByDateModel.FromProjectGrouping)
-                .ToList()
+                .ToListAsync())
                 .ForEach(r =>
                 {
                     total += r.Count;
@@ -55,40 +53,40 @@
 
         [HttpGet]
         [Route("ProjectsCountByTag")]
-        public IHttpActionResult ProjectsCountByTag()
+        public async Task<IHttpActionResult> ProjectsCountByTag()
         {
-            var result = this.statisticsService
+            var result = await this.statisticsService
                 .ProjectsCountByTag()
                 .Project()
                 .To<CountByTagModel>()
-                .ToList();
+                .ToListAsync();
 
             return this.Data(result);
         }
 
         [HttpGet]
         [Route("TopProjects")]
-        public IHttpActionResult TopProjects()
+        public async Task<IHttpActionResult> TopProjects()
         {
-            var model = this.statisticsService
+            var model = await this.statisticsService
                 .TopProjects()
                 .Project()
                 .To<TopProjectResponseModel>()
-                .ToList();
+                .ToListAsync();
 
             return this.Data(model);
         }
 
         [HttpGet]
         [Route("TopUsers")]
-        public IHttpActionResult TopUsers()
+        public async Task<IHttpActionResult> TopUsers()
         {
-            var model = this.statisticsService
+            var model = await this.statisticsService
                 .TopUsers()
                 .Project()
                 .To<TopUserResponseModel>()
                 .OrderByDescending(u => u.LikesCount)
-                .ToList();
+                .ToListAsync();
 
             return this.Data(model);
         }

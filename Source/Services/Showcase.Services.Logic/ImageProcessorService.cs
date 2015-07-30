@@ -2,6 +2,7 @@
 {
     using System.Drawing;
     using System.IO;
+    using System.Threading.Tasks;
 
     using ImageProcessor;
     using ImageProcessor.Imaging;
@@ -12,31 +13,34 @@
 
     public class ImageProcessorService : IImageProcessorService
     {
-        public byte[] Resize(byte[] originalImage, int width)
+        public Task<byte[]> Resize(byte[] originalImage, int width)
         {
-            using (var originalImageStream = new MemoryStream(originalImage))
+            return Task.Run(() =>
             {
-                using (var resultImage = new MemoryStream())
+                using (var originalImageStream = new MemoryStream(originalImage))
                 {
-                    using (var imageFactory = new ImageFactory())
+                    using (var resultImage = new MemoryStream())
                     {
-                        var createdImage = imageFactory
-                            .Load(originalImageStream);
-
-                        if (createdImage.Image.Width > width)
+                        using (var imageFactory = new ImageFactory())
                         {
-                            createdImage = createdImage
-                                .Resize(new ResizeLayer(new Size(width, 0), resizeMode: ResizeMode.Max));
+                            var createdImage = imageFactory
+                                .Load(originalImageStream);
+
+                            if (createdImage.Image.Width > width)
+                            {
+                                createdImage = createdImage
+                                    .Resize(new ResizeLayer(new Size(width, 0), resizeMode: ResizeMode.Max));
+                            }
+
+                            createdImage
+                                .Format(new JpegFormat { Quality = Constants.ImageQuality })
+                                .Save(resultImage);
                         }
 
-                        createdImage
-                            .Format(new JpegFormat { Quality = Constants.ImageQuality })
-                            .Save(resultImage);
+                        return resultImage.GetBuffer();
                     }
-
-                    return resultImage.GetBuffer();
                 }
-            }
+            });
         }
     }
 }
