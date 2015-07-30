@@ -151,7 +151,7 @@
             return this.Ok();
         }
 
-        // [Authorize]
+        [Authorize]
         [HttpPost]
         [Route("Like/{id}")]
         public IHttpActionResult Like(int id)
@@ -168,7 +168,7 @@
             return this.Ok();
         }
 
-        // [Authorize]
+        [Authorize]
         [HttpPost]
         [Route("Dislike/{id}")]
         public IHttpActionResult Dislike(int id)
@@ -185,6 +185,7 @@
             return this.Ok();
         }
 
+        [Authorize]
         [HttpPost]
         [Route("Flag/{id}")]
         public IHttpActionResult Flag(int id)
@@ -201,6 +202,7 @@
             return this.Ok();
         }
 
+        [Authorize]
         [HttpPost]
         [Route("Unflag/{id}")]
         public IHttpActionResult Unflag(int id)
