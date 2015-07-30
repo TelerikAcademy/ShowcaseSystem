@@ -13,7 +13,7 @@
         </div>
         <p ng-hide="edittingComments[comment.id]" ng-bind="comment.content"></p>
         <div ng-show="edittingComments[comment.id]">
-            <textarea class="nomargin-bottom" ng-model="comment.content" cols="80" rows="5"></textarea><br />
+            <textarea class="nomargin-bottom form-control padding-left-10 padding-right-10" ng-model="comment.content" cols="80" rows="5"></textarea><br />
             <input type="button" class="btn btn-xs btn-success" ng-click="saveComment(comment.id, comment.content)" value="Save" />
             <input type="button" class="btn btn-xs btn-warning" ng-click="cancelEdit(comment.id)" value="Cancel"/>
         </div>

@@ -75,7 +75,7 @@
                             {{comment.content}}
                         </p>
                         <div ng-show="vm.edittingComments[comment.id]">
-                            <textarea class="nomargin-bottom" ng-model="comment.content" cols="80" rows="5"></textarea><br />
+                            <textarea class="nomargin-bottom form-control padding-left-10 padding-right-10" ng-model="comment.content" cols="80" rows="5"></textarea><br />
                             <input type="button" class="btn btn-xs btn-success" ng-click="vm.saveComment(comment.id, comment.content)" value="Save" />
                             <input type="button" class="btn btn-xs btn-warning" ng-click="vm.cancelEdit(comment.id)" value="Cancel" />
                         </div>
@@ -92,7 +92,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         <form class="nomargin nopadding">
-                            <textarea rows="8" cols="70" ng-model="vm.commentText" class="padding-left-10 padding-right-10"></textarea>
+                            <textarea rows="8" cols="70" ng-model="vm.commentText" class="padding-left-10 padding-right-10 form-control"></textarea>
                             <br />
                             <button class="btn btn-sm btn-success" ng-click="vm.commentProject(vm.project.id)">Comment</button>
                         </form>

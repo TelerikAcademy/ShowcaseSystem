@@ -9,16 +9,19 @@
     using Showcase.Services.Data.Contracts;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
+    using Showcase.Services.Common;
 
     public class FlagsService : IFlagsService
     {
         private readonly IRepository<Flag> flags;
+        private readonly IRepository<Project> projects;
         private readonly IUsersService users;
 
-        public FlagsService(IRepository<Flag> flags, IUsersService users)
+        public FlagsService(IRepository<Flag> flags, IUsersService users, IRepository<Project> projects)
         {
             this.flags = flags;
             this.users = users;
+            this.projects = projects;
         }
 
         public void FlagProject(int projectId, string username)
@@ -36,6 +39,14 @@
 
                 this.flags.Add(flag);
                 this.flags.SaveChanges();
+
+                var project = this.projects.All().Where(p => p.Id == projectId).FirstOrDefault();
+
+                if (project.Flags.Count >= Constants.FlagsNeededToHideProject)
+                {
+                    project.IsHidden = true;
+                    this.projects.SaveChanges();
+                }
             }
         }
 

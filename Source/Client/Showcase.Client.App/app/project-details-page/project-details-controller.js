@@ -12,7 +12,6 @@
         identity.getUser()
             .then(function (user) {
                 vm.currentLoggedInUsername = user.userName;
-                console.log(vm.currentLoggedInUsername);
             });
 
         vm.editComment = function (id) {
