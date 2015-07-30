@@ -2,7 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
@@ -12,9 +14,7 @@
     public class StatisticsService : IStatisticsService
     {
         private IRepository<Project> projects;
-
         private IRepository<Tag> tags;
-
         private IRepository<User> users;
 
         public StatisticsService(IRepository<Project> projects, IRepository<Tag> tags, IRepository<User> users)
@@ -24,19 +24,19 @@
             this.users = users;
         }
 
-        public object Current()
+        public async Task<object> Current()
         {
-            return this.projects
+            return await this.projects
                 .All()
                 .GroupBy(pr => 0)
-                .Select(gr => new
+                .Select(gr => new // TODO: create data transfer model
                 {
                     TotalProjects = gr.Count(),
                     TotalViews = gr.Sum(pr => pr.Visits.Count()),
                     TotalComments = gr.Sum(pr => pr.Comments.Count()),
                     TotalLikes = gr.Sum(pr => pr.Likes.Count())
                 })
-                .FirstOrDefault(); 
+                .FirstOrDefaultAsync(); 
         }
 
         public IQueryable<IGrouping<int, Project>> ProjectsLastSixMonths()

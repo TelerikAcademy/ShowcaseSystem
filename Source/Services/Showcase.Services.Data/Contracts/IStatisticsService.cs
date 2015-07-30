@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -15,6 +16,6 @@
 
         IQueryable<User> TopUsers();
 
-        object Current();
+        Task<object> Current();
     }
 }
