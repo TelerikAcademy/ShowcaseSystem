@@ -10,15 +10,15 @@
 
     public class RemoteDataService : IRemoteDataService
     {
-        public User Login(string username, string password)
+        public Task<User> Login(string username, string password)
         {
             // TODO: implement and get from telerikacademy.com
-            return new User
+            return Task.Run(() => new User
             {
                 UserName = username,
                 AvatarUrl = "some url", // return small avatar URL here 
                 IsAdmin = true
-            };
+            });
         }
 
         public Task<IEnumerable<User>> UsersInfo(IEnumerable<string> usernames)
@@ -41,10 +41,10 @@
             });
         }
 
-        public IEnumerable<string> SearchByUsername(string username)
+        public Task<IEnumerable<string>> SearchByUsername(string username)
         {
             // TODO: get from telerikacademy.com all usernames which contain the search - return maximum 10 entries
-            return new List<string>
+            return Task.Run<IEnumerable<string>>(() => new List<string>
             {
                 "ivaylo.kenov",
                 "ivaylo.manekenov",
@@ -54,7 +54,7 @@
                 "nikolay.kostov",
                 "kolio",
                 "kolio.TLa"
-            }.Where(u => u.ToLower().Contains(username.ToLower())); // for testing purpose, do not filter here
+            }.Where(u => u.ToLower().Contains(username.ToLower()))); // for testing purpose, do not filter here
         }
 
         public Task<RemoteUserProfile> ProfileInfo(string username)
@@ -72,10 +72,10 @@
             });
         }
 
-        public bool UsersExist(IEnumerable<string> usernames)
+        public Task<bool> UsersExist(IEnumerable<string> usernames)
         {
             // TODO: return whether all usernames are valid users from telerikacademy.com
-            return true;
+            return Task.Run(() => true);
         }
     }
 }

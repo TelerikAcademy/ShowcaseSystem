@@ -1,6 +1,8 @@
 # Showcase System
 Showcase system for students projects in Telerik Academy
 
+[![Build status](https://ci.appveyor.com/api/projects/status/m0g2ef0358847bra?svg=true)](https://ci.appveyor.com/project/NikolayIT/showcasesystem)
+
 ## How to run
 - Install [NodeJS](http://nodejs.org/)
 - Install [Gulp](http://gulpjs.com/) globally with

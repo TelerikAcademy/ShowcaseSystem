@@ -78,19 +78,16 @@
         [Authorize]
         [HttpGet]
         [Route("Search")]
-        public IHttpActionResult Search(string username)
+        public async Task<IHttpActionResult> Search(string username)
         {
             if (string.IsNullOrEmpty(username) || username.Length < MinimumCharactersForUsernameSearch)
             {
                 return this.Data(false, string.Format("Username should be at least {0} symbols long", MinimumCharactersForUsernameSearch));
             }
 
-            var model = this.users
-                .SearchByUsername(username)
-                .AsQueryable()
-                .Select(UserAutocompleteResponseModel.FromUserName);
+            var model = await this.users.SearchByUsername(username);
 
-            return this.Ok(model);
+            return this.Ok(model.Select(UserAutocompleteResponseModel.FromUserName));
         }
     }
 }
