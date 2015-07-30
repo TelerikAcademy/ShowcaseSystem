@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -9,10 +10,10 @@
     {
         IQueryable<Like> AllLikesForProject(int projectId);
 
-        void LikeProject(int projectId, string username);
+        Task LikeProject(int projectId, string username);
 
-        void DislikeProject(int projectId, string username);
+        Task DislikeProject(int projectId, string username);
 
-        bool ProjectIsLikedByUser(int projectId, string username);
+        Task<bool> ProjectIsLikedByUser(int projectId, string username);
     }
 }

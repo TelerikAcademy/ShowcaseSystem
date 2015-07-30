@@ -1,9 +1,8 @@
 ﻿namespace Showcase.Services.Data
 {
     using System;
-    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using Showcase.Services.Data.Contracts;
@@ -24,7 +23,7 @@
             this.projects = projects;
         }
 
-        public async void FlagProject(int projectId, string username)
+        public async Task FlagProject(int projectId, string username)
         {
             var userId = await this.users.UserIdByUsername(username);
 
@@ -38,40 +37,44 @@
                 };
 
                 this.flags.Add(flag);
-                this.flags.SaveChanges();
+                await this.flags.SaveChangesAsync();
 
-                var project = this.projects.All().Where(p => p.Id == projectId).FirstOrDefault();
+                var project = await this.projects
+                    .All()
+                    .Include(p => p.Flags.Count)
+                    .Where(p => p.Id == projectId)
+                    .FirstOrDefaultAsync();
 
                 if (project.Flags.Count >= Constants.FlagsNeededToHideProject)
                 {
                     project.IsHidden = true;
-                    this.projects.SaveChanges();
+                    await this.projects.SaveChangesAsync();
                 }
             }
         }
 
-        public async void UnFlagProject(int projectId, string username)
+        public async Task UnFlagProject(int projectId, string username)
         {
             var userId = await this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {
-                var flag = this.flags
+                var flag = await this.flags
                     .All()
                     .Where(f => f.UserId == userId && f.ProjectId == projectId)
-                    .FirstOrDefault();
+                    .FirstOrDefaultAsync();
 
                 this.flags.Delete(flag);
-                this.flags.SaveChanges();
+                await this.flags.SaveChangesAsync();
             }
         }
 
 
-        public bool ProjectIsFlaggedByUser(int projectId, string username)
+        public async Task<bool> ProjectIsFlaggedByUser(int projectId, string username)
         {
-            return this.users
+            return await this.users
                 .ByUsername(username)
-                .Any(u => u.Flags.Any(f => f.ProjectId == projectId));
+                .AnyAsync(u => u.Flags.Any(f => f.ProjectId == projectId));
         }
     }
 }

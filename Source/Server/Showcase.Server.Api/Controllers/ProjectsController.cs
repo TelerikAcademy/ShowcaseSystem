@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Http;
@@ -58,13 +59,13 @@
         }
 
         [HttpGet]
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get()
         {
-            var model = this.projectsService
+            var model = await this.projectsService
                 .LatestProjects()
                 .Project()
                 .To<ProjectSimpleResponseModel>()
-                .ToList();
+                .ToListAsync();
 
             return this.Data(model);
         }
@@ -91,30 +92,30 @@
 
         [HttpGet]
         [Route("Popular")]
-        public IHttpActionResult Popular()
+        public async Task<IHttpActionResult> Popular()
         {
-            var model = this.projectsService
+            var model = await this.projectsService
                 .MostPopular()
                 .Project()
                 .To<ProjectSimpleResponseModel>()
-                .ToList();
+                .ToListAsync();
 
             return this.Data(model);
         }
 
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
             var username = this.User.Identity.Name;
 
-            var model = this.projectsService
+            var model = await this.projectsService
                 .ProjectById(id)
                 .Project()
                 .To<ProjectResponseModel>()
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
-            model.IsLiked = this.likesService.ProjectIsLikedByUser(id, username);
-            model.IsFlagged = this.flagsService.ProjectIsFlaggedByUser(id, username);
+            model.IsLiked = await this.likesService.ProjectIsLikedByUser(id, username); // TODO: merge in one query
+            model.IsFlagged = await this.flagsService.ProjectIsFlaggedByUser(id, username); // TODO: merge in one query
 
             return this.Data(model);
         }
@@ -131,22 +132,22 @@
 
             var userId = await this.usersService.UserIdByUsername(username);
 
-            var model = this.projectsService
+            var model = await this.projectsService
                 .LikedByUser(userId)
                 .Project()
                 .To<ProjectResponseModel>()
-                .ToList();
+                .ToListAsync();
 
             return this.Data(model);
         }
 
         [HttpPost]
         [Route("Visit/{id}")]
-        public IHttpActionResult Visit(int id)
+        public async Task<IHttpActionResult> Visit(int id)
         {
             var username = this.User.Identity.Name;
 
-            this.visitsService.VisitProject(id, username);
+            await this.visitsService.VisitProject(id, username);
 
             return this.Ok();
         }
@@ -154,16 +155,16 @@
         [Authorize]
         [HttpPost]
         [Route("Like/{id}")]
-        public IHttpActionResult Like(int id)
+        public async Task<IHttpActionResult> Like(int id)
         {
             var username = this.User.Identity.Name;
 
-            if (this.likesService.ProjectIsLikedByUser(id, username))
+            if (await this.likesService.ProjectIsLikedByUser(id, username))
             {
                 return this.Data(false, "You already have liked this project.");
             }
 
-            this.likesService.LikeProject(id, username);
+            await this.likesService.LikeProject(id, username);
 
             return this.Ok();
         }
@@ -171,16 +172,16 @@
         [Authorize]
         [HttpPost]
         [Route("Dislike/{id}")]
-        public IHttpActionResult Dislike(int id)
+        public async Task<IHttpActionResult> Dislike(int id)
         {
             var username = this.User.Identity.Name;
 
-            if (!this.likesService.ProjectIsLikedByUser(id, username))
+            if (!await this.likesService.ProjectIsLikedByUser(id, username))
             {
                 return this.Data(false, "You have not yet liked this project.");
             }
 
-            this.likesService.DislikeProject(id, username);
+            await this.likesService.DislikeProject(id, username);
 
             return this.Ok();
         }
@@ -188,16 +189,16 @@
         [Authorize]
         [HttpPost]
         [Route("Flag/{id}")]
-        public IHttpActionResult Flag(int id)
+        public async Task<IHttpActionResult> Flag(int id)
         {
             var username = this.User.Identity.Name;
 
-            if (this.flagsService.ProjectIsFlaggedByUser(id, username))
+            if (await this.flagsService.ProjectIsFlaggedByUser(id, username))
             {
                 return this.Data(false, "You can't flagg the same project more than once.");
             }
 
-            this.flagsService.FlagProject(id, username);
+            await this.flagsService.FlagProject(id, username);
 
             return this.Ok();
         }
@@ -205,16 +206,16 @@
         [Authorize]
         [HttpPost]
         [Route("Unflag/{id}")]
-        public IHttpActionResult Unflag(int id)
+        public async Task<IHttpActionResult> Unflag(int id)
         {
             var username = this.User.Identity.Name;
 
-            if (!this.flagsService.ProjectIsFlaggedByUser(id, username))
+            if (!await this.flagsService.ProjectIsFlaggedByUser(id, username))
             {
                 return this.Data(false, "You have not yet flagged this project.");
             }
 
-            this.flagsService.UnFlagProject(id, username);
+            await this.flagsService.UnFlagProject(id, username);
 
             return this.Ok();
         }

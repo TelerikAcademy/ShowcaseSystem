@@ -1,7 +1,9 @@
 ﻿namespace Showcase.Services.Data
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
@@ -26,7 +28,7 @@
                 .Where(l => l.ProjectId == projectId);
         }
 
-        public async void LikeProject(int projectId, string username)
+        public async Task LikeProject(int projectId, string username)
         {
             var userId = await this.users.UserIdByUsername(username);
 
@@ -40,30 +42,30 @@
                 };
 
                 this.likes.Add(like);
-                this.likes.SaveChanges();
+                await this.likes.SaveChangesAsync();
             }
         }
 
-        public async void DislikeProject(int projectId, string username)
+        public async Task DislikeProject(int projectId, string username)
         {
             var userId = await this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {
-                var like = this.likes
+                var like = await this.likes
                     .All()
                     .Where(l => l.UserId == userId && l.ProjectId == projectId)
-                    .FirstOrDefault();
+                    .FirstOrDefaultAsync();
 
                 this.likes.Delete(like);
-                this.likes.SaveChanges();
+                await this.likes.SaveChangesAsync();
             }
         }
 
-        public bool ProjectIsLikedByUser(int projectId, string username)
+        public async Task<bool> ProjectIsLikedByUser(int projectId, string username)
         {
-            return this.AllLikesForProject(projectId)
-                .Any(l => l.User.UserName == username);
+            return await this.AllLikesForProject(projectId)
+                .AnyAsync(l => l.User.UserName == username);
         }
     }
 }
