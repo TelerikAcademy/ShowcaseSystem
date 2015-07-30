@@ -121,7 +121,7 @@
 
         [HttpGet]
         [Route("LikedProjects/{username}")]
-        public IHttpActionResult LikedProjects(string username)
+        public async Task<IHttpActionResult> LikedProjects(string username)
         {
             var currentLoggedInUsername = this.User.Identity.Name;
             if (username != currentLoggedInUsername.ToLower())
@@ -129,7 +129,7 @@
                 return this.Data(false, "You are not authorized to view this user's liked projects.");
             }
 
-            var userId = this.usersService.UserIdByUsername(username);
+            var userId = await this.usersService.UserIdByUsername(username);
 
             var model = this.projectsService
                 .LikedByUser(userId)

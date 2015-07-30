@@ -72,18 +72,18 @@
 
         [HttpGet]
         [Route("{id}/{page}")]
-        public IHttpActionResult Get(int id, int page)
+        public async Task<IHttpActionResult> Get(int id, int page)
         {
-            var projectCommentsCount = this.commentsService.ProjectCommentsCount(id);
+            var projectCommentsCount = await this.commentsService.ProjectCommentsCount(id);
             var lastPage = this.GetLastPage(projectCommentsCount, page);
 
             var model = new CommentsPageResponseModel
             {
-                Comments = this.commentsService
+                Comments = await this.commentsService
                     .ProjectComments(id, page)
                     .Project()
                     .To<CommentResponseModel>()
-                    .ToList(),
+                    .ToListAsync(),
                 IsLastPage = page == lastPage
             };
 

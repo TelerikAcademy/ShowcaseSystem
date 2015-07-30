@@ -25,7 +25,7 @@
         
         public async Task<Comment> AddNew(int id, string commentText, string username)
         {
-            var userId = this.users.UserIdByUsername(username);
+            var userId = await this.users.UserIdByUsername(username);
 
             var comment = new Comment
             {
@@ -74,12 +74,12 @@
                 .Count();
         }
         
-        public int ProjectCommentsCount(int id)
+        public async Task<int> ProjectCommentsCount(int id)
         {
-            return this.comments
+            return await this.comments
                 .All()
                 .Where(c => c.ProjectId == id)
-                .Count();
+                .CountAsync();
         }
 
 

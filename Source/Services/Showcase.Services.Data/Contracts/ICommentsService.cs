@@ -14,7 +14,7 @@
 
         IQueryable<Comment> UserComments(string username, int page);
 
-        int ProjectCommentsCount(int id);
+        Task<int> ProjectCommentsCount(int id);
 
         int UserCommentsCount(string username);
 

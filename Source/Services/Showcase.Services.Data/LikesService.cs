@@ -26,9 +26,9 @@
                 .Where(l => l.ProjectId == projectId);
         }
 
-        public void LikeProject(int projectId, string username)
+        public async void LikeProject(int projectId, string username)
         {
-            var userId = this.users.UserIdByUsername(username);
+            var userId = await this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {
@@ -44,9 +44,9 @@
             }
         }
 
-        public void DislikeProject(int projectId, string username)
+        public async void DislikeProject(int projectId, string username)
         {
-            var userId = this.users.UserIdByUsername(username);
+            var userId = await this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {
