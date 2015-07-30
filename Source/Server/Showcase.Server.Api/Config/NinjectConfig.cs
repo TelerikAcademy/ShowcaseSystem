@@ -58,7 +58,7 @@ namespace Showcase.Server.Api.Config
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
-            kernel.Bind<DbContext>().To<ShowcaseDbContext>().InRequestScope();
+            kernel.Bind<DbContext>().To<ShowcaseDbContext>().InThreadScope();
 
             kernel.Bind(k => k
                 .From(ServerConstants.InfrastructureAssembly,
