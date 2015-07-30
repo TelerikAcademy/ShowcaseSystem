@@ -1,5 +1,84 @@
-﻿<div>
-    <form>
+﻿<section ng-controller="AddProjectController as vm">
+    <div class="container" animate="fadeIn">
+        <h2 class="text-center"><i class="fa fa-plus" id="add-icon"></i> Add your project</h2>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form class="sky-form">
+                    <fieldset>
+                        <section>
+                            <label class="label">Title *</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text" ng-model="project.title">
+                                <b class="tooltip tooltip-top-right">Name of your project</b>
+                            </label>
+                        </section>
 
-    </form>
-</div>
+                        <section>
+                            <label class="label">Description *</label>
+                            <label class="textarea">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <textarea rows="5" ng-model="project.description"></textarea>
+                                <b class="tooltip tooltip-top-right">Brief narrative of your project</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Collaborators *</label>
+                            <label class="input">
+                                <input type="text" ng-model="project.collaborators" id="collaborators" token-input data-url="/api/Users/Search" data-query-param="username" data-hint-text="Start typing username and select">
+                                <b class="tooltip tooltip-top-right">Select all collaborators in your project</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Tags *</label>
+                            <label class="input">
+                                <input type="text" ng-model="project.tags" id="tags" token-input data-url="/api/Tags/Search" data-query-param="name" data-min-chars="2" data-hint-text="Start typing tag name and select" data-can-add-new-tokens="true">
+                                <b class="tooltip tooltip-top-right">Tag your project - used technologies, programming languages, type of project, etc.</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Repository URL *</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text" ng-model="project.repositoryUrl">
+                                <b class="tooltip tooltip-top-right">Source control repository where your project is commited</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Live Demo URL</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text" ng-model="project.liveDemoUrl">
+                                <b class="tooltip tooltip-top-right">Optional live demo of your deployed project</b>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Images *</label>
+                            <label for="file" class="input input-file">
+                                <div class="button"><input type="file" id="file" file-upload ng-model="project.images" data-validation-regex="^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$" data-max-files="10" data-min-file-size="524288" data-max-file-size="10485760" data-loading-bar="image-loading" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
+                                <b class="tooltip tooltip-top-right">Add images to your project</b>
+                            </label>
+                        </section>
+
+                        <div class="text-center" id="image-loading" style="display: none">
+                            <i class="fa fa-spin fa-spinner font-size-2em"></i> <span class="font-size-2em">Adding images...</span>
+                        </div>
+
+                        <div uploaded-images-container id="image-preview-container" images="project.images" main-image="project.mainImage" class="text-center" />
+
+                        <footer>
+                            <button class="button" ng-click="vm.submitProject(project)">Submit</button>
+                            <button type="button" class="button button-secondary pull-left" onclick="window.history.back();">Back</button>
+                        </footer>
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

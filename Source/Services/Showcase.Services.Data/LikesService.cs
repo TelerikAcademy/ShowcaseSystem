@@ -28,7 +28,7 @@
 
         public void LikeProject(int projectId, string username)
         {
-            var userId = this.users.GetUserId(username);
+            var userId = this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {
@@ -46,7 +46,7 @@
 
         public void DislikeProject(int projectId, string username)
         {
-            var userId = this.users.GetUserId(username);
+            var userId = this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {

@@ -1,15 +1,13 @@
-﻿using Showcase.Services.Common;
-
-namespace Showcase.Services.Data
+﻿namespace Showcase.Services.Data
 {
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
+    using Showcase.Services.Common;
     using Showcase.Services.Data.Contracts;
-    using System;
-    using Showcase.Server.DataTransferModels.Statistics;
-    using System.Collections.Generic;
 
     public class StatisticsService : IStatisticsService
     {
@@ -28,7 +26,6 @@ namespace Showcase.Services.Data
 
         public object Current()
         {
-            // TODO: count only approved, add model
             return this.projects
                 .All()
                 .GroupBy(pr => 0)
@@ -42,7 +39,7 @@ namespace Showcase.Services.Data
                 .FirstOrDefault(); 
         }
 
-        public IQueryable<CountByDateModel> ProjectsLastSixMonths()
+        public IQueryable<IGrouping<int, Project>> ProjectsLastSixMonths()
         {
             var todaySixMonthsAgo = DateTime.Now.AddMonths(-6);
             
@@ -50,25 +47,15 @@ namespace Showcase.Services.Data
                 .All()
                 .Where(p => p.CreatedOn >= todaySixMonthsAgo)
                 .GroupBy(s => s.CreatedOn.Month)
-                .OrderBy(gr => gr.Key)
-                .Select(gr => new CountByDateModel
-                {
-                    Date = gr.FirstOrDefault().CreatedOn,
-                    Count = gr.Count()
-                });
+                .OrderBy(gr => gr.Key);
         }
         
-        public IQueryable<CountByTagModel> ProjectsCountByTag()
+        public IQueryable<Tag> ProjectsCountByTag()
         {
             return this.tags
                 .All()
                 .OrderByDescending(t => t.Projects.Count)
-                .Take(Constants.StatisticsTopTagsCount)
-                .Select(t => new CountByTagModel
-                {
-                    Count = t.Projects.Count,
-                    Tag = t.Name
-                });
+                .Take(Constants.StatisticsTopTagsCount);
         }
         
         public IQueryable<Project> TopProjects()

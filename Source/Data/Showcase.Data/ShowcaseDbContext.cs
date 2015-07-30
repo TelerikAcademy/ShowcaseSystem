@@ -3,6 +3,8 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Models;
     using Showcase.Data.Models;
@@ -41,14 +43,18 @@
             return base.SaveChanges();
         }
 
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            this.ApplyAuditInfoRules();
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
         private void ApplyAuditInfoRules()
         {
-            // Approach via @julielerman: http://bit.ly/123661P
-            foreach (var entry in
-                this.ChangeTracker.Entries()
-                    .Where(
-                        e =>
-                        e.Entity is IAuditInfo && ((e.State == EntityState.Added) || (e.State == EntityState.Modified))))
+            var changedAudits = this.ChangeTracker.Entries()
+                    .Where(e => e.Entity is IAuditInfo && ((e.State == EntityState.Added) || (e.State == EntityState.Modified)));
+
+            foreach (var entry in changedAudits)
             {
                 var entity = (IAuditInfo)entry.Entity;
 

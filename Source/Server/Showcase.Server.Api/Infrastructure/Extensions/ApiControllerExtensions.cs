@@ -7,6 +7,8 @@
 
     using Newtonsoft.Json;
 
+    using Showcase.Server.Api.Infrastructure.Formatters;
+
     public static class ApiControllerExtensions
     {
         public static FormattedContentResult<ResultObject<T>> Data<T>(this ApiController apiController, T data) where T : class

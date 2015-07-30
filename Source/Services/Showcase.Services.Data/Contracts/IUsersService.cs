@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -8,10 +9,14 @@
 
     public interface IUsersService : IService
     {
-        int GetUserId(string username);
+        IQueryable<User> ByUsername(string username);
 
-        Task<User> GetAccountAsync(string username, string password);
+        Task<User> Account(string username, string password);
 
-        IQueryable<User> GetByUsername(string username);
+        IEnumerable<string> SearchByUsername(string username);
+
+        Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators);
+
+        int UserIdByUsername(string username);
     }
 }

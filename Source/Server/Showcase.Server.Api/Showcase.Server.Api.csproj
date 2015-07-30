@@ -212,6 +212,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Compile Include="Config\AutoMapperConfig.cs" />
     <Compile Include="Config\NinjectConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -220,17 +221,21 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Infrastructure\Auth\ApplicationOAuthBearerAuthenticationProvider.cs" />
     <Compile Include="Infrastructure\Auth\ApplicationOAuthProvider.cs" />
     <Compile Include="Infrastructure\Auth\AuthStartup.cs" />
     <Compile Include="Infrastructure\Auth\ClaimsIdentityFactory.cs" />
     <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
-    <Compile Include="Infrastructure\BrowserJsonFormatter.cs" />
+    <Compile Include="Infrastructure\FileSystem\FileSystemService.cs" />
+    <Compile Include="Infrastructure\FileSystem\IFileSystemService.cs" />
+    <Compile Include="Infrastructure\Formatters\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\Extensions\ODataConventionModelBuilderExtensions.cs" />
     <Compile Include="Infrastructure\ObjectFactory.cs" />
-    <Compile Include="Infrastructure\ODataConfig.cs" />
+    <Compile Include="Config\ODataConfig.cs" />
     <Compile Include="Infrastructure\ResultObject.cs" />
+    <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

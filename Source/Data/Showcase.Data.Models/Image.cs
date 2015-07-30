@@ -1,15 +1,23 @@
 ﻿namespace Showcase.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using Showcase.Data.Common;
 
     public class Image
     {
+        [Key]
         public int Id { get; set; }
 
-        public string OriginalFilename { get; set; }
+        [Required]
+        [MaxLength(ValidationConstants.MaxOriginalFileNameLength)]
+        public string OriginalFileName { get; set; }
 
-        public string Url { get; set; }
+        public string UrlPath { get; set; }
 
+        [Required]
+        [MaxLength(ValidationConstants.MaxFileExtensionLength)]
         public string FileExtension { get; set; }
 
         public int? ProjectId { get; set; }

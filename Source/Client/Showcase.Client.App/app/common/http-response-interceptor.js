@@ -10,7 +10,7 @@
                     }
                     else if (response.data.success === false) {
                         notifier.error(response.data.errorMessage);
-                        return $q.reject(response.data.errorMessage);
+                        return $q.reject(response);
                     }
                 }
                 return response;

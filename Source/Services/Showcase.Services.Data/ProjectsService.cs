@@ -1,19 +1,27 @@
 ﻿namespace Showcase.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
+    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Data.Models;
+    using System;
     
     public class ProjectsService : IProjectsService
     {
         private readonly IRepository<Project> projects;
+        private readonly IRepository<Image> images;
 
-        public ProjectsService(IRepository<Project> projects)
+        public ProjectsService(IRepository<Project> projects, IRepository<Image> images)
         {
             this.projects = projects;
+            this.images = images;
         }
 
         public IQueryable<Project> LatestProjects()
@@ -35,23 +43,50 @@
                 .Take(Constants.HomePageLatestProjectsCount);
         }
 
-        public IQueryable<Project> GetProjectById(int id)
+        public IQueryable<Project> ProjectById(int id)
         {
             return this.projects
                 .All()
                 .Where(p => p.Id == id);
         }
 
-        public IQueryable<Project> GetProjectsList()
+        public IQueryable<Project> QueriedProjects()
         {
             return this.projects.All();
         }
 
-        public IQueryable<Project> GetLikedByUser(int userId)
+        public IQueryable<Project> LikedByUser(int userId)
         {
             return this.projects
                 .All()
                 .Where(pr => pr.Likes.Any(l => l.UserId == userId));
+        }
+
+        public async Task<Project> AddNew(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage)
+        {
+            collaborators.ForEach(c => project.Collaborators.Add(c));
+            tags.ForEach(t => project.Tags.Add(t));
+            processedImages.Select(ProcessedImage.ToImage).ForEach(image => { image = this.images.Attach(image); project.Images.Add(image); });
+            project.MainImageId = this.GetMainImageId(project, mainImage);
+            this.projects.Add(project);
+            await this.projects.SaveChangesAsync();
+            return project;
+        }
+
+        private int GetMainImageId(Project project, string mainImage)
+        {
+            var id = project
+                .Images
+                .Where(pi => pi.OriginalFileName == mainImage)
+                .Select(i => i.Id)
+                .FirstOrDefault();
+
+            if (id == 0)
+            {
+                id = project.Images.Select(i => i.Id).First();
+            }
+
+            return id;
         }
     }
 }

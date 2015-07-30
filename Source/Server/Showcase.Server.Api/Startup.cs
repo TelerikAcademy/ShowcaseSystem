@@ -12,6 +12,7 @@
 
     using Showcase.Data;
     using Showcase.Data.Migrations;
+    using Showcase.Server.Api.Config;
     using Showcase.Server.Api.Infrastructure;
     using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;

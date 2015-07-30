@@ -4,6 +4,8 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    using Showcase.Data.Common;
+
     public class User
     {
         private ICollection<Project> projects;
@@ -19,10 +21,11 @@
             this.flags = new HashSet<Flag>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(ValidationConstants.MaxUserUserNameLength)]
         [Index(IsUnique = true)]
         public string UserName { get; set; }
 

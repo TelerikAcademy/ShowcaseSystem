@@ -1,4 +1,4 @@
-namespace Showcase.Server.Api
+namespace Showcase.Server.Api.Config
 {
     using System;
     using System.Data.Entity;
@@ -14,6 +14,7 @@ namespace Showcase.Server.Api
     using Showcase.Data.Common.Repositories;
 
     using Showcase.Server.Api.Infrastructure;
+    using Showcase.Server.Api.Infrastructure.FileSystem;
     using Showcase.Server.Common;
 
     using Showcase.Services.Common;
@@ -57,6 +58,8 @@ namespace Showcase.Server.Api
         {
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
             kernel.Bind<DbContext>().To<ShowcaseDbContext>().InRequestScope();
+
+            kernel.Bind<IFileSystemService>().To<FileSystemService>();
 
             kernel.Bind(k => k
                 .From(ServerConstants.DataServicesAssembly, ServerConstants.LogicServicesAssembly)

@@ -24,7 +24,7 @@
 
         public string MainImageUrl { get; set; }
 
-        public string Content { get; set; }
+        public string Description { get; set; }
 
         public string RepositoryUrl { get; set; }
 
@@ -68,13 +68,13 @@
         {
             get
             {
-                if (this.Content.Length <= ProjectResponseModel.ShortDescriptionLength)
+                if (this.Description.Length <= ProjectResponseModel.ShortDescriptionLength)
                 {
-                    return this.Content;
+                    return this.Description;
                 }
                 else
                 {
-                    return this.Content.Substring(0, ProjectResponseModel.ShortDescriptionLength) + "...";
+                    return this.Description.Substring(0, ProjectResponseModel.ShortDescriptionLength) + "...";
                 }
             }
         }
@@ -86,8 +86,8 @@
                 .ForMember(pr => pr.Likes, opt => opt.MapFrom(pr => pr.Likes.Count))
                 .ForMember(pr => pr.Visits, opt => opt.MapFrom(pr => pr.Visits.Count))
                 .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
-                .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.Url + "." + pr.MainImage.FileExtension))
-                .ForMember(pr => pr.ImageUrls, opt => opt.MapFrom(pr => pr.Images.Select(i => i.Url + "." + i.FileExtension)))
+                .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath + "." + pr.MainImage.FileExtension))
+                .ForMember(pr => pr.ImageUrls, opt => opt.MapFrom(pr => pr.Images.Select(i => i.UrlPath + "." + i.FileExtension)))
                 .ForMember(pr => pr.Collaborators, opt => opt.MapFrom(pr => pr.Collaborators.Select(c => c.UserName).OrderBy(c => c)));
         }
     }

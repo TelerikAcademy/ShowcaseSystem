@@ -3,19 +3,18 @@
     using System.Linq;
 
     using Showcase.Data.Models;
-    using Showcase.Server.DataTransferModels.Statistics;
     using Showcase.Services.Common;
 
     public interface IStatisticsService : IService
     {
-        object Current();
+        IQueryable<IGrouping<int, Project>> ProjectsLastSixMonths();
 
-        IQueryable<CountByDateModel> ProjectsLastSixMonths();
-
-        IQueryable<CountByTagModel> ProjectsCountByTag();
+        IQueryable<Tag> ProjectsCountByTag();
 
         IQueryable<Project> TopProjects();
 
         IQueryable<User> TopUsers();
+
+        object Current();
     }
 }

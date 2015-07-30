@@ -16,6 +16,8 @@
     [RoutePrefix("api/Users")]
     public class UsersController : BaseController
     {
+        private const int MinimumCharactersForUsernameSearch = 3;
+
         private readonly IUsersService users;
 
         public UsersController(IUsersService users)
@@ -28,7 +30,7 @@
         public IHttpActionResult Get(string username)
         {
             var model = this.users
-                .GetByUsername(username)
+                .ByUsername(username)
                 .Project()
                 .To<UserResponseModel>()
                 .FirstOrDefault();
@@ -49,12 +51,30 @@
         public IHttpActionResult Identity()
         {
             var model = this.users
-                .GetByUsername(this.User.Identity.Name)
+                .ByUsername(this.User.Identity.Name)
                 .Project()
                 .To<IdentityResponseModel>()
                 .FirstOrDefault();
 
             return this.Data(model);
+        }
+
+        [Authorize]
+        [HttpGet]
+        [Route("Search")]
+        public IHttpActionResult Search(string username)
+        {
+            if (string.IsNullOrEmpty(username) || username.Length < MinimumCharactersForUsernameSearch)
+            {
+                return this.Data(false, string.Format("Username should be at least {0} symbols long", MinimumCharactersForUsernameSearch));
+            }
+
+            var model = this.users
+                .SearchByUsername(username)
+                .AsQueryable()
+                .Select(UserAutocompleteResponseModel.FromUserName);
+
+            return this.Ok(model);
         }
     }
 }

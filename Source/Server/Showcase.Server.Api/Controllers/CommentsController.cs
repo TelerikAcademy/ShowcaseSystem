@@ -3,7 +3,6 @@
     using System.Linq;
     using System.Web.Http;
 
-    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Data.Models;
@@ -34,11 +33,10 @@
             }
 
             var username = this.User.Identity.Name;
-
-            var postedComment = this.comments.PostComment(id, comment.CommentText, username);
+            var postedComment = this.comments.AddNew(id, comment.CommentText, username);
 
             var model = this.comments
-                .GetComment(postedComment.Id)
+                .CommentById(postedComment.Id)
                 .Project()
                 .To<CommentResponseModel>()
                 .FirstOrDefault();
@@ -79,7 +77,7 @@
             var model = new CommentsPageResponseModel
             {
                 Comments = this.comments
-                    .GetProjectComments(id, page)
+                    .ProjectComments(id, page)
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),
@@ -104,7 +102,7 @@
             var model = new CommentsPageResponseModel
             {
                 Comments = this.comments
-                    .GetUserComments(username, page)
+                    .UserComments(username, page)
                     .Project()
                     .To<CommentResponseModel>()
                     .ToList(),

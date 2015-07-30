@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Common.Mapping
+﻿namespace Showcase.Server.Api.Config
 {
     using System;
     using System.Collections.Generic;
@@ -7,6 +7,8 @@
     using System.Web.Mvc;
 
     using AutoMapper;
+
+    using Showcase.Server.Common.Mapping;
 
     public class AutoMapperConfig
     {
@@ -21,7 +23,6 @@
             }
 
             LoadStandardMappings(types);
-
             LoadCustomMappings(types);
         }
 

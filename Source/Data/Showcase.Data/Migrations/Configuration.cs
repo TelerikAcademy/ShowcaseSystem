@@ -34,8 +34,8 @@ namespace Showcase.Data.Migrations
                 var tag = new Tag
                 {
                     Name = "Seeded Tag " + i,
-                    BackgroundColor = "lightgrey",
-                    ForegroundColor = "black"
+                    BackgroundColor = "111111",
+                    ForegroundColor = "666666"
                 };
 
                 context.Tags.Add(tag);
@@ -74,44 +74,44 @@ namespace Showcase.Data.Migrations
 
             var image = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a1",
+                UrlPath = "/content/epona/images/demo/portfolio/a1",
             };
 
             var image2 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a2",
+                UrlPath = "/content/epona/images/demo/portfolio/a2",
             };
 
             var image3 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a3",
+                UrlPath = "/content/epona/images/demo/portfolio/a3",
             };
 
             var image4 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a4",
+                UrlPath = "/content/epona/images/demo/portfolio/a4",
             };
 
             var image5 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a5",
+                UrlPath = "/content/epona/images/demo/portfolio/a5",
             };
 
             var image6 = new Image
             {
-                OriginalFilename = "Sample image",
+                OriginalFileName = "Sample image",
                 FileExtension = "jpg",
-                Url = "/content/epona/images/demo/portfolio/a6",
+                UrlPath = "/content/epona/images/demo/portfolio/a6",
             };
 
             var comment = new Comment
@@ -141,7 +141,8 @@ namespace Showcase.Data.Migrations
                 {
                     CreatedOn = DateTime.Now.AddDays(-i),
                     Title = "Seed Project " + i,
-                    Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    RepositoryUrl = "http://github.com",
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 };
 
                 for (int j = 1; j <= 8; j++)

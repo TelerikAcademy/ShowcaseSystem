@@ -21,9 +21,9 @@
             this.users = users;
         }
         
-        public Comment PostComment(int id, string commentText, string username)
+        public Comment AddNew(int id, string commentText, string username)
         {
-            var userId = this.users.GetUserId(username);
+            var userId = this.users.UserIdByUsername(username);
 
             var comment = new Comment
             {
@@ -39,12 +39,12 @@
             return comment;
         }
 
-        public IQueryable<Comment> GetComment(int id)
+        public IQueryable<Comment> CommentById(int id)
         {
             return this.comments.All().Where(c => c.Id == id);
         }
 
-        public IQueryable<Comment> GetProjectComments(int id, int page)
+        public IQueryable<Comment> ProjectComments(int id, int page)
         {
             return this.comments
                 .All()
@@ -54,7 +54,7 @@
                 .Take(PageSize);
         }
 
-        public IQueryable<Comment> GetUserComments(string username, int page)
+        public IQueryable<Comment> UserComments(string username, int page)
         {
             return this.comments
                 .All()

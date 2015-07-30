@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure
+﻿namespace Showcase.Server.Api.Config
 {
     using System.Web.Http;
     using System.Web.OData.Builder;
@@ -9,7 +9,6 @@
     using Showcase.Server.Api.Controllers;
     using Showcase.Server.Api.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
-    using Showcase.Data.Models;
 
     public static class ODataConfig
     {
@@ -26,11 +25,11 @@
         private static IEdmModel GetEdmModel()
         {
             var builder = new ODataConventionModelBuilder();            
-            builder.EntitySet<ProjectResponseSimpleModel, SearchController>();
+            builder.EntitySet<ProjectSimpleResponseModel, SearchController>();
             builder.EntityType<ProjectResponseSimpleModel>().Property(x => x.ShortDate);
             builder.EntityType<ProjectResponseSimpleModel>().Property(x => x.TitleUrl);
 
-            builder.Namespace = typeof(ProjectResponseSimpleModel).Namespace;
+            builder.Namespace = typeof(ProjectSimpleResponseModel).Namespace;
             builder.EnableLowerCamelCase();
             return builder.GetEdmModel();
         }

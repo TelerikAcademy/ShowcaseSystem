@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
@@ -8,6 +9,7 @@
     using Showcase.Data;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
+    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
 
     public class UsersService : IUsersService
@@ -21,7 +23,7 @@
             this.remoteData = remoteData;
         }
 
-        public int GetUserId(string username)
+        public int UserIdByUsername(string username)
         {
             return this.users
                 .All()
@@ -30,22 +32,27 @@
                 .FirstOrDefault();
         }
 
-        public IQueryable<User> GetByUsername(string username)
+        public IQueryable<User> ByUsername(string username)
         {
             return this.users
                 .All()
                 .Where(u => u.UserName == username);
         }
 
-        public async Task<User> GetAccountAsync(string username, string password)
+        public IEnumerable<string> SearchByUsername(string username)
         {
-            var remoteUser = this.remoteData.RemoteLogin(username, password);
+            return this.remoteData.SearchByUsername(username);
+        }
+
+        public async Task<User> Account(string username, string password)
+        {
+            var remoteUser = this.remoteData.Login(username, password);
             if (remoteUser == null)
             {
                 return null;
             }
 
-            var localUser = await this.GetLocalAccountAsync(username); // TODO: update user every time
+            var localUser = await this.GetLocalAccount(username);
             if (localUser == null)
             {
                 localUser = new User
@@ -58,8 +65,9 @@
                 this.users.Add(localUser);
                 this.users.SaveChanges();
             }
-            else if (localUser.AvatarUrl != remoteUser.AvatarUrl)
+            else if (localUser.AvatarUrl != remoteUser.AvatarUrl || localUser.IsAdmin != remoteUser.IsAdmin)
             {
+                localUser.IsAdmin = remoteUser.IsAdmin;
                 localUser.AvatarUrl = remoteUser.AvatarUrl;
                 this.users.SaveChanges();
             }
@@ -67,11 +75,35 @@
             return localUser;
         }
 
-        private async Task<User> GetLocalAccountAsync(string username)
+        public async Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators)
+        {
+            var usernames = collaborators.Split(',');
+            var localUsers = await this.users
+                .All()
+                .Where(u => usernames.Contains(u.UserName))
+                .ToListAsync();
+
+            var nonExistingLocalUsernames = usernames.Where(username => localUsers.All(u => u.UserName != username));
+            var nonExistingLocalUsersRemoteInfo = await this.remoteData.UsersInfo(nonExistingLocalUsernames);
+
+            // TODO: uncomment when RemoteDataService is implemented
+            // var newlyAddedUsers = await this.AddNonExistingUsers(nonExistingLocalUsersRemoteInfo);
+            // localUsers.AddRange(newlyAddedUsers);
+            return localUsers;
+        }
+
+        private async Task<User> GetLocalAccount(string username)
         {
             return await this.users
                 .All()
                 .FirstOrDefaultAsync(u => u.UserName == username);
+        }
+
+        private async Task<IEnumerable<User>> AddNonExistingUsers(IEnumerable<User> usersToAdd)
+        {
+            usersToAdd.ForEach(user => this.users.Add(user));
+            await this.users.SaveChangesAsync();
+            return usersToAdd;
         }
     }
 }

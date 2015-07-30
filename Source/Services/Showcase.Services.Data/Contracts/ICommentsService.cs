@@ -7,17 +7,17 @@
 
     public interface ICommentsService : IService
     {
-        Comment PostComment(int id, string commentText, string username);
+        IQueryable<Comment> CommentById(int id);
 
-        IQueryable<Comment> GetComment(int id);
+        IQueryable<Comment> ProjectComments(int id, int page);
 
-        IQueryable<Comment> GetProjectComments(int id, int page);
+        IQueryable<Comment> UserComments(string username, int page);
 
         int ProjectCommentsCount(int id);
 
-        IQueryable<Comment> GetUserComments(string username, int page);
-
         int UserCommentsCount(string username);
+
+        Comment AddNew(int id, string commentText, string username);
 
         Comment EditComment(int id, string commentText, string username);
     }
