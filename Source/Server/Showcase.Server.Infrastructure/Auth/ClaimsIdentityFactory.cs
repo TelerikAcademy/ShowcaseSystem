@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure.Auth
+﻿namespace Showcase.Server.Infrastructure.Auth
 {
     using System;
     using System.Security.Claims;

@@ -4,7 +4,7 @@ namespace Showcase.Client.App
 {
     using Owin;
     using Showcase.Server.Api;
-    using Showcase.Server.Api.Infrastructure.Auth;
+    using Showcase.Server.Infrastructure.Auth;
 
     public class Startup
     {

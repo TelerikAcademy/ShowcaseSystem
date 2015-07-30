@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -13,12 +14,12 @@
 
         IQueryable<Comment> UserComments(string username, int page);
 
-        int ProjectCommentsCount(int id);
+        Task<int> ProjectCommentsCount(int id);
 
         int UserCommentsCount(string username);
 
-        Comment AddNew(int id, string commentText, string username);
+        Task<Comment> AddNew(int id, string commentText, string username);
 
-        Comment EditComment(int id, string commentText, string username);
+        Task<Comment> EditComment(int id, string commentText, string username);
     }
 }

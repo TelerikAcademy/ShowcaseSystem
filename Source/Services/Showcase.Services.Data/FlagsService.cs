@@ -24,9 +24,9 @@
             this.projects = projects;
         }
 
-        public void FlagProject(int projectId, string username)
+        public async void FlagProject(int projectId, string username)
         {
-            var userId = this.users.UserIdByUsername(username);
+            var userId = await this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {
@@ -50,9 +50,9 @@
             }
         }
 
-        public void UnFlagProject(int projectId, string username)
+        public async void UnFlagProject(int projectId, string username)
         {
-            var userId = this.users.UserIdByUsername(username);
+            var userId = await this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {

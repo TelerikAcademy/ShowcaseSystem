@@ -20,6 +20,6 @@
 
         Task<RemoteUserProfile> ProfileInfo(string username);
 
-        int UserIdByUsername(string username);
+        Task<int> UserIdByUsername(string username);
     }
 }

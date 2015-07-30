@@ -10,9 +10,9 @@
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
-    using Showcase.Server.Api.Infrastructure.Extensions;
-    using Showcase.Server.Api.Infrastructure.FileSystem;
-    using Showcase.Server.Api.Infrastructure.Validation;
+    using Showcase.Server.Infrastructure.Extensions;
+    using Showcase.Server.Infrastructure.FileSystem;
+    using Showcase.Server.Infrastructure.Validation;
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels;
     using Showcase.Server.DataTransferModels.Project;
@@ -121,7 +121,7 @@
 
         [HttpGet]
         [Route("LikedProjects/{username}")]
-        public IHttpActionResult LikedProjects(string username)
+        public async Task<IHttpActionResult> LikedProjects(string username)
         {
             var currentLoggedInUsername = this.User.Identity.Name;
             if (username != currentLoggedInUsername.ToLower())
@@ -129,7 +129,7 @@
                 return this.Data(false, "You are not authorized to view this user's liked projects.");
             }
 
-            var userId = this.usersService.UserIdByUsername(username);
+            var userId = await this.usersService.UserIdByUsername(username);
 
             var model = this.projectsService
                 .LikedByUser(userId)

@@ -1363,6 +1363,10 @@
       <Project>{ae3f60fe-f877-43c3-be01-cc70f0edd8d5}</Project>
       <Name>Showcase.Server.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Server\Showcase.Server.Infrastructure\Showcase.Server.Infrastructure.csproj">
+      <Project>{ab7f3756-7d7c-4a50-b90d-76c676c1a9d0}</Project>
+      <Name>Showcase.Server.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,7 +1,9 @@
 ﻿namespace Showcase.Services.Data
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
@@ -21,9 +23,9 @@
             this.users = users;
         }
         
-        public Comment AddNew(int id, string commentText, string username)
+        public async Task<Comment> AddNew(int id, string commentText, string username)
         {
-            var userId = this.users.UserIdByUsername(username);
+            var userId = await this.users.UserIdByUsername(username);
 
             var comment = new Comment
             {
@@ -34,7 +36,7 @@
             };
 
             this.comments.Add(comment);
-            this.comments.SaveChanges();
+            await this.comments.SaveChangesAsync();
 
             return comment;
         }
@@ -72,23 +74,23 @@
                 .Count();
         }
         
-        public int ProjectCommentsCount(int id)
+        public async Task<int> ProjectCommentsCount(int id)
         {
-            return this.comments
+            return await this.comments
                 .All()
                 .Where(c => c.ProjectId == id)
-                .Count();
+                .CountAsync();
         }
 
 
-        public Comment EditComment(int id, string commentText, string username)
+        public async Task<Comment> EditComment(int id, string commentText, string username)
         {
-            var userId = this.users.UserIdByUsername(username);
+            var userId = await this.users.UserIdByUsername(username);
 
-            var commentToEdit = this.comments
+            var commentToEdit = await this.comments
                 .All()
                 .Where(c => c.Id == id && c.UserId == userId)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
             if (commentToEdit == null)
             {
@@ -96,7 +98,7 @@
             }
 
             commentToEdit.Content = commentText;
-            this.comments.SaveChanges();
+            await this.comments.SaveChangesAsync();
 
             return commentToEdit;
         }

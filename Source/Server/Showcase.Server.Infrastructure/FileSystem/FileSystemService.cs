@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure.FileSystem
+﻿namespace Showcase.Server.Infrastructure.FileSystem
 {
     using System.Collections.Generic;
     using System.IO;

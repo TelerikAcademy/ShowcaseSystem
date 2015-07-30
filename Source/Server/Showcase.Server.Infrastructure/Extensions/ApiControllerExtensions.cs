@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure.Extensions
+﻿namespace Showcase.Server.Infrastructure.Extensions
 {
     using System.Net;
     using System.Text;
@@ -7,7 +7,7 @@
 
     using Newtonsoft.Json;
 
-    using Showcase.Server.Api.Infrastructure.Formatters;
+    using Showcase.Server.Infrastructure.Formatters;
 
     public static class ApiControllerExtensions
     {
