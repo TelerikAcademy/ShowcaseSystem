@@ -6,21 +6,20 @@
     using System.Threading.Tasks;
     using System.Web.Hosting;
 
+    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Models;
 
     public class FileSystemService : IFileSystemService
     {
         private const string ImagesServerPath = "~/Images/{0}_{1}.jpg";
 
-        public Task SaveImagesToFiles(IEnumerable<ProcessedImage> images)
+        public async Task SaveImagesToFiles(IEnumerable<ProcessedImage> images)
         {
-            var tasks = images.Select(image => Task.Run(async () =>
+            await images.ForEachAsync(async image =>
             {
                 await this.SaveImageToFile(image.ThumbnailContent, image.UrlPath, ProcessedImage.ThumbnailImage);
                 await this.SaveImageToFile(image.HighResolutionContent, image.UrlPath, ProcessedImage.HighResolutionImage);
-            }));
-
-            return Task.WhenAll(tasks);
+            });
         }
 
         private async Task SaveImageToFile(byte[] imageContent, string path, string resolution)

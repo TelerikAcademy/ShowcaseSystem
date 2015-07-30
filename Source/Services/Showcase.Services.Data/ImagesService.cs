@@ -25,7 +25,7 @@
 
         public async Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawImage> rawImages)
         {
-            var tasks = rawImages.Select(rawImage => Task.Run(async () => 
+            var processedImages = await rawImages.ForEachAsync(async rawImage => 
             {
                 var image = new Image { OriginalFileName = rawImage.OriginalFileName, FileExtension = rawImage.FileExtension };
                 var imagesContext = new ShowcaseDbContext(); // TODO: ObjectFactory ?
@@ -39,9 +39,9 @@
                 var highContent = this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);
 
                 return ProcessedImage.FromImage(image, thumbnailContent, highContent);
-            }));
+            });
 
-            return await Task.WhenAll(tasks);
+            return processedImages;
         }
 
         private string GenerateImageUrlPath(int imageId)

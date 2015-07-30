@@ -14,7 +14,7 @@
             }
         }
 
-        public static IEnumerable<Task> ForEachAsync<T>(this IEnumerable<T> enumerable, Action<T> action)
+        public static async Task ForEachAsync<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
             var tasks = new List<Task>();
 
@@ -23,7 +23,19 @@
                 tasks.Add(Task.Run(() => { action(item); }));
             }
 
-            return tasks;
+            await Task.WhenAll(tasks);
+        }
+
+        public static async Task<IEnumerable<TResult>> ForEachAsync<T, TResult>(this IEnumerable<T> enumerable, Func<T, Task<TResult>> func)
+        {
+            var tasks = new List<Task<TResult>>();
+
+            foreach (var item in enumerable)
+            {
+                tasks.Add(Task.Run<TResult>(() => { return func(item); }));
+            }
+
+            return await Task.WhenAll(tasks);
         }
     }
 }
