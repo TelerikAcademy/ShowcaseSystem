@@ -1,7 +1,10 @@
 ﻿namespace Showcase.Services.Data
 {
     using System.Collections.Generic;
-    
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Showcase.Data;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common.Extensions;
@@ -20,27 +23,25 @@
             this.imageProcessorService = imageProcessorService;
         }
 
-        public IEnumerable<ProcessedImage> ProcessImages(IEnumerable<RawImage> rawImages)
+        public async Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawImage> rawImages)
         {
-            var result = new List<ProcessedImage>();
-
-            rawImages.ForEach(rawImage =>
+            var tasks = rawImages.Select(rawImage => Task.Run(async () => 
             {
                 var image = new Image { OriginalFileName = rawImage.OriginalFileName, FileExtension = rawImage.FileExtension };
-
-                this.images.Add(image);
-                this.images.SaveChanges();
+                var imagesContext = new ShowcaseDbContext(); // TODO: ObjectFactory ?
+                imagesContext.Images.Add(image);
+                await imagesContext.SaveChangesAsync();
 
                 image.UrlPath = this.GenerateImageUrlPath(image.Id);
-                this.images.SaveChanges();
+                await imagesContext.SaveChangesAsync();
 
                 var thumbnailContent = this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
                 var highContent = this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);
 
-                result.Add(ProcessedImage.FromImage(image, thumbnailContent, highContent));
-            });
+                return ProcessedImage.FromImage(image, thumbnailContent, highContent);
+            }));
 
-            return result;
+            return await Task.WhenAll(tasks);
         }
 
         private string GenerateImageUrlPath(int imageId)

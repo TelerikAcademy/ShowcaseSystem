@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Services.Data.Contracts
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -8,6 +9,6 @@
 
     public interface IImagesService : IService
     {
-        IEnumerable<ProcessedImage> ProcessImages(IEnumerable<RawImage> rawImages);
+        Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawImage> rawImages);
     }
 }
