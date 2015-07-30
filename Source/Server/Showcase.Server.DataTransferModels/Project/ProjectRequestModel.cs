@@ -27,11 +27,11 @@
 
         [Required]
         [Collaborators]
-        [CommaSeparatedCollectionLength(ValidationConstants.MinProjectCollaboratorsAndTagsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
+        [CommaSeparatedCollectionLength(ValidationConstants.MinProjectCollaboratorsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
         public string Collaborators { get; set; }
 
         [Required]
-        [CommaSeparatedCollectionLength(ValidationConstants.MinProjectCollaboratorsAndTagsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
+        [CommaSeparatedCollectionLength(ValidationConstants.MinProjectTagsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
         public string Tags { get; set; }
 
         [Display(Name = "Repository URL")]
