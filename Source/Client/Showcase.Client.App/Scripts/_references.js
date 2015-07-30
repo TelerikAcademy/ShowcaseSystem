@@ -146,4 +146,5 @@
 /// <reference path="angular-ui/ui-bootstrap-tpls.js" />
 /// <reference path="angular-ui/ui-bootstrap.js" />
 /// <reference path="../app/project-details-page/social-icons-directive.js" />
+/// <reference path="../app/project-details-page/project-comments-directive.js" />
 

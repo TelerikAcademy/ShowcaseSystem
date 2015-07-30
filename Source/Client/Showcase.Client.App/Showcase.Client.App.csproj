@@ -137,6 +137,8 @@
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
+    <Content Include="app\project-details-page\project-comments-directive.html" />
+    <Content Include="app\project-details-page\project-comments-directive.js" />
     <Content Include="app\project-details-page\social-icons-directive.html" />
     <Content Include="app\project-details-page\social-icons-directive.js" />
     <Content Include="app\projects-search-page\projects-search-page-service.js" />
