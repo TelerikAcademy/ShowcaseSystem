@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure
+﻿namespace Showcase.Server.Infrastructure
 {
     public class ResultObject<T> where T : class
     {

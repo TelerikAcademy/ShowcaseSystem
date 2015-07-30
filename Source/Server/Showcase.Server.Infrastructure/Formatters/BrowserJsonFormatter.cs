@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure.Formatters
+﻿namespace Showcase.Server.Infrastructure.Formatters
 {
     using System;
     using System.Net.Http.Formatting;

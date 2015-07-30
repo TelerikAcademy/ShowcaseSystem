@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure.Extensions
+﻿namespace Showcase.Server.Infrastructure.Extensions
 {
     using System.Web.OData;
     using System.Web.OData.Builder;

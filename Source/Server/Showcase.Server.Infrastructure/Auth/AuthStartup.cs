@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure.Auth
+﻿namespace Showcase.Server.Infrastructure.Auth
 {
     using System;
     using System.Threading.Tasks;
@@ -9,6 +9,7 @@
     using Owin;
 
     using Showcase.Data;
+    using Showcase.Server.Infrastructure.Bindings;
 
     public class AuthStartup
     {

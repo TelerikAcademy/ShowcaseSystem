@@ -223,19 +223,7 @@
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Infrastructure\Auth\ApplicationOAuthBearerAuthenticationProvider.cs" />
-    <Compile Include="Infrastructure\Auth\ApplicationOAuthProvider.cs" />
-    <Compile Include="Infrastructure\Auth\AuthStartup.cs" />
-    <Compile Include="Infrastructure\Auth\ClaimsIdentityFactory.cs" />
-    <Compile Include="Infrastructure\Extensions\ApiControllerExtensions.cs" />
-    <Compile Include="Infrastructure\FileSystem\FileSystemService.cs" />
-    <Compile Include="Infrastructure\FileSystem\IFileSystemService.cs" />
-    <Compile Include="Infrastructure\Formatters\BrowserJsonFormatter.cs" />
-    <Compile Include="Infrastructure\Extensions\ODataConventionModelBuilderExtensions.cs" />
-    <Compile Include="Infrastructure\ObjectFactory.cs" />
     <Compile Include="Config\ODataConfig.cs" />
-    <Compile Include="Infrastructure\ResultObject.cs" />
-    <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -285,6 +273,10 @@
     <ProjectReference Include="..\Showcase.Server.DataTransferModels\Showcase.Server.DataTransferModels.csproj">
       <Project>{1bdc2d81-58b5-4107-b795-715b5c1bdb19}</Project>
       <Name>Showcase.Server.DataTransferModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Showcase.Server.Infrastructure\Showcase.Server.Infrastructure.csproj">
+      <Project>{ab7f3756-7d7c-4a50-b90d-76c676c1a9d0}</Project>
+      <Name>Showcase.Server.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

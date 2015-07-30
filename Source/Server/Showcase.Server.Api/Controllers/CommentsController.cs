@@ -6,7 +6,7 @@
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Data.Models;
-    using Showcase.Server.Api.Infrastructure.Extensions;
+    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;

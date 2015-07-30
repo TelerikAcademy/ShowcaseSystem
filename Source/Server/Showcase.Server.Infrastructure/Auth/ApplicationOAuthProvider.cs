@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure.Auth
+﻿namespace Showcase.Server.Infrastructure.Auth
 {
     using System;
     using System.Collections.Generic;
@@ -9,7 +9,10 @@
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OAuth;
 
+    using Ninject;
+
     using Showcase.Data.Models;
+    using Showcase.Server.Infrastructure.Bindings;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
 
@@ -29,13 +32,14 @@
         }
 
         public ApplicationOAuthProvider(string publicClientId, IUsersService usersService)
+            : this (publicClientId)
         {
             this.usersService = usersService;
         }
 
         protected IUsersService UsersService
         {
-            get { return this.usersService ?? ObjectFactory.GetInstance<IUsersService>(); }
+            get { return this.usersService ?? ObjectFactory.Get<IUsersService>(); }
         }
 
         public static AuthenticationProperties CreateProperties()

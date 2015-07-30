@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.Api.Infrastructure.Validation
+﻿namespace Showcase.Server.Infrastructure.Validation
 {
     using System.Linq;
     using System.Net.Http;

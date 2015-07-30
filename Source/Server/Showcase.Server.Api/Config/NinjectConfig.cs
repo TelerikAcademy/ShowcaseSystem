@@ -13,8 +13,8 @@ namespace Showcase.Server.Api.Config
     using Showcase.Data;
     using Showcase.Data.Common.Repositories;
 
-    using Showcase.Server.Api.Infrastructure;
-    using Showcase.Server.Api.Infrastructure.FileSystem;
+    using Showcase.Server.Infrastructure;
+    using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Common;
 
     using Showcase.Services.Common;
@@ -22,6 +22,7 @@ namespace Showcase.Server.Api.Config
     using Showcase.Services.Data.Contracts;
 
     using ServerConstants = Showcase.Server.Common.Constants;
+    using Showcase.Server.Infrastructure.Bindings;
 
     public static class NinjectConfig 
     {
@@ -39,8 +40,8 @@ namespace Showcase.Server.Api.Config
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
+                ObjectFactory.Initialize(kernel);
                 RegisterServices(kernel);
-                ObjectFactory.InitializeKernel(kernel);
                 return kernel;
             }
             catch
@@ -59,10 +60,10 @@ namespace Showcase.Server.Api.Config
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
             kernel.Bind<DbContext>().To<ShowcaseDbContext>().InRequestScope();
 
-            kernel.Bind<IFileSystemService>().To<FileSystemService>();
-
             kernel.Bind(k => k
-                .From(ServerConstants.DataServicesAssembly, ServerConstants.LogicServicesAssembly)
+                .From(ServerConstants.InfrastructureAssembly,
+                    ServerConstants.DataServicesAssembly,
+                    ServerConstants.LogicServicesAssembly)
                 .SelectAllClasses()
                 .InheritedFrom<IService>()
                 .BindDefaultInterface());
