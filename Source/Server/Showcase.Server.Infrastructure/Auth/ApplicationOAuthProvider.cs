@@ -12,7 +12,7 @@
     using Ninject;
 
     using Showcase.Data.Models;
-    using Showcase.Server.Infrastructure.Bindings;
+    using Showcase.Services.Common.Bindings;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
 

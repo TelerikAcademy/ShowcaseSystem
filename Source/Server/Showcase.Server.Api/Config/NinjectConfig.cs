@@ -18,16 +18,14 @@ namespace Showcase.Server.Api.Config
     using Showcase.Server.Common;
 
     using Showcase.Services.Common;
+    using Showcase.Services.Common.Bindings;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
 
     using ServerConstants = Showcase.Server.Common.Constants;
-    using Showcase.Server.Infrastructure.Bindings;
 
     public static class NinjectConfig 
     {
-        private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
-
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
