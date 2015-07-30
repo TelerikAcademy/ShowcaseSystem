@@ -38,7 +38,7 @@
                 .ForMember(pr => pr.Likes, opt => opt.MapFrom(pr => pr.Likes.Count))
                 .ForMember(pr => pr.Visits, opt => opt.MapFrom(pr => pr.Visits.Count))
                 .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
-                .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath + "." + pr.MainImage.FileExtension));
+                .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath));
         }
     }
 }
