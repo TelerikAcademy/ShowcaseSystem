@@ -24,7 +24,7 @@
         public Task<IEnumerable<User>> UsersInfo(IEnumerable<string> usernames)
         {
             // TODO: return user information from telerikacademy.com
-            return Task.Factory.StartNew(() => new List<User>
+            return Task.Run<IEnumerable<User>>(() => new List<User>
             {
                 new User
                 {
@@ -38,7 +38,7 @@
                     AvatarUrl = "another url", // return small avatar URL here 
                     IsAdmin = false
                 }
-            }.AsEnumerable());
+            });
         }
 
         public IEnumerable<string> SearchByUsername(string username)

@@ -1,7 +1,9 @@
 ﻿namespace Showcase.Services.Data
 {
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
@@ -9,14 +11,17 @@
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data.Models;
+    using System;
     
     public class ProjectsService : IProjectsService
     {
         private readonly IRepository<Project> projects;
+        private readonly IRepository<Image> images;
 
-        public ProjectsService(IRepository<Project> projects)
+        public ProjectsService(IRepository<Project> projects, IRepository<Image> images)
         {
             this.projects = projects;
+            this.images = images;
         }
 
         public IQueryable<Project> LatestProjects()
@@ -57,14 +62,14 @@
                 .Where(pr => pr.Likes.Any(l => l.UserId == userId));
         }
 
-        public Project AddNew(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage)
+        public async Task<Project> AddNew(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage)
         {
             collaborators.ForEach(c => project.Collaborators.Add(c));
             tags.ForEach(t => project.Tags.Add(t));
-            processedImages.Select(ProcessedImage.ToImage).ForEach(pi => project.Images.Add(pi));
+            processedImages.Select(ProcessedImage.ToImage).ForEach(image => { image = this.images.Attach(image); project.Images.Add(image); });
             project.MainImageId = this.GetMainImageId(project, mainImage);
             this.projects.Add(project);
-            this.projects.SaveChanges();
+            await this.projects.SaveChangesAsync();
             return project;
         }
 

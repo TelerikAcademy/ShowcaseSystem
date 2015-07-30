@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -19,6 +20,6 @@
 
         IQueryable<Project> QueriedProjects();
 
-        Project AddNew(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage);
+        Task<Project> AddNew(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage);
     }
 }
