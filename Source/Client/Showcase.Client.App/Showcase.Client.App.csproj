@@ -131,7 +131,6 @@
     <Content Include="app\add-project-page\uploaded-images-container-directive.js" />
     <Content Include="app\common\dropdown-directive.html" />
     <Content Include="app\common\dropdown-directive.js" />
-    <Content Include="app\common\infinite-scroll-directive.js" />
     <Content Include="app\common\main-menu-directive.html" />
     <Content Include="app\common\main-menu-directive.js" />
     <Content Include="app\common\pager-directive.html" />
@@ -222,7 +221,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="gulpfile.js" />
-    <Content Include="index.html" />
     <Content Include="packages.config" />
     <Content Include="scripts\angular-animate.js" />
     <Content Include="scripts\angular-animate.min.js" />
@@ -1348,7 +1346,9 @@
     <Content Include="scripts\toastr.js" />
     <Content Include="scripts\toastr.min.js" />
     <None Include="scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

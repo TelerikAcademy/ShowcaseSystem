@@ -40,9 +40,8 @@
             IVisitsService visitsService,
             IProjectsService projectsService,
             IUsersService usersService,
-            IFlagsService flagsService)
+            IFlagsService flagsService,
             ITagsService tagsService,
-            IUsersService usersService,
             IMappingService mappingService,
             IImagesService imagesService,
             IFileSystemService fileSystemService)
@@ -64,7 +63,7 @@
             var model = this.projectsService
                 .LatestProjects()
                 .Project()
-                .To<ProjectResponseSimpleModel>()
+                .To<ProjectSimpleResponseModel>()
                 .ToList();
 
             return this.Data(model);
@@ -97,7 +96,7 @@
             var model = this.projectsService
                 .MostPopular()
                 .Project()
-                .To<ProjectResponseSimpleModel>()
+                .To<ProjectSimpleResponseModel>()
                 .ToList();
 
             return this.Data(model);

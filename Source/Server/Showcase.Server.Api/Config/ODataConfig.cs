@@ -26,8 +26,8 @@
         {
             var builder = new ODataConventionModelBuilder();            
             builder.EntitySet<ProjectSimpleResponseModel, SearchController>();
-            builder.EntityType<ProjectResponseSimpleModel>().Property(x => x.ShortDate);
-            builder.EntityType<ProjectResponseSimpleModel>().Property(x => x.TitleUrl);
+            builder.EntityType<ProjectSimpleResponseModel>().Property(x => x.ShortDate);
+            builder.EntityType<ProjectSimpleResponseModel>().Property(x => x.TitleUrl);
 
             builder.Namespace = typeof(ProjectSimpleResponseModel).Namespace;
             builder.EnableLowerCamelCase();

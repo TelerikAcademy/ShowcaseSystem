@@ -10,18 +10,20 @@
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Logic.Contracts;
 
     [RoutePrefix("api/Comments")]
     public class CommentsController : ApiController
     {
-        private readonly ICommentsService comments;
+        private readonly ICommentsService commentsService;
+        private readonly IUsersService usersService;
+        private readonly IMappingService mappingService;
 
-        private readonly IUsersService users;
-
-        public CommentsController(ICommentsService comments, IUsersService users)
+        public CommentsController(ICommentsService commentsService, IUsersService usersService, IMappingService mappingService)
         {
-            this.comments = comments;
-            this.users = users;
+            this.commentsService = commentsService;
+            this.usersService = usersService;
+            this.mappingService = mappingService;
         }
 
         [HttpPost]
@@ -33,9 +35,9 @@
             }
 
             var username = this.User.Identity.Name;
-            var postedComment = this.comments.AddNew(id, comment.CommentText, username);
+            var postedComment = this.commentsService.AddNew(id, comment.CommentText, username);
 
-            var model = this.comments
+            var model = this.commentsService
                 .CommentById(postedComment.Id)
                 .Project()
                 .To<CommentResponseModel>()
@@ -55,14 +57,14 @@
 
             var username = this.User.Identity.Name;
 
-            var edittedComment = this.comments.EditComment(id, comment.CommentText, username);
+            var edittedComment = this.commentsService.EditComment(id, comment.CommentText, username);
 
             if (edittedComment == null)
             {
                 return this.Data(false, "");
             }
 
-            var model = Mapper.Map<Comment, CommentResponseModel>(edittedComment);
+            var model = this.mappingService.Map<CommentResponseModel>(edittedComment);
 
             return this.Data(model);
         }
@@ -71,12 +73,12 @@
         [Route("{id}/{page}")]
         public IHttpActionResult Get(int id, int page)
         {
-            var projectCommentsCount = this.comments.ProjectCommentsCount(id);
+            var projectCommentsCount = this.commentsService.ProjectCommentsCount(id);
             var lastPage = this.GetLastPage(projectCommentsCount, page);
 
             var model = new CommentsPageResponseModel
             {
-                Comments = this.comments
+                Comments = this.commentsService
                     .ProjectComments(id, page)
                     .Project()
                     .To<CommentResponseModel>()
@@ -91,7 +93,7 @@
         [Route("User/{username}/{page}")]
         public IHttpActionResult CommentsByUser(string username, int page)
         {
-            var userCommentsCount = this.comments.UserCommentsCount(username);
+            var userCommentsCount = this.commentsService.UserCommentsCount(username);
             var lastPage = this.GetLastPage(userCommentsCount, page);
 
             if (page < 0 || page > lastPage)
@@ -101,7 +103,7 @@
 
             var model = new CommentsPageResponseModel
             {
-                Comments = this.comments
+                Comments = this.commentsService
                     .UserComments(username, page)
                     .Project()
                     .To<CommentResponseModel>()

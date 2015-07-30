@@ -26,7 +26,7 @@
 
         public void FlagProject(int projectId, string username)
         {
-            var userId = this.users.GetUserId(username);
+            var userId = this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {
@@ -52,7 +52,7 @@
 
         public void UnFlagProject(int projectId, string username)
         {
-            var userId = this.users.GetUserId(username);
+            var userId = this.users.UserIdByUsername(username);
 
             if (userId != 0)
             {
@@ -70,7 +70,7 @@
         public bool ProjectIsFlaggedByUser(int projectId, string username)
         {
             return this.users
-                .GetByUsername(username)
+                .ByUsername(username)
                 .Any(u => u.Flags.Any(f => f.ProjectId == projectId));
         }
     }

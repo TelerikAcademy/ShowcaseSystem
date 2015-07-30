@@ -83,7 +83,7 @@
 
         public Comment EditComment(int id, string commentText, string username)
         {
-            var userId = this.users.GetUserId(username);
+            var userId = this.users.UserIdByUsername(username);
 
             var commentToEdit = this.comments
                 .All()
