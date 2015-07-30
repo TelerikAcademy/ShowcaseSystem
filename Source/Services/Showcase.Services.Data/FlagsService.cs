@@ -41,7 +41,7 @@
 
                 var project = await this.projects
                     .All()
-                    .Include(p => p.Flags.Count)
+                    .Include(p => p.Flags)
                     .Where(p => p.Id == projectId)
                     .FirstOrDefaultAsync();
 
