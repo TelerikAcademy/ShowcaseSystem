@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-1 col-md-3" animate="fadeInLeft" data-animation-delay="200">
-                <img src="/Images/{{vm.project.mainImageUrl}}_tmbl.jpg" width="250" height="250" alt="{{vm.project.name}}" />
+                <img src="/Images/{{vm.project.mainImageUrl}}_tmbl.jpg" width="250" alt="{{vm.project.name}}" />
                 <div class="text-center padding-right-10" animate="fadeIn" data-animation-delay="1500">
                     <br />
                     <i class="fa fa-eye margin-right-5"></i><span class="margin-right-5">{{vm.project.visits}}</span>
@@ -19,8 +19,8 @@
                 <h2 class="nomargin-bottom">{{vm.project.name}}</h2>
                 <div animate="fadeIn" data-animation-delay="1000">
                     <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{vm.project.shortDate}}</span> |
-                    <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a> |
-                    <i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank">live demo</a>
+                    <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a>
+                    <span ng-show="vm.project.liveDemoUrl.length > 0"> |<i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank">live demo</a></span>
                     <div class="pull-right">
                         <a href="#" class="btn btn-sm ico-only rounded btn-facebook" ng-click="vm.popup('http://www.facebook.com/sharer.php?u=', 'Facebook Share', 600, 500)">
                             <i class="fa fa-facebook"></i>
@@ -60,7 +60,7 @@
                 <div ng-show="vm.comments.length > 0" class="row margin-bottom-20" ng-repeat="comment in vm.comments">
                     <div class="col-md-3">
                         <a href="/users/{{comment.username}}">
-                            <img src="{{comment.userAvatarUrl}}" class="pull-left " style="margin: 7px; margin-right: 12px;" width="45" height="45" />
+                            <img src="{{comment.userAvatarUrl}}" class="pull-left " style="margin: 7px; margin-right: 12px;" width="45" />
                         </a>
                         <div class="margin-top-2">
                             <a href="/users/{{comment.username}}">{{comment.username}}</a><br />
@@ -92,7 +92,7 @@
                 <div class="row">
                     <div class="col-md-offset-3 col-md-9">
                         <form class="nomargin nopadding">
-                            <textarea rows="8" cols="70" ng-model="vm.commentText" class="padding-left-10 padding-right-10 form-control"></textarea>
+                            <textarea rows="8" cols="70" ng-model="vm.commentText" class="margin-top-20 padding-left-10 padding-right-10 form-control"></textarea>
                             <br />
                             <button class="btn btn-sm btn-success" ng-click="vm.commentProject(vm.project.id)">Comment</button>
                         </form>

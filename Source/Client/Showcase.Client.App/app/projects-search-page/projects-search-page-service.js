@@ -65,17 +65,21 @@
             }
             else { dateString = rawDate; }
 
-            var hourString = date.getUTCHours().toString();
-            if (hourString.length == 1)
-                hourString = "0" + hourString;
+            var hourString = '23';
+            var minuteString = '59';
+            var secondString = '59';
 
-            var minuteString = date.getUTCMinutes().toString();
-            if (minuteString.length == 1)
-                minuteString = "0" + minuteString;
+            //var hourString = date.getUTCHours().toString();
+            //if (hourString.length == 1)
+            //    hourString = "0" + hourString;
 
-            var secondString = date.getUTCSeconds().toString();
-            if (secondString.length == 1)
-                secondString = "0" + secondString;
+            //var minuteString = date.getUTCMinutes().toString();
+            //if (minuteString.length == 1)
+            //    minuteString = "0" + minuteString;
+
+            //var secondString = date.getUTCSeconds().toString();
+            //if (secondString.length == 1)
+            //    secondString = "0" + secondString;
 
             var DateFilter = "";
             DateFilter += date.getUTCFullYear() + "-";

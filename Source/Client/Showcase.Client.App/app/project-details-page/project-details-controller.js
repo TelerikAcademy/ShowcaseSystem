@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location, commentsData, identity) {
+    var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location, commentsData, identity, notifier) {
         var vm = this;
         var id = $routeParams.id;
 
@@ -95,6 +95,11 @@
         };
 
         vm.commentProject = function (id) {
+            if (vm.commentText.length < 10 || vm.commentText > 500) {
+                notifier.error('The comment length should be between 10 and 1000 symbols.');
+                return;
+            }
+
             commentsData.commentProject(id, vm.commentText)
                 .then(function (data) {
                     vm.comments.unshift(data);
@@ -135,5 +140,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', 'commentsData', 'identity', projectDetailsController]);
+        .controller('ProjectDetailsController', ['projectDetailsData', '$routeParams', '$window', '$location', 'commentsData', 'identity', 'notifier', projectDetailsController]);
 }());

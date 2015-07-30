@@ -46,8 +46,9 @@
                 };
 
                 scope.saveComment = function (id, text) {
-                    if (text.length < 10 || text.length > 1000) {
+                    if (text.length < 10 || text.length > 500) {
                         notifier.error('The comment length should be between 10 and 1000 symbols.');
+                        return;
                     }
 
                     commentsData.editComment(id, text)
