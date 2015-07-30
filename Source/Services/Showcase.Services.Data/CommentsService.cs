@@ -66,12 +66,12 @@
                 .Take(PageSize);
         }
 
-        public int UserCommentsCount(string username)
+        public async Task<int> UserCommentsCount(string username)
         {
-            return this.comments
+            return await this.comments
                 .All()
                 .Where(c => c.User.UserName == username)
-                .Count();
+                .CountAsync();
         }
         
         public async Task<int> ProjectCommentsCount(int id)

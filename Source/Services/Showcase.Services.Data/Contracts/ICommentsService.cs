@@ -16,7 +16,7 @@
 
         Task<int> ProjectCommentsCount(int id);
 
-        int UserCommentsCount(string username);
+        Task<int> UserCommentsCount(string username);
 
         Task<Comment> AddNew(int id, string commentText, string username);
 

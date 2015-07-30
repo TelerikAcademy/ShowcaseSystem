@@ -92,9 +92,9 @@
 
         [HttpGet]
         [Route("User/{username}/{page}")]
-        public IHttpActionResult CommentsByUser(string username, int page)
+        public async Task<IHttpActionResult> CommentsByUser(string username, int page)
         {
-            var userCommentsCount = this.commentsService.UserCommentsCount(username);
+            var userCommentsCount = await this.commentsService.UserCommentsCount(username);
             var lastPage = this.GetLastPage(userCommentsCount, page);
 
             if (page < 0 || page > lastPage)
@@ -104,11 +104,11 @@
 
             var model = new CommentsPageResponseModel
             {
-                Comments = this.commentsService
+                Comments = await this.commentsService
                     .UserComments(username, page)
                     .Project()
                     .To<CommentResponseModel>()
-                    .ToList(),
+                    .ToListAsync(),
                 IsLastPage = page == lastPage,
                 CurrentPage = page,
                 LastPage = lastPage
