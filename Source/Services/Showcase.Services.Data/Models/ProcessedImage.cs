@@ -3,6 +3,8 @@
     using System;
 
     using Showcase.Data.Models;
+    using Showcase.Services.Logic;
+    using Showcase.Services.Logic.Contracts;
 
     public class ProcessedImage : Image
     {
@@ -16,7 +18,7 @@
         {
             get
             {
-                return pi => new Image
+                return pi => new Image // TODO: move to AutoMapper
                 {
                     Id = pi.Id,
                     OriginalFileName = pi.OriginalFileName,

@@ -13,6 +13,7 @@
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.DataTransferModels.Statistics;
     using Showcase.Server.DataTransferModels.User;
+    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
 
     [RoutePrefix("api/Statistics")]
@@ -45,7 +46,7 @@
                 {
                     total += r.Count;
                     result.Values.Add(total);
-                    result.Labels.Add(this.IntegerToMonthName(r.Date.Month));
+                    result.Labels.Add(r.Date.Month.ToMonthName());
                 });
 
             return this.Data(result);
@@ -89,28 +90,6 @@
                 .ToListAsync();
 
             return this.Data(model);
-        }
-
-        // TODO: move to extension method
-        private string IntegerToMonthName(int monthIndex)
-        {
-            switch (monthIndex)
-            {
-                case 1: return "January";
-                case 2: return "February";
-                case 3: return "March";
-                case 4: return "April";
-                case 5: return "May";
-                case 6: return "June";
-                case 7: return "July";
-                case 8: return "August";
-                case 9: return "September";
-                case 10: return "October";
-                case 11: return "November";
-                case 12: return "December";
-                default:
-                    throw new ArgumentException("Not a valid month index");
-            }
         }
     }
 }
