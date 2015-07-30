@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var userProfileCommentsDirective = function userProfileCommentsDirective(userProfileData, $routeParams, identity, commentsData) {
+    var userProfileCommentsDirective = function userProfileCommentsDirective(userProfileData, $routeParams, identity, commentsData, notifier) {
         return {
             restrict: 'A',
             templateUrl: '/app/user-profile-page/user-profile-comments-directive.html',
@@ -46,6 +46,10 @@
                 };
 
                 scope.saveComment = function (id, text) {
+                    if (text.length < 10 || text.length > 1000) {
+                        notifier.error('The comment length should be between 10 and 1000 symbols.');
+                    }
+
                     commentsData.editComment(id, text)
                         .then(function (data) {
                             scope.edittingComments[id] = false;
@@ -57,5 +61,5 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('userProfileComments', ['userProfileData', '$routeParams', 'identity', 'commentsData', userProfileCommentsDirective]);
+        .directive('userProfileComments', ['userProfileData', '$routeParams', 'identity', 'commentsData', 'notifier', userProfileCommentsDirective]);
 }());
