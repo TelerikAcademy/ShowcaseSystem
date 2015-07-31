@@ -39,10 +39,8 @@
                 $top: vm.filterOptions.pageSize,
                 $skip: 0,
                 $count: 'true',
-                $filter: "createdOn ge " +
-                    projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
-                    " and createdOn le " +
-                    projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
+                $filter: "createdOn ge " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
+                    " and createdOn le " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
             if (vm.searchParams.name || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
@@ -95,6 +93,11 @@
             initialProjectsLoaded = false;
             getProjects();
         };
+
+        if ($routeParams.tag) {
+            vm.searchParams.tags = $routeParams.tag;
+            $location.search('tag', null);
+        }
 
         vm.search();
 
