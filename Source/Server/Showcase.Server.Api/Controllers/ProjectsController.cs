@@ -1,31 +1,23 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Http;
-    using System.Web.OData.Query;
 
     using AutoMapper.QueryableExtensions;
 
-    using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
-    using Showcase.Server.Common;
-    using Showcase.Server.DataTransferModels;
     using Showcase.Server.DataTransferModels.Project;
-    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
-    using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
 
     public class ProjectsController : BaseAuthorizationController
     {
-        private readonly ILikesService likesService;
         private readonly IVisitsService visitsService;
         private readonly IProjectsService projectsService;
         private readonly ITagsService tagsService;
@@ -33,25 +25,21 @@
         private readonly IImagesService imagesService;
         private readonly IFileSystemService fileSystemService;
 
-        private readonly IFlagsService flagsService;
 
         public ProjectsController(
-            IUsersService usersService,
             ILikesService likesService,
+            IUsersService usersService,
             IVisitsService visitsService,
             IProjectsService projectsService,
-            IFlagsService flagsService,
             ITagsService tagsService,
             IMappingService mappingService,
             IImagesService imagesService,
             IFileSystemService fileSystemService)
             : base(usersService)
         {
-            this.likesService = likesService;
             this.visitsService = visitsService;
             this.projectsService = projectsService;
             this.tagsService = tagsService;
-            this.flagsService = flagsService;
             this.mappingService = mappingService;
             this.imagesService = imagesService;
             this.fileSystemService = fileSystemService;
@@ -141,70 +129,6 @@
             var username = this.User.Identity.Name;
 
             await this.visitsService.VisitProject(id, username);
-
-            return this.Ok();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IHttpActionResult> Like(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            if (await this.likesService.ProjectIsLikedByUser(id, username))
-            {
-                return this.Data(false, "You already have liked this project.");
-            }
-
-            await this.likesService.LikeProject(id, username);
-
-            return this.Ok();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IHttpActionResult> Dislike(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            if (!await this.likesService.ProjectIsLikedByUser(id, username))
-            {
-                return this.Data(false, "You have not yet liked this project.");
-            }
-
-            await this.likesService.DislikeProject(id, username);
-
-            return this.Ok();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IHttpActionResult> Flag(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            if (await this.flagsService.ProjectIsFlaggedByUser(id, username))
-            {
-                return this.Data(false, "You can't flag the same project more than once.");
-            }
-
-            await this.flagsService.FlagProject(id, username);
-
-            return this.Ok();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IHttpActionResult> Unflag(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            if (!await this.flagsService.ProjectIsFlaggedByUser(id, username))
-            {
-                return this.Data(false, "You have not yet flagged this project.");
-            }
-
-            await this.flagsService.UnFlagProject(id, username);
 
             return this.Ok();
         }

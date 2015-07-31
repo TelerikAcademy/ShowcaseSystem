@@ -11,19 +11,19 @@
         }
         
         function likeProject(id) {
-            return data.post('projects/like/' + id, {});
+            return data.post('likes/like/' + id, {});
         }
 
         function dislikeProject(id) {
-            return data.post('projects/dislike/' + id, {});
+            return data.post('likes/dislike/' + id, {});
         }
         
         function flagProject(id) {
-            return data.post('projects/flag/' + id);
+            return data.post('flags/flag/' + id);
         }
 
         function unflagProject(id) {
-            return data.post('projects/unflag/' + id);
+            return data.post('flags/unflag/' + id);
         }
         
         return {

@@ -112,7 +112,7 @@
             }
 
             canGetNext = false;
-            $routeParams.$skip = ($scope.currentPage - 1) * vm.filterOptions.pageSize;
+            $routeParams.$skip = ($scope.currentPage) * vm.filterOptions.pageSize;
             getProjects();
         };
 
@@ -128,6 +128,9 @@
                 vm.search();
             } else {
                 $scope.currentPage--;
+                if ($scope.currentPage < 0) {
+                    $scope.currentPage = 0;
+                }
                 $scope.changePage($scope.currentPage);
             }
         });
@@ -144,7 +147,8 @@
                 if (newValue === oldValue) {
                     return;
                 }
-
+                
+                $scope.currentPage = 1;
                 vm.search();
             });
         }
@@ -158,7 +162,7 @@
             searchPageData.searchProjects(oDataQuery)
                 .then(function (odata) {
                     // results data
-                    vm.isLastPage = odata['@odata.count'] <= ($scope.currentPage) * vm.filterOptions.pageSize;
+                    vm.isLastPage = odata['@odata.count'] <= $scope.currentPage * vm.filterOptions.pageSize;
 
                     // searchbar data
                     vm.totalResultsCount = odata['@odata.count'];
@@ -174,15 +178,9 @@
                         vm.projects = odata.value;
                     }
 
-                    vm.loading = false;
-                    
-                    if ($window.localStorage.scrolling == 'true') {
-                        $scope.currentPage++;
-                    }
-                    else {
-                        $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
-                    }
+                    $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
 
+                    vm.loading = false;
                     canGetNext = true;
                     vm.initialProjectsLoaded = true;
                 });
