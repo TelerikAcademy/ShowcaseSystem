@@ -45,7 +45,7 @@
         public async Task<IHttpActionResult> Identity()
         {
             var model = await this.UsersService
-                .ByUsername(this.User.Identity.Name)
+                .ByUsername(this.CurrentUser.UserName)
                 .Project()
                 .To<IdentityResponseModel>()
                 .FirstOrDefaultAsync();

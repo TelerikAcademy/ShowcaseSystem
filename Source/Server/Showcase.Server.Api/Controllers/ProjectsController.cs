@@ -60,7 +60,7 @@
         [HttpGet]
         public async Task<IHttpActionResult> Get(int id)
         {
-            var username = this.User.Identity.Name;
+            var username = this.CurrentUser.UserName;
 
             var model = await this.projectsService
                 .ProjectById(id, this.CurrentUser.IsAdmin)
@@ -106,8 +106,7 @@
         [HttpGet]
         public async Task<IHttpActionResult> LikedProjects(string username)
         {
-            var currentLoggedInUsername = this.User.Identity.Name;
-            if (username != currentLoggedInUsername.ToLower())
+            if (username != this.CurrentUser.UserName.ToLower())
             {
                 return this.Data(false, "You are not authorized to view this user's liked projects."); // TODO: Move to common attribute
             }
@@ -126,10 +125,7 @@
         [HttpPost]
         public async Task<IHttpActionResult> Visit(int id)
         {
-            var username = this.User.Identity.Name;
-
-            await this.visitsService.VisitProject(id, username);
-
+            await this.visitsService.VisitProject(id, this.CurrentUser.UserName);
             return this.Ok();
         }
     }
