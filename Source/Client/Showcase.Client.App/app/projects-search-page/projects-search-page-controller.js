@@ -5,7 +5,6 @@
         var vm = this,
             oDataQuery,
             canGetNext = true,
-            initialProjectsLoaded = false,
             CONSTS = {
                 DESC: 'desc'
             };
@@ -13,6 +12,7 @@
         vm.projects = [];
         vm.isLastPage = false;
         vm.loading = false;
+        vm.initialProjectsLoaded = false;
 
         vm.filterOptions = projectsSearchService.getFilterOptions();
         vm.filterOptions.desc = $routeParams.desc === undefined ? true : $routeParams.desc;
@@ -90,7 +90,7 @@
                     $location.search(key, $routeParams[key]);
                 });
 
-            initialProjectsLoaded = false;
+            vm.initialProjectsLoaded = false;
             getProjects();
         };
 
@@ -122,7 +122,7 @@
             }
 
             if (newValue == true) {
-                initialProjectsLoaded = false;
+                vm.initialProjectsLoaded = false;
                 canGetNext = false;
                 $scope.currentPage = 1;
                 vm.search();
@@ -152,11 +152,8 @@
         function getProjects() {
             oDataQuery = projectsSearchService.getQuery($routeParams, vm.filterOptions.includeHidden);
             var startTime = new Date().getTime();
-            $routeParams.$count = true;
-
-            if (!initialProjectsLoaded) {                
-                vm.loading = true;
-            }
+            $routeParams.$count = true;             
+            vm.loading = true;
 
             searchPageData.searchProjects(oDataQuery)
                 .then(function (odata) {
@@ -170,7 +167,7 @@
                     // pager data
                     $scope.totalPages = Math.ceil(odata['@odata.count'] / vm.filterOptions.pageSize);
 
-                    if ($window.localStorage.scrolling == 'true' && initialProjectsLoaded) {
+                    if ($window.localStorage.scrolling == 'true' && vm.initialProjectsLoaded) {
                         vm.projects = vm.projects.concat(odata.value);
                     }
                     else {
@@ -183,11 +180,11 @@
                         $scope.currentPage++;
                     }
                     else {
-                     //   $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
+                        $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
                     }
 
                     canGetNext = true;
-                    initialProjectsLoaded = true;
+                    vm.initialProjectsLoaded = true;
                 });
         }
     };
