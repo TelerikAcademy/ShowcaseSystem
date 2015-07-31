@@ -1,16 +1,14 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
     using System.Data.Entity;
-    using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Http;
 
     using AutoMapper.QueryableExtensions;
 
-    using Showcase.Data.Models;
     using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.Common;
-    using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Server.DataTransferModels.Comment;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.Validation;
     using Showcase.Services.Data;

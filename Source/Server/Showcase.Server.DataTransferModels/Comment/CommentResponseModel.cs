@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.DataTransferModels.Project
+﻿namespace Showcase.Server.DataTransferModels.Comment
 {
     using System;
     using System.Linq;

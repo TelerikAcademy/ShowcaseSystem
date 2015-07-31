@@ -7,8 +7,8 @@
     
     using Showcase.Data.Models;
 
-    using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
+    using Showcase.Server.DataTransferModels.Comment;
     using Showcase.Server.DataTransferModels.Project;
 
     public class UserResponseModel : IMapFrom<User>, IHaveCustomMappings
