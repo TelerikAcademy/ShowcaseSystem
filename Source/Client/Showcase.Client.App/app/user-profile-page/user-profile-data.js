@@ -3,15 +3,15 @@
 
     var userProfileData = function userProfileData(data) {
         function getUser(username) {
-            return data.get('users/profile/' + username);
+            return data.get('Users/Profile/' + username);
         }
         
         function getLikedProjects(username) {
-            return data.get('projects/likedprojects/' + username)
+            return data.get('Projects/LikedProjects/' + username)
         }
         
         function getProfile(username) {
-            return data.get('users/RemoteProfile/' + username);
+            return data.get('Users/RemoteProfile/' + username);
         }
 
         return {
