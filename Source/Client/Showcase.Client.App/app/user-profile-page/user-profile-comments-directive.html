@@ -1,4 +1,4 @@
-﻿<div class="row margin-bottom-20" ng-repeat="comment in comments">
+﻿<div ng-show="comments.length > 0" class="row margin-bottom-20" ng-repeat="comment in comments">
     <div class="col-md-2 text-center">
         <i class="fa fa-clock-o font-size-3em"></i><br />
         <span>{{comment.shortDate}}</span>
@@ -20,4 +20,8 @@
     </div>
 </div>
 
-<div ng-pager total-pages="{{lastPage}}" current-page="{{commentsPage}}" page-changed="loadCommentsPage(pageNum)" />
+<div ng-show="comments.length > 0" ng-pager total-pages="{{lastPage}}" current-page="{{commentsPage}}" page-changed="loadCommentsPage(pageNum)"></div>
+
+<div ng-hide="comments.length > 0" class="text-center margin-bottom-30">
+    <span style="font-style: italic">There are no comments by this user</span>
+</div>

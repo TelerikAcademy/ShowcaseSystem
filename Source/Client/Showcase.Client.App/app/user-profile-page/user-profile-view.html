@@ -24,7 +24,6 @@
                 </div>
             </div>
         </div>
-        <!--<hr style="width: 80%; margin: 0 auto; opacity: 0.4" animate="fadeInUp" data-animation-delay="200" />-->
         <div class="row margin-top-50">
             <div class="col-md-offset-1 col-md-10" animate="fadeInUp" data-animation-delay="200">
                 <div class="tabs nomargin-top">
@@ -38,7 +37,7 @@
                         <li>
                             <h4><a class="tab-button" href="#teammates-tab" data-toggle="tab"><i class="fa fa-users"></i>Teammates</a></h4>
                         </li>
-                        <li ng-show="vm.likedProjects.length > 0">
+                        <li ng-show="vm.isAdmin || vm.user.username.toLowerCase() == vm.username">
                             <h4><a class="tab-button" href="#liked-projects-tab" data-toggle="tab"><i class="fa fa-thumbs-up"></i>Liked Projects</a></h4>
                         </li>
                     </ul>
@@ -52,7 +51,7 @@
                         <div id="teammates-tab" class="tab-pane padding-top-30">
                             <div user-profile-teammates teammates="vm.user.teammates" />
                         </div>
-                        <div ng-show="vm.likedProjects.length > 0" id="liked-projects-tab" class="tab-pane">
+                        <div ng-show="vm.isAdmin || vm.user.username.toLowerCase() == vm.username" id="liked-projects-tab" class="tab-pane">
                             <div user-profile-projects projects="vm.likedProjects" />
                         </div>
                     </div>

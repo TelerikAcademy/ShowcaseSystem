@@ -1,8 +1,12 @@
-﻿<div class="row margin-bottom-20" ng-repeat="mate in teammates">
+﻿<div ng-show="teammates.length > 0" class="row margin-bottom-20" ng-repeat="mate in teammates">
     <div class="col-md-1">
         <img class="img-thumbnail" src="{{mate.avatarUrl}}" width="55" height="55"/>
     </div>
     <div class="col-md-9">
         <a href="/users/{{mate.username}}" class="font-size-13em" style="line-height: 1.9em;">{{mate.username}}</a>
     </div>
+</div>
+
+<div ng-hide="teammates.length > 0" class="text-center margin-bottom-30">
+    <span style="font-style: italic">The user has no teammates yet</span>
 </div>

@@ -128,9 +128,10 @@
                 vm.search();
             } else {
                 $scope.currentPage--;
-                if ($scope.currentPage < 0) {
-                    $scope.currentPage = 0;
+                if ($scope.currentPage < 1) {
+                    $scope.currentPage = 1;
                 }
+
                 $scope.changePage($scope.currentPage);
             }
         });

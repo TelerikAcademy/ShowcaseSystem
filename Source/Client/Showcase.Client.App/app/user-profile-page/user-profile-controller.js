@@ -3,31 +3,34 @@
 
     var userProfileController = function userProfileController(userProfileData, $routeParams, identity, commentsData) {
         var vm = this,
-            username = $routeParams.username.toLowerCase(),
             arrowDownCss = 'fa fa-long-arrow-down',
             arrowUpCss = 'fa fa-long-arrow-up';
 
         vm.orderBy = '-createdOn';
         vm.commentsPage = 0;
+        vm.username = $routeParams.username.toLowerCase();
 
         $('.tab-button').click(function (e) {
             e.preventDefault();
         });
 
-        userProfileData.getUser(username)
+        userProfileData.getUser(vm.username)
             .then(function (user) {
                 vm.user = user;
+                console.log(user)
             });
 
-        userProfileData.getProfile(username)
+        userProfileData.getProfile(vm.username)
             .then(function (profile) {
                 vm.profile = profile;
             });
 
         identity.getUser()
             .then(function (user) {
-                if (user.userName.toLowerCase() === username || user.isAdmin) {
-                    userProfileData.getLikedProjects(username)
+                vm.isAdmin = user.isAdmin;
+
+                if (user.userName.toLowerCase() === vm.username || user.isAdmin) {
+                    userProfileData.getLikedProjects(vm.username)
                         .then(function (data) {
                             vm.likedProjects = data;
                         });
