@@ -8,25 +8,24 @@
 
     using AutoMapper.QueryableExtensions;
 
+    using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.DataTransferModels.User;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Services.Data.Contracts;
 
-    public class UsersController : BaseController
+    public class UsersController : BaseAuthorizationController
     {
         private const int MinimumCharactersForUsernameSearch = 3;
 
-        private readonly IUsersService users;
-
-        public UsersController(IUsersService users)
+        public UsersController(IUsersService usersService)
+            :base (usersService)
         {
-            this.users = users;
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> Profile(string username)
         {
-            var model = await this.users
+            var model = await this.UsersService
                 .ByUsername(username)
                 .Project()
                 .To<UserResponseModel>()
@@ -38,14 +37,14 @@
         [HttpGet]
         public async Task<IHttpActionResult> RemoteProfile(string username)
         {
-            return this.Data(await this.users.ProfileInfo(username));
+            return this.Data(await this.UsersService.ProfileInfo(username));
         }
 
         [Authorize]
         [HttpGet]
         public async Task<IHttpActionResult> Identity()
         {
-            var model = await this.users
+            var model = await this.UsersService
                 .ByUsername(this.User.Identity.Name)
                 .Project()
                 .To<IdentityResponseModel>()
@@ -63,7 +62,7 @@
                 return this.Data(false, string.Format("Username should be at least {0} symbols long", MinimumCharactersForUsernameSearch));
             }
 
-            var model = (await this.users.SearchByUsername(username))
+            var model = (await this.UsersService.SearchByUsername(username))
                 .Select(UserAutocompleteResponseModel.FromUserName);
 
             return this.Ok(model);
