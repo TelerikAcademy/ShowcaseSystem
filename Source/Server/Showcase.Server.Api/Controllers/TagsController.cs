@@ -11,7 +11,6 @@
     using Showcase.Server.DataTransferModels.Tag;
     using Showcase.Services.Data.Contracts;
 
-    [RoutePrefix("api/Tags")]
     public class TagsController : BaseController
     {
         private const int MinimumCharactersForNameSearch = 2;
@@ -25,7 +24,6 @@
 
         [Authorize]
         [HttpGet]
-        [Route("Search")]
         public async Task<IHttpActionResult> Search(string name)
         {
             if (string.IsNullOrEmpty(name) || name.Length < MinimumCharactersForNameSearch)

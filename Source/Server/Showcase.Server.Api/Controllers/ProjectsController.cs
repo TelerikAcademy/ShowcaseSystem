@@ -22,7 +22,6 @@
     using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
 
-    [RoutePrefix("api/Projects")]
     public class ProjectsController : BaseController
     {
         private readonly ILikesService likesService;
@@ -70,6 +69,20 @@
             return this.Data(model);
         }
 
+        [HttpGet]
+        public async Task<IHttpActionResult> Get(int id)
+        {
+            var username = this.User.Identity.Name;
+
+            var model = await this.projectsService
+                .ProjectById(id)
+                .Project()
+                .To<ProjectResponseModel>(new { username })
+                .FirstOrDefaultAsync();
+
+            return this.Data(model);
+        }
+
         [Authorize]
         [HttpPost]
         [ValidateModel]
@@ -91,7 +104,6 @@
         }
 
         [HttpGet]
-        [Route("Popular")]
         public async Task<IHttpActionResult> Popular()
         {
             var model = await this.projectsService
@@ -104,21 +116,6 @@
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> Get(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            var model = await this.projectsService
-                .ProjectById(id)
-                .Project()
-                .To<ProjectResponseModel>(new { username })
-                .FirstOrDefaultAsync();
-
-            return this.Data(model);
-        }
-
-        [HttpGet]
-        [Route("LikedProjects/{username}")]
         public async Task<IHttpActionResult> LikedProjects(string username)
         {
             var currentLoggedInUsername = this.User.Identity.Name;
@@ -139,7 +136,6 @@
         }
 
         [HttpPost]
-        [Route("Visit/{id}")]
         public async Task<IHttpActionResult> Visit(int id)
         {
             var username = this.User.Identity.Name;
@@ -151,7 +147,6 @@
 
         [Authorize]
         [HttpPost]
-        [Route("Like/{id}")]
         public async Task<IHttpActionResult> Like(int id)
         {
             var username = this.User.Identity.Name;
@@ -168,7 +163,6 @@
 
         [Authorize]
         [HttpPost]
-        [Route("Dislike/{id}")]
         public async Task<IHttpActionResult> Dislike(int id)
         {
             var username = this.User.Identity.Name;
@@ -185,7 +179,6 @@
 
         [Authorize]
         [HttpPost]
-        [Route("Flag/{id}")]
         public async Task<IHttpActionResult> Flag(int id)
         {
             var username = this.User.Identity.Name;
@@ -202,7 +195,6 @@
 
         [Authorize]
         [HttpPost]
-        [Route("Unflag/{id}")]
         public async Task<IHttpActionResult> Unflag(int id)
         {
             var username = this.User.Identity.Name;
