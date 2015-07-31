@@ -111,11 +111,8 @@
             var model = await this.projectsService
                 .ProjectById(id)
                 .Project()
-                .To<ProjectResponseModel>()
+                .To<ProjectResponseModel>(new { username })
                 .FirstOrDefaultAsync();
-
-            model.IsLiked = await this.likesService.ProjectIsLikedByUser(id, username); // TODO: merge in one query
-            model.IsFlagged = await this.flagsService.ProjectIsFlaggedByUser(id, username); // TODO: merge in one query
 
             return this.Data(model);
         }
@@ -127,7 +124,7 @@
             var currentLoggedInUsername = this.User.Identity.Name;
             if (username != currentLoggedInUsername.ToLower())
             {
-                return this.Data(false, "You are not authorized to view this user's liked projects.");
+                return this.Data(false, "You are not authorized to view this user's liked projects."); // TODO: Move to common attribute
             }
 
             var userId = await this.usersService.UserIdByUsername(username);

@@ -81,6 +81,7 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
+            string username = null;
             configuration.CreateMap<Project, ProjectResponseModel>()
                 .ForMember(pr => pr.Name, opt => opt.MapFrom(pr => pr.Title))
                 .ForMember(pr => pr.Likes, opt => opt.MapFrom(pr => pr.Likes.Count))
@@ -88,7 +89,9 @@
                 .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
                 .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath))
                 .ForMember(pr => pr.ImageUrls, opt => opt.MapFrom(pr => pr.Images.Select(i => i.UrlPath)))
-                .ForMember(pr => pr.Collaborators, opt => opt.MapFrom(pr => pr.Collaborators.Select(c => c.UserName).OrderBy(c => c)));
+                .ForMember(pr => pr.Collaborators, opt => opt.MapFrom(pr => pr.Collaborators.Select(c => c.UserName).OrderBy(c => c)))
+                .ForMember(pr => pr.IsLiked, opt => opt.MapFrom(pr => pr.Likes.Any(l => l.User.UserName == username)))
+                .ForMember(pr => pr.IsFlagged, opt => opt.MapFrom(pr => pr.Flags.Any(fl => fl.User.UserName == username)));
         }
     }
 }
