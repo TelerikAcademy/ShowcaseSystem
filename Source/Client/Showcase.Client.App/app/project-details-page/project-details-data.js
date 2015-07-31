@@ -2,8 +2,8 @@
     'use strict';
 
     var projectDetailsData = function projectDetailsData(data, $window) {
-        function getProject(id) {
-            return data.get('projects/' + id);
+        function getProject(id, titleUrl) {
+            return data.get('projects/' + id + '/' + titleUrl);
         }
 
         function visitProject(id) {
