@@ -24,8 +24,7 @@
         }
 
         [HttpGet]
-        [Route("api/Users/Profile/{username}")]
-        public async Task<IHttpActionResult> Get(string username)
+        public async Task<IHttpActionResult> Profile(string username)
         {
             var model = await this.users
                 .ByUsername(username)

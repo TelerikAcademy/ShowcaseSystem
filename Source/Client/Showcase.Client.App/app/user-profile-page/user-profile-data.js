@@ -7,11 +7,11 @@
         }
         
         function getLikedProjects(username) {
-            return data.get('projects/likedprojects/' + username)
+            return data.get('projects/likedProjects/' + username)
         }
         
         function getProfile(username) {
-            return data.get('users/RemoteProfile/' + username);
+            return data.get('users/remoteProfile/' + username);
         }
 
         return {
