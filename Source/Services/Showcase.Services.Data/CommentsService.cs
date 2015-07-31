@@ -94,7 +94,7 @@
 
             if (commentToEdit == null)
             {
-                // TODO: Handle error.
+                return null;
             }
 
             commentToEdit.Content = commentText;

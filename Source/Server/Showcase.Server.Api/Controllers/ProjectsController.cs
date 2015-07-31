@@ -192,7 +192,7 @@
 
             if (await this.flagsService.ProjectIsFlaggedByUser(id, username))
             {
-                return this.Data(false, "You can't flagg the same project more than once.");
+                return this.Data(false, "You can't flag the same project more than once.");
             }
 
             await this.flagsService.FlagProject(id, username);
