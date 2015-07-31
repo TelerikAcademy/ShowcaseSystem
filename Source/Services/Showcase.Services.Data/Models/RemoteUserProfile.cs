@@ -2,7 +2,6 @@
 {
     public class RemoteUserProfile
     {
-        // TODO: more?
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
