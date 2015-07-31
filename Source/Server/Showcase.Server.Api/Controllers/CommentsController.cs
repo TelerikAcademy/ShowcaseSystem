@@ -34,8 +34,7 @@
         [ValidateModel]
         public async Task<IHttpActionResult> Post(int id, CommentRequestModel comment)
         {
-            var username = this.User.Identity.Name;
-            var postedComment = await this.commentsService.AddNew(id, comment.CommentText, username);
+            var postedComment = await this.commentsService.AddNew(id, comment.CommentText, this.CurrentUser.UserName);
 
             var model = await this.commentsService
                 .CommentById(postedComment.Id)
@@ -50,8 +49,7 @@
         [ValidateModel]
         public async Task<IHttpActionResult> Edit(int id, CommentRequestModel comment)
         {
-            var username = this.User.Identity.Name;
-            var edittedComment = await this.commentsService.EditComment(id, comment.CommentText, username);
+            var edittedComment = await this.commentsService.EditComment(id, comment.CommentText, this.CurrentUser.UserName);
             var model = this.mappingService.Map<CommentResponseModel>(edittedComment);
             return this.Data(model);
         }

@@ -22,15 +22,12 @@
         [HttpPost]
         public async Task<IHttpActionResult> Like(int id)
         {
-            var username = this.User.Identity.Name;
-
-            if (await this.likesService.ProjectIsLikedByUser(id, username))
+            if (await this.likesService.ProjectIsLikedByUser(id, this.CurrentUser.UserName))
             {
                 return this.Data(false, "You already have liked this project.");
             }
 
-            await this.likesService.LikeProject(id, username);
-
+            await this.likesService.LikeProject(id, this.CurrentUser.UserName);
             return this.Ok();
         }
 
@@ -38,15 +35,12 @@
         [HttpPost]
         public async Task<IHttpActionResult> Dislike(int id)
         {
-            var username = this.User.Identity.Name;
-
-            if (!await this.likesService.ProjectIsLikedByUser(id, username))
+            if (!await this.likesService.ProjectIsLikedByUser(id, this.CurrentUser.UserName))
             {
                 return this.Data(false, "You have not yet liked this project.");
             }
 
-            await this.likesService.DislikeProject(id, username);
-
+            await this.likesService.DislikeProject(id, this.CurrentUser.UserName);
             return this.Ok();
         }
     }
