@@ -75,7 +75,7 @@
             var username = this.User.Identity.Name;
 
             var model = await this.projectsService
-                .ProjectById(id)
+                .ProjectById(id, this.CurrentUser.IsAdmin)
                 .Project()
                 .To<ProjectResponseModel>(new { username })
                 .FirstOrDefaultAsync();
@@ -114,9 +114,6 @@
 
             return this.Data(model);
         }
-
-        [HttpGet]
-        
 
         [HttpGet]
         [Route("LikedProjects/{username}")]
