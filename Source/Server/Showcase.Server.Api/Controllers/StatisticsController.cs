@@ -16,7 +16,6 @@
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
 
-    [RoutePrefix("api/Statistics")]
     public class StatisticsController : ApiController
     {
         private IStatisticsService statisticsService;
@@ -26,6 +25,7 @@
             this.statisticsService = statisticsService;
         }
 
+        [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
             var model = await this.statisticsService
@@ -38,7 +38,6 @@
         }
 
         [HttpGet]
-        [Route("ProjectsLastSixMonths")]
         public async Task<IHttpActionResult> ProjectsLastSixMonths()
         {
             var totalProjectsPerMonth = 0;
@@ -59,7 +58,6 @@
         }
 
         [HttpGet]
-        [Route("ProjectsCountByTag")]
         public async Task<IHttpActionResult> ProjectsCountByTag()
         {
             var model = await this.statisticsService
@@ -72,7 +70,6 @@
         }
 
         [HttpGet]
-        [Route("TopProjects")]
         public async Task<IHttpActionResult> TopProjects()
         {
             var model = await this.statisticsService
@@ -85,7 +82,6 @@
         }
 
         [HttpGet]
-        [Route("TopUsers")]
         public async Task<IHttpActionResult> TopUsers()
         {
             var model = await this.statisticsService

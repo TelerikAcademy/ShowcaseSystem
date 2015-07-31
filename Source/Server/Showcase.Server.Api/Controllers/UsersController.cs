@@ -12,7 +12,6 @@
     using Showcase.Server.DataTransferModels.User;
     using Showcase.Services.Data.Contracts;
 
-    [RoutePrefix("api/Users")]
     public class UsersController : BaseController
     {
         private const int MinimumCharactersForUsernameSearch = 3;
@@ -25,7 +24,7 @@
         }
 
         [HttpGet]
-        [Route("Profile/{username}")]
+        [Route("api/Users/Profile/{username}")]
         public async Task<IHttpActionResult> Get(string username)
         {
             var model = await this.users
@@ -38,7 +37,6 @@
         }
 
         [HttpGet]
-        [Route("RemoteProfile/{username}")]
         public async Task<IHttpActionResult> RemoteProfile(string username)
         {
             return this.Data(await this.users.ProfileInfo(username));
@@ -46,7 +44,6 @@
 
         [Authorize]
         [HttpGet]
-        [Route("Identity")]
         public async Task<IHttpActionResult> Identity()
         {
             var model = await this.users
@@ -60,7 +57,6 @@
 
         [Authorize]
         [HttpGet]
-        [Route("Search")]
         public async Task<IHttpActionResult> Search(string username)
         {
             if (string.IsNullOrEmpty(username) || username.Length < MinimumCharactersForUsernameSearch)

@@ -11,6 +11,7 @@
 
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Server.Infrastructure.Queries;
     using Showcase.Services.Data.Contracts;
 
     public class SearchController : BaseODataController
@@ -22,16 +23,12 @@
             this.projectsService = projectsService;
         }
 
-        // TODO: the same action is in ProjectsController - which one is correct?
         [HttpGet]
-        [EnableQuery(MaxTop = Constants.MaxProjectsPageSize,
-            AllowedQueryOptions = AllowedQueryOptions.Top | AllowedQueryOptions.Skip |
-            AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy | AllowedQueryOptions.Count,
-            AllowedFunctions = AllowedFunctions.Any | AllowedFunctions.SubstringOf)] // TODO: move this to custom attribute inheriting from EnableQuery
+        [ProjectSearchQuery]
         public IHttpActionResult Get([FromUri]bool includeHidden = false)
         {
             var projects = this.projectsService
-                .QueriedProjects(this.CurrentUser.IsAdmin, includeHidden)
+                .QueriedProjects(this.CurrentUser.IsAdmin, includeHidden) // TODO: make isAdmin optional parameter
                 .Project()
                 .To<ProjectSimpleResponseModel>();
 
