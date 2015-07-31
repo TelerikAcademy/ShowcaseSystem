@@ -17,22 +17,13 @@
 
         public const int ThumbnailImageWidth = 260;
         public const string ThumbnailImage = "tmbl";
-        
+
         public const int HighResolutionWidth = 1360;
         public const string HighResolutionImage = "high";
 
         public static Func<ProcessedImage, Image> ToImage
         {
-            get
-            {
-                return pi => new Image // TODO: move to AutoMapper
-                {
-                    Id = pi.Id,
-                    OriginalFileName = pi.OriginalFileName,
-                    FileExtension = pi.FileExtension,
-                    UrlPath = pi.UrlPath
-                };
-            }
+            get { return pi => mappingService.Map<Image>(pi); }
         }
 
         public byte[] ThumbnailContent { get; set; }
