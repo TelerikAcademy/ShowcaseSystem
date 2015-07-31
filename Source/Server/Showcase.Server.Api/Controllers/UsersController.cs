@@ -18,7 +18,7 @@
         private const int MinimumCharactersForUsernameSearch = 3;
 
         public UsersController(IUsersService usersService)
-            :base (usersService)
+            : base(usersService)
         {
         }
 

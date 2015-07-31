@@ -9,8 +9,8 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
-    using Showcase.Server.Common;
     using Showcase.Server.Api.Controllers.Base;
+    using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.Infrastructure.Queries;
     using Showcase.Services.Data.Contracts;
