@@ -1,25 +1,18 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web.Http;
-    using System.Web.OData.Query;
 
     using AutoMapper.QueryableExtensions;
 
-    using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
-    using Showcase.Server.Common;
-    using Showcase.Server.DataTransferModels;
     using Showcase.Server.DataTransferModels.Project;
-    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
-    using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
 
     public class ProjectsController : BaseController
@@ -32,13 +25,11 @@
         private readonly IImagesService imagesService;
         private readonly IFileSystemService fileSystemService;
 
-        private readonly IFlagsService flagsService;
 
         public ProjectsController(
             IVisitsService visitsService,
             IProjectsService projectsService,
             IUsersService usersService,
-            IFlagsService flagsService,
             ITagsService tagsService,
             IMappingService mappingService,
             IImagesService imagesService,
@@ -48,7 +39,6 @@
             this.projectsService = projectsService;
             this.tagsService = tagsService;
             this.usersService = usersService;
-            this.flagsService = flagsService;
             this.mappingService = mappingService;
             this.imagesService = imagesService;
             this.fileSystemService = fileSystemService;
@@ -141,39 +131,5 @@
 
             return this.Ok();
         }
-
-        
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IHttpActionResult> Flag(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            if (await this.flagsService.ProjectIsFlaggedByUser(id, username))
-            {
-                return this.Data(false, "You can't flag the same project more than once.");
-            }
-
-            await this.flagsService.FlagProject(id, username);
-
-            return this.Ok();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IHttpActionResult> Unflag(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            if (!await this.flagsService.ProjectIsFlaggedByUser(id, username))
-            {
-                return this.Data(false, "You have not yet flagged this project.");
-            }
-
-            await this.flagsService.UnFlagProject(id, username);
-
-            return this.Ok();
-        }        
     }
 }

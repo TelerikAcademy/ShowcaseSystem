@@ -19,11 +19,11 @@
         }
         
         function flagProject(id) {
-            return data.post('projects/flag/' + id);
+            return data.post('flags/flag/' + id);
         }
 
         function unflagProject(id) {
-            return data.post('projects/unflag/' + id);
+            return data.post('flags/unflag/' + id);
         }
         
         return {
