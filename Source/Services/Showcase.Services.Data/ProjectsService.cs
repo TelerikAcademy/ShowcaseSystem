@@ -28,6 +28,7 @@
         {
             return this.projects
                 .All()
+                .Where(p => !p.IsHidden)
                 .OrderByDescending(pr => pr.CreatedOn)
                 .Take(Constants.HomePageLatestProjectsCount);
         }
@@ -36,6 +37,7 @@
         {
             return this.projects
                 .All()
+                .Where(p => !p.IsHidden)
                 .OrderByDescending(pr => pr.Likes.Count)
                 .ThenByDescending(pr => pr.Comments.Count)
                 .ThenByDescending(pr => pr.Visits.Count)
@@ -47,19 +49,27 @@
         {
             return this.projects
                 .All()
-                .Where(p => p.Id == id);
+                .Where(p => p.Id == id && !p.IsHidden);
         }
 
-        public IQueryable<Project> QueriedProjects()
+        // TODO: Also check if the user is admin
+        public IQueryable<Project> QueriedProjects(bool isAdmin, bool includeHidden = false)
         {
-            return this.projects.All();
+            var query = this.projects.All();
+            
+            if (!includeHidden || !isAdmin)
+            {
+                query = query.Where(p => !p.IsHidden);
+            }
+
+            return query;
         }
 
         public IQueryable<Project> LikedByUser(int userId)
         {
             return this.projects
                 .All()
-                .Where(pr => pr.Likes.Any(l => l.UserId == userId));
+                .Where(pr => !pr.IsHidden && pr.Likes.Any(l => l.UserId == userId));
         }
 
         public async Task<Project> AddNew(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage)

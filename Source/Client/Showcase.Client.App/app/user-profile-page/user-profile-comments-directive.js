@@ -11,8 +11,8 @@
             },
             link: function (scope, element) {
                 var username = $routeParams.username.toLowerCase();
-                scope.commentsPage = 0;
-                scope.lastPage = 0;
+                scope.commentsPage = 1;
+                scope.lastPage = 1;
                 scope.edittingComments = [];
                 
                 identity.getUser()
@@ -20,7 +20,7 @@
                         scope.currentLoggedInUsername = user.userName;
                     });
 
-                userProfileData.getComments(username, scope.commentsPage)
+                commentsData.getUserComments(username, scope.commentsPage)
                     .then(function (data) {
                         scope.comments = data.comments;
                         scope.isLastPage = data.isLastPage;
@@ -28,7 +28,7 @@
                     });
 
                 scope.loadCommentsPage = function (page) {
-                    userProfileData.getComments(username, page)
+                    commentsData.getUserComments(username, page)
                         .then(function (data) {
                             scope.commentsPage = page;
                             scope.comments = data.comments;
@@ -47,7 +47,7 @@
 
                 scope.saveComment = function (id, text) {
                     if (text.length < 10 || text.length > 500) {
-                        notifier.error('The comment length should be between 10 and 1000 symbols.');
+                        notifier.error('The comment length should be between 10 and 500 symbols.');
                         return;
                     }
 

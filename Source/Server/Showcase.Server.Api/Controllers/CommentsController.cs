@@ -84,7 +84,7 @@
             var userCommentsCount = await this.commentsService.UserCommentsCount(username);
             var lastPage = this.GetLastPage(userCommentsCount, page);
 
-            if (page < 0 || page > lastPage) // TODO: Extract to attribute to check valid page if possible
+            if (page < 1 || page > lastPage) // TODO: Extract to attribute to check valid page if possible
             {
                 return this.Data(false, Constants.InvalidPageNumber);
             }

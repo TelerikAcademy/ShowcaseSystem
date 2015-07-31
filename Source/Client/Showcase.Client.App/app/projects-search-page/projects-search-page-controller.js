@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, $window, searchPageData, projectsSearchService) {
+    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, $window, searchPageData, projectsSearchService, identity) {
         var vm = this,
             oDataQuery,
             canGetNext = true,
@@ -18,18 +18,29 @@
         vm.filterOptions.desc = $routeParams.desc === undefined ? true : $routeParams.desc;
         vm.searchParams = projectsSearchService.getSearchParams();
 
-        $scope.currentPage = 0;
+        $scope.currentPage = 1;
+
+        identity.getUser()
+            .then(function (user) {
+                vm.isAdmin = user.isAdmin;
+                vm.isAdmin = true;
+
+                if (vm.isAdmin) {
+                    vm.filterOptions.orderOptions.push({
+                        value: 'flags',
+                        name: 'Flags'
+                    });
+                }
+            });
 
         vm.search = function (query) {
             $routeParams = {
                 $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),
                 $top: vm.filterOptions.pageSize,
-                $skip: $scope.currentpage || 0,
+                $skip: 0,
                 $count: 'true',
-                $filter: "createdOn ge " +
-                    projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
-                    " and createdOn le " +
-                    projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
+                $filter: "createdOn ge " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
+                    " and createdOn le " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
             if (vm.searchParams.name || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
@@ -79,17 +90,21 @@
                     $location.search(key, $routeParams[key]);
                 });
 
-            $scope.currentPage = 0;
             initialProjectsLoaded = false;
             getProjects();
         };
+
+        if ($routeParams.tag) {
+            vm.searchParams.tags = $routeParams.tag;
+            $location.search('tag', null);
+        }
 
         vm.search();
 
         // not working if attached to vm
         $scope.changePage = function (newPage) {
             $scope.currentPage = newPage;
-            vm.search({ $skip: newPage * vm.filterOptions.pageSize });
+            vm.search({ $skip: (newPage - 1) * vm.filterOptions.pageSize });
         };
 
         vm.getNextProjects = function () {
@@ -98,7 +113,7 @@
             }
 
             canGetNext = false;
-            $routeParams.$skip = $scope.currentPage * vm.filterOptions.pageSize;
+            $routeParams.$skip = ($scope.currentPage - 1) * vm.filterOptions.pageSize;
             getProjects();
         };
 
@@ -119,6 +134,14 @@
         });
 
         $scope.$watch('vm.filterOptions.pageSize', function (newValue, oldValue) {
+            if (newValue === oldValue) {
+                return;
+            }
+
+            vm.search();
+        });
+
+        $scope.$watch('vm.filterOptions.includeHidden', function (newValue, oldValue) {
             if (newValue === oldValue) {
                 return;
             }
@@ -150,7 +173,7 @@
             if (newValue == true) {
                 initialProjectsLoaded = false;
                 canGetNext = false;
-                $scope.currentPage = 0;
+                $scope.currentPage = 1;
                 vm.search();
             } else {
                 $scope.currentPage--;
@@ -159,7 +182,7 @@
         });
 
         function getProjects() {
-            oDataQuery = projectsSearchService.getQuery($routeParams);
+            oDataQuery = projectsSearchService.getQuery($routeParams, vm.filterOptions.includeHidden);
             var startTime = new Date().getTime();
             $routeParams.$count = true;
 
@@ -170,7 +193,7 @@
             searchPageData.searchProjects(oDataQuery)
                 .then(function (odata) {
                     // results data
-                    vm.isLastPage = odata['@odata.count'] <= ($scope.currentPage + 1) * vm.filterOptions.pageSize;
+                    vm.isLastPage = odata['@odata.count'] <= ($scope.currentPage) * vm.filterOptions.pageSize;
 
                     // searchbar data
                     vm.totalResultsCount = odata['@odata.count'];
@@ -192,7 +215,7 @@
                         $scope.currentPage++;
                     }
                     else {
-                        $scope.currentPage = !!$routeParams.$skip ? $routeParams.$skip / $routeParams.$top : 0;
+                        $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
                     }
 
                     canGetNext = true;
@@ -203,5 +226,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', projectsSearchPageController]);
+        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', 'identity', projectsSearchPageController]);
 }());

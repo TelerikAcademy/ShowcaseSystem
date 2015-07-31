@@ -137,6 +137,10 @@
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
+    <Content Include="app\project-details-page\project-comments-directive.html" />
+    <Content Include="app\project-details-page\project-comments-directive.js" />
+    <Content Include="app\project-details-page\social-icons-directive.html" />
+    <Content Include="app\project-details-page\social-icons-directive.js" />
     <Content Include="app\projects-search-page\projects-search-page-service.js" />
     <Content Include="app\statistics-page\line-chart-directive.html" />
     <Content Include="app\statistics-page\line-chart-directive.js" />
@@ -177,6 +181,8 @@
     <Content Include="app\user-profile-page\user-profile-data.js" />
     <Content Include="app\user-profile-page\user-profile-projects-directive.html" />
     <Content Include="app\user-profile-page\user-profile-projects-directive.js" />
+    <Content Include="app\user-profile-page\user-profile-statistics-directive.html" />
+    <Content Include="app\user-profile-page\user-profile-statistics-directive.js" />
     <Content Include="app\user-profile-page\user-profile-teammates-directive.html" />
     <Content Include="app\user-profile-page\user-profile-teammates-directive.js" />
     <Content Include="app\user-profile-page\user-profile-view.html" />

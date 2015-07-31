@@ -4,31 +4,12 @@
     var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location, commentsData, identity, notifier) {
         var vm = this;
         var id = $routeParams.id;
-
-        vm.commentText = '';
-        vm.commentsPage = 1;
-        vm.edittingComments = [];
-
+        
         identity.getUser()
             .then(function (user) {
                 vm.currentLoggedInUsername = user.userName;
             });
 
-        vm.editComment = function (id) {
-            vm.edittingComments[id] = true;
-        };
-
-        vm.cancelEdit = function (id) {
-            vm.edittingComments[id] = false;
-        };
-
-        vm.saveComment = function (id, text) {
-            commentsData.editComment(id, text)
-                .then(function (data) {
-                    vm.edittingComments[id] = false;
-                });
-        };
-        
         projectDetailsData.getProject(id)
             .then(function (project) {
                 var lastVisit = $window.localStorage.getItem("projectVisit" + id);
@@ -53,15 +34,6 @@
                 vm.isLiked = project.isLiked;
                 vm.isFlagged = project.isFlagged;
                 vm.images = project.imageUrls;
-            });
-
-        commentsData.getProjectComments(id, vm.commentsPage)
-            .then(function (data) {
-                vm.comments = data.comments;
-                vm.isLastPage = data.isLastPage;
-                if (!data.isLastPage) {
-                    vm.commentsPage++;
-                }
             });
 
         vm.likeProject = function (id) {
@@ -92,45 +64,6 @@
                 .then(function () {
                     vm.isFlagged = false;
                 });
-        };
-
-        vm.commentProject = function (id) {
-            if (vm.commentText.length < 10 || vm.commentText > 500) {
-                notifier.error('The comment length should be between 10 and 1000 symbols.');
-                return;
-            }
-
-            commentsData.commentProject(id, vm.commentText)
-                .then(function (data) {
-                    vm.comments.unshift(data);
-                    vm.commentText = '';
-                });
-        };
-
-        vm.loadMoreComments = function (id) {
-            commentsData.getProjectComments(id, vm.commentsPage)
-                .then(function (data) {
-                    vm.comments = vm.comments.concat(data.comments);
-                    vm.isLastPage = data.isLastPage;
-                    if (!data.isLastPage) {
-                        vm.commentsPage++;
-                    }
-                });
-        };
-
-        vm.popup = function (url, title, w, h, text, hashTags) {
-            var url = url + $location.absUrl();
-            if (text !== undefined) {
-                url += '&text=' + text + ' - ' + vm.project.name;
-            }
-
-            if (hashTags != undefined) {
-                url += '&hashtags=' + hashTags;
-            }
-
-            var left = (screen.width / 2) - (w / 2);
-            var top = (screen.height / 2) - (h / 2);
-            $window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
         };
 
         function daydiff(first, second) {

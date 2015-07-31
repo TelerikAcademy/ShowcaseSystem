@@ -1,0 +1,42 @@
+﻿<div ng-show="comments.length > 0" class="row margin-bottom-20" ng-repeat="comment in comments">
+    <div class="col-md-3">
+        <a href="/users/{{comment.username}}">
+            <img src="{{comment.userAvatarUrl}}" class="pull-left " style="margin: 7px; margin-right: 12px;" width="45" />
+        </a>
+        <div class="margin-top-2">
+            <a href="/users/{{comment.username}}">{{comment.username}}</a><br />
+            <i class="fa fa-clock-o margin-right-5"></i><span class="font-size-075em">{{comment.shortDate}}</span>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div ng-show="comment.username == loggedInUsername" class="pull-right">
+            <input type="button" class="btn btn-xs btn-default" style="margin-left: 10px; " ng-hide="edittingComments[comment.id]" value="edit" ng-click="editComment(comment.id)" />
+        </div>
+        <p class="margin-bottom-10 nomargin-top" ng-hide="edittingComments[comment.id]" style="word-break: break-all">
+            {{comment.content}}
+        </p>
+        <div ng-show="edittingComments[comment.id]">
+            <textarea class="nomargin-bottom form-control padding-left-10 padding-right-10" ng-model="comment.content" cols="80" rows="5"></textarea><br />
+            <input type="button" class="btn btn-xs btn-success" ng-click="saveComment(comment.id, comment.content)" value="Save" />
+            <input type="button" class="btn btn-xs btn-warning" ng-click="cancelEdit(comment.id)" value="Cancel" />
+        </div>
+    </div>
+</div>
+
+<div ng-hide="comments.length > 0" class="row">
+    <div class="col-md-offset-3 col-md-9">
+        <h4 class="margin-top-10" style="font-style: italic">There are no comments for this project yet.</h4>
+    </div>
+</div>
+<div class="text-center margin-bottom-20" ng-hide="isLastPage">
+    <a ng-click="loadMoreComments()">Load More....</a>
+</div>
+<div class="row">
+    <div class="col-md-offset-3 col-md-9">
+        <form class="nomargin nopadding">
+            <textarea rows="8" cols="70" ng-model="commentText" class="margin-top-20 padding-left-10 padding-right-10 form-control"></textarea>
+            <br />
+            <button class="btn btn-sm btn-success" ng-click="commentProject()">Comment</button>
+        </form>
+    </div>
+</div>

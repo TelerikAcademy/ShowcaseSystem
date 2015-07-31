@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var ngPager = function pager(jQuery) {
+    var ngPager = function pager() {
         return {
             restrict: 'A',
             templateUrl: '/app/common/pager-directive.html',
@@ -15,7 +15,7 @@
                     if (!newPage && newPage !== 0)
                         return;
 
-                    if (newPage < 0 || newPage >= scope.totalPages)
+                    if (newPage < 1 || newPage > scope.totalPages)
                         return;
 
                     scope.pageChanged({ pageNum: newPage });
@@ -34,14 +34,14 @@
 
                 function updatePages(currentPage, totalPages) {
                     var pages = [];
-                    for (var i = 0; i < scope.totalPages; i += 1) {
+                    for (var i = 1; i <= scope.totalPages; i += 1) {
                         pages.push({ pageNumber: i, isCurrent: i == currentPage });
                     }
 
                     scope.pages = pages;
                     scope.selectedPage = +currentPage;
-                    scope.hasPreviousPage = currentPage > 0;
-                    scope.hasNextPage = currentPage < totalPages - 1;
+                    scope.hasPreviousPage = currentPage > 1;
+                    scope.hasNextPage = currentPage < totalPages;
                     scope.totalPages = totalPages;
                 }
             }
@@ -50,5 +50,5 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('ngPager', ['jQuery', ngPager]);
+        .directive('ngPager', [ngPager]);
 }());

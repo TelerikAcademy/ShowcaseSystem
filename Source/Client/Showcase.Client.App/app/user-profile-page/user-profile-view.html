@@ -5,28 +5,21 @@
                 <img src="{{vm.user.avatarUrl}}" width="220" height="220" alt="{{vm.user.username}}" />
             </div>
             <div class="col-md-7 margin-bottom-10 margin-top-10" animate="fadeInRight" data-animation-delay="200">
+                <h3 class="margin-bottom-40  color666"><strong>{{vm.user.username}}</strong></h3>
                 <div class="row">
                     <div class="col-md-7">
-                        <h3 class="margin-bottom-20">{{vm.user.username}}</h3>
+                        <div class="font-size-14em margin-bottom-20">
+                            <i class="margin-right-10" ng-class="vm.profile.sex == 'Male' ? 'fa fa-male' : 'fa fa-female'"></i>{{vm.profile.firstName}} {{vm.profile.lastName}}
+                        </div>
+                        <div class="margin-bottom-5">
+                            <i class="fa fa-birthday-cake margin-right-10"></i>{{vm.profile.age}} years old
+                        </div>
+                        <div>
+                            <i class="fa fa-globe margin-right-10"></i>{{vm.profile.city}}
+                        </div>
                     </div>
                     <div class="col-md-5">
-                        <div class="margin-top-50">
-                            <span class="margin-bottom-5" style="display: inline-block;">
-                                <i class="fa fa-file-code-o margin-right-20 margin-bottom-5 font-size-2em" style="margin-right: 22px;"></i><span class="font-size-13em">{{vm.user.projectsCount}} projects</span>
-                            </span>
-                            <br />
-                            <span class="margin-bottom-5" style="display: inline-block;">
-                                <i class="fa fa-comments margin-right-20 margin-bottom-5 font-size-2em" style="margin-right: 20px;"></i><span class="font-size-13em">{{vm.user.commentsCount}} comments</span>
-                            </span>
-                            <br />
-                            <span class="margin-bottom-5" style="display: inline-block;">
-                                <i class="fa fa-thumbs-up margin-right-20 margin-bottom-5 font-size-2em" style="margin-right: 23px;"></i><span class="font-size-13em">{{vm.user.likesCount}} likes</span>
-                            </span>
-                            <br />
-                            <span class="margin-bottom-5" style="display: inline-block;">
-                                <i class="fa fa-users margin-right-20 margin-bottom-5 font-size-2em" style="margin-right: 19px;"></i><span class="font-size-13em">{{vm.user.teammates.length}} teammates</span>
-                            </span>
-                        </div>
+                        <div user-profile-statistics user="vm.user" />
                     </div>
                 </div>
             </div>

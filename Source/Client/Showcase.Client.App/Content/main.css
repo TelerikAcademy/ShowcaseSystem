@@ -358,3 +358,11 @@ li.token-input-selected-token-showcase span {
 .text-success {
     color: #8ab933 !important;
 }
+
+.owl-carousel.featured .owl-featured-item a.figure>img {
+    height: 130px !important;
+}
+
+.color666 {
+    color: #666;
+}
