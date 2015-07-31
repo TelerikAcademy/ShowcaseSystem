@@ -1,7 +1,6 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../app/app.js" />
 /// <reference path="../app/home-page/home-page-controller.js" />
-/// <reference path="../app/home-page/revolution-slider-directive.js" />
 /// <reference path="../app/common/header-directive.js" />
 /// <reference path="../app/common/footer-directive.js" />
 /// <reference path="../app/common/project-container-directive.js" />
@@ -148,4 +147,5 @@
 /// <reference path="../app/project-details-page/social-icons-directive.js" />
 /// <reference path="../app/project-details-page/project-comments-directive.js" />
 /// <reference path="../app/user-profile-page/user-profile-statistics-directive.js" />
+/// <reference path="../app/home-page/layer-slider-directive.js" />
 

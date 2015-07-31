@@ -72,7 +72,7 @@
         .value('jQuery', jQuery)
         .value('toastr', toastr)
         .constant('appSettings', {
-            serverPath: 'http://localhost:12345/api/',
-            odataServerPath: 'http://localhost:12345/odata/'
+            serverPath: '/api/',
+            odataServerPath: '/odata/'
         });
 }());

@@ -303,8 +303,8 @@
     <Content Include="app\home-page\home-page-controller.js" />
     <Content Include="app\home-page\home-page-data.js" />
     <Content Include="app\home-page\home-page-view.html" />
-    <Content Include="app\home-page\revolution-slider-directive.html" />
-    <Content Include="app\home-page\revolution-slider-directive.js" />
+    <Content Include="app\home-page\layer-slider-directive.html" />
+    <Content Include="app\home-page\layer-slider-directive.js" />
     <Content Include="content\bootstrap-theme.css" />
     <Content Include="content\bootstrap-theme.min.css" />
     <Content Include="content\bootstrap.css" />
