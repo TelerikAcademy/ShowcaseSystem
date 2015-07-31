@@ -3,14 +3,16 @@
     using System.Threading.Tasks;
     using System.Web.Http;
 
+    using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Services.Data.Contracts;
 
-    public class LikesController : BaseController
+    public class LikesController : BaseAuthorizationController
     {
         private readonly ILikesService likesService;
 
-        public LikesController(ILikesService likesService)
+        public LikesController(IUsersService usersService, ILikesService likesService)
+            : base(usersService)
         {
             this.likesService = likesService;
 
