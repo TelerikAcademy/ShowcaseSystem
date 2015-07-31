@@ -10,6 +10,7 @@
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
     using Showcase.Server.Common.Validation;
+    using Showcase.Server.DataTransferModels.Common;
 
     public class ProjectRequestModel : IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
     {

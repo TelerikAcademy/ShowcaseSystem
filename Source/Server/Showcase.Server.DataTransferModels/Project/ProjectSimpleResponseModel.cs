@@ -6,11 +6,11 @@
 
     using AutoMapper;
     using MissingFeatures;
-    using Newtonsoft.Json;
 
     using Showcase.Data.Models;
     using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
+    using Showcase.Server.DataTransferModels.Tag;
 
     public class ProjectSimpleResponseModel : IMapFrom<Project>, IHaveCustomMappings
     {

@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.DataTransferModels.Project
+﻿namespace Showcase.Server.DataTransferModels.Tag
 {
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;

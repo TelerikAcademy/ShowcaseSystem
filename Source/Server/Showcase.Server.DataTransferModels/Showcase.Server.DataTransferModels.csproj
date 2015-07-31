@@ -65,15 +65,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ODataResult.cs" />
-    <Compile Include="Project\CommentRequestModel.cs" />
-    <Compile Include="Project\CommentResponseModel.cs" />
-    <Compile Include="Project\CommentsPageResponseModel.cs" />
-    <Compile Include="Project\FileRequestModel.cs" />
+    <Compile Include="Comment\CommentRequestModel.cs" />
+    <Compile Include="Comment\CommentResponseModel.cs" />
+    <Compile Include="Comment\CommentsPageResponseModel.cs" />
+    <Compile Include="Common\FileRequestModel.cs" />
     <Compile Include="Project\PostProjectResponseModel.cs" />
     <Compile Include="Project\ProjectRequestModel.cs" />
     <Compile Include="Project\ProjectResponseModel.cs" />
     <Compile Include="Project\ProjectSimpleResponseModel.cs" />
-    <Compile Include="Project\TagResponseModel.cs" />
+    <Compile Include="Tag\TagResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statistics\CurrentStatisticsResponseModel.cs" />
     <Compile Include="Tag\TagAutocompleteResponseModel.cs" />

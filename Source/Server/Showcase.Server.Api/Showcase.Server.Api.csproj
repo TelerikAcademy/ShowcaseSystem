@@ -221,7 +221,9 @@
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\FlagsController.cs" />
     <Compile Include="Controllers\LikesController.cs" />
-    <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs">
+      <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
