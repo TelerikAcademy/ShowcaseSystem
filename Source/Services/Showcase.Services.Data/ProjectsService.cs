@@ -53,11 +53,11 @@
         }
 
         // TODO: Also check if the user is admin
-        public IQueryable<Project> QueriedProjects(bool includeHidden = false)
+        public IQueryable<Project> QueriedProjects(bool isAdmin, bool includeHidden = false)
         {
             var query = this.projects.All();
-
-            if (!includeHidden)
+            
+            if (!includeHidden || !isAdmin)
             {
                 query = query.Where(p => !p.IsHidden);
             }

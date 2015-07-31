@@ -23,7 +23,7 @@
     using Showcase.Services.Logic.Contracts;
 
     [RoutePrefix("api/Projects")]
-    public class ProjectsController : ApiController
+    public class ProjectsController : BaseController
     {
         private readonly ILikesService likesService;
         private readonly IVisitsService visitsService;
@@ -218,36 +218,6 @@
             await this.flagsService.UnFlagProject(id, username);
 
             return this.Ok();
-        }
-
-        [HttpGet]
-        [Route("Search")]
-        public ODataResult<ProjectSimpleResponseModel> Search(ODataQueryOptions<ProjectSimpleResponseModel> options)
-        {
-            options.Validate(new ODataValidationSettings()
-            {
-                MaxTop = 64,
-                AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy |
-                    AllowedQueryOptions.Skip | AllowedQueryOptions.Top |
-                    AllowedQueryOptions.Select | AllowedQueryOptions.Count
-            });
-
-            var projects = this.projectsService
-                .QueriedProjects()
-                .Project()
-                .To<ProjectSimpleResponseModel>();
-
-            long? count = null;
-            if (options.Count != null && options.Count.Value)
-            {
-                count = projects.Count();
-            }
-
-            ODataQuerySettings settings = new ODataQuerySettings() { PageSize = options.Top != null ? options.Top.Value : 8 };
-            projects = options.ApplyTo(projects, settings) as IQueryable<ProjectSimpleResponseModel>; // TODO: move to extension method of IQueryable
-
-            return new ODataResult<ProjectSimpleResponseModel>(
-                 projects as IEnumerable<ProjectSimpleResponseModel>, count); // TODO: move to extension method like this.Data
-        }
+        }        
     }
 }

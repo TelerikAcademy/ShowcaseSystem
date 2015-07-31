@@ -18,7 +18,7 @@
 
         IQueryable<Project> LikedByUser(int userId);
 
-        IQueryable<Project> QueriedProjects(bool includeHidden = false);
+        IQueryable<Project> QueriedProjects(bool isAdmin, bool includeHidden = false);
 
         Task<Project> AddNew(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage);
     }
