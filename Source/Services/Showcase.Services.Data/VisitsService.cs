@@ -11,9 +11,7 @@
     public class VisitsService : IVisitsService
     {
         private readonly IUsersService users;
-
         private readonly IProjectsService projects;
-
         private readonly IRepository<Visit> visits;
 
         public VisitsService(IRepository<Visit> visits, IUsersService users, IProjectsService projects)

@@ -16,13 +16,13 @@
     {
         private readonly IObjectFactory objectFactory;
         private readonly IRepository<Image> images;
-        private readonly IImageProcessorService imageProcessorService;
+        private readonly IImageProcessorService imageProcessor;
 
         public ImagesService(IObjectFactory objectFactory, IRepository<Image> images, IImageProcessorService imageProcessorService)
         {
             this.objectFactory = objectFactory;
             this.images = images;
-            this.imageProcessorService = imageProcessorService;
+            this.imageProcessor = imageProcessorService;
         }
 
         public async Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawImage> rawImages)
@@ -37,8 +37,8 @@
                 image.UrlPath = this.GenerateImageUrlPath(image.Id);
                 await imagesContext.SaveChangesAsync();
 
-                var thumbnailContent = await this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
-                var highContent = await this.imageProcessorService.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);
+                var thumbnailContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
+                var highContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);
 
                 return ProcessedImage.FromImage(image, thumbnailContent, highContent);
             });

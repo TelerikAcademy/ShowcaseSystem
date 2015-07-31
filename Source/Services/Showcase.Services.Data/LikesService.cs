@@ -12,7 +12,6 @@
     public class LikesService : ILikesService
     {
         private readonly IUsersService users;
-
         private readonly IRepository<Like> likes;
 
         public LikesService(IRepository<Like> likes, IUsersService users)
