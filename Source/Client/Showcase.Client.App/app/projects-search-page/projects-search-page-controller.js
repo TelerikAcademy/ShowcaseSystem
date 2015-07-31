@@ -127,11 +127,6 @@
                 $scope.currentPage = 1;
                 vm.search();
             } else {
-                $scope.currentPage--;
-                if ($scope.currentPage < 1) {
-                    $scope.currentPage = 1;
-                }
-
                 $scope.changePage($scope.currentPage);
             }
         });
@@ -163,6 +158,7 @@
             searchPageData.searchProjects(oDataQuery)
                 .then(function (odata) {
                     // results data
+                    $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
                     vm.isLastPage = odata['@odata.count'] <= $scope.currentPage * vm.filterOptions.pageSize;
 
                     // searchbar data
@@ -178,8 +174,6 @@
                     else {
                         vm.projects = odata.value;
                     }
-
-                    $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
 
                     vm.loading = false;
                     canGetNext = true;
