@@ -101,7 +101,6 @@
 
         vm.search();
 
-        // not working if attached to vm
         $scope.changePage = function (newPage) {
             $scope.currentPage = newPage;
             vm.search({ $skip: (newPage - 1) * vm.filterOptions.pageSize });
@@ -116,54 +115,6 @@
             $routeParams.$skip = ($scope.currentPage - 1) * vm.filterOptions.pageSize;
             getProjects();
         };
-
-        $scope.$watch('vm.filterOptions.desc', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.filterOptions.orderOption', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.filterOptions.pageSize', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.filterOptions.includeHidden', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.searchParams.fromDate', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.searchParams.toDate', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
 
         $scope.$watch('vm.filterOptions.scrolling', function (newValue, oldValue) {
             if (newValue === oldValue) {
@@ -180,6 +131,23 @@
                 $scope.changePage($scope.currentPage);
             }
         });
+
+        watchProperty('vm.filterOptions.desc');
+        watchProperty('vm.filterOptions.orderOption');
+        watchProperty('vm.filterOptions.pageSize');
+        watchProperty('vm.filterOptions.includeHidden');
+        watchProperty('vm.searchParams.fromDate');
+        watchProperty('vm.filterOptions.toDate');
+        
+        function watchProperty(property) {
+            $scope.$watch(property, function (newValue, oldValue) {
+                if (newValue === oldValue) {
+                    return;
+                }
+
+                vm.search();
+            });
+        }
 
         function getProjects() {
             oDataQuery = projectsSearchService.getQuery($routeParams, vm.filterOptions.includeHidden);
@@ -202,7 +170,7 @@
                     // pager data
                     $scope.totalPages = Math.ceil(odata['@odata.count'] / vm.filterOptions.pageSize);
 
-                    if (localStorage.scrolling == 'true' && initialProjectsLoaded) {
+                    if ($window.localStorage.scrolling == 'true' && initialProjectsLoaded) {
                         vm.projects = vm.projects.concat(odata.value);
                     }
                     else {
@@ -211,11 +179,11 @@
 
                     vm.loading = false;
                     
-                    if (localStorage.scrolling == 'true') {
+                    if ($window.localStorage.scrolling == 'true') {
                         $scope.currentPage++;
                     }
                     else {
-                        $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
+                     //   $scope.currentPage = !!$routeParams.$skip ? ($routeParams.$skip / $routeParams.$top) + 1 : 1;
                     }
 
                     canGetNext = true;

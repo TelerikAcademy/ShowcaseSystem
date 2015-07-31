@@ -111,13 +111,8 @@
             var model = await this.projectsService
                 .ProjectById(id, this.CurrentUser.IsAdmin)
                 .Project()
+                .To<ProjectResponseModel>(new { username = username })
                 .FirstOrDefaultAsync();
-
-            if (model != null)
-            {
-                model.IsLiked = await this.likesService.ProjectIsLikedByUser(id, username); // TODO: merge in one query
-                model.IsFlagged = await this.flagsService.ProjectIsFlaggedByUser(id, username); // TODO: merge in one query
-            }
 
             return this.Data(model);
         }
