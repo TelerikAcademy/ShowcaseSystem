@@ -9,6 +9,7 @@
 
     using Showcase.Data.Models;
     using Showcase.Server.Common;
+    using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.Validation;
     using Showcase.Server.DataTransferModels.Project;
@@ -17,16 +18,15 @@
     using Showcase.Services.Logic.Contracts;
 
     [RoutePrefix("api/Comments")] // TODO: remove route attributes
-    public class CommentsController : ApiController
+    public class CommentsController : BaseAuthorizationController
     {
         private readonly ICommentsService commentsService;
-        private readonly IUsersService usersService;
         private readonly IMappingService mappingService;
 
-        public CommentsController(ICommentsService commentsService, IUsersService usersService, IMappingService mappingService)
+        public CommentsController(IUsersService usersService, ICommentsService commentsService, IMappingService mappingService)
+            : base(usersService)
         {
             this.commentsService = commentsService;
-            this.usersService = usersService;
             this.mappingService = mappingService;
         }
 
@@ -42,7 +42,7 @@
                 .Project()
                 .To<CommentResponseModel>()
                 .FirstOrDefaultAsync();
-            
+
             return this.Data(model);
         }
 
@@ -81,7 +81,7 @@
         public async Task<IHttpActionResult> CommentsByUser(string username, int page)
         {
             var userCommentsCount = await this.commentsService.UserCommentsCount(username);
-            var lastPage = this.GetLastPage(userCommentsCount, page);
+            var lastPage = this.GetLastPage(userCommentsCount, page); // TODO: extract to common logic for last page
 
             if (page < 1 || page > lastPage) // TODO: Extract to attribute to check valid page if possible
             {

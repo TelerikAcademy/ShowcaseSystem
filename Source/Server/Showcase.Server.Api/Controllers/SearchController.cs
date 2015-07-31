@@ -10,15 +10,17 @@
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Server.Common;
+    using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.Infrastructure.Queries;
     using Showcase.Services.Data.Contracts;
 
-    public class SearchController : BaseODataController
+    public class SearchController : BaseODataAuthorizationController
     {
         private readonly IProjectsService projectsService;
 
-        public SearchController(IProjectsService projectsService)
+        public SearchController(IUsersService usersService, IProjectsService projectsService)
+            : base(usersService)
         {
             this.projectsService = projectsService;
         }

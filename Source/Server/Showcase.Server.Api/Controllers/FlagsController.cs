@@ -3,14 +3,16 @@
     using System.Threading.Tasks;
     using System.Web.Http;
 
+    using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Services.Data.Contracts;
 
-    public class FlagsController : BaseController
+    public class FlagsController : BaseAuthorizationController
     {
         private readonly IFlagsService flagsService;
 
-        public FlagsController(IFlagsService flagsService)
+        public FlagsController(IUsersService usersService, IFlagsService flagsService)
+            : base(usersService)
         {
             this.flagsService = flagsService;
         }
@@ -45,6 +47,6 @@
             await this.flagsService.UnFlagProject(id, username);
 
             return this.Ok();
-        }        
+        }
     }
 }
