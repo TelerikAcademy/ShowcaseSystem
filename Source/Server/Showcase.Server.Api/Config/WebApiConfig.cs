@@ -7,6 +7,9 @@
 
     using Showcase.Server.Infrastructure;
     using Showcase.Server.Infrastructure.Formatters;
+    using System.Web.Http.Controllers;
+    using System.Web.Http.Routing;
+    using System.Net.Http;
 
     public static class WebApiConfig
     {
@@ -16,9 +19,36 @@
             config.Formatters.Add(new BrowserJsonFormatter());
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional });
+                "DefaultApiWithId",
+                "Api/{controller}/{id}", 
+                new { id = RouteParameter.Optional },
+                new { id = @"\d+" });
+
+            config.Routes.MapHttpRoute(
+                "DefaultApiWithAction",
+                "Api/{controller}/{action}");
+
+            config.Routes.MapHttpRoute(
+                "DefaultApiWithActionAndId",
+                "Api/{controller}/{action}/{id}",
+                new { id = RouteParameter.Optional },
+                new { id = @"\d+" });
+
+            config.Routes.MapHttpRoute(
+                "DefaultApiWithActionAndUsername",
+                "Api/{controller}/{action}/{username}");
+
+            config.Routes.MapHttpRoute(
+                "DefaultApiGet",
+                "Api/{controller}",
+                new { action = "Get" },
+                new { httpMethod = new HttpMethodConstraint(HttpMethod.Get) });
+
+            config.Routes.MapHttpRoute(
+                "DefaultApiPost",
+                "Api/{controller}",
+                new { action = "Post" },
+                new { httpMethod = new HttpMethodConstraint(HttpMethod.Post) });
         }
     }
 }

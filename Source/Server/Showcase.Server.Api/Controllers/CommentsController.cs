@@ -16,7 +16,7 @@
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Logic.Contracts;
 
-    [RoutePrefix("api/Comments")]
+    [RoutePrefix("api/Comments")] // TODO: remove route attributes
     public class CommentsController : ApiController
     {
         private readonly ICommentsService commentsService;
@@ -47,7 +47,6 @@
         }
 
         [HttpPost]
-        [Route("Edit/{id}")]
         [ValidateModel]
         public async Task<IHttpActionResult> Edit(int id, CommentRequestModel comment)
         {
