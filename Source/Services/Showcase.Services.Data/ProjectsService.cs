@@ -45,11 +45,16 @@
                 .Take(Constants.HomePageLatestProjectsCount);
         }
 
-        public IQueryable<Project> ProjectById(int id)
+        public IQueryable<Project> ProjectById(int id, bool isAdmin)
         {
-            return this.projects
-                .All()
-                .Where(p => p.Id == id && !p.IsHidden);
+            var query = this.projects.All().Where(p => p.Id == id);
+
+                if (!isAdmin)
+	            {
+                    query = query.Where(p => !p.IsHidden);
+	            }
+
+            return query;
         }
 
         // TODO: Also check if the user is admin
