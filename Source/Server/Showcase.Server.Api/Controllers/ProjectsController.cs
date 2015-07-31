@@ -24,7 +24,6 @@
 
     public class ProjectsController : BaseController
     {
-        private readonly ILikesService likesService;
         private readonly IVisitsService visitsService;
         private readonly IProjectsService projectsService;
         private readonly ITagsService tagsService;
@@ -36,7 +35,6 @@
         private readonly IFlagsService flagsService;
 
         public ProjectsController(
-            ILikesService likesService,
             IVisitsService visitsService,
             IProjectsService projectsService,
             IUsersService usersService,
@@ -46,7 +44,6 @@
             IImagesService imagesService,
             IFileSystemService fileSystemService)
         {
-            this.likesService = likesService;
             this.visitsService = visitsService;
             this.projectsService = projectsService;
             this.tagsService = tagsService;
@@ -145,37 +142,7 @@
             return this.Ok();
         }
 
-        [Authorize]
-        [HttpPost]
-        public async Task<IHttpActionResult> Like(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            if (await this.likesService.ProjectIsLikedByUser(id, username))
-            {
-                return this.Data(false, "You already have liked this project.");
-            }
-
-            await this.likesService.LikeProject(id, username);
-
-            return this.Ok();
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IHttpActionResult> Dislike(int id)
-        {
-            var username = this.User.Identity.Name;
-
-            if (!await this.likesService.ProjectIsLikedByUser(id, username))
-            {
-                return this.Data(false, "You have not yet liked this project.");
-            }
-
-            await this.likesService.DislikeProject(id, username);
-
-            return this.Ok();
-        }
+        
 
         [Authorize]
         [HttpPost]
