@@ -13,15 +13,15 @@
         </div>
         <div class="row">
             <div class="col-sm-6 ">
-                <p class="input-group">
-                    <input type="text" placeholder="From" class="form-control" datepicker-popup="dd-MMM-yyyy" ng-model="params.fromDate" is-open="fromDateIsOpen" close-text="Close" />
+                <p class="input-group date-picker">
+                    <input type="text" placeholder="From" class="form-control" datepicker-options="{{options}}" datepicker-popup="dd-MMM-yyyy" ng-model="params.fromDate" is-open="fromDateIsOpen" close-text="Close" />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" style="border: #e6e6e6 2px solid; padding: 7px 12px" ng-click="openFrom($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                     </span>
                 </p>
             </div>
             <div class="col-sm-6 ">
-                <p class="input-group">
+                <p class="input-group date-picker">
                     <input type="text" placeholder="To" class="form-control" datepicker-popup="dd-MMM-yyyy" ng-model="params.toDate" is-open="toDateIsOpen" close-text="Close" />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" style="border: #e6e6e6 2px solid; padding: 7px 12px" ng-click="openTo($event)"><i class="glyphicon glyphicon-calendar"></i></button>

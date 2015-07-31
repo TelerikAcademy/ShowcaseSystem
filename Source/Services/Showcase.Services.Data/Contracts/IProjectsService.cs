@@ -14,7 +14,7 @@
 
         IQueryable<Project> MostPopular();
 
-        IQueryable<Project> ProjectById(int id);
+        IQueryable<Project> ProjectById(int id, bool isAdmin);
 
         IQueryable<Project> LikedByUser(int userId);
 

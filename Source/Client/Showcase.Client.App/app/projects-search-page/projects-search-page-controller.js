@@ -5,7 +5,6 @@
         var vm = this,
             oDataQuery,
             canGetNext = true,
-            initialProjectsLoaded = false,
             CONSTS = {
                 DESC: 'desc'
             };
@@ -13,6 +12,7 @@
         vm.projects = [];
         vm.isLastPage = false;
         vm.loading = false;
+        vm.initialProjectsLoaded = false;
 
         vm.filterOptions = projectsSearchService.getFilterOptions();
         vm.filterOptions.desc = $routeParams.desc === undefined ? true : $routeParams.desc;
@@ -90,7 +90,7 @@
                     $location.search(key, $routeParams[key]);
                 });
 
-            initialProjectsLoaded = false;
+            vm.initialProjectsLoaded = false;
             getProjects();
         };
 
@@ -101,7 +101,6 @@
 
         vm.search();
 
-        // not working if attached to vm
         $scope.changePage = function (newPage) {
             $scope.currentPage = newPage;
             vm.search({ $skip: (newPage - 1) * vm.filterOptions.pageSize });
@@ -117,61 +116,13 @@
             getProjects();
         };
 
-        $scope.$watch('vm.filterOptions.desc', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.filterOptions.orderOption', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.filterOptions.pageSize', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.filterOptions.includeHidden', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.searchParams.fromDate', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
-        $scope.$watch('vm.searchParams.toDate', function (newValue, oldValue) {
-            if (newValue === oldValue) {
-                return;
-            }
-
-            vm.search();
-        });
-
         $scope.$watch('vm.filterOptions.scrolling', function (newValue, oldValue) {
             if (newValue === oldValue) {
                 return;
             }
 
             if (newValue == true) {
-                initialProjectsLoaded = false;
+                vm.initialProjectsLoaded = false;
                 canGetNext = false;
                 $scope.currentPage = 1;
                 vm.search();
@@ -181,14 +132,28 @@
             }
         });
 
+        watchProperty('vm.filterOptions.desc');
+        watchProperty('vm.filterOptions.orderOption');
+        watchProperty('vm.filterOptions.pageSize');
+        watchProperty('vm.filterOptions.includeHidden');
+        watchProperty('vm.searchParams.fromDate');
+        watchProperty('vm.filterOptions.toDate');
+        
+        function watchProperty(property) {
+            $scope.$watch(property, function (newValue, oldValue) {
+                if (newValue === oldValue) {
+                    return;
+                }
+
+                vm.search();
+            });
+        }
+
         function getProjects() {
             oDataQuery = projectsSearchService.getQuery($routeParams, vm.filterOptions.includeHidden);
             var startTime = new Date().getTime();
-            $routeParams.$count = true;
-
-            if (!initialProjectsLoaded) {                
-                vm.loading = true;
-            }
+            $routeParams.$count = true;             
+            vm.loading = true;
 
             searchPageData.searchProjects(oDataQuery)
                 .then(function (odata) {
@@ -202,7 +167,7 @@
                     // pager data
                     $scope.totalPages = Math.ceil(odata['@odata.count'] / vm.filterOptions.pageSize);
 
-                    if (localStorage.scrolling == 'true' && initialProjectsLoaded) {
+                    if ($window.localStorage.scrolling == 'true' && vm.initialProjectsLoaded) {
                         vm.projects = vm.projects.concat(odata.value);
                     }
                     else {
@@ -211,7 +176,7 @@
 
                     vm.loading = false;
                     
-                    if (localStorage.scrolling == 'true') {
+                    if ($window.localStorage.scrolling == 'true') {
                         $scope.currentPage++;
                     }
                     else {
@@ -219,7 +184,7 @@
                     }
 
                     canGetNext = true;
-                    initialProjectsLoaded = true;
+                    vm.initialProjectsLoaded = true;
                 });
         }
     };

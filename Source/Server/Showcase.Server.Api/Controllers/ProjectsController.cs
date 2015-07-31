@@ -116,6 +116,10 @@
         }
 
         [HttpGet]
+        
+
+        [HttpGet]
+        [Route("LikedProjects/{username}")]
         public async Task<IHttpActionResult> LikedProjects(string username)
         {
             var currentLoggedInUsername = this.User.Identity.Name;

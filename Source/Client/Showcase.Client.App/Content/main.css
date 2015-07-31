@@ -366,3 +366,43 @@ li.token-input-selected-token-showcase span {
 .color666 {
     color: #666;
 }
+
+.date-picker .btn-default {
+  box-shadow: none;
+  border-radius: 3px !important;
+}
+
+.date-picker .btn {
+    margin-bottom: 0 !important;
+}
+
+.date-picker .btn.pull-right.btn-default {
+    margin-left: 0 !important;
+    width: 36px !important;
+}
+
+.date-picker button.active {
+    color: #444 !important;
+    font-weight: bold;
+    background-color: #DDD;
+}
+
+.date-picker ul {
+    padding: 15px;
+}
+
+.date-picker .btn.pull-right.btn-success {
+    margin-right: -8px !important;
+}
+
+.date-picker .btn-group.pull-left {
+    margin-left: -8px !important;
+}
+
+.date-picker button span.text-muted {
+    font-weight: bold;
+}
+
+.date-picker button span.text-info {
+    font-weight: bold;
+}
