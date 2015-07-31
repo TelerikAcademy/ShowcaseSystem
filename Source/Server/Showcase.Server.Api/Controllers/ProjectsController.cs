@@ -11,6 +11,7 @@
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
+    using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
@@ -22,13 +23,12 @@
     using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
 
-    public class ProjectsController : BaseController
+    public class ProjectsController : BaseAuthorizationController
     {
         private readonly ILikesService likesService;
         private readonly IVisitsService visitsService;
         private readonly IProjectsService projectsService;
         private readonly ITagsService tagsService;
-        private readonly IUsersService usersService;
         private readonly IMappingService mappingService;
         private readonly IImagesService imagesService;
         private readonly IFileSystemService fileSystemService;
@@ -36,21 +36,21 @@
         private readonly IFlagsService flagsService;
 
         public ProjectsController(
+            IUsersService usersService,
             ILikesService likesService,
             IVisitsService visitsService,
             IProjectsService projectsService,
-            IUsersService usersService,
             IFlagsService flagsService,
             ITagsService tagsService,
             IMappingService mappingService,
             IImagesService imagesService,
             IFileSystemService fileSystemService)
+            : base(usersService)
         {
             this.likesService = likesService;
             this.visitsService = visitsService;
             this.projectsService = projectsService;
             this.tagsService = tagsService;
-            this.usersService = usersService;
             this.flagsService = flagsService;
             this.mappingService = mappingService;
             this.imagesService = imagesService;
@@ -88,15 +88,15 @@
         [ValidateModel]
         public async Task<IHttpActionResult> Post(ProjectRequestModel project)
         {
-            var collaborators = await this.usersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators);
+            var collaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators);
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
             var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
             await this.fileSystemService.SaveImagesToFiles(processedImages);
 
             var addedProject = await this.projectsService.AddNew(
                 this.mappingService.Map<Project>(project),
-                collaborators, 
-                tags, 
+                collaborators,
+                tags,
                 processedImages,
                 project.MainImage);
 
@@ -124,7 +124,7 @@
                 return this.Data(false, "You are not authorized to view this user's liked projects."); // TODO: Move to common attribute
             }
 
-            var userId = await this.usersService.UserIdByUsername(username);
+            var userId = await this.UsersService.UserIdByUsername(username);
 
             var model = await this.projectsService
                 .LikedByUser(userId)
@@ -207,6 +207,6 @@
             await this.flagsService.UnFlagProject(id, username);
 
             return this.Ok();
-        }        
+        }
     }
 }

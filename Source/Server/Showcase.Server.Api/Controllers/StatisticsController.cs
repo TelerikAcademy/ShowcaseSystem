@@ -9,6 +9,7 @@
 
     using AutoMapper.QueryableExtensions;
 
+    using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.DataTransferModels.Statistics;
@@ -16,7 +17,7 @@
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
 
-    public class StatisticsController : ApiController
+    public class StatisticsController : BaseController
     {
         private IStatisticsService statisticsService;
 

@@ -215,8 +215,9 @@
     <Compile Include="Config\AutoMapperConfig.cs" />
     <Compile Include="Config\NinjectConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\BaseODataController.cs" />
+    <Compile Include="Controllers\Base\BaseAuthorizationController.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\Base\BaseODataAuthorizationController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
