@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
@@ -11,7 +12,6 @@
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data.Models;
-    using System;
     
     public class ProjectsService : IProjectsService
     {
@@ -49,10 +49,10 @@
         {
             var query = this.projects.All().Where(p => p.Id == id);
 
-                if (!isAdmin)
-	            {
-                    query = query.Where(p => !p.IsHidden);
-	            }
+            if (!isAdmin)
+            {
+                query = query.Where(p => !p.IsHidden);
+            }
 
             return query;
         }

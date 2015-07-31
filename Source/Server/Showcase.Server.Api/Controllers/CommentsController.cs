@@ -9,9 +9,9 @@
 
     using Showcase.Data.Models;
     using Showcase.Server.Common;
+    using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.Validation;
-    using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Logic.Contracts;
@@ -83,7 +83,8 @@
             var userCommentsCount = await this.commentsService.UserCommentsCount(username);
             var lastPage = this.GetLastPage(userCommentsCount, page);
 
-            if (page < 1 || page > lastPage) // TODO: Extract to attribute to check valid page if possible
+            // TODO: Extract to attribute to check valid page if possible
+            if (page < 1 || page > lastPage)
             {
                 return this.Data(false, Constants.InvalidPageNumber);
             }

@@ -22,8 +22,8 @@
             configuration.CreateMap<IGrouping<int, Project>, CurrentStatisticsResponseModel>()
                 .ForMember(st => st.TotalProjects, opt => opt.MapFrom(gr => gr.Count()))
                 .ForMember(st => st.TotalViews, opt => opt.MapFrom(gr => gr.Sum(pr => pr.Visits.Count())))
-                .ForMember(st => st.TotalComments, opt => opt.MapFrom(gr =>  gr.Sum(pr => pr.Comments.Count())))
-                .ForMember(st => st.TotalLikes, opt => opt.MapFrom(gr =>  gr.Sum(pr => pr.Likes.Count())));
+                .ForMember(st => st.TotalComments, opt => opt.MapFrom(gr => gr.Sum(pr => pr.Comments.Count())))
+                .ForMember(st => st.TotalLikes, opt => opt.MapFrom(gr => gr.Sum(pr => pr.Likes.Count())));
         }
     }
 }

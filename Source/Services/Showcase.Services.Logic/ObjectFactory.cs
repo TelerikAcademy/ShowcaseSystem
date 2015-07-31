@@ -10,35 +10,15 @@
     {
         private static IKernel staticKernel;
         private IKernel kernel;
-
-        public static void Initialize(IKernel staticKernelInstance)
-        {
-            staticKernel = staticKernelInstance;
-        }
-
+        
         public ObjectFactory(IKernel kernel)
         {
             this.kernel = kernel;
         }
 
-        public T GetInstance<T>()
+        public static void Initialize(IKernel staticKernelInstance)
         {
-            return this.kernel.Get<T>();
-        }
-
-        public object GetInstance(Type type)
-        {
-            return this.kernel.Get(type);
-        }
-
-        public T TryGetInstance<T>()
-        {
-            return this.kernel.TryGet<T>();
-        }
-
-        public object TryGetInstance(Type type)
-        {
-            return this.kernel.TryGet(type);
+            staticKernel = staticKernelInstance;
         }
 
         public static T Get<T>()
@@ -59,6 +39,26 @@
         public static object TryGet(Type type)
         {
             return staticKernel.TryGet(type);
+        }
+
+        public T GetInstance<T>()
+        {
+            return this.kernel.Get<T>();
+        }
+
+        public object GetInstance(Type type)
+        {
+            return this.kernel.Get(type);
+        }
+
+        public T TryGetInstance<T>()
+        {
+            return this.kernel.TryGet<T>();
+        }
+
+        public object TryGetInstance(Type type)
+        {
+            return this.kernel.TryGet(type);
         }
     }
 }

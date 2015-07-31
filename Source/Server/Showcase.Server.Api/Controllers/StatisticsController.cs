@@ -9,10 +9,10 @@
 
     using AutoMapper.QueryableExtensions;
 
-    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.DataTransferModels.Statistics;
     using Showcase.Server.DataTransferModels.User;
+    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
 

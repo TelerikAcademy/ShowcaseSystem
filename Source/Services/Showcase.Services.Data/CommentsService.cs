@@ -81,8 +81,7 @@
                 .Where(c => c.ProjectId == id)
                 .CountAsync();
         }
-
-
+        
         public async Task<Comment> EditComment(int id, string commentText, string username)
         {
             var userId = await this.users.UserIdByUsername(username);

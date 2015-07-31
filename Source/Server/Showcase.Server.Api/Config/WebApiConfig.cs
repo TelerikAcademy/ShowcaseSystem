@@ -1,15 +1,15 @@
 ﻿namespace Showcase.Server.Api.Config
 {
+    using System.Net.Http;
     using System.Web.Http;
+    using System.Web.Http.Controllers;
     using System.Web.Http.Cors;
+    using System.Web.Http.Routing;
 
     using Newtonsoft.Json.Serialization;
 
     using Showcase.Server.Infrastructure;
     using Showcase.Server.Infrastructure.Formatters;
-    using System.Web.Http.Controllers;
-    using System.Web.Http.Routing;
-    using System.Net.Http;
 
     public static class WebApiConfig
     {

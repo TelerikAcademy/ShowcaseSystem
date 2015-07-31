@@ -5,10 +5,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Showcase.Services.Data.Contracts;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
+    using Showcase.Services.Data.Contracts;
 
     public class FlagsService : IFlagsService
     {
@@ -68,8 +68,7 @@
                 await this.flags.SaveChangesAsync();
             }
         }
-
-
+        
         public async Task<bool> ProjectIsFlaggedByUser(int projectId, string username)
         {
             return await this.users

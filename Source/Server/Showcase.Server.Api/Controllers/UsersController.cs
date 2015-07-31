@@ -8,8 +8,8 @@
 
     using AutoMapper.QueryableExtensions;
 
-    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.User;
+    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Services.Data.Contracts;
 
     public class UsersController : BaseController

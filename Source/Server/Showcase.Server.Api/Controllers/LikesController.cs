@@ -13,7 +13,6 @@
         public LikesController(ILikesService likesService)
         {
             this.likesService = likesService;
-
         }
 
         [Authorize]
