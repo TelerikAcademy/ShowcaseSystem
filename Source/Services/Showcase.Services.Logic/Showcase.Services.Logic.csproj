@@ -41,6 +41,10 @@
     <Reference Include="ImageProcessor">
       <HintPath>..\..\packages\ImageProcessor.2.2.8.0\lib\net45\ImageProcessor.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -52,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IObjectFactory.cs" />
+    <Compile Include="ObjectFactory.cs" />
     <Compile Include="Contracts\IImageProcessorService.cs" />
     <Compile Include="ImageProcessorService.cs" />
     <Compile Include="Contracts\IMappingService.cs" />

@@ -7,13 +7,16 @@
 
     public class Tag
     {
+        private const string DefaultForegroundColor = "ffffff";
+        private const string DefaultBackgroundColor = "8ab933";
+
         private ICollection<Project> projects;
 
         public Tag()
         {
             this.projects = new HashSet<Project>();
-            this.ForegroundColor = "111111"; // TODO: change to correct and move to constant
-            this.BackgroundColor = "555555"; // TODO: change to correct and move to constant
+            this.ForegroundColor = DefaultForegroundColor;
+            this.BackgroundColor = DefaultBackgroundColor;
         }
 
         [Key]

@@ -9,7 +9,6 @@
     using Owin;
 
     using Showcase.Data;
-    using Showcase.Server.Infrastructure.Bindings;
 
     public class AuthStartup
     {

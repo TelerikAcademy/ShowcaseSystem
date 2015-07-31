@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.cs" />
+    <Compile Include="Mapping\ExplicitMaps.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +99,10 @@
     <ProjectReference Include="..\..\Data\Showcase.Data.Common\Showcase.Data.Common.csproj">
       <Project>{43d17737-5da2-412b-9ff1-34bcba58587b}</Project>
       <Name>Showcase.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Showcase.Data.Models\Showcase.Data.Models.csproj">
+      <Project>{163b402e-b743-422b-8476-0d73089e7c94}</Project>
+      <Name>Showcase.Data.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\Showcase.Services.Common\Showcase.Services.Common.csproj">
       <Project>{dc34d65f-fcdf-4566-94a2-454526364046}</Project>

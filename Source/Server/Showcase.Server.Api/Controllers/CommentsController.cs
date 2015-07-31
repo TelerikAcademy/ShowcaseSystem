@@ -8,7 +8,9 @@
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Data.Models;
+    using Showcase.Server.Common;
     using Showcase.Server.Infrastructure.Extensions;
+    using Showcase.Server.Infrastructure.Validation;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
@@ -29,13 +31,9 @@
         }
 
         [HttpPost]
+        [ValidateModel]
         public async Task<IHttpActionResult> Post(int id, CommentRequestModel comment)
         {
-            if (comment == null || !this.ModelState.IsValid)
-            {
-                return this.Data(false, "Invalid data.");
-            }
-
             var username = this.User.Identity.Name;
             var postedComment = await this.commentsService.AddNew(id, comment.CommentText, username);
 
@@ -50,23 +48,12 @@
 
         [HttpPost]
         [Route("Edit/{id}")]
+        [ValidateModel]
         public async Task<IHttpActionResult> Edit(int id, CommentRequestModel comment)
         {
-            if (comment == null || !this.ModelState.IsValid)
-            {
-                return this.Data(false, "Invalid data.");
-            }
-
             var username = this.User.Identity.Name;
             var edittedComment = await this.commentsService.EditComment(id, comment.CommentText, username);
-
-            if (edittedComment == null)
-            {
-                return this.Data(false, "");
-            }
-
             var model = this.mappingService.Map<CommentResponseModel>(edittedComment);
-
             return this.Data(model);
         }
 
@@ -97,9 +84,9 @@
             var userCommentsCount = await this.commentsService.UserCommentsCount(username);
             var lastPage = this.GetLastPage(userCommentsCount, page);
 
-            if (page < 1 || page > lastPage)
+            if (page < 1 || page > lastPage) // TODO: Extract to attribute to check valid page if possible
             {
-                return this.Data(false, "There are no more comments to load.");
+                return this.Data(false, Constants.InvalidPageNumber);
             }
 
             var model = new CommentsPageResponseModel

@@ -7,18 +7,24 @@
 
     using Newtonsoft.Json;
 
+    using Showcase.Server.Common;
     using Showcase.Server.Infrastructure.Formatters;
 
     public static class ApiControllerExtensions
     {
-        public static FormattedContentResult<ResultObject<T>> Data<T>(this ApiController apiController, T data) where T : class
+        public static FormattedContentResult<ResultObject> Data(this ApiController apiController, object data)
         {
-            return new FormattedContentResult<ResultObject<T>>(HttpStatusCode.OK, new ResultObject<T>(data), new BrowserJsonFormatter(), null, apiController);
+            if (data == null)
+            {
+                return apiController.Data(false, Constants.RequestedResourceWasNotFound, data);
+            }
+
+            return new FormattedContentResult<ResultObject>(HttpStatusCode.OK, new ResultObject(data), new BrowserJsonFormatter(), null, apiController);
         }
 
-        public static FormattedContentResult<ResultObject<object>> Data(this ApiController apiController, bool success, string errorMessage, object data = null)
+        public static FormattedContentResult<ResultObject> Data(this ApiController apiController, bool success, string errorMessage, object data = null)
         {
-            return new FormattedContentResult<ResultObject<object>>(HttpStatusCode.OK, new ResultObject<object>(success, errorMessage, data), new BrowserJsonFormatter(), null, apiController);
+            return new FormattedContentResult<ResultObject>(HttpStatusCode.OK, new ResultObject(success, errorMessage, data), new BrowserJsonFormatter(), null, apiController);
         }
     }
 }
