@@ -31,7 +31,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                About {{vm.totalResultsCount}} results <small class="text-success">({{vm.timeElapsed}} seconds) </small>
+                {{vm.totalResultsCount}} results <small class="text-success">({{vm.timeElapsed}} seconds) </small>
             </div>
         </div>
     </div>
@@ -42,5 +42,5 @@
         <span style="font-size: 3em;"><i class="fa fa-spin fa-spinner"></i> Loading projects...</span>
     </div>
 
-    <div ng-pager total-pages="{{totalPages}}" current-page="{{currentPage}}" page-changed="changePage(pageNum)" ng-hide="vm.filterOptions.scrolling" />
+    <div ng-pager total-pages="{{totalPages}}" current-page="{{currentPage}}" page-changed="changePage(pageNum)" ng-hide="vm.filterOptions.scrolling || vm.loading" />
 </section>
