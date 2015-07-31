@@ -8,6 +8,13 @@
 
     public class ProcessedImage : Image
     {
+        private static IMappingService mappingService;
+
+        static ProcessedImage()
+        {
+            mappingService = ObjectFactory.Get<IMappingService>();
+        }
+
         public const int ThumbnailImageWidth = 260;
         public const string ThumbnailImage = "tmbl";
         
@@ -34,15 +41,10 @@
 
         public static ProcessedImage FromImage(Image image, byte[] thumbnailContent, byte[] highResolutionContent)
         {
-            return new ProcessedImage // TODO: move to AutoMapper
-            {
-                Id = image.Id,
-                OriginalFileName = image.OriginalFileName,
-                FileExtension = image.FileExtension,
-                UrlPath = image.UrlPath,
-                ThumbnailContent = thumbnailContent,
-                HighResolutionContent = highResolutionContent
-            };
+            var result = mappingService.Map<ProcessedImage>(image);
+            result.ThumbnailContent = thumbnailContent;
+            result.HighResolutionContent = highResolutionContent;
+            return result;
         }
     }
 }
