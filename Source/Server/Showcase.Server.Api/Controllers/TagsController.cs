@@ -2,14 +2,14 @@
 {
     using System.Data.Entity;
     using System.Linq;
-    using System.Web.Http;
     using System.Threading.Tasks;
+    using System.Web.Http;
 
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Server.Api.Controllers.Base;
-    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Tag;
+    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Services.Data.Contracts;
 
     public class TagsController : BaseController

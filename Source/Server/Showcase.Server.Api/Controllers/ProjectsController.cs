@@ -9,10 +9,10 @@
 
     using Showcase.Data.Models;
     using Showcase.Server.Api.Controllers.Base;
+    using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
-    using Showcase.Server.DataTransferModels.Project;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Logic.Contracts;
 
@@ -24,8 +24,7 @@
         private readonly IMappingService mappingService;
         private readonly IImagesService imagesService;
         private readonly IFileSystemService fileSystemService;
-
-
+        
         public ProjectsController(
             ILikesService likesService,
             IUsersService usersService,

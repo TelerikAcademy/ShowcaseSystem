@@ -15,7 +15,6 @@
             : base(usersService)
         {
             this.likesService = likesService;
-
         }
 
         [Authorize]

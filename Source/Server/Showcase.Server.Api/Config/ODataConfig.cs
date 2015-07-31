@@ -7,8 +7,8 @@
     using Microsoft.OData.Edm;
 
     using Showcase.Server.Api.Controllers;
-    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Server.Infrastructure.Extensions;
 
     public static class ODataConfig
     {

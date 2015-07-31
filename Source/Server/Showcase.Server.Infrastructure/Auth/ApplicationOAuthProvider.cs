@@ -32,7 +32,7 @@
         }
 
         public ApplicationOAuthProvider(string publicClientId, IUsersService usersService)
-            : this (publicClientId)
+            : this(publicClientId)
         {
             this.usersService = usersService;
         }

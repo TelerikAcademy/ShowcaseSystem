@@ -13,9 +13,9 @@ namespace Showcase.Server.Api.Config
     using Showcase.Data;
     using Showcase.Data.Common.Repositories;
 
+    using Showcase.Server.Common;
     using Showcase.Server.Infrastructure;
     using Showcase.Server.Infrastructure.FileSystem;
-    using Showcase.Server.Common;
 
     using Showcase.Services.Common;
     using Showcase.Services.Data;
@@ -51,7 +51,8 @@ namespace Showcase.Server.Api.Config
             kernel.Bind<DbContext>().To<ShowcaseDbContext>().InRequestScope();
 
             kernel.Bind(k => k
-                .From(ServerConstants.InfrastructureAssembly,
+                .From(
+                    ServerConstants.InfrastructureAssembly,
                     ServerConstants.DataServicesAssembly,
                     ServerConstants.LogicServicesAssembly)
                 .SelectAllClasses()

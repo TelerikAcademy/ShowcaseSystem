@@ -9,8 +9,8 @@
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Server.Api.Controllers.Base;
-    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.DataTransferModels.User;
+    using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Services.Data.Contracts;
 
     public class UsersController : BaseAuthorizationController
@@ -18,7 +18,7 @@
         private const int MinimumCharactersForUsernameSearch = 3;
 
         public UsersController(IUsersService usersService)
-            :base (usersService)
+            : base(usersService)
         {
         }
 
