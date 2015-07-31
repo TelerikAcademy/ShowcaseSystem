@@ -4,13 +4,14 @@
     var projectDetailsController = function projectDetailsController(projectDetailsData, $routeParams, $window, $location, commentsData, identity, notifier) {
         var vm = this;
         var id = $routeParams.id;
-        
+        var titleUrl = $routeParams.title;
+
         identity.getUser()
             .then(function (user) {
                 vm.currentLoggedInUsername = user.userName;
             });
 
-        projectDetailsData.getProject(id)
+        projectDetailsData.getProject(id, titleUrl)
             .then(function (project) {
                 var lastVisit = $window.localStorage.getItem("projectVisit" + id);
                 if (lastVisit) {

@@ -16,6 +16,7 @@
     using Showcase.Server.Infrastructure.Validation;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Logic.Contracts;
+    using Showcase.Server.Common;
 
     public class ProjectsController : BaseAuthorizationController
     {
@@ -58,7 +59,8 @@
         }
 
         [HttpGet]
-        public async Task<IHttpActionResult> Get(int id)
+        [Route("api/Projects/{id}/{titleUrl}")]
+        public async Task<IHttpActionResult> Get(int id, string titleUrl)
         {
             var username = this.CurrentUser.UserName;
 
@@ -68,7 +70,14 @@
                 .To<ProjectResponseModel>(new { username })
                 .FirstOrDefaultAsync();
 
-            return this.Data(model);
+            if (model.TitleUrl == titleUrl)
+            {
+                return this.Data(model);
+            }
+            else
+            {
+                return this.Data(false, Constants.RequestedResourceWasNotFound);
+            }
         }
 
         [Authorize]
