@@ -7,19 +7,19 @@
         }
 
         function getProjectsForLastSixMonths() {
-            return data.get('statistics/projectslastsixmonths');
+            return data.get('statistics/projectsLastSixMonths');
         }
         
         function getProjectsCountTag() {
-            return data.get('statistics/projectscountbytag');
+            return data.get('statistics/projectsCountByTag');
         }
 
         function getMostLikedProjects() {
-            return data.get('statistics/topprojects');
+            return data.get('statistics/topProjects');
         }
 
         function getTopUsers() {
-            return data.get('statistics/topusers');
+            return data.get('statistics/topUsers');
         }
 
         return {
