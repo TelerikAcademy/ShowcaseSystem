@@ -1,15 +1,15 @@
 ﻿namespace Showcase.Server.Infrastructure
 {
-    public class ResultObject<T> where T : class
+    public class ResultObject
     {
-        public ResultObject(T data)
+        public ResultObject(object data)
         {
             this.Success = true;
             this.ErrorMessage = null;
             this.Data = data;
         }
 
-        public ResultObject(bool success, string errorMessage, T data = null)
+        public ResultObject(bool success, string errorMessage, object data = null)
         {
             this.Success = success;
             this.ErrorMessage = errorMessage;
@@ -20,6 +20,6 @@
 
         public string ErrorMessage { get; set; }
 
-        public T Data { get; set; }
+        public object Data { get; set; }
     }
 }

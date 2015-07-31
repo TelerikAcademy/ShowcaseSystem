@@ -5,13 +5,15 @@
     using System.Web.Http.Controllers;
     using System.Web.Http.Filters;
 
+    using Showcase.Server.Common;
+
     public class ValidateModelAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
             if (actionContext.ActionArguments.Any(p => p.Value == null))
             {
-                actionContext.ModelState.AddModelError(string.Empty, "Data cannot be empty");
+                actionContext.ModelState.AddModelError(string.Empty, Constants.RequestCannotBeEmpty);
             }
 
             if (!actionContext.ModelState.IsValid)
@@ -22,7 +24,7 @@
                     .SelectMany(v => v.Errors.Select(er => er.ErrorMessage))
                     .First();
                 
-                actionContext.Response = actionContext.Request.CreateResponse(new ResultObject<string>(false, error));
+                actionContext.Response = actionContext.Request.CreateResponse(new ResultObject(false, error));
             }
         }
     }

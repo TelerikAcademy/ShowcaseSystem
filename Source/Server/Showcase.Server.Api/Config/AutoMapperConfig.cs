@@ -24,6 +24,8 @@
 
             LoadStandardMappings(types);
             LoadCustomMappings(types);
+
+            ExplicitMaps.AddMaps(Mapper.Configuration);
         }
 
         private static void LoadStandardMappings(IEnumerable<Type> types)

@@ -24,19 +24,11 @@
             this.users = users;
         }
 
-        public async Task<object> Current()
+        public IQueryable<IGrouping<int, Project>> Current()
         {
-            return await this.projects
+            return this.projects
                 .All()
-                .GroupBy(pr => 0)
-                .Select(gr => new // TODO: create data transfer model
-                {
-                    TotalProjects = gr.Count(),
-                    TotalViews = gr.Sum(pr => pr.Visits.Count()),
-                    TotalComments = gr.Sum(pr => pr.Comments.Count()),
-                    TotalLikes = gr.Sum(pr => pr.Likes.Count())
-                })
-                .FirstOrDefaultAsync(); 
+                .GroupBy(pr => 0); // Don't ask!
         }
 
         public IQueryable<IGrouping<int, Project>> ProjectsLastSixMonths()

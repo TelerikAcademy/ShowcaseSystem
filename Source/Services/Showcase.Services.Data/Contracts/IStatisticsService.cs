@@ -8,6 +8,8 @@
 
     public interface IStatisticsService : IService
     {
+        IQueryable<IGrouping<int, Project>> Current();
+
         IQueryable<IGrouping<int, Project>> ProjectsLastSixMonths();
 
         IQueryable<Tag> ProjectsCountByTag();
@@ -15,7 +17,5 @@
         IQueryable<Project> TopProjects();
 
         IQueryable<User> TopUsers();
-
-        Task<object> Current();
     }
 }

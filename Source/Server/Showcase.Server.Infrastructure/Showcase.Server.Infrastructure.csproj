@@ -97,8 +97,6 @@
     <Compile Include="FileSystem\FileSystemService.cs" />
     <Compile Include="FileSystem\IFileSystemService.cs" />
     <Compile Include="Formatters\BrowserJsonFormatter.cs" />
-    <Compile Include="Bindings\IObjectFactory.cs" />
-    <Compile Include="Bindings\ObjectFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultObject.cs" />
     <Compile Include="Validation\ValidateModelAttribute.cs" />
@@ -119,6 +117,14 @@
     <ProjectReference Include="..\..\Services\Showcase.Services.Data\Showcase.Services.Data.csproj">
       <Project>{6e7fa01f-8644-48a9-aab3-0e1a049ccd9a}</Project>
       <Name>Showcase.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Showcase.Services.Logic\Showcase.Services.Logic.csproj">
+      <Project>{7c14f43e-1596-4944-a03e-9884cae0fbd6}</Project>
+      <Name>Showcase.Services.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Showcase.Server.Common\Showcase.Server.Common.csproj">
+      <Project>{a76b5891-7edb-4b8f-89b6-03a8924393a1}</Project>
+      <Name>Showcase.Server.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

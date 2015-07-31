@@ -14,11 +14,13 @@
 
     public class ImagesService : IImagesService
     {
+        private readonly IObjectFactory objectFactory;
         private readonly IRepository<Image> images;
         private readonly IImageProcessorService imageProcessorService;
 
-        public ImagesService(IRepository<Image> images, IImageProcessorService imageProcessorService)
+        public ImagesService(IObjectFactory objectFactory, IRepository<Image> images, IImageProcessorService imageProcessorService)
         {
+            this.objectFactory = objectFactory;
             this.images = images;
             this.imageProcessorService = imageProcessorService;
         }
@@ -28,7 +30,7 @@
             var processedImages = await rawImages.ForEachAsync(async rawImage => 
             {
                 var image = new Image { OriginalFileName = rawImage.OriginalFileName, FileExtension = rawImage.FileExtension };
-                var imagesContext = new ShowcaseDbContext(); // TODO: ObjectFactory ?
+                var imagesContext = this.objectFactory.GetInstance<ShowcaseDbContext>();
                 imagesContext.Images.Add(image);
                 await imagesContext.SaveChangesAsync();
 
