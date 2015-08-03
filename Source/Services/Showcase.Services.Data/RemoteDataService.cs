@@ -21,6 +21,7 @@
         private const string BaseAddress = "https://telerikacademy.com";
 #endif
         private const string ApiCheckUserLoginUrlFormat = "/Api/Users/CheckUserLogin?usernameoremail={0}&password={1}";
+        private const string ApiGetUsersAvatarsUrlFormat = "/Api/Users/GetUsersAvatars?usernames={0}";
 
         private readonly HttpClient client;
 
@@ -30,6 +31,7 @@
             this.client.DefaultRequestHeaders.Add("Connection", "close");
         }
 
+        // TODO: Pass API key
         public async Task<User> Login(string username, string password)
         {
             var url = string.Format(ApiCheckUserLoginUrlFormat, username, password);
@@ -37,34 +39,27 @@
             var jsonString = await response.Content.ReadAsStringAsync();
             var model = JsonConvert.DeserializeObject<CheckUserLoginApiModel>(jsonString);
 
-            return !model.IsValid
-                       ? null
-                       : new User
+            return model.IsValid
+                       ? new User
                              {
                                  UserName = model.UserName,
                                  AvatarUrl = model.SmallAvatarUrl,
                                  IsAdmin = model.IsAdmin
-                             };
+                             }
+                       : null;
         }
 
-        public Task<IEnumerable<User>> UsersInfo(IEnumerable<string> usernames)
+        // TODO: Pass API key
+        public async Task<IEnumerable<User>> UsersInfo(IEnumerable<string> usernames)
         {
-            // TODO: return user information from telerikacademy.com
-            return Task.Run<IEnumerable<User>>(() => new List<User>
-            {
-                new User
-                {
-                    UserName = "some user",
-                    AvatarUrl = "some url", // return small avatar URL here 
-                    IsAdmin = false
-                },
-                new User
-                {
-                    UserName = "another user",
-                    AvatarUrl = "another url", // return small avatar URL here 
-                    IsAdmin = false
-                }
-            });
+            var url = string.Format(ApiGetUsersAvatarsUrlFormat, JsonConvert.SerializeObject(usernames));
+            var response = await this.client.GetAsync(url);
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<IEnumerable<CheckUserLoginApiModel>>(jsonString);
+
+            return
+                model.Where(x => x.IsValid)
+                    .Select(x => new User { UserName = x.UserName, AvatarUrl = x.SmallAvatarUrl, IsAdmin = x.IsAdmin });
         }
 
         public Task<IEnumerable<string>> SearchByUsername(string username)
