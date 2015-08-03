@@ -23,6 +23,7 @@
         private const string ApiCheckUserLoginUrlFormat = "/Api/Users/CheckUserLogin?usernameoremail={0}&password={1}";
         private const string ApiGetUsersAvatarsUrlFormat = "/Api/Users/GetUsersAvatars?usernames={0}";
         private const string ApiSearchByUsernameUrlFormat = "/Api/Users/SearchByUsername?stringToSearch={0}&maxResults={1}";
+        private const string ApiUserInfoUrlFormat = "/Api/Users/UserInfo?username={0}";
 
         private readonly HttpClient client;
 
@@ -73,21 +74,17 @@
             return model;
         }
 
-        public Task<RemoteUserProfile> ProfileInfo(string username)
+        // TODO: Pass API key
+        public async Task<RemoteUserProfile> ProfileInfo(string username)
         {
-            // TODO: get from telerikacademy.com and return null if user does not exist
-            return Task.Run(() => new RemoteUserProfile
-            {
-                FirstName = "User",
-                LastName = "Userov",
-                Age = 10,
-                City = "Petrich, Kalifornia",
-                ProfileAvatarUrl = "some.jpg",
-                Occupation = "Director",
-                Sex = "Male"
-            });
+            var url = string.Format(ApiUserInfoUrlFormat, username);
+            var response = await this.client.GetAsync(url);
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<RemoteUserProfile>(jsonString);
+            return model;
         }
 
+        // TODO: Pass API key
         public Task<bool> UsersExist(IEnumerable<string> usernames)
         {
             // TODO: return whether all usernames are valid users from telerikacademy.com
