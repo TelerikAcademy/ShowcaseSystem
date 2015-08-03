@@ -81,6 +81,7 @@
     <Compile Include="ProjectsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteDataService.cs" />
+    <Compile Include="Remote\Models\CheckUserLoginApiModel.cs" />
     <Compile Include="StatisticsService.cs" />
     <Compile Include="TagsService.cs" />
     <Compile Include="UsersService.cs" />
