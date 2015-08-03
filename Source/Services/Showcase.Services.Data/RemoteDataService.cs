@@ -22,6 +22,7 @@
 #endif
         private const string ApiCheckUserLoginUrlFormat = "/Api/Users/CheckUserLogin?usernameoremail={0}&password={1}";
         private const string ApiGetUsersAvatarsUrlFormat = "/Api/Users/GetUsersAvatars?usernames={0}";
+        private const string ApiSearchByUsernameUrlFormat = "/Api/Users/SearchByUsername?stringToSearch={0}&maxResults={1}";
 
         private readonly HttpClient client;
 
@@ -62,20 +63,14 @@
                     .Select(x => new User { UserName = x.UserName, AvatarUrl = x.SmallAvatarUrl, IsAdmin = x.IsAdmin });
         }
 
-        public Task<IEnumerable<string>> SearchByUsername(string username)
+        // TODO: Pass API key
+        public async Task<IEnumerable<string>> SearchByUsername(string username, int maxResults = 10)
         {
-            // TODO: get from telerikacademy.com all usernames which contain the search - return maximum 10 entries
-            return Task.Run<IEnumerable<string>>(() => new List<string>
-            {
-                "ivaylo.kenov",
-                "ivaylo.manekenov",
-                "zdravko.georgiev",
-                "zdravko.jelqzkov",
-                "evlogi.hristov",
-                "nikolay.kostov",
-                "kolio",
-                "kolio.TLa"
-            }.Where(u => u.ToLower().Contains(username.ToLower()))); // for testing purpose, do not filter here
+            var url = string.Format(ApiSearchByUsernameUrlFormat, username, maxResults);
+            var response = await this.client.GetAsync(url);
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<IEnumerable<string>>(jsonString);
+            return model;
         }
 
         public Task<RemoteUserProfile> ProfileInfo(string username)
@@ -87,7 +82,7 @@
                 LastName = "Userov",
                 Age = 10,
                 City = "Petrich, Kalifornia",
-                LargeAvatarUrl = "some.jpg",
+                ProfileAvatarUrl = "some.jpg",
                 Occupation = "Director",
                 Sex = "Male"
             });
