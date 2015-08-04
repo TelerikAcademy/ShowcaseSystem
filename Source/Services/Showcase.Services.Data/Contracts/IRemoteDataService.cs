@@ -13,7 +13,7 @@
 
         Task<IEnumerable<User>> UsersInfo(IEnumerable<string> usernames);
 
-        Task<IEnumerable<string>> SearchByUsername(string username);
+        Task<IEnumerable<string>> SearchByUsername(string username, int maxResults = 10);
 
         Task<RemoteUserProfile> ProfileInfo(string username);
 

@@ -14,6 +14,9 @@
 
         public string Occupation { get; set; }
 
-        public string LargeAvatarUrl { get; set; } // the biggest resolution of the avatar
+        /// <summary>
+        /// Gets or sets the biggest resolution of the avatar
+        /// </summary>
+        public string ProfileAvatarUrl { get; set; }
     }
 }
