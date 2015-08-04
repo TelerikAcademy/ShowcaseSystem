@@ -24,6 +24,7 @@
         private const string ApiGetUsersAvatarsUrlFormat = "/Api/Users/GetUsersAvatars?usernames={0}";
         private const string ApiSearchByUsernameUrlFormat = "/Api/Users/SearchByUsername?stringToSearch={0}&maxResults={1}";
         private const string ApiUserInfoUrlFormat = "/Api/Users/UserInfo?username={0}";
+        private const string ApiAllGivenUsernamesExistsUrlFormat = "/Api/Users/AllGivenUsernamesExists?usernames={0}";
 
         private readonly HttpClient client;
 
@@ -85,10 +86,13 @@
         }
 
         // TODO: Pass API key
-        public Task<bool> UsersExist(IEnumerable<string> usernames)
+        public async Task<bool> UsersExist(IEnumerable<string> usernames)
         {
-            // TODO: return whether all usernames are valid users from telerikacademy.com
-            return Task.Run(() => true);
+            var url = string.Format(ApiAllGivenUsernamesExistsUrlFormat, JsonConvert.SerializeObject(usernames));
+            var response = await this.client.GetAsync(url);
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var model = JsonConvert.DeserializeObject<bool>(jsonString);
+            return model;
         }
     }
 }
