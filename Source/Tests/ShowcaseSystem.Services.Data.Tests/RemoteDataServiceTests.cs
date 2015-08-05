@@ -47,7 +47,7 @@
             Assert.AreEqual(username, result.UserName, "Username received is not equal to the one requested!");
             Assert.AreEqual(isAdmin, result.IsAdmin, "Admin status not correct!");
             Assert.IsNotNull(result.AvatarUrl, "result.AvatarUrl != null");
-            Assert.IsTrue(RemoteFileExists(result.AvatarUrl));
+            Assert.IsTrue(RemoteFileExists(result.AvatarUrl), "Avatar does not exist!");
         }
 
         [TestCase("Niko", 20, 20)]
@@ -64,6 +64,32 @@
                     username.ToLower().StartsWith(textToSearch.ToLower()),
                     string.Format("{0} expected to starts with {1}", username, textToSearch));
             }
+        }
+
+        [TestCase("invalid*user")]
+        public void ProfileInfoShouldReturnNonNullResultWithNullPropertiesWhenGivenInvalidUsername(string username)
+        {
+            var service = new RemoteDataService();
+            var result = service.ProfileInfo(username).Result;
+            Assert.IsNotNull(result);
+            Assert.IsNull(result.Sex);
+            Assert.IsNull(result.FirstName);
+            Assert.IsNull(result.LastName);
+            Assert.IsNull(result.Occupation);
+            Assert.IsNull(result.ProfileAvatarUrl);
+        }
+
+        [TestCase("Nikolay.IT", "Male", "Nikolay", "Kostov")]
+        [TestCase("ShowcaseSystem", null, "Showcase", "System")]
+        public void ProfileInfoShouldReturnCorrectResults(string username, string sex, string firstName, string lastName)
+        {
+            var service = new RemoteDataService();
+            var result = service.ProfileInfo(username).Result;
+            Assert.IsNotNull(result);
+            Assert.AreEqual(sex, result.Sex);
+            Assert.AreEqual(firstName, result.FirstName);
+            Assert.AreEqual(lastName, result.LastName);
+            Assert.IsTrue(RemoteFileExists(result.ProfileAvatarUrl), "Avatar does not exist!");
         }
 
         [TestCase(true, new[] { "ShowcaseSystem" })]
