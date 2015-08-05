@@ -52,6 +52,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\Showcase.Data.Models\Showcase.Data.Models.csproj">
+      <Project>{163B402E-B743-422B-8476-0D73089E7C94}</Project>
+      <Name>Showcase.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\Showcase.Services.Common\Showcase.Services.Common.csproj">
+      <Project>{dc34d65f-fcdf-4566-94a2-454526364046}</Project>
+      <Name>Showcase.Services.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\Showcase.Services.Data\Showcase.Services.Data.csproj">
       <Project>{6e7fa01f-8644-48a9-aab3-0e1a049ccd9a}</Project>
       <Name>Showcase.Services.Data</Name>
