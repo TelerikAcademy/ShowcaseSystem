@@ -37,5 +37,10 @@
 
             return await Task.WhenAll(tasks);
         }
+
+        public static HashSet<T> ToHashSet<T>(this IEnumerable<T> enumerable)
+        {
+            return new HashSet<T>(enumerable);
+        }
     }
 }
