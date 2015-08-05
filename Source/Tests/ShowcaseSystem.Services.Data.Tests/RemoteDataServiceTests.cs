@@ -1,13 +1,11 @@
-﻿using NUnit.Framework;
-using Showcase.Services.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShowcaseSystem.Services.Data.Tests
+﻿namespace ShowcaseSystem.Services.Data.Tests
 {
+    using System.Collections.Generic;
+
+    using NUnit.Framework;
+
+    using Showcase.Services.Data;
+
     [TestFixture]
     public class RemoteDataServiceTests
     {
