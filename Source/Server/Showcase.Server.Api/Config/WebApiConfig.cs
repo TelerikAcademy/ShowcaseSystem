@@ -31,7 +31,6 @@
             config.Routes.MapHttpRoute(
                 "DefaultApiWithActionAndId",
                 "Api/{controller}/{action}/{id}",
-                new { id = RouteParameter.Optional },
                 new { id = @"\d+" });
 
             config.Routes.MapHttpRoute(
