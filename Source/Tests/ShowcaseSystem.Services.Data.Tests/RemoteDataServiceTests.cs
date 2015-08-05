@@ -22,7 +22,7 @@
 
         [TestCase(2, "ShowcaseSystem", "Nikolay.IT")]
         [TestCase(1, "ShowcaseSystem", "invalid*user", "another*invalid*user")]
-        [TestCase(0, "invalid*user")]
+        [TestCase(0, new[] { "invalid*user" })]
         public void UsersInfoShouldReturnInformationForEveryUserGiven(int validCount, params string[] usernames)
         {
             var service = new RemoteDataService();
@@ -49,10 +49,10 @@
             Assert.IsTrue(RemoteFileExists(result.AvatarUrl));
         }
 
-        [TestCase(true, "ShowcaseSystem")]
+        [TestCase(true, new[] { "ShowcaseSystem" })]
         [TestCase(true, "Nikolay.IT", "ivaylo.kenov", "ShowcaseSystem")]
         [TestCase(false, "ShowcaseSystem", "but*this*user*does*not*exist")]
-        [TestCase(false, "this*user*does*not*exist")]
+        [TestCase(false, new[] { "this*user*does*not*exist" })]
         public void UsersExistShouldReturnCorrectResults(bool expected, params string[] usernames)
         {
             var service = new RemoteDataService();
