@@ -62,10 +62,11 @@
         [Route("api/Projects/{id}/{titleUrl}")]
         public async Task<IHttpActionResult> Get(int id, string titleUrl)
         {
-            var username = this.CurrentUser.UserName;
+            var isAuthenticated = this.CurrentUser != null;
+            var username = isAuthenticated ? this.CurrentUser.UserName : null;
 
             var model = await this.projectsService
-                .ProjectById(id, this.CurrentUser.IsAdmin)
+                .ProjectById(id, isAuthenticated ? this.CurrentUser.IsAdmin : false)
                 .Project()
                 .To<ProjectResponseModel>(new { username })
                 .FirstOrDefaultAsync();

@@ -41,7 +41,7 @@ gulp.task('css', function(){
     return gulp.src(config.appCssSrc)
 		// .pipe(minifyCSS())
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
-		// .pipe(concat('allcss' + getStamp() + '.min.css', {newLine: ''}))
+		.pipe(concat('allcss' + getStamp() + '.min.css', {newLine: ''}))
 		.pipe(concat('allcss.min.css', {newLine: ''}))
 		.pipe(gulp.dest('app/build'))
 });
@@ -60,7 +60,7 @@ gulp.task('scripts', function() {
 	return gulp.src(config.appJsSrc)
 		.pipe(angularFilesort())
 		// .pipe(uglify())
-		// .pipe(concat('alljs' + getStamp() + '.min.js', {newLine: ''}))
+		.pipe(concat('alljs' + getStamp() + '.min.js', {newLine: ''}))
 		.pipe(concat('alljs.min.js', {newLine: ''}))
 		.pipe(gulp.dest('app/build'));
 });
@@ -72,7 +72,7 @@ gulp.task('html', ['css', 'scripts'], function () {
 	var sources = gulp.src(['app/build/alljs*', 'app/build/allcss*']);
 	
 	return target.pipe(inject(sources))
-		// .pipe(minifyHTML({ conditionals: true }))
+		.pipe(minifyHTML({ conditionals: true }))
 		.pipe(rename('index.html'))
 		.pipe(gulp.dest('./'));
 });
