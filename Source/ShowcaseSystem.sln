@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Server.Common", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Server.Infrastructure", "Server\Showcase.Server.Infrastructure\Showcase.Server.Infrastructure.csproj", "{AB7F3756-7D7C-4A50-B90D-76C676C1A9D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowcaseSystem.Services.Data.Tests", "Tests\ShowcaseSystem.Services.Data.Tests\ShowcaseSystem.Services.Data.Tests.csproj", "{17038175-2CAF-4D2E-8352-04DB4EF6128D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{AB7F3756-7D7C-4A50-B90D-76C676C1A9D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB7F3756-7D7C-4A50-B90D-76C676C1A9D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB7F3756-7D7C-4A50-B90D-76C676C1A9D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17038175-2CAF-4D2E-8352-04DB4EF6128D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17038175-2CAF-4D2E-8352-04DB4EF6128D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17038175-2CAF-4D2E-8352-04DB4EF6128D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17038175-2CAF-4D2E-8352-04DB4EF6128D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -108,5 +114,6 @@ Global
 		{E8277023-2F04-4B68-9FA5-1810348B74AB} = {CEAF0445-71B9-4786-8062-B231DA32B396}
 		{A76B5891-7EDB-4B8F-89B6-03A8924393A1} = {E920264B-5513-4374-90B8-56924F1BE390}
 		{AB7F3756-7D7C-4A50-B90D-76C676C1A9D0} = {E920264B-5513-4374-90B8-56924F1BE390}
+		{17038175-2CAF-4D2E-8352-04DB4EF6128D} = {006D8078-843A-455D-9801-96709A838D2D}
 	EndGlobalSection
 EndGlobal
