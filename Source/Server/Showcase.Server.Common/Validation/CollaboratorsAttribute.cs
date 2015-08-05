@@ -6,6 +6,7 @@
 
     using Showcase.Data.Common;
     using Showcase.Services.Data.Contracts;
+    using System.Threading.Tasks;
 
     public class CollaboratorsAttribute : ValidationAttribute
     {
@@ -23,7 +24,8 @@
             if (valueAsString != null)
             {
                 var collaborators = valueAsString.Split(',');
-                return this.RemoteData.UsersExist(collaborators).Result;
+                var task = Task.Run(async () => await this.RemoteData.UsersExist(collaborators));
+                return task.Result;
             }
 
             return true;
