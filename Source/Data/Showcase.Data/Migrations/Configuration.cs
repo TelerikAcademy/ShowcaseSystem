@@ -6,6 +6,7 @@ namespace Showcase.Data.Migrations
     using System.Linq;
 
     using Showcase.Data.Models;
+    using Showcase.Data.Common.Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<ShowcaseDbContext>
     {
@@ -29,13 +30,57 @@ namespace Showcase.Data.Migrations
                 return;
             }
 
+            var languages = new[] { "C#", "JavaScript", "Objective C", "Java", "HTML", "CSS", "XAML" };
+            
+            for (int i = 0; i < languages.Length; i++)
+            {
+                var tag = new Tag
+                {
+                    Name = languages[i],
+                    BackgroundColor = "9933cc",
+                    ForegroundColor = "FFFFFF",
+                    Type = TagType.Language
+                };
+
+                context.Tags.Add(tag);
+            }
+
+            var technologies = new[] { "NodeJs", "AngularJs", "WPF", "ASP.NET MVC", "ASP.NET Web Forms", "Android", "iOS" };
+
+            for (int i = 0; i < technologies.Length; i++)
+            {
+                var tag = new Tag
+                {
+                    Name = technologies[i],
+                    BackgroundColor = "993333",
+                    ForegroundColor = "FFFFFF",
+                    Type = TagType.Technology
+                };
+
+                context.Tags.Add(tag);
+            }
+
+            var seasons = new[] { "2011/2012", "2012/2013", "2013/2014", "2014/2015", "2015/2016", "2016/2017" };
+
+            for (int i = 0; i < seasons.Length; i++)
+            {
+                var tag = new Tag
+                {
+                    Name = "Season " + seasons[i],
+                    BackgroundColor = "009999",
+                    ForegroundColor = "FFFFFF",
+                    Type = TagType.Season
+                };
+
+                context.Tags.Add(tag);
+            }
+                        
             for (int i = 0; i < 10; i++)
             {
                 var tag = new Tag
                 {
                     Name = "Seeded Tag " + i,
-                    BackgroundColor = "111111",
-                    ForegroundColor = "666666"
+                    Type = TagType.UserSubmitted
                 };
 
                 context.Tags.Add(tag);
