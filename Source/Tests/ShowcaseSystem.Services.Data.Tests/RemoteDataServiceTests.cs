@@ -1,5 +1,6 @@
 ﻿namespace ShowcaseSystem.Services.Data.Tests
 {
+    using System;
     using System.Linq;
     using System.Net;
 
@@ -47,6 +48,22 @@
             Assert.AreEqual(isAdmin, result.IsAdmin, "Admin status not correct!");
             Assert.IsNotNull(result.AvatarUrl, "result.AvatarUrl != null");
             Assert.IsTrue(RemoteFileExists(result.AvatarUrl));
+        }
+
+        [TestCase("Niko", 20, 20)]
+        [TestCase("Ivay", 10, 10)]
+        [TestCase("-", 20, 0)]
+        public void SearchByUsernameShouldReturnCorrectResults(string textToSearch, int requestedResults, int expectedResults)
+        {
+            var service = new RemoteDataService();
+            var result = service.SearchByUsername(textToSearch, requestedResults).Result.ToList();
+            Assert.AreEqual(expectedResults, result.Count());
+            foreach (var username in result)
+            {
+                Assert.IsTrue(
+                    username.ToLower().StartsWith(textToSearch.ToLower()),
+                    string.Format("{0} expected to starts with {1}", username, textToSearch));
+            }
         }
 
         [TestCase(true, new[] { "ShowcaseSystem" })]
