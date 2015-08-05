@@ -87,9 +87,7 @@
             var nonExistingLocalUsernames = usernames.Where(username => localUsers.All(u => u.UserName != username));
             var nonExistingLocalUsersRemoteInfo = await this.remoteData.UsersInfo(nonExistingLocalUsernames);
 
-            // TODO: uncomment when RemoteDataService is implemented
-            // var newlyAddedUsers = await this.AddNonExistingUsers(nonExistingLocalUsersRemoteInfo);
-            // localUsers.AddRange(newlyAddedUsers);
+            localUsers.AddRange(nonExistingLocalUsersRemoteInfo);
             return localUsers;
         }
 
@@ -103,13 +101,6 @@
             return await this.users
                 .All()
                 .FirstOrDefaultAsync(u => u.UserName == username);
-        }
-
-        private async Task<IEnumerable<User>> AddNonExistingUsers(IEnumerable<User> usersToAdd)
-        {
-            usersToAdd.ForEach(user => this.users.Add(user));
-            await this.users.SaveChangesAsync();
-            return usersToAdd;
         }
     }
 }
