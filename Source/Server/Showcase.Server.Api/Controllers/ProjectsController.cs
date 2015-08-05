@@ -86,7 +86,7 @@
         [ValidateModel]
         public async Task<IHttpActionResult> Post(ProjectRequestModel project)
         {
-            var collaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators);
+            var collaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators, this.CurrentUser.UserName);
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
             var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
             await this.fileSystemService.SaveImagesToFiles(processedImages);

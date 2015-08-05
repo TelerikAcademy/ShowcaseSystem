@@ -16,7 +16,7 @@
 
         Task<IEnumerable<string>> SearchByUsername(string username);
 
-        Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators);
+        Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators, string currentUserUsername);
 
         Task<RemoteUserProfile> ProfileInfo(string username);
 
