@@ -52,6 +52,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\Showcase.Data.Models\Showcase.Data.Models.csproj">
+      <Project>{163B402E-B743-422B-8476-0D73089E7C94}</Project>
+      <Name>Showcase.Data.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\Showcase.Services.Common\Showcase.Services.Common.csproj">
       <Project>{dc34d65f-fcdf-4566-94a2-454526364046}</Project>
       <Name>Showcase.Services.Common</Name>
