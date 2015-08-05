@@ -7,15 +7,15 @@
         }
 
         function visitProject(id) {
-            return data.post('projects/visit/' + id);
+            return data.post('projects/visit', id);
         }
         
         function likeProject(id) {
-            return data.post('likes/like/' + id, {});
+            return data.post('likes/like/' + id);
         }
 
         function dislikeProject(id) {
-            return data.post('likes/dislike/' + id, {});
+            return data.post('likes/dislike/' + id);
         }
         
         function flagProject(id) {

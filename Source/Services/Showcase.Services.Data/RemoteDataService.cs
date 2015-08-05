@@ -17,13 +17,7 @@
     {
         // TODO: Pass as methods (or constructor) parameters
         private const string ApiKey = "3d33a038e0dbcaa7121c4f133dc474d7";
-
-#if DEBUG
-        private const string BaseAddress = "http://localhost:1337";
-#else
         private const string BaseAddress = "https://telerikacademy.com";
-#endif
-
         private const string ApiCheckUserLoginUrlFormat = "/Api/Users/CheckUserLogin?apiKey={0}&usernameoremail={1}&password={2}";
         private const string ApiGetUsersAvatarsUrlFormat = "/Api/Users/GetUsersAvatars?apiKey={0}&usernames={1}";
         private const string ApiSearchByUsernameUrlFormat = "/Api/Users/SearchByUsername?apiKey={0}&stringToSearch={1}&maxResults={2}";
