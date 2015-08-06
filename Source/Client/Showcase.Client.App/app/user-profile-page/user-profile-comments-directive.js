@@ -44,6 +44,30 @@
                 scope.cancelEdit = function (id) {
                     scope.edittingComments[id] = false;
                 };
+                
+                scope.flagComment = function (commentId) {
+                    commentsData.flagComment(commentId)
+                        .then(function (data) {
+                            for (var i = 0; i < scope.comments.length; i++) {
+                                if (scope.comments[i].id == commentId) {
+                                    scope.comments[i].isFlagged = true;
+                                    break;
+                                }
+                            }
+                        });
+                };
+
+                scope.unFlagComment = function (commentId) {
+                    commentsData.unFlagComment(commentId)
+                        .then(function (data) {
+                            for (var i = 0; i < scope.comments.length; i++) {
+                                if (scope.comments[i].id == commentId) {
+                                    scope.comments[i].isFlagged = false;
+                                    break;
+                                }
+                            }
+                        });
+                };
 
                 scope.saveComment = function (id, text) {
                     if (text.length < 10 || text.length > 500) {
