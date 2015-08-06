@@ -20,6 +20,6 @@
 
         Task<Comment> AddNew(int id, string commentText, string username);
 
-        Task<Comment> EditComment(int id, string commentText, string username);
+        Task<Comment> EditComment(int id, string commentText, string username, bool isAdmin);
     }
 }

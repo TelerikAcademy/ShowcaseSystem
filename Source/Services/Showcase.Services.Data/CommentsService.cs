@@ -82,13 +82,13 @@
                 .CountAsync();
         }
         
-        public async Task<Comment> EditComment(int id, string commentText, string username)
+        public async Task<Comment> EditComment(int id, string commentText, string username, bool isAdmin)
         {
             var userId = await this.users.UserIdByUsername(username);
 
             var commentToEdit = await this.comments
                 .All()
-                .Where(c => c.Id == id && c.UserId == userId)
+                .Where(c => c.Id == id && (c.UserId == userId || isAdmin))
                 .FirstOrDefaultAsync();
 
             if (commentToEdit == null)

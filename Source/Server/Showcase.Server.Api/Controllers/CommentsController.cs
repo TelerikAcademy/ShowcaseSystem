@@ -47,7 +47,7 @@
         [ValidateModel]
         public async Task<IHttpActionResult> Edit(int id, CommentRequestModel comment)
         {
-            var edittedComment = await this.commentsService.EditComment(id, comment.CommentText, this.CurrentUser.UserName);
+            var edittedComment = await this.commentsService.EditComment(id, comment.CommentText, this.CurrentUser.UserName, this.CurrentUser.IsAdmin);
             var model = this.mappingService.Map<CommentResponseModel>(edittedComment);
             return this.Data(model);
         }
