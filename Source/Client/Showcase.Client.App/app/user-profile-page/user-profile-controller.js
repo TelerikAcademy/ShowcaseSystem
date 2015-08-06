@@ -17,7 +17,6 @@
         userProfileData.getUser(vm.username)
             .then(function (user) {
                 vm.user = user;
-                console.log(user)
             });
 
         userProfileData.getProfile(vm.username)

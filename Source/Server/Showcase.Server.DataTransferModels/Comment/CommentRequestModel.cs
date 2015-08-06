@@ -6,6 +6,8 @@
 
     public class CommentRequestModel
     {
+        public int Id { get; set; }
+
         [Required]
         [MinLength(ValidationConstants.MinCommentContentLength)]
         [MaxLength(ValidationConstants.MaxCommentContentLength)]

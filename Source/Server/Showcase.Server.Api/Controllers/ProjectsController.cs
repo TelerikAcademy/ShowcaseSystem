@@ -59,7 +59,6 @@
         }
 
         [HttpGet]
-        [Route("api/Projects/{id}/{titleUrl}")]
         public async Task<IHttpActionResult> Get(int id, string titleUrl)
         {
             var isAuthenticated = this.CurrentUser != null;

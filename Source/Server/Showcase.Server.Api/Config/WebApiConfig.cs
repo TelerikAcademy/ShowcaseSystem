@@ -19,23 +19,48 @@
             config.Formatters.Add(new BrowserJsonFormatter());
 
             config.Routes.MapHttpRoute(
-                "DefaultApiWithId",
-                "Api/{controller}/{id}", 
-                new { id = RouteParameter.Optional },
+                "ProjectDetails",
+                "api/Projects/{id}/{titleUrl}",
+                new { controller = "Projects", action = "Get" },
                 new { id = @"\d+" });
 
             config.Routes.MapHttpRoute(
-                "DefaultApiWithAction",
-                "Api/{controller}/{action}");
+                "PagedComments",
+                "api/Comments/{id}/{page}",
+                new { controller = "Comments", action = "Get" },
+                new { id = @"\d+", page = @"\d+" });
+
+            config.Routes.MapHttpRoute(
+                "PagedCommentsByUser",
+                "api/Comments/User/{username}/{page}",
+                new { controller = "Comments", action = "CommentsByUser" },
+                new { page = @"\d+" });
 
             config.Routes.MapHttpRoute(
                 "DefaultApiWithActionAndId",
                 "Api/{controller}/{action}/{id}",
+                null,
                 new { id = @"\d+" });
 
             config.Routes.MapHttpRoute(
                 "DefaultApiWithActionAndUsername",
                 "Api/{controller}/{action}/{username}");
+
+            config.Routes.MapHttpRoute(
+                "DefaultApiGetWithId",
+                "Api/{controller}/{id}",
+                new { action = "Get" },
+                new { id = @"\d+", httpMethod = new HttpMethodConstraint(HttpMethod.Get) });
+
+            config.Routes.MapHttpRoute(
+                "DefaultApiPostWithId",
+                "Api/{controller}/{id}",
+                new { action = "Post" },
+                new { id = @"\d+", httpMethod = new HttpMethodConstraint(HttpMethod.Post) });
+
+            config.Routes.MapHttpRoute(
+                "DefaultApiWithAction",
+                "Api/{controller}/{action}");
 
             config.Routes.MapHttpRoute(
                 "DefaultApiGet",

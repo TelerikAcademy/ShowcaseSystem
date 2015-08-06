@@ -17,7 +17,8 @@
         }
 
         function editComment(id, text) {
-            return data.post('comments/edit/' + id, {
+            return data.post('comments/edit/', {
+                id: id,
                 commentText: text
             });
         }

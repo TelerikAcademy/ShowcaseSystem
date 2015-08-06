@@ -15,7 +15,6 @@
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Logic.Contracts;
 
-    [RoutePrefix("api/Comments")] // TODO: remove route attributes
     public class CommentsController : BaseAuthorizationController
     {
         private readonly ICommentsService commentsService;
@@ -43,17 +42,17 @@
             return this.Data(model);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateModel]
-        public async Task<IHttpActionResult> Edit(int id, CommentRequestModel comment)
+        public async Task<IHttpActionResult> Edit(CommentRequestModel comment)
         {
-            var edittedComment = await this.commentsService.EditComment(id, comment.CommentText, this.CurrentUser.UserName, this.CurrentUser.IsAdmin);
+            var edittedComment = await this.commentsService.EditComment(comment.Id, comment.CommentText, this.CurrentUser.UserName, this.CurrentUser.IsAdmin);
             var model = this.mappingService.Map<CommentResponseModel>(edittedComment);
             return this.Data(model);
         }
 
         [HttpGet]
-        [Route("{id}/{page}")]
         public async Task<IHttpActionResult> Get(int id, int page)
         {
             var projectCommentsCount = await this.commentsService.ProjectCommentsCount(id);
@@ -73,7 +72,6 @@
         }
 
         [HttpGet]
-        [Route("User/{username}/{page}")]
         public async Task<IHttpActionResult> CommentsByUser(string username, int page)
         {
             var userCommentsCount = await this.commentsService.UserCommentsCount(username);
