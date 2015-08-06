@@ -137,6 +137,8 @@
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
+    <Content Include="app\not-found-page\not-found-controller.js" />
+    <Content Include="app\not-found-page\not-found-view.html" />
     <Content Include="app\project-details-page\project-comments-directive.html" />
     <Content Include="app\project-details-page\project-comments-directive.js" />
     <Content Include="app\project-details-page\social-icons-directive.html" />
@@ -214,6 +216,7 @@
     <Content Include="content\epona\images\revolution_slider\font\revicons.eot" />
     <Content Include="content\epona\images\revolution_slider\font\revicons.ttf" />
     <Content Include="content\epona\images\revolution_slider\font\revicons.woff" />
+    <Content Include="content\images\404-error-page-ninja-icon.png" />
     <Content Include="content\images\telerik-logo.png" />
     <Content Include="content\loading-bar.css" />
     <Content Include="content\loading-bar.min.css" />

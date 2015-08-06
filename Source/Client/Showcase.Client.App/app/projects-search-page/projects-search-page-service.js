@@ -56,30 +56,22 @@
             if (rawMonth.length == 1) {
                 monthString = "0" + rawMonth;
             }
-            else { monthString = rawMonth; }
+            else {
+                monthString = rawMonth;
+            }
 
             var dateString;
             var rawDate = date.getUTCDate().toString();
             if (rawDate.length == 1) {
                 dateString = "0" + rawDate;
             }
-            else { dateString = rawDate; }
+            else {
+                dateString = rawDate;
+            }
 
             var hourString = '23';
             var minuteString = '59';
             var secondString = '59';
-
-            //var hourString = date.getUTCHours().toString();
-            //if (hourString.length == 1)
-            //    hourString = "0" + hourString;
-
-            //var minuteString = date.getUTCMinutes().toString();
-            //if (minuteString.length == 1)
-            //    minuteString = "0" + minuteString;
-
-            //var secondString = date.getUTCSeconds().toString();
-            //if (secondString.length == 1)
-            //    secondString = "0" + secondString;
 
             var DateFilter = "";
             DateFilter += date.getUTCFullYear() + "-";

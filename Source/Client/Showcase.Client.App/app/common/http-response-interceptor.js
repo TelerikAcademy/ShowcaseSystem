@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var httpResponseInterceptor = function httpResponseInterceptor($q, notifier) {
+    var httpResponseInterceptor = function httpResponseInterceptor($q, notifier, $location) {
         return {
             'response': function (response) {
                 if (response.data.success !== undefined) {
@@ -9,10 +9,17 @@
                         response.data = response.data.data;
                     }
                     else if (response.data.success === false) {
-                        notifier.error(response.data.errorMessage);
+                        if (response.data.errorMessage == 'The requested resource was not found') {
+                            $location.path('/notfound');
+                        }
+                        else {
+                            notifier.error(response.data.errorMessage);
+                        }
+
                         return $q.reject(response);
                     }
                 }
+
                 return response;
             },
             'responseError': function (rejection) {
@@ -30,5 +37,5 @@
 
     angular
         .module('showcaseSystem')
-        .factory('httpResponseInterceptor', ['$q', 'notifier', httpResponseInterceptor]);
+        .factory('httpResponseInterceptor', ['$q', 'notifier', '$location', httpResponseInterceptor]);
 }());

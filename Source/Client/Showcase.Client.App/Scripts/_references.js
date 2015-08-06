@@ -148,4 +148,5 @@
 /// <reference path="../app/project-details-page/project-comments-directive.js" />
 /// <reference path="../app/user-profile-page/user-profile-statistics-directive.js" />
 /// <reference path="../app/home-page/layer-slider-directive.js" />
+/// <reference path="../app/not-found-page/not-found-controller.js" />
 
