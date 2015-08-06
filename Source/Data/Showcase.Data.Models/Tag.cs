@@ -4,11 +4,12 @@
     using System.ComponentModel.DataAnnotations;
 
     using Showcase.Data.Common;
+    using Showcase.Data.Common.Models;
 
     public class Tag
     {
-        private const string DefaultForegroundColor = "ffffff";
-        private const string DefaultBackgroundColor = "8ab933";
+        private const string DefaultForegroundColor = "FFFFFF";
+        private const string DefaultBackgroundColor = "99cc33";
 
         private ICollection<Project> projects;
 
@@ -36,6 +37,8 @@
         [MinLength(ValidationConstants.TagColorLength)]
         [MaxLength(ValidationConstants.TagColorLength)]
         public string BackgroundColor { get; set; }
+
+        public TagType Type { get; set; }
 
         public virtual ICollection<Project> Projects
         {

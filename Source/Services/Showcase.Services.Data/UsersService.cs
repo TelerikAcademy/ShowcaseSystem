@@ -76,9 +76,11 @@
             return localUser;
         }
 
-        public async Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators)
+        public async Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators, string currentUserUsername)
         {
-            var usernames = collaborators.Split(',');
+            var usernames = collaborators.Split(',').ToHashSet();
+            usernames.Add(currentUserUsername);
+
             var localUsers = await this.users
                 .All()
                 .Where(u => usernames.Contains(u.UserName))

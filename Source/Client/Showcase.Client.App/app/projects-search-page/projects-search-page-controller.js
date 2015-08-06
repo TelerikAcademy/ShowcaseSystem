@@ -23,7 +23,6 @@
         identity.getUser()
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
-                vm.isAdmin = true;
 
                 if (vm.isAdmin) {
                     vm.filterOptions.orderOptions.push({

@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <form name="loginForm">
+                    <form name="loginForm" id="login-form">
                         <div class="col-md-6">
                             <input type="text" class="form-control" required="required" placeholder="Username" ng-model="user.username" />
                         </div>
@@ -19,7 +19,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary pull-right" ng-disabled="loginForm.$invalid" ng-click="vm.login(user)">Login</button>
+                <button id="login-btn" type="button" class="btn btn-primary pull-right" ng-disabled="loginForm.$invalid" ng-click="vm.login(user)">Login</button>
             </div>
         </div>
     </div>

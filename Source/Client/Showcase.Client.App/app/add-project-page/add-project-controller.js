@@ -7,7 +7,7 @@
         vm.submitProject = function (project) {
             addProjectData.addProject(project)
                 .then(function (projectInfo) {
-                    $location.path('/projects/' + projectInfo.id + '/' + projectInfo.title);
+                    $location.path('/projects/' + projectInfo.id + '/' + projectInfo.titleUrl);
                 });
         };
     };
