@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col-md-7 margin-bottom-10" animate="fadeInRight" data-animation-delay="200">
-                <h2 class="nomargin-bottom">{{vm.project.name}}</h2>
+                <h2 class="nomargin-bottom break-all">{{vm.project.name}}</h2>
                 <div animate="fadeIn" data-animation-delay="1000">
                     <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{vm.project.shortDate}}</span> |
                     <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a>
@@ -24,7 +24,7 @@
 
                     <div class="pull-right" social-icons popup="vm.popup" name="vm.project.name" />
                 </div>
-                <p class="text-justify margin-top-15">
+                <p class="text-justify margin-top-15 break-all">
                     {{vm.project.description}}
                 </p>
                 <span ng-repeat="collaborator in vm.project.collaborators">
