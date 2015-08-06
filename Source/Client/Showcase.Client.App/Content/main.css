@@ -418,3 +418,27 @@ li.token-input-selected-token-showcase span {
 .break-all {
     word-break: break-all;
 }
+
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+#wrapper {
+	min-height:100%;
+	position:relative;
+}
+
+#content {
+	padding-bottom:61px; /* Height of the footer element */
+}
+
+#footer {
+	width:100%;
+	height:61px;
+	position:absolute;
+	bottom:0;
+	left:0;
+}
