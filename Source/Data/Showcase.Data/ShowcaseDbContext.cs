@@ -32,9 +32,21 @@
 
         public virtual IDbSet<Flag> Flags { get; set; }
 
+        public virtual IDbSet<CommentFlag> CommentFlags { get; set; }
+
         public static ShowcaseDbContext Create()
         {
             return new ShowcaseDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CommentFlag>()
+                .HasRequired(c => c.User)
+                .WithMany(c => c.CommentFlags)
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public override int SaveChanges()
