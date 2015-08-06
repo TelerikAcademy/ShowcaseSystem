@@ -33,6 +33,7 @@
 
         [Required]
         [CommaSeparatedCollectionLength(ValidationConstants.MinProjectTagsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
+        [RequiredTags]
         public string Tags { get; set; }
 
         [Display(Name = "Repository URL")]

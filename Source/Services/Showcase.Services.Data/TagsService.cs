@@ -7,6 +7,7 @@
 
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
+    using Showcase.Data.Common.Models;
     using Showcase.Services.Data.Contracts;
 
     public class TagsService : ITagsService
@@ -53,6 +54,19 @@
             newTagNames.ForEach(tagName => resultTags.Add(new Tag { Name = tagName }));
 
             return resultTags;
+        }
+
+        public async Task<bool> AllRequiredTagsArePresent(IEnumerable<int> tagsIds)
+        {
+            var exactlyOneSeasonTagIsPresent = await this.tags
+                .All()
+                .CountAsync(t => t.Type == TagType.Season && tagsIds.Contains(t.Id)) == 1;
+
+            var languageOrTechnologyTagIsPresent = await this.tags
+                .All()
+                .AnyAsync(t => (t.Type == TagType.Technology || t.Type == TagType.Language) && tagsIds.Contains(t.Id));
+
+            return exactlyOneSeasonTagIsPresent && languageOrTechnologyTagIsPresent;
         }
     }
 }

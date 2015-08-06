@@ -40,5 +40,6 @@
         public const string MainImageErrorMessage = "You must select main image for your project";
         public const string MainImageDoesNotExistErrorMessage = "Main image does not exists in your uploaded images";
         public const string ProjectImagesCountErrorMessage = "You must select between {0} and {1} images";
+        public const string RequiredTagsErrorMessage = "You must select exactly one of the following Season tags: {0} And at least one of the following Language or Technology tags: {1}";
     }
 }
