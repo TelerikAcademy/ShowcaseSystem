@@ -23,11 +23,21 @@
             });
         }
 
+        function flagComment(id) {
+            return data.post('flags/FlagComment/' + id);
+        }
+
+        function unFlagComment(id) {
+            return data.post('flags/UnFlagComment/' + id);
+        }
+
         return {
             getUserComments: getUserComments,
             getProjectComments: getProjectComments,
             commentProject: commentProject,
-            editComment: editComment
+            editComment: editComment,
+            flagComment: flagComment,
+            unFlagComment: unFlagComment
         };
     };
 

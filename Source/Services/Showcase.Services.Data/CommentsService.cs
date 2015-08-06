@@ -43,14 +43,14 @@
 
         public IQueryable<Comment> CommentById(int id)
         {
-            return this.comments.All().Where(c => c.Id == id);
+            return this.comments.All().Where(c => c.Id == id && !c.IsHidden);
         }
 
         public IQueryable<Comment> ProjectComments(int id, int page)
         {
             return this.comments
                 .All()
-                .Where(c => c.ProjectId == id)
+                .Where(c => c.ProjectId == id && !c.IsHidden)
                 .OrderByDescending(c => c.CreatedOn)
                 .Skip((page - 1) * CommentsService.PageSize)
                 .Take(PageSize);
@@ -60,7 +60,7 @@
         {
             return this.comments
                 .All()
-                .Where(c => c.User.UserName == username)
+                .Where(c => c.User.UserName == username && !c.IsHidden)
                 .OrderByDescending(c => c.CreatedOn)
                 .Skip((page - 1) * CommentsService.PageSize)
                 .Take(PageSize);
@@ -70,7 +70,7 @@
         {
             return await this.comments
                 .All()
-                .Where(c => c.User.UserName == username)
+                .Where(c => c.User.UserName == username && !c.IsHidden)
                 .CountAsync();
         }
         
@@ -78,7 +78,7 @@
         {
             return await this.comments
                 .All()
-                .Where(c => c.ProjectId == id)
+                .Where(c => c.ProjectId == id && !c.IsHidden)
                 .CountAsync();
         }
         

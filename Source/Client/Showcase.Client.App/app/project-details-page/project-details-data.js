@@ -25,7 +25,7 @@
         function unflagProject(id) {
             return data.post('flags/unflag/' + id);
         }
-        
+                
         return {
             getProject: getProject,
             likeProject: likeProject,

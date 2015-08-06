@@ -42,5 +42,31 @@
             await this.flagsService.UnFlagProject(id, this.CurrentUser.UserName);
             return this.Ok();
         }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IHttpActionResult> FlagComment(int id)
+        {
+            if (await this.flagsService.CommentIsFlaggedByUser(id, this.CurrentUser.UserName))
+            {
+                return this.Data(false, "You can't flag the same comment more than once.");
+            }
+
+            await this.flagsService.FlagComment(id, this.CurrentUser.UserName);
+            return this.Ok();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IHttpActionResult> UnFlagComment(int id)
+        {
+            if (!await this.flagsService.CommentIsFlaggedByUser(id, this.CurrentUser.UserName))
+            {
+                return this.Data(false, "You have not yet flagged this comment.");
+            }
+
+            await this.flagsService.UnFlagComment(id, this.CurrentUser.UserName);
+            return this.Ok();
+        }
     }
 }

@@ -63,7 +63,7 @@
                 Comments = await this.commentsService
                     .ProjectComments(id, page)
                     .Project()
-                    .To<CommentResponseModel>()
+                    .To<CommentResponseModel>(new { username = this.CurrentUser.UserName })
                     .ToListAsync(),
                 IsLastPage = page == lastPage
             };

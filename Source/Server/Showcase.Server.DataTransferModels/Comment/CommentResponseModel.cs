@@ -25,6 +25,8 @@
 
         public string UserAvatarUrl { get; set; }
 
+        public bool IsFlagged { get; set; }
+
         public string ProjectTitleUrl
         {
             get
@@ -46,8 +48,10 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
+            string username = null;
             configuration.CreateMap<Comment, CommentResponseModel>()
-                .ForMember(c => c.Username, opt => opt.MapFrom(c => c.User.UserName));
+                .ForMember(c => c.Username, opt => opt.MapFrom(c => c.User.UserName))
+                .ForMember(c => c.IsFlagged, opt => opt.MapFrom(c => c.CommentFlags.Any(cf => cf.User.UserName == username)));
         }
     }
 }

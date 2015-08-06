@@ -9,8 +9,10 @@
         </div>
     </div>
     <div class="col-md-9">
-        <div ng-show="comment.username == loggedInUsername" class="pull-right">
-            <input type="button" class="btn btn-xs btn-default" style="margin-left: 10px; " ng-hide="edittingComments[comment.id]" value="edit" ng-click="editComment(comment.id)" />
+        <div class="pull-right">
+            <input type="button" class="btn btn-xs btn-warning" style="margin-left: 10px; " ng-hide="comment.isFlagged" value="flag" ng-click="flagComment(comment.id)" />
+            <input type="button" class="btn btn-xs btn-success" style="margin-left: 10px; " ng-show="comment.isFlagged" value="unflag" ng-click="unFlagComment(comment.id)" />
+            <input type="button" class="btn btn-xs btn-default" style="margin-left: 10px; " ng-show="comment.username == loggedInUsername" ng-hide="edittingComments[comment.id]" value="edit" ng-click="editComment(comment.id)" />
         </div>
         <p class="margin-bottom-10 nomargin-top" ng-hide="edittingComments[comment.id]" style="word-break: break-all">
             {{comment.content}}
