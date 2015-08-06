@@ -57,13 +57,14 @@
         {
             var projectCommentsCount = await this.commentsService.ProjectCommentsCount(id);
             var lastPage = this.GetLastPage(projectCommentsCount, page);
+            var username = this.User.Identity.IsAuthenticated ? this.CurrentUser.UserName : string.Empty;
 
             var model = new CommentsPageResponseModel
             {
                 Comments = await this.commentsService
                     .ProjectComments(id, page)
                     .Project()
-                    .To<CommentResponseModel>(new { username = this.CurrentUser.UserName })
+                    .To<CommentResponseModel>(new { username = username })
                     .ToListAsync(),
                 IsLastPage = page == lastPage
             };

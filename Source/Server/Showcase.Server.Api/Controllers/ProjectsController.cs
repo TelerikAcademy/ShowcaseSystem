@@ -28,7 +28,6 @@
         private readonly IFileSystemService fileSystemService;
         
         public ProjectsController(
-            ILikesService likesService,
             IUsersService usersService,
             IVisitsService visitsService,
             IProjectsService projectsService,
