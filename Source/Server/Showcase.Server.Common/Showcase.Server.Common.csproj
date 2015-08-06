@@ -91,6 +91,7 @@
     <Compile Include="Validation\CollectionLengthAttribute.cs" />
     <Compile Include="Validation\NestedObjectsAttribute.cs" />
     <Compile Include="Validation\OnlyEnglishAttribute.cs" />
+    <Compile Include="Validation\RequiredTagsAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
