@@ -14,5 +14,9 @@
         Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tags);
 
         Task<bool> AllRequiredTagsArePresent(IEnumerable<int> tagsIds);
+
+        IQueryable<Tag> SeasonTags();
+
+        IQueryable<Tag> LanguageAndTechnologyTags();
     }
 }

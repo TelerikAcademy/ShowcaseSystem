@@ -35,5 +35,13 @@
 
             return true;
         }
+
+        public override string FormatErrorMessage(string name)
+        {
+            var seasonTags = string.Join(", ", this.TagsService.SeasonTags().Select(t => t.Name));
+            var languageAndTechnologyTags = string.Join(", ", this.TagsService.LanguageAndTechnologyTags().Select(t => t.Name));
+
+            return string.Format(this.ErrorMessage, name, seasonTags, languageAndTechnologyTags);
+        }
     }
 }

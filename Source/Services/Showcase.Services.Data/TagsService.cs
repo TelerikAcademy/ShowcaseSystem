@@ -68,5 +68,16 @@
 
             return exactlyOneSeasonTagIsPresent && languageOrTechnologyTagIsPresent;
         }
+
+
+        public IQueryable<Tag> SeasonTags()
+        {
+            return this.tags.All().Where(t => t.Type == TagType.Season);
+        }
+
+        public IQueryable<Tag> LanguageAndTechnologyTags()
+        {
+            return this.tags.All().Where(t => t.Type == TagType.Language || t.Type == TagType.Technology);
+        }
     }
 }
