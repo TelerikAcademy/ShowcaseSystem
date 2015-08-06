@@ -12,6 +12,7 @@
         private ICollection<Like> likes;
         private ICollection<Comment> comments;
         private ICollection<Flag> flags;
+        private ICollection<CommentFlag> commentFlags;
 
         public User()
         {
@@ -19,6 +20,7 @@
             this.likes = new HashSet<Like>();
             this.comments = new HashSet<Comment>();
             this.flags = new HashSet<Flag>();
+            this.commentFlags = new HashSet<CommentFlag>();
         }
 
         [Key]
@@ -50,6 +52,12 @@
         {
             get { return this.flags; }
             set { this.flags = value; }
+        }
+
+        public virtual ICollection<CommentFlag> CommentFlags
+        {
+            get { return this.commentFlags; }
+            set { this.commentFlags = value; }
         }
 
         public virtual ICollection<Project> Projects

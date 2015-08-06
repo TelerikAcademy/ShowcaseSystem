@@ -11,5 +11,11 @@
         Task UnFlagProject(int projectId, string username);
 
         Task<bool> ProjectIsFlaggedByUser(int projectId, string username);
+
+        Task FlagComment(int commentId, string username);
+
+        Task UnFlagComment(int commentId, string username);
+
+        Task<bool> CommentIsFlaggedByUser(int commentId, string username);
     }
 }
