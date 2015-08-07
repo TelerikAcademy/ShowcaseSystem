@@ -9,7 +9,7 @@
     <div class="row margin-bottom-30 margin-top-30" ng-repeat="project in projects | orderBy : orderBy">
         <div class="col-md-3 text-center" style="padding-left: 5px !important; padding-right: 5px !important;">
             <a href="/projects/{{project.id}}/{{project.titleUrl}}">
-                <img src="{{project.mainImageUrl}}" width="180" height="180" alt="{{project.name}}" />
+                <img ng-src="/Images/{{project.mainImageUrl}}_tmbl.jpg" width="180" height="180" alt="{{project.name}}" />
             </a><br />
             <div class="margin-top-5">
                 <i class="fa fa-eye margin-right-5"></i><span class="margin-right-10">{{project.visits}}</span>
