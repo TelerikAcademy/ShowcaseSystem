@@ -7,7 +7,7 @@
         }
 
         function visitProject(id) {
-            return data.post('projects/visit', id);
+            return data.post('projects/visit/' + id);
         }
         
         function likeProject(id) {
