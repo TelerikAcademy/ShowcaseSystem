@@ -2,6 +2,10 @@
     overflow-y: scroll;
 }
 
+a:focus, a:hover {
+    color: #8ab933;
+}
+
 .toast-top-center {
     margin-top: 150px;
     text-align: center;
@@ -357,6 +361,28 @@ li.token-input-selected-token-showcase span {
 
 .text-success {
     color: #8ab933 !important;
+}
+
+.owl-carousel.featured .owl-featured-item {
+    width: 100%;
+    background-color: white;
+}
+
+.owl-carousel.featured .owl-featured-item:hover {
+    background-color: white;
+}
+
+.owl-carousel.featured .owl-item {
+    padding: 0 2px;
+    background-color: white;
+}
+
+.owl-carousel.featured .owl-item:first-of-type {
+    padding-left: 0;
+}
+
+.owl-carousel.featured .owl-item:last-of-type {
+    padding-right: 0;
 }
 
 .owl-carousel.featured .owl-featured-item a.figure>img {

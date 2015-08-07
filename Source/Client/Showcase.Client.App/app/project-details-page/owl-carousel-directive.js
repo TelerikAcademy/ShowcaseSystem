@@ -16,7 +16,7 @@
                         var options = slider.attr('data-plugin-options');
 
                         var defaults = {
-                            items: 5,
+                            items: images.length > 4 ? 4 : images.length,
                             itemsCustom: false,
                             itemsDesktop: [1199, 4],
                             itemsDesktopSmall: [980, 3],

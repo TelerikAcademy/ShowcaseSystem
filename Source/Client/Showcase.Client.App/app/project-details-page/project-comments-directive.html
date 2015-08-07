@@ -1,14 +1,14 @@
 ﻿<div ng-show="comments.length > 0" class="row margin-bottom-20" ng-repeat="comment in comments">
-    <div class="col-md-3">
+    <div class="col-md-3 col-md-offset-1">
         <a href="/users/{{comment.username}}">
-            <img src="{{comment.userAvatarUrl}}" class="pull-left " style="margin: 7px; margin-right: 12px;" width="45" />
+            <img src="{{comment.userAvatarUrl}}" class="pull-left " style="margin: 7px; margin-left: 0; margin-right: 12px;" width="45" />
         </a>
         <div class="margin-top-2">
             <a href="/users/{{comment.username}}">{{comment.username}}</a><br />
             <i class="fa fa-clock-o margin-right-5"></i><span class="font-size-075em">{{comment.shortDate}}</span>
         </div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-7">
         <div class="pull-right">
             <span ng-show="loggedInUsername">
                 <input type="button" class="btn btn-xs btn-success" style="margin-left: 10px; " ng-show="comment.isFlagged" value="unflag" ng-click="unFlagComment(comment.id)" />
@@ -27,16 +27,11 @@
     </div>
 </div>
 
-<div ng-hide="comments.length > 0" class="row">
-    <div class="col-md-offset-3 col-md-9">
-        <h4 class="margin-top-10" style="font-style: italic">There are no comments for this project yet.</h4>
-    </div>
-</div>
 <div class="text-center margin-bottom-20" ng-hide="isLastPage">
     <a ng-click="loadMoreComments()">Load More....</a>
 </div>
 <div class="row">
-    <div class="col-md-offset-3 col-md-9">
+    <div class="col-md-offset-4 col-md-7">
         <form class="nomargin nopadding">
             <textarea rows="8" cols="70" ng-model="commentText" class="margin-top-20 padding-left-10 padding-right-10 form-control" placeholder="Your comment goes here"></textarea>
             <br />
