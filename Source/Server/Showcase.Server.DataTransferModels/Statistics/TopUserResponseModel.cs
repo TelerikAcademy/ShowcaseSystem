@@ -7,7 +7,7 @@
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
 
-    public class TopUserResponseModel : IMapFrom<User>
+    public class TopUserResponseModel : IMapFrom<User>, IHaveCustomMappings
     {
         public string Username { get; set; }
 
@@ -20,8 +20,8 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<User, TopUserResponseModel>()
-                .ForMember(u => u.ProjectsCount, opt => opt.MapFrom(u => u.Projects.Count))
-                .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Projects.Sum(pr => pr.Likes.Count)));
+                .ForMember(u => u.ProjectsCount, opt => opt.MapFrom(u => u.Projects.Count(pr => !pr.IsHidden)))
+                .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Projects.Where(pr => !pr.IsHidden).Sum(pr => pr.Likes.Count)));
         }
     }
 }

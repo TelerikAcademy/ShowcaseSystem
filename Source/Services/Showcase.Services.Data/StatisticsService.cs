@@ -56,7 +56,7 @@
                 .All()
                 .OrderByDescending(pr => pr.Likes.Count)
                 .ThenByDescending(pr => pr.Visits.Count)
-                .ThenByDescending(pr => pr.Comments.Count)
+                .ThenByDescending(pr => pr.Comments.Where(c => !c.IsHidden).Count())
                 .Take(Constants.StatisticsTopProjectsCount);
         }
         
@@ -64,6 +64,8 @@
         {
             return this.users
                 .All()
+                .Where(u => u.Projects.Any())
+                .OrderByDescending(u => u.Projects.Sum(pr => pr.Likes.Count))
                 .Take(Constants.StatisticsTopUsersCount);
         }
     }

@@ -85,7 +85,6 @@
                 .TopUsers()
                 .Project()
                 .To<TopUserResponseModel>()
-                .OrderByDescending(u => u.LikesCount)
                 .ToListAsync();
 
             return this.Data(model);
