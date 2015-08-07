@@ -13,6 +13,10 @@
             $location.path('/');
         };
 
+        vm.search = function (searchTerm) {
+            $location.path('/projects/search').search('term', searchTerm);
+        }
+
         function waitForLogin() {
             identity.getUser().then(function (user) {
                 vm.currentUser = user;
