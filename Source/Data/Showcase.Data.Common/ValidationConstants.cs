@@ -6,10 +6,10 @@
         public const int MaxUserUserNameLength = 50;
 
         // Project
-        public const int MinProjectTitleLength = 3;
-        public const int MaxProjectTitleLength = 50;
-        public const int MinProjectDescriptionLength = 100;
-        public const int MaxProjectDescriptionLength = 500;
+        public const int MinProjectTitleLength = 2;
+        public const int MaxProjectTitleLength = 70;
+        public const int MinProjectDescriptionLength = 70;
+        public const int MaxProjectDescriptionLength = 700;
         public const int MaxProjectUrlLength = 200;
         public const int MinProjectCollaboratorsLength = 1;
         public const int MinProjectTagsLength = 2;
@@ -18,7 +18,7 @@
         public const int MaxProjectImages = 10;
 
         // Comment
-        public const int MinCommentContentLength = 10;
+        public const int MinCommentContentLength = 2;
         public const int MaxCommentContentLength = 500;
 
         // Tag
