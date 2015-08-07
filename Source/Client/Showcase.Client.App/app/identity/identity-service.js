@@ -7,7 +7,6 @@
 
         return {
             getUser: function () {
-                deferred = $q.defer();
                 if (this.isAuthenticated()) {
                     return $q.resolve(currentUser);
                 }
@@ -23,6 +22,7 @@
             },
             removeUser: function () {
                 currentUser = {};
+                deferred = $q.defer();
             }
         };
     };

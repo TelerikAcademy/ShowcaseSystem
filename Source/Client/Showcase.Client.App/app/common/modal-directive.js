@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var modalDirective = function modalDirective($location) {
+    var modalDirective = function modalDirective($location, identity) {
         return {
             restrict: 'A',
             link: function (scope, element) {
@@ -27,9 +27,12 @@
                 };
 
                 function moveToRoute(attr) {
-                    var route = element.data(attr);
+                    var route = element.attr('data-' + attr);
                     if (route) {
-                        $location.path(route);
+                        identity.getUser()
+                            .then(function () {
+                                $location.path(route);
+                            });
                     }
                 }
             }
@@ -38,5 +41,5 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('modal', ['$location', modalDirective]);
+        .directive('modal', ['$location', 'identity', modalDirective]);
 }());
