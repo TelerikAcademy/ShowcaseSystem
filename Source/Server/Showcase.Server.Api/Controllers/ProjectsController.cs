@@ -114,7 +114,7 @@
         [HttpGet]
         public async Task<IHttpActionResult> LikedProjects(string username)
         {
-            if (username != this.CurrentUser.UserName.ToLower())
+            if (username != this.CurrentUser.UserName.ToLower() && !this.CurrentUser.IsAdmin)
             {
                 return this.Data(false, "You are not authorized to view this user's liked projects."); // TODO: Move to common attribute
             }
