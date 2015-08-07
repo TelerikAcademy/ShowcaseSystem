@@ -98,6 +98,11 @@
             $location.search('tag', null);
         }
 
+        if ($routeParams.term) {
+            vm.searchParams.name = $routeParams.term;
+            $location.search('term', null);
+        }
+
         vm.search();
 
         $scope.changePage = function (newPage) {
