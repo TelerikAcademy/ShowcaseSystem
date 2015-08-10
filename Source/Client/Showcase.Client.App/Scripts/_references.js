@@ -149,5 +149,6 @@
 /// <reference path="../app/user-profile-page/user-profile-statistics-directive.js" />
 /// <reference path="../app/home-page/layer-slider-directive.js" />
 /// <reference path="../app/not-found-page/not-found-controller.js" />
-/// <reference path="../app/build/alljs2015081034.min.js" />
+/// <reference path="../app/build/alljs2015081010.min.js" />
+/// <reference path="../app/build/vendorjs2015081010.min.js" />
 
