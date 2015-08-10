@@ -4,8 +4,6 @@ namespace Showcase.Server.Api.Config
     using System.Data.Entity;
     using System.Web;
 
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
     using Ninject.Extensions.Conventions;
     using Ninject.Web.Common;

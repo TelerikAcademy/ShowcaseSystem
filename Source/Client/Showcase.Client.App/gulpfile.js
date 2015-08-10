@@ -1,4 +1,4 @@
-/// <vs BeforeBuild='watch' />
+/// <vs />
 // Include plug-ins
 var gulp = require('gulp'),
 	jshint = require('gulp-jshint'),
@@ -39,10 +39,10 @@ gulp.task('css', function(){
 	del.sync(['app/build/allcss*']);
 
     return gulp.src(config.appCssSrc)
-		// .pipe(minifyCSS())
+		.pipe(minifyCSS())
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
 		.pipe(concat('allcss' + getStamp() + '.min.css', {newLine: ''}))
-		.pipe(concat('allcss.min.css', {newLine: ''}))
+		// .pipe(concat('allcss.min.css', {newLine: ''}))
 		.pipe(gulp.dest('app/build'))
 });
  
@@ -59,9 +59,9 @@ gulp.task('scripts', function() {
 	
 	return gulp.src(config.appJsSrc)
 		.pipe(angularFilesort())
-		// .pipe(uglify())
+		.pipe(uglify())
 		.pipe(concat('alljs' + getStamp() + '.min.js', {newLine: ''}))
-		.pipe(concat('alljs.min.js', {newLine: ''}))
+		// .pipe(concat('alljs.min.js', {newLine: ''}))
 		.pipe(gulp.dest('app/build'));
 });
 

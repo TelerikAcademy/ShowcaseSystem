@@ -13,13 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{006D8078
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Server.Api", "Server\Showcase.Server.Api\Showcase.Server.Api.csproj", "{AE3F60FE-F877-43C3-BE01-CC70F0EDD8D5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A6297064-9255-4521-BDC0-B0DA9896CC02}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{DA44EAA7-39CB-401D-A32F-11C7C27F9FDF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Data", "Data\Showcase.Data\Showcase.Data.csproj", "{080529DD-48D5-4DA7-BD07-38521AF97288}"
@@ -43,6 +36,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Server.Infrastructure", "Server\Showcase.Server.Infrastructure\Showcase.Server.Infrastructure.csproj", "{AB7F3756-7D7C-4A50-B90D-76C676C1A9D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowcaseSystem.Services.Data.Tests", "Tests\ShowcaseSystem.Services.Data.Tests\ShowcaseSystem.Services.Data.Tests.csproj", "{17038175-2CAF-4D2E-8352-04DB4EF6128D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1CC2CB38-D6A7-4663-83B4-B903C1A33A3E}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
