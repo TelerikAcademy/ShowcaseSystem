@@ -14,9 +14,41 @@ var gulp = require('gulp'),
  
  // File paths
 var config = {
-    // Include all js files but exclude any min.js files
-	appJsSrc : ['app/**/*.js', '!app/**/*.min.js'],
-	appCssSrc: ['content/toastr.css', 'content/main.css'],
+    vendorJsSrc: [
+        'scripts/epona/plugins/jquery-2.1.3.min.js',
+        'scripts/epona/plugins/bootstrap/js/bootstrap.min.js',
+        'scripts/epona/plugins/magnific-popup/jquery.magnific-popup.min.js',
+        'scripts/epona/plugins/owl-carousel/owl.carousel.min.js',
+        'scripts/epona/plugins/layerslider/js/layerslider_pack.js',
+        'scripts/epona/js/scripts.js',
+        'scripts/toastr.js',
+        'scripts/angular.js',
+        'scripts/angular-route.js',
+        'scripts/angular-cookies.js',
+        'scripts/angular-animate.js',
+        'scripts/loading-bar.js',
+        'scripts/jquery.tokeninput.js',
+        'scripts/Chart.js',
+        'scripts/ng-infinite-scroll.min.js',
+        'Scripts/angular-ui/ui-bootstrap-tpls.js'
+    ],
+    appJsSrc: ['app/**/*.js'],
+	appCssSrc: [
+        'content/epona/css/font-awesome.css',
+        'content/epona/css/sky-forms.css',
+        'scripts/epona/plugins/owl-carousel/owl.pack.css',
+        'scripts/epona/plugins/magnific-popup/magnific-popup.css',
+        'content/epona/css/animate.css',
+        'content/epona/css/layerslider.css',
+        'content/epona/css/essentials.css',
+        'content/epona/css/layout.css',
+        'content/epona/css/header-4.css',
+        'content/epona/css/footer-default.css',
+        'content/epona/css/color_scheme/green.css',
+        'content/loading-bar.css',
+        'content/token-input-showcase.css',
+        'content/toastr.css',
+        'content/main.css'],
 	appIndexHtml: 'index-template.html'
 }
 
@@ -53,6 +85,17 @@ gulp.task('lint', function() {
         .pipe(jshint.reporter('default'));
 });
 
+// Combine and minify all library JS files
+gulp.task('vendors', function () {
+    del.sync(['app/build/vendorjs*']);
+
+    return gulp.src(config.vendorJsSrc)
+		.pipe(uglify())
+		.pipe(concat('vendorjs' + getStamp() + '.min.js', { newLine: '' }))
+		// .pipe(concat('alljs.min.js', {newLine: ''}))
+		.pipe(gulp.dest('app/build'));
+});
+
 // Combine and minify all JS files from the app folder
 gulp.task('scripts', function() {
 	del.sync(['app/build/alljs*']);
@@ -68,21 +111,24 @@ gulp.task('scripts', function() {
 // Inject minified files into new HTML
 gulp.task('html', ['css', 'scripts'], function () {
     del.sync(['index.html']);
-	var target = gulp.src(config.appIndexHtml);
-	var sources = gulp.src(['app/build/alljs*', 'app/build/allcss*']);
+    var target = gulp.src(config.appIndexHtml);
+    var vendorSources = gulp.src(['app/build/vendorjs*'], { read: false });
+	var appSources = gulp.src(['app/build/alljs*', 'app/build/allcss*'], { read: false });
 	
-	return target.pipe(inject(sources))
+	return target
+        .pipe(inject(vendorSources, { starttag: '<!-- inject:vendors:{{ext}} -->' }))
+        .pipe(inject(appSources))
 		.pipe(minifyHTML({ conditionals: true }))
 		.pipe(rename('index.html'))
 		.pipe(gulp.dest('./'));
 });
 
 // Watch for changes
-gulp.task('watch', ['lint', 'css', 'scripts', 'html'], function () {
+gulp.task('watch', ['lint', 'css', 'vendors', 'scripts', 'html'], function () {
 	gulp.watch(config.appCssSrc, ['css', 'html']);
 	gulp.watch(config.appJsSrc, ['lint', 'scripts', 'html']);
 	gulp.watch(config.appIndexHtml, ['html']);
 });
  
 // Set  default tasks
-gulp.task('default', ['lint', 'css', 'scripts', 'html'], function(){});
+gulp.task('default', ['lint', 'css', 'vendors', 'scripts', 'html'], function(){});
