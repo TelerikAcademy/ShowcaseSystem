@@ -98,10 +98,8 @@
                             }
                         });
 
-                        var _t = slider,
-			                options = _t.attr('data-plugin-options'),
-			                config = {},
-			                defaultSettings = {
+                        config = {};
+			            var defaultSettings = {
 			                    type: 'image',
 			                    fixedContentPos: false,
 			                    fixedBgPos: false,
@@ -126,8 +124,8 @@
 			                    },
 			                };
 
-                        if (_t.data("plugin-options")) {
-                            config = jQuery.extend({}, defaultSettings, options, _t.data("plugin-options"));
+                        if (slider.data("plugin-options")) {
+                            config = jQuery.extend({}, defaultSettings, options, slider.data("plugin-options"));
                         }
 
                         jQuery(element).magnificPopup(config);

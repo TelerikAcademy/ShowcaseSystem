@@ -39,16 +39,6 @@
             return new ShowcaseDbContext();
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<CommentFlag>()
-                .HasRequired(c => c.User)
-                .WithMany(c => c.CommentFlags)
-                .WillCascadeOnDelete(false);
-
-            base.OnModelCreating(modelBuilder);
-        }
-
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
@@ -59,6 +49,16 @@
         {
             this.ApplyAuditInfoRules();
             return base.SaveChangesAsync(cancellationToken);
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CommentFlag>()
+                .HasRequired(c => c.User)
+                .WithMany(c => c.CommentFlags)
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         private void ApplyAuditInfoRules()

@@ -1,12 +1,12 @@
 ﻿namespace Showcase.Server.Common.Validation
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Threading.Tasks;
 
     using Ninject;
 
     using Showcase.Data.Common;
     using Showcase.Services.Data.Contracts;
-    using System.Threading.Tasks;
 
     public class CollaboratorsAttribute : ValidationAttribute
     {

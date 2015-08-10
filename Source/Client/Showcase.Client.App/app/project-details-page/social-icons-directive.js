@@ -10,12 +10,12 @@
             },
             link: function (scope, element) {
                 scope.popup = function (url, title, w, h, text, hashTags) {
-                    var url = url + $location.absUrl();
+                    url = url + $location.absUrl();
                     if (text !== undefined) {
                         url += '&text=' + text + ' - ' + name;
                     }
 
-                    if (hashTags != undefined) {
+                    if (hashTags !== undefined) {
                         url += '&hashtags=' + hashTags;
                     }
 

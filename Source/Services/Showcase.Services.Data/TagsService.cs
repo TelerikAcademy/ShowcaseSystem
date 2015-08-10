@@ -5,9 +5,9 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Showcase.Data.Common.Models;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
-    using Showcase.Data.Common.Models;
     using Showcase.Services.Data.Contracts;
 
     public class TagsService : ITagsService
@@ -68,7 +68,6 @@
 
             return exactlyOneSeasonTagIsPresent && languageOrTechnologyTagIsPresent;
         }
-
 
         public IQueryable<Tag> SeasonTags()
         {

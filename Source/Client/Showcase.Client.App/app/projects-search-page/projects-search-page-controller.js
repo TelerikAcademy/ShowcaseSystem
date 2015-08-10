@@ -125,7 +125,7 @@
                 return;
             }
 
-            if (newValue == true) {
+            if (newValue === true) {
                 vm.initialProjectsLoaded = false;
                 canGetNext = false;
                 $scope.currentPage = 1;

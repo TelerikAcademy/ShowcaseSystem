@@ -10,7 +10,7 @@
             },
             link: function (scope, element) {
                 scope.$watch('stats', function (stats) {
-                    if (stats != undefined) {
+                    if (stats !== undefined) {
                         element.find('[data-to]').each(function () {
                             var $counter = jQuery(this);
                             $counter.appear(function () {

@@ -5,8 +5,8 @@ namespace Showcase.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    using Showcase.Data.Models;
     using Showcase.Data.Common.Models;
+    using Showcase.Data.Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<ShowcaseDbContext>
     {
