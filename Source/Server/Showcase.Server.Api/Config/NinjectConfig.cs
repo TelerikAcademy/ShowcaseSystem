@@ -13,11 +13,9 @@ namespace Showcase.Server.Api.Config
 
     using Showcase.Server.Common;
     using Showcase.Server.Infrastructure;
-    using Showcase.Server.Infrastructure.FileSystem;
 
     using Showcase.Services.Common;
     using Showcase.Services.Data;
-    using Showcase.Services.Data.Contracts;
     using Showcase.Services.Logic;
 
     using ServerConstants = Showcase.Server.Common.Constants;

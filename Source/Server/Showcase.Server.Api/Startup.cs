@@ -25,6 +25,7 @@
             AutoMapperConfig.RegisterMappings(Assembly.Load(Constants.DataTransferModelsAssembly));
 
             var httpConfig = new HttpConfiguration();
+
             ODataConfig.Register(httpConfig);
             WebApiConfig.Register(httpConfig);
 
