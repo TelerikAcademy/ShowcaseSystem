@@ -4528,11 +4528,11 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .cke_top {
 	background: #f9fafc !important;
 	background-size: 100% !important;
-	background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f9fafc), color-stop(100%, #f7f7f7)) !important;
-	background-image: -webkit-linear-gradient(top, #f9fafc, #f7f7f7) !important;
-	background-image: -moz-linear-gradient(top, #f9fafc, #f7f7f7) !important;
-	background-image: -o-linear-gradient(top, #f9fafc, #f7f7f7) !important;
-	background-image: linear-gradient(top, #f9fafc, #f7f7f7) !important;
+	background-image: -webkit-gradient(linear, 50% 0, 50% 100%, color-stop(0, #f9fafc), color-stop(100%, #f7f7f7)) !important;
+	background-image: -webkit-linear-gradient(to bottom, #f9fafc, #f7f7f7) !important;
+	background-image: -moz-linear-gradient(to bottom, #f9fafc, #f7f7f7) !important;
+	background-image: -o-linear-gradient(to bottom, #f9fafc, #f7f7f7) !important;
+	background-image: linear-gradient(to bottom, #f9fafc, #f7f7f7) !important;
 	border-bottom: #eee 1px solid !important;
 	-webkit-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.03) !important;
 	-moz-box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.03) !important;
