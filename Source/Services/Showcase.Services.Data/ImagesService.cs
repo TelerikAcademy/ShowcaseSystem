@@ -15,13 +15,11 @@
     public class ImagesService : IImagesService
     {
         private readonly IObjectFactory objectFactory;
-        private readonly IRepository<Image> images;
         private readonly IImageProcessorService imageProcessor;
 
-        public ImagesService(IObjectFactory objectFactory, IRepository<Image> images, IImageProcessorService imageProcessorService)
+        public ImagesService(IObjectFactory objectFactory, IImageProcessorService imageProcessorService)
         {
             this.objectFactory = objectFactory;
-            this.images = images;
             this.imageProcessor = imageProcessorService;
         }
 

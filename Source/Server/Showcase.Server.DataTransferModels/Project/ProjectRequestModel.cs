@@ -72,7 +72,8 @@
                 .ForMember(m => m.Collaborators, opt => opt.Ignore())
                 .ForMember(m => m.Tags, opt => opt.Ignore())
                 .ForMember(m => m.Images, opt => opt.Ignore())
-                .ForMember(m => m.MainImage, opt => opt.Ignore());
+                .ForMember(m => m.MainImage, opt => opt.Ignore())
+                .ForMember(m => m.Files, opt => opt.Ignore());
         }
     }
 }
