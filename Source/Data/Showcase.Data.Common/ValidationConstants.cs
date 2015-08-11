@@ -16,6 +16,8 @@
         public const int MaxProjectCollaboratorsAndTagsLength = 20;
         public const int MinProjectImages = 1;
         public const int MaxProjectImages = 10;
+        public const int MinProjectFiles = 0;
+        public const int MaxProjectFiles = 5;
 
         // Comment
         public const int MinCommentContentLength = 2;

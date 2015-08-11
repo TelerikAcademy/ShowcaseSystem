@@ -51,6 +51,10 @@
         [NestedObjects]
         public ICollection<FileRequestModel> Images { get; set; }
 
+        [CollectionLength(ValidationConstants.MinProjectFiles, ValidationConstants.MaxProjectFiles)]
+        [NestedObjects]
+        public ICollection<FileRequestModel> Files { get; set; }
+
         [Required(ErrorMessage = ValidationConstants.MainImageErrorMessage)]
         public string MainImage { get; set; }
 
@@ -68,7 +72,8 @@
                 .ForMember(m => m.Collaborators, opt => opt.Ignore())
                 .ForMember(m => m.Tags, opt => opt.Ignore())
                 .ForMember(m => m.Images, opt => opt.Ignore())
-                .ForMember(m => m.MainImage, opt => opt.Ignore());
+                .ForMember(m => m.MainImage, opt => opt.Ignore())
+                .ForMember(m => m.Files, opt => opt.Ignore());
         }
     }
 }

@@ -100,9 +100,11 @@
     <Compile Include="FileSystem\FileSystemService.cs" />
     <Compile Include="FileSystem\IFileSystemService.cs" />
     <Compile Include="Formatters\BrowserJsonFormatter.cs" />
+    <Compile Include="HttpActionResults\FileResult.cs" />
     <Compile Include="Queries\ProjectSearchQueryAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultObject.cs" />
+    <Compile Include="Validation\ValidateFilePathAttribute.cs" />
     <Compile Include="Validation\ValidateModelAttribute.cs" />
   </ItemGroup>
   <ItemGroup>

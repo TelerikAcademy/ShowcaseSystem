@@ -24,5 +24,10 @@
                     throw new ArgumentException("Not a valid month index");
             }
         }
+
+        public static string ToUrlPath(this int id)
+        {
+            return string.Format("{0}/{1}", id % Constants.SavedFilesSubfoldersCount, string.Format("{0}{1}", id.ToMd5Hash().Substring(0, Constants.FileHashLength), id));
+        }
     }
 }

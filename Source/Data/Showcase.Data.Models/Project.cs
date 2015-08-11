@@ -1,8 +1,8 @@
 ﻿namespace Showcase.Data.Models
 {
     using System.Collections.Generic;
-    
-using System.ComponentModel.DataAnnotations;
+
+    using System.ComponentModel.DataAnnotations;
     using Showcase.Data.Common;
     using Showcase.Data.Common.Models;
 
@@ -13,6 +13,7 @@ using System.ComponentModel.DataAnnotations;
         private ICollection<Like> likes;
         private ICollection<Tag> tags;
         private ICollection<Image> images;
+        private ICollection<File> files;
         private ICollection<User> collaborators;
         private ICollection<Flag> flags;
 
@@ -23,6 +24,7 @@ using System.ComponentModel.DataAnnotations;
             this.likes = new HashSet<Like>();
             this.tags = new HashSet<Tag>();
             this.images = new HashSet<Image>();
+            this.files = new HashSet<File>();
             this.collaborators = new HashSet<User>();
             this.flags = new HashSet<Flag>();
         }
@@ -81,6 +83,12 @@ using System.ComponentModel.DataAnnotations;
         {
             get { return this.images; }
             set { this.images = value; }
+        }
+
+        public virtual ICollection<File> Files
+        {
+            get { return this.files; }
+            set { this.files = value; }
         }
 
         public virtual ICollection<User> Collaborators

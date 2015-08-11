@@ -10,8 +10,7 @@
 
     using Showcase.Data.Models;
     using Showcase.Services.Data.Contracts;
-    using Showcase.Services.Data.Models;
-    using Showcase.Services.Data.Remote.Models;
+    using Showcase.Services.Data.Models.Remote;
 
     public class RemoteDataService : IRemoteDataService
     {

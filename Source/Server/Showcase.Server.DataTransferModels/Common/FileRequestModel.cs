@@ -9,11 +9,11 @@
 
     public class FileRequestModel
     {
-        public static Func<FileRequestModel, RawImage> ToRawImage
+        public static Func<FileRequestModel, RawFile> ToRawFile
         {
             get
             {
-                return file => new RawImage
+                return file => new RawFile
                 {
                     OriginalFileName = file.OriginalFileName,
                     FileExtension = file.FileExtension,

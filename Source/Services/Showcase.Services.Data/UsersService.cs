@@ -11,7 +11,7 @@
     using Showcase.Data.Models;
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
-    using Showcase.Services.Data.Models;
+    using Showcase.Services.Data.Models.Remote;
 
     public class UsersService : IUsersService
     {

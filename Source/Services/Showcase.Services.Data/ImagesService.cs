@@ -8,34 +8,26 @@
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common.Extensions;
+    using Showcase.Services.Data.Base;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
 
-    public class ImagesService : IImagesService
+    public class ImagesService : FileInfoService, IImagesService
     {
-        private readonly IObjectFactory objectFactory;
-        private readonly IRepository<Image> images;
         private readonly IImageProcessorService imageProcessor;
 
-        public ImagesService(IObjectFactory objectFactory, IRepository<Image> images, IImageProcessorService imageProcessorService)
+        public ImagesService(IObjectFactory objectFactory, IImageProcessorService imageProcessorService)
+            : base(objectFactory)
         {
-            this.objectFactory = objectFactory;
-            this.images = images;
             this.imageProcessor = imageProcessorService;
         }
 
-        public async Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawImage> rawImages)
+        public async Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawFile> rawImages)
         {
             var processedImages = await rawImages.ForEachAsync(async rawImage => 
             {
-                var image = new Image { OriginalFileName = rawImage.OriginalFileName, FileExtension = rawImage.FileExtension };
-                var imagesContext = this.objectFactory.GetInstance<ShowcaseDbContext>();
-                imagesContext.Images.Add(image);
-                await imagesContext.SaveChangesAsync();
-
-                image.UrlPath = this.GenerateImageUrlPath(image.Id);
-                await imagesContext.SaveChangesAsync();
+                var image = await base.SaveFileInfo<Image>(rawImage);
 
                 var thumbnailContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
                 var highContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);
@@ -44,11 +36,6 @@
             });
 
             return processedImages;
-        }
-
-        private string GenerateImageUrlPath(int imageId)
-        {
-            return string.Format("{0}/{1}", imageId % 1000, string.Format("{0}{1}", imageId.ToMd5Hash().Substring(0, 5), imageId));
         }
     }
 }

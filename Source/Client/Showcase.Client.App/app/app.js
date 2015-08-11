@@ -32,11 +32,11 @@
             .when('/projects/:id/:title', {
                 templateUrl: '/app/project-details-page/project-details-view.html'
             })
-            .when('/notfound', {
-                templateUrl: '/app/not-found-page/not-found-view.html'
-            })
             .when('/users/:username', {
                 templateUrl: '/app/user-profile-page/user-profile-view.html'
+            })
+            .when('/notfound', {
+                templateUrl: '/app/not-found-page/not-found-view.html'
             })
             .otherwise({ redirectTo: '/notfound' });
 

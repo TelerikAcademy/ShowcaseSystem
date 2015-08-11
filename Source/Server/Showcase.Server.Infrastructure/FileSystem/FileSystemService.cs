@@ -9,31 +9,54 @@
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Models;
 
+    using DownloadableFile = Showcase.Data.Models.File;
+
     public class FileSystemService : IFileSystemService
     {
         private const string ImagesServerPath = "~/Images/{0}_{1}.jpg";
+        private const string DownloadableFilesServerPath = "~/DownloadableFiles/{0}.{1}";
 
-        public async Task SaveImagesToFiles(IEnumerable<ProcessedImage> images)
+        public async Task SaveImages(IEnumerable<ProcessedImage> images)
         {
             await images.ForEachAsync(async image =>
             {
-                await this.SaveImageToFile(image.ThumbnailContent, image.UrlPath, ProcessedImage.ThumbnailImage);
-                await this.SaveImageToFile(image.HighResolutionContent, image.UrlPath, ProcessedImage.HighResolutionImage);
+                await this.SaveFile(image.ThumbnailContent, string.Format(ImagesServerPath, image.UrlPath, ProcessedImage.ThumbnailImage));
+                await this.SaveFile(image.HighResolutionContent, string.Format(ImagesServerPath, image.UrlPath, ProcessedImage.HighResolutionImage));
             });
         }
 
-        private async Task SaveImageToFile(byte[] imageContent, string path, string resolution)
+        public async Task SaveDownloadableFiles(IEnumerable<DownloadableFile> files)
+        {
+            await files.ForEachAsync(async file =>
+            {
+                await this.SaveFile(file.Content, this.GetDownloadableFilePath(file.UrlPath, file.FileExtension));
+            });
+        }
+
+        public FileStream GetFileStream(string filePath, string fileExtension)
+        {
+            var downloadableFilePath = this.GetDownloadableFilePath(filePath, fileExtension);
+            var serverFilePath = HostingEnvironment.MapPath(downloadableFilePath);
+            return new FileStream(serverFilePath, FileMode.Open);
+        }
+
+        private async Task SaveFile(byte[] content, string path)
         {
             await Task.Run(async () =>
             {
-                var filePath = HostingEnvironment.MapPath(string.Format(ImagesServerPath, path, resolution));
+                var filePath = HostingEnvironment.MapPath(path);
                 var fileInfo = new FileInfo(filePath);
                 fileInfo.Directory.Create();
                 using (var fileWriter = new FileStream(filePath, FileMode.CreateNew))
                 {
-                    await fileWriter.WriteAsync(imageContent, 0, imageContent.Length);
+                    await fileWriter.WriteAsync(content, 0, content.Length);
                 }
             });
+        }
+
+        private string GetDownloadableFilePath(string filePath, string fileExtension)
+        {
+            return string.Format(DownloadableFilesServerPath, filePath, fileExtension);
         }
     }
 }

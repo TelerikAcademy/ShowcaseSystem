@@ -66,6 +66,10 @@ a:focus, a:hover {
     padding-right: 0;
 }
 
+hr.small-horizontal-line {
+    margin: 10px 0;
+}
+
 a.social.fa-youtube-play:hover {
     background: red !important;
     color: #fff !important;
@@ -74,6 +78,10 @@ a.social.fa-youtube-play:hover {
 a.social.fa-github:hover {
     background: gray !important;
     color: #fff !important;
+}
+
+.file-name {
+    text-transform: capitalize;
 }
 
 ::-webkit-scrollbar {

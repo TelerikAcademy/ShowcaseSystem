@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
@@ -16,6 +17,7 @@
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
 
     public class ProjectsController : BaseAuthorizationController
@@ -25,6 +27,7 @@
         private readonly ITagsService tagsService;
         private readonly IMappingService mappingService;
         private readonly IImagesService imagesService;
+        private readonly IDownloadableFilesService downloadableFilesService;
         private readonly IFileSystemService fileSystemService;
         
         public ProjectsController(
@@ -34,6 +37,7 @@
             ITagsService tagsService,
             IMappingService mappingService,
             IImagesService imagesService,
+            IDownloadableFilesService downloadableFilesService,
             IFileSystemService fileSystemService)
             : base(usersService)
         {
@@ -42,6 +46,7 @@
             this.tagsService = tagsService;
             this.mappingService = mappingService;
             this.imagesService = imagesService;
+            this.downloadableFilesService = downloadableFilesService;
             this.fileSystemService = fileSystemService;
         }
 
@@ -86,15 +91,22 @@
         {
             var collaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators, this.CurrentUser.UserName);
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
-            var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
-            await this.fileSystemService.SaveImagesToFiles(processedImages);
+            var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawFile));
+            var downloadableFiles = await this.downloadableFilesService.AddNew(
+                project.Files != null 
+                ? project.Files.Select(FileRequestModel.ToRawFile) 
+                : new List<RawFile>());
+
+            await this.fileSystemService.SaveImages(processedImages);
+            await this.fileSystemService.SaveDownloadableFiles(downloadableFiles);
 
             var addedProject = await this.projectsService.AddNew(
                 this.mappingService.Map<Project>(project),
                 collaborators,
                 tags,
                 processedImages,
-                project.MainImage);
+                project.MainImage,
+                downloadableFiles);
 
             return this.Ok(this.mappingService.Map<PostProjectResponseModel>(addedProject));
         }

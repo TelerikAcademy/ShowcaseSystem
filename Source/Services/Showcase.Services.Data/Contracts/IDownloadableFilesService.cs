@@ -7,8 +7,10 @@
     using Showcase.Services.Common;
     using Showcase.Services.Data.Models;
 
-    public interface IImagesService : IService
+    public interface IDownloadableFilesService : IService
     {
-        Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawFile> rawImages);
+        Task<File> FileById(int id);
+
+        Task<IEnumerable<File>> AddNew(IEnumerable<RawFile> rawFiles);
     }
 }

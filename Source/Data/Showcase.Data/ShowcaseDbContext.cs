@@ -28,6 +28,8 @@
 
         public virtual IDbSet<Image> Images { get; set; }
 
+        public virtual IDbSet<File> Files { get; set; }
+
         public virtual IDbSet<User> Users { get; set; }
 
         public virtual IDbSet<Flag> Flags { get; set; }

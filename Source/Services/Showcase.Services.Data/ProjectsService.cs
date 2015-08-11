@@ -17,11 +17,13 @@
     {
         private readonly IRepository<Project> projects;
         private readonly IRepository<Image> images;
+        private readonly IRepository<File> files;
 
-        public ProjectsService(IRepository<Project> projects, IRepository<Image> images)
+        public ProjectsService(IRepository<Project> projects, IRepository<Image> images, IRepository<File> files)
         {
             this.projects = projects;
             this.images = images;
+            this.files = files;
         }
 
         public IQueryable<Project> LatestProjects()
@@ -77,12 +79,19 @@
                 .Where(pr => !pr.IsHidden && pr.Likes.Any(l => l.UserId == userId));
         }
 
-        public async Task<Project> AddNew(Project project, ICollection<User> collaborators, IEnumerable<Tag> tags, IEnumerable<ProcessedImage> processedImages, string mainImage)
+        public async Task<Project> AddNew(
+            Project project,
+            ICollection<User> collaborators,
+            IEnumerable<Tag> tags,
+            IEnumerable<ProcessedImage> processedImages,
+            string mainImage,
+            IEnumerable<File> downloadableFiles)
         {
             collaborators.ForEach(c => project.Collaborators.Add(c));
             tags.ForEach(t => project.Tags.Add(t));
             processedImages.Select(ProcessedImage.ToImage).ForEach(image => { image = this.images.Attach(image); project.Images.Add(image); });
             project.MainImageId = this.GetMainImageId(project, mainImage);
+            downloadableFiles.ForEach(file => { file = this.files.Attach(file); project.Files.Add(file); });
             this.projects.Add(project);
             await this.projects.SaveChangesAsync();
             return project;

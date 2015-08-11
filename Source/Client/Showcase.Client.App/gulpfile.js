@@ -1,4 +1,4 @@
-/// <vs />
+/// <vs BeforeBuild='watch' />
 // Include plug-ins
 var isProduction = require('yargs').argv.env === 'production',
 	gulp = require('gulp'),
