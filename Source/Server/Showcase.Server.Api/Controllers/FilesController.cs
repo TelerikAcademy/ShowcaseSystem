@@ -4,10 +4,10 @@
     using System.Web.Http;
 
     using Showcase.Server.Api.Controllers.Base;
-    using Showcase.Services.Data.Contracts;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
+    using Showcase.Services.Data.Contracts;
 
     public class FilesController : BaseController
     {

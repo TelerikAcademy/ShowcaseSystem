@@ -25,7 +25,7 @@
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
             HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
-            result.Content = new StreamContent(fileStream);
+            result.Content = new StreamContent(this.fileStream);
             result.Content.Headers.ContentType = new MediaTypeHeaderValue(FileTypeHeaderValue);
             result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue(AttachmentContentDispositionHeaderValue);
             result.Content.Headers.ContentDisposition.FileName = this.fileName;

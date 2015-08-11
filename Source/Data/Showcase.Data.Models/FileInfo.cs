@@ -1,7 +1,8 @@
 ﻿namespace Showcase.Data.Models
 {
-    using Showcase.Data.Common;
     using System.ComponentModel.DataAnnotations;
+
+    using Showcase.Data.Common;
 
     public abstract class FileInfo
     {

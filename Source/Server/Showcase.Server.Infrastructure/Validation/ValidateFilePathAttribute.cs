@@ -7,8 +7,8 @@
     using System.Web.Http.Controllers;
     using System.Web.Http.Filters;
 
-    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Common;
+    using Showcase.Services.Common.Extensions;
 
     [AttributeUsage(AttributeTargets.Method)]
     public class ValidateFilePathAttribute : ActionFilterAttribute

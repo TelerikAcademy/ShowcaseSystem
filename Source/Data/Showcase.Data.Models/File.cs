@@ -1,8 +1,9 @@
 ﻿namespace Showcase.Data.Models
 {
-    using Showcase.Data.Common;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
+    using Showcase.Data.Common;
 
     [Table("Files")]
     public class File : FileInfo

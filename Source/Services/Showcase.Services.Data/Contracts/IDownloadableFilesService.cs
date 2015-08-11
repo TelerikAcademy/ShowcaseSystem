@@ -7,7 +7,7 @@
     using Showcase.Services.Common;
     using Showcase.Services.Data.Models;
 
-    public interface IDownloadableFilesService  : IService
+    public interface IDownloadableFilesService : IService
     {
         Task<File> FileById(int id);
 
