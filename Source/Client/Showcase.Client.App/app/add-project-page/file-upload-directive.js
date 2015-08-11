@@ -10,8 +10,10 @@
             link: function (scope, element, attrs, ngModel) {
                 if (!ngModel) return;
                 var validationRegex;
+                var validationRegexErrorMessage;
                 if (attrs.validationRegex) {
                     validationRegex = new RegExp(attrs.validationRegex);
+                    validationRegexErrorMessage = attrs.regexErrorMessage;
                 }
 
                 var maxFiles = attrs.maxFiles;
@@ -37,7 +39,15 @@
                         for (var i = 0; i < element.files.length; i++) {
                             var currentFile = element.files[i];
                             if (validationRegex && !validationRegex.test(currentFile.name.toLowerCase())) {
-                                notifier.error('You must select valid files');
+                                var errorMessage = 'You must select valid files.';
+                                if (validationRegexErrorMessage) {
+                                    errorMessage = validationRegexErrorMessage;
+                                }
+
+                                var regexString = attrs.validationRegex.substr(attrs.validationRegex.lastIndexOf('(') + 1);
+                                var allowedExtensions = regexString.substring(0, regexString.length - 2).split('|').join(', ');
+
+                                notifier.error(errorMessage + ' Allowed file extensions: ' + allowedExtensions);
                                 return;
                             }
 

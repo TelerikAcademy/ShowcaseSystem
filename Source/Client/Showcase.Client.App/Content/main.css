@@ -80,6 +80,10 @@ a.social.fa-github:hover {
     color: #fff !important;
 }
 
+.file-name {
+    text-transform: capitalize;
+}
+
 ::-webkit-scrollbar {
     width: 8px; /* for vertical scrollbars */
     height: 8px; /* for horizontal scrollbars */
