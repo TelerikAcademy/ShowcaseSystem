@@ -5,7 +5,7 @@
 
     using Showcase.Data.Models;
     using Showcase.Services.Common;
-    using Showcase.Services.Data.Models;
+    using Showcase.Services.Data.Models.Remote;
 
     public interface IRemoteDataService : IService
     {

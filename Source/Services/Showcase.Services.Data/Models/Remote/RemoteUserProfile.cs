@@ -1,4 +1,4 @@
-﻿namespace Showcase.Services.Data.Models
+﻿namespace Showcase.Services.Data.Models.Remote
 {
     public class RemoteUserProfile
     {

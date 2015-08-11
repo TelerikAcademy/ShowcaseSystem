@@ -9,6 +9,6 @@
 
     public interface IImagesService : IService
     {
-        Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawImage> rawImages);
+        Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawFile> rawImages);
     }
 }

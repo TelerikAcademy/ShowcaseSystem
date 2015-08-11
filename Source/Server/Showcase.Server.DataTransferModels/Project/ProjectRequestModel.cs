@@ -51,6 +51,10 @@
         [NestedObjects]
         public ICollection<FileRequestModel> Images { get; set; }
 
+        [CollectionLength(ValidationConstants.MinProjectFiles, ValidationConstants.MaxProjectFiles)]
+        [NestedObjects]
+        public ICollection<FileRequestModel> Files { get; set; }
+
         [Required(ErrorMessage = ValidationConstants.MainImageErrorMessage)]
         public string MainImage { get; set; }
 

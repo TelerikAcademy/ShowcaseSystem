@@ -62,7 +62,7 @@
                     var self = this;
                     $q.all(slice.call(element.files, 0).map(readFile))
                         .then(function (values) {
-                            self.parentNode.nextSibling.value = self.files.length + ' selected files: ' + values.map(function (el) { return el.originalFileName; }).join(', ');
+                            self.parentNode.nextSibling.value = self.files.length + ' selected ' + (self.files.length == 1 ? 'file' : 'files') + ': ' + values.map(function (el) { return el.originalFileName; }).join(', ');
 
                             if (element.multiple) ngModel.$setViewValue(values);
                             else ngModel.$setViewValue(values.length ? values[0] : null);

@@ -25,7 +25,7 @@
             this.imageProcessor = imageProcessorService;
         }
 
-        public async Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawImage> rawImages)
+        public async Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawFile> rawImages)
         {
             var processedImages = await rawImages.ForEachAsync(async rawImage => 
             {

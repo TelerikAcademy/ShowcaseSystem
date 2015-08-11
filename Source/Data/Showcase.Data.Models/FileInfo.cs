@@ -15,5 +15,7 @@
         [Required]
         [MaxLength(ValidationConstants.MaxFileExtensionLength)]
         public string FileExtension { get; set; }
+
+        public string UrlPath { get; set; }
     }
 }

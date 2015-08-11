@@ -1,4 +1,4 @@
-﻿namespace Showcase.Services.Data.Remote.Models
+﻿namespace Showcase.Services.Data.Models.Remote
 {
     public class CheckUserLoginApiModel
     {

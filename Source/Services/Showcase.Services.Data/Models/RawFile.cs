@@ -1,6 +1,6 @@
 ﻿namespace Showcase.Services.Data.Models
 {
-    public class RawImage
+    public class RawFile
     {
         public string OriginalFileName { get; set; }
 

@@ -86,7 +86,7 @@
         {
             var collaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators, this.CurrentUser.UserName);
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
-            var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawImage));
+            var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawFile));
             await this.fileSystemService.SaveImagesToFiles(processedImages);
 
             var addedProject = await this.projectsService.AddNew(
