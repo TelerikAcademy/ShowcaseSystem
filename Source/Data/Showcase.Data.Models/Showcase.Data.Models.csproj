@@ -52,6 +52,8 @@
   <ItemGroup>
     <Compile Include="Comment.cs" />
     <Compile Include="CommentFlag.cs" />
+    <Compile Include="File.cs" />
+    <Compile Include="FileInfo.cs" />
     <Compile Include="Flag.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Like.cs" />

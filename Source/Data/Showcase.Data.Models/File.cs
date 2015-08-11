@@ -1,15 +1,14 @@
 ﻿namespace Showcase.Data.Models
 {
+    using Showcase.Data.Common;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Images")]
-    public class Image : FileInfo
+    [Table("Files")]
+    public class File : FileInfo
     {
-        public string UrlPath { get; set; }
-
         public int? ProjectId { get; set; }
 
-        [InverseProperty("Images")]
         public virtual Project Project { get; set; }
     }
 }
