@@ -34,7 +34,7 @@
                 imagesContext.Images.Add(image);
                 await imagesContext.SaveChangesAsync();
 
-                image.UrlPath = this.GenerateImageUrlPath(image.Id);
+                image.UrlPath = image.Id.ToUrlPath();
                 await imagesContext.SaveChangesAsync();
 
                 var thumbnailContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
@@ -44,11 +44,6 @@
             });
 
             return processedImages;
-        }
-
-        private string GenerateImageUrlPath(int imageId)
-        {
-            return string.Format("{0}/{1}", imageId % 1000, string.Format("{0}{1}", imageId.ToMd5Hash().Substring(0, 5), imageId));
         }
     }
 }
