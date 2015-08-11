@@ -9,6 +9,8 @@
 
     public interface IDownloadableFilesService  : IService
     {
+        Task<File> FileById(int id);
+
         Task<IEnumerable<File>> AddNew(IEnumerable<RawFile> rawFiles);
     }
 }
