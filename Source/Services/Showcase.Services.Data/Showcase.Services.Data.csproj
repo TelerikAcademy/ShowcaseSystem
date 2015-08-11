@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="CommentsService.cs" />
     <Compile Include="Contracts\ICommentsService.cs" />
+    <Compile Include="Contracts\IDownloadableFilesService.cs" />
     <Compile Include="Contracts\IFlagsService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\ILikesService.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Contracts\ITagsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IVisitsService.cs" />
+    <Compile Include="DownloadableFilesService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="FlagsService.cs" />
     <Compile Include="LikesService.cs" />

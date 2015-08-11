@@ -25,6 +25,7 @@
         private readonly ITagsService tagsService;
         private readonly IMappingService mappingService;
         private readonly IImagesService imagesService;
+        private readonly IDownloadableFilesService downloadableFilesService;
         private readonly IFileSystemService fileSystemService;
         
         public ProjectsController(
@@ -34,6 +35,7 @@
             ITagsService tagsService,
             IMappingService mappingService,
             IImagesService imagesService,
+            IDownloadableFilesService downloadableFilesService,
             IFileSystemService fileSystemService)
             : base(usersService)
         {
@@ -42,6 +44,7 @@
             this.tagsService = tagsService;
             this.mappingService = mappingService;
             this.imagesService = imagesService;
+            this.downloadableFilesService = downloadableFilesService;
             this.fileSystemService = fileSystemService;
         }
 
@@ -87,6 +90,7 @@
             var collaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators, this.CurrentUser.UserName);
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
             var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawFile));
+            var downloadableFiles = await this.downloadableFilesService.AddNew(project.Files.Select(FileRequestModel.ToRawFile));
             await this.fileSystemService.SaveImagesToFiles(processedImages);
 
             var addedProject = await this.projectsService.AddNew(
