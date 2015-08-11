@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
@@ -16,6 +17,7 @@
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
     using Showcase.Services.Data.Contracts;
+    using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
 
     public class ProjectsController : BaseAuthorizationController
@@ -90,7 +92,11 @@
             var collaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.Collaborators, this.CurrentUser.UserName);
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
             var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawFile));
-            var downloadableFiles = await this.downloadableFilesService.AddNew(project.Files.Select(FileRequestModel.ToRawFile));
+            var downloadableFiles = await this.downloadableFilesService.AddNew(
+                project.Files != null 
+                ? project.Files.Select(FileRequestModel.ToRawFile) 
+                : new List<RawFile>());
+
             await this.fileSystemService.SaveImages(processedImages);
             await this.fileSystemService.SaveDownloadableFiles(downloadableFiles);
 
