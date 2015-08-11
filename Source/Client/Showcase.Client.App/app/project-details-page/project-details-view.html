@@ -24,12 +24,21 @@
 
                     <div class="pull-right" social-icons popup="vm.popup" name="vm.project.name" />
                 </div>
+                <hr class="small-horizontal-line" />
                 <p class="text-justify margin-top-15 break-all">
                     {{vm.project.description}}
                 </p>
-                <span ng-repeat="collaborator in vm.project.collaborators">
-                    <a href="/users/{{collaborator}}" class="margin-right-5 margin-bottom-2">{{collaborator}}</a>
-                </span>
+                <div>
+                    <span ng-repeat="file in vm.project.files">
+                        <a href="/Files/{{file.urlPath}}" class="margin-right-5 margin-bottom-2">{{file.originalFileName}}.{{file.fileExtension}}</a>
+                    </span>
+                </div>
+                <hr class="small-horizontal-line" />
+                <div>
+                    <span ng-repeat="collaborator in vm.project.collaborators">
+                        <a href="/users/{{collaborator}}" class="margin-right-5 margin-bottom-2">{{collaborator}}</a>
+                    </span>
+                </div>
                 <div class="margin-top-5">
                     <a href="projects/search?tag={{tag.name}}" ng-repeat="tag in vm.project.tags">
                         <span class="label label-default" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
