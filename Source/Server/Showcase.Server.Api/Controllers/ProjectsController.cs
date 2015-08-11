@@ -91,14 +91,16 @@
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
             var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawFile));
             var downloadableFiles = await this.downloadableFilesService.AddNew(project.Files.Select(FileRequestModel.ToRawFile));
-            await this.fileSystemService.SaveImagesToFiles(processedImages);
+            await this.fileSystemService.SaveImages(processedImages);
+            await this.fileSystemService.SaveDownloadableFiles(downloadableFiles);
 
             var addedProject = await this.projectsService.AddNew(
                 this.mappingService.Map<Project>(project),
                 collaborators,
                 tags,
                 processedImages,
-                project.MainImage);
+                project.MainImage,
+                downloadableFiles);
 
             return this.Ok(this.mappingService.Map<PostProjectResponseModel>(addedProject));
         }

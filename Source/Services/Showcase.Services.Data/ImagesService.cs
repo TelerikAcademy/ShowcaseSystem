@@ -8,18 +8,18 @@
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common.Extensions;
+    using Showcase.Services.Data.Base;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
 
-    public class ImagesService : IImagesService
+    public class ImagesService : FileInfoService, IImagesService
     {
-        private readonly IObjectFactory objectFactory;
         private readonly IImageProcessorService imageProcessor;
 
         public ImagesService(IObjectFactory objectFactory, IImageProcessorService imageProcessorService)
+            : base(objectFactory)
         {
-            this.objectFactory = objectFactory;
             this.imageProcessor = imageProcessorService;
         }
 
@@ -27,13 +27,7 @@
         {
             var processedImages = await rawImages.ForEachAsync(async rawImage => 
             {
-                var image = new Image { OriginalFileName = rawImage.OriginalFileName, FileExtension = rawImage.FileExtension };
-                var imagesContext = this.objectFactory.GetInstance<ShowcaseDbContext>();
-                imagesContext.Images.Add(image);
-                await imagesContext.SaveChangesAsync();
-
-                image.UrlPath = image.Id.ToUrlPath();
-                await imagesContext.SaveChangesAsync();
+                var image = await base.SaveFileInfo<Image>(rawImage);
 
                 var thumbnailContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
                 var highContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);

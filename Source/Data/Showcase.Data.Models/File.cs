@@ -10,5 +10,8 @@
         public int? ProjectId { get; set; }
 
         public virtual Project Project { get; set; }
+
+        [NotMapped]
+        public byte[] Content { get; set; }
     }
 }
