@@ -34,8 +34,7 @@ var config = {
         'scripts/ng-infinite-scroll.min.js',
         'Scripts/angular-ui/ui-bootstrap-tpls.js'
     ],
-    appJsSrc: ['app/**/*.js'],
-    appCssSrc: [
+    vendorCssSrc: [
         'content/epona/css/font-awesome.css',
         'content/epona/css/sky-forms.css',
         'scripts/epona/plugins/owl-carousel/owl.pack.css',
@@ -49,8 +48,10 @@ var config = {
         'content/epona/css/color_scheme/green.css',
         'content/loading-bar.css',
         'content/token-input-showcase.css',
-        'content/toastr.css',
-        'content/main.css'],
+        'content/toastr.css'
+    ],
+    appJsSrc: ['app/**/*.js', '!app/build/*'],
+    appCssSrc: ['content/main.css'],
     appIndexHtml: 'index-template.html'
 }
 
@@ -72,7 +73,9 @@ var getStamp = function () {
 gulp.task('css', function () {
     del.sync(['app/build/allcss*']);
 
-    return gulp.src(config.appCssSrc)
+    var allCss = config.vendorCssSrc.concat(config.appCssSrc);
+
+    return gulp.src(allCss)
 		.pipe(gulpIf(isProduction, minifyCSS()))
 		.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
 		.pipe(concat('allcss' + (isProduction ? getStamp() : '') + '.min.css', { newLine: '' }))

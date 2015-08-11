@@ -128,9 +128,6 @@
     <Content Include="app\add-project-page\add-project-controller.js" />
     <Content Include="app\add-project-page\add-project-data.js" />
     <Content Include="app\add-project-page\add-project-view.html" />
-    <Content Include="app\build\allcss2015081010.min.css" />
-    <Content Include="app\build\alljs2015081010.min.js" />
-    <Content Include="app\build\vendorjs2015081010.min.js" />
     <Content Include="app\common\comments-data.js" />
     <Content Include="app\add-project-page\file-upload-directive.js" />
     <Content Include="app\add-project-page\token-input-directive.js" />
@@ -1381,6 +1378,9 @@
       <Project>{ab7f3756-7d7c-4a50-b90d-76c676c1a9d0}</Project>
       <Name>Showcase.Server.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\build\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
