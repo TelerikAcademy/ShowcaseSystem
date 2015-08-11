@@ -19,6 +19,12 @@
             config.Formatters.Add(new BrowserJsonFormatter());
 
             config.Routes.MapHttpRoute(
+                "Files",
+                "Files/{folder}/{file}",
+                new { controller = "Files", action = "Get" },
+                new { folder = @"\d+" });
+
+            config.Routes.MapHttpRoute(
                 "ProjectDetails",
                 "api/Projects/{id}/{titleUrl}",
                 new { controller = "Projects", action = "Get" },
