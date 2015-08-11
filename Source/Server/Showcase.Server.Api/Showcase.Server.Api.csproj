@@ -213,6 +213,7 @@
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\Base\BaseODataAuthorizationController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\FlagsController.cs" />
     <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\ProjectsController.cs">

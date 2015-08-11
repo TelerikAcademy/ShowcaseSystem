@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Server.Infrastructure.Validation
 {
+    using System;
     using System.Linq;
     using System.Net.Http;
     using System.Web.Http.Controllers;
@@ -7,6 +8,7 @@
 
     using Showcase.Server.Common;
 
+    [AttributeUsage(AttributeTargets.Method)]
     public class ValidateModelAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
