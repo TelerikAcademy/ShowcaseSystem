@@ -29,8 +29,15 @@
         {
             await files.ForEachAsync(async file =>
             {
-                await this.SaveFile(file.Content, string.Format(DownloadableFilesServerPath, file.UrlPath, file.FileExtension));
+                await this.SaveFile(file.Content, this.GetDownloadableFilePath(file.UrlPath, file.FileExtension));
             });
+        }
+
+        public FileStream GetFileStream(string filePath, string fileExtension)
+        {
+            var downloadableFilePath = this.GetDownloadableFilePath(filePath, fileExtension);
+            var serverFilePath = HostingEnvironment.MapPath(downloadableFilePath);
+            return new FileStream(serverFilePath, FileMode.Open);
         }
 
         private async Task SaveFile(byte[] content, string path)
@@ -45,6 +52,11 @@
                     await fileWriter.WriteAsync(content, 0, content.Length);
                 }
             });
+        }
+
+        private string GetDownloadableFilePath(string filePath, string fileExtension)
+        {
+            return string.Format(DownloadableFilesServerPath, filePath, fileExtension);
         }
     }
 }
