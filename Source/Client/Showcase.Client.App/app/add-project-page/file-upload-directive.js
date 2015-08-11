@@ -3,13 +3,13 @@
 
     var fileUploadDirective = function fileUploadDirective($q, jQuery, notifier) {
         var slice = Array.prototype.slice;
-        var validationRegex;
 
         return {
             restrict: 'A',
             require: '?ngModel',
             link: function (scope, element, attrs, ngModel) {
                 if (!ngModel) return;
+                var validationRegex;
                 if (attrs.validationRegex) {
                     validationRegex = new RegExp(attrs.validationRegex);
                 }
