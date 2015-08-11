@@ -92,6 +92,7 @@
     <Compile Include="Validation\CommaSeparatedCollectionLengthAttribute.cs" />
     <Compile Include="Validation\CollectionLengthAttribute.cs" />
     <Compile Include="Validation\NestedObjectsAttribute.cs" />
+    <Compile Include="Validation\NullableUrlAttribute.cs" />
     <Compile Include="Validation\OnlyEnglishAttribute.cs" />
     <Compile Include="Validation\RequiredTagsAttribute.cs" />
   </ItemGroup>

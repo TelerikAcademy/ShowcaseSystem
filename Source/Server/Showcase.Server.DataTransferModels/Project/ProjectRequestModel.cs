@@ -14,6 +14,8 @@
 
     public class ProjectRequestModel : IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
     {
+        private string liveDemoUrl;
+
         [Required]
         [MinLength(ValidationConstants.MinProjectTitleLength, ErrorMessage = ValidationConstants.MinLengthErrorMessage)]
         [MaxLength(ValidationConstants.MaxProjectTitleLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
@@ -44,8 +46,23 @@
 
         [Display(Name = "Live Demo URL")]
         [MaxLength(ValidationConstants.MaxProjectUrlLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
-        [Url(ErrorMessage = ValidationConstants.UrlErrorMessage)]
-        public string LiveDemoUrl { get; set; }
+        [NullableUrlAttribute(ErrorMessage = ValidationConstants.UrlErrorMessage)]
+        public string LiveDemoUrl
+        {
+            get
+            {
+                return this.liveDemoUrl;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    value = null;
+                }
+
+                this.liveDemoUrl = value;
+            }
+        }
 
         [CollectionLength(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
         [NestedObjects]
