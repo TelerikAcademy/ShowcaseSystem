@@ -11,6 +11,7 @@
     using Showcase.Data.Models;
     using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
+    using Showcase.Server.DataTransferModels.File;
     using Showcase.Server.DataTransferModels.Tag;
 
     public class ProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
@@ -42,6 +43,8 @@
         public IEnumerable<string> ImageUrls { get; set; }
 
         public IEnumerable<TagResponseModel> Tags { get; set; }
+
+        public IEnumerable<FileInfoResponseModel> Files { get; set; }
 
         public bool IsLiked { get; set; }
 
