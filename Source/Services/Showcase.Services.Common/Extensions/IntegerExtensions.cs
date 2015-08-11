@@ -27,7 +27,7 @@
 
         public static string ToUrlPath(this int id)
         {
-            return string.Format("{0}/{1}", id % 1000, string.Format("{0}{1}", id.ToMd5Hash().Substring(0, 5), id));
+            return string.Format("{0}/{1}", id % Constants.SavedFilesSubfoldersCount, string.Format("{0}{1}", id.ToMd5Hash().Substring(0, Constants.FileHashLength), id));
         }
     }
 }
