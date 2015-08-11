@@ -61,14 +61,14 @@
                             <label class="label">Downloadable Files</label>
                             <label for="file" class="input input-file">
                                 <div class="button"><input type="file" id="optional-files" file-upload ng-model="project.files" data-validation-regex="^([a-zA-Z\s])+(.pptx|.ppt|.pdf|.txt|.doc|.docx|.zip|.rar|.7z)$" data-regex-error-message="File name should contain only English letters and spaces." data-max-files="5" data-max-file-size="10485760" data-loading-bar="image-loading" multiple="multiple">Browse</div><input type="text" readonly="readonly">
-                                <b class="tooltip tooltip-top-right">Additional documentation, presentations, etc.</b>
+                                <b class="tooltip tooltip-top-right">Optional additional documentation, presentations, etc.</b>
                             </label>
                         </section>
 
                         <section>
                             <label class="label">Images *</label>
                             <label for="file" class="input input-file">
-                                <div class="button"><input type="file" id="file" file-upload ng-model="project.images" data-validation-regex="^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$" data-max-files="10" data-min-file-size="524288" data-max-file-size="10485760" data-loading-bar="image-loading" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
+                                <div class="button"><input type="file" id="file" file-upload ng-model="project.images" data-validation-regex="^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$" data-max-files="10" data-min-file-size="51200" data-max-file-size="10485760" data-loading-bar="image-loading" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
                                 <b class="tooltip tooltip-top-right">Add images to your project</b>
                             </label>
                         </section>
