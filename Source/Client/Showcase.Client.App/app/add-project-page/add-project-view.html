@@ -24,18 +24,39 @@
                         </section>
 
                         <section>
-                            <label class="label">Collaborators *</label>
+                            <label class="label">Collaborators</label>
                             <label class="input">
                                 <input type="text" ng-model="project.collaborators" id="collaborators" token-input data-url="/api/Users/Search" data-query-param="username" data-hint-text="Start typing username and select">
-                                <b class="tooltip tooltip-top-right">Select all collaborators in your project</b>
+                                <b class="tooltip tooltip-top-right">Select all collaborators in your project (you will be added automatically)</b>
                             </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Season *</label>
+                            <label class="select">
+                                <select ng-model="selectedSeason">
+                                    <option value="">Select season</option>
+                                    <option value="{{option.id}}" ng-repeat="option in vm.seasonTags">{{option.name}}</option>
+                                </select>
+                                <i></i>
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Used languages and technologies *</label>
+                            <label class="select select-multiple">
+                                <select multiple="multiple" ng-model="selectedLanguagesAndTechnologies">
+                                    <option value="{{option.id}}" ng-repeat="option in vm.languageAndTechnologyTags">{{option.name}}</option>
+                                </select>
+                            </label>
+                            <div class="note"><strong>Hint:</strong> hold down the ctrl/cmd button to select multiple options.</div>
                         </section>
 
                         <section>
                             <label class="label">Tags *</label>
                             <label class="input">
                                 <input type="text" ng-model="project.tags" id="tags" token-input data-url="/api/Tags/Search" data-query-param="name" data-min-chars="2" data-hint-text="Start typing tag name and select" data-can-add-new-tokens="true">
-                                <b class="tooltip tooltip-top-right">Tag your project - used technologies, programming languages, type of project, etc.</b>
+                                <b class="tooltip tooltip-top-right">Add at least 2 tags to your project - type of project, keywords, etc.</b>
                             </label>
                         </section>
 
@@ -58,19 +79,21 @@
                         </section>
 
                         <section>
-                            <label class="label">Downloadable Files</label>
+                            <label class="label">Downloadable files</label>
                             <label for="file" class="input input-file">
-                                <div class="button"><input type="file" id="optional-files" file-upload ng-model="project.files" data-validation-regex="^([a-zA-Z\s])+(.pptx|.ppt|.pdf|.txt|.doc|.docx|.zip|.rar|.7z)$" data-regex-error-message="File name should contain only English letters and spaces." data-max-files="5" data-max-file-size="10485760" data-loading-bar="image-loading" multiple="multiple">Browse</div><input type="text" readonly="readonly">
-                                <b class="tooltip tooltip-top-right">Additional documentation, presentations, etc.</b>
+                                <div class="button"><input type="file" id="optional-files" file-upload ng-model="project.files" data-validation-regex="^([a-zA-Z\s])+(.pptx|.ppt|.pdf|.txt|.doc|.docx|.zip|.rar|.7z)$" data-regex-error-message="File name should contain only English letters and spaces." data-max-files="5" data-max-file-size="10485760" multiple="multiple">Browse</div><input type="text" readonly="readonly">
+                                <b class="tooltip tooltip-top-right">Optional additional documentation, presentations, etc.</b>
                             </label>
+                            <div class="note"><strong>Hint:</strong> hold down the ctrl/cmd button to select multiple files.</div>
                         </section>
 
                         <section>
                             <label class="label">Images *</label>
                             <label for="file" class="input input-file">
-                                <div class="button"><input type="file" id="file" file-upload ng-model="project.images" data-validation-regex="^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$" data-max-files="10" data-min-file-size="524288" data-max-file-size="10485760" data-loading-bar="image-loading" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
-                                <b class="tooltip tooltip-top-right">Add images to your project</b>
+                                <div class="button"><input type="file" id="file" file-upload ng-model="project.images" data-validation-regex="^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$" data-min-files="3" data-max-files="10" data-min-file-size="51200" data-max-file-size="10485760" data-loading-bar="image-loading" multiple="multiple" accept="image/*">Browse</div><input type="text" readonly="readonly">
+                                <b class="tooltip tooltip-top-right">Select at least 3 images for your project</b>
                             </label>
+                            <div class="note"><strong>Hint:</strong> hold down the ctrl/cmd button to select multiple files.</div>
                         </section>
 
                         <div class="text-center display-none" id="image-loading">
@@ -80,7 +103,7 @@
                         <div uploaded-images-container id="image-preview-container" images="project.images" main-image="project.mainImage" class="text-center" />
 
                         <footer>
-                            <button class="button" ng-click="vm.submitProject(project)">Submit</button>
+                            <button class="button" ng-disabled="vm.disabledSubmit" ng-click="vm.submitProject(project, selectedSeason, selectedLanguagesAndTechnologies)">Submit</button>
                             <button type="button" class="button button-secondary pull-left" onclick="window.history.back();">Back</button>
                         </footer>
                     </fieldset>
