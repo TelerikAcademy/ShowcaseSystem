@@ -21,7 +21,7 @@
             this.projects = projects;
         }
 
-        public async Task VisitProject(int projectId, string username)
+        public async Task VisitProject(int projectId)
         {
             var visit = new Visit
             {

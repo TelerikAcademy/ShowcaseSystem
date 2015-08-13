@@ -145,7 +145,7 @@
         [HttpPost]
         public async Task<IHttpActionResult> Visit(int id)
         {
-            await this.visitsService.VisitProject(id, this.CurrentUser.UserName);
+            await this.visitsService.VisitProject(id);
             return this.Ok();
         }
     }
