@@ -36,24 +36,24 @@
                 <hr class="small-horizontal-line" />
                 <div>
                     <span ng-repeat="collaborator in vm.project.collaborators">
-                        <img width="32" height="32" class="margin-right-5 img-thu" ng-src="{{collaborator.avatarUrl}}"/>
-                        <a href="/users/{{collaborator.username}}" class="margin-right-5 margin-bottom-2">{{collaborator.username}}</a>
+                        <a href="/users/{{collaborator.username}}" class="margin-right-10 margin-bottom-2"><img width="24" height="24" class="margin-right-5 img-thumbnail" ng-src="{{collaborator.avatarUrl}}" />{{collaborator.username}}</a>
                     </span>
                 </div>
+                <hr class="small-horizontal-line" />
                 <div class="margin-top-5">
                     <div project-tags tags="vm.project.tags"/ >
                 </div>
             </div>
         </div>
-        <div class="row margin-top-20 margin-bottom-30">
-            <div class="col-md-offset-1 col-md-10 margin-top-20" animate="fadeInUp" data-animation-delay="200">
-                <div owl-carousel images="vm.images" />
-            </div>
+    </div>
+    <div class="row margin-top-20 margin-bottom-30">
+        <div class="col-md-offset-1 col-md-10 margin-top-20" animate="fadeInUp" data-animation-delay="200">
+            <div owl-carousel images="vm.images" />
         </div>
-        <div class="margin-top-30">
-            <div animate="fadeInUp" data-animation-delay="200">
-                <div project-comments comments="vm.comments" logged-in-username="vm.currentLoggedInUsername" project-id="vm.project.id"/>
-            </div>
+    </div>
+    <div class="margin-top-30">
+        <div animate="fadeInUp" data-animation-delay="200">
+            <div project-comments comments="vm.comments" logged-in-username="vm.currentLoggedInUsername" project-id="vm.project.id" />
         </div>
     </div>
 </section>

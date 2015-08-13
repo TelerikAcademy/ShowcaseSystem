@@ -477,8 +477,9 @@ body {
 	left:0;
 }
 
-.project-tag:hover {
-    opacity: 0.8;
+.project-tag:hover, 
+.social-icon:hover {
+    opacity: 0.7;
 }
 
 .btn-success:hover {
