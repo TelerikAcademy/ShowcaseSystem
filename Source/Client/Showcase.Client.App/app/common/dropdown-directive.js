@@ -1,5 +1,5 @@
 ﻿(function () {
-    'use strikt';
+    'use strict';
 
     var dropdown = function dropdown() {
         return {
@@ -8,9 +8,6 @@
             scope: {
                 options: '=',
                 selected: '='
-            },
-            link: function (scope) {
-
             }
         };
     };
