@@ -127,9 +127,9 @@
     <Content Include="app\add-project-page\add-project-controller.js" />
     <Content Include="app\add-project-page\add-project-data.js" />
     <Content Include="app\add-project-page\add-project-view.html" />
-    <Content Include="app\build\allcss2015081138.min.css" />
-    <Content Include="app\build\alljs2015081138.min.js" />
-    <Content Include="app\build\vendorjs2015081138.min.js" />
+    <Content Include="app\build\allcss2015081344.min.css" />
+    <Content Include="app\build\alljs2015081344.min.js" />
+    <Content Include="app\build\vendorjs2015081344.min.js" />
     <Content Include="app\common\comments-data.js" />
     <Content Include="app\add-project-page\file-upload-directive.js" />
     <Content Include="app\add-project-page\token-input-directive.js" />

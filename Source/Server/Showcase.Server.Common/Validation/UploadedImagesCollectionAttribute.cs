@@ -8,7 +8,7 @@
 
     public class UploadedImagesCollectionAttribute : UploadedFilesCollectionAttribute
     {
-        private const int MinImageSize = 51200;
+        private const int MinImageSize = 30720;
 
         private readonly List<string> allowedImageExtensions = new List<string> { "jpg", "jpeg", "gif", "png", "bmp" };
 
