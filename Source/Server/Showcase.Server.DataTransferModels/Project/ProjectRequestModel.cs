@@ -9,8 +9,8 @@
     using Showcase.Data.Common;
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
+    using Showcase.Server.Common.Models;
     using Showcase.Server.Common.Validation;
-    using Showcase.Server.DataTransferModels.Common;
 
     public class ProjectRequestModel : IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
     {
@@ -66,6 +66,7 @@
 
         [CollectionLength(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
         [NestedObjects]
+        [UploadedImagesCollection(ErrorMessage = ValidationConstants.InvalidImageErrorMessage)]
         public ICollection<FileRequestModel> Images { get; set; }
 
         [CollectionLength(ValidationConstants.MinProjectFiles, ValidationConstants.MaxProjectFiles)]
