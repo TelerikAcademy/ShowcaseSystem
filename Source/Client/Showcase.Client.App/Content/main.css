@@ -580,54 +580,17 @@ body {
     width:100%;height:500px;
 }
 
-.layer-slider-project-title {
-    top: 370px; 
-    left: 200px; 
-    font-weight: 300; 
-    height: 40px; 
-    padding: 0px 10px; 
-    font-size: 30px; 
-    line-height: 37px; 
-    color: rgb(169, 69, 69); 
-    white-space: nowrap; 
-    width: auto; 
-    border-width: 0px; 
-    margin-left: 0px; 
-    margin-top: 0px; 
-    transform-origin: 50% 50% 0px; 
-    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.002, 0, 0, 0, 1); 
-    opacity: 0.7; 
-    visibility: visible; 
-    filter: none; 
-    background: rgba(255, 255, 255, 0.85098);
-}
-
-.layer-slider-project-collaborator {
-    left:auto; 
-    opacity: 0.7; 
-    right: 100px;
-    font-weight: 300;
-    height:30px; 
-    padding-right:8px;
-    padding-left:8px;
-    font-size:20px;
-    line-height:25px;
-    color:#ffffff;
-    background:black;
-    border-radius:4px;
-    white-space: nowrap;
-}
-
 .not-found-image-container {
     background: url(/Content/images/404-error-page-ninja-icon.png) center no-repeat; 
     height: 150px
 }
 
 .search-page-date-button {
-    border: #e6e6e6 2px solid; padding: 7px 12px
+    border: #e6e6e6 2px solid !important; 
+    padding: 7px 12px !important;
 }
 
 .line-chart {
     max-width: 250px; 
     max-height: 250px;
-}}
+}
