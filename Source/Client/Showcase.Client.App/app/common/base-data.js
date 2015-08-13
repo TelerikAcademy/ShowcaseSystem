@@ -13,6 +13,9 @@
             $http.get(URL)
                 .success(function (data) {
                     deferred.resolve(data);
+                })
+                .error(function (err) {
+                    deferred.reject(err);
                 });
 
             return deferred.promise;
@@ -25,6 +28,9 @@
             $http.get(URL)
                 .success(function (data) {
                     deferred.resolve(data);
+                })
+                .error(function (err) {
+                    deferred.reject(err);
                 });
 
             return deferred.promise;
@@ -37,6 +43,9 @@
             $http.post(URL, data, headers)
                 .success(function (data) {
                     deferred.resolve(data);
+                })
+                .error(function (err) {
+                    deferred.reject(err);
                 });
 
             return deferred.promise;
