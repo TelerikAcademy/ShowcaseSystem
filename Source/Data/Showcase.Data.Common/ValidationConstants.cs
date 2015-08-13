@@ -39,9 +39,9 @@
         public const string UrlErrorMessage = "The {0} field is not a valid URL";
         public const string CollaboratorsErrorMessage = "The {0} field contains invalid usernames";
         public const string CommaSeparatedCollectionLengthErrorMessage = "The {0} field must have between {1} and {2} entries";
-        public const string InvalidImageErrorMessage = "The {0} contains invalid image extension or size (between {1}KB and {2}MB)";
+        public const string InvalidFileErrorMessage = "The {0} contains invalid file extension or size (between {1}KB and {2}MB)";
         public const string MainImageErrorMessage = "You must select main image for your project";
-        public const string MainImageDoesNotExistErrorMessage = "Main image does not exists in your uploaded images";
+        public const string MainImageDoesNotExistErrorMessage = "You must select main image for your project from the uploaded images";
         public const string ProjectImagesCountErrorMessage = "You must select between {0} and {1} images";
         public const string RequiredTagsErrorMessage = "You must select season and at least one used language or technology";
     }
