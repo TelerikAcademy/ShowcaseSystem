@@ -1,17 +1,17 @@
 ﻿<div class="slider">
-    <div class="layerslider" style="width:100%;height:500px;">
+    <div class="layerslider layer-slider">
         <div ng-repeat="project in projects" class="ls-slide" data-ls="slidedelay:8000;transition2d:75,79;">
             <img src="/Images/{{project.mainImageUrl}}_high.jpg" class="ls-bg" alt="Slide background" />
-            <p ng-repeat="collaborator in project.collaborators" class="ls-l" style="top:{{30 + $index * 45}}px;left:auto; opacity: 0.7; right: 100px;font-weight: 300;height:30px; padding-right:8px;padding-left:8px;font-size:20px;line-height:25px;color:#ffffff;background:black;border-radius:4px;white-space: nowrap;" data-ls="durationin:{{1300 + $index * 350}};delayin:1500;rotatein:20;rotatexin:30;scalexin:1.5;scaleyin:1.5;transformoriginin:left 50% 0;durationout:750;rotateout:20;rotatexout:-30;scalexout:0;scaleyout:0;transformoriginout:left 50% 0;">
-                <a href="/users/{{collaborator}}" style="color: white;">{{collaborator}}</a>
+            <p ng-repeat="collaborator in project.collaborators" class="ls-l layer-slider-project-collaborator" style="top:{{30 + $index * 45}}px;" data-ls="durationin:{{1300 + $index * 350}};delayin:1500;rotatein:20;rotatexin:30;scalexin:1.5;scaleyin:1.5;transformoriginin:left 50% 0;durationout:750;rotateout:20;rotatexout:-30;scalexout:0;scaleyout:0;transformoriginout:left 50% 0;">
+                <a href="/users/{{collaborator}}" class="color-white">{{collaborator}}</a>
             </p>
-            <p class="ls-l" data-ls="
+            <p class="ls-l layer-slider-project-title" data-ls="
 							offsetxin:-50;
 							durationin:2000;
 							delayin:300;
 							offsetxout:-50;
-							durationout:1000;" style="top: 370px; left: 200px; font-weight: 300; height: 40px; padding: 0px 10px; font-size: 30px; line-height: 37px; color: rgb(169, 69, 69); white-space: nowrap; width: auto; border-width: 0px; margin-left: 0px; margin-top: 0px; transform-origin: 50% 50% 0px; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.002, 0, 0, 0, 1); opacity: 0.7; visibility: visible; filter: none; background: rgba(255, 255, 255, 0.85098);">
-                <a href="/projects/{{project.id}}/{{project.titleUrl}}" style="color: white;">{{project.name}}</a>
+							durationout:1000;">
+                <a href="/projects/{{project.id}}/{{project.titleUrl}}" class="color-white">{{project.name}}</a>
             </p>
         </div>
     </div>

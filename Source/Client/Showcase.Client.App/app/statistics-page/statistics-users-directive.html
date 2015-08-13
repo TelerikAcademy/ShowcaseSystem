@@ -1,13 +1,13 @@
-﻿<div class="row margin-bottom-10" ng-repeat="user in users" style="line-height: 30px">
-    <div class="col-xs-2 nopadding" style="padding-right: 10px !important;">
-        <img class="img-thumbnail" style="float: right; width: 32px; height: 32px;" src="{{user.avatarUrl}}" />
+﻿<div class="row margin-bottom-10 line-height-30px" ng-repeat="user in users">
+    <div class="col-xs-2 nopadding padding-right-10">
+        <img class="img-thumbnail statistics-user-avatar" src="{{user.avatarUrl}}" />
     </div>
     <div class="col-xs-1 nopadding margin-right-5">
         <span class="font-size-085em">
             <i class="fa fa-thumbs-up margin-right-5"></i><span>{{user.likesCount}}</span>
         </span>
     </div>
-    <div class="col-xs-6 nopadding" style="vertical-align: central; padding-top: 1px;">
+    <div class="col-xs-6 nopadding statistics-user-username">
         <a href="/users/{{user.username}}">{{user.username}}</a>
     </div>
     <div class="col-xs-2 nopadding">

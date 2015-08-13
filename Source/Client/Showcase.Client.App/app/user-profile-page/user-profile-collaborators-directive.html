@@ -1,10 +1,10 @@
 ﻿<div ng-show="collaborators.length > 0" class="row margin-bottom-20">
     <div class="col-xs-4 margin-bottom-10" ng-repeat="collaborator in collaborators">
         <img class="img-thumbnail margin-right-15" ng-src="{{collaborator.avatarUrl}}" width="32" height="32" />
-        <a href="/users/{{collaborator.username}}" class="font-size-13em" style="line-height: 1.9em;">{{collaborator.username}}</a>
+        <a href="/users/{{collaborator.username}}" class="font-size-13em line-height-19em">{{collaborator.username}}</a>
     </div>
 </div>
 
 <div ng-hide="collaborators.length > 0" class="text-center margin-bottom-30">
-    <span style="font-style: italic">The user has no collaborators yet</span>
+    <span class="italic">The user has no collaborators yet</span>
 </div>
