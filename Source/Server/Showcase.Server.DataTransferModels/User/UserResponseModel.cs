@@ -10,6 +10,7 @@
     using Showcase.Server.Common.Mapping;
     using Showcase.Server.DataTransferModels.Comment;
     using Showcase.Server.DataTransferModels.Project;
+    using System;
 
     public class UserResponseModel : IMapFrom<User>, IHaveCustomMappings
     {
@@ -23,7 +24,7 @@
 
         public int LikesCount { get; set; }
 
-        public IEnumerable<TeammateResponseModel> Teammates { get; set; }
+        public IEnumerable<CollaboratorResponseModel> Collaborators { get; set; }
 
         public IEnumerable<LikeResponseModel> Likes { get; set; }
 
@@ -33,15 +34,18 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
+            string username = null;
             configuration.CreateMap<User, UserResponseModel>()
                 .ForMember(u => u.ProjectsCount, opt => opt.MapFrom(u => u.Projects.Count))
                 .ForMember(u => u.CommentsCount, opt => opt.MapFrom(u => u.Comments.Count))
                 .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Likes.Count))
                 .ForMember(
-                    u => u.Teammates, 
-                        opt => opt.MapFrom(u => 
-                            u.Projects.SelectMany(
-                                    p => p.Collaborators).Distinct()));
+                    u => u.Collaborators,
+                        opt => opt.MapFrom(
+                            u => u.Projects.SelectMany(
+                                p => p.Collaborators
+                                    .Where(c => c.UserName != username))
+                                .Distinct()));
         }
     }
 }

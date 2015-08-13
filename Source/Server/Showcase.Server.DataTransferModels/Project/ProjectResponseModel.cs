@@ -13,6 +13,7 @@
     using Showcase.Server.Common.Mapping;
     using Showcase.Server.DataTransferModels.File;
     using Showcase.Server.DataTransferModels.Tag;
+    using Showcase.Server.DataTransferModels.User;
 
     public class ProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
     {
@@ -38,7 +39,7 @@
 
         public int Comments { get; set; }
 
-        public IEnumerable<string> Collaborators { get; set; }
+        public IEnumerable<CollaboratorResponseModel> Collaborators { get; set; }
 
         public IEnumerable<string> ImageUrls { get; set; }
 
@@ -91,7 +92,6 @@
                 .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
                 .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath))
                 .ForMember(pr => pr.ImageUrls, opt => opt.MapFrom(pr => pr.Images.Select(i => i.UrlPath)))
-                .ForMember(pr => pr.Collaborators, opt => opt.MapFrom(pr => pr.Collaborators.Select(c => c.UserName).OrderBy(c => c)))
                 .ForMember(pr => pr.IsLiked, opt => opt.MapFrom(pr => pr.Likes.Any(l => l.User.UserName == username)))
                 .ForMember(pr => pr.IsFlagged, opt => opt.MapFrom(pr => pr.Flags.Any(fl => fl.User.UserName == username)));
         }

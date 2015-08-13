@@ -5,6 +5,7 @@
         var vm = this;
         var id = $routeParams.id;
         var titleUrl = $routeParams.title;
+        var authorizationErrorMessage = 'You must be logged in to do that.';
 
         identity.getUser()
             .then(function (user) {
@@ -38,6 +39,11 @@
             });
 
         vm.likeProject = function (id) {
+            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername == '') {
+                notifier.error(authorizationErrorMessage);
+                return;
+            }
+
             projectDetailsData.likeProject(id)
                 .then(function () {
                     vm.likes++;
@@ -46,6 +52,11 @@
         };
 
         vm.dislikeProject = function (id) {
+            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername == '') {
+                notifier.error(authorizationErrorMessage);
+                return;
+            }
+
             projectDetailsData.dislikeProject(id)
                 .then(function () {
                     vm.likes--;
@@ -54,6 +65,11 @@
         };
 
         vm.flagProject = function (id) {
+            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername == '') {
+                notifier.error(authorizationErrorMessage);
+                return;
+            }
+
             projectDetailsData.flagProject(id)
                 .then(function () {
                     vm.isFlagged = true;
@@ -61,6 +77,11 @@
         };
 
         vm.unflagProject = function (id) {
+            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername == '') {
+                notifier.error(authorizationErrorMessage);
+                return;
+            }
+
             projectDetailsData.unflagProject(id)
                 .then(function () {
                     vm.isFlagged = false;
