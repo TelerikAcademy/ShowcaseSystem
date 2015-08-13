@@ -11,16 +11,17 @@
     {
         private const char WhiteSpace = ' ';
 
-        private readonly List<string> AllowedImageExtensions = new List<string> { "pptx", "ppt", "pdf", "txt", "doc", "docx", "zip", "rar", "7z" };
+        private readonly List<string> allowedImageExtensions = new List<string> { "pptx", "ppt", "pdf", "txt", "doc", "docx", "zip", "rar", "7z" };
 
         public UploadedDownloadableFilesCollectionAttribute()
         {
-            this.AllowedExtensions = this.AllowedImageExtensions;
+            this.AllowedExtensions = this.allowedImageExtensions;
         }
 
         public override bool IsValid(object value)
         {
-            return base.IsValid(value,
+            return base.IsValid(
+                value,
                 file => this.AllowedExtensions.Contains(file.FileExtension.ToLower()),
                 file => this.ValidateBase64StringSize(file.Base64Content),
                 file => this.ContainsOnlyEnglishLettersAndWhiteSpace(file.OriginalFileName));
@@ -31,7 +32,10 @@
             var symbolsWithoutWhiteSpace = string.Join(string.Empty, fileName.Split(new[] { WhiteSpace }, StringSplitOptions.RemoveEmptyEntries));
             foreach (var symbol in symbolsWithoutWhiteSpace)
             {
-                if (!symbol.IsEnglishLetter()) return false;
+                if (!symbol.IsEnglishLetter())
+                {
+                    return false;
+                }
             }
 
             return true;

@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Services.Data.Base
 {
+    using System;
     using System.Threading.Tasks;
 
     using Showcase.Data;
@@ -7,7 +8,6 @@
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
-    using System;
 
     public abstract class FileInfoService
     {

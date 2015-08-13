@@ -10,17 +10,18 @@
     {
         private const int MinImageSize = 51200;
 
-        private readonly List<string> AllowedImageExtensions = new List<string> { "jpg", "jpeg", "gif", "png", "bmp" };
+        private readonly List<string> allowedImageExtensions = new List<string> { "jpg", "jpeg", "gif", "png", "bmp" };
 
         public UploadedImagesCollectionAttribute()
         {
-            this.AllowedExtensions = this.AllowedImageExtensions;
+            this.AllowedExtensions = this.allowedImageExtensions;
             this.MinFileSize = MinImageSize;
         }
 
         public override bool IsValid(object value)
         {
-            return base.IsValid(value,
+            return base.IsValid(
+                value,
                 image => this.AllowedExtensions.Contains(image.FileExtension.ToLower()),
                 image => this.ValidateBase64StringSize(image.Base64Content));
         }

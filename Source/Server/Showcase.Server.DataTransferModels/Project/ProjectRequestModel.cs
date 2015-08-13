@@ -53,6 +53,7 @@
             {
                 return this.liveDemoUrl;
             }
+
             set
             {
                 if (string.IsNullOrWhiteSpace(value))

@@ -8,17 +8,17 @@
 
     public abstract class UploadedFilesCollectionAttribute : ValidationAttribute
     {
-        protected int MinFileSize { get; set; }
-
-        protected int MaxFileSize { get; set; }
-
-        protected List<string> AllowedExtensions { get; set; }
-
         public UploadedFilesCollectionAttribute()
         {
             this.MinFileSize = 0;
             this.MaxFileSize = Constants.MaxUploadedFileSize;
         }
+
+        protected int MinFileSize { get; set; }
+
+        protected int MaxFileSize { get; set; }
+
+        protected List<string> AllowedExtensions { get; set; }
 
         public override string FormatErrorMessage(string name)
         {
@@ -34,7 +34,10 @@
                 {
                     foreach (var validation in validations)
                     {
-                        if (!validation(file)) return false;
+                        if (!validation(file))  
+                        {
+                            return false;
+                        }
                     }
                 }
             }
