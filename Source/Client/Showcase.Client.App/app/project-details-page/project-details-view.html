@@ -36,7 +36,8 @@
                 <hr class="small-horizontal-line" />
                 <div>
                     <span ng-repeat="collaborator in vm.project.collaborators">
-                        <a href="/users/{{collaborator}}" class="margin-right-5 margin-bottom-2">{{collaborator}}</a>
+                        <img width="32" height="32" class="margin-right-5 img-thu" ng-src="{{collaborator.avatarUrl}}"/>
+                        <a href="/users/{{collaborator.username}}" class="margin-right-5 margin-bottom-2">{{collaborator.username}}</a>
                     </span>
                 </div>
                 <div class="margin-top-5">
