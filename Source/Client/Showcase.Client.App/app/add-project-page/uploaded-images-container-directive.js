@@ -19,6 +19,12 @@
                         scope.mainImage = imageName;
                     });
                 });
+
+                scope.$watch('images', function (images) {
+                    if (images && images.length == 1) {
+                        scope.mainImage = images[0].originalFileName;
+                    }
+                });
             }
         };
     };

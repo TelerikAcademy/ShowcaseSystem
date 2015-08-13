@@ -3,6 +3,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using Showcase.Data.Common;
+    using Showcase.Services.Common.Extensions;
 
     public class OnlyEnglishAttribute : ValidationAttribute
     {
@@ -18,12 +19,9 @@
             {
                 foreach (var symbol in valueAsString)
                 {
-                    if (char.IsLetter(symbol))
+                    if (char.IsLetter(symbol) && !symbol.IsEnglishLetter())
                     {
-                        if ((symbol < 65 || 90 < symbol) && (symbol < 97 || 122 < symbol))
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
             }

@@ -16,6 +16,11 @@
                     validationRegexErrorMessage = attrs.regexErrorMessage;
                 }
 
+                if (attrs.initialText) {
+                    element[0].parentNode.nextSibling.value = attrs.initialText;
+                }
+
+                var minFiles = attrs.minFiles;
                 var maxFiles = attrs.maxFiles;
                 var minFileSize = attrs.minFileSize;
                 var maxFileSize = attrs.maxFileSize;
@@ -29,6 +34,10 @@
                 element.bind('change', function (e) {
                     var element = e.target;
                     if (!element.files || element.files.length === 0) {
+                        return;
+                    }
+                    else if (element.files && minFiles && element.files.length < minFiles) {
+                        notifier.error('You must select at least ' + minFiles + ' files');
                         return;
                     }
                     else if (element.files && maxFiles && element.files.length > maxFiles) {
@@ -52,12 +61,12 @@
                             }
 
                             if (minFileSize && currentFile.size < minFileSize) {
-                                notifier.error('You must select images with size bigger than ' + minFileSize / 1024 / 1024 + 'MB');
+                                notifier.error('You must select files with size bigger than ' + minFileSize / 1024 + 'KB');
                                 return;
                             }
 
                             if (maxFileSize && currentFile.size > maxFileSize) {
-                                notifier.error('You must select images with size smaller than ' + maxFileSize / 1024 / 1024 + 'MB');
+                                notifier.error('You must select files with size smaller than ' + maxFileSize / 1024 / 1024 + 'MB');
                                 return;
                             }
                         }

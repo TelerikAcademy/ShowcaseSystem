@@ -6,6 +6,6 @@
 
     public interface IVisitsService : IService
     {
-        Task VisitProject(int projectId, string username);
+        Task VisitProject(int projectId);
     }
 }

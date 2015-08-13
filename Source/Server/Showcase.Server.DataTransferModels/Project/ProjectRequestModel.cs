@@ -9,8 +9,8 @@
     using Showcase.Data.Common;
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
+    using Showcase.Server.Common.Models;
     using Showcase.Server.Common.Validation;
-    using Showcase.Server.DataTransferModels.Common;
 
     public class ProjectRequestModel : IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
     {
@@ -28,7 +28,6 @@
         [OnlyEnglish]
         public string Description { get; set; }
 
-        [Required]
         [Collaborators]
         [CommaSeparatedCollectionLength(ValidationConstants.MinProjectCollaboratorsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
         public string Collaborators { get; set; }
@@ -53,6 +52,7 @@
             {
                 return this.liveDemoUrl;
             }
+
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -66,10 +66,12 @@
 
         [CollectionLength(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
         [NestedObjects]
+        [UploadedImagesCollection(ErrorMessage = ValidationConstants.InvalidFileErrorMessage)]
         public ICollection<FileRequestModel> Images { get; set; }
 
         [CollectionLength(ValidationConstants.MinProjectFiles, ValidationConstants.MaxProjectFiles)]
         [NestedObjects]
+        [UploadedDownloadableFilesCollection(ErrorMessage = ValidationConstants.InvalidFileErrorMessage)]
         public ICollection<FileRequestModel> Files { get; set; }
 
         [Required(ErrorMessage = ValidationConstants.MainImageErrorMessage)]

@@ -1,4 +1,4 @@
-﻿namespace Showcase.Server.DataTransferModels.Common
+﻿namespace Showcase.Server.Common.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;

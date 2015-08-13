@@ -13,7 +13,7 @@ namespace Showcase.Data.Migrations
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(ShowcaseDbContext context)
@@ -23,11 +23,6 @@ namespace Showcase.Data.Migrations
 
         private void SeedTags(ShowcaseDbContext context)
         {
-            if (context.Tags.Any())
-            {
-                return;
-            }
-
             var languages = new[] { "C#", "JavaScript", "Objective C", "Java", "HTML", "CSS", "XAML", "XML" };
             
             for (int i = 0; i < languages.Length; i++)
@@ -40,10 +35,10 @@ namespace Showcase.Data.Migrations
                     Type = TagType.Language
                 };
 
-                context.Tags.Add(tag);
+                context.Tags.AddOrUpdate(t => t.Name, tag);
             }
 
-            var technologies = new[] { "NodeJs", "AngularJs", "WPF", "ASP.NET MVC", "ASP.NET Web Forms", "Android", "iOS", "KendoUI" };
+            var technologies = new[] { "jQuery", "NodeJs", "AngularJS", "WPF", "ASP.NET", "ASP.NET MVC", "ASP.NET Web API", "ASP.NET SignalR", "ASP.NET Web Forms", "Android", "iOS", "KendoUI" };
 
             for (int i = 0; i < technologies.Length; i++)
             {
@@ -55,10 +50,10 @@ namespace Showcase.Data.Migrations
                     Type = TagType.Technology
                 };
 
-                context.Tags.Add(tag);
+                context.Tags.AddOrUpdate(t => t.Name, tag);
             }
 
-            var seasons = new[] { "2011/2012", "2012/2013", "2013/2014", "2014/2015", "2015/2016", "2016/2017" };
+            var seasons = new[] { "2011/2012", "2012/2013", "2013/2014", "2014/2015", "2015/2016", "2016/2017", "2017/2018" };
 
             for (int i = 0; i < seasons.Length; i++)
             {
@@ -70,7 +65,7 @@ namespace Showcase.Data.Migrations
                     Type = TagType.Season
                 };
 
-                context.Tags.Add(tag);
+                context.Tags.AddOrUpdate(t => t.Name, tag);
             }
 
             context.SaveChanges();

@@ -1,5 +1,5 @@
 # Showcase System
-Showcase system for students projects in Telerik Academy
+Showcase system for students' projects in Telerik Academy
 
 [![Build status](https://ci.appveyor.com/api/projects/status/m0g2ef0358847bra?svg=true)](https://ci.appveyor.com/project/NikolayIT/showcasesystem)
 
