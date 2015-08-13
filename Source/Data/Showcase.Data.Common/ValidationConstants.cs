@@ -12,9 +12,9 @@
         public const int MaxProjectDescriptionLength = 700;
         public const int MaxProjectUrlLength = 200;
         public const int MinProjectCollaboratorsLength = 1;
-        public const int MinProjectTagsLength = 2;
+        public const int MinProjectTagsLength = 4;
         public const int MaxProjectCollaboratorsAndTagsLength = 20;
-        public const int MinProjectImages = 1;
+        public const int MinProjectImages = 3;
         public const int MaxProjectImages = 10;
         public const int MinProjectFiles = 0;
         public const int MaxProjectFiles = 5;
@@ -39,9 +39,10 @@
         public const string UrlErrorMessage = "The {0} field is not a valid URL";
         public const string CollaboratorsErrorMessage = "The {0} field contains invalid usernames";
         public const string CommaSeparatedCollectionLengthErrorMessage = "The {0} field must have between {1} and {2} entries";
+        public const string InvalidImageErrorMessage = "The {0} contains invalid image extension or size (between {1}KB and {2}MB)";
         public const string MainImageErrorMessage = "You must select main image for your project";
         public const string MainImageDoesNotExistErrorMessage = "Main image does not exists in your uploaded images";
         public const string ProjectImagesCountErrorMessage = "You must select between {0} and {1} images";
-        public const string RequiredTagsErrorMessage = "The {0} field does not meet the requirements. You must select exactly ONE of the following Season tags: {1}\r\nAnd at least one of the following Language or Technology tags: {2}";
+        public const string RequiredTagsErrorMessage = "You must select season and at least one used language or technology";
     }
 }
