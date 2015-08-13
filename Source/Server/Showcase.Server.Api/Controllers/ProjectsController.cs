@@ -11,7 +11,7 @@
     using Showcase.Data.Models;
     using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.Common;
-    using Showcase.Server.DataTransferModels.Common;
+    using Showcase.Server.Common.Models;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.FileSystem;

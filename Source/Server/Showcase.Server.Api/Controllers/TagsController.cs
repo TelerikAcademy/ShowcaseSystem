@@ -35,7 +35,33 @@
             var model = await this.tagsService
                 .SearchByName(name)
                 .Project()
-                .To<TagAutocompleteResponseModel>()
+                .To<ListedTagResponseModel>()
+                .ToListAsync();
+
+            return this.Ok(model);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IHttpActionResult> AllSeasonTags()
+        {
+            var model = await this.tagsService
+                .SeasonTags()
+                .Project()
+                .To<ListedTagResponseModel>()
+                .ToListAsync();
+
+            return this.Ok(model);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IHttpActionResult> AllLanguageAndTechnologyTags()
+        {
+            var model = await this.tagsService
+                .LanguageAndTechnologyTags()
+                .Project()
+                .To<ListedTagResponseModel>()
                 .ToListAsync();
 
             return this.Ok(model);

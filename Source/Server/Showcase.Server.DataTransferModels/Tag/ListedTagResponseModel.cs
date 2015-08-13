@@ -3,7 +3,7 @@
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
 
-    public class TagAutocompleteResponseModel : IMapFrom<Tag>
+    public class ListedTagResponseModel : IMapFrom<Tag>
     {
         public int Id { get; set; }
 
