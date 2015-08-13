@@ -30,7 +30,7 @@
                 </p>
                 <div>
                     <span ng-repeat="file in vm.project.files">
-                        <a href="/Files/{{file.urlPath}}" target="_self" class="margin-right-5 margin-bottom-2"><span class="file-name">{{file.originalFileName}}</span>.{{file.fileExtension}}</a>
+                        <a href="/Files/{{file.urlPath}}" target="_self" class="margin-right-5 margin-bottom-2"><span class="capital-name">{{file.originalFileName}}</span>.{{file.fileExtension}}</a>
                     </span>
                 </div>
                 <hr class="small-horizontal-line" />
@@ -41,7 +41,7 @@
                 </div>
                 <div class="margin-top-5">
                     <a href="projects/search?tag={{tag.name}}" ng-repeat="tag in vm.project.tags">
-                        <span class="label label-default" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
+                        <span class="label label-default capital-name" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
                     </a>
                 </div>
             </div>
