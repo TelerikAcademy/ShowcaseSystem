@@ -21,7 +21,7 @@
         public override bool IsValid(object value)
         {
             var valueAsString = value as string;
-            if (valueAsString != null)
+            if (!string.IsNullOrWhiteSpace(valueAsString))
             {
                 var collaborators = valueAsString.Split(',');
                 var task = Task.Run(async () => await this.RemoteData.UsersExist(collaborators));

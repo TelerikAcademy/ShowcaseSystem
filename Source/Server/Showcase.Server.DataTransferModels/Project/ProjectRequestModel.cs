@@ -28,7 +28,6 @@
         [OnlyEnglish]
         public string Description { get; set; }
 
-        [Required]
         [Collaborators]
         [CommaSeparatedCollectionLength(ValidationConstants.MinProjectCollaboratorsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
         public string Collaborators { get; set; }

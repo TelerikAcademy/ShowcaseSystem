@@ -11,7 +11,7 @@
         public const int MinProjectDescriptionLength = 70;
         public const int MaxProjectDescriptionLength = 700;
         public const int MaxProjectUrlLength = 200;
-        public const int MinProjectCollaboratorsLength = 1;
+        public const int MinProjectCollaboratorsLength = 0;
         public const int MinProjectTagsLength = 4;
         public const int MaxProjectCollaboratorsAndTagsLength = 20;
         public const int MinProjectImages = 3;
