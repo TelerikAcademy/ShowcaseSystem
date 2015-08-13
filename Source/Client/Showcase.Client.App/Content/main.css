@@ -485,3 +485,12 @@ body {
     bottom: 0;
     left: 0;
 }
+
+.project-tag:hover,
+.social-icon:hover {
+    opacity: 0.7;
+}
+
+.btn-success:hover {
+    background-color: #99cc55 !important;
+}
