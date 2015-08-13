@@ -91,7 +91,7 @@
     <Compile Include="Validation\Base\UploadedFilesCollectionAttribute.cs" />
     <Compile Include="Validation\CollaboratorsAttribute.cs" />
     <Compile Include="Validation\CommaSeparatedCollectionLengthAttribute.cs" />
-    <Compile Include="Validation\CollectionLengthAttribute.cs" />
+    <Compile Include="Validation\CollectionCountAttribute.cs" />
     <Compile Include="Validation\NestedObjectsAttribute.cs" />
     <Compile Include="Validation\NullableUrlAttribute.cs" />
     <Compile Include="Validation\OnlyEnglishAttribute.cs" />

@@ -4,12 +4,12 @@
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
-    public class CollectionLengthAttribute : ValidationAttribute
+    public class CollectionCountAttribute : ValidationAttribute
     {
         private int minimumEntries;
         private int maximumEntries;
 
-        public CollectionLengthAttribute(int minimumEntries, int maximumEntries)
+        public CollectionCountAttribute(int minimumEntries, int maximumEntries)
         {
             this.minimumEntries = minimumEntries;
             this.maximumEntries = maximumEntries;

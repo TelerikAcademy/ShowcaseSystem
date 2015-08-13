@@ -64,12 +64,12 @@
             }
         }
 
-        [CollectionLength(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
+        [CollectionCount(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
         [NestedObjects]
         [UploadedImagesCollection(ErrorMessage = ValidationConstants.InvalidFileErrorMessage)]
         public ICollection<FileRequestModel> Images { get; set; }
 
-        [CollectionLength(ValidationConstants.MinProjectFiles, ValidationConstants.MaxProjectFiles)]
+        [CollectionCount(ValidationConstants.MinProjectFiles, ValidationConstants.MaxProjectFiles)]
         [NestedObjects]
         [UploadedDownloadableFilesCollection(ErrorMessage = ValidationConstants.InvalidFileErrorMessage)]
         public ICollection<FileRequestModel> Files { get; set; }
