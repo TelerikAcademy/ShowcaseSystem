@@ -1,6 +1,5 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
-    using System;
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
@@ -28,7 +27,7 @@
             var model = await this.UsersService
                 .ByUsername(username)
                 .Project()
-                .To<UserResponseModel>()
+                .To<UserResponseModel>(new { username })
                 .FirstOrDefaultAsync();
 
             return this.Data(model);
