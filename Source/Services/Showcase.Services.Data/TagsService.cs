@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Services.Data
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
@@ -8,10 +9,13 @@
     using Showcase.Data.Common.Models;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
+    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
 
     public class TagsService : ITagsService
     {
+        private const char TagSeparator = ',';
+
         private readonly IRepository<Tag> tags;
 
         public TagsService(IRepository<Tag> tags)
@@ -23,17 +27,17 @@
         {
             return this.tags
                 .All()
-                .Where(t => t.Name.ToLower().Contains(name.ToLower()));
+                .Where(t => t.Type == TagType.UserSubmitted && t.Name.ToLower().Contains(name.ToLower()));
         }
 
         public async Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tags)
         {
-            var existingTagIds = new List<int>();
-            var newTagNames = new List<string>();
+            var existingTagIds = new HashSet<int>();
+            var newTagNames = new HashSet<string>();
 
-            tags.Split(',')
+            tags.Split(new[] { TagSeparator }, StringSplitOptions.RemoveEmptyEntries)
                 .ToList()
-                .ForEach(tag => 
+                .ForEach(tag =>
                 {
                     int tagId;
                     if (int.TryParse(tag, out tagId))
@@ -42,7 +46,7 @@
                     }
                     else
                     {
-                        newTagNames.Add(tag);
+                        newTagNames.Add(tag.ToLower());
                     }
                 });
 
@@ -51,7 +55,14 @@
                 .Where(t => existingTagIds.Contains(t.Id))
                 .ToListAsync();
 
-            newTagNames.ForEach(tagName => resultTags.Add(new Tag { Name = tagName }));
+            (await this.tags
+                .All()
+                .Where(t => newTagNames.Contains(t.Name.ToLower()))
+                .Select(t => t.Name.ToLower())
+                .ToListAsync())
+                .ForEach(t => newTagNames.Remove(t));
+
+            newTagNames.ForEach(tagName => resultTags.Add(new Tag { Name = tagName, Type = TagType.UserSubmitted }));
 
             return resultTags;
         }

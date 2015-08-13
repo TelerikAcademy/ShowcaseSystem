@@ -78,7 +78,12 @@
 
         public async Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators, string currentUserUsername)
         {
-            var usernames = collaborators.Split(',').ToHashSet();
+            var usernames = new HashSet<string>();
+            if (!string.IsNullOrWhiteSpace(collaborators))
+            {
+                usernames = collaborators.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
+            }
+
             usernames.Add(currentUserUsername);
 
             var localUsers = await this.users

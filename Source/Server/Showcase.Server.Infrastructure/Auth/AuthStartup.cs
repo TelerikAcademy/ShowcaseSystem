@@ -26,9 +26,7 @@
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
 
                 // TODO: Set to false in production !
-#if DEBUG
                 AllowInsecureHttp = true
-#endif
             });
 
             // Configure the sockets tokens endpoint
