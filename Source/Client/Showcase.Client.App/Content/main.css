@@ -476,3 +476,11 @@ body {
 	bottom:0;
 	left:0;
 }
+
+.project-tag:hover {
+    opacity: 0.8;
+}
+
+.btn-success:hover {
+    background-color: #99cc55 !important;
+}
