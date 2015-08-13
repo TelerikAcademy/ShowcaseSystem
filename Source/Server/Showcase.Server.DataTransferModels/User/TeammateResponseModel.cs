@@ -6,7 +6,7 @@
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
     
-    public class TeammateResponseModel : IMapFrom<User>, IHaveCustomMappings
+    public class CollaboratorResponseModel : IMapFrom<User>, IHaveCustomMappings
     {
         public string Username { get; set; }
 

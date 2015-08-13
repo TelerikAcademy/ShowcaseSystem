@@ -39,7 +39,7 @@
 
         public int Comments { get; set; }
 
-        public IEnumerable<TeammateResponseModel> Collaborators { get; set; }
+        public IEnumerable<CollaboratorResponseModel> Collaborators { get; set; }
 
         public IEnumerable<string> ImageUrls { get; set; }
 

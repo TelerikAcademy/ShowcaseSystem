@@ -35,7 +35,7 @@
                             <h4><a class="tab-button" href="#comments-tab" data-toggle="tab"><i class="fa fa-comments"></i>Comments</a></h4>
                         </li>
                         <li>
-                            <h4><a class="tab-button" href="#teammates-tab" data-toggle="tab"><i class="fa fa-users"></i>Teammates</a></h4>
+                            <h4><a class="tab-button" href="#collaborators-tab" data-toggle="tab"><i class="fa fa-users"></i>Collaborators</a></h4>
                         </li>
                         <li ng-show="vm.isAdmin || vm.user.username.toLowerCase() == vm.username">
                             <h4><a class="tab-button" href="#liked-projects-tab" data-toggle="tab"><i class="fa fa-thumbs-up"></i>Liked Projects</a></h4>
@@ -48,8 +48,8 @@
                         <div id="comments-tab" class="tab-pane padding-top-30">
                             <div user-profile-comments comments="vm.comments" />
                         </div>
-                        <div id="teammates-tab" class="tab-pane padding-top-30">
-                            <div user-profile-teammates teammates="vm.user.teammates" />
+                        <div id="collaborators-tab" class="tab-pane padding-top-30">
+                            <div user-profile-collaborators collaborators="vm.user.collaborators" />
                         </div>
                         <div ng-show="vm.isAdmin || vm.user.username.toLowerCase() == vm.username" id="liked-projects-tab" class="tab-pane">
                             <div user-profile-projects projects="vm.likedProjects" />

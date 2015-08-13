@@ -23,7 +23,7 @@
 
         public int LikesCount { get; set; }
 
-        public IEnumerable<TeammateResponseModel> Teammates { get; set; }
+        public IEnumerable<CollaboratorResponseModel> Collaborators { get; set; }
 
         public IEnumerable<LikeResponseModel> Likes { get; set; }
 
@@ -38,7 +38,7 @@
                 .ForMember(u => u.CommentsCount, opt => opt.MapFrom(u => u.Comments.Count))
                 .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Likes.Count))
                 .ForMember(
-                    u => u.Teammates, 
+                    u => u.Collaborators, 
                         opt => opt.MapFrom(u => 
                             u.Projects.SelectMany(
                                     p => p.Collaborators).Distinct()));
