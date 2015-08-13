@@ -87,6 +87,7 @@
     <Compile Include="Mapping\ExplicitMaps.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />
+    <Compile Include="Models\FileRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\CollaboratorsAttribute.cs" />
     <Compile Include="Validation\CommaSeparatedCollectionLengthAttribute.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Validation\NullableUrlAttribute.cs" />
     <Compile Include="Validation\OnlyEnglishAttribute.cs" />
     <Compile Include="Validation\RequiredTagsAttribute.cs" />
+    <Compile Include="Validation\UploadedImagesCollectionAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
