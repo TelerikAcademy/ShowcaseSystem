@@ -7,7 +7,7 @@
     </span>
     <div class="clearfix"></div>
     <div class="row margin-bottom-30 margin-top-30" ng-repeat="project in projects | orderBy : orderBy">
-        <div class="col-md-3 text-center" style="padding-left: 5px !important; padding-right: 5px !important;">
+        <div class="col-md-3 text-center padding-left-5 padding-right-5">
             <a href="/projects/{{project.id}}/{{project.titleUrl}}">
                 <img ng-src="/Images/{{project.mainImageUrl}}_tmbl.jpg" width="180" height="180" alt="{{project.name}}" />
             </a><br />
@@ -17,7 +17,7 @@
                 <i class="fa fa-comments margin-right-5"></i><span class="margin-right-10">{{project.comments}}</span>
             </div>
         </div>
-        <div class="col-md-9" style="padding-left: 5px !important;">
+        <div class="col-md-9 padding-left-5">
             <h4 class="margin-bottom-0"><a href="/projects/{{project.id}}/{{project.titleUrl}}">{{project.name}}</a></h4>
             <span class="font-size-085em">
                 <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{project.shortDate}}</span> |
@@ -43,5 +43,5 @@
 </div>
 
 <div ng-hide="projects.length > 0" class="text-center margin-bottom-30 margin-top-30">
-    <span style="font-style: italic">The user has no projects yet</span>
+    <span class="italic">The user has no projects yet</span>
 </div>

@@ -5,7 +5,7 @@
                     ng-model="options.orderOption"
                     ng-options="'Order by ' + option.name for option in options.orderOptions" ng-change="search()"></select>
         </div>
-        <div class="col-sm-6" style="padding-left: 10px;">
+        <div class="col-sm-6 padding-left-10">
             <label class="toggle" >
                 <input type="checkbox" name="checkbox-toggle" checked ng-model="options.desc">
                 <i></i>
@@ -18,11 +18,11 @@
             <select class="form-control pointer fsize13  " name="pagesize" ng-change="search()"
                     ng-model="options.pageSize" ng-options="pageSize + ' items per page' for pageSize in options.pageSizes"></select>
         </div>
-        <div class="col-sm-6" style="padding-left: 10px;">
+        <div class="col-sm-6 padding-left-10">
             <label class="toggle">
                 <input type="checkbox" ng-click="search()" name="checkbox-toggle" checked="" ng-model="options.scrolling" ng-change="scrollChecked()">
                 <i></i>
-                <span class="color999" ng-class="options.scrolling ? 'bold' : ''" style="display: inline-block; margin-top: 2px;">Infinite Scroll</span>
+                <span class="color999 display-inline-block margin-top-2" ng-class="options.scrolling ? 'bold' : ''">Infinite Scroll</span>
             </label>
         </div>
     </div>

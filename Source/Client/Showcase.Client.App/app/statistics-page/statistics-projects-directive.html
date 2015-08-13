@@ -1,13 +1,13 @@
-﻿<div class="row margin-bottom-10" ng-repeat="project in projects" style="line-height: 30px">
-    <div class="col-xs-2 nopadding" style="padding-right: 10px !important;">
-        <img class="img-thumbnail" style="float: right; width: 32px; height: 32px;" src="/Images/{{project.mainImageUrl}}_tmbl.jpg" />
+﻿<div class="row margin-bottom-10 line-height-30px" ng-repeat="project in projects">
+    <div class="col-xs-2 nopadding padding-right-10">
+        <img class="img-thumbnail statistics-project-image" src="/Images/{{project.mainImageUrl}}_tmbl.jpg" />
     </div>
     <div class="col-xs-1 nopadding">
         <span class="font-size-085em">
             <i class="fa fa-thumbs-up margin-right-5"></i><span>{{project.likes}}</span>
         </span>
     </div>
-    <div class="col-xs-6 nopadding" style="vertical-align: central; padding-top: 1px; padding-right: 5px !important;">
+    <div class="col-xs-6 nopadding statistics-project-name">
         <a href="/projects/{{project.id}}/{{project.titleUrl}}" class="break-all">{{project.name}}</a>
     </div>
     <div class="col-xs-2 nopadding">
