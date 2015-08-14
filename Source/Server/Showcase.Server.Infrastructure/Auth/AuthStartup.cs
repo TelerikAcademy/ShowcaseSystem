@@ -1,14 +1,11 @@
 ﻿namespace Showcase.Server.Infrastructure.Auth
 {
     using System;
-    using System.Threading.Tasks;
 
     using Microsoft.Owin;
     using Microsoft.Owin.Security.OAuth;
 
     using Owin;
-
-    using Showcase.Data;
 
     public class AuthStartup
     {

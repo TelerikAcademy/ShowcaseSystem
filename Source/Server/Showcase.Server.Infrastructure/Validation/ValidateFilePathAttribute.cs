@@ -2,8 +2,6 @@
 {
     using System;
     using System.Linq;
-    using System.Threading;
-    using System.Threading.Tasks;
     using System.Web.Http.Controllers;
     using System.Web.Http.Filters;
 
@@ -27,7 +25,7 @@
                 throw new ArgumentException(FileNotFoundErrorMessage);
             }
 
-            var fileHashLength = Constants.FileHashLength;
+            const int fileHashLength = Constants.FileHashLength;
             var id = file.Substring(fileHashLength);
             if (id.ToMd5Hash().Substring(0, fileHashLength) != file.Substring(0, fileHashLength))
             {
