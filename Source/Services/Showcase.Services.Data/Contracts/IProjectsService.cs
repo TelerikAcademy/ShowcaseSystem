@@ -18,7 +18,7 @@
 
         IQueryable<Project> LikedByUser(int userId);
 
-        IQueryable<Project> QueriedProjects(bool isAdmin, bool includeHidden = false);
+        IQueryable<Project> QueriedProjects(bool isAdmin = false, bool includeHidden = false);
 
         Task<Project> AddNew(
             Project project,

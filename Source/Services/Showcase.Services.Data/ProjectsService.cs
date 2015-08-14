@@ -59,8 +59,7 @@
             return query;
         }
 
-        // TODO: Also check if the user is admin
-        public IQueryable<Project> QueriedProjects(bool isAdmin, bool includeHidden = false)
+        public IQueryable<Project> QueriedProjects(bool isAdmin = false, bool includeHidden = false)
         {
             var query = this.projects.All();
             
