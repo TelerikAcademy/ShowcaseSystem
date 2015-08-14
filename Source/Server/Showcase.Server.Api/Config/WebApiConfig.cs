@@ -16,6 +16,7 @@
         public static void Register(HttpConfiguration config)
         {
             config.Formatters.Clear();
+            config.Formatters.Add(new RazorFormatter());
             config.Formatters.Add(new BrowserJsonFormatter());
 
             config.Routes.MapHttpRoute(
