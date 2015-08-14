@@ -1,13 +1,13 @@
 ﻿<section ng-controller="userProfileController as vm">
     <div class="container">
         <div class="row margin-bottom-50">
-            <div class="col-md-offset-1 col-md-3" animate="fadeInLeft" data-animation-delay="200">
+            <div class="col-md-offset-1 col-md-3 text-center-small" animate="fadeInLeft" data-animation-delay="200">
                 <img ng-src="{{vm.profile.profileAvatarUrl}}" width="220" height="220" alt="{{vm.user.username}}" />
             </div>
-            <div class="col-md-7 margin-bottom-10 margin-top-10" animate="fadeInRight" data-animation-delay="200">
+            <div class="col-md-7 margin-bottom-10 margin-top-10 text-center-small" animate="fadeInRight" data-animation-delay="200">
                 <h3 class="margin-bottom-40  color666"><strong>{{vm.user.username}}</strong></h3>
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-7 margin-bottom-30">
                         <div class="font-size-14em margin-bottom-20">
                             <i class="margin-right-10" ng-class="vm.profile.sex == 'Male' ? 'fa fa-male' : 'fa fa-female'"></i>{{vm.profile.firstName}} {{vm.profile.lastName}}
                         </div>

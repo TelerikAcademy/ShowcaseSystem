@@ -598,3 +598,9 @@ body {
 .a-grey-hover:hover {
     color: #666 !important;
 }
+
+@media(max-width: 991px) {
+    .text-center-small {
+        text-align: center;
+    }
+}

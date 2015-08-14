@@ -21,7 +21,7 @@
         {
             configuration.CreateMap<User, TopUserResponseModel>()
                 .ForMember(u => u.ProjectsCount, opt => opt.MapFrom(u => u.Projects.Count(pr => !pr.IsHidden)))
-                .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Projects.Where(pr => !pr.IsHidden).Sum(pr => pr.Likes.Count)));
+                .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => ((int?)u.Projects.Where(pr => !pr.IsHidden).Sum(pr => pr.Likes.Count)) ?? 0));
         }
     }
 }
