@@ -78,14 +78,14 @@
                 .then(function () {
                     vm.isHidden = true;
                 });
-        }
+        };
 
         vm.unhideProject = function (id) {
             projectDetailsData.unhideProject(id)
                 .then(function () {
                     vm.isHidden = false;
                 });
-        }
+        };
 
         function daydiff(first, second) {
             return (second - first) / (1000 * 60 * 60 * 24);
