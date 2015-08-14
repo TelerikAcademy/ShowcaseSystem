@@ -47,7 +47,7 @@
                 .Take(Constants.HomePageLatestProjectsCount);
         }
 
-        public IQueryable<Project> ProjectById(int id, bool isAdmin)
+        public IQueryable<Project> ProjectById(int id, bool isAdmin = false)
         {
             var query = this.projects.All().Where(p => p.Id == id);
 
