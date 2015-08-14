@@ -28,6 +28,8 @@
                 .To<ProjectCrawlerResponseModel>()
                 .FirstOrDefaultAsync();
 
+            model.HostUrl = this.Request.RequestUri.Authority;
+
             return this.Ok(model);
         }
     }

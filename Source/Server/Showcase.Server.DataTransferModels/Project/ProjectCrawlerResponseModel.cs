@@ -11,6 +11,8 @@
 
         public string Description { get; set; }
 
+        public string HostUrl { get; set; }
+
         public string MainImageUrl { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
