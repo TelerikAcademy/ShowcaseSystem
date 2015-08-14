@@ -11,6 +11,7 @@
                     theme: attrs.theme || 'showcase',
                     queryParam: attrs.queryParam,
                     minChars: attrs.minChars || 3,
+                    maxChars: attrs.maxChars || 1000,
                     hintText: attrs.hintText || 'Start typing and select',
                     canAddNewTokens: attrs.canAddNewTokens || false
                 });
