@@ -599,6 +599,11 @@ body {
     color: #666 !important;
 }
 
+.btn-default, .btn-default.active {
+    border-width: 1px !important;
+    border-color: rgba(0,0,0,.2) !important;
+}
+
 @media(max-width: 991px) {
     .text-center-small {
         text-align: center;
