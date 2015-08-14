@@ -39,7 +39,7 @@
             });
 
         vm.likeProject = function (id) {
-            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername == '') {
+            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername === '') {
                 notifier.error(authorizationErrorMessage);
                 return;
             }
@@ -52,7 +52,7 @@
         };
 
         vm.dislikeProject = function (id) {
-            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername == '') {
+            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername === '') {
                 notifier.error(authorizationErrorMessage);
                 return;
             }
@@ -65,7 +65,7 @@
         };
 
         vm.flagProject = function (id) {
-            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername == '') {
+            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername === '') {
                 notifier.error(authorizationErrorMessage);
                 return;
             }
@@ -77,7 +77,7 @@
         };
 
         vm.unflagProject = function (id) {
-            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername == '') {
+            if (!vm.currentLoggedInUsername || vm.currentLoggedInUsername === '') {
                 notifier.error(authorizationErrorMessage);
                 return;
             }
