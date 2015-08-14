@@ -11,7 +11,6 @@
     {
         public BrowserJsonFormatter()
         {
-            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
         }
 
