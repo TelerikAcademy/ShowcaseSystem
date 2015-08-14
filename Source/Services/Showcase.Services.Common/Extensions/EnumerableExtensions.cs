@@ -26,7 +26,10 @@
 
         public static async Task<IEnumerable<TResult>> ForEachAsync<T, TResult>(this IEnumerable<T> enumerable, Func<T, Task<TResult>> func)
         {
-            var tasks = enumerable.Select(item => Task.Run(() => func(item))).ToList();
+            var tasks = enumerable
+                .Select(item => Task.Run(() => func(item)))
+                .ToList();
+
             return await Task.WhenAll(tasks);
         }
 
