@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Server.Common.Validation
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
     using Showcase.Data.Common;
     using Showcase.Services.Common.Extensions;
@@ -17,13 +18,7 @@
             var valueAsString = value as string;
             if (valueAsString != null)
             {
-                foreach (var symbol in valueAsString)
-                {
-                    if (char.IsLetter(symbol) && !symbol.IsEnglishLetter())
-                    {
-                        return false;
-                    }
-                }
+                return valueAsString.All(symbol => !char.IsLetter(symbol) || symbol.IsEnglishLetter());
             }
 
             return true;

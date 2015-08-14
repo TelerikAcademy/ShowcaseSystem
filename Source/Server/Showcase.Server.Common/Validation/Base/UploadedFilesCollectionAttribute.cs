@@ -3,12 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using System.Linq;
     using Showcase.Server.Common.Models;
 
     public abstract class UploadedFilesCollectionAttribute : ValidationAttribute
     {
-        public UploadedFilesCollectionAttribute()
+        protected UploadedFilesCollectionAttribute()
         {
             this.MinFileSize = 0;
             this.MaxFileSize = Constants.MaxUploadedFileSize;
@@ -30,16 +30,11 @@
             var collectionOfFiles = value as ICollection<FileRequestModel>;
             if (collectionOfFiles != null)
             {
-                foreach (var file in collectionOfFiles)
-                {
-                    foreach (var validation in validations)
-                    {
-                        if (!validation(file))  
-                        {
-                            return false;
-                        }
-                    }
-                }
+                return !(collectionOfFiles
+                    .SelectMany(file => validations, (file, validation) => new {file, validation})
+                    .Where(x => !x.validation(x.file))
+                    .Select(x => x.file))
+                    .Any();
             }
 
             return true;

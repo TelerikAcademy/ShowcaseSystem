@@ -6,8 +6,8 @@
 
     public class CommaSeparatedCollectionLengthAttribute : ValidationAttribute
     {
-        private int minimumLength;
-        private int maximumLength;
+        private readonly int minimumLength;
+        private readonly int maximumLength;
 
         public CommaSeparatedCollectionLengthAttribute(int minimumLength, int maximumLength)
         {
