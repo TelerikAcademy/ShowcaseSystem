@@ -2,8 +2,6 @@
 {
     using System.Web.Http;
 
-    using Showcase.Data.Models;
-
     public class BaseController : ApiController
     {
     }

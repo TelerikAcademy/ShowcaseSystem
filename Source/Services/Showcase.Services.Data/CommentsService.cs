@@ -52,7 +52,7 @@
                 .All()
                 .Where(c => c.ProjectId == id && !c.IsHidden)
                 .OrderByDescending(c => c.CreatedOn)
-                .Skip((page - 1) * CommentsService.PageSize)
+                .Skip((page - 1) * PageSize)
                 .Take(PageSize);
         }
 
@@ -62,7 +62,7 @@
                 .All()
                 .Where(c => c.User.UserName == username && !c.IsHidden)
                 .OrderByDescending(c => c.CreatedOn)
-                .Skip((page - 1) * CommentsService.PageSize)
+                .Skip((page - 1) * PageSize)
                 .Take(PageSize);
         }
 

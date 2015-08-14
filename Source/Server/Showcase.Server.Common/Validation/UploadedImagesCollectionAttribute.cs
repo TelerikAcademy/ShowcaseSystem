@@ -1,9 +1,7 @@
 ﻿namespace Showcase.Server.Common.Validation
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
-    using Showcase.Server.Common.Models;
     using Showcase.Server.Common.Validation.Base;
 
     public class UploadedImagesCollectionAttribute : UploadedFilesCollectionAttribute

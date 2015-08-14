@@ -73,13 +73,13 @@
         {
             get
             {
-                if (this.Description.Length <= ProjectResponseModel.ShortDescriptionLength)
+                if (this.Description.Length <= ShortDescriptionLength)
                 {
                     return this.Description;
                 }
                 else
                 {
-                    return this.Description.Substring(0, ProjectResponseModel.ShortDescriptionLength) + "...";
+                    return this.Description.Substring(0, ShortDescriptionLength) + "...";
                 }
             }
         }

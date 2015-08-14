@@ -1,11 +1,8 @@
 ﻿namespace Showcase.Services.Data
 {
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
-    using Showcase.Data;
-    using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Base;

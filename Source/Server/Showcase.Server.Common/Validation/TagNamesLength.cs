@@ -8,8 +8,8 @@
 
     public class TagNamesLength : ValidationAttribute
     {
-        private int minimumLength;
-        private int maximumLength;
+        private readonly int minimumLength;
+        private readonly int maximumLength;
 
         public TagNamesLength(int minimumLength, int maximumLength)
         {
@@ -29,13 +29,7 @@
                     .Where(t => !int.TryParse(t, out result))
                     .ToList();
 
-                foreach (var tag in tags)
-                {
-                    if (tag.Length < this.minimumLength || tag.Length > this.maximumLength)
-                    {
-                        return false;
-                    }
-                }
+                return tags.All(tag => this.minimumLength <= tag.Length && tag.Length <= this.maximumLength);
             }
 
             return true;

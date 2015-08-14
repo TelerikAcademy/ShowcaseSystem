@@ -3,13 +3,14 @@
     using System.ComponentModel.DataAnnotations;
 
     using Showcase.Data.Common;
+    using Showcase.Server.Common;
     using Showcase.Server.Common.Validation;
 
     public class CommentRequestModel
     {
         public int Id { get; set; }
 
-        [Display(Name = "Comment")]
+        [Display(Name = Constants.CommentTextDisplayName)]
         [Required]
         [MinLength(ValidationConstants.MinCommentContentLength)]
         [MaxLength(ValidationConstants.MaxCommentContentLength)]

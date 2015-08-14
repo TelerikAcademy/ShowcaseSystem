@@ -2,17 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.Owin.Security;
     using Microsoft.Owin.Security.Cookies;
     using Microsoft.Owin.Security.OAuth;
 
-    using Ninject;
-
     using Showcase.Data.Models;
-    using Showcase.Services.Data;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Logic;
 
@@ -56,7 +52,7 @@
                 var cookiesIdentity = ClaimsIdentityFactory.Create(user, CookieAuthenticationDefaults.AuthenticationType);
 
                 AuthenticationProperties properties = CreateProperties();
-                AuthenticationTicket ticket = new AuthenticationTicket(oauthIdentity, properties);
+                var ticket = new AuthenticationTicket(oauthIdentity, properties);
                 context.Validated(ticket);
                 context.Request.Context.Authentication.SignIn(cookiesIdentity);
             }
@@ -64,7 +60,7 @@
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
-            foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
+            foreach (var property in context.Properties.Dictionary)
             {
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
@@ -86,7 +82,7 @@
         {
             if (context.ClientId == this.publicClientId)
             {
-                Uri expectedRootUri = new Uri(context.Request.Uri, "/");
+                var expectedRootUri = new Uri(context.Request.Uri, "/");
 
                 if (expectedRootUri.AbsoluteUri == context.RedirectUri)
                 {

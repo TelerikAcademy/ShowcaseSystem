@@ -1,10 +1,7 @@
 ﻿namespace Showcase.Server.DataTransferModels.Statistics
 {
-    using System.Linq;
-
     using AutoMapper;
     using MissingFeatures;
-    using Newtonsoft.Json;
 
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;

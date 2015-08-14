@@ -2,7 +2,6 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq.Expressions;
 
     using Showcase.Data.Common;
     using Showcase.Services.Data.Models;

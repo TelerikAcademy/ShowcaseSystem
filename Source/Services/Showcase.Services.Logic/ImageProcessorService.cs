@@ -29,7 +29,7 @@
                             if (createdImage.Image.Width > width)
                             {
                                 createdImage = createdImage
-                                    .Resize(new ResizeLayer(new Size(width, 0), resizeMode: ResizeMode.Max));
+                                    .Resize(new ResizeLayer(new Size(width, 0), ResizeMode.Max));
                             }
 
                             createdImage

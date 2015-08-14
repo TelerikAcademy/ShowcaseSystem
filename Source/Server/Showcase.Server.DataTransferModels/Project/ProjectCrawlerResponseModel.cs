@@ -1,6 +1,7 @@
 ﻿namespace Showcase.Server.DataTransferModels.Project
 {
     using AutoMapper;
+
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
 

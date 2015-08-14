@@ -13,8 +13,8 @@
         private const string FileTypeHeaderValue = "application/octet-stream";
         private const string AttachmentContentDispositionHeaderValue = "attachment";
 
-        private FileStream fileStream;
-        private string fileName;
+        private readonly FileStream fileStream;
+        private readonly string fileName;
 
         public FileResult(FileStream fileStream, string fileName)
         {
@@ -24,11 +24,13 @@
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
-            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
-            result.Content = new StreamContent(this.fileStream);
+            var result = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(this.fileStream) };
             result.Content.Headers.ContentType = new MediaTypeHeaderValue(FileTypeHeaderValue);
-            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue(AttachmentContentDispositionHeaderValue);
-            result.Content.Headers.ContentDisposition.FileName = this.fileName;
+            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue(AttachmentContentDispositionHeaderValue)
+            {
+                FileName = this.fileName
+            };
+
             return Task.FromResult(result);
         }
     }

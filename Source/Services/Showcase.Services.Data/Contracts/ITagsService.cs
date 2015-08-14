@@ -11,7 +11,7 @@
     {
         IQueryable<Tag> SearchByName(string name);
 
-        Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tags);
+        Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tagsAsCommaSeparatedValues);
 
         Task<bool> AllRequiredTagsArePresent(IEnumerable<int> tagsIds);
 

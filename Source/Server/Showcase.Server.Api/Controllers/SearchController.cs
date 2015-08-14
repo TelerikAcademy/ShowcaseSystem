@@ -1,16 +1,11 @@
 ﻿namespace Showcase.Server.Api.Controllers
 {
-    using System.Linq;
     using System.Web.Http;
-    using System.Web.OData;
-    using System.Web.OData.Query;
-    using System.Web.OData.Routing;
 
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Server.Api.Controllers.Base;
-    using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels.Project;
     using Showcase.Server.Infrastructure.Queries;
     using Showcase.Services.Data.Contracts;

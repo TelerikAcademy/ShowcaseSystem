@@ -15,7 +15,7 @@
 
     public class StatisticsController : BaseController
     {
-        private IStatisticsService statisticsService;
+        private readonly IStatisticsService statisticsService;
 
         public StatisticsController(IStatisticsService statisticsService)
         {
