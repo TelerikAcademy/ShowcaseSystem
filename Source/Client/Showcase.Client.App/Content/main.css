@@ -482,8 +482,8 @@ li.token-input-selected-token-showcase span {
     /*opacity: 0.7 !important;*/
 }
 
-.break-all {
-    word-break: break-all;
+.break-word {
+    word-break: break-word;
 }
 
 html,

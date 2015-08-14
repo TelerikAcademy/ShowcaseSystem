@@ -16,7 +16,7 @@
                 <input type="button" class="btn btn-xs btn-default margin-left-10" ng-show="comment.username == loggedInUsername" ng-hide="edittingComments[comment.id]" value="edit" ng-click="editComment(comment.id)" />
             </span>
         </div>
-        <p class="margin-bottom-10 nomargin-top break-all" ng-hide="edittingComments[comment.id]">
+        <p class="margin-bottom-10 nomargin-top break-word" ng-hide="edittingComments[comment.id]">
             {{comment.content}}
         </p>
         <div ng-show="edittingComments[comment.id]">
