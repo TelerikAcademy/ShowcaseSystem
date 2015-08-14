@@ -34,7 +34,7 @@
                         <section>
                             <label class="label">Season *</label>
                             <label class="select">
-                                <select ng-model="selectedSeason">
+                                <select ng-model="tags.selectedSeason">
                                     <option value="">Select season</option>
                                     <option value="{{option.id}}" ng-repeat="option in vm.seasonTags">{{option.name}}</option>
                                 </select>
@@ -45,7 +45,7 @@
                         <section>
                             <label class="label">Used languages and technologies *</label>
                             <label class="select select-multiple">
-                                <select multiple="multiple" ng-model="selectedLanguagesAndTechnologies">
+                                <select multiple="multiple" ng-model="tags.selectedLanguagesAndTechnologies">
                                     <option value="{{option.id}}" ng-repeat="option in vm.languageAndTechnologyTags">{{option.name}}</option>
                                 </select>
                             </label>
@@ -55,7 +55,7 @@
                         <section>
                             <label class="label">Tags *</label>
                             <label class="input">
-                                <input type="text" ng-model="project.tags" id="tags" token-input data-url="/api/Tags/Search" data-query-param="name" data-min-chars="2" data-max-chars="30" data-hint-text="Start typing tag name and select" data-can-add-new-tokens="true">
+                                <input type="text" user-tags="tags.userSelectedTags" id="tags" token-input data-url="/api/Tags/Search" data-query-param="name" data-min-chars="2" data-max-chars="30" data-hint-text="Start typing tag name and select" data-can-add-new-tokens="true">
                                 <b class="tooltip tooltip-top-right">Add at least 2 tags to your project - type of project, keywords, etc.</b>
                             </label>
                         </section>
@@ -103,7 +103,7 @@
                         <div uploaded-images-container id="image-preview-container" images="project.images" main-image="project.mainImage" class="text-center" />
 
                         <footer>
-                            <button class="button" ng-disabled="vm.disabledSubmit" ng-click="vm.submitProject(project, selectedSeason, selectedLanguagesAndTechnologies)">Submit</button>
+                            <button class="button" ng-disabled="vm.disabledSubmit || !project || !tags" ng-click="vm.submitProject(project, tags)">Submit</button>
                             <button type="button" class="button button-secondary pull-left" onclick="window.history.back();">Back</button>
                         </footer>
                     </fieldset>
