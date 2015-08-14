@@ -21,7 +21,7 @@
 
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         public string MainImageUrl { get; set; }
 
@@ -55,7 +55,7 @@
         {
             get
             {
-                return this.Name.ToUrl();
+                return this.Title.ToUrl();
             }
         }
 
@@ -86,7 +86,6 @@
         {
             string username = null;
             configuration.CreateMap<Project, ProjectResponseModel>()
-                .ForMember(pr => pr.Name, opt => opt.MapFrom(pr => pr.Title))
                 .ForMember(pr => pr.Likes, opt => opt.MapFrom(pr => pr.Likes.Count))
                 .ForMember(pr => pr.Visits, opt => opt.MapFrom(pr => pr.Visits.Count))
                 .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
