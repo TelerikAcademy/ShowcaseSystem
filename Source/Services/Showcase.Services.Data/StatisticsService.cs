@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Showcase.Data.Common.Models;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -47,6 +48,7 @@
         {
             return this.tags
                 .All()
+                .Where(t => t.Type != TagType.Season)
                 .OrderByDescending(t => t.Projects.Count)
                 .Take(Constants.StatisticsTopTagsCount);
         }
