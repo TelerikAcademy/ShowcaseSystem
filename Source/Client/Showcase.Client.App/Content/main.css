@@ -594,3 +594,7 @@ body {
     max-width: 250px; 
     max-height: 250px;
 }
+
+.a-grey-hover:hover {
+    color: #666 !important;
+}
