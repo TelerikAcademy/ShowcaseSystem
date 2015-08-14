@@ -14,11 +14,11 @@
 
         IQueryable<Project> MostPopular();
 
-        IQueryable<Project> ProjectById(int id, bool isAdmin);
+        IQueryable<Project> ProjectById(int id, bool isAdmin = false);
 
         IQueryable<Project> LikedByUser(int userId);
 
-        IQueryable<Project> QueriedProjects(bool isAdmin, bool includeHidden = false);
+        IQueryable<Project> QueriedProjects(bool isAdmin = false, bool includeHidden = false);
 
         Task<Project> AddNew(
             Project project,

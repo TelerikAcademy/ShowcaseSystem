@@ -65,6 +65,9 @@
     <Reference Include="Owin">
       <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\..\packages\RazorEngine.3.7.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
@@ -83,6 +86,10 @@
     <Reference Include="System.Web.OData">
       <HintPath>..\..\packages\Microsoft.AspNet.OData.5.6.0\lib\net45\System.Web.OData.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,6 +106,7 @@
     <Compile Include="FileSystem\FileSystemService.cs" />
     <Compile Include="FileSystem\IFileSystemService.cs" />
     <Compile Include="Formatters\BrowserJsonFormatter.cs" />
+    <Compile Include="Formatters\RazorFormatter.cs" />
     <Compile Include="HttpActionResults\FileResult.cs" />
     <Compile Include="Queries\ProjectSearchQueryAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,6 +138,10 @@
     <ProjectReference Include="..\Showcase.Server.Common\Showcase.Server.Common.csproj">
       <Project>{a76b5891-7edb-4b8f-89b6-03a8924393a1}</Project>
       <Name>Showcase.Server.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Showcase.Server.DataTransferModels\Showcase.Server.DataTransferModels.csproj">
+      <Project>{1bdc2d81-58b5-4107-b795-715b5c1bdb19}</Project>
+      <Name>Showcase.Server.DataTransferModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

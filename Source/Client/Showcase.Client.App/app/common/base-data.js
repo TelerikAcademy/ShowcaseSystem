@@ -5,7 +5,7 @@
         var headers = {
             'Content-Type': 'application/json'
         },
-            authorizationErrorMessage = 'You must be logged in to do that.';
+            authorizationErrorMessage = 'You must be logged in to do that';
 
         function get(url, authorize) {
             var deferred = $q.defer();

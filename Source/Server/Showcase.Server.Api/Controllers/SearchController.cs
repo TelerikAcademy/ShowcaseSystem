@@ -30,7 +30,7 @@
         public IHttpActionResult Get([FromUri]bool includeHidden = false)
         {
             var projects = this.projectsService
-                .QueriedProjects(this.CurrentUser.IsAdmin, includeHidden) // TODO: make isAdmin optional parameter
+                .QueriedProjects(this.CurrentUser.IsAdmin, includeHidden)
                 .Project()
                 .To<ProjectSimpleResponseModel>();
 

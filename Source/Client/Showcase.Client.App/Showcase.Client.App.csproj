@@ -295,6 +295,7 @@
     <Content Include="scripts\ng-infinite-scroll.min.js.map">
       <DependentUpon>ng-infinite-scroll.min.js</DependentUpon>
     </Content>
+    <Content Include="crawlers.cshtml" />
     <None Include="Properties\PublishProfiles\best.telerikacademy.com.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

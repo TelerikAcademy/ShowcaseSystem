@@ -37,9 +37,7 @@
         public async Task<User> Login(string username, string password)
         {
             var url = string.Format(ApiCheckUserLoginUrlFormat, ApiKey, username, password);
-            var response = await this.client.GetAsync(url);
-            var jsonString = await response.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<CheckUserLoginApiModel>(jsonString);
+            var model = await this.RemoteGet<CheckUserLoginApiModel>(url);
 
             return model.IsValid
                        ? new User
@@ -54,9 +52,7 @@
         public async Task<IEnumerable<User>> UsersInfo(IEnumerable<string> usernames)
         {
             var url = string.Format(ApiGetUsersAvatarsUrlFormat, ApiKey, JsonConvert.SerializeObject(usernames));
-            var response = await this.client.GetAsync(url);
-            var jsonString = await response.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<IEnumerable<CheckUserLoginApiModel>>(jsonString);
+            var model = await this.RemoteGet<IEnumerable<CheckUserLoginApiModel>>(url);
 
             return
                 model.Where(x => x.IsValid)
@@ -66,27 +62,26 @@
         public async Task<IEnumerable<string>> SearchByUsername(string username, int maxResults = 10)
         {
             var url = string.Format(ApiSearchByUsernameUrlFormat, ApiKey, username, maxResults);
-            var response = await this.client.GetAsync(url);
-            var jsonString = await response.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<IEnumerable<string>>(jsonString);
-            return model;
+            return await this.RemoteGet<IEnumerable<string>>(url);
         }
 
         public async Task<RemoteUserProfile> ProfileInfo(string username)
         {
             var url = string.Format(ApiUserInfoUrlFormat, ApiKey, username);
-            var response = await this.client.GetAsync(url);
-            var jsonString = await response.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<RemoteUserProfile>(jsonString);
-            return model;
+            return await this.RemoteGet<RemoteUserProfile>(url);
         }
 
         public async Task<bool> UsersExist(IEnumerable<string> usernames)
         {
             var url = string.Format(ApiAllGivenUsernamesExistsUrlFormat, ApiKey, JsonConvert.SerializeObject(usernames));
+            return await this.RemoteGet<bool>(url);
+        }
+
+        private async Task<T> RemoteGet<T>(string url)
+        {
             var response = await this.client.GetAsync(url);
             var jsonString = await response.Content.ReadAsStringAsync();
-            var model = JsonConvert.DeserializeObject<bool>(jsonString);
+            var model = JsonConvert.DeserializeObject<T>(jsonString);
             return model;
         }
     }
