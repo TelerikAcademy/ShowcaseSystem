@@ -8,6 +8,7 @@
 
     using Showcase.Data.Common;
     using Showcase.Data.Models;
+    using Showcase.Server.Common;
     using Showcase.Server.Common.Mapping;
     using Showcase.Server.Common.Models;
     using Showcase.Server.Common.Validation;
@@ -38,13 +39,13 @@
         [TagNamesLength(ValidationConstants.MinTagNameLength, ValidationConstants.MaxTagNameLength)]
         public string Tags { get; set; }
 
-        [Display(Name = "Repository URL")]
+        [Display(Name = Constants.RepositoryUrlDisplayName)]
         [Required]
         [MaxLength(ValidationConstants.MaxProjectUrlLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
         [Url(ErrorMessage = ValidationConstants.UrlErrorMessage)]
         public string RepositoryUrl { get; set; }
 
-        [Display(Name = "Live Demo URL")]
+        [Display(Name = Constants.LiveDemoUrlDisplayName)]
         [MaxLength(ValidationConstants.MaxProjectUrlLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
         [NullableUrlAttribute(ErrorMessage = ValidationConstants.UrlErrorMessage)]
         public string LiveDemoUrl
@@ -80,7 +81,7 @@
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (!this.Images.Any(i => i.OriginalFileName == this.MainImage))
+            if (this.Images.All(i => i.OriginalFileName != this.MainImage))
             {
                 yield return new ValidationResult(ValidationConstants.MainImageDoesNotExistErrorMessage);
             }

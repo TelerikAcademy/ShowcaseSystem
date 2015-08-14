@@ -15,5 +15,9 @@
         public const string RequestCannotBeEmpty = "Request cannot be empty";
         public const string RequestedResourceWasNotFound = "The requested resource was not found";
         public const string InvalidPageNumber = "Invalid page number";
+
+        public const string CommentTextDisplayName = "Comment";
+        public const string RepositoryUrlDisplayName = "Repository URL";
+        public const string LiveDemoUrlDisplayName = "Live Demo URL";
     }
 }

@@ -1,7 +1,6 @@
 ﻿namespace Showcase.Server.DataTransferModels.User
 {
     using System;
-    using System.Linq.Expressions;
 
     public class UserAutocompleteResponseModel
     {

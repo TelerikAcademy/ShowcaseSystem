@@ -1,8 +1,5 @@
 ﻿namespace Showcase.Server.DataTransferModels.User
 {
-    using AutoMapper;
-    using MissingFeatures;
-
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
     
