@@ -7,9 +7,15 @@
 <head>
     <meta charset="utf-8" />
     <title>Telerik Academy Showcase System</title>
-    <meta name="keywords" content="showcase system" />
-    <meta name="description" content="showcase system" />
+    <meta name="keywords" content="Telerik Academy Showcase System" />
+    <meta name="description" content="Telerik Academy Showcase System" />
     <meta name="Author" content="Telerik Academy" />
+
+    <meta name="title" content="Telerik Showcase System" />
+    <meta name="description" content="Showcase system for students\' projects in Telerik Academy" />
+    <meta property="og:image" content="/content/images/telerik-logo.png" />
+    <meta property="og:image:type" content="image/png" />
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
@@ -29,8 +35,8 @@
         <script src="/scripts/epona/plugins/respond.js"></script>
     <![endif]-->
 </head>
-<body class="smoothscroll" ng-app="showcaseSystem" ng-cloak>
-    <div id="wrapper" ng-controller="MainController as vm">
+<body class="smoothscroll">
+    <div id="wrapper" ng-app="showcaseSystem" ng-cloak ng-controller="MainController as vm">
         <div id="header" showcase-header animate="fadeIn"></div>
 
         <div id="content" ng-view></div>
@@ -43,7 +49,6 @@
 
     <!-- inject:vendors:js -->
     <!-- endinject -->
-
     <!-- inject:js -->
     <!-- endinject -->
 
