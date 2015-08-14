@@ -25,9 +25,9 @@
                 throw new ArgumentException(FileNotFoundErrorMessage);
             }
 
-            const int fileHashLength = Constants.FileHashLength;
-            var id = file.Substring(fileHashLength);
-            if (id.ToMd5Hash().Substring(0, fileHashLength) != file.Substring(0, fileHashLength))
+            const int FileHashLength = Constants.FileHashLength;
+            var id = file.Substring(FileHashLength);
+            if (id.ToMd5Hash().Substring(0, FileHashLength) != file.Substring(0, FileHashLength))
             {
                 throw new InvalidOperationException(FileNotFoundErrorMessage);
             }

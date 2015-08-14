@@ -2,8 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using Showcase.Server.Common;
     using Showcase.Data.Common;
+    using Showcase.Server.Common;
     using Showcase.Server.Common.Validation;
 
     public class CommentRequestModel

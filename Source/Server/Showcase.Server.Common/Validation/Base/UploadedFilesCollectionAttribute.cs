@@ -30,10 +30,10 @@
             var collectionOfFiles = value as ICollection<FileRequestModel>;
             if (collectionOfFiles != null)
             {
-                return !(collectionOfFiles
-                    .SelectMany(file => validations, (file, validation) => new {file, validation})
+                return !collectionOfFiles
+                    .SelectMany(file => validations, (file, validation) => new { file, validation })
                     .Where(x => !x.validation(x.file))
-                    .Select(x => x.file))
+                    .Select(x => x.file)
                     .Any();
             }
 
