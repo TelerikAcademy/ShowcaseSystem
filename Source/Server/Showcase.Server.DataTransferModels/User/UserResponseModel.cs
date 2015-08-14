@@ -34,10 +34,13 @@
 
         public void CreateMappings(IConfiguration configuration)
         {
+            string visitorUsername = null;
             string username = null;
+            bool isAdmin = false;
             configuration.CreateMap<User, UserResponseModel>()
                 .ForMember(u => u.ProjectsCount, opt => opt.MapFrom(u => u.Projects.Count))
                 .ForMember(u => u.CommentsCount, opt => opt.MapFrom(u => u.Comments.Count))
+                .ForMember(u => u.Projects, opt => opt.MapFrom(u => u.Projects.Where(pr => !pr.IsHidden || isAdmin || pr.Collaborators.Any(c => c.UserName == visitorUsername))))
                 .ForMember(u => u.LikesCount, opt => opt.MapFrom(u => u.Likes.Count))
                 .ForMember(
                     u => u.Collaborators,

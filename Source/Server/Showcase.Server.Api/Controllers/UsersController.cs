@@ -24,10 +24,16 @@
         [HttpGet]
         public async Task<IHttpActionResult> Profile(string username)
         {
+            string visitorUsername = null;
+            if (this.CurrentUser != null)
+            {
+                visitorUsername = this.CurrentUser.UserName;
+            }
+
             var model = await this.UsersService
                 .ByUsername(username)
                 .Project()
-                .To<UserResponseModel>(new { username })
+                .To<UserResponseModel>(new { username, visitorUsername, isAdmin = this.CurrentUser.IsAdmin })
                 .FirstOrDefaultAsync();
 
             return this.Data(model);

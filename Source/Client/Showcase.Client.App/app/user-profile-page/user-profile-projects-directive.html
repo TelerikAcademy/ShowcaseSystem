@@ -14,7 +14,8 @@
             <div class="margin-top-5">
                 <i class="fa fa-eye margin-right-5"></i><span class="margin-right-10">{{project.visits}}</span>
                 <i class="fa fa-thumbs-up margin-right-5"></i><span class="margin-right-10">{{project.likes}}</span>
-                <i class="fa fa-comments margin-right-5"></i><span class="margin-right-10">{{project.comments}}</span>
+                <i class="fa fa-comments margin-right-5"></i><span class="margin-right-10">{{project.comments}}</span><br />
+                <label class="label label-danger" ng-show="project.isHidden">HIDDEN PROJECT</label>
             </div>
         </div>
         <div class="col-md-9 padding-left-5">

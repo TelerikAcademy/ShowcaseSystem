@@ -51,6 +51,8 @@
 
         public bool IsFlagged { get; set; }
 
+        public bool IsHidden { get; set; }
+
         public string TitleUrl
         {
             get

@@ -25,6 +25,10 @@
         function unflagProject(id) {
             return data.post('flags/unflag/' + id, null, true);
         }
+
+        function hideProject(id) {
+            return data.post('projects/hide/' + id, null, true);
+        }
                 
         return {
             getProject: getProject,
@@ -32,7 +36,8 @@
             dislikeProject: dislikeProject,
             visitProject: visitProject,
             flagProject: flagProject,
-            unflagProject: unflagProject
+            unflagProject: unflagProject,
+            hideProject: hideProject
         };
     };
     

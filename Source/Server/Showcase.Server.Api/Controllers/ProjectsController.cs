@@ -148,5 +148,22 @@
             await this.visitsService.VisitProject(id);
             return this.Ok();
         }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IHttpActionResult> Hide(int id)
+        {
+            var isOwnProject = await this.projectsService
+                .ProjectById(id, this.CurrentUser.IsAdmin)
+                .AnyAsync(p => p.Collaborators.Any(c => c.UserName == this.CurrentUser.UserName));
+
+            if (!isOwnProject && !this.CurrentUser.IsAdmin)
+            {
+                return this.Data(false, "You are not authorized to hide this project.");
+            }
+
+            await this.projectsService.HideProject(id);
+            return this.Ok();
+        }
     }
 }

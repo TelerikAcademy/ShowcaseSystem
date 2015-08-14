@@ -6,11 +6,6 @@
         var id = $routeParams.id;
         var titleUrl = $routeParams.title;
 
-        identity.getUser()
-            .then(function (user) {
-                vm.currentLoggedInUsername = user.userName;
-            });
-
         projectDetailsData.getProject(id, titleUrl)
             .then(function (project) {
                 var lastVisit = $window.localStorage.getItem("projectVisit" + id);
@@ -35,6 +30,17 @@
                 vm.isLiked = project.isLiked;
                 vm.isFlagged = project.isFlagged;
                 vm.images = project.imageUrls;
+                vm.isHidden = project.isHidden;
+
+                identity.getUser()
+                    .then(function (user) {
+                        vm.isAdmin = user.isAdmin;
+                        vm.currentLoggedInUsername = user.userName;
+
+                        vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
+                            return element.username === user.userName;
+                        });
+                    });
             });
 
         vm.likeProject = function (id) {
@@ -66,6 +72,13 @@
                     vm.isFlagged = false;
                 });
         };
+
+        vm.hideProject = function (id) {
+            projectDetailsData.hideProject(id, null, true)
+                .then(function () {
+                    vm.isHidden = true;
+                });
+        }
 
         function daydiff(first, second) {
             return (second - first) / (1000 * 60 * 60 * 24);

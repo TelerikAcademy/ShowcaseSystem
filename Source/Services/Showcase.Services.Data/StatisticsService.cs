@@ -29,7 +29,6 @@
         {
             return this.projects
                 .All()
-                .Where(p => !p.Collaborators.Any(c => c.IsAdmin))
                 .GroupBy(pr => 0); // Don't ask!
         }
 

@@ -30,7 +30,7 @@
         {
             return this.projects
                 .All()
-                .Where(p => !p.IsHidden && !p.Collaborators.Any(c => c.IsAdmin))
+                .Where(p => !p.IsHidden)
                 .OrderByDescending(pr => pr.CreatedOn)
                 .Take(Constants.HomePageLatestProjectsCount);
         }
@@ -94,6 +94,17 @@
             this.projects.Add(project);
             await this.projects.SaveChangesAsync();
             return project;
+        }
+
+        public async Task HideProject(int id)
+        {
+            var project = this.projects.All().FirstOrDefault(p => p.Id == id);
+
+            if (project != null)
+            {
+                project.IsHidden = true;
+                await this.projects.SaveChangesAsync();
+            }
         }
 
         private int GetMainImageId(Project project, string mainImage)
