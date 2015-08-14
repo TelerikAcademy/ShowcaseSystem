@@ -3,25 +3,30 @@
     using System;
     using System.IO;
     using System.Net;
+    using System.Net.Http;
     using System.Net.Http.Formatting;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
+    using System.Web.Hosting;
 
     using RazorEngine;
     using RazorEngine.Templating;
-    using System.Net.Http;
 
     using Showcase.Server.DataTransferModels.Project;
-    using System.Web.Hosting;
+
+    using TextEncoding = System.Text.Encoding;
 
     public class RazorFormatter : MediaTypeFormatter
     {
+        private const string TextHtmlMediaType = "text/html";
+        private const string ApplicationXHtmlMediaType = "application/xhtml+xml";
+
         private const string CrawlersIndexView = "~/crawlers.cshtml";
 
         public RazorFormatter()
         {
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/xhtml+xml"));
+            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue(TextHtmlMediaType));
+            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue(ApplicationXHtmlMediaType));
         }
 
         public override bool CanWriteType(Type type)
@@ -44,7 +49,6 @@
             var task = Task.Factory.StartNew(() =>
             {
                 var viewPath = HostingEnvironment.MapPath(CrawlersIndexView);
-
                 var template = File.ReadAllText(viewPath);
 
                 if (!Engine.Razor.IsTemplateCached(type.Name, type))
@@ -54,10 +58,8 @@
 
                 var razor = Engine.Razor.Run(type.Name, type, value);
 
-                var buf = System.Text.Encoding.Default.GetBytes(razor);
-
+                var buf = TextEncoding.Default.GetBytes(razor);
                 writeStream.Write(buf, 0, buf.Length);
-
                 writeStream.Flush();
             });
 
