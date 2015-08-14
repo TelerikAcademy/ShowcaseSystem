@@ -14,6 +14,8 @@
 
     using Showcase.Server.DataTransferModels.Project;
 
+    using TextEncoding = System.Text.Encoding;
+
     public class RazorFormatter : MediaTypeFormatter
     {
         private const string TextHtmlMediaType = "text/html";
@@ -23,8 +25,8 @@
 
         public RazorFormatter()
         {
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue(TextHtmlMediaType));
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue(ApplicationXHtmlMediaType));
+            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue(TextHtmlMediaType));
+            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue(ApplicationXHtmlMediaType));
         }
 
         public override bool CanWriteType(Type type)
@@ -56,7 +58,7 @@
 
                 var razor = Engine.Razor.Run(type.Name, type, value);
 
-                var buf = System.Text.Encoding.Default.GetBytes(razor);
+                var buf = TextEncoding.Default.GetBytes(razor);
                 writeStream.Write(buf, 0, buf.Length);
                 writeStream.Flush();
             });
