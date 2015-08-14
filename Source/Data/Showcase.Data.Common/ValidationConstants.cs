@@ -25,7 +25,7 @@
 
         // Tag
         public const int MinTagNameLength = 2;
-        public const int MaxTagNameLength = 20;
+        public const int MaxTagNameLength = 30;
         public const int TagColorLength = 6;
 
         // File
@@ -44,5 +44,6 @@
         public const string MainImageDoesNotExistErrorMessage = "You must select main image for your project from the uploaded images";
         public const string ProjectImagesCountErrorMessage = "You must select between {0} and {1} images";
         public const string RequiredTagsErrorMessage = "You must select season and at least one used language or technology";
+        public const string TagNamesLengthErrorMessage = "Tag names must be between {0} and {1} characters";
     }
 }
