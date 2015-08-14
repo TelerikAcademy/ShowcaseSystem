@@ -30,7 +30,7 @@
         {
             return this.projects
                 .All()
-                .Where(p => !p.IsHidden)
+                .Where(p => !p.IsHidden && !p.Collaborators.Any(c => c.IsAdmin))
                 .OrderByDescending(pr => pr.CreatedOn)
                 .Take(Constants.HomePageLatestProjectsCount);
         }
@@ -39,7 +39,7 @@
         {
             return this.projects
                 .All()
-                .Where(p => !p.IsHidden)
+                .Where(p => !p.IsHidden && !p.Collaborators.Any(c => c.IsAdmin))
                 .OrderByDescending(pr => pr.Likes.Count)
                 .ThenByDescending(pr => pr.Comments.Count)
                 .ThenByDescending(pr => pr.Visits.Count)
