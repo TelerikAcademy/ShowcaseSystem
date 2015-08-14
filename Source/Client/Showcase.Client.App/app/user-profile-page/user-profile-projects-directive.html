@@ -35,7 +35,7 @@
             </div>
             <div class="margin-top-0 font-size-09em">
                 <a href="projects/search?$orderby=createdOn&$top=4&$skip=0&$count=true&$filter=tags%2Fany(t:contains(t%2Fname,%27{{tag.name}}%27))" ng-repeat="tag in project.tags">
-                    <span class="label label-default" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
+                    <span class="label label-default capital-name" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
                 </a>
             </div>
         </div>
