@@ -28,7 +28,7 @@
                 .To<ProjectCrawlerResponseModel>()
                 .FirstOrDefaultAsync();
 
-            return Ok(model);
+            return this.Ok(model);
         }
     }
 }
