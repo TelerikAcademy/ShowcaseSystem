@@ -15,7 +15,7 @@
 
         private readonly IObjectFactory objectFactory;
 
-        public FileInfoService(IObjectFactory objectFactory)
+        protected FileInfoService(IObjectFactory objectFactory)
         {
             this.objectFactory = objectFactory;
         }

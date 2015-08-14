@@ -20,9 +20,12 @@
         private void SetCurrentUser()
         {
             var username = this.User.Identity.Name;
-            this.CurrentUser = this.UsersService
-                .ByUsername(username)
-                .FirstOrDefault();
+            if (username != null)
+            {
+                this.CurrentUser = this.UsersService
+                    .ByUsername(username)
+                    .FirstOrDefault();
+            }
         }
     }
 }

@@ -25,15 +25,17 @@
         public async Task<IHttpActionResult> Profile(string username)
         {
             string visitorUsername = null;
+            var isAdmin = false;
             if (this.CurrentUser != null)
             {
                 visitorUsername = this.CurrentUser.UserName;
+                isAdmin = this.CurrentUser.IsAdmin;
             }
 
             var model = await this.UsersService
                 .ByUsername(username)
                 .Project()
-                .To<UserResponseModel>(new { username, visitorUsername, isAdmin = this.CurrentUser.IsAdmin })
+                .To<UserResponseModel>(new { username, visitorUsername, isAdmin })
                 .FirstOrDefaultAsync();
 
             return this.Data(model);

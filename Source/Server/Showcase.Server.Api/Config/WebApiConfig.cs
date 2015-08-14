@@ -2,13 +2,8 @@
 {
     using System.Net.Http;
     using System.Web.Http;
-    using System.Web.Http.Controllers;
-    using System.Web.Http.Cors;
     using System.Web.Http.Routing;
 
-    using Newtonsoft.Json.Serialization;
-
-    using Showcase.Server.Infrastructure;
     using Showcase.Server.Infrastructure.Formatters;
 
     public static class WebApiConfig

@@ -3,7 +3,6 @@
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Http;
-    using System.Web.Mvc;
 
     using Ninject.Web.Common.OwinHost;
     using Ninject.Web.WebApi.OwinHost;
@@ -14,8 +13,6 @@
     using Showcase.Data.Migrations;
     using Showcase.Server.Api.Config;
     using Showcase.Server.Common;
-    using Showcase.Server.Common.Mapping;
-    using Showcase.Server.Infrastructure;
 
     public class WebApiStartup
     {

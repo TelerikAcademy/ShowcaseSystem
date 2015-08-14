@@ -4,7 +4,6 @@
     using System.IO;
     using System.Threading.Tasks;
 
-    using Showcase.Data.Models;
     using Showcase.Services.Common;
     using Showcase.Services.Data.Models;
 

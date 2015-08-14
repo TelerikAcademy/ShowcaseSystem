@@ -1,10 +1,7 @@
 ﻿namespace Showcase.Server.Common.Validation
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using Ninject;
@@ -28,7 +25,7 @@
             if (valueAsString != null)
             {
                 int currentTagId;
-                var tagsIds = valueAsString.Split(',').Where(t => int.TryParse(t, out currentTagId)).Select(t => int.Parse(t)).ToList();
+                var tagsIds = valueAsString.Split(',').Where(t => int.TryParse(t, out currentTagId)).Select(int.Parse).ToList();
                 var task = Task.Run(async () => await this.TagsService.AllRequiredTagsArePresent(tagsIds));
                 return task.Result;
             }

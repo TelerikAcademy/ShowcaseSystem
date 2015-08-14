@@ -11,11 +11,7 @@ namespace Showcase.Server.Api.Config
     using Showcase.Data;
     using Showcase.Data.Common.Repositories;
 
-    using Showcase.Server.Common;
-    using Showcase.Server.Infrastructure;
-
     using Showcase.Services.Common;
-    using Showcase.Services.Data;
     using Showcase.Services.Logic;
 
     using ServerConstants = Showcase.Server.Common.Constants;

@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
     using Showcase.Server.Common.Validation.Base;
     using Showcase.Services.Common.Extensions;
@@ -30,15 +30,7 @@
         private bool ContainsOnlyEnglishLettersAndWhiteSpace(string fileName)
         {
             var symbolsWithoutWhiteSpace = string.Join(string.Empty, fileName.Split(new[] { WhiteSpace }, StringSplitOptions.RemoveEmptyEntries));
-            foreach (var symbol in symbolsWithoutWhiteSpace)
-            {
-                if (!symbol.IsEnglishLetter())
-                {
-                    return false;
-                }
-            }
-
-            return true;
+            return symbolsWithoutWhiteSpace.All(symbol => symbol.IsEnglishLetter());
         }
     }
 }

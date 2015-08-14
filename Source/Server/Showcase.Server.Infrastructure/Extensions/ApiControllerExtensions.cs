@@ -2,11 +2,8 @@
 {
     using System.IO;
     using System.Net;
-    using System.Text;
     using System.Web.Http;
     using System.Web.Http.Results;
-
-    using Newtonsoft.Json;
 
     using Showcase.Server.Common;
     using Showcase.Server.Infrastructure.Formatters;
@@ -18,7 +15,7 @@
         {
             if (data == null)
             {
-                return apiController.Data(false, Constants.RequestedResourceWasNotFound, data);
+                return apiController.Data(false, Constants.RequestedResourceWasNotFound);
             }
 
             return new FormattedContentResult<ResultObject>(HttpStatusCode.OK, new ResultObject(data), new BrowserJsonFormatter(), null, apiController);

@@ -7,12 +7,8 @@
         public override bool IsValid(object value)
         {
             var valueAsString = value as string;
-            if (string.IsNullOrWhiteSpace(valueAsString))
-            {
-                return true;
-            }
-
-            return new UrlAttribute().IsValid(value);
+            return string.IsNullOrWhiteSpace(valueAsString) 
+                || new UrlAttribute().IsValid(value);
         }
     }
 }

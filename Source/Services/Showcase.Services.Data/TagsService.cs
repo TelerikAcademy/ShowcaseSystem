@@ -30,12 +30,12 @@
                 .Where(t => t.Type == TagType.UserSubmitted && t.Name.ToLower().Contains(name.ToLower()));
         }
 
-        public async Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tags)
+        public async Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tagsAsCommaSeparatedValues)
         {
             var existingTagIds = new HashSet<int>();
             var newTagNames = new HashSet<string>();
 
-            tags.Split(new[] { TagSeparator }, StringSplitOptions.RemoveEmptyEntries)
+            tagsAsCommaSeparatedValues.Split(new[] { TagSeparator }, StringSplitOptions.RemoveEmptyEntries)
                 .ToList()
                 .ForEach(tag =>
                 {

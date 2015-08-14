@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public static class EnumerableExtensions
@@ -16,25 +17,16 @@
 
         public static async Task ForEachAsync<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
-            var tasks = new List<Task>();
-
-            foreach (var item in enumerable)
-            {
-                tasks.Add(Task.Run(() => { action(item); }));
-            }
+            var tasks = enumerable
+                .Select(item => Task.Run(() => action(item)))
+                .ToList();
 
             await Task.WhenAll(tasks);
         }
 
         public static async Task<IEnumerable<TResult>> ForEachAsync<T, TResult>(this IEnumerable<T> enumerable, Func<T, Task<TResult>> func)
         {
-            var tasks = new List<Task<TResult>>();
-
-            foreach (var item in enumerable)
-            {
-                tasks.Add(Task.Run<TResult>(() => { return func(item); }));
-            }
-
+            var tasks = enumerable.Select(item => Task.Run(() => func(item))).ToList();
             return await Task.WhenAll(tasks);
         }
 

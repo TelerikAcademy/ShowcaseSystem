@@ -2,12 +2,11 @@
 {
     using System.Collections;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
 
     public class CollectionCountAttribute : ValidationAttribute
     {
-        private int minimumEntries;
-        private int maximumEntries;
+        private readonly int minimumEntries;
+        private readonly int maximumEntries;
 
         public CollectionCountAttribute(int minimumEntries, int maximumEntries)
         {

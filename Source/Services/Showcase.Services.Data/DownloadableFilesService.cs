@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Showcase.Data;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common.Extensions;
@@ -34,14 +33,14 @@
 
         public async Task<IEnumerable<File>> AddNew(IEnumerable<RawFile> rawFiles)
         {
-            var files = await rawFiles.ForEachAsync(async rawFile =>
+            var addedFiles = await rawFiles.ForEachAsync(async rawFile =>
             {
                 var file = await base.SaveFileInfo<File>(rawFile);
                 file.Content = rawFile.Content;
                 return file;
             });
 
-            return files;
+            return addedFiles;
         }
     }
 }
