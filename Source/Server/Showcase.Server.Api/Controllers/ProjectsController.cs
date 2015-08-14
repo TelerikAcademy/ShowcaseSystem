@@ -69,7 +69,7 @@
             var username = isAuthenticated ? this.CurrentUser.UserName : null;
 
             var model = await this.projectsService
-                .ProjectById(id, isAuthenticated ? this.CurrentUser.IsAdmin : false)
+                .ProjectById(id, isAuthenticated && this.CurrentUser.IsAdmin)
                 .Project()
                 .To<ProjectResponseModel>(new { username })
                 .FirstOrDefaultAsync();
