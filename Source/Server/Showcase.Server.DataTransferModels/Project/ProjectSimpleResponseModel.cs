@@ -38,6 +38,8 @@
 
         public int Flags { get; set; }
 
+        public bool IsHidden { get; set; }
+
         public string TitleUrl
         {
             get

@@ -16,12 +16,13 @@
                 </div>
             </div>
             <div class="col-md-7 margin-bottom-10" animate="fadeInRight" data-animation-delay="200">
-                <h2 class="nomargin-bottom break-word">{{vm.project.title}}</h2>
+                <h2 class="nomargin-bottom break-word display-inline-block">{{vm.project.title}}</h2>
+                <button class="btn btn-danger btn-xs pull-right" ng-show="(vm.isOwnProject || vm.isAdmin) && !vm.isHidden" ng-click="vm.hideProject(vm.project.id)">Hide</button>
+                <span class="label label-danger pull-right" ng-show="vm.isHidden">HIDDEN PROJECT</span>
                 <div animate="fadeIn" data-animation-delay="1000">
                     <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{vm.project.shortDate}}</span> |
                     <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a>
                     <span ng-show="vm.project.liveDemoUrl.length > 0"> |<i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank">live demo</a></span>
-
                     <div class="pull-right" social-icons popup="vm.popup" name="vm.project.title" />
                 </div>
                 <hr class="small-horizontal-line" />
@@ -41,19 +42,19 @@
                 </div>
                 <hr class="small-horizontal-line" />
                 <div class="margin-top-5">
-                    <div project-tags tags="vm.project.tags"/ >
+                    <div project-tags tags="vm.project.tags" />
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row margin-top-20 margin-bottom-30">
-        <div class="col-md-offset-1 col-md-10 margin-top-20" animate="fadeInUp" data-animation-delay="200">
-            <div owl-carousel images="vm.images" />
+        <div class="row margin-top-20 margin-bottom-30">
+            <div class="col-md-offset-1 col-md-10 margin-top-20" animate="fadeInUp" data-animation-delay="200">
+                <div owl-carousel images="vm.images" />
+            </div>
         </div>
-    </div>
-    <div class="margin-top-30">
-        <div animate="fadeInUp" data-animation-delay="200">
-            <div project-comments comments="vm.comments" logged-in-username="vm.currentLoggedInUsername" project-id="vm.project.id" />
+        <div class="margin-top-30">
+            <div animate="fadeInUp" data-animation-delay="200">
+                <div project-comments comments="vm.comments" logged-in-username="vm.currentLoggedInUsername" project-id="vm.project.id" />
+            </div>
         </div>
     </div>
 </section>

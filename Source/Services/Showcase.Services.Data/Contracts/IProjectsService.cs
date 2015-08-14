@@ -27,5 +27,7 @@
             IEnumerable<ProcessedImage> processedImages,
             string mainImage,
             IEnumerable<File> downloadableFiles);
+
+        Task HideProject(int id);
     }
 }
