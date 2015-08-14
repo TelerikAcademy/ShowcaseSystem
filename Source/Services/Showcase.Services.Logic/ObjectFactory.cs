@@ -9,7 +9,7 @@
     public class ObjectFactory : IObjectFactory
     {
         private static IKernel staticKernel;
-        private IKernel kernel;
+        private readonly IKernel kernel;
         
         public ObjectFactory(IKernel kernel)
         {
