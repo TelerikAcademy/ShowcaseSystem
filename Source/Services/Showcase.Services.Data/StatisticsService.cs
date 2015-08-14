@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Showcase.Data.Common.Models;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -28,6 +29,7 @@
         {
             return this.projects
                 .All()
+                .Where(p => !p.Collaborators.Any(c => c.IsAdmin))
                 .GroupBy(pr => 0); // Don't ask!
         }
 
@@ -37,7 +39,7 @@
             
             return this.projects
                 .All()
-                .Where(p => p.CreatedOn >= todaySixMonthsAgo)
+                .Where(p => p.CreatedOn >= todaySixMonthsAgo && !p.Collaborators.Any(c => c.IsAdmin))
                 .GroupBy(s => s.CreatedOn.Month)
                 .OrderBy(gr => gr.Key);
         }
@@ -46,6 +48,7 @@
         {
             return this.tags
                 .All()
+                .Where(t => t.Type != TagType.Season)
                 .OrderByDescending(t => t.Projects.Count)
                 .Take(Constants.StatisticsTopTagsCount);
         }
@@ -54,6 +57,7 @@
         {
             return this.projects
                 .All()
+                .Where(p => !p.Collaborators.Any(c => c.IsAdmin))
                 .OrderByDescending(pr => pr.Likes.Count)
                 .ThenByDescending(pr => pr.Visits.Count)
                 .ThenByDescending(pr => pr.Comments.Where(c => !c.IsHidden).Count())
@@ -64,7 +68,7 @@
         {
             return this.users
                 .All()
-                .Where(u => u.Projects.Any())
+                .Where(u => u.Projects.Any() && !u.IsAdmin)
                 .OrderByDescending(u => u.Projects.Sum(pr => pr.Likes.Count))
                 .Take(Constants.StatisticsTopUsersCount);
         }

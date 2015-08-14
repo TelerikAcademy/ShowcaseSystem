@@ -9,7 +9,7 @@
     <div class="row margin-bottom-30 margin-top-30" ng-repeat="project in projects | orderBy : orderBy">
         <div class="col-md-3 text-center padding-left-5 padding-right-5">
             <a href="/projects/{{project.id}}/{{project.titleUrl}}">
-                <img ng-src="/Images/{{project.mainImageUrl}}_tmbl.jpg" width="180" height="180" alt="{{project.name}}" />
+                <img ng-src="/Images/{{project.mainImageUrl}}_tmbl.jpg" width="180" height="180" alt="{{project.title}}" />
             </a><br />
             <div class="margin-top-5">
                 <i class="fa fa-eye margin-right-5"></i><span class="margin-right-10">{{project.visits}}</span>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="col-md-9 padding-left-5">
-            <h4 class="margin-bottom-0"><a href="/projects/{{project.id}}/{{project.titleUrl}}">{{project.name}}</a></h4>
+            <h4 class="margin-bottom-0"><a href="/projects/{{project.id}}/{{project.titleUrl}}">{{project.title}}</a></h4>
             <span class="font-size-085em">
                 <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{project.shortDate}}</span> |
                 <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a>
@@ -34,7 +34,7 @@
                 </span>
             </div>
             <div class="margin-top-0 font-size-09em">
-                <a href="projects/search?$orderby=createdOn&$top=4&$skip=0&$count=true&$filter=tags%2Fany(t:contains(t%2Fname,%27{{tag.name}}%27))" ng-repeat="tag in project.tags">
+                <a href="projects/search?tag={{tag.name}}" ng-repeat="tag in project.tags">
                     <span class="label label-default capital-name" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
                 </a>
             </div>

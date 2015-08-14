@@ -13,22 +13,22 @@
         function commentProject(id, text) {
             return data.post('comments/' + id, {
                 commentText: text
-            });
+            }, true);
         }
 
         function editComment(id, text) {
             return data.post('comments/edit/', {
                 id: id,
                 commentText: text
-            });
+            }, true);
         }
 
         function flagComment(id) {
-            return data.post('flags/FlagComment/' + id);
+            return data.post('flags/FlagComment/' + id, null, true);
         }
 
         function unFlagComment(id) {
-            return data.post('flags/UnFlagComment/' + id);
+            return data.post('flags/UnFlagComment/' + id, null, true);
         }
 
         return {
