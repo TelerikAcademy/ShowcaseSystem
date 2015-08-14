@@ -165,5 +165,18 @@
             await this.projectsService.HideProject(id);
             return this.Ok();
         }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IHttpActionResult> Unhide(int id)
+        {
+            if (!this.CurrentUser.IsAdmin)
+            {
+                return this.Data(false, "You must be an admin to unhide a project.");
+            }
+
+            await this.projectsService.UnhideProject(id);
+            return this.Ok();
+        }
     }
 }

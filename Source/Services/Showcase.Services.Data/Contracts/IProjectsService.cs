@@ -29,5 +29,7 @@
             IEnumerable<File> downloadableFiles);
 
         Task HideProject(int id);
+
+        Task UnhideProject(int id);
     }
 }

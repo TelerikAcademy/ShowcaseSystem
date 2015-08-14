@@ -74,9 +74,16 @@
         };
 
         vm.hideProject = function (id) {
-            projectDetailsData.hideProject(id, null, true)
+            projectDetailsData.hideProject(id)
                 .then(function () {
                     vm.isHidden = true;
+                });
+        }
+
+        vm.unhideProject = function (id) {
+            projectDetailsData.unhideProject(id)
+                .then(function () {
+                    vm.isHidden = false;
                 });
         }
 

@@ -29,6 +29,10 @@
         function hideProject(id) {
             return data.post('projects/hide/' + id, null, true);
         }
+
+        function unhideProject(id) {
+            return data.post('projects/unhide/' + id, null, true);
+        }
                 
         return {
             getProject: getProject,
@@ -37,7 +41,8 @@
             visitProject: visitProject,
             flagProject: flagProject,
             unflagProject: unflagProject,
-            hideProject: hideProject
+            hideProject: hideProject,
+            unhideProject: unhideProject
         };
     };
     

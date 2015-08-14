@@ -18,12 +18,14 @@
         private readonly IRepository<Project> projects;
         private readonly IRepository<Image> images;
         private readonly IRepository<File> files;
+        private readonly IRepository<Flag> flags;
 
-        public ProjectsService(IRepository<Project> projects, IRepository<Image> images, IRepository<File> files)
+        public ProjectsService(IRepository<Project> projects, IRepository<Image> images, IRepository<File> files, IRepository<Flag> flags)
         {
             this.projects = projects;
             this.images = images;
             this.files = files;
+            this.flags = flags;
         }
 
         public IQueryable<Project> LatestProjects()
@@ -103,6 +105,24 @@
             if (project != null)
             {
                 project.IsHidden = true;
+                await this.projects.SaveChangesAsync();
+            }
+        }
+
+        public async Task UnhideProject(int id)
+        {
+            var project = await this.projects.All().Include(p => p.Flags).FirstOrDefaultAsync(p => p.Id == id);
+
+            if (project != null)
+            {
+                if (project.Flags.Any())
+                {
+                    var flagsToDelete = await this.flags.All().Where(f => f.ProjectId == id).ToListAsync();
+                    flagsToDelete.ForEach(f => this.flags.Delete(f));
+                }
+
+                project.IsHidden = false;
+
                 await this.projects.SaveChangesAsync();
             }
         }
