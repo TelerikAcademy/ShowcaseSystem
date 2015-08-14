@@ -1,9 +1,10 @@
 ﻿namespace Showcase.Server.Common.Validation
 {
-    using Showcase.Data.Common;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+
+    using Showcase.Data.Common;
 
     public class TagNamesLength : ValidationAttribute
     {

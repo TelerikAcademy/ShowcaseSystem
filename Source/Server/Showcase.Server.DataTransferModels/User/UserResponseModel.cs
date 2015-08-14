@@ -1,5 +1,6 @@
 ﻿namespace Showcase.Server.DataTransferModels.User
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -10,7 +11,6 @@
     using Showcase.Server.Common.Mapping;
     using Showcase.Server.DataTransferModels.Comment;
     using Showcase.Server.DataTransferModels.Project;
-    using System;
 
     public class UserResponseModel : IMapFrom<User>, IHaveCustomMappings
     {
