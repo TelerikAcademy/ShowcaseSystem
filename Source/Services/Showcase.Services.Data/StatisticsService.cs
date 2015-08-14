@@ -1,10 +1,7 @@
 ﻿namespace Showcase.Services.Data
 {
     using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Linq;
-    using System.Threading.Tasks;
 
     using Showcase.Data.Common.Models;
     using Showcase.Data.Common.Repositories;
@@ -14,9 +11,9 @@
 
     public class StatisticsService : IStatisticsService
     {
-        private IRepository<Project> projects;
-        private IRepository<Tag> tags;
-        private IRepository<User> users;
+        private readonly IRepository<Project> projects;
+        private readonly IRepository<Tag> tags;
+        private readonly IRepository<User> users;
 
         public StatisticsService(IRepository<Project> projects, IRepository<Tag> tags, IRepository<User> users)
         {
@@ -59,7 +56,7 @@
                 .Where(p => !p.Collaborators.Any(c => c.IsAdmin))
                 .OrderByDescending(pr => pr.Likes.Count)
                 .ThenByDescending(pr => pr.Visits.Count)
-                .ThenByDescending(pr => pr.Comments.Where(c => !c.IsHidden).Count())
+                .ThenByDescending(pr => pr.Comments.Count(c => !c.IsHidden))
                 .Take(Constants.StatisticsTopProjectsCount);
         }
         
