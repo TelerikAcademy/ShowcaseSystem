@@ -4,7 +4,9 @@
     var tokenInputDirective = function tokenInputDirective() {
         return {
             restrict: 'A',
-            scope: true,
+            scope: {
+                userTags: '='
+            },
             link: function (scope, element, attrs) {
                 element.tokenInput(attrs.url, {
                     preventDuplicates: attrs.preventDuplicates || true,
@@ -13,7 +15,12 @@
                     minChars: attrs.minChars || 3,
                     maxChars: attrs.maxChars || 1000,
                     hintText: attrs.hintText || 'Start typing and select',
-                    canAddNewTokens: attrs.canAddNewTokens || false
+                    canAddNewTokens: attrs.canAddNewTokens || false,
+                    onSelectedCallback: function (values) {
+                        scope.$apply(function () {
+                            scope.userTags = values;
+                        });
+                    }
                 });
             }
         };

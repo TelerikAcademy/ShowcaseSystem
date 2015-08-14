@@ -15,11 +15,13 @@
                 vm.languageAndTechnologyTags = tags;
             });
 
-        vm.submitProject = function (project, selectedSeason, selectedLanguagesAndTechnologies) {
+        vm.submitProject = function (project, tags) {
             vm.disabledSubmit = true;
-            project = project || {}; // TODO: remove when client-side validation is added
-            selectedLanguagesAndTechnologies = selectedLanguagesAndTechnologies || [];
-            project.tags += (TAGS_SEPARATOR + selectedSeason + TAGS_SEPARATOR) + (selectedLanguagesAndTechnologies.join(TAGS_SEPARATOR));
+            // TODO: remove after client-side validation is added
+            tags.userSelectedTags = tags.userSelectedTags || '';
+            tags.selectedSeason = tags.selectedSeason || '';
+            tags.selectedLanguagesAndTechnologies = tags.selectedLanguagesAndTechnologies || [];
+            project.tags = tags.userSelectedTags + (TAGS_SEPARATOR + tags.selectedSeason + TAGS_SEPARATOR) + (tags.selectedLanguagesAndTechnologies.join(TAGS_SEPARATOR));
             addProjectData.addProject(project)
                 .then(function (projectInfo) {
                     $location.path('/projects/' + projectInfo.id + '/' + projectInfo.titleUrl);
