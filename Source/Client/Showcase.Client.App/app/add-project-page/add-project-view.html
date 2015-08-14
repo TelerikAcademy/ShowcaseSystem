@@ -55,7 +55,7 @@
                         <section>
                             <label class="label">Tags *</label>
                             <label class="input">
-                                <input type="text" ng-model="project.tags" id="tags" token-input data-url="/api/Tags/Search" data-query-param="name" data-min-chars="2" data-hint-text="Start typing tag name and select" data-can-add-new-tokens="true">
+                                <input type="text" ng-model="project.tags" id="tags" token-input data-url="/api/Tags/Search" data-query-param="name" data-min-chars="2" data-max-chars="30" data-hint-text="Start typing tag name and select" data-can-add-new-tokens="true">
                                 <b class="tooltip tooltip-top-right">Add at least 2 tags to your project - type of project, keywords, etc.</b>
                             </label>
                         </section>

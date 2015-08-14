@@ -813,7 +813,12 @@
                             }
 
                             if (!found) {
-                                results.push({ id: query, name: query });
+                                var newItem = query;
+                                if (settings.maxChars && query.length > settings.maxChars) {
+                                    newItem = query.substr(0, settings.maxChars);
+                                }
+
+                                results.push({ id: newItem, name: newItem });
                             }
                         }
 
