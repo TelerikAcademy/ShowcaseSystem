@@ -18,8 +18,15 @@
                     moveToRoute('previous-route');
                 });
 
+                var $lastButton = $(buttons[buttons.length - 1]);
                 $(buttons[buttons.length - 1]).on('click', function () {
                     moveToRoute('current-route');
+                });
+
+                element.find('input').keypress(function (e) {
+                    if (e.which == 10 || e.which == 13) {
+                        $lastButton.click();
+                    }
                 });
 
                 scope.closeModal = function () {
