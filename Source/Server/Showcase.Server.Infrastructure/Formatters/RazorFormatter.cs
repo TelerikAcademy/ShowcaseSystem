@@ -16,12 +16,15 @@
 
     public class RazorFormatter : MediaTypeFormatter
     {
+        private const string TextHtmlMediaType = "text/html";
+        private const string ApplicationXHtmlMediaType = "application/xhtml+xml";
+
         private const string CrawlersIndexView = "~/crawlers.cshtml";
 
         public RazorFormatter()
         {
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/xhtml+xml"));
+            SupportedMediaTypes.Add(new MediaTypeHeaderValue(TextHtmlMediaType));
+            SupportedMediaTypes.Add(new MediaTypeHeaderValue(ApplicationXHtmlMediaType));
         }
 
         public override bool CanWriteType(Type type)
@@ -44,7 +47,6 @@
             var task = Task.Factory.StartNew(() =>
             {
                 var viewPath = HostingEnvironment.MapPath(CrawlersIndexView);
-
                 var template = File.ReadAllText(viewPath);
 
                 if (!Engine.Razor.IsTemplateCached(type.Name, type))
@@ -55,9 +57,7 @@
                 var razor = Engine.Razor.Run(type.Name, type, value);
 
                 var buf = System.Text.Encoding.Default.GetBytes(razor);
-
                 writeStream.Write(buf, 0, buf.Length);
-
                 writeStream.Flush();
             });
 

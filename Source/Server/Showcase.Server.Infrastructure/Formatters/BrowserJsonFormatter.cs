@@ -9,15 +9,17 @@
 
     public class BrowserJsonFormatter : JsonMediaTypeFormatter
     {
+        private const string ApplicationJsonMediaType = "application/json";
+
         public BrowserJsonFormatter()
         {
-            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
+            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue(ApplicationJsonMediaType));
         }
 
         public override void SetDefaultContentHeaders(Type type, HttpContentHeaders headers, MediaTypeHeaderValue mediaType)
         {
             base.SetDefaultContentHeaders(type, headers, mediaType);
-            headers.ContentType = new MediaTypeHeaderValue("application/json");
+            headers.ContentType = new MediaTypeHeaderValue(ApplicationJsonMediaType);
             this.SerializerSettings.Formatting = Formatting.None;
             this.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
