@@ -28,7 +28,7 @@
                 { value: 'visits', name: 'Views' },
                 { value: 'likes', name: 'Likes' },
                 { value: 'comments', name: 'Comments' },
-                { value: 'name', name: 'Name' }
+                { value: 'title', name: 'Name' }
             ];
             
             options.pageSizes = [8, 16, 32, 64];
@@ -42,7 +42,7 @@
 
         function getSearchParams() {
             return {
-                name: '',
+                title: '',
                 tags: '',
                 collaborators: '',
                 fromDate: new Date(2015, 4, 1),
