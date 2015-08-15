@@ -1,8 +1,8 @@
 ﻿namespace Showcase.Data.Models
 {
     using System.Collections.Generic;
-
     using System.ComponentModel.DataAnnotations;
+
     using Showcase.Data.Common;
     using Showcase.Data.Common.Models;
 
