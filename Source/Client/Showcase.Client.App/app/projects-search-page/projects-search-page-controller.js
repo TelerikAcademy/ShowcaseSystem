@@ -42,14 +42,14 @@
                     " and createdOn le " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
-            if (vm.searchParams.name || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
+            if (vm.searchParams.title || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
                 $routeParams.$filter = (function getSeachParams() {
                     var args = [], index = 0;
-                    if (vm.searchParams.name) {
-                        args[index] = vm.searchParams.name
+                    if (vm.searchParams.title) {
+                        args[index] = vm.searchParams.title
                             .split(',')
-                            .map(function (name) {
-                                return "contains(name,'" + name.trim() + "')";
+                            .map(function (title) {
+                                return "contains(title,'" + title.trim() + "')";
                             })
                             .join(' or ');
                         index += 1;
@@ -59,7 +59,7 @@
                         args[index] = vm.searchParams.tags
                             .split(',')
                             .map(function (tag) {
-                                return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
+                                return "tags/any(t:contains(t/title,'" + tag.trim() + "'))";
                             }).join(' or ');
                         index += 1;
                     }
@@ -99,7 +99,7 @@
         }
 
         if ($routeParams.term) {
-            vm.searchParams.name = $routeParams.term;
+            vm.searchParams.title = $routeParams.term;
             $location.search('term', null);
         }
 
