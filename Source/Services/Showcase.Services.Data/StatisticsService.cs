@@ -35,7 +35,7 @@
             
             return this.projects
                 .All()
-                .Where(p => p.CreatedOn >= todaySixMonthsAgo && !p.Collaborators.Any(c => c.IsAdmin))
+                .Where(p => p.CreatedOn >= todaySixMonthsAgo)
                 .GroupBy(s => s.CreatedOn.Month)
                 .OrderBy(gr => gr.Key);
         }
