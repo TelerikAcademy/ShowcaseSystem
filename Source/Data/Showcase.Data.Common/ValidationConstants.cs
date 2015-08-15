@@ -9,7 +9,7 @@
         public const int MinProjectTitleLength = 2;
         public const int MaxProjectTitleLength = 70;
         public const int MinProjectDescriptionLength = 70;
-        public const int MaxProjectDescriptionLength = 700;
+        public const int MaxProjectDescriptionLength = 2500;
         public const int MaxProjectUrlLength = 200;
         public const int MinProjectCollaboratorsLength = 0;
         public const int MinProjectTagsLength = 4;

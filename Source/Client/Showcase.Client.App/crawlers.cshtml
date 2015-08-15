@@ -13,8 +13,14 @@
 
     <meta name="title" content="@Model.Title" />
     <meta name="description" content="@Model.Description" />
-    <meta property="og:image" content="/Images/@(Model.MainImageUrl)_high.jpg" />
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@Model.Description" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Telerik Academy Showcase System" />
+    <meta property="og:image:url" content="http://@Model.HostUrl/Images/@(Model.MainImageUrl)_high.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1360" />
+    <meta property="og:image:height" content="780" />
 </head>
 <body>
 </body>
