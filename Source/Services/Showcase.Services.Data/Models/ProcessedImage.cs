@@ -14,16 +14,16 @@
         public const int HighResolutionWidth = 1360;
         public const string HighResolutionImage = "high";
 
-        private static IMappingService mappingService;
+        private static readonly IMappingService MappingService;
         
         static ProcessedImage()
         {
-            mappingService = ObjectFactory.Get<IMappingService>();
+            MappingService = ObjectFactory.Get<IMappingService>();
         }
 
         public static Func<ProcessedImage, Image> ToImage
         {
-            get { return pi => mappingService.Map<Image>(pi); }
+            get { return pi => MappingService.Map<Image>(pi); }
         }
 
         public byte[] ThumbnailContent { get; set; }
@@ -32,7 +32,7 @@
 
         public static ProcessedImage FromImage(Image image, byte[] thumbnailContent, byte[] highResolutionContent)
         {
-            var result = mappingService.Map<ProcessedImage>(image);
+            var result = MappingService.Map<ProcessedImage>(image);
             result.ThumbnailContent = thumbnailContent;
             result.HighResolutionContent = highResolutionContent;
             return result;

@@ -2,7 +2,6 @@
 {
     using System.Web.Http;
 
-    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using Showcase.Server.Api.Controllers.Base;

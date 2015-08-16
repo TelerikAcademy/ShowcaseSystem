@@ -44,6 +44,7 @@
             await Task.Run(async () =>
             {
                 var filePath = HostingEnvironment.MapPath(path);
+                //// TODO: filePath can be null
                 var fileInfo = new FileInfo(filePath);
                 fileInfo.Directory.Create();
                 using (var fileWriter = new FileStream(filePath, FileMode.CreateNew))
