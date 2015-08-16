@@ -24,7 +24,7 @@
         {
             var processedImages = await rawImages.ForEachAsync(async rawImage => 
             {
-                var image = await base.SaveFileInfo<Image>(rawImage);
+                var image = await this.SaveFileInfo<Image>(rawImage);
 
                 var thumbnailContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.ThumbnailImageWidth);
                 var highContent = await this.imageProcessor.Resize(rawImage.Content, ProcessedImage.HighResolutionWidth);

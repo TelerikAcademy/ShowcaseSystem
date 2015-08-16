@@ -35,7 +35,7 @@
         {
             string visitorUsername = null;
             string username = null;
-            bool isAdmin = false;
+            bool isAdmin = false; // TODO: Value is always false?
             configuration.CreateMap<User, UserResponseModel>()
                 .ForMember(u => u.ProjectsCount, opt => opt.MapFrom(u => u.Projects.Count))
                 .ForMember(u => u.CommentsCount, opt => opt.MapFrom(u => u.Comments.Count))
