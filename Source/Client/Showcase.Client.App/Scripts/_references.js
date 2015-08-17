@@ -153,4 +153,5 @@
 /// <reference path="ngsweetalert.js" />
 /// <reference path="sweetalert.min.js" />
 /// <reference path="../app/common/sweet-alert-dispatcher.js" />
+/// <reference path="../app/common/route-resolvers-provider.js" />
 

@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($window, project, identity, sweet) {
+    var projectDetailsController = function projectDetailsController($window, project, identity, sweetAlertDispatcher, projectDetailsData) {
         var vm = this;
         var id = project.id;
 
@@ -71,24 +71,10 @@
         };
 
         vm.hideProject = function (id) {
-            sweet.show({
-                title: 'Hide',
-                text: 'Hidden projects can only be seen by their collaborators and admins and only admins can reveal a hidden project. Are you sure you want to hide this project?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#cc6666',
-                confirmButtonText: 'Yes, hide it!',
-                closeOnConfirm: false,
-                closeOnCancel: true
-            }, function (isConfirmed) {
-                if (isConfirmed) {
-                    projectDetailsData.hideProject(id)
-                        .then(function () {
-                            vm.isHidden = true;
-                            sweet.show('Hidden', 'The project is now hidden');
-                        });
-                }
-            });
+            sweetAlertDispatcher.showHideProjectAlert(id)
+                .then(function () {
+                    vm.isHidden = true;
+                });
         };
 
         vm.unhideProject = function (id) {
@@ -105,5 +91,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweet', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweetAlertDispatcher', 'projectDetailsData', projectDetailsController]);
 }());
