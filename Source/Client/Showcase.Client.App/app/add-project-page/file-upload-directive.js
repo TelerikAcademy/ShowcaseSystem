@@ -61,12 +61,12 @@
                             }
 
                             if (minFileSize && currentFile.size < minFileSize) {
-                                notifier.error('You must select files with size bigger than ' + minFileSize / 1024 + 'KB');
+                                notifier.error('Each file must be with size bigger than ' + minFileSize / 1024 + 'KB');
                                 return;
                             }
 
                             if (maxFileSize && currentFile.size > maxFileSize) {
-                                notifier.error('You must select files with size smaller than ' + maxFileSize / 1024 / 1024 + 'MB');
+                                notifier.error('Each file must be with size smaller than ' + maxFileSize / 1024 / 1024 + 'MB');
                                 return;
                             }
                         }
