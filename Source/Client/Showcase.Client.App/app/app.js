@@ -1,39 +1,49 @@
 ﻿(function () {
     'use strict';
 
-    var config = function config($routeProvider, $locationProvider, $httpProvider) {
-        $locationProvider.html5Mode(true); // TODO: check the hash prefix !
+    var config = function config($routeProvider, $locationProvider, $httpProvider, routeResolversProvider) {
+        var CONTROLLER_VIEW_MODEL_NAME = 'vm';
 
-        var routeResolveChecks = {
-            authenticated: {
-                authenticate: ['$q', 'auth', function ($q, auth) {
-                    if (!auth.isAuthenticated()) {
-                        return $q.reject('not authorized');
-                    }
-                }]
-            }
-        };
+        $locationProvider.html5Mode(true);
 
+        var routeResolveChecks = routeResolversProvider.$get();
+        
         $routeProvider
             .when('/', {
-                templateUrl: '/app/home-page/home-page-view.html'
+                templateUrl: '/app/home-page/home-page-view.html',
+                controller: 'HomePageController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.home
             })
             .when('/projects/search', {
                 templateUrl: '/app/projects-search-page/projects-search-page-view.html',
+                controller: 'ProjectsSearchPageController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
                 reloadOnSearch: false
             })
             .when('/projects/add', {
                 templateUrl: '/app/add-project-page/add-project-view.html',
-                resolve: routeResolveChecks.authenticated
+                controller: 'AddProjectController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.addProject
             })
             .when('/statistics', {
-                templateUrl: '/app/statistics-page/statistics-view.html'
+                templateUrl: '/app/statistics-page/statistics-view.html',
+                controller: 'StatisticsController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.statistics
             })
             .when('/projects/:id/:title', {
-                templateUrl: '/app/project-details-page/project-details-view.html'
+                templateUrl: '/app/project-details-page/project-details-view.html',
+                controller: 'ProjectDetailsController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.projectDetails
             })
             .when('/users/:username', {
-                templateUrl: '/app/user-profile-page/user-profile-view.html'
+                templateUrl: '/app/user-profile-page/user-profile-view.html',
+                controller: 'UserProfileController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.userProfile
             })
             .when('/notfound', {
                 templateUrl: '/app/not-found-page/not-found-view.html'
@@ -71,7 +81,7 @@
     angular.module('showcaseSystem.directives', []);
 
     angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives', 'infinite-scroll', 'ui.bootstrap', 'hSweetAlert'])
-        .config(['$routeProvider', '$locationProvider', '$httpProvider', config])
+        .config(['$routeProvider', '$locationProvider', '$httpProvider', 'routeResolversProvider', config])
         .run(['$rootScope', '$location', 'auth', 'notifier', run])
         .value('jQuery', jQuery)
         .value('toastr', toastr)

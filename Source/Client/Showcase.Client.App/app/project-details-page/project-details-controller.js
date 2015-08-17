@@ -1,46 +1,43 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($routeParams, $window, $location, projectDetailsData, commentsData, identity, notifier, sweet) {
+    var projectDetailsController = function projectDetailsController($window, project, identity, sweet) {
         var vm = this;
-        var id = $routeParams.id;
-        var titleUrl = $routeParams.title;
+        var id = project.id;
 
-        projectDetailsData.getProject(id, titleUrl)
-            .then(function (project) {
-                var lastVisit = $window.localStorage.getItem("projectVisit" + id);
-                if (lastVisit) {
-                    var today = new Date();
-                    if (daydiff(today - lastVisit) < 7) {
-                        projectDetailsData.visitProject(id)
-                            .then(function () {
-                                $window.localStorage.setItem("projectVisit" + id, new Date());
-                            });
-                    }
-                }
-                else {
-                    projectDetailsData.visitProject(id)
-                        .then(function () {
-                            $window.localStorage.setItem("projectVisit" + id, new Date());
-                        });
-                }
-
-                vm.project = project;
-                vm.likes = project.likes;
-                vm.isLiked = project.isLiked;
-                vm.isFlagged = project.isFlagged;
-                vm.images = project.imageUrls;
-                vm.isHidden = project.isHidden;
-
-                identity.getUser()
-                    .then(function (user) {
-                        vm.isAdmin = user.isAdmin;
-                        vm.currentLoggedInUsername = user.userName;
-
-                        vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
-                            return element.username === user.userName;
-                        });
+        // TODO: extract visits to service
+        var lastVisit = $window.localStorage.getItem("projectVisit" + id);
+        if (lastVisit) {
+            var today = new Date();
+            if (daydiff(today - lastVisit) < 7) {
+                projectDetailsData.visitProject(id)
+                    .then(function () {
+                        $window.localStorage.setItem("projectVisit" + id, new Date());
                     });
+            }
+        }
+        else {
+            projectDetailsData.visitProject(id)
+                .then(function () {
+                    $window.localStorage.setItem("projectVisit" + id, new Date());
+                });
+        }
+
+        vm.project = project;
+        vm.likes = project.likes;
+        vm.isLiked = project.isLiked;
+        vm.isFlagged = project.isFlagged;
+        vm.images = project.imageUrls;
+        vm.isHidden = project.isHidden;
+
+        identity.getUser()
+            .then(function (user) {
+                vm.isAdmin = user.isAdmin;
+                vm.currentLoggedInUsername = user.userName;
+
+                vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
+                    return element.username === user.userName;
+                });
             });
 
         vm.likeProject = function (id) {
@@ -108,5 +105,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$routeParams', '$window', '$location', 'projectDetailsData', 'commentsData', 'identity', 'notifier', 'sweet', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweet', projectDetailsController]);
 }());

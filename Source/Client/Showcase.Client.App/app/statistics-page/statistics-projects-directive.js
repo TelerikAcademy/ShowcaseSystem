@@ -7,13 +7,6 @@
             templateUrl: '/app/statistics-page/statistics-projects-directive.html',
             scope: {
                 projects: '='
-            },
-            link: function (scope, element) {
-                scope.$watch('projects', function (projects) {
-                    if (projects) {
-                        
-                    }
-                });
             }
         };
     };

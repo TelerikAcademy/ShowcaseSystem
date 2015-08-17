@@ -7,13 +7,6 @@
             templateUrl: '/app/statistics-page/statistics-users-directive.html',
             scope: {
                 users: '='
-            },
-            link: function (scope, element) {
-                scope.$watch('users', function (users) {
-                    if (users) {
-
-                    }
-                });
             }
         };
     };

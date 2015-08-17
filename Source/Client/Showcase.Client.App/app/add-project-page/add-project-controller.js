@@ -1,19 +1,12 @@
 ﻿(function () {
     'use strict';
 
-    var addProjectController = function addProjectController($location, addProjectData) {
+    var addProjectController = function addProjectController($location, seasonTags, languageAndTechnologyTags, addProjectData) {
         var TAGS_SEPARATOR = ',';
         var vm = this;
 
-        addProjectData.getSeasonTags()
-            .then(function (tags) {
-                vm.seasonTags = tags;
-            });
-
-        addProjectData.getLanguageAndTechnologyTags()
-            .then(function (tags) {
-                vm.languageAndTechnologyTags = tags;
-            });
+        vm.seasonTags = seasonTags;
+        vm.languageAndTechnologyTags = languageAndTechnologyTags;
 
         vm.submitProject = function (project, tags) {
             vm.disabledSubmit = true;
@@ -33,5 +26,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('AddProjectController', ['$location', 'addProjectData', addProjectController]);
+        .controller('AddProjectController', ['$location', 'seasonTags', 'languageAndTechnologyTags', 'addProjectData', addProjectController]);
 }());
