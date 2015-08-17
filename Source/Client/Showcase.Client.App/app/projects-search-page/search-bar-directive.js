@@ -9,6 +9,8 @@
                 params: '='
             },
             link: function (scope, element) {
+                var $searchButton = $('#search-button');
+
                 scope.fromDateIsOpen = false;
 
                 scope.openFrom = function ($event) {
@@ -26,6 +28,12 @@
 
                     scope.toDateIsOpen = true;
                 };
+
+                element.find('.search-field').keypress(function (e) {
+                    if (e.which == 10 || e.which == 13) {
+                        $searchButton.click();
+                    }
+                });
             }
         };
     };
@@ -33,5 +41,4 @@
     angular
         .module('showcaseSystem.directives')
         .directive('searchBar', [searchBar]);
-
 }());
