@@ -1,6 +1,7 @@
 namespace Showcase.Data.Migrations
 {
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
     using Showcase.Data.Common.Models;
     using Showcase.Data.Models;
@@ -20,6 +21,11 @@ namespace Showcase.Data.Migrations
 
         private void SeedTags(ShowcaseDbContext context)
         {
+            if (context.Tags.Any())
+            {
+                return;
+            }
+
             var languages = new[] { "C#", "JavaScript", "Objective C", "Java", "HTML", "CSS", "XAML", "XML" };
             
             foreach (string language in languages)
