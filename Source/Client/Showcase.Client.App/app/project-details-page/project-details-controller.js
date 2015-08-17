@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($routeParams, $window, $location, projectDetailsData, commentsData, identity, notifier) {
+    var projectDetailsController = function projectDetailsController($routeParams, $window, $location, projectDetailsData, commentsData, identity, notifier, sweet) {
         var vm = this;
         var id = $routeParams.id;
         var titleUrl = $routeParams.title;
@@ -74,10 +74,24 @@
         };
 
         vm.hideProject = function (id) {
-            projectDetailsData.hideProject(id)
-                .then(function () {
-                    vm.isHidden = true;
-                });
+            sweet.show({
+                title: 'Hide',
+                text: 'Hidden projects can only be seen by their collaborators and admins and only admins can reveal a hidden project. Are you sure you want to hide this project?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#cc6666',
+                confirmButtonText: 'Yes, hide it!',
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirmed) {
+                if (isConfirmed) {
+                    projectDetailsData.hideProject(id)
+                        .then(function () {
+                            vm.isHidden = true;
+                            sweet.show('Hidden', 'The project is now hidden');
+                        });
+                }
+            });
         };
 
         vm.unhideProject = function (id) {
@@ -94,5 +108,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$routeParams', '$window', '$location', 'projectDetailsData', 'commentsData', 'identity', 'notifier', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$routeParams', '$window', '$location', 'projectDetailsData', 'commentsData', 'identity', 'notifier', 'sweet', projectDetailsController]);
 }());

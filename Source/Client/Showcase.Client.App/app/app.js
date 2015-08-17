@@ -70,7 +70,7 @@
     angular.module('showcaseSystem.controllers', ['showcaseSystem.data', 'showcaseSystem.services']);
     angular.module('showcaseSystem.directives', []);
 
-    angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives', 'infinite-scroll', 'ui.bootstrap'])
+    angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives', 'infinite-scroll', 'ui.bootstrap', 'hSweetAlert'])
         .config(['$routeProvider', '$locationProvider', '$httpProvider', config])
         .run(['$rootScope', '$location', 'auth', 'notifier', run])
         .value('jQuery', jQuery)
