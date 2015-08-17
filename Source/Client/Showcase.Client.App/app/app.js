@@ -46,6 +46,10 @@
                     topUsers: results[4],
                 };
             });
+        }],
+        project: ['$route', 'projectDetailsData', function ($route, projectDetailsData) {
+            var routeParams = $route.current.params;
+            return projectDetailsData.getProject(routeParams.id, routeParams.title);
         }]
     };
 
@@ -66,6 +70,9 @@
             },
             statistics: {
                 detailedStatistics: routeResolversProvider.detailedStatistics
+            },
+            projectDetails: {
+                project: routeResolversProvider.project
             }
         };
 
@@ -95,7 +102,10 @@
                 resolve: routeResolveChecks.statistics
             })
             .when('/projects/:id/:title', {
-                templateUrl: '/app/project-details-page/project-details-view.html'
+                templateUrl: '/app/project-details-page/project-details-view.html',
+                controller: 'ProjectDetailsController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.projectDetails
             })
             .when('/users/:username', {
                 templateUrl: '/app/user-profile-page/user-profile-view.html'
