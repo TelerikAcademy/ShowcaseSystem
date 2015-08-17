@@ -59,7 +59,7 @@
                         args[index] = vm.searchParams.tags
                             .split(',')
                             .map(function (tag) {
-                                return "tags/any(t:contains(t/title,'" + tag.trim() + "'))";
+                                return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
                             }).join(' or ');
                         index += 1;
                     }
