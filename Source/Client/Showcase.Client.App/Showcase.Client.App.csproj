@@ -228,6 +228,7 @@
     <Content Include="content\images\telerik-logo.png" />
     <Content Include="content\loading-bar.css" />
     <Content Include="content\loading-bar.min.css" />
+    <Content Include="content\sweetalert.css" />
     <Content Include="content\toastr.less" />
     <Content Include="content\toastr.scss" />
     <Content Include="content\ui-bootstrap-csp.css" />
@@ -297,6 +298,7 @@
     </Content>
     <Content Include="crawlers.cshtml" />
     <None Include="Properties\PublishProfiles\best.telerikacademy.com.pubxml" />
+    <Content Include="scripts\ngSweetAlert.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1363,6 +1365,7 @@
     <Content Include="scripts\ng-infinite-scroll.js" />
     <Content Include="scripts\ng-infinite-scroll.min.js" />
     <Content Include="scripts\npm.js" />
+    <Content Include="scripts\sweetalert.min.js" />
     <Content Include="scripts\toastr.js" />
     <Content Include="scripts\toastr.min.js" />
     <None Include="scripts\_references.js" />
