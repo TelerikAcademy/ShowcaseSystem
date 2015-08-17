@@ -32,7 +32,9 @@ var config = {
         'scripts/jquery.tokeninput.js',
         'scripts/Chart.js',
         'scripts/ng-infinite-scroll.min.js',
-        'Scripts/angular-ui/ui-bootstrap-tpls.js'
+        'Scripts/angular-ui/ui-bootstrap-tpls.js',
+        'scripts/sweetalert.min.js',
+        'scripts/ngSweetAlert.js'
     ],
     vendorCssSrc: [
         'content/epona/css/font-awesome.css',
@@ -48,7 +50,8 @@ var config = {
         'content/epona/css/color_scheme/green.css',
         'content/loading-bar.css',
         'content/token-input-showcase.css',
-        'content/toastr.css'
+        'content/toastr.css',
+        'content/sweetalert.css'
     ],
     appJsSrc: ['app/**/*.js', '!app/build/*'],
     appCssSrc: ['content/main.css'],

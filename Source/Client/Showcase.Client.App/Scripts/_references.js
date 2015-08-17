@@ -150,5 +150,6 @@
 /// <reference path="../app/not-found-page/not-found-controller.js" />
 /// <reference path="../app/project-details-page/project-tags-directive.js" />
 /// <reference path="../app/user-profile-page/user-profile-collaborators-directive.js" />
-/// <reference path="../app/common/route-resolvers-provider.js" />
+/// <reference path="ngsweetalert.js" />
+/// <reference path="sweetalert.min.js" />
 

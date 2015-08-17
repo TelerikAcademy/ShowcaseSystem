@@ -2,25 +2,25 @@
     <div class="col-md-3 col-xs-6">
         <span class="boxed radius3">
             <strong class="styleColor" data-to="{{stats.totalProjects}}">0</strong>
-            <label>Projects</label>
+            <label>Project<span ng-if="stats.totalProjects !== 1">s</span></label>
         </span>
     </div>
     <div class="col-md-3 col-xs-6">
         <span class="boxed radius3">
             <strong class="styleColor" data-to="{{stats.totalViews}}">0</strong>
-            <label>Project Views</label>
+            <label>Project View<span ng-if="stats.totalViews !== 1">s</span></label>
         </span>
     </div>
     <div class="col-md-3 col-xs-6">
         <span class="boxed radius3">
             <strong class="styleColor" data-to="{{stats.totalComments}}">0</strong>
-            <label>Project Comments</label>
+            <label>Project Comment<span ng-if="stats.totalComments !== 1">s</span></label>
         </span>
     </div>
     <div class="col-md-3 col-xs-6">
         <span class="boxed radius3">
             <strong class="styleColor" data-to="{{stats.totalLikes}}">0</strong>
-            <label>Project Likes</label>
+            <label>Project Like<span ng-if="stats.totalLikes !== 1">s</span></label>
         </span>
     </div>
 </div>
