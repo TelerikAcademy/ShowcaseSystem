@@ -20,6 +20,11 @@
 
         $scope.currentPage = 1;
 
+        if ($window.localStorage.scrolling == undefined) {
+            $window.localStorage.scrolling = 'true';
+            vm.filterOptions.scrolling = true;
+        }
+
         identity.getUser()
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
