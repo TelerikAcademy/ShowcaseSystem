@@ -20,7 +20,7 @@
 
         $scope.currentPage = 1;
 
-        if ($window.localStorage.scrolling == undefined) {
+        if ($window.localStorage.scrolling === undefined) {
             $window.localStorage.scrolling = 'true';
             vm.filterOptions.scrolling = true;
         }

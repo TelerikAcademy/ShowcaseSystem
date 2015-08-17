@@ -29,6 +29,23 @@
             return authPromise.then(function () {
                 return addProjectData.getLanguageAndTechnologyTags();
             });
+        }],
+        detailedStatistics: ['$q', 'statisticsData', function ($q, statisticsData) {
+            return $q.all([
+                statisticsData.getMainStatistics(),
+                statisticsData.getProjectsForLastSixMonths(),
+                statisticsData.getProjectsCountTag(),
+                statisticsData.getMostLikedProjects(),
+                statisticsData.getTopUsers()
+            ]).then(function (results) {
+                return {
+                    mainStatistics: results[0],
+                    projectsLastSixMonths: results[1],
+                    projectsCountByTag: results[2],
+                    mostLikedProjects: results[3],
+                    topUsers: results[4],
+                };
+            });
         }]
     };
 
@@ -43,9 +60,12 @@
                 popularProjects: routeResolversProvider.popularProjects,
                 statistics: routeResolversProvider.statistics
             },
-            add: {
+            addProject: {
                 seasonTags: routeResolversProvider.seasonTags,
                 languageAndTechnologyTags: routeResolversProvider.languageAndTechnologyTags
+            },
+            statistics: {
+                detailedStatistics: routeResolversProvider.detailedStatistics
             }
         };
 
@@ -66,10 +86,13 @@
                 templateUrl: '/app/add-project-page/add-project-view.html',
                 controller: 'AddProjectController',
                 controllerAs: CONTROLLER_VIEW_MODEL_NAME,
-                resolve: routeResolveChecks.add
+                resolve: routeResolveChecks.addProject
             })
             .when('/statistics', {
-                templateUrl: '/app/statistics-page/statistics-view.html'
+                templateUrl: '/app/statistics-page/statistics-view.html',
+                controller: 'StatisticsController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.statistics
             })
             .when('/projects/:id/:title', {
                 templateUrl: '/app/project-details-page/project-details-view.html'
