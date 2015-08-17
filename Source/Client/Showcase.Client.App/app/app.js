@@ -1,90 +1,31 @@
 ﻿(function () {
     'use strict';
 
-    var routeResolversProvider = {
-        authenticated: ['$q', 'auth', function ($q, auth) {
-            if (!auth.isAuthenticated()) {
-                return $q.reject('not authorized');
-            }
-
-            return $q.when(true);
-        }],
-        latestProjects: ['homePageData', function (homePageData) {
-            return homePageData.getLatestProjects();
-        }],
-        popularProjects: ['homePageData', function (homePageData) {
-            return homePageData.getMostPopularProjects();
-        }],
-        statistics: ['statisticsData', function (statisticsData) {
-            return statisticsData.getMainStatistics();
-        }],
-        seasonTags: ['$injector', '$q', 'addProjectData', function ($injector, $q, addProjectData) {
-            var authPromise = $injector.invoke(routeResolversProvider.authenticated);
-            return authPromise.then(function () {
-                return addProjectData.getSeasonTags();
-            });
-        }],
-        languageAndTechnologyTags: ['$injector', '$q', 'addProjectData', function ($injector, $q, addProjectData) {
-            var authPromise = $injector.invoke(routeResolversProvider.authenticated);
-            return authPromise.then(function () {
-                return addProjectData.getLanguageAndTechnologyTags();
-            });
-        }],
-        detailedStatistics: ['$q', 'statisticsData', function ($q, statisticsData) {
-            return $q.all([
-                statisticsData.getMainStatistics(),
-                statisticsData.getProjectsForLastSixMonths(),
-                statisticsData.getProjectsCountTag(),
-                statisticsData.getMostLikedProjects(),
-                statisticsData.getTopUsers()
-            ]).then(function (results) {
-                return {
-                    mainStatistics: results[0],
-                    projectsLastSixMonths: results[1],
-                    projectsCountByTag: results[2],
-                    mostLikedProjects: results[3],
-                    topUsers: results[4],
-                };
-            });
-        }],
-        project: ['$route', 'projectDetailsData', function ($route, projectDetailsData) {
-            var routeParams = $route.current.params;
-            return projectDetailsData.getProject(routeParams.id, routeParams.title);
-        }],
-        user: ['$route', 'userProfileData', function ($route, userProfileData) {
-            var routeParams = $route.current.params;
-            return userProfileData.getUser(routeParams.username.toLowerCase());
-        }],
-        profile: ['$route', 'userProfileData', function ($route, userProfileData) {
-            var routeParams = $route.current.params;
-            return userProfileData.getProfile(routeParams.username.toLowerCase());
-        }],
-    };
-
-    var config = function config($routeProvider, $locationProvider, $httpProvider) {
+    var config = function config($routeProvider, $locationProvider, $httpProvider, routeResolversProvider) {
         var CONTROLLER_VIEW_MODEL_NAME = 'vm';
 
         $locationProvider.html5Mode(true);
 
+        var routeResolvers = routeResolversProvider.$get();
         var routeResolveChecks = {
             home: {
-                latestProjects: routeResolversProvider.latestProjects,
-                popularProjects: routeResolversProvider.popularProjects,
-                statistics: routeResolversProvider.statistics
+                latestProjects: routeResolvers.latestProjects,
+                popularProjects: routeResolvers.popularProjects,
+                statistics: routeResolvers.statistics
             },
             addProject: {
-                seasonTags: routeResolversProvider.seasonTags,
-                languageAndTechnologyTags: routeResolversProvider.languageAndTechnologyTags
+                seasonTags: routeResolvers.seasonTags,
+                languageAndTechnologyTags: routeResolvers.languageAndTechnologyTags
             },
             statistics: {
-                detailedStatistics: routeResolversProvider.detailedStatistics
+                detailedStatistics: routeResolvers.detailedStatistics
             },
             projectDetails: {
-                project: routeResolversProvider.project
+                project: routeResolvers.project
             },
             userProfile: {
-                user: routeResolversProvider.user,
-                profile: routeResolversProvider.profile
+                user: routeResolvers.user,
+                profile: routeResolvers.profile
             }
         };
 
@@ -161,7 +102,7 @@
     angular.module('showcaseSystem.directives', []);
 
     angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives', 'infinite-scroll', 'ui.bootstrap'])
-        .config(['$routeProvider', '$locationProvider', '$httpProvider', config])
+        .config(['$routeProvider', '$locationProvider', '$httpProvider', 'routeResolversProvider', config])
         .run(['$rootScope', '$location', 'auth', 'notifier', run])
         .value('jQuery', jQuery)
         .value('toastr', toastr)

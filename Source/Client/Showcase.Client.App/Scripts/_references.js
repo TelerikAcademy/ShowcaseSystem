@@ -150,6 +150,5 @@
 /// <reference path="../app/not-found-page/not-found-controller.js" />
 /// <reference path="../app/project-details-page/project-tags-directive.js" />
 /// <reference path="../app/user-profile-page/user-profile-collaborators-directive.js" />
-/// <reference path="../app/build/vendorjs2015081616.min.js" />
-/// <reference path="../app/build/alljs2015081616.min.js" />
+/// <reference path="../app/common/route-resolvers-provider.js" />
 
