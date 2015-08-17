@@ -101,6 +101,8 @@
     <Compile Include="Auth\ApplicationOAuthProvider.cs" />
     <Compile Include="Auth\AuthStartup.cs" />
     <Compile Include="Auth\ClaimsIdentityFactory.cs" />
+    <Compile Include="Caching\Base\BaseCacheService.cs" />
+    <Compile Include="Caching\ICacheService.cs" />
     <Compile Include="Extensions\ApiControllerExtensions.cs" />
     <Compile Include="Extensions\ODataConventionModelBuilderExtensions.cs" />
     <Compile Include="FileSystem\FileSystemService.cs" />
@@ -144,6 +146,7 @@
       <Name>Showcase.Server.DataTransferModels</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
