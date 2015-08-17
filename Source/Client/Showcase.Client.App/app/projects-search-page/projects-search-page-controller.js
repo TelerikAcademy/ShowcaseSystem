@@ -193,5 +193,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', 'identity', projectsSearchPageController]);
+        .controller('ProjectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', 'identity', projectsSearchPageController]);
 }());

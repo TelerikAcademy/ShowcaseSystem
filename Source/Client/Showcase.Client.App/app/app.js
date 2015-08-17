@@ -41,6 +41,8 @@
             })
             .when('/projects/search', {
                 templateUrl: '/app/projects-search-page/projects-search-page-view.html',
+                controller: 'ProjectsSearchPageController',
+                controllerAs: 'vm',
                 reloadOnSearch: false
             })
             .when('/projects/add', {
