@@ -2,8 +2,6 @@
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
-    using Showcase.Data.Common;
-
     [Table("Files")]
     public class File : FileInfo
     {
