@@ -1,11 +1,13 @@
 ﻿(function () {
     'use strict';
 
-    var routeResolvers = {
-        authenticate: ['$q', 'auth', function ($q, auth) {
+    var routeResolversProvider = {
+        authenticated: ['$q', 'auth', function ($q, auth) {
             if (!auth.isAuthenticated()) {
                 return $q.reject('not authorized');
             }
+
+            return $q.when(true);
         }],
         latestProjects: ['homePageData', function (homePageData) {
             return homePageData.getLatestProjects();
@@ -15,20 +17,35 @@
         }],
         statistics: ['statisticsData', function (statisticsData) {
             return statisticsData.getMainStatistics();
+        }],
+        seasonTags: ['$injector', '$q', 'addProjectData', function ($injector, $q, addProjectData) {
+            var authPromise = $injector.invoke(routeResolversProvider.authenticated);
+            return authPromise.then(function () {
+                return addProjectData.getSeasonTags();
+            });
+        }],
+        languageAndTechnologyTags: ['$injector', '$q', 'addProjectData', function ($injector, $q, addProjectData) {
+            var authPromise = $injector.invoke(routeResolversProvider.authenticated);
+            return authPromise.then(function () {
+                return addProjectData.getLanguageAndTechnologyTags();
+            });
         }]
     };
 
     var config = function config($routeProvider, $locationProvider, $httpProvider) {
+        var CONTROLLER_VIEW_MODEL_NAME = 'vm';
+
         $locationProvider.html5Mode(true);
 
         var routeResolveChecks = {
-            authenticated: {
-                authenticate: routeResolvers.authenticate
-            },
             home: {
-                latestProjects: routeResolvers.latestProjects,
-                popularProjects: routeResolvers.popularProjects,
-                statistics: routeResolvers.statistics
+                latestProjects: routeResolversProvider.latestProjects,
+                popularProjects: routeResolversProvider.popularProjects,
+                statistics: routeResolversProvider.statistics
+            },
+            add: {
+                seasonTags: routeResolversProvider.seasonTags,
+                languageAndTechnologyTags: routeResolversProvider.languageAndTechnologyTags
             }
         };
 
@@ -36,18 +53,20 @@
             .when('/', {
                 templateUrl: '/app/home-page/home-page-view.html',
                 controller: 'HomePageController',
-                controllerAs: 'vm',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
                 resolve: routeResolveChecks.home
             })
             .when('/projects/search', {
                 templateUrl: '/app/projects-search-page/projects-search-page-view.html',
                 controller: 'ProjectsSearchPageController',
-                controllerAs: 'vm',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
                 reloadOnSearch: false
             })
             .when('/projects/add', {
                 templateUrl: '/app/add-project-page/add-project-view.html',
-                resolve: routeResolveChecks.authenticated
+                controller: 'AddProjectController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.add
             })
             .when('/statistics', {
                 templateUrl: '/app/statistics-page/statistics-view.html'
