@@ -1,28 +1,21 @@
 ﻿(function () {
     'use strict';
 
-    var userProfileController = function userProfileController(userProfileData, $routeParams, identity, commentsData) {
+    var userProfileController = function userProfileController(userProfileData, commentsData, identity, user, profile) {
         var vm = this,
             arrowDownCss = 'fa fa-long-arrow-down',
             arrowUpCss = 'fa fa-long-arrow-up';
 
         vm.orderBy = '-createdOn';
         vm.commentsPage = 0;
-        vm.username = $routeParams.username.toLowerCase();
+        vm.user = user;
+        vm.profile = profile;
+        vm.username = user.username.toLowerCase();
 
+        // TODO: $ should not be here!
         $('.tab-button').click(function (e) {
             e.preventDefault();
         });
-
-        userProfileData.getUser(vm.username)
-            .then(function (user) {
-                vm.user = user;
-            });
-
-        userProfileData.getProfile(vm.username)
-            .then(function (profile) {
-                vm.profile = profile;
-            });
 
         identity.getUser()
             .then(function (user) {
@@ -39,5 +32,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('userProfileController', ['userProfileData', '$routeParams', 'identity', 'commentsData', userProfileController]);
+        .controller('UserProfileController', ['userProfileData', 'commentsData', 'identity', 'user', 'profile', userProfileController]);
 }());

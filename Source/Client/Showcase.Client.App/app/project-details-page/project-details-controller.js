@@ -1,46 +1,43 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($routeParams, $window, $location, projectDetailsData, commentsData, identity, notifier, sweetAlertDispatcher) {
+    var projectDetailsController = function projectDetailsController($window, project, identity, sweet) {
         var vm = this;
-        var id = $routeParams.id;
-        var titleUrl = $routeParams.title;
+        var id = project.id;
 
-        projectDetailsData.getProject(id, titleUrl)
-            .then(function (project) {
-                var lastVisit = $window.localStorage.getItem("projectVisit" + id);
-                if (lastVisit) {
-                    var today = new Date();
-                    if (daydiff(today - lastVisit) < 7) {
-                        projectDetailsData.visitProject(id)
-                            .then(function () {
-                                $window.localStorage.setItem("projectVisit" + id, new Date());
-                            });
-                    }
-                }
-                else {
-                    projectDetailsData.visitProject(id)
-                        .then(function () {
-                            $window.localStorage.setItem("projectVisit" + id, new Date());
-                        });
-                }
-
-                vm.project = project;
-                vm.likes = project.likes;
-                vm.isLiked = project.isLiked;
-                vm.isFlagged = project.isFlagged;
-                vm.images = project.imageUrls;
-                vm.isHidden = project.isHidden;
-
-                identity.getUser()
-                    .then(function (user) {
-                        vm.isAdmin = user.isAdmin;
-                        vm.currentLoggedInUsername = user.userName;
-
-                        vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
-                            return element.username === user.userName;
-                        });
+        // TODO: extract visits to service
+        var lastVisit = $window.localStorage.getItem("projectVisit" + id);
+        if (lastVisit) {
+            var today = new Date();
+            if (daydiff(today - lastVisit) < 7) {
+                projectDetailsData.visitProject(id)
+                    .then(function () {
+                        $window.localStorage.setItem("projectVisit" + id, new Date());
                     });
+            }
+        }
+        else {
+            projectDetailsData.visitProject(id)
+                .then(function () {
+                    $window.localStorage.setItem("projectVisit" + id, new Date());
+                });
+        }
+
+        vm.project = project;
+        vm.likes = project.likes;
+        vm.isLiked = project.isLiked;
+        vm.isFlagged = project.isFlagged;
+        vm.images = project.imageUrls;
+        vm.isHidden = project.isHidden;
+
+        identity.getUser()
+            .then(function (user) {
+                vm.isAdmin = user.isAdmin;
+                vm.currentLoggedInUsername = user.userName;
+
+                vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
+                    return element.username === user.userName;
+                });
             });
 
         vm.likeProject = function (id) {
@@ -74,16 +71,21 @@
         };
 
         vm.hideProject = function (id) {
-            sweetAlertDispatcher.alertWithOptions({
+            sweet.show({
                 title: 'Hide',
-                text: 'Hidden projects can only be seen by their collaborators and admins and <strong>only admins</strong> can reveal a hidden project.<br />Are you sure you want to hide this project?',
-                confirmButtonText: 'Yes, hide it!'
+                text: 'Hidden projects can only be seen by their collaborators and admins and only admins can reveal a hidden project. Are you sure you want to hide this project?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#cc6666',
+                confirmButtonText: 'Yes, hide it!',
+                closeOnConfirm: false,
+                closeOnCancel: true
             }, function (isConfirmed) {
                 if (isConfirmed) {
                     projectDetailsData.hideProject(id)
                         .then(function () {
                             vm.isHidden = true;
-                            sweetAlertDispatcher.simpleAlert('Hidden', 'The project is now hidden');
+                            sweet.show('Hidden', 'The project is now hidden');
                         });
                 }
             });
@@ -103,5 +105,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$routeParams', '$window', '$location', 'projectDetailsData', 'commentsData', 'identity', 'notifier', 'sweetAlertDispatcher', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweet', projectDetailsController]);
 }());

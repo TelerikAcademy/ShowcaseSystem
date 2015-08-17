@@ -20,7 +20,7 @@
 
         $scope.currentPage = 1;
 
-        if ($window.localStorage.scrolling == undefined) {
+        if ($window.localStorage.scrolling === undefined) {
             $window.localStorage.scrolling = 'true';
             vm.filterOptions.scrolling = true;
         }
@@ -193,5 +193,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('projectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', 'identity', projectsSearchPageController]);
+        .controller('ProjectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', 'identity', projectsSearchPageController]);
 }());

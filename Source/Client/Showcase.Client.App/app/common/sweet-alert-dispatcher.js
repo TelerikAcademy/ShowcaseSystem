@@ -21,9 +21,14 @@
             sweet.show(title, text);
         }
 
+        function hideProjectAlert() {
+
+        }
+
         return {
             alertWithOptions: alertWithOptions,
-            simpleAlert: simpleAlert
+            simpleAlert: simpleAlert,
+            hideProjectAlert: hideProjectAlert
         };
     };
 
