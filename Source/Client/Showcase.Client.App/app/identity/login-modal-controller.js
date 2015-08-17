@@ -6,6 +6,7 @@
 
         vm.login = function (user) {
             auth.login(user).then(function () {
+                for (var member in user) delete user[member];
                 $scope.closeModal();
             });
         };
