@@ -49,6 +49,7 @@
             var task = Task.Factory.StartNew(() =>
             {
                 var viewPath = HostingEnvironment.MapPath(CrawlersIndexView);
+                //// TODO: viewPath can be null
                 var template = File.ReadAllText(viewPath);
 
                 if (!Engine.Razor.IsTemplateCached(type.Name, type))

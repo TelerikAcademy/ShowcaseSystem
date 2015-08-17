@@ -35,7 +35,7 @@
         {
             var addedFiles = await rawFiles.ForEachAsync(async rawFile =>
             {
-                var file = await base.SaveFileInfo<File>(rawFile);
+                var file = await this.SaveFileInfo<File>(rawFile);
                 file.Content = rawFile.Content;
                 return file;
             });

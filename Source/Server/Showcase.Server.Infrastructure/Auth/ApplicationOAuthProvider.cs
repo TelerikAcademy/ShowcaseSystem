@@ -1,7 +1,6 @@
 ﻿namespace Showcase.Server.Infrastructure.Auth
 {
     using System;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.Owin.Security;
@@ -115,12 +114,12 @@
             }
             else if (string.IsNullOrEmpty(context.UserName) || string.IsNullOrWhiteSpace(context.UserName))
             {
-                context.SetError("invalid_grant", string.Format("Information is not valid"));
+                context.SetError("invalid_grant", "Information is not valid");
                 isValid = false;
             }
             else if (string.IsNullOrEmpty(context.Password) || string.IsNullOrWhiteSpace(context.Password))
             {
-                context.SetError("invalid_grant", string.Format("Information is not valid"));
+                context.SetError("invalid_grant", "Information is not valid");
                 isValid = false;
             }
 
@@ -134,7 +133,7 @@
             // Check if remote login credentials are correct
             if (user == null)
             {
-                context.SetError("invalid_grant", string.Format("Information is not valid"));
+                context.SetError("invalid_grant", "Information is not valid");
                 return null;
             }
 
