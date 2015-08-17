@@ -609,3 +609,7 @@ body {
         text-align: center;
     }
 }
+
+.sweet-alert p {
+    color: #666;
+}
