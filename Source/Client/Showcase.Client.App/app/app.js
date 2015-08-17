@@ -6,29 +6,8 @@
 
         $locationProvider.html5Mode(true);
 
-        var routeResolvers = routeResolversProvider.$get();
-        var routeResolveChecks = {
-            home: {
-                latestProjects: routeResolvers.latestProjects,
-                popularProjects: routeResolvers.popularProjects,
-                statistics: routeResolvers.statistics
-            },
-            addProject: {
-                seasonTags: routeResolvers.seasonTags,
-                languageAndTechnologyTags: routeResolvers.languageAndTechnologyTags
-            },
-            statistics: {
-                detailedStatistics: routeResolvers.detailedStatistics
-            },
-            projectDetails: {
-                project: routeResolvers.project
-            },
-            userProfile: {
-                user: routeResolvers.user,
-                profile: routeResolvers.profile
-            }
-        };
-
+        var routeResolveChecks = routeResolversProvider.$get();
+        
         $routeProvider
             .when('/', {
                 templateUrl: '/app/home-page/home-page-view.html',
@@ -101,7 +80,7 @@
     angular.module('showcaseSystem.controllers', ['showcaseSystem.data', 'showcaseSystem.services']);
     angular.module('showcaseSystem.directives', []);
 
-    angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives', 'infinite-scroll', 'ui.bootstrap'])
+    angular.module('showcaseSystem', ['ngRoute', 'ngCookies', 'ngAnimate', 'angular-loading-bar', 'showcaseSystem.controllers', 'showcaseSystem.directives', 'infinite-scroll', 'ui.bootstrap', 'hSweetAlert'])
         .config(['$routeProvider', '$locationProvider', '$httpProvider', 'routeResolversProvider', config])
         .run(['$rootScope', '$location', 'auth', 'notifier', run])
         .value('jQuery', jQuery)
