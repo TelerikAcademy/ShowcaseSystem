@@ -1,22 +1,43 @@
 ﻿(function () {
     'use strict';
 
+    var routeResolvers = {
+        authenticate: ['$q', 'auth', function ($q, auth) {
+            if (!auth.isAuthenticated()) {
+                return $q.reject('not authorized');
+            }
+        }],
+        latestProjects: ['homePageData', function (homePageData) {
+            return homePageData.getLatestProjects();
+        }],
+        popularProjects: ['homePageData', function (homePageData) {
+            return homePageData.getMostPopularProjects();
+        }],
+        statistics: ['statisticsData', function (statisticsData) {
+            return statisticsData.getMainStatistics();
+        }]
+    };
+
     var config = function config($routeProvider, $locationProvider, $httpProvider) {
-        $locationProvider.html5Mode(true); // TODO: check the hash prefix !
+        $locationProvider.html5Mode(true);
 
         var routeResolveChecks = {
             authenticated: {
-                authenticate: ['$q', 'auth', function ($q, auth) {
-                    if (!auth.isAuthenticated()) {
-                        return $q.reject('not authorized');
-                    }
-                }]
+                authenticate: routeResolvers.authenticate
+            },
+            home: {
+                latestProjects: routeResolvers.latestProjects,
+                popularProjects: routeResolvers.popularProjects,
+                statistics: routeResolvers.statistics
             }
         };
 
         $routeProvider
             .when('/', {
-                templateUrl: '/app/home-page/home-page-view.html'
+                templateUrl: '/app/home-page/home-page-view.html',
+                controller: 'HomePageController',
+                controllerAs: 'vm',
+                resolve: routeResolveChecks.home
             })
             .when('/projects/search', {
                 templateUrl: '/app/projects-search-page/projects-search-page-view.html',
