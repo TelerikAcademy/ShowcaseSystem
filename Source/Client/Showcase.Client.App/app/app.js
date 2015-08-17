@@ -50,7 +50,15 @@
         project: ['$route', 'projectDetailsData', function ($route, projectDetailsData) {
             var routeParams = $route.current.params;
             return projectDetailsData.getProject(routeParams.id, routeParams.title);
-        }]
+        }],
+        user: ['$route', 'userProfileData', function ($route, userProfileData) {
+            var routeParams = $route.current.params;
+            return userProfileData.getUser(routeParams.username.toLowerCase());
+        }],
+        profile: ['$route', 'userProfileData', function ($route, userProfileData) {
+            var routeParams = $route.current.params;
+            return userProfileData.getProfile(routeParams.username.toLowerCase());
+        }],
     };
 
     var config = function config($routeProvider, $locationProvider, $httpProvider) {
@@ -73,6 +81,10 @@
             },
             projectDetails: {
                 project: routeResolversProvider.project
+            },
+            userProfile: {
+                user: routeResolversProvider.user,
+                profile: routeResolversProvider.profile
             }
         };
 
@@ -108,7 +120,10 @@
                 resolve: routeResolveChecks.projectDetails
             })
             .when('/users/:username', {
-                templateUrl: '/app/user-profile-page/user-profile-view.html'
+                templateUrl: '/app/user-profile-page/user-profile-view.html',
+                controller: 'UserProfileController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME,
+                resolve: routeResolveChecks.userProfile
             })
             .when('/notfound', {
                 templateUrl: '/app/not-found-page/not-found-view.html'
