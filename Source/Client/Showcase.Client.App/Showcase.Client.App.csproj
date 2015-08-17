@@ -143,6 +143,7 @@
     <Content Include="app\common\pager-directive.js" />
     <Content Include="app\common\project-tile-directive.html" />
     <Content Include="app\common\project-tile-directive.js" />
+    <Content Include="app\common\sweet-alert-dispatcher.js" />
     <Content Include="app\not-found-page\not-found-controller.js" />
     <Content Include="app\not-found-page\not-found-view.html" />
     <Content Include="app\project-details-page\project-comments-directive.html" />

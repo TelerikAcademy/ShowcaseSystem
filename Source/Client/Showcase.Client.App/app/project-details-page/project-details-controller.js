@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($routeParams, $window, $location, projectDetailsData, commentsData, identity, notifier, sweet) {
+    var projectDetailsController = function projectDetailsController($routeParams, $window, $location, projectDetailsData, commentsData, identity, notifier, sweetAlertDispatcher) {
         var vm = this;
         var id = $routeParams.id;
         var titleUrl = $routeParams.title;
@@ -74,22 +74,16 @@
         };
 
         vm.hideProject = function (id) {
-            sweet.show({
+            sweetAlertDispatcher.alertWithOptions({
                 title: 'Hide',
                 text: 'Hidden projects can only be seen by their collaborators and admins and <strong>only admins</strong> can reveal a hidden project.<br />Are you sure you want to hide this project?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#cc6666',
-                confirmButtonText: 'Yes, hide it!',
-                closeOnConfirm: false,
-                closeOnCancel: true,
-                html: true
+                confirmButtonText: 'Yes, hide it!'
             }, function (isConfirmed) {
                 if (isConfirmed) {
                     projectDetailsData.hideProject(id)
                         .then(function () {
                             vm.isHidden = true;
-                            sweet.show('Hidden', 'The project is now hidden');
+                            sweetAlertDispatcher.simpleAlert('Hidden', 'The project is now hidden');
                         });
                 }
             });
@@ -109,5 +103,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$routeParams', '$window', '$location', 'projectDetailsData', 'commentsData', 'identity', 'notifier', 'sweet', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$routeParams', '$window', '$location', 'projectDetailsData', 'commentsData', 'identity', 'notifier', 'sweetAlertDispatcher', projectDetailsController]);
 }());

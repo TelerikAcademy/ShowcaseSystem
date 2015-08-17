@@ -152,4 +152,5 @@
 /// <reference path="../app/user-profile-page/user-profile-collaborators-directive.js" />
 /// <reference path="ngsweetalert.js" />
 /// <reference path="sweetalert.min.js" />
+/// <reference path="../app/common/sweet-alert-dispatcher.js" />
 
