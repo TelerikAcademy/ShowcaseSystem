@@ -20,13 +20,13 @@
                 return statisticsData.getMainStatistics();
             }],
             seasonTags: ['$injector', '$q', 'addProjectData', function ($injector, $q, addProjectData) {
-                var authPromise = $injector.invoke(routeResolversProvider.authenticated);
+                var authPromise = $injector.invoke(routeResolvers.authenticated);
                 return authPromise.then(function () {
                     return addProjectData.getSeasonTags();
                 });
             }],
             languageAndTechnologyTags: ['$injector', '$q', 'addProjectData', function ($injector, $q, addProjectData) {
-                var authPromise = $injector.invoke(routeResolversProvider.authenticated);
+                var authPromise = $injector.invoke(routeResolvers.authenticated);
                 return authPromise.then(function () {
                     return addProjectData.getLanguageAndTechnologyTags();
                 });
