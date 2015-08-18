@@ -65,5 +65,33 @@
 
             return this.Ok(model);
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IHttpActionResult> AllLanguageTags()
+        {
+            var model = await this.tagsService
+                .LanguageTags()
+                .Project()
+                .To<ListedTagResponseModel>()
+                .ToListAsync();
+
+            return this.Ok(model);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IHttpActionResult> AllTechnologyTags()
+        {
+            var model = await this.tagsService
+                .TechnologyTags()
+                .Project()
+                .To<ListedTagResponseModel>()
+                .ToListAsync();
+
+            return this.Ok(model);
+        }
+
+
     }
 }
