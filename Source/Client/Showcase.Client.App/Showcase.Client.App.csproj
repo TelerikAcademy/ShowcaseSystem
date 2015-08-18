@@ -198,8 +198,8 @@
     <Content Include="app\user-profile-page\user-profile-collaborators-directive.html" />
     <Content Include="app\user-profile-page\user-profile-collaborators-directive.js" />
     <Content Include="app\user-profile-page\user-profile-view.html" />
-    <Content Include="content\bootstrap-theme.css.map" />
-    <Content Include="content\bootstrap.css.map" />
+    <Content Include="content\bootstrap-select.css" />
+    <Content Include="content\bootstrap-select.min.css" />
     <Content Include="content\epona\fonts\fontawesome-webfont.eot" />
     <Content Include="content\epona\fonts\fontawesome-webfont.ttf" />
     <Content Include="content\epona\fonts\fontawesome-webfont.woff" />
@@ -236,10 +236,6 @@
     <Content Include="content\ui-bootstrap-csp.css" />
     <Content Include="content\token-input-showcase.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
@@ -255,6 +251,8 @@
     <Content Include="scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\bootstrap-select.js" />
+    <Content Include="scripts\bootstrap-select.min.js" />
     <Content Include="scripts\Chart.js" />
     <Content Include="scripts\Chart.min.js" />
     <Content Include="scripts\epona\plugins\bootstrap\css\bootstrap-theme.css.map" />
@@ -287,6 +285,56 @@
     <Content Include="scripts\epona\plugins\revolution-slider\font\revicons.ttf" />
     <Content Include="scripts\epona\plugins\revolution-slider\font\revicons.woff" />
     <Content Include="scripts\epona\plugins\styleswitcher\color_schemes\color_scheme.fla" />
+    <Content Include="scripts\i18n\defaults-bg_BG.js" />
+    <Content Include="scripts\i18n\defaults-bg_BG.min.js" />
+    <Content Include="scripts\i18n\defaults-cs_CZ.js" />
+    <Content Include="scripts\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="scripts\i18n\defaults-da_DK.js" />
+    <Content Include="scripts\i18n\defaults-da_DK.min.js" />
+    <Content Include="scripts\i18n\defaults-de_DE.js" />
+    <Content Include="scripts\i18n\defaults-de_DE.min.js" />
+    <Content Include="scripts\i18n\defaults-en_US.js" />
+    <Content Include="scripts\i18n\defaults-en_US.min.js" />
+    <Content Include="scripts\i18n\defaults-es_CL.js" />
+    <Content Include="scripts\i18n\defaults-es_CL.min.js" />
+    <Content Include="scripts\i18n\defaults-eu.js" />
+    <Content Include="scripts\i18n\defaults-eu.min.js" />
+    <Content Include="scripts\i18n\defaults-fa_IR.js" />
+    <Content Include="scripts\i18n\defaults-fa_IR.min.js" />
+    <Content Include="scripts\i18n\defaults-fr_FR.js" />
+    <Content Include="scripts\i18n\defaults-fr_FR.min.js" />
+    <Content Include="scripts\i18n\defaults-hu_HU.js" />
+    <Content Include="scripts\i18n\defaults-hu_HU.min.js" />
+    <Content Include="scripts\i18n\defaults-it_IT.js" />
+    <Content Include="scripts\i18n\defaults-it_IT.min.js" />
+    <Content Include="scripts\i18n\defaults-ko_KR.js" />
+    <Content Include="scripts\i18n\defaults-ko_KR.min.js" />
+    <Content Include="scripts\i18n\defaults-nl_NL.js" />
+    <Content Include="scripts\i18n\defaults-nl_NL.min.js" />
+    <Content Include="scripts\i18n\defaults-pl_PL.js" />
+    <Content Include="scripts\i18n\defaults-pl_PL.min.js" />
+    <Content Include="scripts\i18n\defaults-pt_BR.js" />
+    <Content Include="scripts\i18n\defaults-pt_BR.min.js" />
+    <Content Include="scripts\i18n\defaults-pt_PT.js" />
+    <Content Include="scripts\i18n\defaults-pt_PT.min.js" />
+    <Content Include="scripts\i18n\defaults-ro_RO.js" />
+    <Content Include="scripts\i18n\defaults-ro_RO.min.js" />
+    <Content Include="scripts\i18n\defaults-ru_RU.js" />
+    <Content Include="scripts\i18n\defaults-ru_RU.min.js" />
+    <Content Include="scripts\i18n\defaults-sk_SK.js" />
+    <Content Include="scripts\i18n\defaults-sk_SK.min.js" />
+    <Content Include="scripts\i18n\defaults-sl_SI.js" />
+    <Content Include="scripts\i18n\defaults-sl_SI.min.js" />
+    <Content Include="scripts\i18n\defaults-sv_SE.js" />
+    <Content Include="scripts\i18n\defaults-sv_SE.min.js" />
+    <Content Include="scripts\i18n\defaults-tr_TR.js" />
+    <Content Include="scripts\i18n\defaults-tr_TR.min.js" />
+    <Content Include="scripts\i18n\defaults-ua_UA.js" />
+    <Content Include="scripts\i18n\defaults-ua_UA.min.js" />
+    <Content Include="scripts\i18n\defaults-zh_CN.js" />
+    <Content Include="scripts\i18n\defaults-zh_CN.min.js" />
+    <Content Include="scripts\i18n\defaults-zh_TW.js" />
+    <Content Include="scripts\i18n\defaults-zh_TW.min.js" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
     <Content Include="scripts\epona\plugins\owl-carousel\owl.carousel.min.js.map">
       <DependentUpon>owl.carousel.min.js</DependentUpon>
@@ -299,8 +347,10 @@
       <DependentUpon>ng-infinite-scroll.min.js</DependentUpon>
     </Content>
     <Content Include="crawlers.cshtml" />
+    <Content Include="content\bootstrap-select.css.map" />
     <None Include="Properties\PublishProfiles\best.telerikacademy.com.pubxml" />
     <Content Include="scripts\ngSweetAlert.js" />
+    <Content Include="scripts\bootstrap-select.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -323,10 +373,6 @@
     <Content Include="app\home-page\home-page-view.html" />
     <Content Include="app\home-page\layer-slider-directive.html" />
     <Content Include="app\home-page\layer-slider-directive.js" />
-    <Content Include="content\bootstrap-theme.css" />
-    <Content Include="content\bootstrap-theme.min.css" />
-    <Content Include="content\bootstrap.css" />
-    <Content Include="content\bootstrap.min.css" />
     <Content Include="content\epona\css\animate.css" />
     <Content Include="content\epona\css\bootstrap-colorpicker.css" />
     <Content Include="content\epona\css\bootstrap-form-slider.css" />
@@ -1059,12 +1105,9 @@
     <Content Include="content\main.css" />
     <Content Include="content\toastr.css" />
     <Content Include="content\toastr.min.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index-template.html" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />
-    <Content Include="scripts\bootstrap.js" />
-    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\epona\js\contact.js" />
     <Content Include="scripts\epona\js\countdown.js" />
     <Content Include="scripts\epona\js\revolution_slider.js" />
@@ -1366,7 +1409,6 @@
     <Content Include="scripts\loading-bar.min.js" />
     <Content Include="scripts\ng-infinite-scroll.js" />
     <Content Include="scripts\ng-infinite-scroll.min.js" />
-    <Content Include="scripts\npm.js" />
     <Content Include="scripts\sweetalert.min.js" />
     <Content Include="scripts\toastr.js" />
     <Content Include="scripts\toastr.min.js" />
