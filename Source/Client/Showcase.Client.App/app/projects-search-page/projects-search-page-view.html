@@ -10,15 +10,14 @@
                 <div filters options="vm.filterOptions" />
             </div>
             <div class="col-sm-8">
-                <div search-bar params="vm.searchParams" />
+                <div search-bar seasons="vm.seasons" technologies="vm.technologies" languages="vm.languages" params="vm.searchParams" />
             </div>
-
             <div class="col-sm-4 text-center margin-bottom-10 margin-top-10">
                 <div class="sky-form pull-left" ng-show="vm.isAdmin">
                     <label class="toggle">
                         <input type="checkbox" name="checkbox-toggle" ng-model="vm.filterOptions.includeHidden">
                         <i></i>
-                        <span ng-class="vm.filterOptions.includeHidden ? 'bold' : ''" class="display-inline-block margin-top-2">Include Hidden</span>
+                        <span ng-class="vm.filterOptions.includeHidden ? 'bold' : ''" class="display-inline-block margin-top-2 color999">Include Hidden</span>
                     </label>
                 </div>
             </div>

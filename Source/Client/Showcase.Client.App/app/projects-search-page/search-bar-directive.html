@@ -6,10 +6,31 @@
         <div>
             <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Tag" ng-model="params.tags">
         </div>
-    </div>
-    <div class="col-sm-6">
         <div>
             <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Collaborator" ng-model="params.collaborators">
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <select class="selectpicker picker-button form-control margin-bottom-10" name="season" id="seasons"
+                        ng-model="params.season"
+                        ng-options="season.name for season in seasons track by season.id" ng-change="search()">
+                    <option value="">By Season</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <select class="selectpicker form-control margin-bottom-10 picker-button" ng-model="params.languagesAndTechnologies" multiple title="By Language and Technology" data-max-options="10" data-live-search="true" data-selected-text-format="count>5">
+                    <optgroup label="Languages">
+                        <option ng-repeat="language in languages" value="{{language.id}}">{{language.name}}</option>
+                    </optgroup>
+                    <optgroup label="Technologies">
+                        <option ng-repeat="technology in technologies" value="{{technology.id}}">{{technology.name}}</option>
+                    </optgroup>
+                </select>
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-6 ">

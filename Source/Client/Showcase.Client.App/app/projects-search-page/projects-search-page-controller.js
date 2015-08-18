@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, $window, searchPageData, projectsSearchService, identity) {
+    var projectsSearchPageController = function projectsSearchPageController($scope, $routeParams, $location, $window, searchPageData, projectsSearchService, identity, notifier) {
         var vm = this,
             oDataQuery,
             canGetNext = true,
@@ -37,6 +37,21 @@
                 }
             });
 
+        searchPageData.getSeasons()
+            .then(function (seasons) {
+                vm.seasons = seasons;
+            });
+
+        searchPageData.getTechnologies()
+            .then(function (technologies) {
+                vm.technologies = technologies;
+            });
+
+        searchPageData.getLanguages()
+            .then(function (languages) {
+                vm.languages = languages;
+            });
+
         vm.search = function (query) {
             $routeParams = {
                 $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),
@@ -47,7 +62,12 @@
                     " and createdOn le " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
-            if (vm.searchParams.title || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period) {
+            if (vm.searchParams.title || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period || vm.searchParams.season || (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 0)) {
+                if (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 10) {
+                    notifier.error('You can filter by no more than 10 Languages and Technologies.');
+                    return;
+                }
+
                 $routeParams.$filter = (function getSeachParams() {
                     var args = [], index = 0;
                     if (vm.searchParams.title) {
@@ -60,12 +80,41 @@
                         index += 1;
                     }
 
-                    if (vm.searchParams.tags) {
-                        args[index] = vm.searchParams.tags
-                            .split(',')
-                            .map(function (tag) {
-                                return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
-                            }).join(' or ');
+                    if (vm.searchParams.tags || vm.searchParams.season || vm.searchParams.languagesAndTechnologies) {
+                        if (vm.searchParams.tags) {
+                            args[index] = vm.searchParams.tags
+                                .split(',')
+                                .map(function (tag) {
+                                    return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
+                                }).join(' or ');
+                        }
+
+                        if (vm.searchParams.season) {
+                            var seasonQuery = "tags/any(t: t/id eq " + vm.searchParams.season.id + ")";
+                            if (args[index]) {
+                                args[index] += ' and ' + seasonQuery
+                            }
+                            else {
+                                args[index] = seasonQuery;
+                            }
+                        }
+                        
+                        if (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 0) {
+                            var languagesAndTechnologiesQuery = '(' + vm.searchParams
+                                .languagesAndTechnologies
+                                .map(function (tag) {
+                                    return "tags/any(t: t/id eq " + tag + ")";
+                                })
+                                .join(' or ') + ')';
+
+                            if (args[index]) {
+                                args[index] += ' and ' + languagesAndTechnologiesQuery;
+                            }
+                            else {
+                                args[index] = languagesAndTechnologiesQuery;
+                            }
+                        }
+
                         index += 1;
                     }
 
@@ -77,7 +126,7 @@
                             }).join(' or ');
                         index += 1;
                     }
-
+                    
                     return args.join(' and ');
                 })();
             }
@@ -124,7 +173,7 @@
             $routeParams.$skip = ($scope.currentPage) * vm.filterOptions.pageSize;
             getProjects();
         };
-
+        
         $scope.$watch('vm.filterOptions.scrolling', function (newValue, oldValue) {
             if (newValue === oldValue) {
                 return;
@@ -145,14 +194,16 @@
         watchProperty('vm.filterOptions.pageSize');
         watchProperty('vm.filterOptions.includeHidden');
         watchProperty('vm.searchParams.fromDate');
-        watchProperty('vm.filterOptions.toDate');
+        watchProperty('vm.searchParams.toDate');
+        watchProperty('vm.searchParams.season');
+        watchProperty('vm.searchParams.languagesAndTechnologies');
         
         function watchProperty(property) {
             $scope.$watch(property, function (newValue, oldValue) {
                 if (newValue === oldValue) {
                     return;
                 }
-                
+
                 $scope.currentPage = 1;
                 vm.search();
             });
@@ -193,5 +244,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', 'identity', projectsSearchPageController]);
+        .controller('ProjectsSearchPageController', ['$scope', '$routeParams', '$location', '$window', 'projectsSearchPageData', 'projectsSearchService', 'identity', 'notifier', projectsSearchPageController]);
 }());

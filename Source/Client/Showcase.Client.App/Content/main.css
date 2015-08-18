@@ -436,7 +436,12 @@ li.token-input-selected-token-showcase span {
 
 .date-picker .btn-default {
     box-shadow: none;
-    border-radius: 3px !important;
+    border: #e6e6e6 2px solid !important;
+    border-radius: 0 !important;
+}
+
+.date-picker .dropdown-menu .btn-default {
+    border-width: 1px !important;
 }
 
 .date-picker .btn {
@@ -612,4 +617,50 @@ body {
 
 .sweet-alert p {
     color: #666;
+}
+
+.picker-button button {
+    border: #e6e6e6 2px solid !important;
+    margin-bottom: 0;
+    height: 38px;
+    margin-top: 0 !important;
+    color: #999 !important;
+}
+
+.picker-button> button:active,
+.picker-button> button:focus,
+.open>.dropdown-toggle.btn-default {
+    border: #e6e6e6 2px solid !important;
+    background-color: white !important;
+}
+
+.bootstrap-select .dropdown-toggle:focus {
+    outline: none !important;
+    border: #c6c6c6 2px solid !important;
+}
+
+.btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
+    color: #666;
+}
+
+.btn-group.open .dropdown-toggle {
+    box-shadow: none;
+}
+
+.dropdown-menu>li:hover>a, .dropdown-menu>li:focus>a {    
+    color: #333 !important;
+    background-color: #EEE;
+}
+
+.date-picker input {
+    color: #999 !important;
+}
+
+ul.dropdown-menu>li>a, ul.dropdown-menu>li>a:hover {
+    color: #999 !important;
+}
+
+ul.dropdown-menu>li>span.text {
+    font-weight: bold;
+    font-size: 1.2em;
 }

@@ -34,7 +34,8 @@ var config = {
         'scripts/ng-infinite-scroll.min.js',
         'Scripts/angular-ui/ui-bootstrap-tpls.js',
         'scripts/sweetalert.min.js',
-        'scripts/ngSweetAlert.js'
+        'scripts/ngSweetAlert.js',
+        'scripts/bootstrap-select.min.js'
     ],
     vendorCssSrc: [
         'content/epona/css/font-awesome.css',
@@ -51,7 +52,8 @@ var config = {
         'content/loading-bar.css',
         'content/token-input-showcase.css',
         'content/toastr.css',
-        'content/sweetalert.css'
+        'content/sweetalert.css',
+        'content/bootstrap-select.css'
     ],
     appJsSrc: ['app/**/*.js', '!app/build/*'],
     appCssSrc: ['content/main.css'],
