@@ -5,28 +5,33 @@
                 <h2 class="color999"><strong>Projects</strong> by {{vm.filterOptions.orderOption.name}}</h2>
             </div>
         </div>
-        <div class="row well well-sm padding-top20">
-            <div class="col-sm-4">
-                <div filters options="vm.filterOptions" />
+        <div class="well well-sm padding-top20">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div filters options="vm.filterOptions" />
+                </div>
+                <div class="col-sm-8">
+                    <div search-bar seasons="vm.seasons" technologies="vm.technologies" languages="vm.languages" params="vm.searchParams" />
+                </div>                
             </div>
-            <div class="col-sm-8">
-                <div search-bar seasons="vm.seasons" technologies="vm.technologies" languages="vm.languages" params="vm.searchParams" />
-            </div>
-            <div class="col-sm-4 text-center margin-bottom-10 margin-top-10">
-                <div class="sky-form pull-left" ng-show="vm.isAdmin">
-                    <label class="toggle">
-                        <input type="checkbox" name="checkbox-toggle" ng-model="vm.filterOptions.includeHidden">
-                        <i></i>
-                        <span ng-class="vm.filterOptions.includeHidden ? 'bold' : ''" class="display-inline-block margin-top-2 color999">Include Hidden</span>
-                    </label>
+            <div class="row padding-left-10">
+                <div class="col-sm-2 text-center margin-bottom-10 margin-top-5" style="padding-left: 15px; padding-right: 25px;">
+                    <div class="sky-form margin-bottom-10" ng-show="vm.isAdmin">
+                        <label class="toggle">
+                            <input type="checkbox" name="checkbox-toggle" ng-model="vm.filterOptions.includeHidden">
+                            <i></i>
+                            <span ng-class="vm.filterOptions.includeHidden ? 'bold' : ''" class="display-inline-block margin-top-2 color999">Hidden</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 padding-left-10">
+                    <button class="btn btn-success padding-top-8 padding-bottom-8" id="search-button" ng-click="vm.search()">
+                        <i class="fa fa-fw fa-search fa-lg"></i>Search
+                    </button>
                 </div>
             </div>
-            <div class="col-sm-8">
-                <button class="btn btn-success padding-top-8 padding-bottom-8" id="search-button" ng-click="vm.search()">
-                    <i class="fa fa-fw fa-search fa-lg"></i>Search
-                </button>
-            </div>
         </div>
+
 
         <div class="row">
             <div class="col-sm-12">

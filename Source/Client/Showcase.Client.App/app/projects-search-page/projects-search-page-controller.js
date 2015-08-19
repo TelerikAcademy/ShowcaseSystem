@@ -126,7 +126,7 @@
                             }).join(' or ');
                         index += 1;
                     }
-                    
+
                     return args.join(' and ');
                 })();
             }
