@@ -11,80 +11,49 @@
     using Showcase.Server.DataTransferModels.Statistics;
     using Showcase.Server.Infrastructure.Caching;
     using Showcase.Server.Infrastructure.Extensions;
-    using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
 
     public class StatisticsController : BaseController
     {
-        private readonly IStatisticsService statisticsService;
-        private readonly ICacheService cacheService;
+        private readonly IStatisticsCacheService statisticsCacheService;
 
-        public StatisticsController(IStatisticsService statisticsService, ICacheService cacheService)
+        public StatisticsController(IStatisticsCacheService statisticsCacheService)
         {
-            this.statisticsService = statisticsService;
-            this.cacheService = cacheService;
+            this.statisticsCacheService = statisticsCacheService;
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
-            var model = await this.cacheService.Statistics();
+            var model = await this.statisticsCacheService.Statistics();
             return this.Data(model);
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> ProjectsLastSixMonths()
         {
-            var totalProjectsPerMonth = 0;
-            var model = new LineChartResponseModel();
-
-            (await this.statisticsService
-                .ProjectsLastSixMonths()
-                .Select(CountByDateModel.FromProjectGrouping)
-                .ToListAsync())
-                .ForEach(r =>
-                {
-                    totalProjectsPerMonth += r.Count;
-                    model.Values.Add(totalProjectsPerMonth);
-                    model.Labels.Add(r.Date.Month.ToMonthName());
-                });
-
+            var model = await this.statisticsCacheService.ProjectsLastSixMonths();
             return this.Data(model);
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> ProjectsCountByTag()
         {
-            var model = await this.statisticsService
-                .ProjectsCountByTag()
-                .Project()
-                .To<CountByTagModel>()
-                .ToListAsync();
-
+            var model = await this.statisticsCacheService.ProjectsCountByTag();
             return this.Data(model);
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> TopProjects()
         {
-            var model = await this.statisticsService
-                .TopProjects()
-                .Project()
-                .To<TopProjectResponseModel>()
-                .ToListAsync();
-
+            var model = await this.statisticsCacheService.TopProjects();
             return this.Data(model);
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> TopUsers()
         {
-            var model = await this.statisticsService
-                .TopUsers()
-                .Project()
-                .To<TopUserResponseModel>()
-                .ToListAsync();
-
+            var model = await this.statisticsCacheService.TopUsers();
             return this.Data(model);
         }
     }

@@ -7,12 +7,10 @@
     using Showcase.Server.DataTransferModels.Statistics;
     using Showcase.Services.Common;
 
-    public interface ICacheService : IService
+    public interface IProjectsCacheService : IService
     {
         Task<IEnumerable<ProjectSimpleResponseModel>> LatestProjects();
 
         Task<IEnumerable<ProjectSimpleResponseModel>> PopularProjects();
-
-        Task<CurrentStatisticsResponseModel> Statistics();
     }
 }

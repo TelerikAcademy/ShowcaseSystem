@@ -30,7 +30,7 @@ using Showcase.Server.Infrastructure.Caching;
         private readonly IImagesService imagesService;
         private readonly IDownloadableFilesService downloadableFilesService;
         private readonly IFileSystemService fileSystemService;
-        private readonly ICacheService cacheService;
+        private readonly IProjectsCacheService projectsCacheService;
         
         public ProjectsController(
             IUsersService usersService,
@@ -41,7 +41,7 @@ using Showcase.Server.Infrastructure.Caching;
             IImagesService imagesService,
             IDownloadableFilesService downloadableFilesService,
             IFileSystemService fileSystemService,
-            ICacheService cacheService)
+            IProjectsCacheService projectsCacheService)
             : base(usersService)
         {
             this.visitsService = visitsService;
@@ -51,13 +51,13 @@ using Showcase.Server.Infrastructure.Caching;
             this.imagesService = imagesService;
             this.downloadableFilesService = downloadableFilesService;
             this.fileSystemService = fileSystemService;
-            this.cacheService = cacheService;
+            this.projectsCacheService = projectsCacheService;
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
-            var model = await this.cacheService.LatestProjects();
+            var model = await this.projectsCacheService.LatestProjects();
             return this.Data(model);
         }
 
@@ -113,7 +113,7 @@ using Showcase.Server.Infrastructure.Caching;
         [HttpGet]
         public async Task<IHttpActionResult> Popular()
         {
-            var model = await this.cacheService.PopularProjects();
+            var model = await this.projectsCacheService.PopularProjects();
             return this.Data(model);
         }
 

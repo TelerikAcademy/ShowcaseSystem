@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using AutoMapper.QueryableExtensions;
@@ -12,21 +13,16 @@
     using Showcase.Server.Infrastructure.Caching.Base;
     using Showcase.Services.Data.Contracts;
 
-    public class MemoryCacheService : BaseCacheService, ICacheService
+    public class ProjectsCacheService : BaseCacheService, IProjectsCacheService
     {
-        private const int DefaultAbsoluteExpirationInMinutes = 15;
-
         private const string LatestProjectCacheKey = "LatestProjects";
         private const string PopularProjectCacheKey = "PopularProjects";
-        private const string StatisticsCacheKey = "Statistics";
 
         private readonly IProjectsService projectsService;
-        private readonly IStatisticsService statisticsService;
 
-        public MemoryCacheService(IProjectsService projectsService, IStatisticsService statisticsService)
+        public ProjectsCacheService(IProjectsService projectsService)
         {
             this.projectsService = projectsService;
-            this.statisticsService = statisticsService;
         }
 
         public async Task<IEnumerable<ProjectSimpleResponseModel>> LatestProjects()
@@ -39,7 +35,7 @@
                         .Project()
                         .To<ProjectSimpleResponseModel>()
                         .ToListAsync(),
-                DateTime.Now.AddMinutes(DefaultAbsoluteExpirationInMinutes));
+                this.DefaultAbsoluteExpiration);
         }
 
         public async Task<IEnumerable<ProjectSimpleResponseModel>> PopularProjects()
@@ -52,20 +48,7 @@
                         .Project()
                         .To<ProjectSimpleResponseModel>()
                         .ToListAsync(),
-                DateTime.Now.AddMinutes(DefaultAbsoluteExpirationInMinutes));
-        }
-
-        public async Task<CurrentStatisticsResponseModel> Statistics()
-        {
-            return await this.Get<CurrentStatisticsResponseModel>(
-                StatisticsCacheKey,
-                async () =>
-                    await this.statisticsService
-                        .Current()
-                        .Project()
-                        .To<CurrentStatisticsResponseModel>()
-                        .FirstOrDefaultAsync(),
-                DateTime.Now.AddMinutes(DefaultAbsoluteExpirationInMinutes));
+                this.DefaultAbsoluteExpiration);
         }
     }
 }

@@ -118,8 +118,10 @@
     <Compile Include="Auth\AuthStartup.cs" />
     <Compile Include="Auth\ClaimsIdentityFactory.cs" />
     <Compile Include="Caching\Base\BaseCacheService.cs" />
-    <Compile Include="Caching\ICacheService.cs" />
-    <Compile Include="Caching\MemoryCacheService.cs" />
+    <Compile Include="Caching\IProjectsCacheService.cs" />
+    <Compile Include="Caching\IStatisticsCacheService.cs" />
+    <Compile Include="Caching\ProjectsCacheService.cs" />
+    <Compile Include="Caching\StatisticsCacheService.cs" />
     <Compile Include="Extensions\ApiControllerExtensions.cs" />
     <Compile Include="Extensions\ODataConventionModelBuilderExtensions.cs" />
     <Compile Include="FileSystem\FileSystemService.cs" />
