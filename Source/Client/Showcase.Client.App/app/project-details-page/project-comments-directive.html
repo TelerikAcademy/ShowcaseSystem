@@ -1,7 +1,7 @@
 ﻿<div ng-show="comments.length > 0" class="row margin-bottom-20" ng-repeat="comment in comments">
     <div class="col-md-3 col-md-offset-1">
         <a href="/users/{{comment.username}}">
-            <img src="{{comment.userAvatarUrl}}" class="pull-left user-avatar-comments" width="45" />
+            <img ng-src="{{comment.userAvatarUrl}}" class="pull-left user-avatar-comments" width="45" />
         </a>
         <div class="margin-top-2">
             <a href="/users/{{comment.username}}">{{comment.username}}</a><br />

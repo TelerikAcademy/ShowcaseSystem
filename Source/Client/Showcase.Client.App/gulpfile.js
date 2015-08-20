@@ -145,6 +145,7 @@ gulp.task('html', ['css', 'scripts'], function () {
 gulp.task('watch', ['lint', 'css', 'vendors', 'scripts', 'html'], function () {
     gulp.watch(config.appCssSrc, ['css', 'html']);
     gulp.watch(config.appJsSrc, ['lint', 'scripts', 'html']);
+    gulp.watch(config.appTemplatesHtml, ['lint', 'scripts', 'html']);
     gulp.watch(config.appIndexHtml, ['html']);
 });
 
