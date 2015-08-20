@@ -80,7 +80,7 @@ var getStamp = function () {
 // For angular templates
 var prepareTemplates = function () {
     return gulp.src(config.appTemplatesHtml)
-        .pipe(gulpIf(isProduction, minifyHTML({ conditionals: true })))
+        // .pipe(gulpIf(isProduction, minifyHTML({ conditionals: true, empty: true }))) // TODO: minifier is making problems with Angular templates, test with other
         .pipe(angularTemplateCache());
 };
 
