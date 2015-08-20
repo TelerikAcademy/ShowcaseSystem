@@ -4,7 +4,7 @@
     var pieChartDirective = function pieChartDirective(jQuery) {
         return {
             restrict: 'A',
-            templateUrl: '/app/statistics-page/pie-chart-directive.html',
+            templateUrl: 'statistics-page/pie-chart-directive.html',
             scope: {
                 stats: '='
             },

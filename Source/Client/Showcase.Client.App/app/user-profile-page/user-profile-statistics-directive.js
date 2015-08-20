@@ -4,7 +4,7 @@
     var userProfileStatisticsDirective = function userProfileStatisticsDirective() {
         return {
             restrict: 'A',
-            templateUrl: '/app/user-profile-page/user-profile-statistics-directive.html',
+            templateUrl: 'user-profile-page/user-profile-statistics-directive.html',
             scope: {
                 user: '='
             }

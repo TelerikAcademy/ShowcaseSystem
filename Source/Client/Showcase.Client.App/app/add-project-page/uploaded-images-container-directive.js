@@ -4,7 +4,7 @@
     var uploadedImagesContainerDirective = function uploadedImagesContainerDirective() {
         return {
             restrict: 'A',
-            templateUrl: '/app/add-project-page/uploaded-images-container-directive.html',
+            templateUrl: 'add-project-page/uploaded-images-container-directive.html',
             scope: {
                 images: '=',
                 mainImage: '='

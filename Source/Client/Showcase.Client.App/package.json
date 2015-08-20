@@ -21,6 +21,8 @@
     "gulp-replace": "^0.5.3",
     "gulp-minify-html": "^1.0.3",
     "gulp-if": "^1.2.5",
-    "yargs": "^3.18.0"
+    "yargs": "^3.18.0",
+    "gulp-angular-templatecache": "^1.7.0",
+    "add-stream": "^1.0.0"
   }
 }

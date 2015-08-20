@@ -4,7 +4,7 @@
     var statisticsDirective = function statisticsDirective(jQuery) {
         return {
             restrict: 'A',
-            templateUrl: '/app/home-page/statistics-directive.html',
+            templateUrl: 'home-page/statistics-directive.html',
             scope: {
                 stats: '='
             },

@@ -4,7 +4,7 @@
     var ngPager = function pager() {
         return {
             restrict: 'A',
-            templateUrl: '/app/common/pager-directive.html',
+            templateUrl: 'common/pager-directive.html',
             scope: {
                 totalPages: '@',
                 currentPage: '@',

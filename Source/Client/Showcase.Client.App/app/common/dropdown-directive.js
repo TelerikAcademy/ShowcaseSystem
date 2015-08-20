@@ -4,7 +4,7 @@
     var dropdown = function dropdown() {
         return {
             restrict: 'A',
-            templateUrl: '/app/common/dropdown-directive.html',
+            templateUrl: 'common/dropdown-directive.html',
             scope: {
                 options: '=',
                 selected: '='

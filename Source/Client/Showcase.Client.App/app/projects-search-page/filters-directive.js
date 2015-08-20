@@ -4,7 +4,7 @@
     var filters = function filters() {
         return {
             restrict: 'A',
-            templateUrl: '/app/projects-search-page/filters-directive.html',
+            templateUrl: 'projects-search-page/filters-directive.html',
             scope: {
                 options: '=',
                 search: '&'

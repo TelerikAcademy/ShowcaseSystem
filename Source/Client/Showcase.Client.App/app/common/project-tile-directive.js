@@ -4,7 +4,7 @@
     var projectTile = function projectTile() {
         return {
             restrict: 'A',
-            templateUrl: '/app/common/project-tile-directive.html',
+            templateUrl: 'common/project-tile-directive.html',
             require: '^projectContainer',
             scope: {
                 project: '='

@@ -4,7 +4,7 @@
     var projectCommentsDirective = function projectCommentsDirective($routeParams, commentsData, notifier) {
         return {
             restrict: 'A',
-            templateUrl: '/app/project-details-page/project-comments-directive.html',
+            templateUrl: 'project-details-page/project-comments-directive.html',
             scope: {
                 comments: '=',
                 loggedInUsername: '='

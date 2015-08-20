@@ -5,7 +5,7 @@
         return {
             restrict: 'A',
             scope: false,
-            templateUrl: '/app/common/footer-directive.html'
+            templateUrl: 'common/footer-directive.html'
         };
     };
     

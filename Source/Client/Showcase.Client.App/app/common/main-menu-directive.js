@@ -4,7 +4,7 @@
     var mainMenuDirective = function mainMenuDirective($rootScope, $location) {
         return {
             restrict: 'A',
-            templateUrl: '/app/common/main-menu-directive.html',
+            templateUrl: 'common/main-menu-directive.html',
             link: function (scope, element) {
                 updateMenu($location.path());
                 var $addIcon = $('#add-icon');

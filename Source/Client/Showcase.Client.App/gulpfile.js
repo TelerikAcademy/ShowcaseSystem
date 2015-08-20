@@ -12,7 +12,9 @@ var isProduction = require('yargs').argv.env === 'production',
 	inject = require('gulp-inject'),
 	minifyHTML = require('gulp-minify-html'),
 	del = require('del'),
-	angularFilesort = require('gulp-angular-filesort');
+    addStream = require('add-stream'),
+	angularFilesort = require('gulp-angular-filesort'),
+	angularTemplateCache = require('gulp-angular-templatecache');
 
 // File paths
 var config = {
@@ -57,6 +59,7 @@ var config = {
     ],
     appJsSrc: ['app/**/*.js', '!app/build/*'],
     appCssSrc: ['content/main.css'],
+    appTemplatesHtml: 'app/**/*.html',
     appIndexHtml: 'index-template.html'
 }
 
@@ -72,6 +75,13 @@ var getStamp = function () {
     var myFullDate = myYear + myMonth + myDay + mySeconds;
 
     return myFullDate;
+};
+
+// For angular templates
+var prepareTemplates = function () {
+    return gulp.src(config.appTemplatesHtml)
+        .pipe(gulpIf(isProduction, minifyHTML({ conditionals: true })))
+        .pipe(angularTemplateCache());
 };
 
 // Minify, prefix and contat CSS
@@ -111,6 +121,7 @@ gulp.task('scripts', function () {
     return gulp.src(config.appJsSrc)
 		.pipe(angularFilesort())
 		.pipe(gulpIf(isProduction, uglify()))
+        .pipe(addStream.obj(prepareTemplates()))
 		.pipe(concat('alljs' + (isProduction ? getStamp() : '') + '.min.js', { newLine: '' }))
 		.pipe(gulp.dest('app/build'));
 });
