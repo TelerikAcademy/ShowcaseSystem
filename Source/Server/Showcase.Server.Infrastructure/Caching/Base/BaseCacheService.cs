@@ -7,6 +7,8 @@
 
     public abstract class BaseCacheService
     {
+        private static object CacheLock = new object();
+
         protected async Task<T> Get<T>(
             string cacheId,
             Func<Task<T>> getItemCallback,
@@ -14,20 +16,31 @@
             TimeSpan? slidingExpiration = null) 
             where T : class
         {
-            var item = HttpRuntime.Cache.Get(cacheId) as T;
+            var item = this.GetFromCache<T>(cacheId);
             if (item == null)
             {
-                item = await getItemCallback();
-                HttpContext.Current.Cache.Insert(
-                    cacheId,
-                    item,
-                    null,
-                    absoluteExpiration ?? Cache.NoAbsoluteExpiration,
-                    slidingExpiration ?? Cache.NoSlidingExpiration); // TODO: lock
-                return item;
+                lock(CacheLock)
+                {
+                    item = this.GetFromCache<T>(cacheId);
+                    if (item == null)
+                    {
+                        item = getItemCallback().Result;
+                        HttpContext.Current.Cache.Insert(
+                            cacheId,
+                            item,
+                            null,
+                            absoluteExpiration ?? Cache.NoAbsoluteExpiration,
+                            slidingExpiration ?? Cache.NoSlidingExpiration);
+                    }
+                }
             }
 
             return item;
+        }
+
+        private T GetFromCache<T>(string cacheId) where T : class
+        {
+            return HttpRuntime.Cache.Get(cacheId) as T;
         }
     }
 }
