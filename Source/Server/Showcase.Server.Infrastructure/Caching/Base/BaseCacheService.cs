@@ -19,12 +19,12 @@
             var item = this.GetFromCache<T>(cacheId);
             if (item == null)
             {
+                item = await getItemCallback(); // TODO: Not perfect, try to put item in lock
                 lock(CacheLock)
                 {
                     item = this.GetFromCache<T>(cacheId);
                     if (item == null)
                     {
-                        item = getItemCallback().Result;
                         HttpContext.Current.Cache.Insert(
                             cacheId,
                             item,
