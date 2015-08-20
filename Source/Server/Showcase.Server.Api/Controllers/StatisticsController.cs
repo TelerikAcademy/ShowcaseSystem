@@ -9,6 +9,7 @@
 
     using Showcase.Server.Api.Controllers.Base;
     using Showcase.Server.DataTransferModels.Statistics;
+    using Showcase.Server.Infrastructure.Caching;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Contracts;
@@ -16,21 +17,18 @@
     public class StatisticsController : BaseController
     {
         private readonly IStatisticsService statisticsService;
+        private readonly ICacheService cacheService;
 
-        public StatisticsController(IStatisticsService statisticsService)
+        public StatisticsController(IStatisticsService statisticsService, ICacheService cacheService)
         {
             this.statisticsService = statisticsService;
+            this.cacheService = cacheService;
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
-            var model = await this.statisticsService
-                .Current()
-                .Project()
-                .To<CurrentStatisticsResponseModel>()
-                .FirstOrDefaultAsync();
-
+            var model = await this.cacheService.Statistics();
             return this.Data(model);
         }
 

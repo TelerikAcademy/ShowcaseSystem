@@ -19,6 +19,7 @@
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
+using Showcase.Server.Infrastructure.Caching;
 
     public class ProjectsController : BaseAuthorizationController
     {
@@ -29,6 +30,7 @@
         private readonly IImagesService imagesService;
         private readonly IDownloadableFilesService downloadableFilesService;
         private readonly IFileSystemService fileSystemService;
+        private readonly ICacheService cacheService;
         
         public ProjectsController(
             IUsersService usersService,
@@ -38,7 +40,8 @@
             IMappingService mappingService,
             IImagesService imagesService,
             IDownloadableFilesService downloadableFilesService,
-            IFileSystemService fileSystemService)
+            IFileSystemService fileSystemService,
+            ICacheService cacheService)
             : base(usersService)
         {
             this.visitsService = visitsService;
@@ -48,17 +51,13 @@
             this.imagesService = imagesService;
             this.downloadableFilesService = downloadableFilesService;
             this.fileSystemService = fileSystemService;
+            this.cacheService = cacheService;
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
-            var model = await this.projectsService
-                .LatestProjects()
-                .Project()
-                .To<ProjectSimpleResponseModel>()
-                .ToListAsync();
-
+            var model = await this.cacheService.LatestProjects();
             return this.Data(model);
         }
 
@@ -114,12 +113,7 @@
         [HttpGet]
         public async Task<IHttpActionResult> Popular()
         {
-            var model = await this.projectsService
-                .MostPopular()
-                .Project()
-                .To<ProjectSimpleResponseModel>()
-                .ToListAsync();
-
+            var model = await this.cacheService.PopularProjects();
             return this.Data(model);
         }
 
