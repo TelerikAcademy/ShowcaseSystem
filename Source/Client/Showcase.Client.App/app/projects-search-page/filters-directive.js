@@ -13,6 +13,12 @@
                 scope.scrollChecked = function () {
                     localStorage.scrolling = scope.options.scrolling;
                 };
+
+                scope.$watch('options', function (options, oldValue) {
+                    $('.selectpicker').selectpicker({
+                        size: 10
+                    });
+                });
             }
         };
     };

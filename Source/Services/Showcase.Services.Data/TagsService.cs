@@ -89,5 +89,15 @@
         {
             return this.tags.All().Where(t => t.Type == TagType.Language || t.Type == TagType.Technology);
         }
+
+        public IQueryable<Tag> LanguageTags()
+        {
+            return this.tags.All().Where(t => t.Type == TagType.Language);
+        }
+
+        public IQueryable<Tag> TechnologyTags()
+        {
+            return this.tags.All().Where(t => t.Type == TagType.Technology);
+        }
     }
 }

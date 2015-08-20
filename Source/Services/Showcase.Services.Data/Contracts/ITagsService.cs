@@ -18,5 +18,9 @@
         IQueryable<Tag> SeasonTags();
 
         IQueryable<Tag> LanguageAndTechnologyTags();
+
+        IQueryable<Tag> TechnologyTags();
+
+        IQueryable<Tag> LanguageTags();
     }
 }

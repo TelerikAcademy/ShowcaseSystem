@@ -7,8 +7,27 @@
             return data.getOData(oDataQuery);
         }
 
+        function getSeasons() {
+            return data.get('tags/AllSeasonTags');
+        }
+
+        //function getTechnologies() {
+        //    return data.get('tags/AllLanguageAndTechnologyTags');
+        //}
+
+        function getTechnologies() {
+            return data.get('tags/AllTechnologyTags');
+        }
+
+        function getLanguages() {
+            return data.get('tags/AllLanguageTags');
+        }
+
         return {
-            searchProjects: searchProjects
+            searchProjects: searchProjects,
+            getSeasons: getSeasons,
+            getTechnologies: getTechnologies,
+            getLanguages: getLanguages
         };
     };
 

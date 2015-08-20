@@ -35,7 +35,7 @@
             
             return this.projects
                 .All()
-                .Where(p => p.CreatedOn >= todaySixMonthsAgo)
+                .Where(p => p.CreatedOn >= todaySixMonthsAgo && !p.IsHidden)
                 .GroupBy(s => s.CreatedOn.Month)
                 .OrderBy(gr => gr.Key);
         }
@@ -45,7 +45,7 @@
             return this.tags
                 .All()
                 .Where(t => t.Type != TagType.Season)
-                .OrderByDescending(t => t.Projects.Count)
+                .OrderByDescending(t => t.Projects.Count(p => !p.IsHidden))
                 .Take(Constants.StatisticsTopTagsCount);
         }
         
@@ -53,7 +53,7 @@
         {
             return this.projects
                 .All()
-                .Where(p => !p.Collaborators.Any(c => c.IsAdmin))
+                .Where(p => !p.Collaborators.Any(c => c.IsAdmin) && !p.IsHidden)
                 .OrderByDescending(pr => pr.Likes.Count)
                 .ThenByDescending(pr => pr.Visits.Count)
                 .ThenByDescending(pr => pr.Comments.Count(c => !c.IsHidden))
@@ -65,7 +65,7 @@
             return this.users
                 .All()
                 .Where(u => u.Projects.Any() && !u.IsAdmin)
-                .OrderByDescending(u => u.Projects.Sum(pr => pr.Likes.Count))
+                .OrderByDescending(u => u.Projects.Where(p => !p.IsHidden).Sum(pr => pr.Likes.Count))
                 .Take(Constants.StatisticsTopUsersCount);
         }
     }

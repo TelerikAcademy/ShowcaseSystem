@@ -1,12 +1,12 @@
 ﻿<div class="sky-form nomargin-bottom">
     <div class="row">
         <div class="col-sm-6">
-            <select class="form-control pointer fsize13  " name="orderby"
+            <select class="selectpicker form-control margin-bottom-10 picker-button" name="orderby" 
                     ng-model="options.orderOption"
-                    ng-options="'Order by ' + option.name for option in options.orderOptions" ng-change="search()"></select>
+                    ng-options="'Order by ' + option.name for option in options.orderOptions track by option.value" ng-change="search()"></select>
         </div>
         <div class="col-sm-6 padding-left-10">
-            <label class="toggle" >
+            <label class="toggle">
                 <input type="checkbox" name="checkbox-toggle" checked ng-model="options.desc">
                 <i></i>
                 <span class="color999" ng-class="options.desc ? 'bold' : ''">Descending</span>
@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <select class="form-control pointer fsize13  " name="pagesize" ng-change="search()"
+            <select class="selectpicker form-control margin-bottom-10 picker-button" name="pagesize" ng-change="search()" 
                     ng-model="options.pageSize" ng-options="pageSize + ' items per page' for pageSize in options.pageSizes"></select>
         </div>
         <div class="col-sm-6 padding-left-10">
