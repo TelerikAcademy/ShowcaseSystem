@@ -9,6 +9,14 @@
     {
         private const int DefaultAbsoluteExpirationInMinutes = 15;
 
+        protected DateTime DefaultAbsoluteExpiration
+        {
+            get
+            {
+                return DateTime.Now.AddMinutes(DefaultAbsoluteExpirationInMinutes);
+            }
+        }
+
         protected async Task<T> Get<T>(
             string cacheId,
             Func<Task<T>> getItemCallback,
@@ -29,14 +37,6 @@
             }
 
             return item;
-        }
-
-        protected DateTime DefaultAbsoluteExpiration
-        {
-            get
-            {
-                return DateTime.Now.AddMinutes(DefaultAbsoluteExpirationInMinutes);
-            }
         }
 
         private T GetFromCache<T>(string cacheId) where T : class

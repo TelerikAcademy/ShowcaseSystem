@@ -13,13 +13,13 @@
     using Showcase.Server.Common;
     using Showcase.Server.Common.Models;
     using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Server.Infrastructure.Caching;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
     using Showcase.Services.Data.Contracts;
     using Showcase.Services.Data.Models;
     using Showcase.Services.Logic.Contracts;
-using Showcase.Server.Infrastructure.Caching;
 
     public class ProjectsController : BaseAuthorizationController
     {
