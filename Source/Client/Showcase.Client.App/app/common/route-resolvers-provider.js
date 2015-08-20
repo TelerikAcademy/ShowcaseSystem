@@ -88,7 +88,7 @@
             $get: function () {
                 return routeResolveChecks;
             }
-        }
+        };
     };
 
     angular
