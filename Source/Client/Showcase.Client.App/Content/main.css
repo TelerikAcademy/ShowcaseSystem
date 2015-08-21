@@ -335,6 +335,8 @@ ul.token-input-list-showcase {
 
     ul.token-input-list-showcase [id^="token-input"] {
         border: none !important;
+        margin-top: 0;
+        height: 35px;
     }
 
 div.token-input-dropdown-showcase ul li.token-input-selected-dropdown-item-showcase {
@@ -344,8 +346,12 @@ div.token-input-dropdown-showcase ul li.token-input-selected-dropdown-item-showc
 li.token-input-token-showcase {
     background-color: #b5e124;
     border: 1px solid #a7d01d;
-    margin-top: 8px;
+    margin-top: 4px;
     margin-left: 5px;
+}
+
+li.token-input-input-token-showcase {
+    height: 35px;
 }
 
 li.token-input-selected-token-showcase {
