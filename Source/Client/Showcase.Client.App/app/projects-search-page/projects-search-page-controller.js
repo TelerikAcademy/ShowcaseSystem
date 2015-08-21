@@ -62,12 +62,13 @@
                     " and createdOn le " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
+            // TODO: get these from service
             if (vm.searchParams.title || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period || vm.searchParams.season || (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 0)) {
                 if (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 10) {
                     notifier.error('You can filter by no more than 10 Languages and Technologies.');
                     return;
                 }
-
+                
                 $routeParams.$filter = (function getSeachParams() {
                     var args = [], index = 0;
                     if (vm.searchParams.title) {
@@ -85,7 +86,7 @@
                             args[index] = vm.searchParams.tags
                                 .split(',')
                                 .map(function (tag) {
-                                    return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
+                                    return "tags/any(t: t/id eq " + tag.trim() + ")";
                                 }).join(' or ');
                         }
 
@@ -189,6 +190,7 @@
             }
         });
 
+        // TODO: remove watches
         watchProperty('vm.filterOptions.desc');
         watchProperty('vm.filterOptions.orderOption');
         watchProperty('vm.filterOptions.pageSize');
@@ -197,6 +199,7 @@
         watchProperty('vm.searchParams.toDate');
         watchProperty('vm.searchParams.season');
         watchProperty('vm.searchParams.languagesAndTechnologies');
+        watchProperty('vm.searchParams.tags');
         
         function watchProperty(property) {
             $scope.$watch(property, function (newValue, oldValue) {
