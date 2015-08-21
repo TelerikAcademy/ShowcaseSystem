@@ -26,6 +26,7 @@
         {
             return this.projects
                 .All()
+                .Where(pr => !pr.IsHidden)
                 .GroupBy(pr => 0); // Don't ask!
         }
 
@@ -64,7 +65,7 @@
         {
             return this.users
                 .All()
-                .Where(u => u.Projects.Any() && !u.IsAdmin)
+                .Where(u => u.Projects.Any(pr => !pr.IsHidden) && !u.IsAdmin)
                 .OrderByDescending(u => u.Projects.Where(p => !p.IsHidden).Sum(pr => pr.Likes.Count))
                 .Take(Constants.StatisticsTopUsersCount);
         }
