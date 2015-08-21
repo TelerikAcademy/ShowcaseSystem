@@ -4,10 +4,10 @@
             <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Title or Content" ng-model="params.title">
         </div>
         <div>
-            <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Tag" ng-model="params.tags">
+            <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Collaborator" ng-model="params.collaborators">
         </div>
         <div>
-            <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Collaborator" ng-model="params.collaborators">
+            <input name="k" class="form-control input-lg search-field" token-input data-url="/api/Tags/Search" data-placeholder="By Tag" data-query-param="name" data-min-chars="2" data-max-chars="30" data-hint-text="Start typing tag name and select" type="text" placeholder="By Tag" ng-model="params.tags">
         </div>
     </div>
     <div class="col-sm-6">
