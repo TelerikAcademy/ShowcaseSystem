@@ -73,11 +73,11 @@
                     var args = [], index = 0;
                     if (vm.searchParams.title) {
                         args[index] = vm.searchParams.title
-                            .split(',')
+                            .split(' ')
                             .map(function (title) {
                                 return "contains(title,'" + title.trim() + "')";
                             })
-                            .join(' or ');
+                            .join(' and ');
                         index += 1;
                     }
 
@@ -87,7 +87,7 @@
                                 .split(',')
                                 .map(function (tag) {
                                     return "tags/any(t: t/id eq " + tag.trim() + ")";
-                                }).join(' or ');
+                                }).join(' and ');
                         }
 
                         if (vm.searchParams.season) {
@@ -106,7 +106,7 @@
                                 .map(function (tag) {
                                     return "tags/any(t: t/id eq " + tag + ")";
                                 })
-                                .join(' or ') + ')';
+                                .join(' and ') + ')';
 
                             if (args[index]) {
                                 args[index] += ' and ' + languagesAndTechnologiesQuery;
@@ -124,7 +124,7 @@
                             .split(',')
                             .map(function (collaborator) {
                                 return "collaborators/any(c:contains(c, '" + collaborator + "'))";
-                            }).join(' or ');
+                            }).join(' and ');
                         index += 1;
                     }
                     
@@ -200,6 +200,7 @@
         watchProperty('vm.searchParams.season');
         watchProperty('vm.searchParams.languagesAndTechnologies');
         watchProperty('vm.searchParams.tags');
+        watchProperty('vm.searchParams.collaborators');
         
         function watchProperty(property) {
             $scope.$watch(property, function (newValue, oldValue) {

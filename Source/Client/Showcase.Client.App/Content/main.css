@@ -677,7 +677,7 @@ ul.dropdown-menu > li > span.text {
 .project-search-filters .token-input-input-token-showcase input {
     font-size: 14px;   
     padding-left: 12px;
-    min-width: 75px;
+    min-width: 125px;
 }
 
 .project-search-filters .input-lg {
