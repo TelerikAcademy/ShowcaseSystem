@@ -16,6 +16,7 @@
                     maxChars: attrs.maxChars || 1000,
                     hintText: attrs.hintText || 'Start typing and select',
                     canAddNewTokens: attrs.canAddNewTokens || false,
+                    placeholder: attrs.placeholder || '',
                     onSelectedCallback: function (values) {
                         scope.$apply(function () {
                             scope.userTags = values;

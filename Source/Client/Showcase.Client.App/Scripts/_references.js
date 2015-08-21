@@ -123,7 +123,6 @@
 /// <reference path="../app/projects-search-page/filters-directive.js" />
 /// <reference path="../app/projects-search-page/search-bar-directive.js" />
 /// <reference path="../app/add-project-page/file-upload-directive.js" />
-/// <reference path="../app/add-project-page/token-input-directive.js" />
 /// <reference path="../app/add-project-page/uploaded-images-container-directive.js" />
 /// <reference path="../app/projects-search-page/projects-search-page-controller.js" />
 /// <reference path="../app/projects-search-page/projects-search-page-data.js" />
@@ -153,4 +152,5 @@
 /// <reference path="../app/common/sweet-alert-dispatcher.js" />
 /// <reference path="../app/common/route-resolvers-provider.js" />
 /// <reference path="bootstrap-select.min.js" />
+/// <reference path="../app/common/token-input-directive.js" />
 

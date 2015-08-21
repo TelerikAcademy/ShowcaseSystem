@@ -62,21 +62,22 @@
                     " and createdOn le " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
+            // TODO: get these from service
             if (vm.searchParams.title || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period || vm.searchParams.season || (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 0)) {
                 if (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 10) {
                     notifier.error('You can filter by no more than 10 Languages and Technologies.');
                     return;
                 }
-
+                
                 $routeParams.$filter = (function getSeachParams() {
                     var args = [], index = 0;
                     if (vm.searchParams.title) {
                         args[index] = vm.searchParams.title
-                            .split(',')
+                            .split(' ')
                             .map(function (title) {
                                 return "contains(title,'" + title.trim() + "')";
                             })
-                            .join(' or ');
+                            .join(' and ');
                         index += 1;
                     }
 
@@ -85,8 +86,8 @@
                             args[index] = vm.searchParams.tags
                                 .split(',')
                                 .map(function (tag) {
-                                    return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
-                                }).join(' or ');
+                                    return "tags/any(t: t/id eq " + tag.trim() + ")";
+                                }).join(' and ');
                         }
 
                         if (vm.searchParams.season) {
@@ -105,7 +106,7 @@
                                 .map(function (tag) {
                                     return "tags/any(t: t/id eq " + tag + ")";
                                 })
-                                .join(' or ') + ')';
+                                .join(' and ') + ')';
 
                             if (args[index]) {
                                 args[index] += ' and ' + languagesAndTechnologiesQuery;
@@ -123,7 +124,7 @@
                             .split(',')
                             .map(function (collaborator) {
                                 return "collaborators/any(c:contains(c, '" + collaborator + "'))";
-                            }).join(' or ');
+                            }).join(' and ');
                         index += 1;
                     }
                     
@@ -189,6 +190,7 @@
             }
         });
 
+        // TODO: remove watches
         watchProperty('vm.filterOptions.desc');
         watchProperty('vm.filterOptions.orderOption');
         watchProperty('vm.filterOptions.pageSize');
@@ -197,6 +199,8 @@
         watchProperty('vm.searchParams.toDate');
         watchProperty('vm.searchParams.season');
         watchProperty('vm.searchParams.languagesAndTechnologies');
+        watchProperty('vm.searchParams.tags');
+        watchProperty('vm.searchParams.collaborators');
         
         function watchProperty(property) {
             $scope.$watch(property, function (newValue, oldValue) {
