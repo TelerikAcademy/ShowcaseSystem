@@ -108,6 +108,7 @@
             {
                 // Creating the HttpWebRequest
                 var request = WebRequest.Create(url) as HttpWebRequest;
+                request.Timeout = 20000;
                 
                 // Setting the Request method HEAD, you can also use GET too.
                 request.Method = "HEAD";
