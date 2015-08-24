@@ -153,4 +153,5 @@
 /// <reference path="../app/common/sweet-alert-dispatcher.js" />
 /// <reference path="../app/common/route-resolvers-provider.js" />
 /// <reference path="bootstrap-select.min.js" />
+/// <reference path="../app/project-details-page/project-description-directive.js" />
 

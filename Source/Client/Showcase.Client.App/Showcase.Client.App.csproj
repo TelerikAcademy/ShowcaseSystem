@@ -149,6 +149,8 @@
     <Content Include="app\not-found-page\not-found-view.html" />
     <Content Include="app\project-details-page\project-comments-directive.html" />
     <Content Include="app\project-details-page\project-comments-directive.js" />
+    <Content Include="app\project-details-page\project-description-directive.html" />
+    <Content Include="app\project-details-page\project-description-directive.js" />
     <Content Include="app\project-details-page\project-tags-directive.html" />
     <Content Include="app\project-details-page\project-tags-directive.js" />
     <Content Include="app\project-details-page\social-icons-directive.html" />

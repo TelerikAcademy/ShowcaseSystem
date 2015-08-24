@@ -29,7 +29,7 @@
         vm.isFlagged = project.isFlagged;
         vm.images = project.imageUrls;
         vm.isHidden = project.isHidden;
-
+        
         identity.getUser()
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
