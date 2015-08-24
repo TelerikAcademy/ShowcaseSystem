@@ -105,12 +105,14 @@
 
         private static bool RemoteFileExists(string url)
         {
+            ServicePointManager.DefaultConnectionLimit = 20;
             var request = WebRequest.Create(url) as HttpWebRequest;
-            request.Timeout = 20000;
-            request.Method = "HEAD";
-                
-            var response = request.GetResponse() as HttpWebResponse;
-            return response.StatusCode == HttpStatusCode.OK;
+            request.Timeout = 60000;
+
+            using (var response = request.GetResponse() as HttpWebResponse)
+            {
+                return response.StatusCode == HttpStatusCode.OK;
+            }
         }
     }
 }
