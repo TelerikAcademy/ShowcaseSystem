@@ -25,6 +25,16 @@
             vm.filterOptions.scrolling = true;
         }
 
+        if ($routeParams.tag) {
+            vm.searchParams.tags = $routeParams.tag;
+            $location.search('tag', null);
+        }
+
+        if ($routeParams.term) {
+            vm.searchParams.title = $routeParams.term;
+            $location.search('term', null);
+        }
+
         identity.getUser()
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
@@ -52,6 +62,16 @@
                 vm.languages = languages;
             });
 
+        vm.getNextProjects = function () {
+            if (vm.isLastPage || !canGetNext) {
+                return;
+            }
+
+            canGetNext = false;
+            $routeParams.$skip = ($scope.currentPage) * vm.filterOptions.pageSize;
+            getProjects();
+        };
+
         vm.search = function (query) {
             $routeParams = {
                 $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),
@@ -68,67 +88,7 @@
                     return;
                 }
 
-                $routeParams.$filter = (function getSeachParams() {
-                    var args = [], index = 0;
-                    if (vm.searchParams.title) {
-                        args[index] = vm.searchParams.title
-                            .split(',')
-                            .map(function (title) {
-                                return "contains(title,'" + title.trim() + "')";
-                            })
-                            .join(' or ');
-                        index += 1;
-                    }
-
-                    if (vm.searchParams.tags || vm.searchParams.season || vm.searchParams.languagesAndTechnologies) {
-                        if (vm.searchParams.tags) {
-                            args[index] = vm.searchParams.tags
-                                .split(',')
-                                .map(function (tag) {
-                                    return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
-                                }).join(' or ');
-                        }
-
-                        if (vm.searchParams.season) {
-                            var seasonQuery = "tags/any(t: t/id eq " + vm.searchParams.season.id + ")";
-                            if (args[index]) {
-                                args[index] += ' and ' + seasonQuery
-                            }
-                            else {
-                                args[index] = seasonQuery;
-                            }
-                        }
-                        
-                        if (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 0) {
-                            var languagesAndTechnologiesQuery = '(' + vm.searchParams
-                                .languagesAndTechnologies
-                                .map(function (tag) {
-                                    return "tags/any(t: t/id eq " + tag + ")";
-                                })
-                                .join(' or ') + ')';
-
-                            if (args[index]) {
-                                args[index] += ' and ' + languagesAndTechnologiesQuery;
-                            }
-                            else {
-                                args[index] = languagesAndTechnologiesQuery;
-                            }
-                        }
-
-                        index += 1;
-                    }
-
-                    if (vm.searchParams.collaborators) {
-                        args[index] = vm.searchParams.collaborators
-                            .split(',')
-                            .map(function (collaborator) {
-                                return "collaborators/any(c:contains(c, '" + collaborator + "'))";
-                            }).join(' or ');
-                        index += 1;
-                    }
-
-                    return args.join(' and ');
-                })();
+                $routeParams.$filter = projectsSearchService.getSearchFilter(vm.searchParams);
             }
             
             if (query) {
@@ -147,31 +107,11 @@
             getProjects();
         };
 
-        if ($routeParams.tag) {
-            vm.searchParams.tags = $routeParams.tag;
-            $location.search('tag', null);
-        }
-
-        if ($routeParams.term) {
-            vm.searchParams.title = $routeParams.term;
-            $location.search('term', null);
-        }
-
         vm.search();
 
         $scope.changePage = function (newPage) {
             $scope.currentPage = newPage;
             vm.search({ $skip: (newPage - 1) * vm.filterOptions.pageSize });
-        };
-
-        vm.getNextProjects = function () {
-            if (vm.isLastPage || !canGetNext) {
-                return;
-            }
-
-            canGetNext = false;
-            $routeParams.$skip = ($scope.currentPage) * vm.filterOptions.pageSize;
-            getProjects();
         };
         
         $scope.$watch('vm.filterOptions.scrolling', function (newValue, oldValue) {

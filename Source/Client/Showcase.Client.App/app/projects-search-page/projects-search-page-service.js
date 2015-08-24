@@ -102,11 +102,81 @@
             return result;
         }
 
+        function getSearchFilter(searchParams) {
+            var args = [], index = 0;
+            if (searchParams.title) {
+                args[index] = searchParams.title
+                    .split(',')
+                    .map(function (title) {
+                        return "contains(title,'" + title.trim() + "')";
+                    })
+                    .join(' or ');
+                index += 1;
+            }
+
+            if (searchParams.tags || searchParams.season || searchParams.languagesAndTechnologies) {
+                if (searchParams.tags) {
+                    args[index] = searchParams.tags
+                        .split(',')
+                        .map(function (tag) {
+                            return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
+                        }).join(' or ');
+                }
+
+                if (searchParams.season) {
+                    var seasonQuery = "tags/any(t:t/id eq " + searchParams.season.id + ")";
+                    if (args[index]) {
+                        args[index] += ' and ' + seasonQuery
+                    }
+                    else {
+                        args[index] = seasonQuery;
+                    }
+                }
+
+                if (searchParams.languagesAndTechnologies && searchParams.languagesAndTechnologies.length > 0) {
+                    var languagesAndTechnologiesQuery = '(' + searchParams
+                        .languagesAndTechnologies
+                        .map(function (tag) {
+                            return "tags/any(t:t/id eq " + tag + ")";
+                        })
+                        .join(' or ') + ')';
+
+                    if (args[index]) {
+                        args[index] += ' and ' + languagesAndTechnologiesQuery;
+                    }
+                    else {
+                        args[index] = languagesAndTechnologiesQuery;
+                    }
+                }
+
+                index += 1;
+            }
+
+            if (searchParams.collaborators) {
+                args[index] = searchParams.collaborators
+                    .split(',')
+                    .map(function (collaborator) {
+                        return "collaborators/any(c:contains(c, '" + collaborator + "'))";
+                    }).join(' or ');
+                index += 1;
+            }
+
+            return args.join(' and ');
+        }
+
+        function buildQueryFromCollection(collection, collectionName, operation) {
+            return collection.map(function (item) {
+                return collection + '/any(x:' + operation + ')';
+            })
+            .join(' or ');
+        }
+
         return {
             getFilterOptions: getFilterOptions,
             getSearchParams: getSearchParams,
             getQuery: getQuery,
-            getODataUTCDateFilter: getODataUTCDateFilter
+            getODataUTCDateFilter: getODataUTCDateFilter,
+            getSearchFilter: getSearchFilter
         };
     };
 
