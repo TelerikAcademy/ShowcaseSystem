@@ -107,8 +107,6 @@
             getProjects();
         };
 
-        vm.search();
-
         $scope.changePage = function (newPage) {
             $scope.currentPage = newPage;
             vm.search({ $skip: (newPage - 1) * vm.filterOptions.pageSize });
@@ -137,7 +135,9 @@
         watchProperty('vm.searchParams.toDate');
         watchProperty('vm.searchParams.season');
         watchProperty('vm.searchParams.languagesAndTechnologies');
-        
+
+        vm.search();
+
         function watchProperty(property) {
             $scope.$watch(property, function (newValue, oldValue) {
                 if (newValue === oldValue) {

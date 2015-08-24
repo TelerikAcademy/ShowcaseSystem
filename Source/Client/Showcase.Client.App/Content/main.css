@@ -668,3 +668,13 @@ ul.dropdown-menu>li>span.text {
     font-weight: bold;
     font-size: 1.2em;
 }
+
+#topNav button.btn-mobile {
+    background: #999;
+}
+
+@media (max-width: 990px) {
+    #topNav ul.nav > li > a:after {
+        content: none;
+    }
+}
