@@ -164,13 +164,6 @@
             return args.join(' and ');
         }
 
-        function buildQueryFromCollection(collection, collectionName, operation) {
-            return collection.map(function (item) {
-                return collection + '/any(x:' + operation + ')';
-            })
-            .join(' or ');
-        }
-
         return {
             getFilterOptions: getFilterOptions,
             getSearchParams: getSearchParams,
