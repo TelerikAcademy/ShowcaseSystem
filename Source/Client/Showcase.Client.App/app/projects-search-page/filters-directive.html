@@ -13,14 +13,14 @@
         </div>
     </div>
     <div class="row" style="padding-top: 4px;">
-        <div class="col-sm-6">
-            <label class="toggle margin-left-10">
+        <div class="col-sm-6 margin-bottom-10">
+            <label class="toggle">
                 <input type="checkbox" name="checkbox-toggle" checked ng-model="options.desc">
                 <i></i>
-                <span class="color999" ng-class="options.desc ? 'bold' : ''">Descending</span>
+                <span class="color999 display-inline-block margin-top-2" ng-class="options.desc ? 'bold' : ''">Descending</span>
             </label>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 margin-bottom-20">
             <label class="toggle">
                 <input type="checkbox" ng-click="search()" name="checkbox-toggle" checked="" ng-model="options.scrolling" ng-change="scrollChecked()">
                 <i></i>
