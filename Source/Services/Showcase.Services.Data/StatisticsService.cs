@@ -26,6 +26,7 @@
         {
             return this.projects
                 .All()
+                .Where(pr => !pr.IsHidden)
                 .GroupBy(pr => 0); // Don't ask!
         }
 

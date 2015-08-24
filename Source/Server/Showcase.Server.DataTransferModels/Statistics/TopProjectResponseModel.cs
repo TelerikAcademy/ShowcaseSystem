@@ -1,5 +1,7 @@
 ﻿namespace Showcase.Server.DataTransferModels.Statistics
 {
+    using System.Linq;
+
     using AutoMapper;
     using MissingFeatures;
 
@@ -33,7 +35,7 @@
             configuration.CreateMap<Project, TopProjectResponseModel>()
                 .ForMember(pr => pr.Likes, opt => opt.MapFrom(pr => pr.Likes.Count))
                 .ForMember(pr => pr.Visits, opt => opt.MapFrom(pr => pr.Visits.Count))
-                .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
+                .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Where(c => !c.IsHidden).Count()))
                 .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath));
         }
     }
