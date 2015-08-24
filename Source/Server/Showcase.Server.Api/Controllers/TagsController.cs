@@ -40,7 +40,6 @@
             return this.Ok(model);
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<IHttpActionResult> AllSeasonTags()
         {
@@ -66,7 +65,6 @@
             return this.Ok(model);
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<IHttpActionResult> AllLanguageTags()
         {
@@ -79,7 +77,6 @@
             return this.Ok(model);
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<IHttpActionResult> AllTechnologyTags()
         {
@@ -91,7 +88,5 @@
 
             return this.Ok(model);
         }
-
-
     }
 }
