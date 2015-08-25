@@ -71,7 +71,7 @@
             $routeParams.$skip = ($scope.currentPage) * vm.filterOptions.pageSize;
             getProjects();
         };
-
+        
         vm.search = function (query) {
             $routeParams = {
                 $orderby: vm.filterOptions.orderOption.value + (vm.filterOptions.desc ? ' ' + CONSTS.DESC : ''),

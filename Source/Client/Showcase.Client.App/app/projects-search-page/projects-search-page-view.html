@@ -15,7 +15,7 @@
                 </div>                
             </div>
             <div class="row padding-left-10">
-                <div class="col-sm-2 text-center margin-bottom-10 margin-top-5 padding-left-15 padding-right-25">
+                <div class="col-sm-2 text-center margin-bottom-10 margin-top-5">
                     <div class="sky-form margin-bottom-10" ng-show="vm.isAdmin">
                         <label class="toggle">
                             <input type="checkbox" name="checkbox-toggle" ng-model="vm.filterOptions.includeHidden">
@@ -25,7 +25,9 @@
                     </div>
                 </div>
                 <div class="col-sm-8 col-sm-offset-2 padding-left-10">
-                    <button class="btn btn-success padding-top-8 padding-bottom-8" id="search-button" ng-click="vm.search()">
+                    <div advanced-search-button />
+
+                    <button class="btn btn-success padding-top-8 padding-bottom-8" id="search-button">
                         <i class="fa fa-fw fa-search fa-lg"></i>Search
                     </button>
                 </div>

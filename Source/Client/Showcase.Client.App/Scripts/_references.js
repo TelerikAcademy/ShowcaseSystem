@@ -154,4 +154,5 @@
 /// <reference path="../app/common/route-resolvers-provider.js" />
 /// <reference path="bootstrap-select.min.js" />
 /// <reference path="../app/project-details-page/project-description-directive.js" />
+/// <reference path="../app/projects-search-page/advanced-search-button-directive.js" />
 

@@ -697,5 +697,5 @@ ul.dropdown-menu>li>span.text {
 
 .project-tile > div {
     min-height: 285px !important;
-    width: 260px;
+    max-width: 260px;
 }
