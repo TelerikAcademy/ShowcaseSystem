@@ -4,6 +4,7 @@
 
     using AutoMapper;
 
+    using Showcase.Data.Common.Models;
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
 
@@ -13,9 +14,12 @@
 
         public int Count { get; set; }
 
+        public bool IsUserSubmitted { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Tag, CountByTagModel>()
+                .ForMember(m => m.IsUserSubmitted, opt => opt.MapFrom(t => t.Type == TagType.UserSubmitted))
                 .ForMember(m => m.Tag, opt => opt.MapFrom(t => t.Name))
                 .ForMember(m => m.Count, opt => opt.MapFrom(t => t.Projects.Count()));
         }

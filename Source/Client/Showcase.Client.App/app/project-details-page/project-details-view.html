@@ -26,9 +26,8 @@
                     <div class="pull-right" social-icons popup="vm.popup" name="vm.project.title" />
                 </div>
                 <hr class="small-horizontal-line" />
-                <p class="text-justify margin-top-15 break-word">
-                    {{vm.project.description}}
-                </p>
+                <div project-description description="vm.project.description" />
+
                 <div>
                     <span ng-repeat="file in vm.project.files">
                         <a href="/Files/{{file.urlPath}}" target="_self" class="margin-right-5 margin-bottom-2"><span class="file-name">{{file.originalFileName}}</span>.{{file.fileExtension}}</a>

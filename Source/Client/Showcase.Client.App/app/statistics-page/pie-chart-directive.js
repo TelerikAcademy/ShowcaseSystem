@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var pieChartDirective = function pieChartDirective(jQuery) {
+    var pieChartDirective = function pieChartDirective($location, jQuery, appSettings) {
         return {
             restrict: 'A',
             templateUrl: 'statistics-page/pie-chart-directive.html',
@@ -24,7 +24,7 @@
                         for (var i = 0; i < stats.length; i++) {
                             data.push({
                                 value: stats[i].count,
-                                label: stats[i].tag,
+                                label: stats[i].isUserSubmitted ? stats[i].tag[0].toUpperCase() + stats[i].tag.substr(1) : stats[i].tag,
                                 color: colors[i],
                                 highlight: highlights[i]
                             });
@@ -53,7 +53,7 @@
                             animateRotate: true,
 
                             //Boolean - Whether we animate scaling the Doughnut from the centre
-                            animateScale: false,
+                            animateScale: true,
 
                             //String - A legend template
                             legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
@@ -63,6 +63,15 @@
 
                         var ctx = chartContainer.get(0).getContext("2d");
                         var chart = new Chart(ctx).Pie(data, options);
+
+                        jQuery('#pie-chart').click(function (evt) {
+                            var activePoints = chart.getSegmentsAtEvent(evt);
+                            if (activePoints[0]) {
+                                var url = '/projects/search';
+                                $location.path(url).search('tag', activePoints[0].label);
+                                scope.$apply();
+                            }
+                        });
                     }
                 });
             }
@@ -71,5 +80,5 @@
 
     angular
         .module('showcaseSystem.directives')
-        .directive('pieChart', ['jQuery', pieChartDirective]);
+        .directive('pieChart', ['$location', 'jQuery', 'appSettings', pieChartDirective]);
 }());

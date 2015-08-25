@@ -30,7 +30,7 @@
                 {{project.shortDescription}}
             </p>
             <div class="margin-bottom-10">
-                <span ng-repeat="collaborator in project.collaborators" class="font-size-09em">
+                <span ng-repeat="collaborator in project.collaborators" class="font-size-09em display-inline-block">
                     <a href="/users/{{collaborator.username}}" class="margin-bottom-2 margin-right-10"><img width="24" height="24" class="margin-right-5 img-thumbnail" ng-src="{{collaborator.avatarUrl}}" />{{collaborator.username}}</a>
                 </span>
             </div>

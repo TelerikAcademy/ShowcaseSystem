@@ -1,10 +1,10 @@
 ﻿<div ng-show="comments.length > 0" class="row margin-bottom-20" ng-repeat="comment in comments">
-    <div class="col-md-2 text-center">
+    <div class="col-md-2 col-xs-4 text-center">
         <i class="fa fa-clock-o font-size-3em"></i><br />
         <span>{{comment.shortDate}}</span>
         <!--<input type="button" class="btn btn-xs btn-default" ng-hide="edittingComments[comment.id]" ng-show="comment.username == currentLoggedInUsername" value="edit" ng-click="editComment(comment.id)" />-->
     </div>
-    <div class="col-md-10">
+    <div class="col-md-10 col-xs-8">
         <h6 class="margin-bottom-5">
             <a href="/projects/{{comment.projectId}}/{{comment.projectTitleUrl}}">{{comment.projectTitle}}</a>
         </h6>

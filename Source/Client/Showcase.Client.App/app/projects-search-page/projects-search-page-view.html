@@ -5,41 +5,43 @@
                 <h2 class="color999"><strong>Projects</strong> by {{vm.filterOptions.orderOption.name}}</h2>
             </div>
         </div>
-        <div class="row well well-sm padding-top20">
-            <div class="col-sm-4">
-                <div filters options="vm.filterOptions" />
+        <div class="well well-sm padding-top20">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div filters options="vm.filterOptions" />
+                </div>
+                <div class="col-sm-8">
+                    <div search-bar seasons="vm.seasons" technologies="vm.technologies" languages="vm.languages" params="vm.searchParams" />
+                </div>                
             </div>
-            <div class="col-sm-8">
-                <div search-bar seasons="vm.seasons" technologies="vm.technologies" languages="vm.languages" params="vm.searchParams" />
-            </div>
-            <div class="col-sm-4 text-center margin-bottom-10 margin-top-10">
-                <div class="sky-form pull-left" ng-show="vm.isAdmin">
-                    <label class="toggle">
-                        <input type="checkbox" name="checkbox-toggle" ng-model="vm.filterOptions.includeHidden">
-                        <i></i>
-                        <span ng-class="vm.filterOptions.includeHidden ? 'bold' : ''" class="display-inline-block margin-top-2 color999">Include Hidden</span>
-                    </label>
+            <div class="row padding-left-10">
+                <div class="col-sm-2 text-center margin-bottom-10 margin-top-5">
+                    <div class="sky-form margin-bottom-10" ng-show="vm.isAdmin">
+                        <label class="toggle">
+                            <input type="checkbox" name="checkbox-toggle" ng-model="vm.filterOptions.includeHidden">
+                            <i></i>
+                            <span ng-class="vm.filterOptions.includeHidden ? 'bold' : ''" class="display-inline-block margin-top-2 color999">Hidden</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 padding-left-10">
+                    <div advanced-search-button />
+
+                    <button class="btn btn-success padding-top-8 padding-bottom-8" id="search-button">
+                        <i class="fa fa-fw fa-search fa-lg"></i>Search
+                    </button>
                 </div>
             </div>
-            <div class="col-sm-8">
-                <button class="btn btn-success padding-top-8 padding-bottom-8" id="search-button" ng-click="vm.search()">
-                    <i class="fa fa-fw fa-search fa-lg"></i>Search
-                </button>
-            </div>
         </div>
-
         <div class="row">
             <div class="col-sm-12">
                 {{vm.totalResultsCount}} results <small class="text-success">({{vm.timeElapsed}} seconds) </small>
             </div>
         </div>
     </div>
-
     <div project-container ng-hide="vm.loading && (!vm.filterOptions.scrolling || !vm.initialProjectsLoaded)" projects="vm.projects" infinite-scroll="vm.getNextProjects()" infinite-scroll-distance="0.2" infinite-scroll-disabled="!vm.filterOptions.scrolling || vm.isLastPage" infinite-scroll-immediate-check="false" />
-
     <div class="text-center" ng-show="vm.loading && (!vm.filterOptions.scrolling || !vm.initialProjectsLoaded)">
         <span class="font-size-3em"><i class="fa fa-spin fa-spinner"></i> Loading projects...</span>
     </div>
-
     <div ng-pager total-pages="{{totalPages}}" current-page="{{currentPage}}" page-changed="changePage(pageNum)" ng-hide="vm.filterOptions.scrolling || vm.loading" />
 </section>
