@@ -22,7 +22,6 @@
             this.tagsService = tagsService;
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<IHttpActionResult> Search(string name)
         {
@@ -52,7 +51,6 @@
             return this.Ok(model);
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<IHttpActionResult> AllLanguageAndTechnologyTags()
         {
