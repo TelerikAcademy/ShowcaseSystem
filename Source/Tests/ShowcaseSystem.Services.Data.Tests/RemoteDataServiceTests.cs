@@ -7,6 +7,7 @@
 
     using Showcase.Data.Models;
     using Showcase.Services.Data;
+    using System.Diagnostics;
 
     [TestFixture]
     public class RemoteDataServiceTests
@@ -104,24 +105,13 @@
 
         private static bool RemoteFileExists(string url)
         {
-            try
+            ServicePointManager.DefaultConnectionLimit = 20;
+            var request = WebRequest.Create(url) as HttpWebRequest;
+            request.Timeout = 60000;
+
+            using (var response = request.GetResponse() as HttpWebResponse)
             {
-                // Creating the HttpWebRequest
-                var request = WebRequest.Create(url) as HttpWebRequest;
-                
-                // Setting the Request method HEAD, you can also use GET too.
-                request.Method = "HEAD";
-                
-                // Getting the Web Response.
-                var response = request.GetResponse() as HttpWebResponse;
-                
-                // Returns TRUE if the Status code == 200
                 return response.StatusCode == HttpStatusCode.OK;
-            }
-            catch
-            {
-                // Any exception will returns false.
-                return false;
             }
         }
     }

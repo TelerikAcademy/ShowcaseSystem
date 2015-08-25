@@ -4,7 +4,7 @@
     var userProfileProjectsDirective = function userProfileProjectsDirective() {
         return {
             restrict: 'A',
-            templateUrl: '/app/user-profile-page/user-profile-projects-directive.html',
+            templateUrl: 'user-profile-page/user-profile-projects-directive.html',
             scope: {
                 projects: '='
             },

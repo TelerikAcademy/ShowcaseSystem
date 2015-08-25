@@ -4,7 +4,7 @@
     var projectContainerDirective = function projectContainerDirective() {
         return {
             restrict: 'A',
-            templateUrl: '/app/common/project-container-directive.html',
+            templateUrl: 'common/project-container-directive.html',
             scope: {
                 projects: '='
             }

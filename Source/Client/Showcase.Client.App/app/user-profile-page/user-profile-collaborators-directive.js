@@ -4,7 +4,7 @@
     var userProfileCollaboratorsDirective = function userProfileCollaboratorsDirective(userProfileData, $routeParams) {
         return {
             restrict: 'A',
-            templateUrl: '/app/user-profile-page/user-profile-collaborators-directive.html',
+            templateUrl: 'user-profile-page/user-profile-collaborators-directive.html',
             scope: {
                 collaborators: '='
             }

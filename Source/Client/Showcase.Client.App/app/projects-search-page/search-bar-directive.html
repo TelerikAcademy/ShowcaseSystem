@@ -4,10 +4,10 @@
             <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Title or Content" ng-model="params.title">
         </div>
         <div class="advanced-search-options hidden-xs">
-            <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Tag" ng-model="params.tags">
+            <input name="k" class="form-control input-lg search-field" type="text" token-input data-url="/api/Users/Search" data-query-param="username" data-hint-text="Start typing username and select" data-placeholder="By Collaborators" ng-model="params.collaborators">
         </div>
         <div class="advanced-search-options hidden-xs">
-            <input name="k" class="form-control input-lg search-field" type="text" placeholder="By Collaborator" ng-model="params.collaborators">
+            <input name="k" class="form-control input-lg search-field" token-input data-url="/api/Tags/Search" data-placeholder="By Tag" data-query-param="name" data-min-chars="2" data-max-chars="30" data-hint-text="Start typing tag name and select" type="text" placeholder="By Tags" ng-model="params.tags">
         </div>
     </div>
     <div class="col-sm-6 hidden-xs advanced-search-options">
@@ -22,7 +22,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <select class="selectpicker form-control margin-bottom-10 picker-button" ng-model="params.languagesAndTechnologies" multiple title="By Language and Technology" data-max-options="10" data-live-search="true" data-selected-text-format="count>5">
+                <select class="selectpicker form-control margin-bottom-10 picker-button" ng-model="params.languagesAndTechnologies" multiple title="By Languages or Technology" data-max-options="10" data-live-search="true" data-selected-text-format="count>5">
                     <optgroup label="Languages">
                         <option ng-repeat="language in languages" value="{{language.id}}">{{language.name}}</option>
                     </optgroup>

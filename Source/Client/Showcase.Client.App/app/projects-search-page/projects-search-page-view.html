@@ -1,5 +1,5 @@
 ﻿<section>
-    <div class="container" >
+    <div class="container project-search-filters">
         <div class="row shop-top-options">
             <div class="col-sm-6 col-md-6">
                 <h2 class="color999"><strong>Projects</strong> by {{vm.filterOptions.orderOption.name}}</h2>
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div project-container ng-hide="vm.loading && (!vm.filterOptions.scrolling || !vm.initialProjectsLoaded)" projects="vm.projects" infinite-scroll="vm.getNextProjects()" infinite-scroll-distance="0.1" infinite-scroll-disabled="!vm.filterOptions.scrolling || vm.isLastPage" infinite-scroll-immediate-check="false" />
+    <div project-container ng-hide="vm.loading && (!vm.filterOptions.scrolling || !vm.initialProjectsLoaded)" projects="vm.projects" infinite-scroll="vm.getNextProjects()" infinite-scroll-distance="0.2" infinite-scroll-disabled="!vm.filterOptions.scrolling || vm.isLastPage" infinite-scroll-immediate-check="false" />
     <div class="text-center" ng-show="vm.loading && (!vm.filterOptions.scrolling || !vm.initialProjectsLoaded)">
         <span class="font-size-3em"><i class="fa fa-spin fa-spinner"></i> Loading projects...</span>
     </div>

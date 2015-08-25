@@ -1,7 +1,7 @@
 ﻿<div class="slider">
     <div class="layerslider" style="width:100%;height:500px;">
         <div ng-repeat="project in projects" class="ls-slide" data-ls="slidedelay:8000;transition2d:75,79;">
-            <img src="/Images/{{project.mainImageUrl}}_high.jpg" class="ls-bg" alt="Slide background" />
+            <img ng-src="/Images/{{project.mainImageUrl}}_high.jpg" class="ls-bg" alt="Slide background" />
             <p ng-repeat="collaborator in project.collaborators" class="ls-l" style="top:{{30 + $index * 45}}px;left:auto; opacity: 0.7; right: 100px;font-weight: 300;height:30px; padding-right:8px;padding-left:8px;font-size:20px;line-height:25px;color:#ffffff;background:black;border-radius:4px;white-space: nowrap;" data-ls="durationin:{{1300 + $index * 350}};delayin:1500;rotatein:20;rotatexin:30;scalexin:1.5;scaleyin:1.5;transformoriginin:left 50% 0;durationout:750;rotateout:20;rotatexout:-30;scalexout:0;scaleyout:0;transformoriginout:left 50% 0;">
                 <a href="/users/{{collaborator}}" style="color: white;">{{collaborator}}</a>
             </p>

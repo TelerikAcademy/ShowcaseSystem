@@ -189,6 +189,7 @@
             .css({
                 outline: "none"
             })
+            .attr('placeholder', settings.placeholder)
             .attr("id", settings.idPrefix + input.id)
             .focus(function () {
                 var $this = $(this);

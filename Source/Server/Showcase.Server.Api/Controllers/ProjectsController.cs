@@ -13,6 +13,7 @@
     using Showcase.Server.Common;
     using Showcase.Server.Common.Models;
     using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Server.Infrastructure.Caching;
     using Showcase.Server.Infrastructure.Extensions;
     using Showcase.Server.Infrastructure.FileSystem;
     using Showcase.Server.Infrastructure.Validation;
@@ -29,6 +30,7 @@
         private readonly IImagesService imagesService;
         private readonly IDownloadableFilesService downloadableFilesService;
         private readonly IFileSystemService fileSystemService;
+        private readonly IProjectsCacheService projectsCacheService;
         
         public ProjectsController(
             IUsersService usersService,
@@ -38,7 +40,8 @@
             IMappingService mappingService,
             IImagesService imagesService,
             IDownloadableFilesService downloadableFilesService,
-            IFileSystemService fileSystemService)
+            IFileSystemService fileSystemService,
+            IProjectsCacheService projectsCacheService)
             : base(usersService)
         {
             this.visitsService = visitsService;
@@ -48,17 +51,13 @@
             this.imagesService = imagesService;
             this.downloadableFilesService = downloadableFilesService;
             this.fileSystemService = fileSystemService;
+            this.projectsCacheService = projectsCacheService;
         }
 
         [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
-            var model = await this.projectsService
-                .LatestProjects()
-                .Project()
-                .To<ProjectSimpleResponseModel>()
-                .ToListAsync();
-
+            var model = await this.projectsCacheService.LatestProjects();
             return this.Data(model);
         }
 
@@ -114,12 +113,7 @@
         [HttpGet]
         public async Task<IHttpActionResult> Popular()
         {
-            var model = await this.projectsService
-                .MostPopular()
-                .Project()
-                .To<ProjectSimpleResponseModel>()
-                .ToListAsync();
-
+            var model = await this.projectsCacheService.PopularProjects();
             return this.Data(model);
         }
 

@@ -4,7 +4,7 @@
     var lineChartDirective = function lineChartDirective(jQuery) {
         return {
             restrict: 'A',
-            templateUrl: '/app/statistics-page/line-chart-directive.html',
+            templateUrl: 'statistics-page/line-chart-directive.html',
             scope: {
                 stats: '='
             },

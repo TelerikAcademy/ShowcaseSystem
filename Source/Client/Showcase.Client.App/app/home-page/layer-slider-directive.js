@@ -4,7 +4,7 @@
     var layerSliderDirective = function layerSliderDirective() {
         return {
             restrict: 'A',
-            templateUrl: '/app/home-page/layer-slider-directive.html',
+            templateUrl: 'home-page/layer-slider-directive.html',
             scope: {
                 projects: '='
             },

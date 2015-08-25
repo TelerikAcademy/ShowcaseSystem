@@ -82,12 +82,13 @@
                     " and createdOn le " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
             };
 
+            // TODO: get these from service
             if (vm.searchParams.title || vm.searchParams.tags || vm.searchParams.collaborators || vm.searchParams.period || vm.searchParams.season || (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 0)) {
                 if (vm.searchParams.languagesAndTechnologies && vm.searchParams.languagesAndTechnologies.length > 10) {
                     notifier.error('You can filter by no more than 10 Languages and Technologies.');
                     return;
                 }
-
+                
                 $routeParams.$filter = projectsSearchService.getSearchFilter(vm.searchParams);
             }
             
@@ -127,6 +128,7 @@
             }
         });
 
+        // TODO: remove watches
         watchProperty('vm.filterOptions.desc');
         watchProperty('vm.filterOptions.orderOption');
         watchProperty('vm.filterOptions.pageSize');
@@ -135,6 +137,9 @@
         watchProperty('vm.searchParams.toDate');
         watchProperty('vm.searchParams.season');
         watchProperty('vm.searchParams.languagesAndTechnologies');
+        watchProperty('vm.searchParams.tags');
+        watchProperty('vm.searchParams.collaborators');
+        
 
         vm.search();
 

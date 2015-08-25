@@ -4,7 +4,7 @@
     var statisticsProjectsDirective = function statisticsProjectsDirective(jQuery) {
         return {
             restrict: 'A',
-            templateUrl: '/app/statistics-page/statistics-projects-directive.html',
+            templateUrl: 'statistics-page/statistics-projects-directive.html',
             scope: {
                 projects: '='
             }

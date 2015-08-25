@@ -4,7 +4,7 @@
     var socialIconsDirective = function socialIconsDirective($location, $window) {
         return {
             restrict: 'A',
-            templateUrl: '/app/project-details-page/social-icons-directive.html',
+            templateUrl: 'project-details-page/social-icons-directive.html',
             scope: {
                 name: '='
             },

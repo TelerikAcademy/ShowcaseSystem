@@ -4,7 +4,7 @@
     var owlCarouselDirective = function owlCarouselDirective() {
         return {
             restrict: 'A',
-            templateUrl: '/app/project-details-page/owl-carousel-directive.html',
+            templateUrl: 'project-details-page/owl-carousel-directive.html',
             scope: {
                 images: '='
             },

@@ -351,6 +351,8 @@ ul.token-input-list-showcase {
 
     ul.token-input-list-showcase [id^="token-input"] {
         border: none !important;
+        margin-top: 0;
+        height: 35px;
     }
 
 div.token-input-dropdown-showcase ul li.token-input-selected-dropdown-item-showcase {
@@ -360,8 +362,12 @@ div.token-input-dropdown-showcase ul li.token-input-selected-dropdown-item-showc
 li.token-input-token-showcase {
     background-color: #b5e124;
     border: 1px solid #a7d01d;
-    margin-top: 8px;
+    margin-top: 4px;
     margin-left: 5px;
+}
+
+li.token-input-input-token-showcase {
+    height: 35px;
 }
 
 li.token-input-selected-token-showcase {
@@ -561,35 +567,37 @@ body {
 }
 
 .user-avatar-comments {
-    margin: 7px; 
+    margin: 7px;
     margin-left: 0;
     margin-right: 12px;
 }
 
 .beta-sign {
-    font-style: italic; 
-    margin-left: 95px; 
+    font-style: italic;
+    margin-left: 95px;
     font-size: 1.8em;
 }
 
 .statistics-project-image {
-    float: right; 
-    width: 32px; 
+    float: right;
+    width: 32px;
     height: 32px;
 }
 
 .statistics-project-name {
-    vertical-align: central; 
-    padding-top: 1px; 
+    vertical-align: central;
+    padding-top: 1px;
     padding-right: 5px !important;
 }
 
 .statistics-user-avatar {
-    float: right; width: 32px; height: 32px;
+    float: right;
+    width: 32px;
+    height: 32px;
 }
 
 .statistics-user-username {
-    vertical-align: central; 
+    vertical-align: central;
     padding-top: 1px !important;
 }
 
@@ -598,21 +606,22 @@ body {
 }
 
 .layer-slider {
-    width:100%;height:500px;
+    width: 100%;
+    height: 500px;
 }
 
 .not-found-image-container {
-    background: url(/Content/images/404-error-page-ninja-icon.png) center no-repeat; 
-    height: 150px
+    background: url(/Content/images/404-error-page-ninja-icon.png) center no-repeat;
+    height: 150px;
 }
 
 .search-page-date-button {
-    border: #e6e6e6 2px solid !important; 
+    border: #e6e6e6 2px solid !important;
     padding: 7px 12px !important;
 }
 
 .line-chart {
-    max-width: 250px; 
+    max-width: 250px;
     max-height: 250px;
 }
 
@@ -647,6 +656,9 @@ body {
 .picker-button> button:active,
 .picker-button> button:focus,
 .open>.dropdown-toggle.btn-default {
+.picker-button > button:active,
+.picker-button > button:focus,
+.open > .dropdown-toggle.btn-default {
     border: #e6e6e6 2px solid !important;
     background-color: white !important;
     padding: 0 12px !important;
@@ -659,7 +671,7 @@ body {
     border: #c6c6c6 2px solid !important;
 }
 
-.btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open>.dropdown-toggle.btn-default {
+.btn-default.active, .btn-default.focus, .btn-default:active, .btn-default:focus, .btn-default:hover, .open > .dropdown-toggle.btn-default {
     color: #666;
 }
 
@@ -667,7 +679,7 @@ body {
     box-shadow: none;
 }
 
-.dropdown-menu>li:hover>a, .dropdown-menu>li:focus>a {    
+.dropdown-menu > li:hover > a, .dropdown-menu > li:focus > a {
     color: #333 !important;
     background-color: #EEE;
 }
@@ -676,13 +688,58 @@ body {
     color: #999 !important;
 }
 
-ul.dropdown-menu>li>a, ul.dropdown-menu>li>a:hover {
+ul.dropdown-menu > li > a, ul.dropdown-menu > li > a:hover {
     color: #999 !important;
 }
 
-ul.dropdown-menu>li>span.text {
+ul.dropdown-menu > li > span.text {
     font-weight: bold;
     font-size: 1.2em;
+
+.project-search-filters .token-input-list-showcase {
+    height: 38px !important;
+    font-family: inherit;
+    margin-bottom: 10px;
+}
+
+.project-search-filters .token-input-input-token-showcase input {
+    font-size: 14px;   
+    padding-left: 12px;
+    min-width: 130px;
+}
+
+.project-search-filters .input-lg {
+    font-size: 14px;
+}
+
+.project-search-filters input:hover {
+    border-color: #c6c6c6 !important;
+}
+
+.project-search-filters .dropdown-toggle {
+    padding-left: 12px;
+}
+
+.project-search-filters .dropdown-toggle:hover {
+    border-color: #c6c6c6 !important;
+    background-color: #fff;
+}
+
+.project-search-filters .token-input-token-showcase {
+    margin-top: 4px;
+}#topNav button.btn-mobile {
+    background: #999;
+}
+
+@media (max-width: 990px) {
+    #topNav ul.nav > li > a:after {
+        content: none;
+    }
+}
+
+.project-tile > div {
+    min-height: 285px !important;
+    max-width: 260px;<<<<<<< .mine
 }
 
 #topNav button.btn-mobile {
@@ -698,4 +755,57 @@ ul.dropdown-menu>li>span.text {
 .project-tile > div {
     min-height: 285px !important;
     max-width: 260px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+}
+
+.project-search-filters .token-input-list-showcase {
+    height: 38px !important;
+    font-family: inherit;
+    margin-bottom: 10px;
+}
+
+.project-search-filters .token-input-input-token-showcase input {
+    font-size: 14px;   
+    padding-left: 12px;
+    min-width: 130px;
+}
+
+.project-search-filters .input-lg {
+    font-size: 14px;
+}
+
+.project-search-filters input:hover {
+    border-color: #c6c6c6 !important;
+}
+
+.project-search-filters .dropdown-toggle {
+    padding-left: 12px;
+}
+
+.project-search-filters .dropdown-toggle:hover {
+    border-color: #c6c6c6 !important;
+    background-color: #fff;
+}
+
+.project-search-filters .token-input-token-showcase {
+    margin-top: 4px;
+>>>>>>> .theirs
 }

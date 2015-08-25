@@ -4,7 +4,7 @@
     var userProfileCommentsDirective = function userProfileCommentsDirective(userProfileData, $routeParams, identity, commentsData, notifier) {
         return {
             restrict: 'A',
-            templateUrl: '/app/user-profile-page/user-profile-comments-directive.html',
+            templateUrl: 'user-profile-page/user-profile-comments-directive.html',
             scope: {
                 comments: '=',
                 username: '='
