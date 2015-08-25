@@ -164,12 +164,21 @@
             return args.join(' and ');
         }
 
+        function isValidDate(date) {
+            if (date && !isNaN(date.getTime())) {
+                return true;
+            }
+
+            return false;
+        }
+
         return {
             getFilterOptions: getFilterOptions,
             getSearchParams: getSearchParams,
             getQuery: getQuery,
             getODataUTCDateFilter: getODataUTCDateFilter,
-            getSearchFilter: getSearchFilter
+            getSearchFilter: getSearchFilter,
+            isValidDate: isValidDate
         };
     };
 

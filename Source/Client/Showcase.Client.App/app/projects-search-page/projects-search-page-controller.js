@@ -78,8 +78,8 @@
                 $top: vm.filterOptions.pageSize,
                 $skip: 0,
                 $count: 'true',
-                $filter: "createdOn ge " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.fromDate) +
-                    " and createdOn le " + projectsSearchService.getODataUTCDateFilter(vm.searchParams.toDate)
+                $filter: "createdOn ge " + projectsSearchService.getODataUTCDateFilter(projectsSearchService.isValidDate(vm.searchParams.fromDate) ? vm.searchParams.fromDate : projectsSearchService.getSearchParams().fromDate) +
+                    " and createdOn le " + projectsSearchService.getODataUTCDateFilter(projectsSearchService.isValidDate(vm.searchParams.toDate) ? vm.searchParams.toDate : new Date())
             };
 
             // TODO: get these from service
@@ -140,7 +140,6 @@
         watchProperty('vm.searchParams.tags');
         watchProperty('vm.searchParams.collaborators');
         
-
         vm.search();
 
         function watchProperty(property) {
