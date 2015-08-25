@@ -656,9 +656,6 @@ body {
 .picker-button> button:active,
 .picker-button> button:focus,
 .open>.dropdown-toggle.btn-default {
-.picker-button > button:active,
-.picker-button > button:focus,
-.open > .dropdown-toggle.btn-default {
     border: #e6e6e6 2px solid !important;
     background-color: white !important;
     padding: 0 12px !important;
@@ -695,6 +692,7 @@ ul.dropdown-menu > li > a, ul.dropdown-menu > li > a:hover {
 ul.dropdown-menu > li > span.text {
     font-weight: bold;
     font-size: 1.2em;
+}
 
 .project-search-filters .token-input-list-showcase {
     height: 38px !important;
@@ -727,19 +725,6 @@ ul.dropdown-menu > li > span.text {
 
 .project-search-filters .token-input-token-showcase {
     margin-top: 4px;
-}#topNav button.btn-mobile {
-    background: #999;
-}
-
-@media (max-width: 990px) {
-    #topNav ul.nav > li > a:after {
-        content: none;
-    }
-}
-
-.project-tile > div {
-    min-height: 285px !important;
-    max-width: 260px;<<<<<<< .mine
 }
 
 #topNav button.btn-mobile {
@@ -755,57 +740,16 @@ ul.dropdown-menu > li > span.text {
 .project-tile > div {
     min-height: 285px !important;
     max-width: 260px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
+@media (max-width: 990px) {
+    #topNav ul.nav > li > a:after {
+        content: none;
+    }
 }
 
 .project-search-filters .token-input-list-showcase {
     height: 38px !important;
     font-family: inherit;
     margin-bottom: 10px;
-}
-
-.project-search-filters .token-input-input-token-showcase input {
-    font-size: 14px;   
-    padding-left: 12px;
-    min-width: 130px;
-}
-
-.project-search-filters .input-lg {
-    font-size: 14px;
-}
-
-.project-search-filters input:hover {
-    border-color: #c6c6c6 !important;
-}
-
-.project-search-filters .dropdown-toggle {
-    padding-left: 12px;
-}
-
-.project-search-filters .dropdown-toggle:hover {
-    border-color: #c6c6c6 !important;
-    background-color: #fff;
-}
-
-.project-search-filters .token-input-token-showcase {
-    margin-top: 4px;
->>>>>>> .theirs
 }
