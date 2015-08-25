@@ -735,6 +735,11 @@ ul.dropdown-menu > li > span.text {
     background: #999;
 }
 
+span.filter-option {
+    font-size: 14px;
+    padding-top: 3px;
+}
+
 @media (max-width: 990px) {
     #topNav ul.nav > li > a:after {
         content: none;
