@@ -60,7 +60,6 @@
             return this.Data(model);
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<IHttpActionResult> Search(string username)
         {

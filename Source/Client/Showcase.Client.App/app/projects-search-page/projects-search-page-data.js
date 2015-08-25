@@ -11,10 +11,6 @@
             return data.get('tags/AllSeasonTags');
         }
 
-        //function getTechnologies() {
-        //    return data.get('tags/AllLanguageAndTechnologyTags');
-        //}
-
         function getTechnologies() {
             return data.get('tags/AllTechnologyTags');
         }

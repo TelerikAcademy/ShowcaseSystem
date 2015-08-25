@@ -119,7 +119,7 @@
                     args[index] = searchParams.tags
                         .split(',')
                         .map(function (tag) {
-                            return "tags/any(t:contains(t/name,'" + tag.trim() + "'))";
+                            return "tags/any(t:t/id eq " + tag.trim() + ")";
                         }).join(' or ');
                 }
 
@@ -156,7 +156,7 @@
                 args[index] = searchParams.collaborators
                     .split(',')
                     .map(function (collaborator) {
-                        return "collaborators/any(c:contains(c, '" + collaborator + "'))";
+                        return "collaborators/any(c:c eq '" + collaborator + "')";
                     }).join(' or ');
                 index += 1;
             }

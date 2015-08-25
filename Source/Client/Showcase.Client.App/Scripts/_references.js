@@ -155,6 +155,6 @@
 /// <reference path="../app/common/token-input-directive.js" />
 /// <reference path="../app/project-details-page/project-description-directive.js" />
 /// <reference path="../app/projects-search-page/advanced-search-button-directive.js" />
-/// <reference path="../app/build/alljs2015082547.min.js" />
-/// <reference path="../app/build/vendorjs2015082547.min.js" />
+/// <reference path="../app/build/vendorjs2015082536.min.js" />
+/// <reference path="../app/build/alljs2015082536.min.js" />
 
