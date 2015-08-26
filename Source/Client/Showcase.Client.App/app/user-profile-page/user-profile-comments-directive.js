@@ -10,7 +10,11 @@
                 username: '='
             },
             link: function (scope, element) {
-                var username = $routeParams.username.toLowerCase();
+                var COMMENT_MIN_LENGTH = 2,
+                    COMMENT_MAX_LENGTH = 500,
+                    COMMENT_LENGTH_VALIDATION_MESSAGE = 'The comment length should be between ' + COMMENT_MIN_LENGTH + ' and ' + COMMENT_MAX_LENGTH + ' symbols.',
+                    username = $routeParams.username.toLowerCase();
+                
                 scope.commentsPage = 1;
                 scope.lastPage = 1;
                 scope.edittingComments = [];
@@ -70,8 +74,8 @@
                 };
 
                 scope.saveComment = function (id, text) {
-                    if (text.length < 10 || text.length > 500) {
-                        notifier.error('The comment length should be between 10 and 500 symbols.');
+                    if (text.length < 2 || text.length > 500) {
+                        notifier.error(COMMENT_LENGTH_VALIDATION_MESSAGE);
                         return;
                     }
 
