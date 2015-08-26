@@ -83,14 +83,15 @@
             return DateFilter;
         }
 
-        function getQuery(params, includeHidden) {
+        function getQuery(params, onlyHidden) {
             if (!!params && !Object.keys(params).length) {
                 params = CONSTS.DEFAULT_QUERY;
             }
 
             var result = 'Search?';
-            if (includeHidden) {
-                result += 'includeHidden=true&';
+
+            if (onlyHidden) {
+                result += 'onlyHidden=true&';
             }
 
             result += Object.keys(params)

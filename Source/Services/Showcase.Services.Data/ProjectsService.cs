@@ -60,15 +60,12 @@
             return query;
         }
 
-        public IQueryable<Project> QueriedProjects(bool isAdmin = false, bool includeHidden = false)
+        public IQueryable<Project> QueriedProjects(bool isAdmin = false, bool onlyHidden = false)
         {
-            var query = this.projects.All();
+            var query = this.projects
+                .All()
+                .Where(p => p.IsHidden == (onlyHidden && isAdmin));
             
-            if (!includeHidden || !isAdmin)
-            {
-                query = query.Where(p => !p.IsHidden);
-            }
-
             return query;
         }
 

@@ -21,10 +21,10 @@
 
         [HttpGet]
         [ProjectSearchQuery]
-        public IHttpActionResult Get([FromUri]bool includeHidden = false)
+        public IHttpActionResult Get([FromUri]bool onlyHidden = false)
         {
             var projects = this.projectsService
-                .QueriedProjects(this.CurrentUser.IsAdmin, includeHidden)
+                .QueriedProjects(this.CurrentUser.IsAdmin, onlyHidden)
                 .Project()
                 .To<ProjectSimpleResponseModel>();
 

@@ -132,7 +132,7 @@
         watchProperty('vm.filterOptions.desc');
         watchProperty('vm.filterOptions.orderOption');
         watchProperty('vm.filterOptions.pageSize');
-        watchProperty('vm.filterOptions.includeHidden');
+        watchProperty('vm.filterOptions.onlyHidden');
         watchProperty('vm.searchParams.fromDate');
         watchProperty('vm.searchParams.toDate');
         watchProperty('vm.searchParams.season');
@@ -154,7 +154,7 @@
         }
 
         function getProjects() {
-            oDataQuery = projectsSearchService.getQuery($routeParams, vm.filterOptions.includeHidden);
+            oDataQuery = projectsSearchService.getQuery($routeParams, vm.filterOptions.onlyHidden);
             var startTime = new Date().getTime();
             $routeParams.$count = true;             
             vm.loading = true;
