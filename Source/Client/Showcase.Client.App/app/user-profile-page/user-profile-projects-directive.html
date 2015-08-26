@@ -35,14 +35,13 @@
                 </span>
             </div>
             <div class="margin-top-0 font-size-09em">
-                <a href="projects/search?tag={{tag.name}}" ng-repeat="tag in project.tags">
+                <a href="projects/search?tag={{tag.id}}" ng-repeat="tag in project.tags">
                     <span class="label label-default capital-name" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
                 </a>
             </div>
         </div>
     </div>
 </div>
-
 <div ng-hide="projects.length > 0" class="text-center margin-bottom-30 margin-top-30">
     <span class="italic">The user has no projects yet</span>
 </div>
