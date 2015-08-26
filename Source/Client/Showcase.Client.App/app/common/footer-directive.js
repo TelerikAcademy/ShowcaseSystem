@@ -1,15 +1,17 @@
 ﻿(function () {
     'use strict';
 
-    var footerDirective = function footerDirective() {
+    var footerDirective = function footerDirective(appSettings) {
         return {
             restrict: 'A',
-            scope: false,
-            templateUrl: 'common/footer-directive.html'
+            templateUrl: 'common/footer-directive.html',
+            link: function (scope, element) {
+                scope.version = appSettings.version;
+            }
         };
     };
     
     angular
         .module('showcaseSystem.directives')
-        .directive('showcaseFooter', [footerDirective]);
+        .directive('showcaseFooter', ['appSettings', footerDirective]);
 }());
