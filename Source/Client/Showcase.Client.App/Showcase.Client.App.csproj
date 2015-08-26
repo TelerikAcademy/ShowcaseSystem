@@ -124,6 +124,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\about-page\about-page-controller.js" />
+    <Content Include="app\about-page\about-view.html" />
     <Content Include="app\add-project-page\add-project-controller.js" />
     <Content Include="app\add-project-page\add-project-data.js" />
     <Content Include="app\add-project-page\add-project-view.html" />

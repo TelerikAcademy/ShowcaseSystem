@@ -27,6 +27,11 @@
                 controllerAs: CONTROLLER_VIEW_MODEL_NAME,
                 resolve: routeResolveChecks.addProject
             })
+            .when('/about', {
+                templateUrl: 'about-page/about-view.html',
+                controller: 'AboutPageController',
+                controllerAs: CONTROLLER_VIEW_MODEL_NAME
+            })
             .when('/statistics', {
                 templateUrl: 'statistics-page/statistics-view.html',
                 controller: 'StatisticsController',
