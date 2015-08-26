@@ -48,7 +48,7 @@
             }
         }
 
-        public IEnumerable<string> Collaborators { get; set; }
+        public IEnumerable<CollaboratorResponseModel> Collaborators { get; set; }
 
         public IEnumerable<TagResponseModel> Tags { get; set; }
 
@@ -60,7 +60,7 @@
                 .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
                 .ForMember(pr => pr.Flags, opt => opt.MapFrom(pr => pr.Flags.Count))
                 .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath))
-                .ForMember(pr => pr.Collaborators, opt => opt.MapFrom(pr => pr.Collaborators.Select(c => c.UserName).OrderBy(c => c)));
+                .ForMember(pr => pr.Collaborators, opt => opt.MapFrom(pr => pr.Collaborators.OrderBy(c => c.UserName)));
         }
     }
 }

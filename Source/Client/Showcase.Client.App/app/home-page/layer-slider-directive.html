@@ -2,15 +2,16 @@
     <div class="layerslider" style="width:100%;height:500px;">
         <div ng-repeat="project in projects" class="ls-slide" data-ls="slidedelay:8000;transition2d:75,79;">
             <img ng-src="/Images/{{project.mainImageUrl}}_high.jpg" class="ls-bg" alt="Slide background" />
-            <p ng-repeat="collaborator in project.collaborators" class="ls-l" style="top:{{30 + $index * 45}}px;left:auto; opacity: 0.7; right: 100px;font-weight: 300;height:30px; padding-right:8px;padding-left:8px;font-size:20px;line-height:25px;color:#ffffff;background:black;border-radius:4px;white-space: nowrap;" data-ls="durationin:{{1300 + $index * 350}};delayin:1500;rotatein:20;rotatexin:30;scalexin:1.5;scaleyin:1.5;transformoriginin:left 50% 0;durationout:750;rotateout:20;rotatexout:-30;scalexout:0;scaleyout:0;transformoriginout:left 50% 0;">
-                <a href="/users/{{collaborator}}" style="color: white;">{{collaborator}}</a>
+            <p ng-repeat="collaborator in project.collaborators" class="ls-l" style="top:{{30 + $index * 45}}px;left:auto; opacity: 1; right: 100px;font-weight: 300;height:30px; padding:10px;font-size:20px;line-height:25px;color:#ffffff;background:black;border-radius:4px;white-space: nowrap;" data-ls="durationin:{{1300 + $index * 350}};delayin:1500;rotatein:20;rotatexin:30;scalexin:1.5;scaleyin:1.5;transformoriginin:left 50% 0;durationout:750;rotateout:20;rotatexout:-30;scalexout:0;scaleyout:0;transformoriginout:left 50% 0;">
+                <a href="/users/{{collaborator.userName}}" style="color: white;">
+                <img ng-src="{{collaborator.avatarUrl}}" class="margin-right-10 margin-top-2 margin-bottom-2" style="border-radius: 6px; max-width: 25px !important; min-width: 25px !important;"/>{{collaborator.userName}}</a>
             </p>
             <p class="ls-l" data-ls="
 							offsetxin:-50;
 							durationin:2000;
 							delayin:300;
 							offsetxout:-50;
-							durationout:1000;" style="top: 370px; left: 200px; font-weight: 300; height: 40px; padding: 0 10px; font-size: 30px; line-height: 37px; color: rgb(169, 69, 69); white-space: nowrap; width: auto; border-width: 0; margin-left: 0; margin-top: 0; transform-origin: 50% 50% 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.002, 0, 0, 0, 1); opacity: 0.7; visibility: visible; filter: none; background: rgba(255, 255, 255, 0.85098);">
+							durationout:1000;" style="top: 370px; left: 200px; font-weight: 300; height: 40px; padding: 0 10px; font-size: 30px; line-height: 37px; color: rgb(169, 69, 69); white-space: nowrap; width: auto; border-width: 0; margin-left: 0; margin-top: 0; transform-origin: 50% 50% 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -0.002, 0, 0, 0, 1); opacity: 1; visibility: visible; filter: none; background: rgba(255, 255, 255, 0.85098);">
                 <a href="/projects/{{project.id}}/{{project.titleUrl}}" style="color: white;">{{project.title}}</a>
             </p>
         </div>
