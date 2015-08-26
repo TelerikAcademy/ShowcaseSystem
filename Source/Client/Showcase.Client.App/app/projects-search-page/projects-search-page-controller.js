@@ -26,7 +26,7 @@
         }
 
         if ($routeParams.tag) {
-            vm.searchParams.tags = $routeParams.tag;
+            vm.searchParams.tags = $routeParams.tag.toString();
             $location.search('tag', null);
         }
 
