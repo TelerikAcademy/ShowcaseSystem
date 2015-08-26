@@ -26,14 +26,16 @@
                 </div>
                 <div class="col-sm-8 col-sm-offset-2 padding-left-10">
                     <div advanced-search-button />
-                    <button class="btn btn-success padding-top-8 padding-bottom-8" id="search-button">
-                        <i class="fa fa-fw fa-search fa-lg"></i>Search
-                    </button>
+                    <div class="text-center-small">
+                        <button class="btn btn-success padding-top-8 padding-bottom-8 text-center-small" id="search-button">
+                            <i class="fa fa-fw fa-search fa-lg"></i>Search
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12 text-center-small">
                 {{vm.totalResultsCount}} results <small class="text-success">({{vm.timeElapsed}} seconds) </small>
             </div>
         </div>
