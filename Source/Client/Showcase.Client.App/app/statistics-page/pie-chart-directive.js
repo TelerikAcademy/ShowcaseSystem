@@ -17,6 +17,8 @@
                     "#99cc66", "#FF5A5E", "#5AD3D1", "#FFC870", "#9933cc", "#9FA1E3", "#BED435", ""
                 ];
 
+                var tagIds = {};
+
                 scope.$watch('stats', function (stats) {
                     if (stats && stats.length && stats.length > 0) {
                         var data = [];
@@ -28,6 +30,8 @@
                                 color: colors[i],
                                 highlight: highlights[i]
                             });
+
+                            tagIds[stats[i].tag] = stats[i].tagId;
                         }
 
                         var options = {
@@ -68,7 +72,7 @@
                             var activePoints = chart.getSegmentsAtEvent(evt);
                             if (activePoints[0]) {
                                 var url = '/projects/search';
-                                $location.path(url).search('tag', activePoints[0].label);
+                                $location.path(url).search('tag', tagIds[activePoints[0].label]);
                                 scope.$apply();
                             }
                         });

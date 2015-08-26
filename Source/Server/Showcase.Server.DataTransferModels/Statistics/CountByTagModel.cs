@@ -12,6 +12,8 @@
     {
         public string Tag { get; set; }
 
+        public int TagId { get; set; }
+
         public int Count { get; set; }
 
         public bool IsUserSubmitted { get; set; }
@@ -21,6 +23,7 @@
             configuration.CreateMap<Tag, CountByTagModel>()
                 .ForMember(m => m.IsUserSubmitted, opt => opt.MapFrom(t => t.Type == TagType.UserSubmitted))
                 .ForMember(m => m.Tag, opt => opt.MapFrom(t => t.Name))
+                .ForMember(m => m.TagId, opt => opt.MapFrom(t => t.Id))
                 .ForMember(m => m.Count, opt => opt.MapFrom(t => t.Projects.Count()));
         }
     }
