@@ -3,25 +3,30 @@
         <div class="row margin-bottom-50">
             <div class="col-md-offset-1 col-md-3 text-center-small" animate="fadeInLeft" data-animation-delay="200">
                 <img ng-src="{{vm.profile.profileAvatarUrl}}" width="220" height="220" alt="{{vm.user.username}}" />
+                <h3 class="margin-top-20 color666 font-size-14em text-center" style="width: 220px;"><strong>{{vm.user.username}}</strong></h3>
             </div>
             <div class="col-md-7 margin-bottom-10 margin-top-10 text-center-small" animate="fadeInRight" data-animation-delay="200">
-                <h3 class="margin-bottom-40 color666 font-size-14em"><strong>{{vm.user.username}}</strong></h3>
+                <div class="font-size-14em margin-bottom-20" style="padding-left: 12px;">
+                    <i class="margin-right-10" ng-class="vm.profile.sex == 'Male' ? 'fa fa-male' : 'fa fa-female'"></i>{{vm.profile.firstName}} {{vm.profile.lastName}}
+                </div>
                 <div class="row">
-                    <div class="col-md-7 margin-bottom-30">
-                        <div class="font-size-14em margin-bottom-20">
-                            <i class="margin-right-10" ng-class="vm.profile.sex == 'Male' ? 'fa fa-male' : 'fa fa-female'"></i>{{vm.profile.firstName}} {{vm.profile.lastName}}
-                        </div>
-                        <div class="margin-bottom-5">
-                            <i class="fa fa-birthday-cake margin-right-10"></i>{{vm.profile.age}} years old
-                        </div>
-                        <div class="margin-bottom-10">
-                            <i class="fa fa-globe margin-right-10"></i>{{vm.profile.city}}
-                        </div>
-                        <div>
-                            <i class="fa fa-link margin-right-10"></i><a href="http://www.telerikacademy.com/users/{{vm.user.username}}" target="_blank">student profile</a>
+                    <div class="col-md-6 margin-bottom-30">
+                        <div class="well well-sm">
+                            <div>
+                                <i class="fa fa-birthday-cake margin-right-10"></i>{{vm.profile.age}} years old
+                            </div>
+                            <div>
+                                <i class="fa fa-globe margin-right-10"></i>{{vm.profile.city}}
+                            </div>
+                            <div>
+                                <i class="fa fa-link margin-right-10"></i><a href="http://www.telerikacademy.com/users/{{vm.user.username}}" target="_blank">website</a>
+                            </div>
+                            <div>
+                                <i class="fa fa-link margin-right-10"></i><a href="http://www.telerikacademy.com/users/{{vm.user.username}}" target="_blank">student profile</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <div user-profile-statistics user="vm.user" class="well well-sm"/>
                     </div>
                 </div>
