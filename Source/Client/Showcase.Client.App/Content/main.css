@@ -193,6 +193,10 @@ a.social.fa-github:hover {
     margin-top: 5px;
 }
 
+.margin-top-8 {
+    margin-top: 8px;
+}
+
 .margin-top-10 {
     margin-top: 10px !important;
 }
@@ -223,6 +227,11 @@ a.social.fa-github:hover {
 
 .margin-top-100 {
     margin-top: 100px;
+}
+
+.padding-horizontal-0 {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .padding-left-5 {
@@ -737,6 +746,14 @@ ul.dropdown-menu > li > span.text {
 span.filter-option {
     font-size: 14px;
     padding-top: 3px;
+}
+
+.project-container .tooltip {
+    letter-spacing: normal;
+}
+
+.project-container .btn.pull-right.margin-left-5 {
+    margin-left: 5px;
 }
 
 @media (max-width: 990px) {
