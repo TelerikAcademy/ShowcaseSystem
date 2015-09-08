@@ -91,10 +91,12 @@
         };
 
         vm.saveEdit = function () {
-            // TODO: save on server
-            vm.editMode = false;
-            console.log(vm.project);
-        }
+            projectDetailsData.editProject(project)
+                .then(function () {
+                    vm.editMode = false;
+                    console.log(vm.project);
+                });
+        };
 
         vm.cancelEdit = function () {
             vm.editMode = false;

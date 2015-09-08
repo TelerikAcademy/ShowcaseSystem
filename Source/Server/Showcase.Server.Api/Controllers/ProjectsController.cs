@@ -110,6 +110,16 @@
             return this.Ok(this.mappingService.Map<PostProjectResponseModel>(addedProject));
         }
 
+        [Authorize]
+        [AuthorizeEdit]
+        [HttpPost]
+        [ValidateModel]
+        public async Task<IHttpActionResult> Edit(EditProjectRequestModel project)
+        {
+
+            return this.Ok();
+        }
+
         [HttpGet]
         public async Task<IHttpActionResult> Popular()
         {
