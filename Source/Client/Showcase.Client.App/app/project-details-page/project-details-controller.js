@@ -92,9 +92,9 @@
 
         vm.saveEdit = function () {
             projectDetailsData.editProject(project)
-                .then(function () {
+                .then(function (updatedProjectInfo) {
                     vm.editMode = false;
-                    console.log(vm.project);
+                    vm.project.titleUrl = updatedProjectInfo.titleUrl;
                 });
         };
 

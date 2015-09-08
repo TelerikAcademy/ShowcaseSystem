@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-7 margin-bottom-10" animate="fadeInRight" data-animation-delay="200">
                 <h2 class="nomargin-bottom break-word margin-bottom-10">
-                    <div class="col-md-6 padding-horizontal-0 padding-right-5">
+                    <div class="col-md-8 padding-horizontal-0 padding-right-5">
                         <span ng-show="!vm.editMode">{{vm.project.title}}</span>
                         <span ng-show="vm.editMode" class="sky-form">
                             <label class="input">
@@ -27,7 +27,7 @@
                             </label>
                         </span>
                     </div>
-                    <div class="col-md-6 padding-horizontal-0 margin-top-8">
+                    <div class="col-md-4 padding-horizontal-0 margin-top-8">
                         <button class="pull-right btn btn-xs btn-default" ng-click="vm.startEdit()" ng-show="(vm.isOwnProject || vm.isAdmin) && !vm.editMode">Edit</button>
                         <button class="pull-right btn btn-xs btn-warning margin-left-5" ng-click="vm.cancelEdit()" ng-show="vm.editMode">Cancel</button>
                         <button class="pull-right btn btn-xs btn-success" ng-click="vm.saveEdit()" ng-show="vm.editMode">Save</button>
