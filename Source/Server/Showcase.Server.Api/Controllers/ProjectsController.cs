@@ -116,8 +116,9 @@
         [ValidateModel]
         public async Task<IHttpActionResult> Edit(EditProjectRequestModel project)
         {
-
-            return this.Ok();
+            var existingProject = await this.projectsService.ProjectById(project.Id).FirstOrDefaultAsync();
+            await this.projectsService.Edit(this.mappingService.Map(project, existingProject));
+            return this.Ok(this.mappingService.Map<PostProjectResponseModel>(project));
         }
 
         [HttpGet]

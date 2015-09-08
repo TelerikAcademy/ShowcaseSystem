@@ -6,7 +6,7 @@
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
 
-    public class PostProjectResponseModel : IMapFrom<Project>, IHaveCustomMappings
+    public class PostProjectResponseModel : IMapFrom<Project>, IMapFrom<EditProjectRequestModel>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
