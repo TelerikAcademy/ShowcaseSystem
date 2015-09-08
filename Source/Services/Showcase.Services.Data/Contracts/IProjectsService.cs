@@ -28,6 +28,8 @@
             string mainImage,
             IEnumerable<File> downloadableFiles);
 
+        Task Edit(Project project);
+
         Task HideProject(int id);
 
         Task UnhideProject(int id);

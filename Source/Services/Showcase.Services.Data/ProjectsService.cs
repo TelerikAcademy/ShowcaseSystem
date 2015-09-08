@@ -94,6 +94,19 @@
             return project;
         }
 
+        public async Task Edit(Project project)
+        {
+            this.projects.Update(project);
+            try
+            {
+                await this.projects.SaveChangesAsync();
+            }
+            catch
+            {
+
+            }
+        }
+
         public async Task HideProject(int id)
         {
             var project = this.projects.All().FirstOrDefault(p => p.Id == id);
