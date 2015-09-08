@@ -4,6 +4,7 @@
     var projectDetailsController = function projectDetailsController($window, project, identity, sweetAlertDispatcher, projectDetailsData) {
         var vm = this;
         var id = project.id;
+        var initialProject;
 
         // TODO: extract visits to service
         var lastVisit = $window.localStorage.getItem("projectVisit" + id);
@@ -23,6 +24,7 @@
                 });
         }
 
+        vm.editMode = false;
         vm.project = project;
         vm.likes = project.likes;
         vm.isLiked = project.isLiked;
@@ -34,9 +36,8 @@
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
                 vm.currentLoggedInUsername = user.userName;
-
                 vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
-                    return element.username === user.userName;
+                    return element.userName === user.userName;
                 });
             });
 
@@ -82,6 +83,22 @@
                 .then(function () {
                     vm.isHidden = false;
                 });
+        };
+
+        vm.startEdit = function () {
+            vm.editMode = true;
+            initialProject = angular.copy(project);
+        };
+
+        vm.saveEdit = function () {
+            // TODO: save on server
+            vm.editMode = false;
+            console.log(vm.project);
+        }
+
+        vm.cancelEdit = function () {
+            vm.editMode = false;
+            vm.project = initialProject;
         };
 
         function daydiff(first, second) {
