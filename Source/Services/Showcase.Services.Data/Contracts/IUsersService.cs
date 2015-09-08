@@ -18,6 +18,8 @@
 
         Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators, string currentUserUsername);
 
+        Task<bool> UserIsCollaboratorInProject(int projectId, string userName);
+
         Task<RemoteUserProfile> ProfileInfo(string username);
 
         Task<int> UserIdByUsername(string username);

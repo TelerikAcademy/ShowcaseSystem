@@ -97,6 +97,14 @@
             return localUsers;
         }
 
+        public async Task<bool> UserIsCollaboratorInProject(int projectId, string userName)
+        {
+            return await this.users
+                .All()
+                .Where(u => u.UserName == userName && u.Projects.Any(pr => pr.Id == projectId))
+                .AnyAsync();
+        }
+
         public async Task<RemoteUserProfile> ProfileInfo(string username)
         {
             return await this.remoteData.ProfileInfo(username);
