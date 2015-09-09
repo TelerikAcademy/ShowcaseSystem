@@ -133,15 +133,16 @@
         watchProperty('vm.filterOptions.orderOption');
         watchProperty('vm.filterOptions.pageSize');
         watchProperty('vm.filterOptions.onlyHidden');
+        watchProperty('vm.searchParams.title');
         watchProperty('vm.searchParams.fromDate');
         watchProperty('vm.searchParams.toDate');
         watchProperty('vm.searchParams.season');
         watchProperty('vm.searchParams.languagesAndTechnologies');
         watchProperty('vm.searchParams.tags');
         watchProperty('vm.searchParams.collaborators');
-        
+                
         vm.search();
-
+        
         function watchProperty(property) {
             $scope.$watch(property, function (newValue, oldValue) {
                 if (newValue === oldValue) {
