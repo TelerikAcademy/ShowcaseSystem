@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($window, project, identity, sweetAlertDispatcher, notifier, projectDetailsData) {
+    var projectDetailsController = function projectDetailsController($window, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData) {
         var vm = this;
         var id = project.id;
         var initialProject;
@@ -28,6 +28,10 @@
             vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
                 return element.userName === vm.currentLoggedInUsername;
             });
+        }
+
+        function filterProjectTags(tagType, secondTagType) {
+            return vm.project.tags.filter(function (tag) { return tag.type == tagType || tag.type == secondTagType });
         }
 
         vm.editMode = false;
@@ -94,9 +98,22 @@
             if (!initialProject) {
                 initialProject = angular.copy(vm.project);
             }
+
+            addProjectData.getSeasonTags()
+                .then(function (seasonTags) {
+                    vm.seasonTags = seasonTags;
+                    vm.project.selectedSeason = filterProjectTags(0)[0];
+                });
+
+            addProjectData.getLanguageAndTechnologyTags()
+                .then(function (languageAndTechnologyTags) {
+                    vm.languageAndTechnologyTags = languageAndTechnologyTags.map(function(tag) { return tag.name });
+                    vm.project.selectedLanguagesAndTechnologies = filterProjectTags(1, 2).map(function (tag) { return tag.name; });
+                });
         };
 
         vm.saveEdit = function () {
+            console.log(vm.project);
             if (vm.project.deletedCollaborators) {
                 vm.project.deletedCollaborators = vm.project.deletedCollaborators.join(',');
             }
@@ -114,7 +131,6 @@
         };
 
         vm.cancelEdit = function () {
-            console.log(initialProject);
             vm.editMode = false;
             vm.project = angular.copy(initialProject);
         };
@@ -133,7 +149,7 @@
             else {
                 notifier.error('You must have at least 1 collaborator in your project');
             }
-        }
+        };
 
         function daydiff(first, second) {
             return (second - first) / (1000 * 60 * 60 * 24);
@@ -142,5 +158,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', projectDetailsController]);
 }());

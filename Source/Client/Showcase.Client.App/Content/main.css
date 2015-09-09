@@ -113,6 +113,19 @@ a.social.fa-github:hover {
     background-color: #c9302c;
 }
 
+.delete-tag-btn {
+    padding: 0.2em 0.3em 0.2em;
+    background-color: #d9534f;
+    border-color: #d9534f;
+    border-radius: 5px;
+    color: white;
+}
+
+.delete-tag-btn:hover {
+    cursor: pointer;
+    background-color: #c9302c;
+}
+
 .display-block {
     display: block;
 }

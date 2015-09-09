@@ -42,7 +42,7 @@
                     <button class="btn btn-success btn-xs margin-left-10" ng-show="vm.isHidden && vm.isAdmin" ng-click="vm.unhideProject(vm.project.id)">Unhide</button>
                     <div class="pull-right" social-icons popup="vm.popup" name="vm.project.title" />
                 </div>
-                <h2 ng-show="vm.editMode" class="margin-top-20">
+                <div ng-show="vm.editMode" class="margin-top-20">
                     <div class="sky-form margin-bottom-0 padding-right-5" ng-class="vm.project.liveDemoUrl.length > 0 ? 'col-md-6' : 'col-md-8'">
                         <label class="input">
                             <i class="icon-append fa fa-question-circle"></i>
@@ -57,7 +57,7 @@
                             <b class="tooltip tooltip-top-right">Edit the live demo URL of your project</b>
                         </label>
                     </div>
-                </h2>
+                </div>
                 <div class="clearfix"></div>
                 <hr class="small-horizontal-line" />
                 <div ng-show="!vm.editMode" project-description description="vm.project.description" />
@@ -88,7 +88,33 @@
                 </div>
                 <hr class="small-horizontal-line" />
                 <div class="margin-top-5">
-                    <div project-tags tags="vm.project.tags" />
+                    <div project-tags tags="vm.project.tags" edit="vm.editMode" deleted-tags="vm.project.deletedTags" />
+                    <div ng-show="vm.editMode" class="margin-top-10">
+                        <div class="col-md-12 sky-form margin-bottom-0">
+                            <label class="input">
+                                <input type="text" user-tags="vm.project.newUserTags" id="tags" token-input data-url="/api/Tags/Search" data-query-param="name" data-min-chars="2" data-max-chars="30" data-hint-text="Start typing tag name to add new tag" data-can-add-new-tokens="true">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div ng-show="vm.editMode" class="margin-top-10">
+                        <div class="col-md-12 sky-form margin-bottom-0">
+                            <label class="select">
+                                <select ng-model="vm.project.selectedSeason" ng-options="option.id as option.name for option in vm.seasonTags track by option.id">
+                                    <option value="">Select season</option>
+                                </select>
+                                <i></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div ng-show="vm.editMode" class="margin-top-10">
+                        <div class="col-md-12 sky-form">
+                            <label class="select select-multiple">
+                                <select multiple="multiple" ng-model="vm.project.selectedLanguagesAndTechnologies" ng-options="option for option in vm.languageAndTechnologyTags"></select>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

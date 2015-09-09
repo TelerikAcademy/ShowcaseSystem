@@ -5,10 +5,11 @@
 
     using AutoMapper;
 
-    using Showcase.Server.Common.Mapping;
-    using Showcase.Server.Common.Validation;
     using Showcase.Data.Common;
     using Showcase.Data.Models;
+    using Showcase.Server.Common.Mapping;
+    using Showcase.Server.Common.Validation;
+    using Showcase.Server.DataTransferModels.Tag;
 
     public class EditProjectRequestModel : BaseProjectRequestModel, IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
     {
@@ -22,6 +23,17 @@
 
         [Collaborators]
         public string DeletedCollaborators { get; set; }
+
+        public ICollection<TagResponseModel> Tags { get; set; }
+
+        [Required]
+        public int? SelectedSeason { get; set; }
+
+        public IEnumerable<string> SelectedLanguagesAndTechnologies { get; set; }
+
+        public string NewTags { get; set; }
+
+        public IEnumerable<string> DeletedTags { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
