@@ -116,9 +116,11 @@
         [ValidateModel]
         public async Task<IHttpActionResult> Edit(EditProjectRequestModel project)
         {
-            var existingProject = await this.projectsService.ProjectById(project.Id).FirstOrDefaultAsync();
-            await this.projectsService.Edit(this.mappingService.Map(project, existingProject));
-            return this.Ok(this.mappingService.Map<PostProjectResponseModel>(project));
+            var newCollaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.NewCollaborators);
+            var deletedCollaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.DeletedCollaborators);
+            var existingProject = await this.projectsService.ProjectById(project.Id).Include(c => c.Collaborators).FirstOrDefaultAsync();
+            await this.projectsService.Edit(this.mappingService.Map(project, existingProject), newCollaborators, deletedCollaborators);
+            return this.Ok(this.mappingService.Map<EditProjectResponseModel>(existingProject));
         }
 
         [HttpGet]

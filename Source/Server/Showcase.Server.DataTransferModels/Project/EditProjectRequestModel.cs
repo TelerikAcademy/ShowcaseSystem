@@ -1,10 +1,45 @@
 ﻿namespace Showcase.Server.DataTransferModels.Project
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using AutoMapper;
+
     using Showcase.Server.Common.Mapping;
+    using Showcase.Server.Common.Validation;
+    using Showcase.Data.Common;
     using Showcase.Data.Models;
 
-    public class EditProjectRequestModel : BaseProjectRequestModel, IMapFrom<Project>
+    public class EditProjectRequestModel : BaseProjectRequestModel, IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
     {
         public int Id { get; set; }
+
+        public ICollection<CollaboratorResponseModel> Collaborators { get; set; }
+
+        [Collaborators]
+        [CommaSeparatedCollectionLength(ValidationConstants.MinProjectCollaboratorsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
+        public string NewCollaborators { get; set; }
+
+        [Collaborators]
+        public string DeletedCollaborators { get; set; }
+
+        public void CreateMappings(IConfiguration configuration)
+        {
+            configuration.CreateMap<EditProjectRequestModel, Project>()
+                .ForMember(p => p.Collaborators, opt => opt.Ignore());
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var totalCollaborators = this.Collaborators.Count + this.NewCollaborators.Split(',').Length;
+            if (totalCollaborators < ValidationConstants.TotalMinProjectCollaboratorsLength
+                || totalCollaborators > ValidationConstants.MaxProjectCollaboratorsAndTagsLength)
+            {
+                yield return new ValidationResult(string.Format(
+                    "Total project collaborators must be between {0} and {1}.",
+                    ValidationConstants.TotalMinProjectCollaboratorsLength,
+                    ValidationConstants.MaxProjectCollaboratorsAndTagsLength));
+            }
+        }
     }
 }

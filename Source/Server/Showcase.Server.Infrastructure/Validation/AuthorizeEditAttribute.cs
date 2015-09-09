@@ -38,7 +38,8 @@
                 this.CreateErrorResponseMessage(actionContext, Constants.NotAuthorized);
             }
 
-            var isAllowed = await this.UsersService.UserIsCollaboratorInProject(project.Id, HttpContext.Current.User.Identity.Name);
+            var userName = currentIdentity.Identity.Name;
+            var isAllowed = await this.UsersService.UserIsCollaboratorInProject(project.Id, userName) || await this.UsersService.UserIsAdmin(userName);
             if (!isAllowed)
             {
                 this.CreateErrorResponseMessage(actionContext, Constants.EditingProjectIsNotAllowed);

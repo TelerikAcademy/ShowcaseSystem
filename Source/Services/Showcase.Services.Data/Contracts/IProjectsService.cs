@@ -28,7 +28,7 @@
             string mainImage,
             IEnumerable<File> downloadableFiles);
 
-        Task Edit(Project project);
+        Task Edit(Project project, IEnumerable<User> newCollaborators, IEnumerable<User> deletedCollaborators);
 
         Task HideProject(int id);
 

@@ -24,6 +24,12 @@
                 });
         }
 
+        function setIsOwnProject() {
+            vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
+                return element.userName === vm.currentLoggedInUsername;
+            });
+        }
+
         vm.editMode = false;
         vm.project = project;
         vm.likes = project.likes;
@@ -36,9 +42,7 @@
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
                 vm.currentLoggedInUsername = user.userName;
-                vm.isOwnProject = vm.project.collaborators.some(function (element, index, collaborators) {
-                    return element.userName === user.userName;
-                });
+                setIsOwnProject();
             });
 
         vm.likeProject = function (id) {
@@ -87,27 +91,42 @@
 
         vm.startEdit = function () {
             vm.editMode = true;
-            initialProject = angular.copy(project);
+            if (!initialProject) {
+                initialProject = angular.copy(vm.project);
+            }
         };
 
         vm.saveEdit = function () {
-            projectDetailsData.editProject(project)
+            if (vm.project.deletedCollaborators) {
+                vm.project.deletedCollaborators = vm.project.deletedCollaborators.join(',');
+            }
+
+            projectDetailsData.editProject(vm.project)
                 .then(function (updatedProjectInfo) {
                     vm.editMode = false;
+                    initialProject = undefined;
                     vm.project.titleUrl = updatedProjectInfo.titleUrl;
+                    vm.project.collaborators = updatedProjectInfo.collaborators;
+                    vm.project.deletedCollaborators = undefined;
+                    vm.project.newCollaborators = undefined;
+                    setIsOwnProject();
                 });
         };
 
         vm.cancelEdit = function () {
-            console.log(vm.project);
+            console.log(initialProject);
             vm.editMode = false;
-            vm.project = initialProject;
+            vm.project = angular.copy(initialProject);
         };
 
         vm.deleteCollaborator = function (collaborator) {
-            vm.project.deletedCollaborators = vm.project.deletedCollaborators || [];
-            vm.project.deletedCollaborators.push(collaborator.userName);
+            if (collaborator.userName == vm.currentLoggedInUsername && vm.project.collaborators.length > 1) {
+                notifier.warning('You have deleted yourself from this project. If you click "Save", you will not be able to edit the project again!')
+            }
+
             if (vm.project.collaborators.length > 1) {
+                vm.project.deletedCollaborators = vm.project.deletedCollaborators || [];
+                vm.project.deletedCollaborators.push(collaborator.userName);
                 var indexOfCollaborator = vm.project.collaborators.indexOf(collaborator);
                 vm.project.collaborators.splice(indexOfCollaborator, 1);
             }

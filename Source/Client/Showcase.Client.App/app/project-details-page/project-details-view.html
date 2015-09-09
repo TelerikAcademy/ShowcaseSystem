@@ -43,7 +43,7 @@
                     <div class="pull-right" social-icons popup="vm.popup" name="vm.project.title" />
                 </div>
                 <h2 ng-show="vm.editMode" class="margin-top-20">
-                    <div class="col-md-6 sky-form margin-bottom-0 padding-right-5">
+                    <div class="sky-form margin-bottom-0 padding-right-5" ng-class="vm.project.liveDemoUrl.length > 0 ? 'col-md-6' : 'col-md-8'">
                         <label class="input">
                             <i class="icon-append fa fa-question-circle"></i>
                             <input type="text" ng-model="vm.project.repositoryUrl" />

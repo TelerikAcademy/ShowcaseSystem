@@ -94,17 +94,19 @@
             return project;
         }
 
-        public async Task Edit(Project project)
+        public async Task Edit(Project project, IEnumerable<User> newCollaborators, IEnumerable<User> deletedCollaborators)
         {
-            this.projects.Update(project);
-            try
+            deletedCollaborators.ForEach(c => project.Collaborators.Remove(c));
+            newCollaborators.ForEach(c =>
             {
-                await this.projects.SaveChangesAsync();
-            }
-            catch
-            {
+                if (!project.Collaborators.Contains(c))
+                {
+                    project.Collaborators.Add(c);
+                }
+            });
 
-            }
+            this.projects.Update(project);
+            await this.projects.SaveChangesAsync();
         }
 
         public async Task HideProject(int id)
