@@ -157,7 +157,7 @@
                 args[index] = searchParams.collaborators
                     .split(',')
                     .map(function (collaborator) {
-                        return "collaborators/any(c:c eq '" + collaborator + "')";
+                        return "collaborators/any(c:c/userName eq '" + collaborator + "')";
                     }).join(' or ');
                 index += 1;
             }
