@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($window, project, identity, sweetAlertDispatcher, projectDetailsData) {
+    var projectDetailsController = function projectDetailsController($window, project, identity, sweetAlertDispatcher, notifier, projectDetailsData) {
         var vm = this;
         var id = project.id;
         var initialProject;
@@ -99,9 +99,22 @@
         };
 
         vm.cancelEdit = function () {
+            console.log(vm.project);
             vm.editMode = false;
             vm.project = initialProject;
         };
+
+        vm.deleteCollaborator = function (collaborator) {
+            vm.project.deletedCollaborators = vm.project.deletedCollaborators || [];
+            vm.project.deletedCollaborators.push(collaborator.userName);
+            if (vm.project.collaborators.length > 1) {
+                var indexOfCollaborator = vm.project.collaborators.indexOf(collaborator);
+                vm.project.collaborators.splice(indexOfCollaborator, 1);
+            }
+            else {
+                notifier.error('You must have at least 1 collaborator in your project');
+            }
+        }
 
         function daydiff(first, second) {
             return (second - first) / (1000 * 60 * 60 * 24);
@@ -110,5 +123,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweetAlertDispatcher', 'projectDetailsData', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', projectDetailsController]);
 }());

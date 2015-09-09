@@ -77,8 +77,14 @@
                 <hr class="small-horizontal-line" />
                 <div>
                     <span ng-repeat="collaborator in vm.project.collaborators">
-                        <a href="/users/{{collaborator.userName}}" class="margin-right-10 margin-bottom-2 display-inline-block"><img width="24" height="24" class="margin-right-5 img-thumbnail" ng-src="{{collaborator.avatarUrl}}" />{{collaborator.userName}}</a>
+                        <a href="/users/{{collaborator.userName}}" ng-class="vm.editMode ? 'margin-right-2' : 'margin-right-10'" class="margin-bottom-2 display-inline-block"><img width="24" height="24" class="margin-right-5 img-thumbnail" ng-src="{{collaborator.avatarUrl}}" />{{collaborator.userName}}</a>
+                        <span ng-show="vm.editMode" class="margin-right-10 delete-collaborator-btn" ng-click="vm.deleteCollaborator(collaborator)">X</span>
                     </span>
+                    <div ng-show="vm.editMode">
+                        <label class="input display-block margin-top-10">
+                            <input type="text" ng-model="vm.project.newCollaborators" id="collaborators" token-input data-url="/api/Users/Search" data-query-param="username" data-hint-text="Start typing username to add more collaborators">
+                        </label>
+                    </div>
                 </div>
                 <hr class="small-horizontal-line" />
                 <div class="margin-top-5">

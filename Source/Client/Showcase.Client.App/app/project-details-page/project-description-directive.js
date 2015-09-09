@@ -12,7 +12,6 @@
                 updateDescription();
 
                 scope.$watch('description', function (newValue, oldValue) {
-                    debugger;
                     if (newValue === oldValue) {
                         return;
                     }

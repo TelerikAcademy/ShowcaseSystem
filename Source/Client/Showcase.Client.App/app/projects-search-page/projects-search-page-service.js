@@ -154,11 +154,11 @@
             }
 
             if (searchParams.collaborators) {
-                args[index] = searchParams.collaborators
+                args[index] = '(' + searchParams.collaborators
                     .split(',')
                     .map(function (collaborator) {
-                        return "collaborators/any(c:c eq '" + collaborator + "')";
-                    }).join(' or ');
+                        return "collaborators/any(c:c/username eq '" + collaborator + "')";
+                    }).join(' or ') + ')';
                 index += 1;
             }
 

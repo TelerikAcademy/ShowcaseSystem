@@ -101,6 +101,26 @@ a.social.fa-github:hover {
     background: rgba(0, 0, 0, 0.5);
 }
 
+.delete-collaborator-btn {
+    padding: 0 3px;
+    background-color: #d9534f;
+    border-radius: 5px;
+    color: white;
+}
+
+.delete-collaborator-btn:hover {
+    cursor: pointer;
+    background-color: #c9302c;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-block .token-input-token-showcase p {
+    font-weight: normal;
+}
+
 .margin-left-10 {
     margin-left: 10px;
 }
