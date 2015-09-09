@@ -140,9 +140,14 @@
         watchProperty('vm.searchParams.languagesAndTechnologies');
         watchProperty('vm.searchParams.tags');
         watchProperty('vm.searchParams.collaborators');
-                
-        vm.search();
         
+        if ($routeParams.$orderby) {
+            getProjects();
+        }
+        else {
+            vm.search();
+        }
+
         function watchProperty(property) {
             $scope.$watch(property, function (newValue, oldValue) {
                 if (newValue === oldValue) {
