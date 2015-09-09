@@ -31,7 +31,17 @@
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var totalCollaborators = this.Collaborators.Count + this.NewCollaborators.Split(',').Length;
+            var totalCollaborators = 0;
+            if (this.Collaborators != null)
+            {
+                totalCollaborators += this.Collaborators.Count;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.NewCollaborators))
+            {
+                totalCollaborators += this.NewCollaborators.Split(',').Length;
+            }
+
             if (totalCollaborators < ValidationConstants.TotalMinProjectCollaboratorsLength
                 || totalCollaborators > ValidationConstants.MaxProjectCollaboratorsAndTagsLength)
             {
