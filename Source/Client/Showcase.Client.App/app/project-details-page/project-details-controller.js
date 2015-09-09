@@ -34,6 +34,10 @@
             return vm.project.tags.filter(function (tag) { return tag.type == tagType || tag.type == secondTagType });
         }
 
+        function mapTagNames(tags) {
+            return tags.map(function (tag) { return tag.name; })
+        };
+
         vm.editMode = false;
         vm.project = project;
         vm.likes = project.likes;
@@ -41,7 +45,7 @@
         vm.isFlagged = project.isFlagged;
         vm.images = project.imageUrls;
         vm.isHidden = project.isHidden;
-        
+
         identity.getUser()
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
@@ -101,23 +105,28 @@
 
             addProjectData.getSeasonTags()
                 .then(function (seasonTags) {
-                    vm.seasonTags = seasonTags;
-                    vm.project.selectedSeason = filterProjectTags(0)[0];
+                    vm.seasonTags = mapTagNames(seasonTags);
+                    vm.project.selectedSeason = filterProjectTags(0)[0].name;
                 });
 
             addProjectData.getLanguageAndTechnologyTags()
                 .then(function (languageAndTechnologyTags) {
-                    vm.languageAndTechnologyTags = languageAndTechnologyTags.map(function(tag) { return tag.name });
-                    vm.project.selectedLanguagesAndTechnologies = filterProjectTags(1, 2).map(function (tag) { return tag.name; });
+                    vm.languageAndTechnologyTags = mapTagNames(languageAndTechnologyTags);
+                    vm.project.selectedLanguagesAndTechnologies = mapTagNames(filterProjectTags(1, 2));
                 });
         };
 
         vm.saveEdit = function () {
-            console.log(vm.project);
             if (vm.project.deletedCollaborators) {
                 vm.project.deletedCollaborators = vm.project.deletedCollaborators.join(',');
             }
 
+            if (vm.project.deletedUserTags) {
+                vm.project.deletedUserTags = vm.project.deletedUserTags.join(',');
+            }
+
+            vm.project.requiredTags = vm.project.selectedLanguagesAndTechnologies.join(',') + ',' + vm.project.selectedSeason;
+            
             projectDetailsData.editProject(vm.project)
                 .then(function (updatedProjectInfo) {
                     vm.editMode = false;

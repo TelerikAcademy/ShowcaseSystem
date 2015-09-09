@@ -26,19 +26,17 @@
 
         public ICollection<TagResponseModel> Tags { get; set; }
 
-        [Required]
-        public int? SelectedSeason { get; set; }
+        public string RequiredTags { get; set; }
 
-        public IEnumerable<string> SelectedLanguagesAndTechnologies { get; set; }
+        public string NewUserTags { get; set; }
 
-        public string NewTags { get; set; }
-
-        public IEnumerable<string> DeletedTags { get; set; }
+        public string DeletedUserTags { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<EditProjectRequestModel, Project>()
-                .ForMember(p => p.Collaborators, opt => opt.Ignore());
+                .ForMember(p => p.Collaborators, opt => opt.Ignore())
+                .ForMember(p => p.Tags, opt => opt.Ignore());
         }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

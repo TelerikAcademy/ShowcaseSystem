@@ -88,7 +88,7 @@
                 </div>
                 <hr class="small-horizontal-line" />
                 <div class="margin-top-5">
-                    <div project-tags tags="vm.project.tags" edit="vm.editMode" deleted-tags="vm.project.deletedTags" />
+                    <div project-tags tags="vm.project.tags" edit="vm.editMode" deleted-tags="vm.project.deletedUserTags" />
                     <div ng-show="vm.editMode" class="margin-top-10">
                         <div class="col-md-12 sky-form margin-bottom-0">
                             <label class="input">
@@ -100,7 +100,7 @@
                     <div ng-show="vm.editMode" class="margin-top-10">
                         <div class="col-md-12 sky-form margin-bottom-0">
                             <label class="select">
-                                <select ng-model="vm.project.selectedSeason" ng-options="option.id as option.name for option in vm.seasonTags track by option.id">
+                                <select ng-model="vm.project.selectedSeason" ng-options="option for option in vm.seasonTags">
                                     <option value="">Select season</option>
                                 </select>
                                 <i></i>
