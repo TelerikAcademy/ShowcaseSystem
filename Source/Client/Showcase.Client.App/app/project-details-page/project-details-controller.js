@@ -125,7 +125,6 @@
                 vm.project.deletedUserTags = vm.project.deletedUserTags.join(',');
             }
 
-            debugger;
             vm.project.requiredTags = vm.project.selectedLanguagesAndTechnologies.join(',') + ',' + vm.project.selectedSeason;
             
             projectDetailsData.editProject(vm.project)
@@ -136,6 +135,10 @@
                     vm.project.collaborators = updatedProjectInfo.collaborators;
                     vm.project.deletedCollaborators = undefined;
                     vm.project.newCollaborators = undefined;
+                    vm.project.tags = updatedProjectInfo.tags;
+                    vm.project.requiredTags = undefined;
+                    vm.project.newUserTags = undefined;
+                    vm.project.deletedUserTags = undefined;
                     setIsOwnProject();
                 });
         };

@@ -12,7 +12,7 @@
 
         public string TitleUrl { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public virtual void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Project, PostProjectResponseModel>()
                 .ForMember(p => p.TitleUrl, opt => opt.MapFrom(p => p.Title.ToUrl()));
