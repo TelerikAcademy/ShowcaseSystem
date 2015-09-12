@@ -31,7 +31,7 @@
         private readonly IDownloadableFilesService downloadableFilesService;
         private readonly IFileSystemService fileSystemService;
         private readonly IProjectsCacheService projectsCacheService;
-        
+
         public ProjectsController(
             IUsersService usersService,
             IVisitsService visitsService,
@@ -92,8 +92,8 @@
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
             var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawFile));
             var downloadableFiles = await this.downloadableFilesService.AddNew(
-                project.Files != null 
-                ? project.Files.Select(FileRequestModel.ToRawFile) 
+                project.Files != null
+                ? project.Files.Select(FileRequestModel.ToRawFile)
                 : new List<RawFile>());
 
             await this.fileSystemService.SaveImages(processedImages);
@@ -118,8 +118,19 @@
         {
             var newCollaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.NewCollaborators);
             var deletedCollaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.DeletedCollaborators);
-            var existingProject = await this.projectsService.ProjectById(project.Id).Include(c => c.Collaborators).FirstOrDefaultAsync();
-            await this.projectsService.Edit(this.mappingService.Map(project, existingProject), newCollaborators, deletedCollaborators);
+            var requiredTags = await this.tagsService.TagsFromCommaSeparatedValues(project.RequiredTags);
+            var newUserTags = await this.tagsService.TagsFromCommaSeparatedValues(project.NewUserTags);
+            var deletedUserTags = await this.tagsService.TagsFromCommaSeparatedValues(project.DeletedUserTags);
+            var existingProject = await this.projectsService.ProjectByIdWithIncludedCollaboratorsAndTags(project.Id).FirstOrDefaultAsync();
+
+            await this.projectsService.Edit(
+                this.mappingService.Map(project, existingProject),
+                newCollaborators,
+                deletedCollaborators,
+                requiredTags,
+                newUserTags,
+                deletedUserTags);
+            
             return this.Ok(this.mappingService.Map<EditProjectResponseModel>(existingProject));
         }
 

@@ -92,7 +92,7 @@
 
             if (!string.IsNullOrWhiteSpace(this.RequiredTags))
             {
-                totalTags -= this.RequiredTags.Split(',').Length;
+                totalTags += this.RequiredTags.Split(',').Length;
             }
 
             if (!string.IsNullOrWhiteSpace(this.NewUserTags))

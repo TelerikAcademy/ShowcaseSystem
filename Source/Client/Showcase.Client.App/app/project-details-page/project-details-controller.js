@@ -125,6 +125,7 @@
                 vm.project.deletedUserTags = vm.project.deletedUserTags.join(',');
             }
 
+            debugger;
             vm.project.requiredTags = vm.project.selectedLanguagesAndTechnologies.join(',') + ',' + vm.project.selectedSeason;
             
             projectDetailsData.editProject(vm.project)

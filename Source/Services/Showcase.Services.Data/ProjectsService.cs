@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Showcase.Data.Common.Models;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -60,6 +61,13 @@
             return query;
         }
 
+        public IQueryable<Project> ProjectByIdWithIncludedCollaboratorsAndTags(int id, bool isAdmin = false)
+        {
+            return this.ProjectById(id, isAdmin)
+                .Include(pr => pr.Collaborators)
+                .Include(pr => pr.Tags);
+        }
+
         public IQueryable<Project> QueriedProjects(bool isAdmin = false, bool onlyHidden = false)
         {
             var query = this.projects
@@ -94,7 +102,13 @@
             return project;
         }
 
-        public async Task Edit(Project project, IEnumerable<User> newCollaborators, IEnumerable<User> deletedCollaborators)
+        public async Task Edit(
+            Project project,
+            IEnumerable<User> newCollaborators,
+            IEnumerable<User> deletedCollaborators,
+            IEnumerable<Tag> requiredTags,
+            IEnumerable<Tag> newUserTags,
+            IEnumerable<Tag> deletedUserTags)
         {
             deletedCollaborators.ForEach(c => project.Collaborators.Remove(c));
             newCollaborators.ForEach(c =>
@@ -102,6 +116,23 @@
                 if (!project.Collaborators.Contains(c))
                 {
                     project.Collaborators.Add(c);
+                }
+            });
+
+            project
+                .Tags
+                .Where(t => t.Type != TagType.UserSubmitted)
+                .ToList()
+                .ForEach(t => project.Tags.Remove(t));
+
+            requiredTags.ForEach(t => project.Tags.Add(t));
+
+            deletedUserTags.ForEach(t => project.Tags.Remove(t));
+            newUserTags.ForEach(t =>
+            {
+                if (!project.Tags.Contains(t))
+                {
+                    project.Tags.Add(t);
                 }
             });
 
