@@ -154,6 +154,6 @@
 /// <reference path="../app/add-project-page/add-project-data.js" />
 /// <reference path="../app/add-project-page/add-project-controller.js" />
 /// <reference path="../app/about-page/about-page-controller.js" />
-/// <reference path="../app/build/alljs2015091211.min.js" />
-/// <reference path="../app/build/vendorjs2015091211.min.js" />
+/// <reference path="../app/build/vendorjs201509122.min.js" />
+/// <reference path="../app/build/alljs201509122.min.js" />
 
