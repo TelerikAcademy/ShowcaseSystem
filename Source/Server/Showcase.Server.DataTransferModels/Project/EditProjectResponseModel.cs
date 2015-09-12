@@ -4,6 +4,7 @@
     using System.Linq;
 
     using AutoMapper;
+    using MissingFeatures;
 
     using Showcase.Data.Models;
     using Showcase.Server.Common.Mapping;
@@ -17,9 +18,9 @@
 
         public override void CreateMappings(IConfiguration configuration)
         {
-            configuration.CreateMap<Project, EditProjectRequestModel>()
+            configuration.CreateMap<Project, EditProjectResponseModel>()
+                .ForMember(pr => pr.TitleUrl, opt => opt.MapFrom(pr => pr.Title.ToUrl()))
                 .ForMember(pr => pr.Tags, opt => opt.MapFrom(pr => pr.Tags.OrderBy(t => t.Type)));
-
             base.CreateMappings(configuration);
         }
     }

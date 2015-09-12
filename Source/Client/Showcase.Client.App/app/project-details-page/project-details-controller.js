@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($window, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData) {
+    var projectDetailsController = function projectDetailsController($window, $location, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData) {
         var vm = this;
         var id = project.id;
         var initialProject;
@@ -37,6 +37,10 @@
         function mapTagNames(tags) {
             return tags.map(function (tag) { return tag.name; })
         };
+
+        function daydiff(first, second) {
+            return (second - first) / (1000 * 60 * 60 * 24);
+        }
 
         vm.editMode = false;
         vm.project = project;
@@ -97,11 +101,16 @@
                 });
         };
 
+        vm.project.updatedImageUrls;
+        vm.project.updatedMainImageUrl;
         vm.startEdit = function () {
             vm.editMode = true;
             if (!initialProject) {
                 initialProject = angular.copy(vm.project);
             }
+
+            vm.project.updatedImageUrls = angular.copy(vm.project.imageUrls);
+            vm.project.updatedMainImageUrl = vm.project.mainImageUrl;
 
             addProjectData.getSeasonTags()
                 .then(function (seasonTags) {
@@ -117,6 +126,11 @@
         };
 
         vm.saveEdit = function () {
+            if (!vm.project.updatedMainImageUrl) {
+                notifier.error('Please, select main image for your project');
+                return;
+            }
+
             if (vm.project.deletedCollaborators) {
                 vm.project.deletedCollaborators = vm.project.deletedCollaborators.join(',');
             }
@@ -129,9 +143,7 @@
             
             projectDetailsData.editProject(vm.project)
                 .then(function (updatedProjectInfo) {
-                    vm.editMode = false;
                     initialProject = undefined;
-                    vm.project.titleUrl = updatedProjectInfo.titleUrl;
                     vm.project.collaborators = updatedProjectInfo.collaborators;
                     vm.project.deletedCollaborators = undefined;
                     vm.project.newCollaborators = undefined;
@@ -140,6 +152,13 @@
                     vm.project.newUserTags = undefined;
                     vm.project.deletedUserTags = undefined;
                     setIsOwnProject();
+
+                    if (vm.project.titleUrl == updatedProjectInfo.titleUrl) {
+                        vm.editMode = false;
+                    }
+                    else {
+                        $location.path('/projects/' + vm.project.id + '/' + updatedProjectInfo.titleUrl);
+                    }
                 });
         };
 
@@ -164,12 +183,26 @@
             }
         };
 
-        function daydiff(first, second) {
-            return (second - first) / (1000 * 60 * 60 * 24);
-        }
+        vm.deleteImage = function (image) {
+            if (vm.project.updatedImageUrls.length <= 3) {
+                notifier.error('You must have at least 3 images in your project');
+                return;
+            }
+
+            var imageIndex = vm.project.updatedImageUrls.indexOf(image);
+            vm.project.updatedImageUrls.splice(imageIndex, 1);
+
+            if (vm.project.updatedMainImageUrl == image) {
+                vm.project.updatedMainImageUrl = undefined;
+            };
+        };
+
+        vm.selectMainImage = function (image) {
+            vm.project.updatedMainImageUrl = image;
+        };
     };
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$window', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', '$location', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', projectDetailsController]);
 }());

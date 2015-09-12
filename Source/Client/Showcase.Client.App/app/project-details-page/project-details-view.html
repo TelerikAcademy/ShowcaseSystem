@@ -120,10 +120,21 @@
         </div>
         <div class="row margin-top-20 margin-bottom-30">
             <div class="col-md-offset-1 col-md-10 margin-top-20" animate="fadeInUp" data-animation-delay="200">
-                <div owl-carousel images="vm.images" />
+                <div ng-show="!vm.editMode" owl-carousel images="vm.images" />
+                <div ng-show="vm.editMode" class="text-center">
+                    <label class="label text-center black font-size-14em">Edit images of your project</label>
+                    <div id="image-preview-container" class="text-center">
+                        <div class="display-inline-block" ng-repeat="image in vm.project.updatedImageUrls">
+                            <span class="margin-right-10 margin-bottom-10 delete-collaborator-btn" ng-click="vm.deleteImage(image)">X</span><br />
+                            <div class="image-holder full-width">
+                                <img class="animated fadeIn preview-image" ng-click="vm.selectMainImage(image)" ng-class="image == vm.project.updatedMainImageUrl ? 'image-selected' : ''" ng-src="/Images/{{image}}_tmbl.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="margin-top-30">
+        <div class="margin-top-30" ng-if="!vm.editMode">
             <div animate="fadeInUp" data-animation-delay="200">
                 <div project-comments comments="vm.comments" logged-in-username="vm.currentLoggedInUsername" project-id="vm.project.id" />
             </div>

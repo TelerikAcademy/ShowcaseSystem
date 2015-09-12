@@ -434,6 +434,10 @@ li.token-input-selected-token-showcase span {
     cursor: pointer;
 }
 
+.full-width {
+    width: 100% !important;
+}
+
 #image-preview-container {
     margin-bottom: 25px;
 }
