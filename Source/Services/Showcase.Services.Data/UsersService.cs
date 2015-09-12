@@ -32,6 +32,15 @@
                 .FirstOrDefaultAsync();
         }
 
+        public async Task<bool> UserIsAdmin(string username)
+        {
+            return await this.users
+                .All()
+                .Where(u => u.UserName == username)
+                .Select(u => u.IsAdmin)
+                .FirstOrDefaultAsync();
+        }
+
         public IQueryable<User> ByUsername(string username)
         {
             return this.users
@@ -75,7 +84,7 @@
             return localUser;
         }
 
-        public async Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators, string currentUserUsername)
+        public async Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators, string currentUserUsername = null)
         {
             var usernames = new HashSet<string>();
             if (!string.IsNullOrWhiteSpace(collaborators))
@@ -83,7 +92,10 @@
                 usernames = collaborators.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries).ToHashSet();
             }
 
-            usernames.Add(currentUserUsername);
+            if (!string.IsNullOrWhiteSpace(currentUserUsername))
+            {
+                usernames.Add(currentUserUsername);
+            }
 
             var localUsers = await this.users
                 .All()
@@ -95,6 +107,14 @@
 
             localUsers.AddRange(nonExistingLocalUsersRemoteInfo);
             return localUsers;
+        }
+
+        public async Task<bool> UserIsCollaboratorInProject(int projectId, string userName)
+        {
+            return await this.users
+                .All()
+                .Where(u => u.UserName == userName && u.Projects.Any(pr => pr.Id == projectId))
+                .AnyAsync();
         }
 
         public async Task<RemoteUserProfile> ProfileInfo(string username)

@@ -32,8 +32,13 @@
 
         public async Task<IEnumerable<Tag>> TagsFromCommaSeparatedValues(string tagsAsCommaSeparatedValues)
         {
+            if (string.IsNullOrWhiteSpace(tagsAsCommaSeparatedValues))
+            {
+                return Enumerable.Empty<Tag>();
+            }
+
             var existingTagIds = new HashSet<int>();
-            var newTagNames = new HashSet<string>();
+            var tagNames = new HashSet<string>();
 
             tagsAsCommaSeparatedValues.Split(new[] { TagSeparator }, StringSplitOptions.RemoveEmptyEntries)
                 .ToList()
@@ -46,23 +51,23 @@
                     }
                     else
                     {
-                        newTagNames.Add(tag.ToLower());
+                        tagNames.Add(tag.ToLower());
                     }
                 });
 
             var resultTags = await this.tags
                 .All()
-                .Where(t => existingTagIds.Contains(t.Id))
+                .Where(t => existingTagIds.Contains(t.Id) || tagNames.Contains(t.Name))
                 .ToListAsync();
 
             (await this.tags
                 .All()
-                .Where(t => newTagNames.Contains(t.Name.ToLower()))
+                .Where(t => tagNames.Contains(t.Name.ToLower()))
                 .Select(t => t.Name.ToLower())
                 .ToListAsync())
-                .ForEach(t => newTagNames.Remove(t));
+                .ForEach(t => tagNames.Remove(t));
 
-            newTagNames.ForEach(tagName => resultTags.Add(new Tag { Name = tagName, Type = TagType.UserSubmitted }));
+            tagNames.ForEach(tagName => resultTags.Add(new Tag { Name = tagName, Type = TagType.UserSubmitted }));
 
             return resultTags;
         }
@@ -78,6 +83,17 @@
                 .AnyAsync(t => (t.Type == TagType.Technology || t.Type == TagType.Language) && tagsIds.Contains(t.Id));
 
             return exactlyOneSeasonTagIsPresent && languageOrTechnologyTagIsPresent;
+        }
+
+        public async Task<bool> AllRequiredTagsArePresent(IEnumerable<string> tagNames)
+        {
+            var tagIds = await this.tags
+                .All()
+                .Where(t => tagNames.Contains(t.Name))
+                .Select(t => t.Id)
+                .ToListAsync();
+
+            return await this.AllRequiredTagsArePresent(tagIds);
         }
 
         public IQueryable<Tag> SeasonTags()

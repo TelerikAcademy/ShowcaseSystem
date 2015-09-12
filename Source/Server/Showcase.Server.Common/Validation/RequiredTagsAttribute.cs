@@ -25,8 +25,18 @@
             if (valueAsString != null)
             {
                 int currentTagId;
-                var tagsIds = valueAsString.Split(',').Where(t => int.TryParse(t, out currentTagId)).Select(int.Parse).ToList();
-                var task = Task.Run(async () => await this.TagsService.AllRequiredTagsArePresent(tagsIds));
+                var separatedValues = valueAsString.Split(',');
+                var tagsIds = separatedValues.Where(t => int.TryParse(t, out currentTagId)).Select(int.Parse).ToList();
+                Task<bool> task;
+                if (tagsIds.Count > 0)
+                {
+                    task = Task.Run(async () => await this.TagsService.AllRequiredTagsArePresent(tagsIds));
+                }
+                else
+                {
+                    task = Task.Run(async () => await this.TagsService.AllRequiredTagsArePresent(separatedValues));
+                }
+
                 return task.Result;
             }
 

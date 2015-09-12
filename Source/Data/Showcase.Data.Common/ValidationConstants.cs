@@ -14,6 +14,7 @@
         public const int MinProjectCollaboratorsLength = 0;
         public const int MinProjectTagsLength = 4;
         public const int MaxProjectCollaboratorsAndTagsLength = 20;
+        public const int TotalMinProjectCollaboratorsAndUserTagsLength = 1;
         public const int MinProjectImages = 3;
         public const int MaxProjectImages = 10;
         public const int MinProjectFiles = 0;
@@ -43,6 +44,7 @@
         public const string MainImageErrorMessage = "You must select main image for your project";
         public const string MainImageDoesNotExistErrorMessage = "You must select main image for your project from the uploaded images";
         public const string ProjectImagesCountErrorMessage = "You must select between {0} and {1} images";
+        public const string InvalidUpdatedImagesErrorMessage = "Updated images have invalid URLs.";
         public const string RequiredTagsErrorMessage = "You must select season and at least one used language or technology";
         public const string TagNamesLengthErrorMessage = "Tag names must be between {0} and {1} characters";
     }

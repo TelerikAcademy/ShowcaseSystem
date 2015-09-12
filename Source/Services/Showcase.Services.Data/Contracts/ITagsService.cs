@@ -15,6 +15,8 @@
 
         Task<bool> AllRequiredTagsArePresent(IEnumerable<int> tagsIds);
 
+        Task<bool> AllRequiredTagsArePresent(IEnumerable<string> tagNames);
+
         IQueryable<Tag> SeasonTags();
 
         IQueryable<Tag> LanguageAndTechnologyTags();

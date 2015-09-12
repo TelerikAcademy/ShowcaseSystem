@@ -97,6 +97,7 @@
     <Compile Include="Validation\OnlyEnglishAttribute.cs" />
     <Compile Include="Validation\RequiredTagsAttribute.cs" />
     <Compile Include="Validation\TagNamesLength.cs" />
+    <Compile Include="Validation\UpdatedImagesCollectionAttribute.cs" />
     <Compile Include="Validation\UploadedDownloadableFilesCollectionAttribute.cs" />
     <Compile Include="Validation\UploadedImagesCollectionAttribute.cs" />
   </ItemGroup>

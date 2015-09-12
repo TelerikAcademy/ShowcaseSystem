@@ -1,5 +1,5 @@
 ﻿<section>
-    <div class="container">
+    <div class="container project-container">
         <div class="row">
             <div class="col-md-offset-1 col-md-3 text-center-small margin-bottom-20" animate="fadeInLeft" data-animation-delay="200">
                 <img ng-src="/Images/{{vm.project.mainImageUrl}}_tmbl.jpg" width="250" alt="{{vm.project.title}}" />
@@ -16,17 +16,58 @@
                 </div>
             </div>
             <div class="col-md-7 margin-bottom-10" animate="fadeInRight" data-animation-delay="200">
-                <h2 class="nomargin-bottom break-word display-inline-block">{{vm.project.title}}</h2>                
+                <h2 class="nomargin-bottom break-word margin-bottom-10">
+                    <div class="col-md-8 padding-horizontal-0 padding-right-5">
+                        <span ng-show="!vm.editMode">{{vm.project.title}}</span>
+                        <span ng-show="vm.editMode" class="sky-form">
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text" ng-model="vm.project.title" />
+                                <b class="tooltip tooltip-top-right">Edit the name of your project</b>
+                            </label>
+                        </span>
+                    </div>
+                    <div class="col-md-4 padding-horizontal-0 margin-top-8">
+                        <button class="pull-right btn btn-xs btn-default" ng-click="vm.startEdit()" ng-show="(vm.isOwnProject || vm.isAdmin) && !vm.editMode">Edit</button>
+                        <button class="pull-right btn btn-xs btn-warning margin-left-5" ng-click="vm.cancelEdit()" ng-show="vm.editMode">Cancel</button>
+                        <button class="pull-right btn btn-xs btn-success" ng-click="vm.saveEdit()" ng-show="vm.editMode">Save</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </h2>
                 <div animate="fadeIn" data-animation-delay="1000">
                     <i class="fa fa-clock-o margin-right-5"></i><span class="margin-right-10 font-size-085em">{{vm.project.shortDate}}</span> |
-                    <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" class="margin-right-10">repository</a>
-                    <span ng-show="vm.project.liveDemoUrl.length > 0"> |<i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank">live demo</a></span>
+                    <i class="fa fa-code margin-right-5 margin-left-10"></i><a href="{{vm.project.repositoryUrl}}" target="_blank" class="margin-right-10">Repository</a>
+                    <span ng-show="vm.project.liveDemoUrl.length > 0"> |<i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{vm.project.liveDemoUrl}}" target="_blank">Live demo</a></span>
                     <button class="btn btn-danger btn-xs margin-left-10" ng-show="(vm.isOwnProject || vm.isAdmin) && !vm.isHidden" ng-click="vm.hideProject(vm.project.id)">Hide</button>
                     <button class="btn btn-success btn-xs margin-left-10" ng-show="vm.isHidden && vm.isAdmin" ng-click="vm.unhideProject(vm.project.id)">Unhide</button>
                     <div class="pull-right" social-icons popup="vm.popup" name="vm.project.title" />
                 </div>
+                <div ng-show="vm.editMode" class="margin-top-20">
+                    <div class="col-md-6 sky-form margin-bottom-0 padding-right-5">
+                        <label class="input">
+                            <i class="icon-append fa fa-question-circle"></i>
+                            <input type="text" ng-model="vm.project.repositoryUrl" />
+                            <b class="tooltip tooltip-top-right">Edit the repository of your project</b>
+                        </label>
+                    </div>
+                    <div class="col-md-6 sky-form margin-bottom-0 padding-left-5">
+                        <label class="input">
+                            <i class="icon-append fa fa-question-circle"></i>
+                            <input type="text" ng-model="vm.project.liveDemoUrl" />
+                            <b class="tooltip tooltip-top-right">Edit the live demo URL of your project</b>
+                        </label>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
                 <hr class="small-horizontal-line" />
-                <div project-description description="vm.project.description" />
+                <div ng-show="!vm.editMode" project-description description="vm.project.description" />
+                <div class="sky-form margin-top-30" ng-show="vm.editMode">
+                    <label class="textarea">
+                        <i class="icon-append fa fa-question-circle"></i>
+                        <textarea rows="5" ng-model="vm.project.description"></textarea>
+                        <b class="tooltip tooltip-top-right">Edit the brief narrative of your project</b>
+                    </label>
+                </div>
 
                 <div>
                     <span ng-repeat="file in vm.project.files">
@@ -36,21 +77,64 @@
                 <hr class="small-horizontal-line" />
                 <div>
                     <span ng-repeat="collaborator in vm.project.collaborators">
-                        <a href="/users/{{collaborator.userName}}" class="margin-right-10 margin-bottom-2 display-inline-block"><img width="24" height="24" class="margin-right-5 img-thumbnail" ng-src="{{collaborator.avatarUrl}}" />{{collaborator.userName}}</a>
+                        <a href="/users/{{collaborator.userName}}" ng-class="vm.editMode ? 'margin-right-2' : 'margin-right-10'" class="margin-bottom-2 display-inline-block"><img width="24" height="24" class="margin-right-5 img-thumbnail" ng-src="{{collaborator.avatarUrl}}" />{{collaborator.userName}}</a>
+                        <span ng-show="vm.editMode" class="margin-right-10 delete-collaborator-btn" ng-click="vm.deleteCollaborator(collaborator)">X</span>
                     </span>
+                    <div ng-show="vm.editMode">
+                        <label class="input display-block margin-top-10">
+                            <input type="text" ng-model="vm.project.newCollaborators" id="collaborators" token-input data-url="/api/Users/Search" data-query-param="username" data-hint-text="Start typing username to add more collaborators">
+                        </label>
+                    </div>
                 </div>
                 <hr class="small-horizontal-line" />
                 <div class="margin-top-5">
-                    <div project-tags tags="vm.project.tags" />
+                    <div project-tags tags="vm.project.tags" edit="vm.editMode" deleted-tags="vm.project.deletedUserTags" />
+                    <div ng-show="vm.editMode" class="margin-top-10">
+                        <div class="col-md-12 sky-form margin-bottom-0">
+                            <label class="input">
+                                <input type="text" user-tags="vm.project.newUserTags" id="tags" token-input data-url="/api/Tags/Search" data-query-param="name" data-min-chars="2" data-max-chars="30" data-hint-text="Start typing tag name to add new tag" data-can-add-new-tokens="true">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div ng-show="vm.editMode" class="margin-top-10">
+                        <div class="col-md-12 sky-form margin-bottom-0">
+                            <label class="select">
+                                <select ng-model="vm.project.selectedSeason" ng-options="option for option in vm.seasonTags">
+                                    <option value="">Select season</option>
+                                </select>
+                                <i></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div ng-show="vm.editMode" class="margin-top-10">
+                        <div class="col-md-12 sky-form">
+                            <label class="select select-multiple">
+                                <select multiple="multiple" ng-model="vm.project.selectedLanguagesAndTechnologies" ng-options="option for option in vm.languageAndTechnologyTags"></select>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row margin-top-20 margin-bottom-30">
             <div class="col-md-offset-1 col-md-10 margin-top-20" animate="fadeInUp" data-animation-delay="200">
-                <div owl-carousel images="vm.images" />
+                <div ng-show="!vm.editMode" owl-carousel images="vm.images" />
+                <div ng-show="vm.editMode" class="text-center">
+                    <label class="label text-center black font-size-14em">Edit images of your project</label>
+                    <div id="image-preview-container" class="text-center">
+                        <div class="display-inline-block" ng-repeat="image in vm.project.updatedImageUrls">
+                            <span class="margin-right-10 margin-bottom-10 delete-collaborator-btn" ng-click="vm.deleteImage(image)">X</span><br />
+                            <div class="image-holder full-width">
+                                <img class="animated fadeIn preview-image" ng-click="vm.selectMainImage(image)" ng-class="image == vm.project.updatedMainImageUrl ? 'image-selected' : ''" ng-src="/Images/{{image}}_tmbl.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="margin-top-30">
+        <div class="margin-top-30" ng-if="!vm.editMode">
             <div animate="fadeInUp" data-animation-delay="200">
                 <div project-comments comments="vm.comments" logged-in-username="vm.currentLoggedInUsername" project-id="vm.project.id" />
             </div>

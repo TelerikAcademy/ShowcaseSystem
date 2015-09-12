@@ -11,9 +11,9 @@
     <div class="col-md-7">
         <div class="pull-right">
             <span ng-show="loggedInUsername">
-                <input type="button" class="btn btn-xs btn-success margin-left-10" ng-show="comment.isFlagged" value="unflag" ng-click="unFlagComment(comment.id)" />
-                <input type="button" class="btn btn-xs btn-warning margin-left-10" ng-hide="comment.isFlagged" value="flag" ng-click="flagComment(comment.id)" />
-                <input type="button" class="btn btn-xs btn-default margin-left-10" ng-show="comment.username == loggedInUsername && !edittingComments[comment.id]" value="edit" ng-click="editComment(comment.id)" />
+                <input type="button" class="btn btn-xs btn-success margin-left-10" ng-show="comment.isFlagged" value="Unflag" ng-click="unFlagComment(comment.id)" />
+                <input type="button" class="btn btn-xs btn-warning margin-left-10" ng-hide="comment.isFlagged" value="Flag" ng-click="flagComment(comment.id)" />
+                <input type="button" class="btn btn-xs btn-default margin-left-10" ng-show="comment.username == loggedInUsername && !edittingComments[comment.id]" value="Edit" ng-click="editComment(comment.id)" />
             </span>
         </div>
         <p class="margin-bottom-10 nomargin-top break-word" ng-hide="edittingComments[comment.id]">

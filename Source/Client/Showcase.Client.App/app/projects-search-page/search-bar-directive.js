@@ -15,9 +15,9 @@
                 var $searchButton = $('#search-button');
                 
                 scope.$watchGroup(['technologies', 'languages', 'seasons'], function (newValues) {
-                    if (newValues[0] && newValues[0].length && newValues[0].length > 0
-                        && newValues[1] && newValues[1].length && newValues[1].length > 0
-                        && newValues[2] && newValues[2].length && newValues[2].length > 0) {
+                    if (newValues[0] && newValues[0].length && newValues[0].length > 0 &&
+                            newValues[1] && newValues[1].length && newValues[1].length > 0 &&
+                            newValues[2] && newValues[2].length && newValues[2].length > 0) {
 
                         $('.selectpicker').selectpicker({
                             size: 10

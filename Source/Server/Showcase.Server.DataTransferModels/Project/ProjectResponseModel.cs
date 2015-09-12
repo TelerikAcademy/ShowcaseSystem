@@ -91,6 +91,7 @@
                 .ForMember(pr => pr.Likes, opt => opt.MapFrom(pr => pr.Likes.Count))
                 .ForMember(pr => pr.Visits, opt => opt.MapFrom(pr => pr.Visits.Count))
                 .ForMember(pr => pr.Comments, opt => opt.MapFrom(pr => pr.Comments.Count))
+                .ForMember(pr => pr.Tags, opt => opt.MapFrom(pr => pr.Tags.OrderBy(t => t.Type)))
                 .ForMember(pr => pr.MainImageUrl, opt => opt.MapFrom(pr => pr.MainImage.UrlPath))
                 .ForMember(pr => pr.ImageUrls, opt => opt.MapFrom(pr => pr.Images.Select(i => i.UrlPath)))
                 .ForMember(pr => pr.IsLiked, opt => opt.MapFrom(pr => pr.Likes.Any(l => l.User.UserName == username)))

@@ -6,7 +6,17 @@
             restrict: 'A',
             templateUrl: 'project-details-page/project-tags-directive.html',
             scope: {
-                tags: '='
+                tags: '=',
+                edit: '=',
+                deletedTags: '='
+            },
+            link: function (scope, element) {
+                scope.deleteTag = function (tag) {
+                    var indexOfTag = scope.tags.indexOf(tag);
+                    scope.tags.splice(indexOfTag, 1);
+                    scope.deletedTags = scope.deletedTags || [];
+                    scope.deletedTags.push(tag.name);
+                };
             }
         };
     };

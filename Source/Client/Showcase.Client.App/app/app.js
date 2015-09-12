@@ -80,7 +80,7 @@
         }
     };
 
-    angular.module('templates', []) // used for client-side template caching
+    angular.module('templates', []); // used for client-side template caching
     angular.module('showcaseSystem.data', []);
     angular.module('showcaseSystem.services', []);
     angular.module('showcaseSystem.controllers', ['showcaseSystem.data', 'showcaseSystem.services']);
