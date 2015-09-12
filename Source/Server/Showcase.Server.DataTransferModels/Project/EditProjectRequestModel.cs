@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
 
     using AutoMapper;
 
@@ -57,7 +58,7 @@
             var totalTags = this.TotalTags();
 
             if (totalTags < ValidationConstants.TotalMinProjectCollaboratorsAndUserTagsLength
-                || ValidationConstants.MaxProjectCollaboratorsAndTagsLength < totalTags + this.RequiredTags.Split(',').Length)
+                || ValidationConstants.MaxProjectCollaboratorsAndTagsLength < totalTags)
             {
                 yield return new ValidationResult(string.Format(
                     "Total project tags must be between {0} and {1}.",
@@ -84,23 +85,23 @@
 
         private int TotalTags()
         {
-            var totalTags = 0;
+            var totalTags = new List<string>();
             if (this.Tags != null)
             {
-                totalTags += this.Tags.Count;
+                totalTags.AddRange(this.Tags.Select(t => t.Name));
             }
 
             if (!string.IsNullOrWhiteSpace(this.RequiredTags))
             {
-                totalTags += this.RequiredTags.Split(',').Length;
+                totalTags.AddRange(this.RequiredTags.Split(','));
             }
 
             if (!string.IsNullOrWhiteSpace(this.NewUserTags))
             {
-                totalTags += this.NewUserTags.Split(',').Length;
+                totalTags.AddRange(this.NewUserTags.Split(','));
             }
 
-            return totalTags;
+            return totalTags.Distinct().Count();
         }
     }
 }
