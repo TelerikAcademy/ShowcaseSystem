@@ -9,5 +9,7 @@
     public interface IImagesService : IService
     {
         Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawFile> rawImages);
+
+        Task<bool> ValidateImageUrls(ICollection<string> imageUrls);
     }
 }

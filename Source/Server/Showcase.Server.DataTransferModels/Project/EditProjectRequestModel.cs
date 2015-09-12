@@ -35,6 +35,13 @@
 
         public string DeletedUserTags { get; set; }
 
+        [CollectionCount(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
+        [UpdatedImagesCollection]
+        public ICollection<string> UpdatedImageUrls { get; set; }
+
+        [Required(ErrorMessage = ValidationConstants.MainImageErrorMessage)]
+        public string UpdatedMainImageUrl { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<EditProjectRequestModel, Project>()
@@ -64,6 +71,11 @@
                     "Total project tags must be between {0} and {1}.",
                     ValidationConstants.TotalMinProjectCollaboratorsAndUserTagsLength,
                     ValidationConstants.MaxProjectCollaboratorsAndTagsLength));
+            }
+
+            if (!this.UpdatedImageUrls.Contains(this.UpdatedMainImageUrl))
+            {
+                yield return new ValidationResult("Main image could not be found in updated images.");
             }
         }
 
