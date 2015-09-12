@@ -6,7 +6,7 @@
         <button ng-click="sortByComments(undefined, $event)" class="btn btn-default margin-right-5"><i class="margin-right-5"></i>Comments</button>
     </span>
     <div class="clearfix"></div>
-    <div class="row margin-bottom-30 margin-top-30" ng-repeat="project in projects | orderBy : orderBy">
+    <div class="row margin-bottom-30 margin-top-30" ng-repeat="project in projects | orderBy : orderBy | limitTo:PROJECTS_PER_PAGE:currentIndex">
         <div class="col-md-3 text-center padding-left-5 padding-right-5">
             <a href="/projects/{{project.id}}/{{project.titleUrl}}">
                 <img ng-src="/Images/{{project.mainImageUrl}}_tmbl.jpg" width="180" height="180" alt="{{project.title}}" />
@@ -26,7 +26,7 @@
                 <span ng-show="project.liveDemoUrl.length > 0"> |<i class="fa fa-external-link-square margin-right-5 margin-left-10"></i><a href="{{project.liveDemoUrl}}" target="_blank">live demo</a></span>
             </span>
             <br />
-            <p class="margin-bottom-15">
+            <p class="margin-bottom-15 break-word">
                 {{project.shortDescription}}
             </p>
             <div class="margin-bottom-10">
@@ -41,6 +41,8 @@
             </div>
         </div>
     </div>
+
+    <div ng-pager total-pages="{{totalPages}}" current-page="{{currentPage}}" page-changed="changePage(pageNum)" ng-hide="vm.filterOptions.scrolling || vm.loading" />
 </div>
 <div ng-hide="projects.length > 0" class="text-center margin-bottom-30 margin-top-30">
     <span class="italic">The user has no projects yet</span>

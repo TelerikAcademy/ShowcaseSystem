@@ -10,7 +10,7 @@
         vm.commentsPage = 0;
         vm.user = user;
         vm.profile = profile;
-        vm.username = user.username.toLowerCase();
+        vm.username = vm.user.username.toLowerCase();
 
         // TODO: $ should not be here!
         $('.tab-button').click(function (e) {
@@ -20,6 +20,7 @@
         identity.getUser()
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
+                vm.currentlyLoggedUser = user;
 
                 if (user.userName.toLowerCase() === vm.username || user.isAdmin) {
                     userProfileData.getLikedProjects(vm.username)

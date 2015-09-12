@@ -809,3 +809,15 @@ span.filter-option {
         content: none;
     }
 }
+
+h1, h2, h3, h4, h5, h6 {
+    color: #999 !important;
+}
+
+div.item:hover {
+    border-right-color: #8ab933 !important;
+}
+
+div.item:hover h4 {
+    color: #8ab933 !important;
+}
