@@ -94,6 +94,6 @@
         .constant('appSettings', {
             serverPath: '/api/',
             odataServerPath: '/odata/',
-            version: 'Showcase System 1.0 (build 20150825.eb6712c)'
+            version: 'Showcase System 1.0 (build 20150912.d3edb37)'
         });
 }());
