@@ -80,6 +80,17 @@
             return exactlyOneSeasonTagIsPresent && languageOrTechnologyTagIsPresent;
         }
 
+        public async Task<bool> AllRequiredTagsArePresent(IEnumerable<string> tagNames)
+        {
+            var tagIds = await this.tags
+                .All()
+                .Where(t => tagNames.Contains(t.Name))
+                .Select(t => t.Id)
+                .ToListAsync();
+
+            return await this.AllRequiredTagsArePresent(tagIds);
+        }
+
         public IQueryable<Tag> SeasonTags()
         {
             return this.tags.All().Where(t => t.Type == TagType.Season);

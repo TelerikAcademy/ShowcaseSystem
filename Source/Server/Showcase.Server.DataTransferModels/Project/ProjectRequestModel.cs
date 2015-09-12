@@ -21,6 +21,7 @@
 
         [Required]
         [RequiredTags]
+        [OnlyEnglish]
         [CommaSeparatedCollectionLength(ValidationConstants.MinProjectTagsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
         [TagNamesLength(ValidationConstants.MinTagNameLength, ValidationConstants.MaxTagNameLength)]
         public string Tags { get; set; }
