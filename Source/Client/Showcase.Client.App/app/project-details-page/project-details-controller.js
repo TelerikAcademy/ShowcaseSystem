@@ -31,12 +31,12 @@
         }
 
         function filterProjectTags(tagType, secondTagType) {
-            return vm.project.tags.filter(function (tag) { return tag.type == tagType || tag.type == secondTagType });
+            return vm.project.tags.filter(function (tag) { return tag.type == tagType || tag.type == secondTagType; });
         }
 
         function mapTagNames(tags) {
-            return tags.map(function (tag) { return tag.name; })
-        };
+            return tags.map(function (tag) { return tag.name; });
+        }
 
         function daydiff(first, second) {
             return (second - first) / (1000 * 60 * 60 * 24);
@@ -101,8 +101,6 @@
                 });
         };
 
-        vm.project.updatedImageUrls;
-        vm.project.updatedMainImageUrl;
         vm.startEdit = function () {
             vm.editMode = true;
             if (!initialProject) {
@@ -145,7 +143,7 @@
             projectDetailsData.editProject(vm.project)
                 .then(function (updatedProjectInfo) {
                     if (vm.project.titleUrl == updatedProjectInfo.titleUrl) {
-                        $route.reload()
+                        $route.reload();
                     }
                     else {
                         $location.path('/projects/' + vm.project.id + '/' + updatedProjectInfo.titleUrl);
@@ -160,7 +158,7 @@
 
         vm.deleteCollaborator = function (collaborator) {
             if (collaborator.userName == vm.currentLoggedInUsername && vm.project.collaborators.length > 1) {
-                notifier.warning('You have deleted yourself from this project. If you click "Save", you will not be able to edit the project again!')
+                notifier.warning('You have deleted yourself from this project. If you click "Save", you will not be able to edit the project again!');
             }
 
             if (vm.project.collaborators.length > 1) {
@@ -185,7 +183,7 @@
 
             if (vm.project.updatedMainImageUrl == image) {
                 vm.project.updatedMainImageUrl = undefined;
-            };
+            }
         };
 
         vm.selectMainImage = function (image) {

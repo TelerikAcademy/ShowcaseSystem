@@ -20,7 +20,7 @@
                 });
 
                 function updateDescription() {
-                    scope.descriptionParts = scope.description.split('\r\n').filter(function (e) { return e === 0 || e });
+                    scope.descriptionParts = scope.description.split('\r\n').filter(function (e) { return e === 0 || e; });
                 }
             }
         };

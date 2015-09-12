@@ -1,5 +1,6 @@
 ﻿namespace ShowcaseSystem.Services.Data.Tests
 {
+    using System.Diagnostics;
     using System.Linq;
     using System.Net;
 
@@ -7,7 +8,6 @@
 
     using Showcase.Data.Models;
     using Showcase.Services.Data;
-    using System.Diagnostics;
 
     [TestFixture]
     public class RemoteDataServiceTests

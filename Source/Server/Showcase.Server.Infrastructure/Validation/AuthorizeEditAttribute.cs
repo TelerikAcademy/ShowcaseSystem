@@ -13,9 +13,9 @@
     using Ninject;
 
     using Showcase.Data.Models;
-    using Showcase.Services.Data.Contracts;
     using Showcase.Server.Common;
     using Showcase.Server.DataTransferModels.Project;
+    using Showcase.Services.Data.Contracts;
 
     [AttributeUsage(AttributeTargets.Method)]
     public class AuthorizeEditAttribute : ActionFilterAttribute
