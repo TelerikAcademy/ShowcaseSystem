@@ -127,7 +127,7 @@
                 if (searchParams.season) {
                     var seasonQuery = "tags/any(t:t/id eq " + searchParams.season.id + ")";
                     if (args[index]) {
-                        args[index] += ' and ' + seasonQuery
+                        args[index] += ' and ' + seasonQuery;
                     }
                     else {
                         args[index] = seasonQuery;
