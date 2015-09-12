@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($window, $location, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData) {
+    var projectDetailsController = function projectDetailsController($window, $location, $route, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData) {
         var vm = this;
         var id = project.id;
         var initialProject;
@@ -141,20 +141,11 @@
 
             vm.project.requiredTags = vm.project.selectedLanguagesAndTechnologies.join(',') + ',' + vm.project.selectedSeason;
             
+            // TODO: extract to service
             projectDetailsData.editProject(vm.project)
                 .then(function (updatedProjectInfo) {
-                    initialProject = undefined;
-                    vm.project.collaborators = updatedProjectInfo.collaborators;
-                    vm.project.deletedCollaborators = undefined;
-                    vm.project.newCollaborators = undefined;
-                    vm.project.tags = updatedProjectInfo.tags;
-                    vm.project.requiredTags = undefined;
-                    vm.project.newUserTags = undefined;
-                    vm.project.deletedUserTags = undefined;
-                    setIsOwnProject();
-
                     if (vm.project.titleUrl == updatedProjectInfo.titleUrl) {
-                        vm.editMode = false;
+                        $route.reload()
                     }
                     else {
                         $location.path('/projects/' + vm.project.id + '/' + updatedProjectInfo.titleUrl);
@@ -204,5 +195,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$window', '$location', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', '$location', '$route', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', projectDetailsController]);
 }());

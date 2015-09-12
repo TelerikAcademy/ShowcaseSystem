@@ -42,12 +42,20 @@
 
         public async Task<bool> ValidateImageUrls(ICollection<string> imageUrls)
         {
-            var validImages = await this.images
-                .All()
-                .Where(i => imageUrls.Contains(i.UrlPath))
-                .CountAsync();
-
+            var validImages = await this.ImagesQueryByUrls(imageUrls).CountAsync();
             return validImages == imageUrls.Count();
+        }
+
+        public async Task<IEnumerable<Image>> ImagesByUrls(ICollection<string> imageUrls)
+        {
+            return await this.ImagesQueryByUrls(imageUrls).ToListAsync();
+        }
+
+        private IQueryable<Image> ImagesQueryByUrls(ICollection<string> imageUrls)
+        {
+            return this.images
+                .All()
+                .Where(i => imageUrls.Contains(i.UrlPath));
         }
     }
 }

@@ -72,7 +72,6 @@
     <Compile Include="Project\BaseProjectRequestModel.cs" />
     <Compile Include="Project\CollaboratorResponseModel.cs" />
     <Compile Include="Project\EditProjectRequestModel.cs" />
-    <Compile Include="Project\EditProjectResponseModel.cs" />
     <Compile Include="Project\PostProjectResponseModel.cs" />
     <Compile Include="Project\ProjectCrawlerResponseModel.cs" />
     <Compile Include="Project\ProjectRequestModel.cs" />

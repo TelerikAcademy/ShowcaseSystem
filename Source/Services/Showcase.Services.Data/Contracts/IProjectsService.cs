@@ -16,7 +16,7 @@
 
         IQueryable<Project> ProjectById(int id, bool isAdmin = false);
 
-        IQueryable<Project> ProjectByIdWithIncludedCollaboratorsAndTags(int id, bool isAdmin = false);
+        IQueryable<Project> ProjectByIdWithIncludedCollaboratorsTagsAndImages(int id, bool isAdmin = false);
 
         IQueryable<Project> LikedByUser(int userId);
 
@@ -36,7 +36,9 @@
             IEnumerable<User> deletedCollaborators,
             IEnumerable<Tag> requiredTags,
             IEnumerable<Tag> newUserTags,
-            IEnumerable<Tag> deletedUserTags);
+            IEnumerable<Tag> deletedUserTags,
+            IEnumerable<Image> updatedImages,
+            string updatedMainImageUrl);
 
         Task HideProject(int id);
 

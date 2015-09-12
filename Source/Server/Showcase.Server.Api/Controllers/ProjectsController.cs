@@ -121,7 +121,8 @@
             var requiredTags = await this.tagsService.TagsFromCommaSeparatedValues(project.RequiredTags);
             var newUserTags = await this.tagsService.TagsFromCommaSeparatedValues(project.NewUserTags);
             var deletedUserTags = await this.tagsService.TagsFromCommaSeparatedValues(project.DeletedUserTags);
-            var existingProject = await this.projectsService.ProjectByIdWithIncludedCollaboratorsAndTags(project.Id).FirstOrDefaultAsync();
+            var existingProject = await this.projectsService.ProjectByIdWithIncludedCollaboratorsTagsAndImages(project.Id).FirstOrDefaultAsync();
+            var images = await this.imagesService.ImagesByUrls(project.UpdatedImageUrls);
 
             await this.projectsService.Edit(
                 this.mappingService.Map(project, existingProject),
@@ -129,9 +130,11 @@
                 deletedCollaborators,
                 requiredTags,
                 newUserTags,
-                deletedUserTags);
+                deletedUserTags,
+                images,
+                project.UpdatedMainImageUrl);
             
-            return this.Ok(this.mappingService.Map<EditProjectResponseModel>(existingProject));
+            return this.Ok(this.mappingService.Map<PostProjectResponseModel>(existingProject));
         }
 
         [HttpGet]
