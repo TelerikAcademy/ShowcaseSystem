@@ -133,9 +133,9 @@
     <Content Include="app\add-project-page\uploaded-images-container-directive.html" />
     <Content Include="app\add-project-page\uploaded-images-container-directive.js" />
     <Content Include="app\app.js" />
-    <Content Include="app\build\allcss2015091240.min.css" />
-    <Content Include="app\build\alljs2015091240.min.js" />
-    <Content Include="app\build\vendorjs2015091240.min.js" />
+    <Content Include="app\build\allcss2015091211.min.css" />
+    <Content Include="app\build\alljs2015091211.min.js" />
+    <Content Include="app\build\vendorjs2015091211.min.js" />
     <Content Include="app\common\animate-directive.js" />
     <Content Include="app\common\base-data.js" />
     <Content Include="app\common\comments-data.js" />
