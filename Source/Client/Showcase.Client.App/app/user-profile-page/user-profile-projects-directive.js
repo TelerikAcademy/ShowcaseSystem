@@ -13,17 +13,20 @@
                     arrowUpCss = 'fa fa-long-arrow-up',
                     allProjects;
                 
-                scope.PROJECTS_PER_PAGE = 2;
+                scope.$watch('scope.projects', function () {
+                    if (scope.projects && scope.projects.length) {
+                        scope.PROJECTS_PER_PAGE = 10;
 
-                scope.changePage = function (newPage) {
-                    scope.currentPage = newPage;
-                    scope.currentIndex = (newPage - 1) * scope.PROJECTS_PER_PAGE;
-                };
+                        scope.changePage = function (newPage) {
+                            scope.currentPage = newPage;
+                            scope.currentIndex = (newPage - 1) * scope.PROJECTS_PER_PAGE;
+                        };
 
-                var lastPage = scope.projects.length % scope.PROJECTS_PER_PAGE == 0 ? scope.projects.length / scope.PROJECTS_PER_PAGE : (scope.projects.length / scope.PROJECTS_PER_PAGE) + 1;
-                scope.totalPages = lastPage == 0 ? 1 : lastPage;
-
-                scope.changePage(1);                
+                        var lastPage = scope.projects.length % scope.PROJECTS_PER_PAGE == 0 ? scope.projects.length / scope.PROJECTS_PER_PAGE : (scope.projects.length / scope.PROJECTS_PER_PAGE) + 1;
+                        scope.totalPages = lastPage == 0 ? 1 : lastPage;
+                        scope.changePage(1);
+                    }
+                });
 
                 scope.orderBy = '-createdOn';                
 

@@ -45,7 +45,7 @@
                         <li>
                             <h4><a class="tab-button" href="#collaborators-tab" data-toggle="tab"><i class="fa fa-users"></i>Collaborators</a></h4>
                         </li>
-                        <li ng-if="vm.isAdmin || vm.user.username.toLowerCase() == vm.currentlyLoggedUser">
+                        <li ng-show="vm.isAdmin || vm.user.username.toLowerCase() == vm.currentlyLoggedUser">
                             <h4><a class="tab-button" href="#liked-projects-tab" data-toggle="tab"><i class="fa fa-thumbs-up"></i>Liked Projects</a></h4>
                         </li>
                     </ul>
@@ -59,7 +59,7 @@
                         <div id="collaborators-tab" class="tab-pane padding-top-30">
                             <div user-profile-collaborators collaborators="vm.user.collaborators" />
                         </div>
-                        <div ng-if="vm.isAdmin || vm.user.username.toLowerCase() == vm.currentlyLoggedUser" id="liked-projects-tab" class="tab-pane">
+                        <div id="liked-projects-tab" ng-show="vm.isAdmin || vm.user.username.toLowerCase() == vm.currentlyLoggedUser" class="tab-pane">
                             <div user-profile-projects projects="vm.likedProjects" />
                         </div>
                     </div>
