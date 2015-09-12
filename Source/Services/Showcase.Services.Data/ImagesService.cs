@@ -1,8 +1,11 @@
 ﻿namespace Showcase.Services.Data
 {
     using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Linq;
     using System.Threading.Tasks;
-
+    
+    using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common.Extensions;
     using Showcase.Services.Data.Base;
@@ -13,11 +16,13 @@
     public class ImagesService : FileInfoService, IImagesService
     {
         private readonly IImageProcessorService imageProcessor;
+        private readonly IRepository<Image> images;
 
-        public ImagesService(IObjectFactory objectFactory, IImageProcessorService imageProcessorService)
+        public ImagesService(IObjectFactory objectFactory, IImageProcessorService imageProcessorService, IRepository<Image> imagesService)
             : base(objectFactory)
         {
             this.imageProcessor = imageProcessorService;
+            this.images = imagesService;
         }
 
         public async Task<IEnumerable<ProcessedImage>> ProcessImages(IEnumerable<RawFile> rawImages)
@@ -33,6 +38,24 @@
             });
 
             return processedImages;
+        }
+
+        public async Task<bool> ValidateImageUrls(ICollection<string> imageUrls)
+        {
+            var validImages = await this.ImagesQueryByUrls(imageUrls).CountAsync();
+            return validImages == imageUrls.Count();
+        }
+
+        public async Task<IEnumerable<Image>> ImagesByUrls(ICollection<string> imageUrls)
+        {
+            return await this.ImagesQueryByUrls(imageUrls).ToListAsync();
+        }
+
+        private IQueryable<Image> ImagesQueryByUrls(ICollection<string> imageUrls)
+        {
+            return this.images
+                .All()
+                .Where(i => imageUrls.Contains(i.UrlPath));
         }
     }
 }

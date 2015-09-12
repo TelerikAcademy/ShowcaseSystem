@@ -1,3 +1,6 @@
-﻿<a href="projects/search?tag={{tag.id}}" class="project-tag" ng-repeat="tag in tags">
-    <span class="label label-default capital-name" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
-</a>
+﻿<span ng-repeat="tag in tags" ng-show="!edit || tag.type == 3">
+    <a href="projects/search?tag={{tag.id}}" class="project-tag">
+        <span class="label label-default capital-name" style="background-color: #{{tag.backgroundColor}}; color: #{{tag.foregroundColor}}">{{tag.name}}</span>
+    </a>
+    <span ng-show="edit && tag.type == 3" class="label label-default margin-right-10 delete-tag-btn" ng-click="deleteTag(tag)">X</span>
+</span>

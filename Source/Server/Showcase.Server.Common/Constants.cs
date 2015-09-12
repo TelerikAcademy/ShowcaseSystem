@@ -14,6 +14,8 @@
 
         public const string RequestCannotBeEmpty = "Request cannot be empty";
         public const string RequestedResourceWasNotFound = "The requested resource was not found";
+        public const string EditingProjectIsNotAllowed = "You are not allowed to edit this project";
+        public const string NotAuthorized = "You are not authorized for this operation";
         public const string InvalidPageNumber = "Invalid page number";
 
         public const string CommentTextDisplayName = "Comment";

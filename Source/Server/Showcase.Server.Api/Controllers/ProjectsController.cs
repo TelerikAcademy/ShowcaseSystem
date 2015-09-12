@@ -31,7 +31,7 @@
         private readonly IDownloadableFilesService downloadableFilesService;
         private readonly IFileSystemService fileSystemService;
         private readonly IProjectsCacheService projectsCacheService;
-        
+
         public ProjectsController(
             IUsersService usersService,
             IVisitsService visitsService,
@@ -92,8 +92,8 @@
             var tags = await this.tagsService.TagsFromCommaSeparatedValues(project.Tags);
             var processedImages = await this.imagesService.ProcessImages(project.Images.Select(FileRequestModel.ToRawFile));
             var downloadableFiles = await this.downloadableFilesService.AddNew(
-                project.Files != null 
-                ? project.Files.Select(FileRequestModel.ToRawFile) 
+                project.Files != null
+                ? project.Files.Select(FileRequestModel.ToRawFile)
                 : new List<RawFile>());
 
             await this.fileSystemService.SaveImages(processedImages);
@@ -108,6 +108,33 @@
                 downloadableFiles);
 
             return this.Ok(this.mappingService.Map<PostProjectResponseModel>(addedProject));
+        }
+
+        [Authorize]
+        [AuthorizeEdit]
+        [HttpPost]
+        [ValidateModel]
+        public async Task<IHttpActionResult> Edit(EditProjectRequestModel project)
+        {
+            var newCollaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.NewCollaborators);
+            var deletedCollaborators = await this.UsersService.CollaboratorsFromCommaSeparatedValues(project.DeletedCollaborators);
+            var requiredTags = await this.tagsService.TagsFromCommaSeparatedValues(project.RequiredTags);
+            var newUserTags = await this.tagsService.TagsFromCommaSeparatedValues(project.NewUserTags);
+            var deletedUserTags = await this.tagsService.TagsFromCommaSeparatedValues(project.DeletedUserTags);
+            var existingProject = await this.projectsService.ProjectByIdWithIncludedCollaboratorsTagsAndImages(project.Id).FirstOrDefaultAsync();
+            var images = await this.imagesService.ImagesByUrls(project.UpdatedImageUrls);
+
+            await this.projectsService.Edit(
+                this.mappingService.Map(project, existingProject),
+                newCollaborators,
+                deletedCollaborators,
+                requiredTags,
+                newUserTags,
+                deletedUserTags,
+                images,
+                project.UpdatedMainImageUrl);
+            
+            return this.Ok(this.mappingService.Map<PostProjectResponseModel>(existingProject));
         }
 
         [HttpGet]

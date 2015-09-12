@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Showcase.Data.Common.Models;
     using Showcase.Data.Common.Repositories;
     using Showcase.Data.Models;
     using Showcase.Services.Common;
@@ -60,6 +61,14 @@
             return query;
         }
 
+        public IQueryable<Project> ProjectByIdWithIncludedCollaboratorsTagsAndImages(int id, bool isAdmin = false)
+        {
+            return this.ProjectById(id, isAdmin)
+                .Include(pr => pr.Collaborators)
+                .Include(pr => pr.Tags)
+                .Include(pr => pr.Images);
+        }
+
         public IQueryable<Project> QueriedProjects(bool isAdmin = false, bool onlyHidden = false)
         {
             var query = this.projects
@@ -92,6 +101,54 @@
             this.projects.Add(project);
             await this.projects.SaveChangesAsync();
             return project;
+        }
+
+        public async Task Edit(
+            Project project,
+            IEnumerable<User> newCollaborators,
+            IEnumerable<User> deletedCollaborators,
+            IEnumerable<Tag> requiredTags,
+            IEnumerable<Tag> newUserTags,
+            IEnumerable<Tag> deletedUserTags,
+            IEnumerable<Image> updatedImages,
+            string updatedMainImageUrl)
+        {
+            deletedCollaborators.ForEach(c => project.Collaborators.Remove(c));
+            newCollaborators.ForEach(c =>
+            {
+                if (!project.Collaborators.Contains(c))
+                {
+                    project.Collaborators.Add(c);
+                }
+            });
+
+            project
+                .Tags
+                .Where(t => t.Type != TagType.UserSubmitted)
+                .ToList()
+                .ForEach(t => project.Tags.Remove(t));
+
+            requiredTags.ForEach(t => project.Tags.Add(t));
+
+            deletedUserTags.ForEach(t => project.Tags.Remove(t));
+            newUserTags.ForEach(t =>
+            {
+                if (!project.Tags.Contains(t))
+                {
+                    project.Tags.Add(t);
+                }
+            });
+
+            project
+                .Images
+                .ToList()
+                .ForEach(i => project.Images.Remove(i));
+
+            updatedImages.ForEach(i => project.Images.Add(i));
+            project.MainImage = updatedImages.FirstOrDefault(i => i.UrlPath == updatedMainImageUrl);
+
+            this.projects.Update(project);
+            await this.projects.SaveChangesAsync();
         }
 
         public async Task HideProject(int id)

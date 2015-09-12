@@ -132,6 +132,7 @@
     <Compile Include="Queries\ProjectSearchQueryAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultObject.cs" />
+    <Compile Include="Validation\AuthorizeEditAttribute.cs" />
     <Compile Include="Validation\ValidateFilePathAttribute.cs" />
     <Compile Include="Validation\ValidateModelAttribute.cs" />
   </ItemGroup>

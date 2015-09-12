@@ -101,6 +101,39 @@ a.social.fa-github:hover {
     background: rgba(0, 0, 0, 0.5);
 }
 
+.delete-collaborator-btn {
+    padding: 0 3px;
+    background-color: #d9534f;
+    border-radius: 5px;
+    color: white;
+}
+
+.delete-collaborator-btn:hover {
+    cursor: pointer;
+    background-color: #c9302c;
+}
+
+.delete-tag-btn {
+    padding: 0.2em 0.3em 0.2em;
+    background-color: #d9534f;
+    border-color: #d9534f;
+    border-radius: 5px;
+    color: white;
+}
+
+.delete-tag-btn:hover {
+    cursor: pointer;
+    background-color: #c9302c;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-block .token-input-token-showcase p {
+    font-weight: normal;
+}
+
 .margin-left-10 {
     margin-left: 10px;
 }
@@ -399,6 +432,10 @@ li.token-input-selected-token-showcase span {
 
 .input-file .button:hover {
     cursor: pointer;
+}
+
+.full-width {
+    width: 100% !important;
 }
 
 #image-preview-container {

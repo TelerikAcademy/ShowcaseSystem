@@ -6,6 +6,10 @@
             return data.get('projects/' + id + '/' + titleUrl);
         }
 
+        function editProject(project) {
+            return data.post('projects/edit', project, true);
+        }
+
         function visitProject(id) {
             return data.post('projects/visit/' + id);
         }
@@ -36,6 +40,7 @@
                 
         return {
             getProject: getProject,
+            editProject: editProject,
             likeProject: likeProject,
             dislikeProject: dislikeProject,
             visitProject: visitProject,

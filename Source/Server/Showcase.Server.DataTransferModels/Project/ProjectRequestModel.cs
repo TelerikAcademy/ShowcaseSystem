@@ -13,58 +13,18 @@
     using Showcase.Server.Common.Models;
     using Showcase.Server.Common.Validation;
 
-    public class ProjectRequestModel : IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
+    public class ProjectRequestModel : BaseProjectRequestModel, IMapFrom<Project>, IHaveCustomMappings, IValidatableObject
     {
-        private string liveDemoUrl;
-
-        [Required]
-        [MinLength(ValidationConstants.MinProjectTitleLength, ErrorMessage = ValidationConstants.MinLengthErrorMessage)]
-        [MaxLength(ValidationConstants.MaxProjectTitleLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
-        [OnlyEnglish]
-        public string Title { get; set; }
-
-        [Required]
-        [MinLength(ValidationConstants.MinProjectDescriptionLength, ErrorMessage = ValidationConstants.MinLengthErrorMessage)]
-        [MaxLength(ValidationConstants.MaxProjectDescriptionLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
-        [OnlyEnglish]
-        public string Description { get; set; }
-
         [Collaborators]
         [CommaSeparatedCollectionLength(ValidationConstants.MinProjectCollaboratorsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
         public string Collaborators { get; set; }
 
         [Required]
         [RequiredTags]
+        [OnlyEnglish]
         [CommaSeparatedCollectionLength(ValidationConstants.MinProjectTagsLength, ValidationConstants.MaxProjectCollaboratorsAndTagsLength)]
         [TagNamesLength(ValidationConstants.MinTagNameLength, ValidationConstants.MaxTagNameLength)]
         public string Tags { get; set; }
-
-        [Display(Name = Constants.RepositoryUrlDisplayName)]
-        [Required]
-        [MaxLength(ValidationConstants.MaxProjectUrlLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
-        [Url(ErrorMessage = ValidationConstants.UrlErrorMessage)]
-        public string RepositoryUrl { get; set; }
-
-        [Display(Name = Constants.LiveDemoUrlDisplayName)]
-        [MaxLength(ValidationConstants.MaxProjectUrlLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
-        [NullableUrlAttribute(ErrorMessage = ValidationConstants.UrlErrorMessage)]
-        public string LiveDemoUrl
-        {
-            get
-            {
-                return this.liveDemoUrl;
-            }
-
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    value = null;
-                }
-
-                this.liveDemoUrl = value;
-            }
-        }
 
         [CollectionCount(ValidationConstants.MinProjectImages, ValidationConstants.MaxProjectImages, ErrorMessage = ValidationConstants.ProjectImagesCountErrorMessage)]
         [NestedObjects]

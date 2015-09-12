@@ -9,7 +9,19 @@
                 description: '='
             },
             link: function (scope, element) {
-                scope.descriptionParts = scope.description.split('\r\n').filter(function (e) { return e === 0 || e });
+                updateDescription();
+
+                scope.$watch('description', function (newValue, oldValue) {
+                    if (newValue === oldValue) {
+                        return;
+                    }
+
+                    updateDescription();
+                });
+
+                function updateDescription() {
+                    scope.descriptionParts = scope.description.split('\r\n').filter(function (e) { return e === 0 || e; });
+                }
             }
         };
     };

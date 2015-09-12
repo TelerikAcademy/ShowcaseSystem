@@ -233,6 +233,7 @@
     <Content Include="content\epona\images\revolution_slider\font\revicons.ttf" />
     <Content Include="content\epona\images\revolution_slider\font\revicons.woff" />
     <Content Include="content\images\404-error-page-ninja-icon.png" />
+    <Content Include="content\images\telerik-academy-logo.png" />
     <Content Include="content\images\telerik-logo.png" />
     <Content Include="content\loading-bar.css" />
     <Content Include="content\loading-bar.min.css" />

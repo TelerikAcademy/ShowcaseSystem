@@ -16,10 +16,14 @@
 
         Task<IEnumerable<string>> SearchByUsername(string username);
 
-        Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators, string currentUserUsername);
+        Task<ICollection<User>> CollaboratorsFromCommaSeparatedValues(string collaborators, string currentUserUsername = null);
+
+        Task<bool> UserIsCollaboratorInProject(int projectId, string userName);
 
         Task<RemoteUserProfile> ProfileInfo(string username);
 
         Task<int> UserIdByUsername(string username);
+
+        Task<bool> UserIsAdmin(string username);
     }
 }
