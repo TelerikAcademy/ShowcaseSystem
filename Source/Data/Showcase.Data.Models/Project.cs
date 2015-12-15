@@ -49,6 +49,8 @@
         [MaxLength(ValidationConstants.MaxProjectUrlLength)]
         public string LiveDemoUrl { get; set; }
 
+        public string VideoEmbedSource { get; set; }
+
         public bool IsHidden { get; set; }
 
         public int? MainImageId { get; set; }
