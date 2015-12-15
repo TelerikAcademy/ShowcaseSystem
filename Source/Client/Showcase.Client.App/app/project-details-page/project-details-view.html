@@ -69,8 +69,15 @@
                     </label>
                 </div>
 
-                <div class="video-container">
-                    <iframe width="420" height="315" ng-src="{{vm.project.videoEmbedSource}}" frameborder="0" allowfullscreen></iframe>
+                <div class="video-container" ng-show="!vm.editMode && vm.project.videoEmbedSource">
+                    <iframe width="420" height="315" ng-src="{{vm.videoEmbedSource}}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="sky-form" ng-show="vm.editMode">
+                    <label class="input">
+                        <i class="icon-append fa fa-question-circle"></i>
+                        <input type="text" ng-model="vm.project.videoEmbedSource" />
+                        <b class="tooltip tooltip-top-right">Edit the embedded video source of your project</b>
+                    </label>
                 </div>
                 
                 <div>

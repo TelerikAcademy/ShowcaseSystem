@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($window, $location, $route, $sce, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData) {
+    var projectDetailsController = function projectDetailsController($window, $location, $route, $sce, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData, videoUrlUtilities) {
         var vm = this;
         var id = project.id;
         var initialProject;
@@ -43,7 +43,9 @@
         }
 
         vm.editMode = false;
-        project.videoEmbedSource = $sce.trustAsResourceUrl(project.videoEmbedSource);
+
+        vm.videoEmbedSource = $sce.trustAsResourceUrl(project.videoEmbedSource);
+
         vm.project = project;
         vm.likes = project.likes;
         vm.isLiked = project.isLiked;
@@ -111,6 +113,8 @@
             vm.project.updatedImageUrls = angular.copy(vm.project.imageUrls);
             vm.project.updatedMainImageUrl = vm.project.mainImageUrl;
 
+          //  vm.videoEmbedSourceNotFixed = vm.project.videoEmbedSource;
+
             addProjectData.getSeasonTags()
                 .then(function (seasonTags) {
                     vm.seasonTags = mapTagNames(seasonTags);
@@ -139,7 +143,9 @@
             }
 
             vm.project.requiredTags = vm.project.selectedLanguagesAndTechnologies.join(',') + ',' + vm.project.selectedSeason;
-            
+
+            vm.project.videoEmbedSource = videoUrlUtilities.fixEmbedVideoSourceUrl(vm.project.videoEmbedSource);
+
             // TODO: extract to service
             projectDetailsData.editProject(vm.project)
                 .then(function (updatedProjectInfo) {
@@ -194,5 +200,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$window', '$location', '$route', '$sce', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', '$location', '$route', '$sce', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', 'videoUrlUtilities', projectDetailsController]);
 }());

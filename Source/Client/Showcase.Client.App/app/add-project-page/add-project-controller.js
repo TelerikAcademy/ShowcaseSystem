@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var addProjectController = function addProjectController($location, seasonTags, languageAndTechnologyTags, addProjectData) {
+    var addProjectController = function addProjectController($location, seasonTags, languageAndTechnologyTags, addProjectData, videoUrlUtilities) {
         var TAGS_SEPARATOR = ',';
         var vm = this;
 
@@ -10,6 +10,8 @@
 
         vm.submitProject = function (project, tags) {
             vm.disabledSubmit = true;
+
+            project.videoEmbedSource = videoUrlUtilities.fixEmbedVideoSourceUrl(project.videoEmbedSource);
             // TODO: remove after client-side validation is added
             tags.userSelectedTags = tags.userSelectedTags || '';
             tags.selectedSeason = tags.selectedSeason || '';
@@ -26,5 +28,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('AddProjectController', ['$location', 'seasonTags', 'languageAndTechnologyTags', 'addProjectData', addProjectController]);
+        .controller('AddProjectController', ['$location', 'seasonTags', 'languageAndTechnologyTags', 'addProjectData', 'videoUrlUtilities', addProjectController]);
 }());

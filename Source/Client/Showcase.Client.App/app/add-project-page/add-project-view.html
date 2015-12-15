@@ -79,6 +79,15 @@
                         </section>
 
                         <section>
+                            <label class="label">Embed Video URL</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-question-circle"></i>
+                                <input type="text" ng-model="project.videoEmbedSource">
+                                <b class="tooltip tooltip-top-right">Optional video presentation of your project</b>
+                            </label>
+                        </section>
+
+                        <section>
                             <label class="label">Downloadable files</label>
                             <label for="file" class="input input-file">
                                 <div class="button"><input type="file" id="optional-files" file-upload ng-model="project.files" data-validation-regex="^([a-zA-Z\s])+(.pptx|.ppt|.pdf|.txt|.doc|.docx|.zip|.rar|.7z)$" data-regex-error-message="File name should contain only English letters and spaces." data-max-files="5" data-max-file-size="10485760" multiple="multiple">Browse</div><input type="text" readonly="readonly">
