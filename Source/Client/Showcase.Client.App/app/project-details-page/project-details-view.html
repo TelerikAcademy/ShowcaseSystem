@@ -1,8 +1,8 @@
 ﻿<section>
     <div class="container project-container">
         <div class="row">
-            <div class="col-md-offset-1 col-md-3 text-center-small margin-bottom-20" animate="fadeInLeft" data-animation-delay="200">
-                <img ng-src="/Images/{{vm.project.mainImageUrl}}_tmbl.jpg" width="250" alt="{{vm.project.title}}" />
+            <div class="col-md-offset-1 col-md-3 text-center-small margin-bottom-20" animate="fadeInLeft" data-animation-delay="200">                
+                <div owl-carousel images="vm.mainImage" data-plugin-options='{"singleItem": true}'></div>
                 <div class="text-center padding-right-10" animate="fadeIn" data-animation-delay="1500">
                     <br />
                     <i class="fa fa-eye margin-right-5"></i><span class="margin-right-5">{{vm.project.visits}}</span>

@@ -79,7 +79,8 @@
                             afterLazyLoad: false
                         };
 
-                        var config = jQuery.extend({}, defaults, options, slider.data("plugin-options"));
+                        var config = jQuery.extend({}, defaults, slider.data("plugin-options"), element.data("plugin-options"));
+                        console.log(config);
                         slider.owlCarousel(config).addClass("owl-carousel-init");
                         
                         jQuery.extend(true, jQuery.magnificPopup.defaults, {

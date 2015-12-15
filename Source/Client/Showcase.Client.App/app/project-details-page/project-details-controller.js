@@ -53,6 +53,8 @@
         vm.images = project.imageUrls;
         vm.isHidden = project.isHidden;
 
+        vm.mainImage = [vm.project.mainImageUrl];
+
         identity.getUser()
             .then(function (user) {
                 vm.isAdmin = user.isAdmin;
@@ -112,8 +114,6 @@
 
             vm.project.updatedImageUrls = angular.copy(vm.project.imageUrls);
             vm.project.updatedMainImageUrl = vm.project.mainImageUrl;
-
-          //  vm.videoEmbedSourceNotFixed = vm.project.videoEmbedSource;
 
             addProjectData.getSeasonTags()
                 .then(function (seasonTags) {
