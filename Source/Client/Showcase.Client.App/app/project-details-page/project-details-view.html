@@ -69,6 +69,10 @@
                     </label>
                 </div>
 
+                <div class="video-container">
+                    <iframe width="420" height="315" ng-src="{{vm.project.videoEmbedSource}}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                
                 <div>
                     <span ng-repeat="file in vm.project.files">
                         <a href="/Files/{{file.urlPath}}" target="_self" class="margin-right-5 margin-bottom-2"><span class="file-name">{{file.originalFileName}}</span>.{{file.fileExtension}}</a>

@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var projectDetailsController = function projectDetailsController($window, $location, $route, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData) {
+    var projectDetailsController = function projectDetailsController($window, $location, $route, $sce, project, identity, sweetAlertDispatcher, notifier, projectDetailsData, addProjectData) {
         var vm = this;
         var id = project.id;
         var initialProject;
@@ -43,6 +43,7 @@
         }
 
         vm.editMode = false;
+        project.videoEmbedSource = $sce.trustAsResourceUrl(project.videoEmbedSource);
         vm.project = project;
         vm.likes = project.likes;
         vm.isLiked = project.isLiked;
@@ -193,5 +194,5 @@
 
     angular
         .module('showcaseSystem.controllers')
-        .controller('ProjectDetailsController', ['$window', '$location', '$route', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', projectDetailsController]);
+        .controller('ProjectDetailsController', ['$window', '$location', '$route', '$sce', 'project', 'identity', 'sweetAlertDispatcher', 'notifier', 'projectDetailsData', 'addProjectData', projectDetailsController]);
 }());
