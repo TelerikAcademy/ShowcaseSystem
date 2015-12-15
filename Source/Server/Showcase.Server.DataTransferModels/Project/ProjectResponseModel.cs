@@ -27,6 +27,8 @@
 
         public string Description { get; set; }
 
+        public string VideoEmbedSource { get; set; }
+
         public string RepositoryUrl { get; set; }
 
         public string LiveDemoUrl { get; set; }

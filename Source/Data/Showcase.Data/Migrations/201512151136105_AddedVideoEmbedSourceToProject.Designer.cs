@@ -13,12 +13,12 @@ namespace Showcase.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201512151016329_AddedVideoEmbedSourceToProject"; }
+            get { return "201512151136105_AddedVideoEmbedSourceToProject"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

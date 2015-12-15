@@ -22,6 +22,10 @@
         [OnlyEnglish]
         public string Description { get; set; }
 
+        [MinLength(ValidationConstants.MinProjectEmbedVideoSource, ErrorMessage = ValidationConstants.MinLengthErrorMessage)]
+        [MaxLength(ValidationConstants.MaxProjectEmbedVideoSource, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
+        public string VideoEmbedSource { get; set; }
+        
         [Display(Name = Constants.RepositoryUrlDisplayName)]
         [Required]
         [MaxLength(ValidationConstants.MaxProjectUrlLength, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]

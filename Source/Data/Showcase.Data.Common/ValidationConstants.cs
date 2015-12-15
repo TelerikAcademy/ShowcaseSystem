@@ -19,6 +19,8 @@
         public const int MaxProjectImages = 10;
         public const int MinProjectFiles = 0;
         public const int MaxProjectFiles = 5;
+        public const int MaxProjectEmbedVideoSource = 150;
+        public const int MinProjectEmbedVideoSource = 10;
 
         // Comment
         public const int MinCommentContentLength = 2;

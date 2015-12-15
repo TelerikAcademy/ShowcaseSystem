@@ -7,12 +7,12 @@ namespace Showcase.Data.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Projects", "VideoEmbedSource", c => c.String());
+            AlterColumn("dbo.Projects", "VideoEmbedSource", c => c.String(maxLength: 150));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Projects", "VideoEmbedSource");
+            AlterColumn("dbo.Projects", "VideoEmbedSource", c => c.String());
         }
     }
 }

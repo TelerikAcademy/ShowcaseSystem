@@ -49,6 +49,8 @@
         [MaxLength(ValidationConstants.MaxProjectUrlLength)]
         public string LiveDemoUrl { get; set; }
 
+        [MinLength(ValidationConstants.MinProjectEmbedVideoSource, ErrorMessage = ValidationConstants.MinLengthErrorMessage)]
+        [MaxLength(ValidationConstants.MaxProjectEmbedVideoSource, ErrorMessage = ValidationConstants.MaxLengthErrorMessage)]
         public string VideoEmbedSource { get; set; }
 
         public bool IsHidden { get; set; }

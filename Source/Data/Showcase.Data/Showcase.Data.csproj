@@ -50,6 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201512151136105_AddedVideoEmbedSourceToProject.cs" />
+    <Compile Include="Migrations\201512151136105_AddedVideoEmbedSourceToProject.Designer.cs">
+      <DependentUpon>201512151136105_AddedVideoEmbedSourceToProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowcaseDbContext.cs" />
@@ -67,6 +71,11 @@
       <Project>{163b402e-b743-422b-8476-0d73089e7c94}</Project>
       <Name>Showcase.Data.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201512151136105_AddedVideoEmbedSourceToProject.resx">
+      <DependentUpon>201512151136105_AddedVideoEmbedSourceToProject.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
