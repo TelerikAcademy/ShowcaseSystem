@@ -37,7 +37,7 @@
             }
         }
 
-        [TestCase("Nikolay.IT", true)]
+        [TestCase("DonchoMinkov", true)]
         [TestCase("ShowcaseSystem", false)]
         public void UsersInfoShouldReturnCorrectResults(string username, bool isAdmin)
         {
