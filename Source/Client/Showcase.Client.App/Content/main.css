@@ -7,7 +7,7 @@ select[multiple="multiple"] {
 }
 
 a:focus, a:hover {
-    color: #8ab933;
+    color: #43A700;
 }
 
 .toast-top-center {
@@ -16,7 +16,7 @@ a:focus, a:hover {
 }
 
 .toast-success {
-    background-color: #8ab933;
+    background-color: #43A700;
 }
 
 .toast .toast-close-button {
@@ -28,21 +28,21 @@ a:focus, a:hover {
 }
 
 #loading-bar .bar {
-    background: #8ab933;
+    background: #43A700;
 }
 
 #loading-bar .peg {
-    -moz-box-shadow: #8ab933 1px 0 6px 1px;
-    -ms-box-shadow: #8ab933 1px 0 6px 1px;
-    -webkit-box-shadow: #8ab933 1px 0 6px 1px;
-    box-shadow: #8ab933 1px 0 6px 1px;
+    -moz-box-shadow: #43A700 1px 0 6px 1px;
+    -ms-box-shadow: #43A700 1px 0 6px 1px;
+    -webkit-box-shadow: #43A700 1px 0 6px 1px;
+    box-shadow: #43A700 1px 0 6px 1px;
 }
 
 #loading-bar-spinner .spinner-icon {
     width: 24px;
     height: 24px;
-    border-top-color: #8ab933;
-    border-left-color: #8ab933;
+    border-top-color: #43A700;
+    border-left-color: #43A700;
 }
 
 .modal-title a {
@@ -357,7 +357,7 @@ a.social.fa-github:hover {
 }
 
 .btn-success {
-    background-color: #8ab933 !important;
+    background-color: #43A700 !important;
 }
 
 .color999 {
@@ -398,7 +398,7 @@ ul.token-input-list-showcase {
     }
 
 div.token-input-dropdown-showcase ul li.token-input-selected-dropdown-item-showcase {
-    background-color: #8ab933;
+    background-color: #43A700;
 }
 
 div.token-input-dropdown-showcase {
@@ -417,8 +417,8 @@ li.token-input-input-token-showcase {
 }
 
 li.token-input-selected-token-showcase {
-    background-color: #8ab933;
-    border: 1px solid #8ab933;
+    background-color: #43A700;
+    border: 1px solid #43A700;
     color: #fff;
 }
 
@@ -460,16 +460,16 @@ li.token-input-selected-token-showcase span {
         }
 
             #image-preview-container .image-holder .preview-image:hover {
-                border: 5px solid #8ab933;
+                border: 5px solid #43A700;
                 cursor: pointer;
             }
 
             #image-preview-container .image-holder .preview-image.image-selected {
-                border: 5px solid #8ab933;
+                border: 5px solid #43A700;
             }
 
 .text-success {
-    color: #8ab933 !important;
+    color: #43A700 !important;
 }
 
 .owl-carousel.featured .owl-featured-item {
@@ -815,11 +815,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 div.item:hover {
-    border-right-color: #8ab933 !important;
+    border-right-color: #43A700 !important;
 }
 
 div.item:hover h4 {
-    color: #8ab933 !important;
+    color: #43A700 !important;
 }
 
 .video-container {

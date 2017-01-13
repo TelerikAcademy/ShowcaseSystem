@@ -11,7 +11,7 @@
 
                 $('#add-button')
                     .hover(function () {
-                        $addIcon.css('color', '#8ab933');
+                        $addIcon.css('color', '#43A700');
                     }, function () {
                         $addIcon.css('color', '#999999');
                     });

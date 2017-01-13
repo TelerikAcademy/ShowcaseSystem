@@ -15,6 +15,7 @@ var isProduction = require('yargs').argv.env === 'production',
     addStream = require('add-stream'),
 	angularFilesort = require('gulp-angular-filesort'),
 	angularTemplateCache = require('gulp-angular-templatecache');
+console.log(isProduction);
 
 // File paths
 var config = {
